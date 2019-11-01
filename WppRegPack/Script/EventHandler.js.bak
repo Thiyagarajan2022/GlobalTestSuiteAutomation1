@@ -1,0 +1,47 @@
+﻿//USEUNIT ReportUtils
+var img = 0;
+function GeneralEvents_OnLogError(Sender, LogParams)
+{
+  Log.Message(LogParams.MessageText)
+ ReportUtils.logStep("FAIL", LogParams.MessageText);
+ //Sys.Desktop.Picture().SaveToFile(Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\", reportName);
+  
+}
+
+function GeneralEvents_OnLogEvent(Sender, LogParams)
+{
+//if (! aqFileSystem.Exists(ReportUtils.file_path+"Image")){
+//if (aqFileSystem.CreateFolder(ReportUtils.file_path+"Image") == 0){ 
+//Log.Message(ReportUtils.file_path+"Image\\")
+// Sys.Desktop.Picture().SaveToFile(ReportUtils.file_path+"Image\\"+img+".jpg");   
+//}
+//else{
+//Log.Error("Could not create the folder " + ReportUtils.file_path+"Image");
+//}
+//}
+//else{ 
+//  Sys.Desktop.Picture().SaveToFile(ReportUtils.file_path+"Image\\"+img+".jpg");
+//}
+//var imgPath = ReportUtils.file_path+"Image\\"+img+".jpg";
+//ReportUtils.logStep("INFO", LogParams.MessageText, "",imgPath);
+//ReportUtils.logStep("PASS", LogParams.MessageText, "");
+//img++;
+
+}
+
+function GeneralEvents_OnLogCheckpoint(Sender, LogParams)
+{
+
+// ReportUtils.logStep("INFO", LogParams.MessageText, LogParams.AdditionalText);
+}
+
+function GeneralEvents_OnStartTest(Sender)
+{
+ // VideoRecorder.Start();
+}
+
+
+function GeneralEvents_OnStopTest(Sender)
+{
+ // VideoRecorder.Stop()
+}

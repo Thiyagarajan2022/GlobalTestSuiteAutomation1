@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1140" key="{52E6B82F-1C12-402C-A572-08A326C5ED58}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+	<config nodeName="ImageSet4" />
+	<testData />
+	<data>
+		<item caption="GL" moniker="{C93DD622-31DF-4AA4-B30F-D53824C6F8B4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\GL.png" initialHash="E1537B3E" selectionLeft="44" selectionTop="275" selectionWidth="130" selectionHeight="32" initialLeft="44" initialTop="275" initialWidth="130" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="GL1" moniker="{171826DA-735E-4229-8BB1-88C6060B5B07}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\GL1.png" initialHash="CFF034F2" selectionLeft="44" selectionTop="277" selectionWidth="127" selectionHeight="29" initialLeft="44" initialTop="277" initialWidth="127" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="GLs" moniker="{B68CC8BC-AF2F-4F73-9D81-62B8C81FFB2E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\GLs_1.png" initialHash="5D67F31F" selectionLeft="41" selectionTop="505" selectionWidth="141" selectionHeight="32" initialLeft="41" initialTop="505" initialWidth="141" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
+</Root>

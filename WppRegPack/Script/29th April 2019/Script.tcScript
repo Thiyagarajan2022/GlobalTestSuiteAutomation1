@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="TestRunner" key="{51E9CA11-BD4F-4269-8CAF-3A5C22DCC282}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TestRunner.js" />
+		</child>
+		<child name="WorkspaceUtils" key="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="WorkspaceUtils.js" />
+		</child>
+		<child name="ActionUtils" key="{DF431AEE-7BF6-4F22-8BB1-03E949254311}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ActionUtils.js" />
+		</child>
+		<child name="ValidationUtils" key="{31A0568F-4E9A-401F-A188-B6129F571F72}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ValidationUtils.js" />
+		</child>
+		<child name="EventHandler" key="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EventHandler.js" />
+		</child>
+		<child name="ExcelUtils" key="{A585A2E3-1B31-433D-B55A-A4A2E442B563}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ExcelUtils.js" />
+		</child>
+		<child name="ReportUtils" key="{A59CD177-F657-4707-8222-D6C3772E561F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ReportUtils.js" />
+		</child>
+		<child name="TextUtils" key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TextUtils.js" />
+		</child>
+		<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EnvParams.js" />
+		</child>
+		<child name="TC01_JobCreation" key="{6D2B6986-7646-437A-AEFA-8A864D34D06E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC01_JobCreation.js" />
+		</child>
+		<child name="TC03_ValidateMPL" key="{817A69B2-B7E1-4B04-9F46-9A8735847513}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC03_ValidateMPL.js" />
+		</child>
+		<child name="PdfUtils" key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="PdfUtils.js" />
+		</child>
+		<child name="LanguageUtils" key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="LanguageUtils.js" />
+		</child>
+		<child name="TC04_ValidateReport" key="{440CC653-D524-496A-99F4-5C0E3EDED606}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC04_ValidateReport.js" />
+		</child>
+		<child name="TC59_CreateClient" key="{F7BCDB4D-EE7D-463F-A502-9DC96C4DC566}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC59_CreateClient.js" />
+		</child>
+		<child name="Login" key="{DE9DBB18-CCF3-4270-B4D8-20FAA28D4827}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Login.js" />
+		</child>
+		<child name="TC03_CreateJobBudget" key="{4244A596-05F8-452C-A85A-CCCA1C4B2F32}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC03_CreateJobBudget.js" />
+		</child>
+		<child name="TC05_CopyBudget" key="{19B88569-D8FD-4707-92A0-4BDBFAC0BD23}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC05_CopyBudget.js" />
+		</child>
+		<child name="TC06_ApproveBudget" key="{A464FCB5-74FF-4D8F-90C3-45FD26B9520E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC06_ApproveBudget.js" />
+		</child>
+		<child name="TC10_Crt_ClientAprvdEstimate" key="{023EF0BA-32A7-4469-A25C-8D522758735C}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC10_Crt_ClientAprvdEstimate.js" />
+		</child>
+		<child name="TC11_Aprv_ClientAprvEstimate" key="{1A55574A-FE29-4DFA-A790-FCC2A8FCDE86}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC11_Aprv_ClientAprvEstimate.js" />
+		</child>
+		<child name="TC12_PrintJobBudget" key="{5CD6A673-F8F6-4071-96C9-CE7EC2F42674}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC12_PrintJobBudget.js" />
+		</child>
+		<child name="TC13_PrintJobOrder" key="{A6BF40DD-0229-48C2-B056-F751DD451A30}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC13_PrintJobOrder.js" />
+		</child>
+		<child name="TC02_Subjob" key="{EDFE3C14-4822-4EEB-B88A-F9288F90F3DF}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC02_Subjob.js" />
+		</child>
+		<child name="TC04_Modify_Budget" key="{11917444-B82B-4DA6-8715-8F4AC7021978}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC04_Modify_Budget.js" />
+		</child>
+		<child name="TC07_Transfer_to_Quote" key="{48455A56-C447-480E-9BCB-52BBC5F0E89C}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC07_Transfer_to_Quote.js" />
+		</child>
+		<child name="TC08_Print_Quotation" key="{4CB9C4F7-7D79-4FFF-8062-D04EF3C4C791}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC08_Print_Quotation.js" />
+		</child>
+		<child name="TC09_Covert_to_Order" key="{C32E2549-4A54-4BA3-98BF-57B35A28E0D6}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC09_Covert_to_Order.js" />
+		</child>
+		<child name="JobInvoice" key="{E87BE497-7167-4707-B35D-A5DDF29A318A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="JobInvoice.js" />
+		</child>
+		<child name="TimeAndMaterial" key="{5C619999-A977-4832-BC3C-C65A0925915E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TimeAndMaterial.js" />
+		</child>
+		<child name="TC42_TM_JobInvoice" key="{DB207249-AA53-453A-A5A5-E67D93A740DB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC42_TM_JobInvoice.js" />
+		</child>
+		<child name="TC41_WriteOff" key="{4850A873-06D9-45EE-9BEC-61D31265273D}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC41_WriteOff.js" />
+		</child>
+		<child name="Trail_1" key="{B22953F1-B23B-4E1C-B06E-9266A990E1DC}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Trail_1.js" />
+		</child>
+		<child name="Trail_2" key="{DAB54DAA-0E8F-4E85-B02C-9963236AAB81}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Trail_2.js" />
+		</child>
+		<child name="Trail_3" key="{81988209-FBF8-47B9-B996-F09ABD7C5141}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Trail_3.js" />
+		</child>
+		<child name="TC60_CreateCompanyClient" key="{7E5CC7B1-801C-413A-91F1-33EEB024AE59}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC60_CreateCompanyClient.js" />
+		</child>
+		<child name="TC61_CreateBrand" key="{3FB1EE9F-B147-4336-9250-D42302EF2C66}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC61_CreateBrand.js" />
+		</child>
+		<child name="TC62_CreateCompanyBrand" key="{22E066A3-C008-46A5-9F81-0C0281447584}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC62_CreateCompanyBrand.js" />
+		</child>
+		<child name="TC63_CreateProduct" key="{0AA302BD-A19A-44A2-BE16-4187937EDDBB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC63_CreateProduct.js" />
+		</child>
+		<child name="TC64_CreateCompanyProduct" key="{293BE034-F7E3-449C-80D2-6568C640DB73}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC64_CreateCompanyProduct.js" />
+		</child>
+		<child name="TC65_AmendCompanyClient" key="{FB4D6E55-AE47-44E8-A67F-AA183D1BA0AA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC65_AmendCompanyClient.js" />
+		</child>
+		<child name="TC66_ChangeCompanyBrand" key="{51694070-5FBF-43A6-AD67-A3F494D35CEA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC66_ChangeCompanyBrand.js" />
+		</child>
+		<child name="TC67_CrteEmployee_User" key="{E931C4C0-BD09-4AB6-89C1-A65A1C0420C9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC67_CrteEmployee_User.js" />
+		</child>
+		<child name="TC68_EmployeeCreation" key="{4BCB589F-E619-4DCC-AB74-6DDCFB7DF114}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC68_EmployeeCreation.js" />
+		</child>
+		<child name="TC69_CreateUser" key="{55DCB48F-0ED4-412A-AD85-1F08B1F7AE67}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC69_CreateUser.js" />
+		</child>
+		<child name="TC70_ChangeEmployee" key="{A0A3EB6B-2D80-454E-80A2-79F1E60ADF67}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC70_ChangeEmployee.js" />
+		</child>
+		<child name="TC71_ChangeUser" key="{520CBC84-E1A2-470E-8C7E-C825DE038748}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC71_ChangeUser.js" />
+		</child>
+		<child name="Trail_11" key="{F09FA814-98AF-4FE4-B861-C5E879A25257}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Trail_11.js" />
+		</child>
+		<child name="TC104_CreateFixedAssets" key="{0BA5C49A-876E-4B04-809C-705687FD09A9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC104_CreateFixedAssets.js" />
+		</child>
+		<child name="TC105_PostingNewAdjustment" key="{4F4EAB68-6374-466F-907F-F840E64158A4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC105_PostingNewAdjustment.js" />
+		</child>
+		<child name="TC106_FixedAssetDepreciation" key="{D7348B7B-DFA1-4BC2-8D40-C5C0DFFE4407}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC106_FixedAssetDepreciation.js" />
+		</child>
+		<child name="TC107_FixedAssetsAdjustments" key="{6E443C46-B125-41A9-A047-FC35E1D57B41}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC107_FixedAssetsAdjustments.js" />
+		</child>
+		<child name="TC109_FixedAssetsDisposal" key="{27453A2C-03CB-4508-8FEC-3218BF729F81}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC109_FixedAssetsDisposal.js" />
+		</child>
+		<child name="TC115_RunMonthlyFixedAssetDeprecision" key="{22C39791-D607-4E04-AD31-7B72FA440371}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC115_RunMonthlyFixedAssetDeprecision.js" />
+		</child>
+		<child name="TC14_CreatePurchaseOrder" key="{92A39C49-FCE9-4379-867F-F3BC7B8D3B10}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC14_CreatePurchaseOrder.js" />
+		</child>
+		<child name="TC16_RejectingPurchaseOrder" key="{630AE95E-5B48-43F8-B30D-713AED94CB22}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC16_RejectingPurchaseOrder.js" />
+		</child>
+		<child name="TC17_ApprovePurchaseOrder" key="{831E61F9-DE4E-4967-9520-6A9DFB536858}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC17_ApprovePurchaseOrder.js" />
+		</child>
+		<child name="TC18_PrintPurchaseOrder" key="{1BED294D-A41F-46F5-A963-040ABAD22140}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC18_PrintPurchaseOrder.js" />
+		</child>
+		<child name="TC22_FixedAssetPurchaseOrder" key="{B460958A-C656-42D8-93FB-7198CE755A67}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC22_FixedAssetPurchaseOrder.js" />
+		</child>
+		<child name="Approve_Expenses_Sheet_Opco" key="{FF244B2D-66A6-4EA3-8A56-767D91CAC3F5}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Approve_Expenses_Sheet_Opco.js" />
+		</child>
+		<child name="Approve_Expenses_Sheet_SSC" key="{D20C107C-9B0B-41E9-BD71-4FEF3B21FB8E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Approve_Expenses_Sheet_SSC.js" />
+		</child>
+		<child name="Copy_General_Journal" key="{16F87392-977C-4922-8F21-C7E4A378D1AA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Copy_General_Journal.js" />
+		</child>
+		<child name="Create_General_Journal" key="{97485B14-BFBD-4059-BF3D-76B232D35B4F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Create_General_Journal.js" />
+		</child>
+		<child name="Create_General_LedgerR" key="{8B926E86-3FED-4591-A919-E41D4F747BFE}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Create_General_LedgerR.js" />
+		</child>
+		<child name="Create_Reverse_Journal" key="{6CB1E940-802A-496D-9524-BC1343BB8234}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Create_Reverse_Journal.js" />
+		</child>
+		<child name="Customer_Payment_for_Single_Invoice__" key="{EDC47032-06CB-44C6-9C0E-954E207CF8A2}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Customer_Payment_for_Single_Invoice__.js" />
+		</child>
+		<child name="Customer_Payments_Multiple_Invoices" key="{357A8E1D-F304-4246-9E0F-8D483ECA3760}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Customer_Payments_Multiple_Invoices.js" />
+		</child>
+		<child name="Post_a_Customer_Payment" key="{A708D927-0357-4D12-9327-049430FA0B34}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Post_a_Customer_Payment.js" />
+		</child>
+		<child name="Post_a_Customer_Payment_in_Foreign_currency" key="{80C8D1B8-5F65-4E42-B86D-6F11C9E430C1}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Post_a_Customer_Payment_in_Foreign_currency.js" />
+		</child>
+		<child name="Print_Client_Open_Statement" key="{D6F7BD5E-7767-4C43-A48B-8AE9E3EA5E24}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Client_Open_Statement.js" />
+		</child>
+		<child name="Print_Client_Periodic_Statement" key="{A5734395-03CD-4D0C-A539-C6F882407FA0}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Client_Periodic_Statement.js" />
+		</child>
+		<child name="Print_Draft_Invoice" key="{ACB1AD58-8A96-4C98-BFBF-86FB1660B457}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Draft_Invoice.js" />
+		</child>
+		<child name="Print_Expenses_Sheet" key="{1C4CB1B4-D553-46E5-A4BE-7013A8BB2364}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Expenses_Sheet.js" />
+		</child>
+		<child name="Print_Invoice" key="{7D84F96F-236B-4702-8911-12568ABE2B82}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Invoice.js" />
+		</child>
+		<child name="Print_Journal_Entries" key="{48752173-8227-4514-9127-227E957864FB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Print_Journal_Entries.js" />
+		</child>
+		<child name="Reject_a_Expense_Sheet" key="{B82E1AF1-B535-43A1-A048-6EBDC75E0302}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Reject_a_Expense_Sheet.js" />
+		</child>
+		<child name="Reverse_General_Journal" key="{D6CEDB25-6DE8-458A-9BBC-FA5B4E28D512}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Reverse_General_Journal.js" />
+		</child>
+		<child name="Time_Expenses" key="{32711647-D28F-4C5B-AD03-48505987C80D}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Time_Expenses.js" />
+		</child>
+		<child name="Writing_Off_Bad_Debts" key="{1A097E94-D694-4722-ABE5-2F5268B2362A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Writing_Off_Bad_Debts.js" />
+		</child>
+		<child name="TC74_CreateVendorInvoice" key="{22913BD7-B7FE-4F82-A4B7-7138EA38A42B}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC74_CreateVendorInvoice.js" />
+		</child>
+		<child name="TC75_InvoiceApproval" key="{68F2A228-FA6C-4E96-89BD-C928217660C5}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC75_InvoiceApproval.js" />
+		</child>
+		<child name="TC76_PrintVendorInvoice" key="{D56C9618-5381-4E2F-A6A1-6A912F8578C3}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC76_PrintVendorInvoice.js" />
+		</child>
+		<child name="TC77_InvoiceRejectionProcess" key="{11FFD795-3527-4175-97D0-6F5B84623AE2}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC77_InvoiceRejectionProcess.js" />
+		</child>
+		<child name="TC78_PostVendorJournal" key="{8651ED15-039A-4187-A3AE-6A380BFACD04}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC78_PostVendorJournal.js" />
+		</child>
+		<child name="TC79_ReverseanInvoice" key="{70DA7A23-641A-4F82-92A9-D251D6E25B51}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC79_ReverseanInvoice.js" />
+		</child>
+		<child name="TC80_CreditNotewithPO" key="{EF7CD561-D024-4287-965E-F9D7E6A8822F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC80_CreditNotewithPO.js" />
+		</child>
+		<child name="TC81_ReverseCreditNote" key="{22553F9A-77B1-4C6D-AF48-BDB678EAE3AD}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC81_ReverseCreditNote.js" />
+		</child>
+		<child name="Post_Journal_Entries" key="{7F5ABC12-DBD3-4349-AA76-31E5C9EE4BE5}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Post_Journal_Entries.js" />
+		</child>
+		<child name="TC91_CreatePaymentSelection" key="{134577D3-3D53-497D-B3B5-9201ABBE1989}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC91_CreatePaymentSelection.js" />
+		</child>
+		<child name="TC92_ChangePaymentSelection" key="{ED8B6160-F427-4640-A956-C553A3AF37BE}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC92_ChangePaymentSelection.js" />
+		</child>
+		<child name="TC93_PrintPaymentSelection" key="{A7258ABD-2D29-49D0-8E8A-F1F0CA054A26}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC93_PrintPaymentSelection.js" />
+		</child>
+		<child name="TC94_CreatePaymentFile" key="{95779868-F153-450B-A578-D036F9D47C88}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC94_CreatePaymentFile.js" />
+		</child>
+		<child name="TC95_PrintPaymentRemittance" key="{79FC7CA5-C318-48A2-8436-4B85C1D74E1B}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC95_PrintPaymentRemittance.js" />
+		</child>
+		<child name="TC96_VoidaPayment" key="{72D75E46-8B58-4BDA-9145-79C8B73791FE}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC96_VoidaPayment.js" />
+		</child>
+		<child name="TC97_PrintPaymentListing" key="{D84C49C0-B246-453C-BE1F-9CE3E53DB17B}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC97_PrintPaymentListing.js" />
+		</child>
+		<child name="TC98_PrintPaymentOrder" key="{53110AE1-9DDA-4D09-9A7D-779F0A6363EE}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC98_PrintPaymentOrder.js" />
+		</child>
+		<child name="TC99_BankingReconciliation" key="{8D3A3586-9A8A-4B69-8C63-D275AE5525CA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC99_BankingReconciliation.js" />
+		</child>
+		<child name="TC103_RemittanceEmail" key="{8CF3B67C-8D0E-4DD1-8E2F-1A1598A431FA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC103_RemittanceEmail.js" />
+		</child>
+		<child name="TC32_CreatingAbsenseAllowenceRequest" key="{DBC7A816-0D63-4324-AE49-08C5180074EE}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC32_CreatingAbsenseAllowenceRequest.js" />
+		</child>
+		<child name="TC33_RejectingAbsenceAllowenceRequest" key="{1E6BC97E-57AD-4375-A2CB-CED03A190A61}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC33_RejectingAbsenceAllowenceRequest.js" />
+		</child>
+		<child name="TC34_ApprovingAbsenceAllowanceRequest" key="{E1C3059D-EFA0-4121-A514-068FF9374167}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC34_ApprovingAbsenceAllowanceRequest.js" />
+		</child>
+		<child name="TC35_CreatingAbsenseRequest" key="{0A3B2FE6-7E2D-492B-B2A3-00C2835E98B9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC35_CreatingAbsenseRequest.js" />
+		</child>
+		<child name="TC36_RejectingAbsenceRequest" key="{911C4BB7-69FA-43D0-9921-064571BD31BC}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC36_RejectingAbsenceRequest.js" />
+		</child>
+		<child name="TC37_ApprovingAbsenceRequest" key="{CE6729E6-9AB3-432A-BA0F-2285F2673CCA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC37_ApprovingAbsenceRequest.js" />
+		</child>
+		<child name="TC31_Print_Time_Sheet" key="{15D21D1D-CC9E-4B69-BD68-958BA399C7C9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC31_Print_Time_Sheet.js" />
+		</child>
+		<child name="Blocking_a_User" key="{D5489DBB-E107-48DB-B79D-3D5ABEEA376B}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Blocking_a_User.js" />
+		</child>
+		<child name="TC82_PrintVendorPeriodicStatement" key="{E2E0BF71-9440-4E9B-94EB-7F78EAD25933}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TC82_PrintVendorPeriodicStatement.js" />
+		</child>
+		<child name="New_EEU" key="{E4620BAE-D172-4F39-BCD1-3F77E59F165D}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="New_EEU.js" />
+		</child>
+		<child name="NEW_E" key="{137FF3E4-0436-4634-AD5E-1628DD5F2C2E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="NEW_E.js" />
+		</child>
+	</children>
+	<folders>
+		<folder caption="BusinessComponents" description="A logical folder that is used to organize project items and elements." moniker="">
+			<folders>
+				<folder caption="Windows" description="A logical folder that is used to organize project items and elements." moniker="">
+					<references>
+						<ref key="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}" />
+						<ref key="{DE9DBB18-CCF3-4270-B4D8-20FAA28D4827}" />
+					</references>
+				</folder>
+			</folders>
+		</folder>
+		<folder caption="ControlBasedFunctions" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{DF431AEE-7BF6-4F22-8BB1-03E949254311}" />
+				<ref key="{31A0568F-4E9A-401F-A188-B6129F571F72}" />
+			</references>
+		</folder>
+		<folder caption="SupportLibraries" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}" />
+				<ref key="{A585A2E3-1B31-433D-B55A-A4A2E442B563}" />
+				<ref key="{A59CD177-F657-4707-8222-D6C3772E561F}" />
+				<ref key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" />
+				<ref key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" />
+				<ref key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" />
+			</references>
+		</folder>
+		<folder caption="TestScripts" description="A logical folder that is used to organize project items and elements." moniker="">
+			<folders>
+				<folder caption="Windows" description="A logical folder that is used to organize project items and elements." moniker="">
+					<folders>
+						<folder caption="Job Management" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{6D2B6986-7646-437A-AEFA-8A864D34D06E}" />
+								<ref key="{4244A596-05F8-452C-A85A-CCCA1C4B2F32}" />
+								<ref key="{19B88569-D8FD-4707-92A0-4BDBFAC0BD23}" />
+								<ref key="{A464FCB5-74FF-4D8F-90C3-45FD26B9520E}" />
+								<ref key="{023EF0BA-32A7-4469-A25C-8D522758735C}" />
+								<ref key="{1A55574A-FE29-4DFA-A790-FCC2A8FCDE86}" />
+								<ref key="{5CD6A673-F8F6-4071-96C9-CE7EC2F42674}" />
+								<ref key="{A6BF40DD-0229-48C2-B056-F751DD451A30}" />
+								<ref key="{EDFE3C14-4822-4EEB-B88A-F9288F90F3DF}" />
+								<ref key="{11917444-B82B-4DA6-8715-8F4AC7021978}" />
+								<ref key="{48455A56-C447-480E-9BCB-52BBC5F0E89C}" />
+								<ref key="{4CB9C4F7-7D79-4FFF-8062-D04EF3C4C791}" />
+								<ref key="{C32E2549-4A54-4BA3-98BF-57B35A28E0D6}" />
+							</references>
+						</folder>
+						<folder caption="MPLValidation" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{817A69B2-B7E1-4B04-9F46-9A8735847513}" />
+								<ref key="{440CC653-D524-496A-99F4-5C0E3EDED606}" />
+							</references>
+						</folder>
+						<folder caption="Client Management" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{F7BCDB4D-EE7D-463F-A502-9DC96C4DC566}" />
+								<ref key="{7E5CC7B1-801C-413A-91F1-33EEB024AE59}" />
+								<ref key="{3FB1EE9F-B147-4336-9250-D42302EF2C66}" />
+								<ref key="{22E066A3-C008-46A5-9F81-0C0281447584}" />
+								<ref key="{0AA302BD-A19A-44A2-BE16-4187937EDDBB}" />
+								<ref key="{293BE034-F7E3-449C-80D2-6568C640DB73}" />
+								<ref key="{FB4D6E55-AE47-44E8-A67F-AA183D1BA0AA}" />
+								<ref key="{51694070-5FBF-43A6-AD67-A3F494D35CEA}" />
+							</references>
+						</folder>
+						<folder caption="Job Invoice" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{E87BE497-7167-4707-B35D-A5DDF29A318A}" />
+								<ref key="{5C619999-A977-4832-BC3C-C65A0925915E}" />
+								<ref key="{DB207249-AA53-453A-A5A5-E67D93A740DB}" />
+								<ref key="{4850A873-06D9-45EE-9BEC-61D31265273D}" />
+								<ref key="{B22953F1-B23B-4E1C-B06E-9266A990E1DC}" />
+								<ref key="{DAB54DAA-0E8F-4E85-B02C-9963236AAB81}" />
+								<ref key="{81988209-FBF8-47B9-B996-F09ABD7C5141}" />
+								<ref key="{F09FA814-98AF-4FE4-B861-C5E879A25257}" />
+							</references>
+						</folder>
+						<folder caption="Employee &amp; User Creation" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{E931C4C0-BD09-4AB6-89C1-A65A1C0420C9}" />
+								<ref key="{4BCB589F-E619-4DCC-AB74-6DDCFB7DF114}" />
+								<ref key="{55DCB48F-0ED4-412A-AD85-1F08B1F7AE67}" />
+								<ref key="{A0A3EB6B-2D80-454E-80A2-79F1E60ADF67}" />
+								<ref key="{520CBC84-E1A2-470E-8C7E-C825DE038748}" />
+								<ref key="{E4620BAE-D172-4F39-BCD1-3F77E59F165D}" />
+								<ref key="{137FF3E4-0436-4634-AD5E-1628DD5F2C2E}" />
+							</references>
+						</folder>
+						<folder caption="Fixed Assest" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{0BA5C49A-876E-4B04-809C-705687FD09A9}" />
+								<ref key="{4F4EAB68-6374-466F-907F-F840E64158A4}" />
+								<ref key="{D7348B7B-DFA1-4BC2-8D40-C5C0DFFE4407}" />
+								<ref key="{6E443C46-B125-41A9-A047-FC35E1D57B41}" />
+								<ref key="{27453A2C-03CB-4508-8FEC-3218BF729F81}" />
+							</references>
+						</folder>
+						<folder caption="Month End" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{22C39791-D607-4E04-AD31-7B72FA440371}" />
+							</references>
+						</folder>
+						<folder caption="Purchase Order" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{92A39C49-FCE9-4379-867F-F3BC7B8D3B10}" />
+								<ref key="{630AE95E-5B48-43F8-B30D-713AED94CB22}" />
+								<ref key="{831E61F9-DE4E-4967-9520-6A9DFB536858}" />
+								<ref key="{1BED294D-A41F-46F5-A963-040ABAD22140}" />
+								<ref key="{B460958A-C656-42D8-93FB-7198CE755A67}" />
+							</references>
+						</folder>
+						<folder caption="DhanaLakshmi" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{FF244B2D-66A6-4EA3-8A56-767D91CAC3F5}" />
+								<ref key="{D20C107C-9B0B-41E9-BD71-4FEF3B21FB8E}" />
+								<ref key="{16F87392-977C-4922-8F21-C7E4A378D1AA}" />
+								<ref key="{97485B14-BFBD-4059-BF3D-76B232D35B4F}" />
+								<ref key="{8B926E86-3FED-4591-A919-E41D4F747BFE}" />
+								<ref key="{6CB1E940-802A-496D-9524-BC1343BB8234}" />
+								<ref key="{EDC47032-06CB-44C6-9C0E-954E207CF8A2}" />
+								<ref key="{357A8E1D-F304-4246-9E0F-8D483ECA3760}" />
+								<ref key="{A708D927-0357-4D12-9327-049430FA0B34}" />
+								<ref key="{80C8D1B8-5F65-4E42-B86D-6F11C9E430C1}" />
+								<ref key="{D6F7BD5E-7767-4C43-A48B-8AE9E3EA5E24}" />
+								<ref key="{A5734395-03CD-4D0C-A539-C6F882407FA0}" />
+								<ref key="{ACB1AD58-8A96-4C98-BFBF-86FB1660B457}" />
+								<ref key="{1C4CB1B4-D553-46E5-A4BE-7013A8BB2364}" />
+								<ref key="{7D84F96F-236B-4702-8911-12568ABE2B82}" />
+								<ref key="{48752173-8227-4514-9127-227E957864FB}" />
+								<ref key="{B82E1AF1-B535-43A1-A048-6EBDC75E0302}" />
+								<ref key="{D6CEDB25-6DE8-458A-9BBC-FA5B4E28D512}" />
+								<ref key="{32711647-D28F-4C5B-AD03-48505987C80D}" />
+								<ref key="{1A097E94-D694-4722-ABE5-2F5268B2362A}" />
+								<ref key="{7F5ABC12-DBD3-4349-AA76-31E5C9EE4BE5}" />
+								<ref key="{D5489DBB-E107-48DB-B79D-3D5ABEEA376B}" />
+							</references>
+						</folder>
+						<folder caption="Account Payable" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{22913BD7-B7FE-4F82-A4B7-7138EA38A42B}" />
+								<ref key="{68F2A228-FA6C-4E96-89BD-C928217660C5}" />
+								<ref key="{D56C9618-5381-4E2F-A6A1-6A912F8578C3}" />
+								<ref key="{11FFD795-3527-4175-97D0-6F5B84623AE2}" />
+								<ref key="{8651ED15-039A-4187-A3AE-6A380BFACD04}" />
+								<ref key="{70DA7A23-641A-4F82-92A9-D251D6E25B51}" />
+								<ref key="{EF7CD561-D024-4287-965E-F9D7E6A8822F}" />
+								<ref key="{22553F9A-77B1-4C6D-AF48-BDB678EAE3AD}" />
+							</references>
+						</folder>
+						<folder caption="Banking" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{134577D3-3D53-497D-B3B5-9201ABBE1989}" />
+								<ref key="{ED8B6160-F427-4640-A956-C553A3AF37BE}" />
+								<ref key="{A7258ABD-2D29-49D0-8E8A-F1F0CA054A26}" />
+								<ref key="{95779868-F153-450B-A578-D036F9D47C88}" />
+								<ref key="{79FC7CA5-C318-48A2-8436-4B85C1D74E1B}" />
+								<ref key="{72D75E46-8B58-4BDA-9145-79C8B73791FE}" />
+								<ref key="{D84C49C0-B246-453C-BE1F-9CE3E53DB17B}" />
+								<ref key="{53110AE1-9DDA-4D09-9A7D-779F0A6363EE}" />
+								<ref key="{8D3A3586-9A8A-4B69-8C63-D275AE5525CA}" />
+								<ref key="{8CF3B67C-8D0E-4DD1-8E2F-1A1598A431FA}" />
+							</references>
+						</folder>
+						<folder caption="Absense&#13;&#10;" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{DBC7A816-0D63-4324-AE49-08C5180074EE}" />
+								<ref key="{1E6BC97E-57AD-4375-A2CB-CED03A190A61}" />
+								<ref key="{E1C3059D-EFA0-4121-A514-068FF9374167}" />
+								<ref key="{0A3B2FE6-7E2D-492B-B2A3-00C2835E98B9}" />
+								<ref key="{911C4BB7-69FA-43D0-9921-064571BD31BC}" />
+								<ref key="{CE6729E6-9AB3-432A-BA0F-2285F2673CCA}" />
+							</references>
+						</folder>
+						<folder caption="Print Layouts" description="A logical folder that is used to organize project items and elements." moniker="">
+							<references>
+								<ref key="{15D21D1D-CC9E-4B69-BD68-958BA399C7C9}" />
+								<ref key="{E2E0BF71-9440-4E9B-94EB-7F78EAD25933}" />
+							</references>
+						</folder>
+					</folders>
+				</folder>
+			</folders>
+		</folder>
+		<folder caption="EnvParam" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" />
+			</references>
+		</folder>
+	</folders>
+</Root>

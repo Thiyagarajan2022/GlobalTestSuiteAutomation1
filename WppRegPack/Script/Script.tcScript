@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="WorkspaceUtils" key="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="WorkspaceUtils.js" />
+		</child>
+		<child name="ActionUtils" key="{DF431AEE-7BF6-4F22-8BB1-03E949254311}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ActionUtils.js" />
+		</child>
+		<child name="ValidationUtils" key="{31A0568F-4E9A-401F-A188-B6129F571F72}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ValidationUtils.js" />
+		</child>
+		<child name="EventHandler" key="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EventHandler.js" />
+		</child>
+		<child name="ExcelUtils" key="{A585A2E3-1B31-433D-B55A-A4A2E442B563}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ExcelUtils.js" />
+		</child>
+		<child name="ReportUtils" key="{A59CD177-F657-4707-8222-D6C3772E561F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ReportUtils.js" />
+		</child>
+		<child name="TextUtils" key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TextUtils.js" />
+		</child>
+		<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EnvParams.js" />
+		</child>
+		<child name="PdfUtils" key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="PdfUtils.js" />
+		</child>
+		<child name="LanguageUtils" key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="LanguageUtils.js" />
+		</child>
+		<child name="Login" key="{DE9DBB18-CCF3-4270-B4D8-20FAA28D4827}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Login.js" />
+		</child>
+		<child name="Expenses" key="{D77EFD9E-E9BB-4A78-A77F-655732F31F02}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Expenses.js" />
+		</child>
+		<child name="JobCreation" key="{9C22E062-DBC0-4BCD-BBD0-20740DFA30FF}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="JobCreation.js" />
+		</child>
+		<child name="CreateExpenses" key="{82ACB8E1-F7D4-45F3-BA94-EAC4A332B26F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CreateExpenses.js" />
+		</child>
+		<child name="Timesheet" key="{A2CBFDE8-187A-4D6B-92F7-E4BE42E7B394}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Timesheet.js" />
+		</child>
+		<child name="TestRunner" key="{808405B8-0747-445B-9F6E-64BEF03B5AF9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="TestRunner.js" />
+		</child>
+		<child name="Restart" key="{DEC1D1BA-8237-49C5-9D79-E20CAA3AA92F}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Restart.js" />
+		</child>
+		<child name="ServerConfig" key="{F67971F0-DD24-4BEE-BE62-BE1B72621ED9}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ServerConfig.js" />
+		</child>
+		<child name="EmployeeCreation" key="{A8884896-DA5A-458F-BC42-65E3F8A896E8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EmployeeCreation.js" />
+		</child>
+		<child name="CreateUser" key="{D2B7F0C1-4843-4433-9FC6-2E1FCC695797}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CreateUser.js" />
+		</child>
+		<child name="EmployeeUserCreation" key="{8F35911E-6F0E-4AB2-A652-18DF3AE13898}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="EmployeeUserCreation.js" />
+		</child>
+	</children>
+	<folders>
+		<folder caption="BusinessComponents" description="A logical folder that is used to organize project items and elements." moniker="">
+			<folders>
+				<folder caption="Windows" description="A logical folder that is used to organize project items and elements." moniker="">
+					<references>
+						<ref key="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}" />
+						<ref key="{DE9DBB18-CCF3-4270-B4D8-20FAA28D4827}" />
+						<ref key="{D77EFD9E-E9BB-4A78-A77F-655732F31F02}" />
+						<ref key="{DEC1D1BA-8237-49C5-9D79-E20CAA3AA92F}" />
+						<ref key="{F67971F0-DD24-4BEE-BE62-BE1B72621ED9}" />
+					</references>
+				</folder>
+			</folders>
+		</folder>
+		<folder caption="ControlBasedFunctions" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{DF431AEE-7BF6-4F22-8BB1-03E949254311}" />
+				<ref key="{31A0568F-4E9A-401F-A188-B6129F571F72}" />
+			</references>
+		</folder>
+		<folder caption="SupportLibraries" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}" />
+				<ref key="{A585A2E3-1B31-433D-B55A-A4A2E442B563}" />
+				<ref key="{A59CD177-F657-4707-8222-D6C3772E561F}" />
+				<ref key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" />
+				<ref key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" />
+				<ref key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" />
+			</references>
+		</folder>
+		<folder caption="TestScripts" description="A logical folder that is used to organize project items and elements." moniker="">
+			<folders>
+				<folder caption="Global Test Case" description="A logical folder that is used to organize project items and elements." moniker="">
+					<references>
+						<ref key="{A2CBFDE8-187A-4D6B-92F7-E4BE42E7B394}" />
+						<ref key="{9C22E062-DBC0-4BCD-BBD0-20740DFA30FF}" />
+						<ref key="{A8884896-DA5A-458F-BC42-65E3F8A896E8}" />
+						<ref key="{82ACB8E1-F7D4-45F3-BA94-EAC4A332B26F}" />
+						<ref key="{D2B7F0C1-4843-4433-9FC6-2E1FCC695797}" />
+						<ref key="{8F35911E-6F0E-4AB2-A652-18DF3AE13898}" />
+					</references>
+				</folder>
+			</folders>
+			<references />
+		</folder>
+		<folder caption="EnvParam" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" />
+			</references>
+		</folder>
+	</folders>
+</Root>
