@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="12.0" key="{9883218B-373C-43B7-BA1C-E07742776CB2}">
+	<children>
+		<child name="GTCRegression" key="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}" type="Project" typeId="{362A8EE5-675E-43A9-869D-06ECE80B0CB4}" pluginName="">
+			<data path="WppRegPack\GTCRegression.mds" />
+		</child>
+	</children>
+	<folders />
+	<testItems key="{D3651C5B-1951-4A4C-8CDD-BAC734DD2C2F}">
+		<children>
+			<testItem key="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}" enabled="True" timeout="0" stopOnError="True" description="" />
+		</children>
+	</testItems>
+	<variables key="{D9509ADF-4AD1-46D9-A36E-7E23E4C049FB}">
+		<data Version="3" />
+	</variables>
+	<analysis key="{EE424258-7729-4A84-BAA2-EB618A74D4C8}" />
+	<scc key="{00000000-0000-0000-0000-000000000000}" name="">
+		<data />
+	</scc>
+	<extender key="{1A3FC97E-9A66-4716-B166-35D10B4146E0}" />
+</Root>
