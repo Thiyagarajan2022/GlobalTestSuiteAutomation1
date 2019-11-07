@@ -401,11 +401,12 @@ function GoToJob() {
       table.Keys("[Down]");
     }
   }
-ReportUtils.logStep_Screenshot("");
+
   ValidationUtils.verify(flag,true,"Job Created is available in system");
   ValidationUtils.verify(true,true,"Job Number :"+table.getItem(v).getText_2(2).OleValue.toString().trim());
   if(flag){
   ReportUtils.logStep("INFO", "Created Job is listed in table");
+  ReportUtils.logStep_Screenshot("");
   closeFilter.Click();
   aqUtils.Delay(8000, Indicator.Text);
 //  Delay(8000);

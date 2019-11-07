@@ -69,6 +69,8 @@ ValidationUtils.verify(true,true,"Job field is available in Macanomy for the Exp
 
 function goToJobMenuItem(){
      var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+      menuBar.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     menuBar.DblClick();
      if(ImageRepository.ImageSet2.TE.Exists()){
        ImageRepository.ImageSet2.TE.Click();// GL
@@ -86,6 +88,8 @@ function goToJobMenuItem(){
           Time_Expenses = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i);
           if(Time_Expenses.isVisible()){ 
           Time_Expenses = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", ""); 
+          Time_Expenses.ClickItem("|Time & Expenses");
+ReportUtils.logStep_Screenshot();
           Time_Expenses.DblClickItem("|Time & Expenses");
        }
       }
@@ -99,6 +103,8 @@ function gotoTimeExpenses(){
   aqUtils.Delay(2000, Indicator.Text);
   var expenses =  Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5);
   Sys.HighlightObject(expenses);
+    expenses.HoverMouse();
+ReportUtils.logStep_Screenshot("");
   expenses.Click();
   aqUtils.Delay(4000, Indicator.Text);
   var ref = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).Refresh();
@@ -125,6 +131,8 @@ function gotoTimeExpenses(){
   linestatus = true;
    }
    Sys.HighlightObject(newsheet);
+       newsheet.HoverMouse();
+ReportUtils.logStep_Screenshot("");
    newsheet.Click(); 
 
   aqUtils.Delay(1000, Indicator.Text);
@@ -188,7 +196,9 @@ sheetName = "CreateExpense";
   Sys.HighlightObject(createbtn);
   if(createbtn.isEnabled()){    
 //    Log.Message("Create button is visible");
-//  Log.Message("Expenses is Created");  
+//  Log.Message("Expenses is Created"); 
+createbtn.HoverMouse();
+ReportUtils.logStep_Screenshot(""); 
     createbtn.Click();
     ValidationUtils.verify(true,true,"Expenses is CREATED");
     ReportUtils.logStep("INFO",Description+" "+STIME +" : is Created");
@@ -196,6 +206,8 @@ sheetName = "CreateExpense";
   else{
     var cancelbtn = Sys.Process("Maconomy").SWTObject("Shell", "Create Expense Sheet").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", "Cancel");
     Sys.HighlightObject(cancelbtn)    
+    cancelbtn.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     cancelbtn.Click();
     ValidationUtils.verify(true,false,"Expenses is not Created");
     ReportUtils.logStep("ERROR","Expenses is not Created");
@@ -226,6 +238,8 @@ sheetName = "CreateExpense";
   var allexpenses = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", "All Expense Sheets");
   else
   var allexpenses = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", "All Expense Sheets");
+  allexpenses.HoverMouse();
+ReportUtils.logStep_Screenshot("");
   allexpenses.Click();
   
   
@@ -251,6 +265,8 @@ sheetName = "CreateExpense";
 //      Log.Message("Created Expenses Sheet is listed Below :" +Description);
 //      var path = Project.Path+"RegressionLogs\\"+EnvParams.instanceData+"\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+TestRunner.sheet.substring(TestRunner.sheet.lastIndexOf("\\")+1,TestRunner.sheet.indexOf("."))+".txt";
 //      TextUtils.writeDetails(path,"Expenses Number ",get);
+
+ReportUtils.logStep_Screenshot("");
           Sys.Desktop.KeyDown(0x11);
           Sys.Desktop.KeyDown(0x46);
          Sys.Desktop.KeyUp(0x11);
@@ -319,6 +335,8 @@ sheetName = "CreateExpense";
     linestatus = true; 
     }
     Sys.HighlightObject(Addbutton);
+      Addbutton.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     Addbutton.Click();
     aqUtils.Delay(5000, Indicator.Text);
     
@@ -519,6 +537,8 @@ Ref.Refresh();
     var save = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 2);
     linestatus = true; 
     }
+save.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     save.Click();     
     ValidationUtils.verify(true,true,"Expense line is added and saved");
     aqUtils.Delay(5000, Indicator.Text); 
@@ -546,6 +566,8 @@ Ref.Refresh();
     var documents = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5);
     linestatus = true; 
     }
+    documents.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     documents.Click();
     aqUtils.Delay(2000, Indicator.Text);
 ////-------New icon button    
@@ -569,6 +591,8 @@ Ref.Refresh();
    var newicon = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 2);
    linestatus = true; 
     } 
+newicon.HoverMouse();
+ReportUtils.logStep_Screenshot("");
   newicon.Click();
   aqUtils.Delay(1000, Indicator.Text);
    var uploadlocal =  Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1); 
@@ -590,6 +614,8 @@ Ref.Refresh();
     }
     
     Sys.HighlightObject(submit);
+    submit.HoverMouse();
+ReportUtils.logStep_Screenshot("");
     submit.Click();  
     ValidationUtils.verify(true,true,"Expense Sheet is Submitted")
 //    Log.Message("Expense Sheet is Submitted"); 

@@ -403,8 +403,14 @@ ValidationUtils.verify(true,true,"Position is Entered in Maconomy");
   
 if(Email!=""){ 
 var Email_1 = Sys.Process("Maconomy").SWTObject("Shell", "New Employee").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2);
-Email_1.setText(Email + " "+STIME);  
-Email = Email + " "+STIME;
+var Eml_split1 = Email.substring(0,Email.indexOf("@"));
+var Eml_split2 = Email.substring(0,Email.indexOf("@"));
+Eml_split1 = Eml_split1 +" "+STIME;
+Eml_split1 = Eml_split1.replace(/[_: ]/g,"");
+Email = Eml_split1+Eml_split2
+Email_1.setText(Email);  
+//Email_1.setText(Email + " "+STIME);  
+//Email = Email + " "+STIME;
 ValidationUtils.verify(true,true,"Email Id is Entered in Maconomy"); 
 }else{ 
   ValidationUtils.verify(false,true,"Email Id is Needed to Create a Employee");
