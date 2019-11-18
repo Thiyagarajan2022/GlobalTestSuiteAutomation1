@@ -64,6 +64,27 @@
 		<child name="EmployeeUserCreation" key="{8F35911E-6F0E-4AB2-A652-18DF3AE13898}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="EmployeeUserCreation.js" />
 		</child>
+		<child name="CreateBudget" key="{FA9B2656-7871-40C9-AB59-EB060E599A5A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CreateBudget.js" />
+		</child>
+		<child name="FixedAssetPurchaseOrder" key="{09F7209F-188C-43A3-B79B-C6A0EAE733AB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="FixedAssetPurchaseOrder.js" />
+		</child>
+		<child name="PurchaseOrderfromJobActivities" key="{D2791BE4-05D0-4C2D-AC35-8D999B61DF49}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="PurchaseOrderfromJobActivities.js" />
+		</child>
+		<child name="ApprovePO" key="{775924F1-59C3-4C24-AD87-A6D59D09BB42}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ApprovePO.js" />
+		</child>
+		<child name="RejectPurchaseOrder" key="{C7E5447B-B490-458B-A11E-2A698CBFCAF8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="RejectPurchaseOrder.js" />
+		</child>
+		<child name="CreatePurchseOrder" key="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CreatePurchseOrder.js" />
+		</child>
+		<child name="CreateClient" key="{F8AD0A4F-415F-4196-8028-CF63A7E83377}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CreateClient.js" />
+		</child>
 	</children>
 	<folders>
 		<folder caption="BusinessComponents" description="A logical folder that is used to organize project items and elements." moniker="">
@@ -105,10 +126,16 @@
 						<ref key="{82ACB8E1-F7D4-45F3-BA94-EAC4A332B26F}" />
 						<ref key="{D2B7F0C1-4843-4433-9FC6-2E1FCC695797}" />
 						<ref key="{8F35911E-6F0E-4AB2-A652-18DF3AE13898}" />
+						<ref key="{FA9B2656-7871-40C9-AB59-EB060E599A5A}" />
+						<ref key="{09F7209F-188C-43A3-B79B-C6A0EAE733AB}" />
+						<ref key="{D2791BE4-05D0-4C2D-AC35-8D999B61DF49}" />
+						<ref key="{775924F1-59C3-4C24-AD87-A6D59D09BB42}" />
+						<ref key="{C7E5447B-B490-458B-A11E-2A698CBFCAF8}" />
+						<ref key="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}" />
+						<ref key="{F8AD0A4F-415F-4196-8028-CF63A7E83377}" />
 					</references>
 				</folder>
 			</folders>
-			<references />
 		</folder>
 		<folder caption="EnvParam" description="A logical folder that is used to organize project items and elements." moniker="">
 			<references>

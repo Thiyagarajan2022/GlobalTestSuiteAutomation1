@@ -219,5 +219,32 @@
 		<item caption="Reporting2" moniker="{2880D8D3-4F19-4193-A160-4DF30DC33022}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Reporting2.png" initialHash="9B429068" selectionLeft="76" selectionTop="694" selectionWidth="64" selectionHeight="18" initialLeft="76" initialTop="694" initialWidth="64" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
+		<item caption="Approval" moniker="{37963ACC-29AD-4288-9962-04D28A86AE37}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Approval.png" initialHash="F565AB05" selectionLeft="263" selectionTop="178" selectionWidth="25" selectionHeight="18" initialLeft="263" initialTop="178" initialWidth="25" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Approval_1" moniker="{12185ABB-D86B-43C9-A03C-DD0EDCA02D32}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Approval_1.png" initialHash="CD619E51" selectionLeft="264" selectionTop="198" selectionWidth="22" selectionHeight="19" initialLeft="264" initialTop="198" initialWidth="22" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Approval_2" moniker="{ACEA7F14-A739-451C-9465-7EA096498F3B}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Approval_2.png" initialHash="CBCCCD88" selectionLeft="307" selectionTop="207" selectionWidth="21" selectionHeight="18" initialLeft="307" initialTop="207" initialWidth="21" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Rejected" moniker="{0F85D1A6-19CC-4320-A591-1C046FEC7752}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Rejected.png" initialHash="5A9865E2" selectionLeft="363" selectionTop="187" selectionWidth="22" selectionHeight="18" initialLeft="363" initialTop="187" initialWidth="22" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ApprovePurchaseOrder" moniker="{4CD155C0-9067-482B-98E6-87CC2E32DDFF}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ApprovePurchaseOrder.png" initialHash="788A941D" selectionLeft="551" selectionTop="198" selectionWidth="168" selectionHeight="17" initialLeft="551" initialTop="198" initialWidth="168" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="SubmitPurchaseOrder" moniker="{4728AE26-E53F-44D2-891D-5511B35AD7C6}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\SubmitPurchaseOrder.png" initialHash="E4E7F2BA" selectionLeft="550" selectionTop="174" selectionWidth="158" selectionHeight="19" initialLeft="550" initialTop="174" initialWidth="158" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="SaveAs" moniker="{F3F87E64-DD7E-4F7E-9116-95924B4ACC24}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\SaveAs.png" initialHash="03FB1475" selectionLeft="506" selectionTop="268" selectionWidth="96" selectionHeight="21" initialLeft="506" initialTop="268" initialWidth="96" initialHeight="21" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Submit1" moniker="{D7E66AED-E68C-47C4-B5BA-7BD6D30A71AC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Submit1.png" initialHash="37754DE7" selectionLeft="401" selectionTop="176" selectionWidth="64" selectionHeight="21" initialLeft="401" initialTop="176" initialWidth="64" initialHeight="21" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ApproveBudget" moniker="{7748AABA-75AE-4A06-A7EA-4264E0F9D425}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ApproveBudget.png" initialHash="7F461E84" selectionLeft="468" selectionTop="176" selectionWidth="71" selectionHeight="21" initialLeft="468" initialTop="176" initialWidth="71" initialHeight="21" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
 	</data>
 </Root>
