@@ -63,7 +63,7 @@ var status = true;
 while(status){
 var mainparent = Sys.Process("Maconomy")
 aqUtils.Delay(5000, "Waiting to find Object");
-Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy");
+//Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy");
 aqUtils.Delay(5000, "Waiting to find Child branch");
 var childCount = Sys.Process("Maconomy").ChildCount;
 for(var ci=0;ci<childCount;ci++){ 

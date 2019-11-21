@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1140" key="{5CD7ACAD-CD81-4B10-9DE8-FBBFB3DA877E}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{5CD7ACAD-CD81-4B10-9DE8-FBBFB3DA877E}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
 	<config nodeName="ImageSet2" />
 	<testData />
 	<data>

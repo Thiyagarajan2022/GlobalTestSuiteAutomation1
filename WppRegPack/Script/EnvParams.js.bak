@@ -12,6 +12,9 @@ var testcase = "";
 var Lang = "";
 var OpcoNum = null;
 var Lang_Jenk = null;
+var Vname = null;
+var Pname = null;
+var Cname = null;
 function getEnvironment(){
 var i;
 var nArgs = BuiltIn.ParamCount();
@@ -139,6 +142,33 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
 
   }
   }
+  if((Pname==null)||(Pname=="")){
+  if(("ProjectName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Pname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+  if((Pname==null)||(Pname==""))
+  Log.Error("Project Name is needed to Update in JIRA")
+  
+  if((Vname==null)||(Vname=="")){
+  if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Vname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+  if((Vname==null)||(Vname==""))
+  Log.Error("Version Name is needed to Update in JIRA")
+  
+  if((Cname==null)||(Cname=="")){
+  if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Cname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+  if((Cname==null)||(Cname==""))
+  Log.Error("Cycle Name is needed to Update in JIRA")
+  
 //  testcase = "ALL";
 //  OpcoNum = "1307";
   Lang = County();
@@ -151,7 +181,7 @@ xlDriver.Next();
  }
  
 // path = "Testing Type\\"+TestingType+"\\"+Country+"\\DS_"+TestingType+"_"+Lang+".xlsx";
- path = "Testing Type\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+ path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
 //Log.Message(Project.Path+path)
  DDT.CloseDriver(xlDriver.Name);
  return path;    

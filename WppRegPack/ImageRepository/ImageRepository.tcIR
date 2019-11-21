@@ -1,27 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Root signature="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" version="1140" key="{2D2E4DEA-8F6D-4014-ACD4-6722F195D9CA}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}">
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" version="1400" key="{2D2E4DEA-8F6D-4014-ACD4-6722F195D9CA}" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}">
 	<config nodeName="ImageRepository" />
 	<testData />
 	<data />
 	<children>
-		<child key="{8FCB4A05-EBFB-4475-9481-7011D23352A8}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="ImageSet.tcIRIS" />
-		</child>
-		<child key="{914FA222-9A00-462A-89EE-CD2FE2FE3BA2}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="ImageSet4.tcIRIS" />
-		</child>
-		<child key="{D045FA9A-97EC-475F-938D-F80B377FD8CF}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="PDF.tcIRIS" />
-		</child>
-		<child key="{5CD7ACAD-CD81-4B10-9DE8-FBBFB3DA877E}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="ImageSet2.tcIRIS" />
-		</child>
-		<child key="{126C688B-59FE-4413-BDCD-8FBF46ADA947}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="Spanish.tcIRIS" />
-		</child>
-		<child key="{F485C3EA-125D-43F0-BCA1-E3B1B929002A}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
-			<data path="ImageSet3.tcIRIS" />
-		</child>
+		<child key="{8FCB4A05-EBFB-4475-9481-7011D23352A8}" path="ImageSet.tcIRIS" />
+		<child key="{914FA222-9A00-462A-89EE-CD2FE2FE3BA2}" path="ImageSet4.tcIRIS" />
+		<child key="{D045FA9A-97EC-475F-938D-F80B377FD8CF}" path="PDF.tcIRIS" />
+		<child key="{5CD7ACAD-CD81-4B10-9DE8-FBBFB3DA877E}" path="ImageSet2.tcIRIS" />
+		<child key="{126C688B-59FE-4413-BDCD-8FBF46ADA947}" path="Spanish.tcIRIS" />
+		<child key="{F485C3EA-125D-43F0-BCA1-E3B1B929002A}" path="ImageSet3.tcIRIS" />
 	</children>
-	<folders />
 </Root>

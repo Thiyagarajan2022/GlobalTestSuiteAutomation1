@@ -140,21 +140,23 @@ ServerConfigration();
 
 function ServerConfigration(){ 
 aqUtils.Delay(5000, Indicator.Text);
-var sheetName = "Server Details";
-ExcelUtils.setExcelName(workBook, sheetName, true);
-server = ExcelUtils.getRowDatas("serverAddress",EnvParams.Opco)
+var workBook = Project.Path+TextUtils.GetProjectValue("EnvDetailsPath")
+var sheetName = "ServerDetails";
 
+ExcelUtils.setExcelName(workBook, sheetName, true);
+server = ExcelUtils.getRowDatas("serverAddress",EnvParams.instanceData )
 if((server==null)||(server=="")){ 
 ValidationUtils.verify(false,true,"Server Address is Needed to Login Maconomy");
 }
-port = ExcelUtils.getRowDatas("port",EnvParams.Opco)
+port = ExcelUtils.getRowDatas("port",EnvParams.instanceData)
 if((port==null)||(port=="")){ 
 ValidationUtils.verify(false,true,"Port Number is Needed to Login Maconomy");
 }
-company = ExcelUtils.getRowDatas("company",EnvParams.Opco)
+company = ExcelUtils.getRowDatas("company",EnvParams.instanceData)
 if((company==null)||(company=="")){ 
 ValidationUtils.verify(false,true,"Company is Needed to Login Maconomy");
 }
+
       aqUtils.Delay(2000, Indicator.Text);
       ServerAddress();
       server_link.SetFocus();

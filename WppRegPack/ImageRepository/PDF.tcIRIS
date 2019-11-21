@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1140" key="{D045FA9A-97EC-475F-938D-F80B377FD8CF}" type="Image Set" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{D045FA9A-97EC-475F-938D-F80B377FD8CF}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
 	<config nodeName="PDF" />
 	<testData />
 	<data>

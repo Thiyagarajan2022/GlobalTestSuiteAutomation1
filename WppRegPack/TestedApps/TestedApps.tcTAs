@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Root signature="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" version="1140" key="{6770B973-FA20-480D-BD91-BB8447AFB93F}" type="Tested Applications" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}">
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" version="1400" key="{6770B973-FA20-480D-BD91-BB8447AFB93F}" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}">
 	<config nodeName="TestedApps" />
 	<testData />
 	<data />
 	<children>
-		<child key="{249D64F7-AFB9-4F4A-AC8E-0B83A2C33F2D}" type="Tested Application" typeId="{FD30A383-63C2-4C25-948C-2595C0F81320}">
+		<child key="{249D64F7-AFB9-4F4A-AC8E-0B83A2C33F2D}">
 			<config nodeName="Maconomy" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="False">
 				<runModeParams activeRunMode="Simple">
 					<param name="RunAs" parameters="" workFolder="" userName="" password="" domain="" />
@@ -17,5 +17,4 @@
 			<data />
 		</child>
 	</children>
-	<folders />
 </Root>

@@ -12,6 +12,9 @@ var testcase = "";
 var Lang = "";
 var OpcoNum = null;
 var Lang_Jenk = null;
+var Vname = null;
+var Pname = null;
+var Cname = null;
 function getEnvironment(){
 var i;
 var nArgs = BuiltIn.ParamCount();
@@ -139,6 +142,27 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
 
   }
   }
+  if((Pname==null)||(Pname=="")){
+  if(("ProjectName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Pname = xlDriver.Value(colsList[idx+1]).toString().trim();
+  }
+  }
+  
+  if((Vname==null)||(Vname=="")){
+  if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Vname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+  
+  if((Cname==null)||(Cname=="")){
+  if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  Cname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+
+  
 //  testcase = "ALL";
 //  OpcoNum = "1307";
   Lang = County();

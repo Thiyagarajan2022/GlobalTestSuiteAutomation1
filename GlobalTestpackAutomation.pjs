@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="12.0" key="{9883218B-373C-43B7-BA1C-E07742776CB2}">
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="14.0" key="{9883218B-373C-43B7-BA1C-E07742776CB2}">
 	<children>
-		<child name="GTCRegression" key="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}" type="Project" typeId="{362A8EE5-675E-43A9-869D-06ECE80B0CB4}" pluginName="">
-			<data path="WppRegPack\GTCRegression.mds" />
-		</child>
+		<child name="GlobalTestPack" key="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}" path="WppRegPack\GlobalTestPack.mds" />
+		<child name="SmokeSuite" key="{516A88BA-5E84-4BD4-8E16-A9A9855E0A5B}" path="SmokeSuite\SmokeSuite.mds" />
 	</children>
-	<folders />
 	<testItems key="{D3651C5B-1951-4A4C-8CDD-BAC734DD2C2F}">
 		<children>
 			<testItem key="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}" enabled="True" timeout="0" stopOnError="True" description="" />
+			<testItem key="{516A88BA-5E84-4BD4-8E16-A9A9855E0A5B}" enabled="True" timeout="0" stopOnError="True" description="" />
 		</children>
 	</testItems>
 	<variables key="{D9509ADF-4AD1-46D9-A36E-7E23E4C049FB}">
@@ -18,5 +17,7 @@
 	<scc key="{C900492B-D218-429C-9AA0-264B7D78CA88}" name="Git Plugin">
 		<data />
 	</scc>
-	<extender key="{1A3FC97E-9A66-4716-B166-35D10B4146E0}" />
+	<extender key="{1A3FC97E-9A66-4716-B166-35D10B4146E0}">
+		<CrossBrowserTesting Enable="True" />
+	</extender>
 </Root>

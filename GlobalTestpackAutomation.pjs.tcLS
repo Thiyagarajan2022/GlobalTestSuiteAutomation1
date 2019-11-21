@@ -23,8 +23,11 @@
 			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
 				<Prp name="default project" type="S" value="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}"/>
 			</Node>
+			<Node name="{516a88ba-5e84-4bd4-8e16-a9a9855e0a5b}">
+				<Prp name="relpath" type="S" value="SmokeSuite\SmokeSuite.mds.tcLS"/>
+			</Node>
 			<Node name="{bff5243d-b39e-43bd-83e5-eab78a5d5f16}">
-				<Prp name="relpath" type="S" value="WppRegPack\GTCRegression.mds.tcLS"/>
+				<Prp name="relpath" type="S" value="WppRegPack\GlobaltestPack.mds.tcLS"/>
 			</Node>
 			<Node name="envmngrlogs">
 				<Prp name="key" type="S" value="{0FCACC7F-9456-4B35-A5AB-9CFC427EA8A8}"/>

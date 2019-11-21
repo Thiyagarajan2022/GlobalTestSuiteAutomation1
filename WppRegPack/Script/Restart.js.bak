@@ -55,14 +55,17 @@ var login_colsList = [];
 email_ID =[];
 
 TestedApps.Maconomy.Run();
+aqUtils.Delay(20000, "Waiting for Maconomy to Start");
 var status = true;
 while(status){
-aqUtils.Delay(10000, Indicator.Text);
-Full_Name = Sys.Process("Maconomy").Child(0).WndCaption.toString().trim()
-Sys.Process("Maconomy").Refresh();
-aqUtils.Delay(2000, Indicator.Text);
-Full_Name = Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption.toString().trim()
-var Full_Name_1 = "";
+var mainparent = Sys.Process("Maconomy")
+aqUtils.Delay(5000, "Waiting to find Object");
+Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy");
+aqUtils.Delay(5000, "Waiting to find Child branch");
+var childCount = Sys.Process("Maconomy").ChildCount;
+for(var ci=0;ci<childCount;ci++){ 
+  if((mainparent.Child(ci).Name!="JavaRuntime()")&&(mainparent.Child(ci).Visible!=false)){
+  Full_Name = mainparent.Child(ci).WndCaption.toString().trim();
 if((Full_Name.indexOf("Login to Deltek Maconomy")!=-1) ||(Full_Name.indexOf("Server Configuration")!=-1) ||
 (Full_Name.indexOf("Inicio de sesión en Deltek Maconomy")!=-1) ||(Full_Name.indexOf("Configuración de servidor")!=-1) ||
 (Full_Name.indexOf("登录到 Deltek Maconomy")!=-1) ||(Full_Name.indexOf("Server Configuration")!=-1)){
@@ -84,12 +87,24 @@ LoginMaconomy();
 }
 if((Name=="Server Configuration")||(Name=="Configuración de servidor")||(Name=="Server Configuration")){ 
 aqUtils.Delay(2000, Indicator.Text);
+  if(Name=="Server Configuration"){ 
+    loginName = "* Deltek Maconomy";
+    serverName = "Server Configuration";
+  }else if(Name=="Configuración de servidor"){ 
+    loginName = "Inicio de sesión en Deltek Maconomy";
+    serverName = "Configuración de servidor";
+  }else{ 
+    loginName = "登录到 Deltek Maconomy";
+    serverName = "Server Configuration";
+  }
 ServerConfigration();
 }
+break;
 }
     
 }
-
+}
+}
     
 }
    
