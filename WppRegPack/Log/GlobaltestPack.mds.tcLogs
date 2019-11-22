@@ -57,6 +57,15 @@
 				<Prp name="relpath" type="S" value="11_21_2019_5_59 PM_43_694\Description.tcLog"/>
 				<Prp name="status" type="I" value="2"/>
 			</Node>
+			<Node name="log idx=0004">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="43790.7533575116"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{830306DC-ABFD-4259-A97D-5EA7E2A7D7D4}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [TestRunner\executeTestCases]"/>
+				<Prp name="relpath" type="S" value="11_21_2019_6_04 PM_50_89\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
 		</Node>
 		<Prp name="signature" type="S" value="{681DCC69-A39F-4C4D-8E7D-B2D9362FAF4F}"/>
 		<Prp name="version" type="S" value="11.0"/>
