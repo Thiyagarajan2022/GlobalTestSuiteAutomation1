@@ -25,12 +25,12 @@ var colsList=[];
 
 var xlDriver= DDT.ExcelDriver(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"EnvDetails",true);
 
-//instanceData = "TESTAPAC"
-//Country = "China"
-//testcase = null;
-//TestingType = "SYSTEST"
-//OpcoNum = null;
-//Lang_Jenk = null;
+//instanceData = "BAUTESTAPAC"
+//Country = "India"
+//testcase = "CreatePurchseOrder";
+//TestingType = "SysTest"
+//OpcoNum = 1707;
+//Lang_Jenk = "English";
 
 
 for (i = 1; i <= nArgs ; i++){    
@@ -40,7 +40,7 @@ if(BuiltIn.ParamStr(i).indexOf("ENV")!=-1){
    instanceData = (inst.substring(inst.indexOf(":"))).trim();
    if(instanceData!=null)
    instanceData = instanceData.substring(instanceData.indexOf("=")+2,instanceData.length-1);
-//   Log.Message("Environment :"+instanceData);     
+   Log.Message("Environment :"+instanceData);     
 
 }
 
@@ -49,17 +49,17 @@ if(BuiltIn.ParamStr(i).indexOf("Country")!=-1){
    Country = (inst.substring(inst.indexOf(":"))).trim(); 
    if(Country!=null)
    Country = Country.substring(Country.indexOf("=")+2,Country.length-1);     
-//   Log.Message("Country :"+Country); 
+   Log.Message("Country :"+Country); 
 }
 
 
 
-if(BuiltIn.ParamStr(i).indexOf("GLOBALTESTSUITE")!=-1){
+if(BuiltIn.ParamStr(i).indexOf("TestCases_Batch2")!=-1){
    var inst = BuiltIn.ParamStr(i);
    testcase = (inst.substring(inst.indexOf(":"))).trim(); 
    if(testcase!=null)
    testcase = testcase.substring(testcase.indexOf("=")+2,testcase.length-1);
-//   Log.Message("testcase :"+testcase);     
+   Log.Message("testcase :"+testcase);     
 
 }
 
@@ -68,7 +68,7 @@ if(BuiltIn.ParamStr(i).indexOf("TestingType")!=-1){
    TestingType = (inst.substring(inst.indexOf(":"))).trim(); 
    if(TestingType!=null)
    TestingType = TestingType.substring(TestingType.indexOf("=")+2,TestingType.length-1);
-//   Log.Message("TestingType :"+TestingType);     
+   Log.Message("TestingType :"+TestingType);     
 
 }
 
@@ -80,7 +80,7 @@ if(BuiltIn.ParamStr(i).indexOf("OpcoID")!=-1){
    if(OpcoNum!="ALL")
    Opco = OpcoNum;
    }
-//   Log.Message("Opco :"+Opco);     
+   Log.Message("Opco :"+Opco);     
 
 }
 
@@ -90,7 +90,7 @@ if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
    if(Lang_Jenk!=null){
    Lang_Jenk = Lang_Jenk.substring(Lang_Jenk.indexOf("=")+2,Lang_Jenk.length-1);
    Language = Lang_Jenk;
-//   Log.Message(Language);
+   Log.Message(Language);
    }
 
 //   Log.Message("Opco :"+Opco);     
@@ -99,6 +99,15 @@ if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
 }
 
 }
+
+//instanceData = "TESTAPAC"
+//Country = "China"
+//testcase = "CreatePurchaseOrder";
+//TestingType = "SysTest"
+//OpcoNum = 1307;
+//Language = "English";
+//Opco = 1307
+
 //if(result==null){
 //  result =  "InstanceToRun";
 //}
@@ -176,7 +185,7 @@ xlDriver.Next();
  
 // path = "Testing Type\\"+TestingType+"\\"+Country+"\\DS_"+TestingType+"_"+Lang+".xlsx";
  path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
-//Log.Message(Project.Path+path)
+Log.Message(Project.Path+path)
  DDT.CloseDriver(xlDriver.Name);
  return path;    
   

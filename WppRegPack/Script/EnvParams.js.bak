@@ -25,12 +25,12 @@ var colsList=[];
 
 var xlDriver= DDT.ExcelDriver(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"EnvDetails",true);
 
-//instanceData = "TESTAPAC"
-//Country = "China"
-//testcase = null;
-//TestingType = "SYSTEST"
-//OpcoNum = null;
-//Lang_Jenk = null;
+//instanceData = "BAUTESTAPAC"
+//Country = "India"
+//testcase = "CreatePurchseOrder";
+//TestingType = "SysTest"
+//OpcoNum = 1707;
+//Lang_Jenk = "English";
 
 
 for (i = 1; i <= nArgs ; i++){    
@@ -54,7 +54,7 @@ if(BuiltIn.ParamStr(i).indexOf("Country")!=-1){
 
 
 
-if(BuiltIn.ParamStr(i).indexOf("GLOBALTESTSUITE")!=-1){
+if(BuiltIn.ParamStr(i).indexOf("TestCases_Batch2")!=-1){
    var inst = BuiltIn.ParamStr(i);
    testcase = (inst.substring(inst.indexOf(":"))).trim(); 
    if(testcase!=null)
@@ -99,6 +99,15 @@ if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
 }
 
 }
+
+//instanceData = "TESTAPAC"
+//Country = "China"
+//testcase = "CreatePurchaseOrder";
+//TestingType = "SysTest"
+//OpcoNum = 1307;
+//Language = "English";
+//Opco = 1307
+
 //if(result==null){
 //  result =  "InstanceToRun";
 //}
@@ -144,12 +153,9 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
   }
   if((Pname==null)||(Pname=="")){
   if(("ProjectName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
-  Pname = xlDriver.Value(colsList[idx+1]).toString().trim();    
-
+  Pname = xlDriver.Value(colsList[idx+1]).toString().trim();
   }
   }
-  if((Pname==null)||(Pname==""))
-  Log.Error("Project Name is needed to Update in JIRA")
   
   if((Vname==null)||(Vname=="")){
   if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
@@ -157,8 +163,6 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
 
   }
   }
-  if((Vname==null)||(Vname==""))
-  Log.Error("Version Name is needed to Update in JIRA")
   
   if((Cname==null)||(Cname=="")){
   if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
@@ -166,8 +170,7 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
 
   }
   }
-  if((Cname==null)||(Cname==""))
-  Log.Error("Cycle Name is needed to Update in JIRA")
+
   
 //  testcase = "ALL";
 //  OpcoNum = "1307";
@@ -182,7 +185,7 @@ xlDriver.Next();
  
 // path = "Testing Type\\"+TestingType+"\\"+Country+"\\DS_"+TestingType+"_"+Lang+".xlsx";
  path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
-//Log.Message(Project.Path+path)
+Log.Message(Project.Path+path)
  DDT.CloseDriver(xlDriver.Name);
  return path;    
   

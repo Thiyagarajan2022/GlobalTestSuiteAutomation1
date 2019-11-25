@@ -5,12 +5,16 @@
 //USEUNIT WorkspaceUtils
 //UNEUNIT Datasheet
 
+
 var unitName, testCase, execute, description;
 var TestCase_ID, functions, Execute, Data;
 var Opcolist = [];
 var testOpco = "";
 var globalTime,sheet;
 var datasheetPath = [];
+var workBook = "";
+var folderName = null;
+var testCaseId = null;
 function executeTestCases(){
 var instance = EnvParams.getEnvironment();
 var businessFlow = EnvParams.getBusinessFlow();
@@ -35,23 +39,23 @@ Opcolist = [];
 //Checking whether need to execute ALL TestCase or NOT
 if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")){
 var excelName = EnvParams.getEnvironment();
-var workBook = Project.Path+excelName;
+workBook = Project.Path+excelName;
 //Checking whether need to execute ALL TestCase for ALL OPCO'S or NOT
   if(EnvParams.OpcoNum=="ALL"){ 
 Opcolist = columnCount(workBook,"Server Details");
-  }else{ 
-    
+  }else{     
    Opcolist [0] = EnvParams.Opco;
-//   Log.Message("Single Opco :"+Opcolist [0]);
   }
  ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
-//Log.Message(Opcolist.length)
+
 for(var OpID=0;OpID<Opcolist.length;OpID++){
   EnvParams.Opco = Opcolist[OpID];
   testOpco = Opcolist[OpID];
   excelRow=0
   Log.Message("TestRunner :"+EnvParams.Opco)
 //Getting Language  
+
+/*
 var sheetName = "Server Details";
 ExcelUtils.setExcelName(workBook, sheetName, true);  
 Language = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
@@ -65,18 +69,43 @@ EnvParams.Language = Language;
 }
 Log.Message(EnvParams.Language)
 EnvParams.SetLanguage(Language)
-//Login for each Opco
+*/
+
+
+
+while(excelRow<=rowcount){
+folderName = Opcolist[OpID];
+
+
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
+
+testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
+
+description = ExcelUtils.getAllRowDatas("Description",excelRow);
+
+execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
+
+//Login for each Opco 
+if(execute.toUpperCase()=="YES"){
+reportName = "Report_"+EnvParams.Opco+"_"+unitName+"_"+testCase+".html"
+ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+ReportUtils.createTest(unitName+" "+testCase, description)
+var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
+Log.PushLogFolder(FolderID);
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
+testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 
 if(OpID==0){ 
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();  
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();  
 }else{
 reportName = "Report_"+EnvParams.Opco+"_Login_login.html"
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
@@ -91,28 +120,11 @@ ReportUtils.report.flush();
 
 
 
-while(excelRow<=rowcount){
-ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
-unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
-//Log.Message(unitName)
-testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
-//Log.Message(testCase)
-//description = ExcelUtils.getRowValue("Description",excelRow);
-description = ExcelUtils.getAllRowDatas("Description",excelRow);
-//Log.Message(description)
-execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
-//Log.Message(execute)
- 
-if(execute.toUpperCase()=="YES"){
-reportName = "Report_"+EnvParams.Opco+"_"+unitName+"_"+testCase+".html"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-ReportUtils.createTest(unitName+" "+testCase, description)
-var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
-Log.PushLogFolder(FolderID);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
+Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
 }
  
 excelRow++;
@@ -122,12 +134,12 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.DblClick();
 Delay(3000);
 //  Log.Message("Maconomy is Already in Running")
-//    Sys.Desktop.KeyDown(0x12); //Alt
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x58); //X 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x58);
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
 }
 }
 
@@ -142,11 +154,13 @@ Delay(3000);
 else{ 
   
 if(EnvParams.OpcoNum=="ALL"){ 
-var excelName = EnvParams.getEnvironment();
-var workBook = Project.Path+excelName;
+excelName = EnvParams.getEnvironment();
+workBook = Project.Path+excelName;
 Opcolist = columnCount(workBook,"Server Details");
   }else{ 
-   Opcolist [0] = EnvParams.Opco;
+  excelName = EnvParams.getEnvironment();
+  workBook = Project.Path+excelName;
+  Opcolist [0] = EnvParams.Opco;
   }
   
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
@@ -155,6 +169,9 @@ EnvParams.Opco = Opcolist[OpID];
 testOpco = Opcolist[OpID];
 Log.Message("Test Runner :"+EnvParams.Opco);
 //Getting Language
+
+/*
+Log.Message(workBook)
 var sheetName = "Server Details";
 ExcelUtils.setExcelName(workBook, sheetName, true);  
 Language = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
@@ -167,10 +184,10 @@ else
 EnvParams.Language = Language;
 }
 EnvParams.SetLanguage(Language)
-
+*/
 
 ////Login for each Opco
-
+folderName = Opcolist[OpID];
 if(OpID==0){ 
 reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
@@ -205,13 +222,15 @@ ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\
 ReportUtils.createTest(EnvParams.testcase+" "+testCase, description)
 var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+EnvParams.testcase);
 Log.PushLogFolder(FolderID);
-Log.Message(EnvParams.testcase);
-Log.Message(testCase);
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
+testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country);
+//Log.Message(EnvParams.testcase);
+//Log.Message(testCase);
 Runner.CallMethod(EnvParams.testcase+"."+testCase);
 Log.PopLogFolder();
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
-
+Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 //  Log.Message("Maconomy is Already in Running")

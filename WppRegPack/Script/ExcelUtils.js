@@ -6,7 +6,8 @@ var excelObj;
 function setExcelName(excelname, excelSheet){
 excelName = excelname;
 sheet = excelSheet;
-//Log.Message(excelName)
+//Log.Message("excelName :"+excelName);
+//Log.Message("sheet :"+sheet);
 //excelObj = DDT.ExcelDriver(excelName,sheet,true);
 
 }
@@ -218,7 +219,7 @@ var id =0;
 var colsList = [];
  var temp ="";
 //Log.Message(rowidentifier)
-//Log.Message(column)
+Log.Message(column)
      while (!DDT.CurrentDriver.EOF()) {
 //    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
        if(xlDriver.Value(0).toString().trim()==rowidentifier){

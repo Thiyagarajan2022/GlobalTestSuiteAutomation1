@@ -21,6 +21,7 @@
 			<child name="TextUtils" key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" path="TextUtils.js" />
 			<child name="PdfUtils" key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" path="PdfUtils.js" />
 			<child name="LanguageUtils" key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" path="LanguageUtils.js" />
+			<child name="JIRA" key="{EF546AE1-888B-49AE-9F62-605DF642EC51}" path="JIRA.js" />
 		</folder>
 		<folder name="TestScripts">
 			<folder name="Global Test Case">
@@ -34,7 +35,7 @@
 				<child name="PurchaseOrderfromJobActivities" key="{D2791BE4-05D0-4C2D-AC35-8D999B61DF49}" path="PurchaseOrderfromJobActivities.js" />
 				<child name="ApprovePO" key="{775924F1-59C3-4C24-AD87-A6D59D09BB42}" path="ApprovePO.js" />
 				<child name="RejectPurchaseOrder" key="{C7E5447B-B490-458B-A11E-2A698CBFCAF8}" path="RejectPurchaseOrder.js" />
-				<child name="CreatePurchseOrder" key="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}" path="CreatePurchseOrder.js" />
+				<child name="CreatePurchaseOrder" key="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}" path="CreatePurchaseOrder.js" />
 				<child name="CreateClient" key="{F8AD0A4F-415F-4196-8028-CF63A7E83377}" path="CreateClient.js" />
 				<child name="CreateUser" key="{D2B7F0C1-4843-4433-9FC6-2E1FCC695797}" path="CreateUser.js" />
 			</folder>

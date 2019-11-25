@@ -138,7 +138,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="9" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="10" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -153,9 +153,10 @@
 				<row val0="com.relevantcodes.extentreports.ExtentReports" />
 				<row val0="com.relevantcodes.extentreports.LogStatus" />
 				<row val0="com.cts.ZephyrApiUsecases.UpdateExecutionStatus" />
+				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="10" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="11" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -170,6 +171,7 @@
 				<row val0=".\ProjectLibraries\extentreports-2.41.2.jar" />
 				<row val0=".\ProjectLibraries\bson-3.0.4.jar" />
 				<row val0=".\ProjectLibraries\zfj-cloud-rest-client-3.0.jar" />
+				<row val0=".\ProjectLibraries\jwt-plugin-3.1.0.jar" />
 				<row val0=".\ProjectLibraries\Jira_Integration-0.0.1-SNAPSHOT-jar-with-dependencies.jar" />
 			</data>
 		</setting>

@@ -5,7 +5,7 @@
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
-
+//USEUNIT EventHandler
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -56,6 +56,20 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
+var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
+if((fName=="")||(fName==null))
+ValidationUtils.verify(false,true,"JIRA Opco Name is Needed to update status of Create a Purchase Order");
+else{ 
+EventHandler.folderName = fName;
+}
+
+var TestID = ExcelUtils.getColumnDatas("JIRA TestCase ID",EnvParams.Opco)
+if((TestID=="")||(TestID==null))
+ValidationUtils.verify(false,true,"JIRA TestCase ID is Needed to update status of Create a Purchase Order");
+else{ 
+EventHandler.testCaseId = TestID; 
+}
+
 VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
   if((VendorID=="")||(VendorID==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -74,10 +88,10 @@ if((Job_Number==null)||(Job_Number=="")){
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
 
-
-  gotoMenu();
-  Delay(5000);
-  goToCreatePurchase();
+Job_Number.Click();
+//  gotoMenu();
+//  Delay(5000);
+//  goToCreatePurchase();
 
 }
 
