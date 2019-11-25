@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="projects">
+			<Node name="project0">
+				<Node name="tests">
+					<Node name="test0">
+						<Node name="warnings"/>
+						<Node name="errors"/>
+						<Prp name="name" type="S" value="ProjectTestItem1"/>
+						<Prp name="status" type="I" value="0"/>
+						<Prp name="durationwithoutchildren" type="I" value="287656"/>
+						<Prp name="duration" type="I" value="287656"/>
+						<Prp name="starttime" type="D" value="43794.728625787"/>
+						<Prp name="executionpoint" type="S" value="executionpoint://ewBFADkAMgBCAEMARgA3ADMALQAxADAARgAwAC0ANAA5AEIANgAtAEIAMQA5AEIALQBGADkARgBEADMANwA5AEMAMwA4AEIARgB9AC8AewAwADAAMAAwADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwADAAMAAwADAAMAAwADAAMAB9AC8AZQBtAHAAdAB5AC8AZQBtAHAAdAB5AA=="/>
+					</Node>
+				</Node>
+				<Prp name="name" type="S" value="GlobalTestPack"/>
+				<Prp name="starttime" type="D" value="43794.728625787"/>
+				<Prp name="duration" type="I" value="287656"/>
+				<Prp name="failedtests" type="I" value="0"/>
+				<Prp name="incompletedtests" type="I" value="0"/>
+				<Prp name="warningtests" type="I" value="0"/>
+			</Node>
+		</Node>
+		<Prp name="incompletedtests" type="I" value="0"/>
+		<Prp name="executionstatus" type="I" value="0"/>
+		<Prp name="starttime" type="D" value="43794.7286254051"/>
+		<Prp name="key" type="S" value="{64377C6D-4A1E-4B86-8B8F-A37861A9BC54}"/>
+		<Prp name="warningtests" type="I" value="0"/>
+		<Prp name="host" type="S" value="PC432753"/>
+		<Prp name="name" type="S" value="GlobalTestpackAutomation"/>
+		<Prp name="failedtests" type="I" value="0"/>
+		<Prp name="tests" type="I" value="1"/>
+		<Prp name="testname" type="S" value="GlobalTestPack"/>
+		<Prp name="stop" type="D" value="43794.7319585532"/>
+		<Prp name="user" type="S" value="674087"/>
+	</Node>
+</Nodes>
