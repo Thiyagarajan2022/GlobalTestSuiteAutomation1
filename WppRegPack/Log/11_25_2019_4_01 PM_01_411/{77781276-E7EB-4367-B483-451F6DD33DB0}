@@ -1,0 +1,1612 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="message 26">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="26"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676786806"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 16">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="16"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676468634"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 44">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="44"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684264005"/>
+			<Prp name="message" type="S" value="1707"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 15">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="15"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676468403"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 34">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="34"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683303704"/>
+			<Prp name="message" type="S" value="BAUTESTAPAC"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 6">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="6"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676215394"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 62">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="62"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686756944"/>
+			<Prp name="message" type="S" value="sheet :Server Details"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 49">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="202"/>
+					<Prp name="image file name" type="S" value="visImage8.png"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43794.439312662"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="49"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684806944"/>
+			<Prp name="message" type="S" value="The window got focus."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="202"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 42">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="42"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684252199"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 33">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="33"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683288773"/>
+			<Prp name="message" type="S" value="BAUTESTAPAC"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 27">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="27"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676787731"/>
+			<Prp name="message" type="S" value="sheet :Server Details"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="stack"/>
+		<Node name="message 40">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 3)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="127"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="166"/>
+					<Prp name="image file name" type="S" value="visImage6.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.4391974074"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="40"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683647917"/>
+			<Prp name="message" type="S" value="The text 'bauapac' was entered in the text editor."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 3)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="166"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 12">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="12"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676285301"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 24">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="24"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676741435"/>
+			<Prp name="message" type="S" value="India"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 19">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="19"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676629167"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 1">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6675990046"/>
+			<Prp name="message" type="S" value="HTML REPORT PATH::C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\ExecutionResults\\Report_25112019_16.01.20"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="30"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 22">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="22"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676735185"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\EnvParamaters.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 63">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="63"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686766088"/>
+			<Prp name="message" type="S" value="1707"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 32">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="32"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683273843"/>
+			<Prp name="message" type="S" value="BAUTESTAPAC"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 70">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="40"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="683"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="126"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="476"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="485"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="130"/>
+					<Prp name="image file name" type="S" value="visImage18.png"/>
+					<Prp name="object right" type="I" value="1352"/>
+					<Prp name="datetime" type="D" value="43794.4395661227"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="70"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6687348611"/>
+			<Prp name="message" type="S" value="The tree node 'Purchase Orders' was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="130"/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 61">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="61"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.668675625"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 3">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="3"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676048264"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 4">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="4"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.667604919"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 54">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="154"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Login&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="195"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="200"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="170"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="182"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="207"/>
+					<Prp name="image file name" type="S" value="visImage14.png"/>
+					<Prp name="object right" type="I" value="246"/>
+					<Prp name="datetime" type="D" value="43794.4393264699"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="54"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684940509"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (46, 12) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Login&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="207"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 68">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="39"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="86"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="105"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="56"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="71"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="99"/>
+					<Prp name="image file name" type="S" value="visImage16.png"/>
+					<Prp name="object right" type="I" value="172"/>
+					<Prp name="datetime" type="D" value="43794.4395187269"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="68"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686870602"/>
+			<Prp name="message" type="S" value="The window was double-clicked by the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="99"/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 14">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="14"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676355671"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 45">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="45"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684278588"/>
+			<Prp name="message" type="S" value="1707"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 25">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="25"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676770833"/>
+			<Prp name="message" type="S" value="ServerConfiguration"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="102"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 58">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="58"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686715046"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 8">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="8"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676215857"/>
+			<Prp name="message" type="S" value="TestRunner :1707"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="54"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 46">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="46"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684296181"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\EnvParamaters.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 38">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="75"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="164"/>
+					<Prp name="image file name" type="S" value="visImage4.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.4391943403"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="38"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683616551"/>
+			<Prp name="message" type="S" value="The text '443' was entered in the text editor."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="164"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 47">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="47"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684296528"/>
+			<Prp name="message" type="S" value="sheet :LanguageLookUpTable"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 65">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="65"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686777894"/>
+			<Prp name="message" type="S" value="sheet :CreatePurchaseOrder"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 55">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="55"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6685021875"/>
+			<Prp name="message" type="S" value="C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="187"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 23">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="23"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676735301"/>
+			<Prp name="message" type="S" value="sheet :JIRA_Details"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 51">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="75"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="204"/>
+					<Prp name="image file name" type="S" value="visImage10.png"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43794.4393162153"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="51"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684834606"/>
+			<Prp name="message" type="S" value="The text 'CORE@WPP123' was entered in the text editor."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="204"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 39">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 3)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="127"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="165"/>
+					<Prp name="image file name" type="S" value="visImage5.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.4391956134"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="39"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683633449"/>
+			<Prp name="message" type="S" value="The window got focus."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 3)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="165"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 7">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="7"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676215625"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 28">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="28"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676887384"/>
+			<Prp name="message" type="S" value="The application &quot;C:\Program Files (x86)\Deltek Maconomy 19.0.100.3\Maconomy.exe&quot; started."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="The process ID is 9700."/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="59"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 2">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="2"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6675990278"/>
+			<Prp name="message" type="S" value="-----------------------------------------------------"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="31"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 18">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="18"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676546181"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 5">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="5"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676113889"/>
+			<Prp name="message" type="S" value="C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="187"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 60">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="39"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="86"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="105"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="56"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="71"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="24"/>
+					<Prp name="image file name" type="S" value="visImage15.png"/>
+					<Prp name="object right" type="I" value="172"/>
+					<Prp name="datetime" type="D" value="43794.4395070255"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="60"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686750694"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="24"/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 53">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="206"/>
+					<Prp name="image file name" type="S" value="visImage13.png"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43794.4393239699"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="53"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684923495"/>
+			<Prp name="message" type="S" value="The combo box item 'English (United Kingdom,WPP)' was selected."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="206"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 0">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.667424838"/>
+			<Prp name="message" type="S" value="C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="187"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 67">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="67"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686784722"/>
+			<Prp name="message" type="S" value="sheet :CreatePurchaseOrder"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 71">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="40"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="683"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="126"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="476"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="485"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="132"/>
+					<Prp name="image file name" type="S" value="visImage19.png"/>
+					<Prp name="object right" type="I" value="1352"/>
+					<Prp name="datetime" type="D" value="43794.4395720602"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="71"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6687471181"/>
+			<Prp name="message" type="S" value="The tree node 'Purchase Orders' was double-clicked by the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="132"/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 66">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="66"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686784491"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 64">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="64"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686777778"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 21">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="21"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676729398"/>
+			<Prp name="message" type="S" value="1707_CreatePurchaseOrder"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="93"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="3"/>
+		</Node>
+		<Node name="message 43">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="43"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684252431"/>
+			<Prp name="message" type="S" value="sheet :Server Details"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 29">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="14"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Link&quot;, &quot;&lt;a&gt;Server Configuration&lt;/a&gt;&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="190"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="68"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="175"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="182"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="134"/>
+					<Prp name="image file name" type="S" value="visImage0.png"/>
+					<Prp name="object right" type="I" value="123"/>
+					<Prp name="datetime" type="D" value="43794.4390064931"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="29"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.668174213"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (54, 7) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Link&quot;, &quot;&lt;a&gt;Server Configuration&lt;/a&gt;&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="134"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 69">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="44"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="470"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="115"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="443"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="456"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="101"/>
+					<Prp name="image file name" type="S" value="visImage17.png"/>
+					<Prp name="object right" type="I" value="186"/>
+					<Prp name="datetime" type="D" value="43794.4395255787"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="id" type="I" value="69"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686945255"/>
+			<Prp name="message" type="S" value="The image 'AccountPayable' was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://889610714|{D68B8C40-69A2-498D-97E3-9E407C409ED3}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="101"/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 50">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="203"/>
+					<Prp name="image file name" type="S" value="visImage9.png"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43794.4393147685"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="50"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684821528"/>
+			<Prp name="message" type="S" value="The text '1707 Finance (TSTAUTO)' was entered in the text editor."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="203"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 20">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="20"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676629514"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 31">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="31"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683263657"/>
+			<Prp name="message" type="S" value="sheet :ServerDetails"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="child data"/>
+		<Node name="message 11">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="11"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.667628507"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 17">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="17"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676545949"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 57">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="57"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686711574"/>
+			<Prp name="message" type="S" value="sheet :Server Details"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="units">
+			<Prp name="unit 5" type="S" value="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}"/>
+			<Prp name="unit 0" type="S" value="{70346006-8F35-4727-AA07-0BFF8EA1A617}"/>
+			<Prp name="unit 3" type="S" value="{F67971F0-DD24-4BEE-BE62-BE1B72621ED9}"/>
+			<Prp name="unit 1" type="S" value="{808405B8-0747-445B-9F6E-64BEF03B5AF9}"/>
+			<Prp name="unit 4" type="S" value="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}"/>
+			<Prp name="unit 2" type="S" value="{A585A2E3-1B31-433D-B55A-A4A2E442B563}"/>
+		</Node>
+		<Node name="message 9">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="9"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676221759"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 52">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="205"/>
+					<Prp name="image file name" type="S" value="visImage11.png"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43794.4393176157"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="52"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684876736"/>
+			<Prp name="message" type="S" value="The drop-down box was displayed."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="205"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 37">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="75"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="163"/>
+					<Prp name="image file name" type="S" value="visImage3.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.4391925579"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="37"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683602662"/>
+			<Prp name="message" type="S" value="The window got focus."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="163"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 56">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="56"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686711343"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\SysTest\DS_IND_SysTest.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 48">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="48"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6684304282"/>
+			<Prp name="message" type="S" value="MaconomyValue"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="221"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 30">
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="30"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683263426"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\EnvParamaters.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 35">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="161"/>
+					<Prp name="image file name" type="S" value="visImage1.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.439189537"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="35"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683574884"/>
+			<Prp name="message" type="S" value="The window got focus."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="161"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 59">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="59"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6686715278"/>
+			<Prp name="message" type="S" value="sheet :CreatePurchaseOrder"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 36">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="72"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="162"/>
+					<Prp name="image file name" type="S" value="visImage2.png"/>
+					<Prp name="object right" type="I" value="346"/>
+					<Prp name="datetime" type="D" value="43794.4391913773"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="36"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.668358588"/>
+			<Prp name="message" type="S" value="The text 'https://wpp-bautestapac.deltekenterprise.com' was entered in the text editor."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="162"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 10">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="10"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6676221875"/>
+			<Prp name="message" type="S" value="sheet :IND_SysTest_FullCycle"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="9"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 41">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object left" type="I" value="156"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Connect&quot;)"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="object bottom" type="I" value="196"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="202"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object top" type="I" value="171"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point y" type="I" value="183"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="line #" type="I" value="171"/>
+					<Prp name="image file name" type="S" value="visImage7.png"/>
+					<Prp name="object right" type="I" value="248"/>
+					<Prp name="datetime" type="D" value="43794.4391991088"/>
+				</Node>
+			</Node>
+			<Prp name="owner id" type="I" value="25"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="41"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6683665856"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (46, 12) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Server Configuration&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Connect&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="171"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 13">
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="13"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.667635544"/>
+			<Prp name="message" type="S" value="excelName :C:\Users\674087\Documents\GlobalScript\GlobalTestPack\WppRegPack\TestResource\TC_RunManager.xlsx"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 72">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="type" type="I" value="3"/>
+			<Prp name="remarks" type="S" value="JavaScript runtime error.&#xA;&#xA;TypeError: JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder is not a function&#xA;&#xA;Error location:&#xA;Unit: &quot;GlobalTestpackAutomation\GlobalTestPack\Script\EventHandler&quot;&#xA;Line: 66 Column: 76."/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43794.6691462616"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="message" type="S" value="TypeError: JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder is not a function"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="line no" type="I" value="65"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="stack end" type="I" value="0"/>
+			<Prp name="id" type="I" value="72"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="stack beginning" type="I" value="0"/>
+			<Prp name="unit id" type="I" value="5"/>
+		</Node>
+		<Node name="item 0">
+			<Prp name="stacktext" type="S" value="GeneralEvents_OnStopTest"/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="line no" type="I" value="65"/>
+		</Node>
+		<Node name="message 73">
+			<Prp name="owner id" type="I" value="21"/>
+			<Prp name="type" type="I" value="3"/>
+			<Prp name="remarks" type="S" value="Possible reasons:&#xA; - An error or warning occurred during the test run. See the preceding log entries to locate and identify the error.&#xA; - The test run was stopped manually.&#xA; - The test run was terminated as a result of the Runner.Halt method call."/>
+			<Prp name="pictype" type="I" value="2"/>
+			<Prp name="date" type="D" value="43794.6691470833"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value="Picture1.png"/>
+			<Prp name="message" type="S" value="The script execution was interrupted."/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="line no" type="I" value="104"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="stack end" type="I" value="1"/>
+			<Prp name="id" type="I" value="73"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="stack beginning" type="I" value="1"/>
+			<Prp name="unit id" type="I" value="1"/>
+		</Node>
+		<Node name="item 1">
+			<Prp name="stacktext" type="S" value=""/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="line no" type="I" value="104"/>
+		</Node>
+		<Prp name="status" type="I" value="2"/>
+	</Node>
+</Nodes>
