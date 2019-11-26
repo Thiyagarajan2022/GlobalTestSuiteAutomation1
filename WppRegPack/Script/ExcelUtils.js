@@ -212,27 +212,29 @@ var colsList = [];
 
 function getRowDatas(rowidentifier,column)
 {
+
 //Log.Message("excelName :"+excelName);
 //Log.Message("sheet :"+sheet);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];
  var temp ="";
-//Log.Message(rowidentifier)
-Log.Message(column)
+
      while (!DDT.CurrentDriver.EOF()) {
 //    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
        if(xlDriver.Value(0).toString().trim()==rowidentifier){
         try{
+          
          temp = temp+xlDriver.Value(column).toString().trim();
          }
         catch(e){
         temp = "";
         }
+
 //      Log.Message("temp :"+temp);
       break;
       }
-
+//      Log.Message("temp :"+temp);
     xlDriver.Next();
      }
      DDT.CloseDriver(xlDriver.Name);
@@ -369,10 +371,7 @@ var i=0;
 
 function getColumnDatas(rowidentifier,column)
 {
-//var rowidentifier = "WorkCode_1";
-//var column = "1307"
-//var excelName = "C:\\Users\\674087\\Documents\\TestComplete 14 Projects\\After Stuart Discussion\\WppRegression_v12.50\\WppRegPack\\Testing Type\\Regression\\China\\TESTAPAC\\TESTAPAC_China.xlsx";
-//var sheet ="JobBudgetCreation";
+
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];

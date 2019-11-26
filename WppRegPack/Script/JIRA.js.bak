@@ -16,7 +16,7 @@ Log.Message(projectName +" "+versionName+" "+cycleName+" "+folderName+" "+testCa
 		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
 		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
     var zephyrBaseUrl ="https://prod-api.zephyr4jiracloud.com/connect";
-JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.
+
     var client = JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder(zephyrBaseUrl, accessKey, secretKey, userName).build();
     if(Log.ErrCount>0){   
     var status = "Failed";// Passed

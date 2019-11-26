@@ -6,8 +6,8 @@ var excelObj;
 function setExcelName(excelname, excelSheet){
 excelName = excelname;
 sheet = excelSheet;
-Log.Message("excelName :"+excelName);
-Log.Message("sheet :"+sheet);
+//Log.Message("excelName :"+excelName);
+//Log.Message("sheet :"+sheet);
 //excelObj = DDT.ExcelDriver(excelName,sheet,true);
 
 }
@@ -212,27 +212,29 @@ var colsList = [];
 
 function getRowDatas(rowidentifier,column)
 {
+
 //Log.Message("excelName :"+excelName);
 //Log.Message("sheet :"+sheet);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];
  var temp ="";
-//Log.Message(rowidentifier)
-Log.Message(column)
+
      while (!DDT.CurrentDriver.EOF()) {
 //    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
        if(xlDriver.Value(0).toString().trim()==rowidentifier){
         try{
+          
          temp = temp+xlDriver.Value(column).toString().trim();
          }
         catch(e){
         temp = "";
         }
+
 //      Log.Message("temp :"+temp);
       break;
       }
-
+//      Log.Message("temp :"+temp);
     xlDriver.Next();
      }
      DDT.CloseDriver(xlDriver.Name);
@@ -377,8 +379,8 @@ var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];
  var temp ="";
-// Log.Message("rowidentifier :"+rowidentifier)
-//Log.Message("column :"+column);
+ Log.Message("rowidentifier :"+rowidentifier)
+Log.Message("column :"+column);
      while (!DDT.CurrentDriver.EOF()) {
 //    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
        if(xlDriver.Value(0).toString().trim()==column){

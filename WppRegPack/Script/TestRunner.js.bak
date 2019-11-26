@@ -97,15 +97,15 @@ ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath")
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 
 if(OpID==0){ 
-//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
-//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-//var FolderID = Log.CreateFolder("ServerConfiguration");
-//Log.PushLogFolder(FolderID);
-//Runner.CallMethod("ServerConfig.login");
-//Log.PopLogFolder();
-//ReportUtils.report.endTest(test);
-//ReportUtils.report.flush();  
+reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
+ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+var FolderID = Log.CreateFolder("ServerConfiguration");
+Log.PushLogFolder(FolderID);
+Runner.CallMethod("ServerConfig.login");
+Log.PopLogFolder();
+ReportUtils.report.endTest(test);
+ReportUtils.report.flush();  
 }else{
 reportName = "Report_"+EnvParams.Opco+"_Login_login.html"
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
@@ -189,15 +189,15 @@ EnvParams.SetLanguage(Language)
 ////Login for each Opco
 folderName = Opcolist[OpID];
 if(OpID==0){ 
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();  
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration.html"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();  
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
 }else{
 reportName = "Report_"+EnvParams.Opco+"_Login_login.html"
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);

@@ -55,20 +55,20 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
-ExcelUtils.setExcelName(workBook, sheetName, true);
-var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
-if((fName=="")||(fName==null))
-ValidationUtils.verify(false,true,"JIRA Opco Name is Needed to update status of Create a Purchase Order");
-else{ 
-EventHandler.folderName = fName;
-}
-
-var TestID = ExcelUtils.getColumnDatas("JIRA TestCase ID",EnvParams.Opco)
-if((TestID=="")||(TestID==null))
-ValidationUtils.verify(false,true,"JIRA TestCase ID is Needed to update status of Create a Purchase Order");
-else{ 
-EventHandler.testCaseId = TestID; 
-}
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
+//if((fName=="")||(fName==null))
+//ValidationUtils.verify(false,true,"JIRA Opco Name is Needed to update status of Create a Purchase Order");
+//else{ 
+//EventHandler.folderName = fName;
+//}
+//
+//var TestID = ExcelUtils.getColumnDatas("JIRA TestCase ID",EnvParams.Opco)
+//if((TestID=="")||(TestID==null))
+//ValidationUtils.verify(false,true,"JIRA TestCase ID is Needed to update status of Create a Purchase Order");
+//else{ 
+//EventHandler.testCaseId = TestID; 
+//}
 
 VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
   if((VendorID=="")||(VendorID==null)){

@@ -104,9 +104,9 @@ if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
 //Country = "China"
 //testcase = "CreatePurchaseOrder";
 //TestingType = "SysTest"
-//OpcoNum = 1307;
+//OpcoNum = "1307";
 //Language = "English";
-//Opco = 1307
+//Opco = "1307"
 
 //if(result==null){
 //  result =  "InstanceToRun";

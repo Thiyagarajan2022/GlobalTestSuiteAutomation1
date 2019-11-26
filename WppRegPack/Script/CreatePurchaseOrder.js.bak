@@ -91,7 +91,7 @@ ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Ord
 //Job_Number.Click();
   gotoMenu();
   Delay(5000);
-//  goToCreatePurchase();
+  goToCreatePurchase();
 
 }
 

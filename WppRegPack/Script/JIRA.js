@@ -11,7 +11,7 @@ function JIRAUpdate(folderName,testCaseId){
 		 cycleName = EnvParams.Cname;
 //     folderName = "1201-NewFolder";
 //		 testCaseId = "TSTAUTO-1"; 
-Log.Message(projectName +" "+versionName+" "+cycleName+" "+folderName+" "+testCaseId)
+//Log.Message(projectName +" "+versionName+" "+cycleName+" "+folderName+" "+testCaseId)
 		var userName = "muthukumar.m@cognizant.com";
 		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
 		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
