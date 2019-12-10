@@ -215,6 +215,7 @@ function getRowDatas(rowidentifier,column)
 
 //Log.Message("excelName :"+excelName);
 //Log.Message("sheet :"+sheet);
+//Log.Message("column :"+column);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];

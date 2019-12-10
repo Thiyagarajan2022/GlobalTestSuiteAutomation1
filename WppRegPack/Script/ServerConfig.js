@@ -121,7 +121,8 @@ break;
     function ServerAddress(){
     server_link = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").WaitSWTObject("Composite", "",1,60000).SWTObject("Text", "");
     port_number = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 2)
-    company_name = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 3)
+//    company_name = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 3)
+    company_name = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Combo", "");
     chk_box = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Button", "Do not ask me again");
     connectbtn = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", "Connect");
     }
@@ -163,8 +164,10 @@ ValidationUtils.verify(false,true,"Company is Needed to Login Maconomy");
       server_link.setText(server);
       port_number.SetFocus();
       port_number.setText(port);
-      company_name.SetFocus();
-      company_name.setText(company);
+      company_name.DropDown();
+      company_name.ClickItem(company);
+//      company_name.SetFocus();
+//      company_name.setText(company);
     
       if(!chk_box.getSelection()){
       chk_box.ClickButton(cbChecked);
@@ -175,6 +178,8 @@ ValidationUtils.verify(false,true,"Company is Needed to Login Maconomy");
     }
     
 function Maconomy(){ 
+excelName = EnvParams.path;
+workBook = Project.Path+excelName;
 var sheetName = "Server Details";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 loginuser = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)

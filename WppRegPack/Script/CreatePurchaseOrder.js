@@ -88,7 +88,8 @@ if((Job_Number==null)||(Job_Number=="")){
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
 
-//Job_Number.Click();
+//Log.Message("VendorID :"+VendorID);
+//Log.Message("Job_Number :"+Job_Number);
   gotoMenu();
   Delay(5000);
   goToCreatePurchase();
@@ -241,25 +242,25 @@ else{
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
   action.Click();
   Delay(3000);
-//  Sys.Process("Maconomy").Refresh();
-//  var table = Sys.Process("Maconomy").Window("#32768", "", 1);
-//  Sys.HighlightObject(table);
-//  Sys.Desktop.KeyDown(0x28);
-//  Delay(1000);
-//  Sys.Desktop.KeyUp(0x28);
-//  Delay(1000);
-//  ReportUtils.logStep_Screenshot();
-//  Sys.Desktop.KeyDown(0x0D);
-//  Sys.Desktop.KeyUp(0x0D);
+  Sys.Process("Maconomy").Refresh();
+  var table = Sys.Process("Maconomy").Window("#32768", "", 1);
+  Sys.HighlightObject(table);
+  Sys.Desktop.KeyDown(0x28);
+  Delay(1000);
+  Sys.Desktop.KeyUp(0x28);
+  Delay(1000);
+  ReportUtils.logStep_Screenshot();
+  Sys.Desktop.KeyDown(0x0D);
+  Sys.Desktop.KeyUp(0x0D);
 
-ReportUtils.logStep_Screenshot();
-ImageRepository.ImageSet.SubmitPurchaseOrder.Click();
+//ReportUtils.logStep_Screenshot();
+//ImageRepository.ImageSet.SubmitPurchaseOrder.Click();
   Delay(4000);
   ValidationUtils.verify(true,true,"Purchase Order is Created and Submitted");
   var PurchaseNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText();
   ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
+//  ExcelUtils.setExcelName(workBook,"Data Management", true);
+//  ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
 }
 
 
