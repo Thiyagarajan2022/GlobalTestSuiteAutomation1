@@ -287,7 +287,7 @@ function compareDocsAsImg(pdfFile_1,pdfFile_2)
 //        Log.Picture(pic_1.Difference(pic_2));
         ReportUtils.logStep("FAIL","Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.");
 //Log.Message("Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.")
-       var compareResult = ReportUtils.file_path+"\\Screenshots\\"+"Image_"+ig+".png";
+       var compareResult = ReportUtils.file_path+"\\Screenshots\\"+"Image_"+ReportUtils.ig+".png";
         JavaClasses.com_ImageComparison.ImageCompMain.compareWithBaseImage(imgFile_1,imgFile_2,compareResult);
         ReportUtils.logStep_addImage("Pages " + aqConvert.IntToStr(i+1) + " are different.");
 //        break;
