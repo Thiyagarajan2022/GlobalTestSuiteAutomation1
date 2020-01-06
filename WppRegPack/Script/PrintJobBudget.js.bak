@@ -243,32 +243,31 @@ compareDocsAsImg(sFolder+SaveTitle+".pdf",referPDF);
 }
 
 
-function compareDocsAsImg()
+function compareDocsAsImg(pdfFile_1,pdfFile_2)
 {
-  var pdfFile_1 = "C:\\WppRegression_v12.50\\WppRegPack\\MPLReports\\Job Detail_1707200084.pdf";
+//  var pdfFile_1 = "C:\\WppRegression_v12.50\\WppRegPack\\MPLReports\\Job Detail_1707200084.pdf";
 //  var pdfFile_1 = "C:\\WppRegression_v12.50\\WppRegPack\\MPLReports\\Job Detail_1707200113.pdf";
-  var pdfFile_2 = "C:\\WppRegression_v12.50\\WppRegPack\\MPLReports\\Job Detail_1707200113 - Copy.pdf";
+//  var pdfFile_2 = "C:\\WppRegression_v12.50\\WppRegPack\\MPLReports\\Job Detail_1707200113 - Copy.pdf";
   var maskImg = "";
   var imgFile_1, imgFile_2, docObj_1, docObj_2, totalPages_1, totalPages_2;
 
   // Specify the fully-qualified name of the temporary image files
-//  imgFile_1 = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\"+"page_doc_1.png";
-//  imgFile_2 = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\"+"page_doc_2.png";
-  imgFile_1 = "C:\\Temp\\page_doc_1.png";
-  imgFile_2 = "C:\\Temp\\page_doc_2.png";
+  imgFile_1 = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\"+"page_doc_1.png";
+  imgFile_2 = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\"+"page_doc_2.png";
+//  imgFile_1 = "C:\\Temp\\page_doc_1.png";
+//  imgFile_2 = "C:\\Temp\\page_doc_2.png";
   // Load specified documents
   docObj_1 = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(pdfFile_1);
   docObj_2 = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(pdfFile_2);
 
-  // Get the total number of pages in both documents
+
   totalPages_1 = docObj_1.getNumberOfPages();
   totalPages_2 = docObj_2.getNumberOfPages();
 
-  // Check whether the documents contain the same number of the pages
   if (totalPages_1 != totalPages_2)
   {
-//    ReportUtils.logStep("FAIL","The documents contain different number of pages.");
-    Log.Message("The documents contain different number of pages.")
+    ReportUtils.logStep("FAIL","The documents contain different number of pages.");
+//    Log.Message("The documents contain different number of pages.")
   } else
   {
     for (i = 0; i < totalPages_1; i++)
@@ -276,35 +275,28 @@ function compareDocsAsImg()
       // Call a routine that converts the specified page to an image
       var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
       textobj = obj.getText_2(docObj_1);
-//      Log.Message(textobj)
       pic_1 = convertPageToPicture(docObj_1, i, imgFile_1);
       var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
       textobj = obj.getText_2(docObj_1);
-//      Log.Message(textobj)
       pic_2 = convertPageToPicture(docObj_2, i, imgFile_2);
 
       // Compare two images
       if (!pic_1.Compare(pic_2))
       {
-        // If the images are different...
-        // Post image differences to the log
-        Log.Picture(pic_1.Difference(pic_2));
-
-        // Post a warning message
-//        ReportUtils.logStep("FAIL","Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.");
-Log.Message("Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.")
-JavaClasses.com_ImageComparison.ImageCompMain.compareWithBaseImage(pic_1,pic_2,"Comp_Result_003")
-        // Break the loop
+// Post image differences to the log
+//        Log.Picture(pic_1.Difference(pic_2));
+        ReportUtils.logStep("FAIL","Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.");
+//Log.Message("Pages " + aqConvert.IntToStr(i+1) + " are different. Documents are different.")
+        JavaClasses.com_ImageComparison.ImageCompMain.compareWithBaseImage(imgFile_1,imgFile_2,"C:\\Temp\\page_doc_3.png");
 //        break;
       } else
       {
-        // Post a message that the pages are equal
         Log.Message("Pages " + aqConvert.IntToStr(i+1) + " are equal.")
       }
       
       // Delete the temporary image files
-//      aqFile.Delete(imgFile_1);
-//      aqFile.Delete(imgFile_2);
+      aqFile.Delete(imgFile_1);
+      aqFile.Delete(imgFile_2);
     }
   }
 }

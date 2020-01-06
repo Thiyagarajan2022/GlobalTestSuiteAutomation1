@@ -140,7 +140,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="12" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="11" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -157,7 +157,6 @@
 				<row val0="com.cts.ZephyrApiUsecases.UpdateExecutionStatus" />
 				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
 				<row val0="com.ImageComparison.ImageCompMain" />
-				<row val0="" />
 			</data>
 		</setting>
 		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="13" colIndex="0">
@@ -178,7 +177,7 @@
 				<row val0=".\ProjectLibraries\jwt-plugin-3.1.0.jar" />
 				<row val0=".\ProjectLibraries\Jira_Integration-0.0.1-SNAPSHOT-jar-with-dependencies.jar" />
 				<row val0=".\ProjectLibraries\pdfbox-app-1.8.16.jar" />
-				<row val0="..\..\..\..\Downloads\ImageComparison.jar" />
+				<row val0=".\ProjectLibraries\ImageComparison.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />

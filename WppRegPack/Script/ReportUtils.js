@@ -109,6 +109,25 @@ testConsolidated.log(logStatus.INFO,testConsolidated.addScreenCapture(".\\"+file
 }
 }
 
+
+function logStep_addImage(stepName)
+{
+
+
+img = "\\Screenshots\\"+"Image_"+ig+".png";
+ig++;
+if((stepName!="")&&(stepName!=null)){
+test.log(logStatus.INFO,stepName+test.addScreenCapture("."+img));
+testConsolidated.log(logStatus.INFO,stepName+testConsolidated.addScreenCapture(".\\"+file_name+img));
+}
+else
+{ 
+test.log(logStatus.INFO,test.addScreenCapture("."+img));
+testConsolidated.log(logStatus.INFO,testConsolidated.addScreenCapture(".\\"+file_name+img));
+  
+}
+}
+
 function screenshot()
 {
  img = Sys.Desktop.FocusedWindow().Picture();
