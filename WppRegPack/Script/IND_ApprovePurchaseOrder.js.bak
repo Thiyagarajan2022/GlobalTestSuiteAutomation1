@@ -1,0 +1,53 @@
+﻿//USEUNIT ReportUtils
+function todo(lvl){ 
+aqUtils.Delay(5000, Indicator.Text);
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
+
+if(lvl==3){
+Client_Managt.ClickItem("|Approve Purchase Order by Type (Substitute) (*)");
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|Approve Purchase Order by Type (Substitute) (*)");
+}
+if(lvl==2){
+Client_Managt.ClickItem("|Approve Purchase Order by Type(*)");
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|Approve Purchase Order by Type(*)");
+}
+}
+
+function ApprovalStatus(){ 
+var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2;
+POapproval.HoverMouse();
+ReportUtils.logStep_Screenshot();
+POapproval.Click();
+aqUtils.Delay(3000, Indicator.Text);;
+var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+ReportUtils.logStep_Screenshot();
+}
+
+function Test1()
+{
+  let maconomy = Aliases.Maconomy;
+  maconomy.wndSWT_Window0.Activate();
+  let groupToolItemControl = maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
+  groupToolItemControl.Click(50, 13);
+  groupToolItemControl.PopupMenu.Click("Attach Document");
+  maconomy.dlgOpenFile.cbxFileName.ComboBox.Edit.Click(160, 12);
+}
+
+function Test2()
+{
+  let maconomy = Aliases.Maconomy;
+  let groupToolItemControl = maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
+  groupToolItemControl.Click(27, 13);
+  groupToolItemControl.PopupMenu.Click("Submit for Approval");
+  maconomy.Shell7.Composite.Button2.ClickButton();
+}
+
+function Test3()
+{
+  let groupToolItemControl = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+  groupToolItemControl.Click(34, 11);
+  Log.Message(groupToolItemControl.PopupMenu.FullName)
+  groupToolItemControl.PopupMenu.Click("Attach Document");
+}
