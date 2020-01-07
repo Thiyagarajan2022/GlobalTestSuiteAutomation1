@@ -1,4 +1,5 @@
-﻿//USEUNIT EnvParams    
+﻿//USEUNIT EnvParams
+//USEUNIT TestRunner  
     var projectName = "";
 		var versionName = "";
 		var cycleName = "";
@@ -21,11 +22,12 @@ function JIRAUpdate(folderName,testCaseId){
     if(Log.ErrCount>0){   
     var status = "Failed";// Passed
   JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client," TestReport Attached  in JIRA",TestRunner.archivePath);
     }    
   else{      
     var status = "passed";// Failed
   JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
-  
+  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client," TestReport Attached  in JIRA",TestRunner.archivePath);
     }
 }
 

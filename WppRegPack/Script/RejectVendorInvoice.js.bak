@@ -17,7 +17,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var InvoiceNo ="";
 
-function ApproveInvoice(){ 
+function RejectInvoice(){ 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
@@ -315,14 +315,20 @@ closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
 aqUtils.Delay(5000, Indicator.Text);;
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl2;
-Sys.HighlightObject(Approve)
-if(Approve.isEnabled()){ 
-Approve.HoverMouse();
+var Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl3;
+Sys.HighlightObject(Reject)
+if(Reject.isEnabled()){ 
+Reject.HoverMouse();
 ReportUtils.logStep_Screenshot();
-Approve.Click();
+Reject.Click();
 aqUtils.Delay(8000, Indicator.Text);;
-ValidationUtils.verify(true,true,"Vendor Invoice is Approved by "+Apvr)
+var remarkStatus = Aliases.Maconomy.Shell7.Composite2.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+remarkStatus.Click();
+remarkStatus.setText("Rejected");
+var rejectButton = Aliases.Maconomy.Shell7.Composite2.Composite.Composite2.Composite.Button;
+rejectButton.Click();
+aqUtils.Delay(5000, Indicator.Text);;
+ValidationUtils.verify(true,true,"Vendor Invoice is Rejected by "+Apvr)
 aqUtils.Delay(8000, Indicator.Text);;
 if(Approve_Level.length==lvl+1){
 var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl;
@@ -345,7 +351,7 @@ var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composi
 ReportUtils.logStep_Screenshot();
 }
 
-  ValidationUtils.verify(true,true,"Vendor Invoice is Approved by "+Apvr)
+  ValidationUtils.verify(true,true,"Vendor Invoice is Rejected by "+Apvr)
   aqUtils.Delay(8000, Indicator.Text);;  
 }
 }

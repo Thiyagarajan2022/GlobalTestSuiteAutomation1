@@ -55,6 +55,7 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Creating Vendor Invoice started::"+STIME);
 getDetails();
+goToJobMenuItem();
 invoiceAllocation();
 WorkspaceUtils.closeAllWorkspaces();
 CredentialLogin();

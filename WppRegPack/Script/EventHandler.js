@@ -1,5 +1,6 @@
 ﻿//USEUNIT EnvParams
 //USEUNIT ReportUtils
+//USEUNIT TestRunner 
 var img = 0;
 
 function GeneralEvents_OnLogError(Sender, LogParams)
@@ -67,6 +68,7 @@ function GeneralEvents_OnStopTest(Sender)
     if(Log.ErrCount>0){   
     var status = "Failed";// Passed
   JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client," TestReport Attached  in JIRA",TestRunner.archivePath);
     }    
 //  else{      
 //    var status = "passed";// Failed

@@ -258,11 +258,20 @@ function todo(lvl){
   Sys.Desktop.KeyUp(0x58);  
   aqUtils.Delay(1000, Indicator.Text);
 
+try{
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
+}
+catch(e){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+}
 refresh.Click();
 aqUtils.Delay(15000, Indicator.Text);
+try{
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
-
+}
+catch(e){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+}
 if(EnvParams.Country.toUpperCase()=="INDIA")
    Runner.CallMethod("IND_ApprovePurchaseOrder.todo",lvl);
 else{
