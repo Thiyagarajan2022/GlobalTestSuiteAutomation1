@@ -166,15 +166,13 @@ companyNo.Click();
 WorkspaceUtils.SearchByValue(companyNo,"Company",company,"Company Number");
   }
 
-//if(EnvParams.Country.toUpperCase()=="INDIA")
-//   Runner.CallMethod("IND_ApprovePurchaseOrder.todo",lvl);
-//    
-//var TransactionType = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget3.Composite.McValuePickerWidget;
-//if((TransactionType.getText()=="")||(TransactionType.getText()==null)){
-//TransactionType.Click();
-//SearchByValue(TransactionType,"Transaction Type","Transaction Type");
-//  }
-
+if(EnvParams.Country.toUpperCase()=="INDIA"){    
+var TransactionType = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget3.Composite.McValuePickerWidget;
+if((TransactionType.getText()=="")||(TransactionType.getText()==null)){
+TransactionType.Click();
+SearchByValue(TransactionType,"Transaction Type","Transaction Type");
+  }
+}
 
 
 var POnumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McValuePickerWidget;
