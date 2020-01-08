@@ -108,7 +108,7 @@ for(var OpID=0;OpID<Opcolist.length;OpID++){
   testOpco = Opcolist[OpID];
   excelRow=0
   Log.Message("TestRunner :"+EnvParams.Opco)
-  
+  var server = true;
   var Coun_Opco = getRowOPco(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"OpcoMapping",EnvParams.Country.toUpperCase(),testOpco);
 if(!Coun_Opco){ 
 //  Log.Warning("Opco Number :"+testOpco+" is not in Country :"+EnvParams.Country);
@@ -137,6 +137,7 @@ ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath")
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 
 if(OpID==0){ 
+server = false;
 reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
@@ -153,7 +154,7 @@ archivePath = LpackedResults +reportName;
 // Packes the resutls
 if (slPacker.Pack(fileList, LworkDir, archivePath))
   Log.Message("Files compressed successfully.");  
-}else{
+}else {
 reportName = "Report_"+EnvParams.Opco+"_Login";
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
@@ -210,12 +211,12 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.Click();
 Delay(3000);
 
-//    Sys.Desktop.KeyDown(0x12); //Alt     //  Log.Message("Maconomy is Already in Running")
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x58); //X 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x58);
+    Sys.Desktop.KeyDown(0x12); //Alt     //  Log.Message("Maconomy is Already in Running")
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
 }
 }
 
