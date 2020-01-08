@@ -21,7 +21,7 @@
 	<Node name="root">
 		<Node name="data">
 			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
-				<Prp name="activity" type="S" value="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}"/>
+				<Prp name="activity" type="S" value="{C17C4846-6E9C-4C15-99CB-94DDE3C59DDC}"/>
 			</Node>
 			<Node name="{2c786620-2489-4cbb-9c1e-1a94437a9245}"/>
 			<Node name="{415b5aa1-c6ac-4d4d-9a53-063a521a45ab}">
@@ -72,6 +72,8 @@
 							<Node name="{531ace08-e68e-400b-9eb9-e24763725fd8}">
 								<Prp name="key" type="S" value="{56A2F721-3FA6-4663-84FD-D9A199AD1F0C}"/>
 							</Node>
+							<Node name="{9185a4c3-0780-497d-b02d-ad3af4e9cf98}"/>
+							<Node name="{98f67204-5328-4e0e-99f5-6d1b1e6d4971}"/>
 							<Prp name="editor" type="S" value="{956E1C51-FE9C-48FA-BAE4-84CA1B667FF5}"/>
 							<Prp name="focused" type="S" value="{6EF60044-8B40-45D9-A27D-47463A791CD5}"/>
 						</Node>
@@ -79,6 +81,8 @@
 					</Node>
 					<Node name="3">
 						<Node name="editor">
+							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}"/>
+							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}"/>
 							<Prp name="editor" type="S" value="{1B732A97-7DF3-4323-B91A-C2DD581AA133}"/>
 							<Prp name="focused" type="S" value="{CC443553-EFAD-4EE2-8161-CEFA636F72C2}"/>
 						</Node>
@@ -86,6 +90,8 @@
 					</Node>
 					<Node name="4">
 						<Node name="editor">
+							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}"/>
+							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}"/>
 							<Prp name="editor" type="S" value="{E4BA2C37-131D-4880-8AC0-251B149DEB43}"/>
 							<Prp name="focused" type="S" value="{E282E308-98A1-41CC-B458-5BA9F0D58E01}"/>
 						</Node>
@@ -93,6 +99,8 @@
 					</Node>
 					<Node name="5">
 						<Node name="editor">
+							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}"/>
+							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}"/>
 							<Prp name="editor" type="S" value="{0896E83E-46B2-4712-99AF-32FAD4A6DEF1}"/>
 							<Prp name="focused" type="S" value="{9C921039-5B93-43D4-93FC-7C7BFD7E64E5}"/>
 						</Node>
