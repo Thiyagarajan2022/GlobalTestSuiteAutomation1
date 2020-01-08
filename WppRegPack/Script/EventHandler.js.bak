@@ -65,96 +65,13 @@ function GeneralEvents_OnStopTest(Sender)
     var zephyrBaseUrl ="https://prod-api.zephyr4jiracloud.com/connect";
     var entityName = "execution";
     var expirationInsec = 360;
-    var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl, accessKey, secretKey, userName);
-//    var client = JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder(zephyrBaseUrl, accessKey, secretKey, userName).build();
-    if(Log.ErrCount>0){   
-    var status = "Failed";// Passed
-//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client, accessKey, entityName,TestRunner.archivePath+".zip",expirationInsec ," TestReport Attached  in JIRA");
-    }    
-//  else{      
-//    var status = "passed";// Failed
-//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
-//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client, accessKey, entityName,TestRunner.archivePath ," TestReport Attached  in JIRA",TestRunner.archivePath);
-//  
-//    }
-}
-
-function bb(){ 
-  
-    var projectName = "CORE - Test Automation";
-		var versionName = "Release 1";
-		var cycleName = "TestCycle1";
-    var folderName = "1307";
-		var testCaseId = "TSTAUTO-1"; 
-    var userName = "muthukumar.m@cognizant.com";
-		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
-		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
-    var zephyrBaseUrl ="https://prod-api.zephyr4jiracloud.com/connect";
-    var entityName = "execution";
-    var expirationInsec = 360;
-    fileList = slPacker.GetFileListFromFolder(Project.Path+"m");
-    archivePath = Project.Path+"m";
-    // Packes the resutls
-    if (slPacker.Pack(fileList, Project.Path+"m", archivePath))
-      Log.Message("Files compressed successfully."); 
-    Log.Message(archivePath+".zip")
-    
-    var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl, accessKey, secretKey, userName);
-//    var client = JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder(zephyrBaseUrl, accessKey, secretKey, userName).build();
-    if(Log.ErrCount>0){   
-    var status = "Failed";// Passed
-//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client, accessKey, entityName,archivePath+".zip",expirationInsec ," TestReport Attached  in JIRA");
-    }    
-  else{      
-    var status = "passed";// Failed
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client, accessKey, entityName,"C:\\Users\\674087\\Documents\\GlobalScript\\GlobalTestPack\\WppRegPack\\m.zip",expirationInsec ," TestReport Attached  in JIRA");
-  
-    }
-}
-
-
-function test(){ 
-  
-    var projectName = "CORE - Test Automation";
-		var versionName = "Release 1";
-		var cycleName = "TestCycle1";
-    var folderName = "1307";
-		var testCaseId = "TSTAUTO-1"; 
-    var userName = "muthukumar.m@cognizant.com";
-		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
-		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
-    var zephyrBaseUrl ="https://prod-api.zephyr4jiracloud.com/connect";
-    var entityName = "execution";
-    var expirationInSec = 360;
-//            var projectName = "CORE - Test Automation";
-//            var versionName = "Release 1";
-//            var cycleName = "TestCycle1";
-//            var testCaseId = "TSTAUTO-1";
-            var status = "Passed";// Failed
-//            var folderName = "1307";
-//            var userName = "muthukumar.m@cognizant.com";
-//            var accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
-//            var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho";            
-//            var zephyrBaseUrl = "https://prod-api.zephyr4jiracloud.com/connect";
-            var comment = "Filescompressedsuccessfully.";
-//            var entityName = "execution"; // entityName takes execution/stepResult as parameter value
-
-//            var fileWithAbsolutePath = "C:\\Users\\674087\\Pictures\\m.zip";   //Absolute path of the file
-//            var expirationInSec = 360;
-   fileList = slPacker.GetFileListFromFolder(Project.Path+"m");
-   var archivePath = Project.Path+"m";
-    // Packes the resutls
-    if (slPacker.Pack(fileList, Project.Path+"m", archivePath))
-      Log.Message("Files compressed successfully."); 
-    Log.Message(archivePath+".zip")
-    
+    var comment = "TestReport_Uploaded_Successfully_in_JIRA.";
     var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl,accessKey,secretKey,userName);
+    if(Log.ErrCount>0){   
+    var status = "Failed";// Passed
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
-JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInSec, comment)
+    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInSec, comment)
+
+    }    
 
 }
