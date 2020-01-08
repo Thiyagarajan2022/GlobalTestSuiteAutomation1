@@ -21,12 +21,14 @@ function JIRAUpdate(folderName,testCaseId){
     var client = JavaClasses.com_thed_zephyr_cloud_rest.ZFJCloudRestClient.restBuilder(zephyrBaseUrl, accessKey, secretKey, userName).build();
     if(Log.ErrCount>0){   
     var status = "Failed";// Passed
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
   JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client," TestReport Attached  in JIRA",TestRunner.archivePath);
     }    
   else{      
     var status = "passed";// Failed
-  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+//  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey, projectName, versionName, cycleName,folderName, testCaseId, status,zephyrBaseUrl,secretKey, userName);
+  JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client, accessKey, projectName, versionName, cycleName,folderName, testCaseId, status);
   JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client," TestReport Attached  in JIRA",TestRunner.archivePath);
     }
 }
