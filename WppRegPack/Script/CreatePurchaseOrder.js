@@ -245,6 +245,8 @@ else{
   action.Click();
   Delay(3000);
   action.PopupMenu.Click("Submit Purchase Order");
+  ReportUtils.logStep_Screenshot();
+  aqUtils.Delay(8000, Indicator.Text);;
 /*
   Sys.Process("Maconomy").Refresh();
   var table = Sys.Process("Maconomy").Window("#32768", "", 1);

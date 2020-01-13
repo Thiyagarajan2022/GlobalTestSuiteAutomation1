@@ -320,6 +320,8 @@ action.PopupMenu.Click("Attach Document");
     Delay(2000);
   aqUtils.Delay(3000, Indicator.Text);
   action.PopupMenu.Click("Submit for Approval");
+  ReportUtils.logStep_Screenshot();
+  aqUtils.Delay(8000, Indicator.Text);;
   /*
   action.Click();
   Delay(2000);
