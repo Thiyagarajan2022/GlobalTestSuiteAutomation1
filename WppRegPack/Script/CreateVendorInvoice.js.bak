@@ -18,6 +18,7 @@ var STIME = "";
 var company,PurchOrderNo,InvoiceNo,Description ="";
 
 function CreateInvoice(){ 
+TextUtils.writeLog("Create Vendor Invoice Started"); 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
@@ -111,6 +112,7 @@ Client_Managt.DblClickItem("|AP Transactions");
 } 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to AP Transactions from Accounts Payable Menu");
+TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
 
@@ -160,6 +162,7 @@ newInvoice.HoverMouse();
 ReportUtils.logStep_Screenshot();
 newInvoice.Click();
 aqUtils.Delay(2000, Indicator.Text);
+TextUtils.writeLog("New Invoice Button is Clicked");
 var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
 if(company!=""){
 companyNo.Click();
@@ -199,7 +202,7 @@ var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-
+TextUtils.writeLog("Company Number,Purchase Order Number,Entry Date,Description,Invoice Number is Entered and Saved");
 if(ImageRepository.ImageSet.OK_Button.Exists()){ 
 var Okay = Aliases.Maconomy.Shell7.Composite.Button;
 Okay.Click();
@@ -272,7 +275,7 @@ var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-
+TextUtils.writeLog("Tax Details is Entered and Saved");
 var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
 action.Click();
   Delay(2000);
@@ -307,6 +310,7 @@ action.PopupMenu.Click("Attach Document");
   Sys.Desktop.KeyUp(0x0D);
 */
   aqUtils.Delay(4000, Indicator.Text);;
+  TextUtils.writeLog("Document is Attached for Invoice");
   var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
   var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
@@ -320,6 +324,9 @@ action.PopupMenu.Click("Attach Document");
     Delay(2000);
   aqUtils.Delay(3000, Indicator.Text);
   action.PopupMenu.Click("Submit for Approval");
+  ReportUtils.logStep_Screenshot();
+  aqUtils.Delay(8000, Indicator.Text);;
+  TextUtils.writeLog("Invoice is Submitted for Approval");
   /*
   action.Click();
   Delay(2000);
@@ -345,7 +352,7 @@ ValidationUtils.verify(true,true,"Created Vendor Invoice Journal Number :"+journ
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Invoice Journal NO",EnvParams.Opco,"Data Management",journalNumber);
 ExcelUtils.WriteExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management",InvoiceNo)
-
+TextUtils.writeLog("Created Vendor Invoice Journal Number :"+journalNumber);
 }
 
 

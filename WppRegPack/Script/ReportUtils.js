@@ -1,4 +1,5 @@
 ﻿//USEUNIT TestRunner
+//USEUNIT TextUtils
 var report,test,reportConsolidated,testConsolidated;
 var file_path;
 var file_name;
@@ -60,6 +61,7 @@ img = "\\Screenshots\\"+"Image_"+ig+".png";
 ig++;
 test.log(logStatus.FAIL,stepName+test.addScreenCapture("."+img));
 testConsolidated.log(logStatus.FAIL,stepName+testConsolidated.addScreenCapture(".\\"+file_name+img));
+TextUtils.writeLog(unitName+" is FAILED "+stepName);
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(TestRunner.workDir);

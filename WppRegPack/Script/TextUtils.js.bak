@@ -1,4 +1,4 @@
-﻿
+﻿//USEUNIT ReportUtils
 var str;
 
 function ReadWholeFile(AFileName)
@@ -95,7 +95,7 @@ function writeDetails(notepadPath,element,Data){
       aqFile.Create(notepadPath);
       }
    
-Log.Message(notepadPath);
+//Log.Message(notepadPath);
 oFile = aqFile.OpenTextFile(notepadPath, aqFile.faRead, aqFile.ctANSI);
 oFile.Cursor = 0;
 var NotePadlines = [];
@@ -133,11 +133,30 @@ oFile.Close();
 oFile.Close();
 }
 
-function Run()
-{
+function writeLog(Data){
+      if(!aqFile.Exists(ReportUtils.file_path+"\\TestLog.txt")){
+      aqFile.Create(ReportUtils.file_path+"\\TestLog.txt");
+      }
+   
+//Log.Message(notepadPath);
+oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\TestLog.txt", aqFile.faRead, aqFile.ctANSI);
+oFile.Cursor = 0;
+var NotePadlines = [];
+var i=0;
+var status = true;
+while(! oFile.IsEndOfFile()){
+line = oFile.ReadLine(); 
 
-//Log.Message(AFileName);
-//ReadWholeFile(AFileName);
-val = GetValue("Browser");
-Log.Message(val)
+  NotePadlines[i] = line;
+  i++;
+
+}
+NotePadlines[i] = Data;
+oFile.Close();
+
+  oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\TestLog.txt", aqFile.faWrite, aqFile.ctANSI, true);
+  for(var i=0;i<NotePadlines.length;i++)
+  oFile.WriteLine(NotePadlines[i]);
+
+oFile.Close();
 }

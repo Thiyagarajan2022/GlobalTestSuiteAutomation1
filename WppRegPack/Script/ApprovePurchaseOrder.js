@@ -18,6 +18,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var POnumber = ""
 function ApprovePurchaseOrder(){ 
+TextUtils.writeLog("Approve Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -55,7 +56,7 @@ Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Approving PO started::"+STIME);
-
+TextUtils.writeLog("Execution Start Time :"+STIME); 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
   if((POnumber=="")||(POnumber==null)){
@@ -125,7 +126,7 @@ Client_Managt.DblClickItem("|Purchase Orders");
 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
-
+TextUtils.writeLog("Entering into Purchase Orders from Accounts Payable Menu");
 }
 
 function gettingApproval(){ 
@@ -151,7 +152,7 @@ function gettingApproval(){
   }
   }
   ValidationUtils.verify(flag,true,"Created Purchase Order is available in system");
-  
+  TextUtils.writeLog("Created Purchase Order is available in system");
   
   
  if(flag){
@@ -189,7 +190,7 @@ function gettingApproval(){
       y++;
       }
 }
-
+TextUtils.writeLog("Finding approvers for Created Purchase Order");
 var listPurchaseOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl;
 listPurchaseOrder.Click();
 aqUtils.Delay(3000, Indicator.Text);;
@@ -289,6 +290,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function todo(lvl){ 
+  TextUtils.writeLog("Entering into To-Dos List");
   var toDo = Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo;
   toDo.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -324,11 +326,13 @@ if(lvl==3){
 Client_Managt.ClickItem("|Approve Purchase Order (Substitute) (*)");
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|Approve Purchase Order (Substitute) (*)");
+TextUtils.writeLog("Entering into Approve Purchase Order (Substitute) from To-Dos List");
 }
 if(lvl==2){
 Client_Managt.ClickItem("|Approve Purchase Order (*)");
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|Approve Purchase Order (*)");
+TextUtils.writeLog("Entering into Approve Purchase Order from To-Dos List");
 }
 }
 
@@ -359,7 +363,7 @@ for(var v=0;v<table.getItemCount();v++){
 }
 
 ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
-
+TextUtils.writeLog("Created Purchase Order is available in Approval List");
 if(flag){ 
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
@@ -379,7 +383,7 @@ ReportUtils.logStep_Screenshot();
 aqUtils.Delay(8000, Indicator.Text);;
 ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
 aqUtils.Delay(8000, Indicator.Text);;
-
+TextUtils.writeLog("Purchase Order is Approved by "+Apvr);
 if(Approve_Level.length==lvl+1){
 var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
 approvalBar.HoverMouse();

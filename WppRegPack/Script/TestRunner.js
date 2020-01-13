@@ -138,22 +138,22 @@ testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 
 if(OpID==0){ 
 server = false;
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
-var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-fileList = slPacker.GetFileListFromFolder(LworkDir);
-archivePath = LpackedResults +reportName;
-// Packes the resutls
-if (slPacker.Pack(fileList, LworkDir, archivePath))
-  Log.Message("Files compressed successfully.");  
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
+//fileList = slPacker.GetFileListFromFolder(LworkDir);
+//archivePath = LpackedResults +reportName;
+//// Packes the resutls
+//if (slPacker.Pack(fileList, LworkDir, archivePath))
+//  Log.Message("Files compressed successfully.");  
 }else {
 reportName = "Report_"+EnvParams.Opco+"_Login";
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
@@ -189,6 +189,7 @@ var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
 Log.PushLogFolder(FolderID);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
+TextUtils.writeLog(unitName+" PASSED and Completed Successfully");
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 
@@ -355,6 +356,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 Log.PopLogFolder();
+TextUtils.writeLog(unitName+" PASSED and Completed Successfully");
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(workDir);

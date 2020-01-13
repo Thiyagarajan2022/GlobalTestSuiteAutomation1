@@ -18,6 +18,7 @@ var STIME = "";
 var InvoiceNo ="";
 
 function ApproveInvoice(){ 
+TextUtils.writeLog("Approve Vendor Invoice Started"); 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
@@ -54,6 +55,7 @@ WorkspaceUtils.Language = Language;
 
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Creating Vendor Invoice started::"+STIME);
+TextUtils.writeLog("Execution Start Time :"+STIME); 
 getDetails();
 goToJobMenuItem();
 invoiceAllocation();
@@ -131,6 +133,7 @@ Client_Managt.DblClickItem("|AP Transactions");
 } 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to AP Transactions from Accounts Payable Menu");
+TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
 function invoiceAllocation(){ 
@@ -163,7 +166,7 @@ table.Keys("[Down]");
 }
 }
 ValidationUtils.verify(flag,true,"Created Vendor Invoice is available in system");
-
+TextUtils.writeLog("Created Vendor Invoice is available in system");
  if(flag){
   var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
   closefilter.HoverMouse();
@@ -193,7 +196,7 @@ ValidationUtils.verify(flag,true,"Created Vendor Invoice is available in system"
   y++;
       }
 }
-
+TextUtils.writeLog("Finding approvers for Created Vendor Invoice");
   }
 }
 
@@ -244,6 +247,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function todo(lvl){ 
+  TextUtils.writeLog("Entering into To-Dos List");
   var toDo = Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo;
   toDo.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -279,11 +283,13 @@ if(lvl==3){
 Client_Managt.ClickItem("|Approve Invoice Allocation Line by Type (Substitute) (*)");
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|Approve Invoice Allocation Line by Type (Substitute) (*)");
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type (Substitute) from To-Dos List");
 }
 if(lvl==2){
 Client_Managt.ClickItem("|Approve Invoice Allocation Line by Type (*)");
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|Approve Invoice Allocation Line by Type (*)");
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type from To-Dos List");
 }
 }
 
@@ -318,7 +324,7 @@ for(var v=0;v<table.getItemCount();v++){
 }
 
 ValidationUtils.verify(flag,true,"Created Vendor Invoice is available in Approval List");
-
+TextUtils.writeLog("Created Vendor Invoice is available in Approval List");
 if(flag){ 
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
@@ -333,6 +339,7 @@ Approve.Click();
 aqUtils.Delay(8000, Indicator.Text);;
 ValidationUtils.verify(true,true,"Vendor Invoice is Approved by "+Apvr)
 aqUtils.Delay(8000, Indicator.Text);;
+TextUtils.writeLog("Vendor Invoice is Approved by "+Apvr);
 if(Approve_Level.length==lvl+1){
 var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl;
 approvalBar.HoverMouse();
