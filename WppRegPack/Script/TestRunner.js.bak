@@ -356,7 +356,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 Log.PopLogFolder();
-TextUtils.writeLog(unitName+" PASSED and Completed Successfully");
+TextUtils.writeLog(testList[tL]+" PASSED and Completed Successfully");
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(workDir);

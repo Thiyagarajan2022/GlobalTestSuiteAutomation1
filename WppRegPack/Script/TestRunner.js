@@ -155,24 +155,24 @@ server = false;
 //if (slPacker.Pack(fileList, LworkDir, archivePath))
 //  Log.Message("Files compressed successfully.");  
 }else {
-reportName = "Report_"+EnvParams.Opco+"_Login";
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
-var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-//ReportUtils.createTest("Login login", "Login using given Credentials")
-ReportUtils.createTest("Login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("Login");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("Login.login");
-Log.PopLogFolder();
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-
-fileList = slPacker.GetFileListFromFolder(LworkDir);
-archivePath = LpackedResults + reportName;
-// Packes the resutls
-if (slPacker.Pack(fileList, LworkDir, archivePath))
-  Log.Message("Files compressed successfully.");
+//reportName = "Report_"+EnvParams.Opco+"_Login";
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+////ReportUtils.createTest("Login login", "Login using given Credentials")
+//ReportUtils.createTest("Login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("Login");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("Login.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
+//
+//fileList = slPacker.GetFileListFromFolder(LworkDir);
+//archivePath = LpackedResults + reportName;
+//// Packes the resutls
+//if (slPacker.Pack(fileList, LworkDir, archivePath))
+//  Log.Message("Files compressed successfully.");
  
 }
 
@@ -212,12 +212,12 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.Click();
 Delay(3000);
 
-    Sys.Desktop.KeyDown(0x12); //Alt     //  Log.Message("Maconomy is Already in Running")
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
+//    Sys.Desktop.KeyDown(0x12); //Alt     //  Log.Message("Maconomy is Already in Running")
+//    Sys.Desktop.KeyDown(0x46); //F
+//    Sys.Desktop.KeyDown(0x58); //X 
+//    Sys.Desktop.KeyUp(0x46); //Alt
+//    Sys.Desktop.KeyUp(0x12);     
+//    Sys.Desktop.KeyUp(0x58);
 }
 }
 

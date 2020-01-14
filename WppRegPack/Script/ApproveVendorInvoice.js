@@ -61,8 +61,10 @@ goToJobMenuItem();
 invoiceAllocation();
 WorkspaceUtils.closeAllWorkspaces();
 CredentialLogin();
+if(EnvParams.Country.toUpperCase()=="INDIA"){
 var ttm = ApproveInfo[0].split("*");
 ApproveInfo[0]=ttm[0]+"*"+ttm[1]+"*"+"1707 Management (TSTAUTO)*3";
+}
 for(var i=level;i<ApproveInfo.length;i++){
 WorkspaceUtils.closeMaconomy();
 aqUtils.Delay(10000, Indicator.Text);
