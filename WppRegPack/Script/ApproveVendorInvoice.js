@@ -61,13 +61,15 @@ goToJobMenuItem();
 invoiceAllocation();
 WorkspaceUtils.closeAllWorkspaces();
 CredentialLogin();
+var ttm = ApproveInfo[0].split("*");
+ApproveInfo[0]=ttm[0]+"*"+ttm[1]+"*"+"1707 Management (TSTAUTO)*3";
 for(var i=level;i<ApproveInfo.length;i++){
 WorkspaceUtils.closeMaconomy();
 aqUtils.Delay(10000, Indicator.Text);
 var temp = ApproveInfo[i].split("*");
 Restart.login(temp[2]);
 aqUtils.Delay(5000, Indicator.Text);
-todo(temp[3]);
+todo(temp[3],i);
 FinalApproveinvoice(temp[1],temp[2],i,temp[3]);
 }
 }
@@ -246,7 +248,7 @@ WorkspaceUtils.closeAllWorkspaces();
 }
 
 
-function todo(lvl){ 
+function todo(lvl,apLvl){ 
   TextUtils.writeLog("Entering into To-Dos List");
   var toDo = Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo;
   toDo.HoverMouse();
@@ -277,7 +279,7 @@ catch(e){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
 }
 if(EnvParams.Country.toUpperCase()=="INDIA")
-   Runner.CallMethod("IND_ApprovePurchaseOrder.todo",lvl);
+   Runner.CallMethod("IND_ApproveVendorInvoice.todo",lvl,apLvl);
 else{
 if(lvl==3){
 Client_Managt.ClickItem("|Approve Invoice Allocation Line by Type (Substitute) (*)");

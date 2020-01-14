@@ -324,6 +324,9 @@ action.PopupMenu.Click("Attach Document");
   action.Click();
     Delay(2000);
   aqUtils.Delay(3000, Indicator.Text);
+  if(EnvParams.Country.toUpperCase()=="INDIA")
+  Runner.CallMethod("IND_VendorInvoice.InvoiceSubmit",action);
+  else
   action.PopupMenu.Click("Submit for Approval");
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, Indicator.Text);;
