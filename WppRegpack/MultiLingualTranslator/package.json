@@ -1,0 +1,16 @@
+{
+  "name": "multilingualtranslator",
+  "version": "1.0.0",
+  "description": "ProjFormultiLingualCoverage",
+  "main": "Translate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muthu",
+  "license": "ISC",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^2.7.0",
+    "google-translate-api": "^2.3.0",
+    "google-translate-token": "^1.0.0"
+  }
+}

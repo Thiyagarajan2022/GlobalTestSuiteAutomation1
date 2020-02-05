@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<folder name="BusinessComponents">
+			<folder name="Windows">
+				<child name="WorkspaceUtils" key="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}" path="WorkspaceUtils.js" />
+				<child name="Login" key="{DE9DBB18-CCF3-4270-B4D8-20FAA28D4827}" path="Login.js" />
+				<child name="Expenses" key="{D77EFD9E-E9BB-4A78-A77F-655732F31F02}" path="Expenses.js" />
+				<child name="Restart" key="{DEC1D1BA-8237-49C5-9D79-E20CAA3AA92F}" path="Restart.js" />
+				<child name="ServerConfig" key="{F67971F0-DD24-4BEE-BE62-BE1B72621ED9}" path="ServerConfig.js" />
+			</folder>
+		</folder>
+		<folder name="ControlBasedFunctions">
+			<child name="ActionUtils" key="{DF431AEE-7BF6-4F22-8BB1-03E949254311}" path="ActionUtils.js" />
+			<child name="ValidationUtils" key="{31A0568F-4E9A-401F-A188-B6129F571F72}" path="ValidationUtils.js" />
+		</folder>
+		<folder name="SupportLibraries">
+			<child name="EventHandler" key="{B9A10129-43E4-4739-A7CF-B2A000F8E96E}" path="EventHandler.js" />
+			<child name="ExcelUtils" key="{A585A2E3-1B31-433D-B55A-A4A2E442B563}" path="ExcelUtils.js" />
+			<child name="ReportUtils" key="{A59CD177-F657-4707-8222-D6C3772E561F}" path="ReportUtils.js" />
+			<child name="TextUtils" key="{DF14EF29-FF57-40F4-9D08-526A1C15F96A}" path="TextUtils.js" />
+			<child name="PdfUtils" key="{12154BE8-C205-4FEB-BAA8-B263BFB3C419}" path="PdfUtils.js" />
+			<child name="LanguageUtils" key="{863CD8ED-F049-4B88-9565-C5C4F922A3F8}" path="LanguageUtils.js" />
+			<child name="JIRA" key="{EF546AE1-888B-49AE-9F62-605DF642EC51}" path="JIRA.js" />
+		</folder>
+		<folder name="TestScripts">
+			<folder name="Global Test Case">
+				<child name="Timesheet" key="{A2CBFDE8-187A-4D6B-92F7-E4BE42E7B394}" path="Timesheet.js" />
+				<child name="JobCreation" key="{9C22E062-DBC0-4BCD-BBD0-20740DFA30FF}" path="JobCreation.js" />
+				<child name="EmployeeCreation" key="{A8884896-DA5A-458F-BC42-65E3F8A896E8}" path="EmployeeCreation.js" />
+				<child name="CreateExpenses" key="{82ACB8E1-F7D4-45F3-BA94-EAC4A332B26F}" path="CreateExpenses.js" />
+				<child name="EmployeeUserCreation" key="{8F35911E-6F0E-4AB2-A652-18DF3AE13898}" path="EmployeeUserCreation.js" />
+				<child name="CreateBudget" key="{FA9B2656-7871-40C9-AB59-EB060E599A5A}" path="CreateBudget.js" />
+				<child name="FixedAssetPurchaseOrder" key="{09F7209F-188C-43A3-B79B-C6A0EAE733AB}" path="FixedAssetPurchaseOrder.js" />
+				<child name="PurchaseOrderfromJobActivities" key="{D2791BE4-05D0-4C2D-AC35-8D999B61DF49}" path="PurchaseOrderfromJobActivities.js" />
+				<child name="ApprovePurchaseOrder" key="{775924F1-59C3-4C24-AD87-A6D59D09BB42}" path="ApprovePurchaseOrder.js" />
+				<child name="RejectPurchaseOrder" key="{C7E5447B-B490-458B-A11E-2A698CBFCAF8}" path="RejectPurchaseOrder.js" />
+				<child name="CreatePurchaseOrder" key="{FBF6C844-88B7-440E-B43C-B11C6D2458D3}" path="CreatePurchaseOrder.js" />
+				<child name="CreateClient" key="{F8AD0A4F-415F-4196-8028-CF63A7E83377}" path="CreateClient.js" />
+				<child name="CreateUser" key="{D2B7F0C1-4843-4433-9FC6-2E1FCC695797}" path="CreateUser.js" />
+				<child name="CreateVendor" key="{3B1FC21E-0989-4AD5-948C-71D24F15072A}" path="CreateVendor.js" />
+				<child name="CreateVendorInvoice" key="{C17C4846-6E9C-4C15-99CB-94DDE3C59DDC}" path="CreateVendorInvoice.js" />
+				<child name="ApproveVendorInvoice" key="{4175DA6D-0161-4421-A39E-B0DAE0E69C4D}" path="ApproveVendorInvoice.js" />
+				<child name="RejectVendorInvoice" key="{ACD8933B-8561-46C2-A28C-F86D33DECF28}" path="RejectVendorInvoice.js" />
+				<child name="CreateQuote" key="{3EAE480B-0CD8-429F-8B6A-A783F58A1DAA}" path="CreateQuote.js" />
+				<child name="PrintJobBudget" key="{7444D54C-DB40-43FC-8C97-1747C3BADFF2}" path="PrintJobBudget.js" />
+				<child name="Unit1" key="{30948542-6799-468F-B726-56052BE96E60}" path="Unit1.js" />
+				<child name="ApproveTimesheet" key="{896D555B-72C5-4172-BE4B-71A5479B71DE}" path="ApproveTimesheet.js" />
+				<child name="RejectTimeSheet" key="{B6325DDC-437C-4A55-8825-4037DAC4ACB3}" path="RejectTimeSheet.js" />
+				<child name="BlockGlobalBrand" key="{65EC305C-AC94-4C1F-AA8E-1B0F87F67F1D}" path="BlockGlobalBrand.js" />
+				<child name="BlockGlobalClient" key="{BBB71A4D-4F2B-4D5B-8BDD-A3C174D6E8AF}" path="BlockGlobalClient.js" />
+				<child name="Approve_Expenses_Opco" key="{F42FC792-53CC-4B7D-9D53-DFCBF15D90DF}" path="Approve_Expenses_Opco.js" />
+				<child name="ChangeEmployee" key="{0F168562-5CC3-46E3-8A30-8958073A7812}" path="ChangeEmployee.js" />
+				<child name="ChangeUser" key="{82AF655F-7020-4FDC-BA80-CF11D9EC2D36}" path="ChangeUser.js" />
+				<child name="Create_Fixed_Asset" key="{914E3D6E-C97E-486A-82A6-191587629F90}" path="Create_Fixed_Asset.js" />
+				<child name="CreateSubJob" key="{CE5F4095-490D-4CAE-90CC-293170FDA394}" path="CreateSubJob.js" />
+				<child name="Customer_Payment_for_Multiple_Invoice" key="{C8E7E3A0-AF86-48F6-B259-7EC82E1B9BD1}" path="Customer_Payment_for_Multiple_Invoice.js" />
+				<child name="Customer_Payment_for_Single_Invoice" key="{F74CA9DA-15FB-4851-A1F1-767A2EDCC452}" path="Customer_Payment_for_Single_Invoice.js" />
+				<child name="FixedAssetDepreciation" key="{38EEC31E-9F9F-4A96-9990-7B1B16BF75F5}" path="FixedAssetDepreciation.js" />
+				<child name="FixedAssetDisposal" key="{BFB2D6A0-68E2-4AA7-818E-9424DB93A1D1}" path="FixedAssetDisposal.js" />
+				<child name="Post_a_Customer_Payment" key="{2ED26D7F-BA19-42C1-8A08-17BB8AF297A1}" path="Post_a_Customer_Payment.js" />
+				<child name="PostingAssetEntires" key="{AC6624E8-E41F-42F0-9806-876CB7A0A5F2}" path="PostingAssetEntires.js" />
+				<child name="PostVendorJournal" key="{9187B3B4-6BCF-47A2-8651-26FF24762E44}" path="PostVendorJournal.js" />
+				<child name="Reject_Expenses" key="{8AED6E2E-5B77-45EB-8D7F-377ACB714843}" path="Reject_Expenses.js" />
+				<child name="Reverse_Invoice" key="{3202CF2D-0731-4EC0-B0A8-81F95A735F07}" path="Reverse_Invoice.js" />
+			</folder>
+			<folder name="China">
+				<folder name="Regression" />
+				<folder name="CriticalRegression" />
+			</folder>
+			<folder name="India">
+				<folder name="Regression" />
+				<folder name="CriticalRegression">
+					<child name="IND_PurchaseOrder" key="{0DB7CE7E-33EA-4766-BB1E-F67DDA894DB5}" path="IND_PurchaseOrder.js" />
+					<child name="IND_ApprovePurchaseOrder" key="{939FD3C0-F614-4C1F-9640-397BC9C15E4A}" path="IND_ApprovePurchaseOrder.js" />
+					<child name="IND_VendorInvoice" key="{C02D3DE5-951F-45D6-BA85-F9821A2ED9E5}" path="IND_VendorInvoice.js" />
+					<child name="IND_ApproveVendorInvoice" key="{F7CCBCD0-286E-4AB2-9F56-4C4747655992}" path="IND_ApproveVendorInvoice.js" />
+				</folder>
+			</folder>
+			<folder name="UK">
+				<folder name="Regression" />
+				<folder name="CriticalRegression" />
+			</folder>
+		</folder>
+		<folder name="EnvConfig">
+			<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" path="EnvParams.js" />
+		</folder>
+		<child name="TestRunner" key="{808405B8-0747-445B-9F6E-64BEF03B5AF9}" path="TestRunner.js" />
+	</children>
+</Root>

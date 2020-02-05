@@ -1,0 +1,1691 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="message 9">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="691"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="468"/>
+					<Prp name="line #" type="I" value="120"/>
+					<Prp name="image file name" type="S" value="visImage4.png"/>
+					<Prp name="object left" type="I" value="32"/>
+					<Prp name="object right" type="I" value="1360"/>
+					<Prp name="datetime" type="D" value="43822.4626854167"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="477"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="118"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6918576505"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="9"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="120"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The tree node 'Purchase Orders' was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 44">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="104"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter"/>
+					<Prp name="object top" type="I" value="82"/>
+					<Prp name="line #" type="I" value="356"/>
+					<Prp name="image file name" type="S" value="visImage32.png"/>
+					<Prp name="object left" type="I" value="1244"/>
+					<Prp name="object right" type="I" value="1350"/>
+					<Prp name="datetime" type="D" value="43822.4652964468"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="93"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1297"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (53, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;SingleToolItemControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6944644097"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="44"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="356"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 38">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="422"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo"/>
+					<Prp name="object top" type="I" value="392"/>
+					<Prp name="line #" type="I" value="294"/>
+					<Prp name="image file name" type="S" value="visImage28.png"/>
+					<Prp name="object left" type="I" value="39"/>
+					<Prp name="object right" type="I" value="118"/>
+					<Prp name="datetime" type="D" value="43822.4641637268"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="407"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="78"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (39, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6933323264"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="38"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="294"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 27">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="248"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.SWTObject(&quot;McTextWidget&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="229"/>
+					<Prp name="line #" type="I" value="1451"/>
+					<Prp name="image file name" type="S" value="visImage19.png"/>
+					<Prp name="object left" type="I" value="263"/>
+					<Prp name="object right" type="I" value="345"/>
+					<Prp name="datetime" type="D" value="43822.4633107755"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="238"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="304"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (41, 9) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McTableWidget&quot;, &quot;&quot;, 3).SWTObject(&quot;McGrid&quot;, &quot;&quot;, 2).SWTObject(&quot;McTextWidget&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6924787731"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="27"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="1451"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 13">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="233"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.PurchaseNumber"/>
+					<Prp name="object top" type="I" value="214"/>
+					<Prp name="line #" type="I" value="138"/>
+					<Prp name="image file name" type="S" value="visImage8.png"/>
+					<Prp name="object left" type="I" value="346"/>
+					<Prp name="object right" type="I" value="428"/>
+					<Prp name="datetime" type="D" value="43822.4628225"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="223"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="387"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (41, 9) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.PurchaseNumber&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McTableWidget&quot;, &quot;&quot;, 3).SWTObject(&quot;McGrid&quot;, &quot;&quot;, 2).SWTObject(&quot;McTextWidget&quot;, &quot;&quot;, 2))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6919904514"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="13"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="138"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 22">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="188"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="175"/>
+					<Prp name="line #" type="I" value="195"/>
+					<Prp name="image file name" type="S" value="visImage14.png"/>
+					<Prp name="object left" type="I" value="1318"/>
+					<Prp name="object right" type="I" value="1335"/>
+					<Prp name="datetime" type="D" value="43822.4630612732"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="181"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1326"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://3714921512|{35730471-CCAE-4E28-8433-6189AC026C35}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6922298148"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="22"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="195"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'Forward' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 8">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="691"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="468"/>
+					<Prp name="line #" type="I" value="118"/>
+					<Prp name="image file name" type="S" value="visImage3.png"/>
+					<Prp name="object left" type="I" value="32"/>
+					<Prp name="object right" type="I" value="1360"/>
+					<Prp name="datetime" type="D" value="43822.462679838"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="477"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="118"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 10).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6918486921"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="8"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="118"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The tree node 'Purchase Orders' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="units">
+			<Prp name="unit 6" type="S" value="{939FD3C0-F614-4C1F-9640-397BC9C15E4A}"/>
+			<Prp name="unit 1" type="S" value="{808405B8-0747-445B-9F6E-64BEF03B5AF9}"/>
+			<Prp name="unit 4" type="S" value="{1B5B44C7-D567-4E43-B92D-DA24B6D6B3F7}"/>
+			<Prp name="unit 0" type="S" value="{70346006-8F35-4727-AA07-0BFF8EA1A617}"/>
+			<Prp name="unit 5" type="S" value="{DEC1D1BA-8237-49C5-9D79-E20CAA3AA92F}"/>
+			<Prp name="unit 2" type="S" value="{775924F1-59C3-4C24-AD87-A6D59D09BB42}"/>
+			<Prp name="unit 3" type="S" value="{31A0568F-4E9A-401F-A188-B6129F571F72}"/>
+		</Node>
+		<Node name="message 11">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="233"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo"/>
+					<Prp name="object top" type="I" value="214"/>
+					<Prp name="line #" type="I" value="135"/>
+					<Prp name="image file name" type="S" value="visImage6.png"/>
+					<Prp name="object left" type="I" value="263"/>
+					<Prp name="object right" type="I" value="345"/>
+					<Prp name="datetime" type="D" value="43822.4628176389"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="223"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="304"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (41, 9) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McTableWidget&quot;, &quot;&quot;, 3).SWTObject(&quot;McGrid&quot;, &quot;&quot;, 2).SWTObject(&quot;McValuePickerWidget&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6919856944"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="11"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="135"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 23">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="object top" type="I" value="48"/>
+					<Prp name="line #" type="I" value="1403"/>
+					<Prp name="image file name" type="S" value="visImage15.png"/>
+					<Prp name="object left" type="I" value="31"/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="datetime" type="D" value="43822.4631492014"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="63"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="97"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6923175926"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="23"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="1403"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 45">
+			<Prp name="remarks" type="S" value="Hover at point (28, 11).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;GroupToolItemControl&quot;, &quot;&quot;, 8))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.694546412"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="45"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="362"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 41">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="727"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList"/>
+					<Prp name="object top" type="I" value="113"/>
+					<Prp name="line #" type="I" value="8"/>
+					<Prp name="image file name" type="S" value="visImage31.png"/>
+					<Prp name="object left" type="I" value="32"/>
+					<Prp name="object right" type="I" value="1360"/>
+					<Prp name="datetime" type="D" value="43822.4644540393"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="122"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="202"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Tree&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6936283912"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="41"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="8"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The tree node 'Approve Purchase Order by Type (Substitute) (6)' was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="6"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="child data"/>
+		<Node name="message 50">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="409"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals"/>
+					<Prp name="object top" type="I" value="173"/>
+					<Prp name="line #" type="I" value="376"/>
+					<Prp name="image file name" type="S" value="visImage35.png"/>
+					<Prp name="object left" type="I" value="1338"/>
+					<Prp name="object right" type="I" value="1362"/>
+					<Prp name="datetime" type="D" value="43822.4656169792"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="291"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1350"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (12, 118) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;PTabItemPanel&quot;, &quot;&quot;, 3).SWTObject(&quot;TabControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6947886806"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="50"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="376"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 25">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="511"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="288"/>
+					<Prp name="line #" type="I" value="1429"/>
+					<Prp name="image file name" type="S" value="visImage17.png"/>
+					<Prp name="object left" type="I" value="32"/>
+					<Prp name="object right" type="I" value="1360"/>
+					<Prp name="datetime" type="D" value="43822.4631602778"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="333"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="89"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McMaconomyPShelfMenuGui$3&quot;, &quot;&quot;, 2).SWTObject(&quot;PShelf&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;Tree&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6923312384"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="25"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="1429"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The tree node 'Users' was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 55">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="object top" type="I" value="48"/>
+					<Prp name="line #" type="I" value="173"/>
+					<Prp name="image file name" type="S" value="visImage38.png"/>
+					<Prp name="object left" type="I" value="31"/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="datetime" type="D" value="43822.4659515162"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="63"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="97"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6951200347"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="55"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="173"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 7">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="462"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="435"/>
+					<Prp name="line #" type="I" value="89"/>
+					<Prp name="image file name" type="S" value="visImage2.png"/>
+					<Prp name="object left" type="I" value="36"/>
+					<Prp name="object right" type="I" value="178"/>
+					<Prp name="datetime" type="D" value="43822.4626406134"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="448"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="107"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://889610714|{D68B8C40-69A2-498D-97E3-9E407C409ED3}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6918092245"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="7"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="89"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'AccountPayable' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 40">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="727"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList"/>
+					<Prp name="object top" type="I" value="113"/>
+					<Prp name="line #" type="I" value="6"/>
+					<Prp name="image file name" type="S" value="visImage30.png"/>
+					<Prp name="object left" type="I" value="32"/>
+					<Prp name="object right" type="I" value="1360"/>
+					<Prp name="datetime" type="D" value="43822.4644492708"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="122"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="202"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Tree&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6936175926"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="40"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="6"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The tree node 'Approve Purchase Order by Type (Substitute) (6)' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="6"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 52">
+			<Prp name="remarks" type="S" value="Hover at point (47, 13).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6948743866"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="52"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="19"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="6"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 24">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="282"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="256"/>
+					<Prp name="line #" type="I" value="1405"/>
+					<Prp name="image file name" type="S" value="visImage16.png"/>
+					<Prp name="object left" type="I" value="40"/>
+					<Prp name="object right" type="I" value="185"/>
+					<Prp name="datetime" type="D" value="43822.4631555903"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="269"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="112"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://3640713113|{1D40A39A-8E52-418E-888A-69ADD1765BA5}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6923241435"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="24"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="1405"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'HR' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 46">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="162"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action"/>
+					<Prp name="object top" type="I" value="140"/>
+					<Prp name="line #" type="I" value="364"/>
+					<Prp name="image file name" type="S" value="visImage33.png"/>
+					<Prp name="object left" type="I" value="501"/>
+					<Prp name="object right" type="I" value="558"/>
+					<Prp name="datetime" type="D" value="43822.4653828472"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="151"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="529"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (28, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;GroupToolItemControl&quot;, &quot;&quot;, 8))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6945508218"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="46"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="364"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 18">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="192"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="172"/>
+					<Prp name="line #" type="I" value="166"/>
+					<Prp name="image file name" type="S" value="visImage11.png"/>
+					<Prp name="object left" type="I" value="1338"/>
+					<Prp name="object right" type="I" value="1353"/>
+					<Prp name="datetime" type="D" value="43822.4629758565"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="182"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1345"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://2581346899|{B9230814-9775-4DDF-8206-84F846BE8FF1}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6921444907"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="18"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="166"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'Maximize' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 15">
+			<Prp name="remarks" type="S" value="Hover at point (53, 11).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;SingleToolItemControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6920521412"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="15"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="158"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="stack"/>
+		<Node name="message 21">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="102"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl"/>
+					<Prp name="object top" type="I" value="78"/>
+					<Prp name="line #" type="I" value="193"/>
+					<Prp name="image file name" type="S" value="visImage13.png"/>
+					<Prp name="object left" type="I" value="240"/>
+					<Prp name="object right" type="I" value="1353"/>
+					<Prp name="datetime" type="D" value="43822.4630173843"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="90"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="796"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (556, 12) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabItemPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6921858102"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="21"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="193"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 1">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6914564931"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="33"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="HTML REPORT PATH::C:\Users\674087\Documents\RegressionCode\WppTestSuite\WppRegPack\ExecutionResults\\Report_23122019_16.35.41"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 3">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6914606597"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="3"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="105"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="TestRunner :1707"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 26">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="135"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button"/>
+					<Prp name="object top" type="I" value="119"/>
+					<Prp name="line #" type="I" value="1440"/>
+					<Prp name="image file name" type="S" value="visImage18.png"/>
+					<Prp name="object left" type="I" value="279"/>
+					<Prp name="object right" type="I" value="364"/>
+					<Prp name="datetime" type="D" value="43822.4632268056"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="127"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="321"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (42, 8) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McFilterContainer&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPanelWidget&quot;, &quot;&quot;).SWTObject(&quot;Button&quot;, &quot;Active Users&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6923948495"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="26"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="1440"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 47">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="207"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="190"/>
+					<Prp name="line #" type="I" value="366"/>
+					<Prp name="image file name" type="S" value="visImage34.png"/>
+					<Prp name="object left" type="I" value="507"/>
+					<Prp name="object right" type="I" value="675"/>
+					<Prp name="datetime" type="D" value="43822.4654229514"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="198"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="591"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://496274040|{4CD155C0-9067-482B-98E6-87CC2E32DDFF}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6945916782"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="47"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="366"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'ApprovePurchaseOrder' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 48">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6946866551"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="48"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="3"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Purchase Order is Approved by 1707 Finance (TSTAUTO)"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 30">
+			<Prp name="remarks" type="S" value="The process ID is 20260."/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6927427315"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="30"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="56"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The application &quot;C:\Program Files (x86)\Deltek Maconomy 19.0.100.3\Maconomy.exe&quot; started."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 19">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="140"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab"/>
+					<Prp name="object top" type="I" value="114"/>
+					<Prp name="line #" type="I" value="178"/>
+					<Prp name="image file name" type="S" value="visImage12.png"/>
+					<Prp name="object left" type="I" value="237"/>
+					<Prp name="object right" type="I" value="396"/>
+					<Prp name="datetime" type="D" value="43822.463013206"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="127"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="316"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (79, 13) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6921814583"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="19"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="178"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 35">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="line #" type="I" value="157"/>
+					<Prp name="image file name" type="S" value="visImage26.png"/>
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43822.4640758449"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6932440972"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="35"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="157"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The combo box item 'English (United Kingdom,WPP)' was selected."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 17">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="409"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl"/>
+					<Prp name="object top" type="I" value="173"/>
+					<Prp name="line #" type="I" value="163"/>
+					<Prp name="image file name" type="S" value="visImage10.png"/>
+					<Prp name="object left" type="I" value="1338"/>
+					<Prp name="object right" type="I" value="1362"/>
+					<Prp name="datetime" type="D" value="43822.4629503588"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="291"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1350"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (12, 118) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabItemPanel&quot;, &quot;&quot;, 3).SWTObject(&quot;TabControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6921217477"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="17"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="163"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 10">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="135"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllPurchaseOrder"/>
+					<Prp name="object top" type="I" value="119"/>
+					<Prp name="line #" type="I" value="132"/>
+					<Prp name="image file name" type="S" value="visImage5.png"/>
+					<Prp name="object left" type="I" value="710"/>
+					<Prp name="object right" type="I" value="834"/>
+					<Prp name="datetime" type="D" value="43822.4627564815"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="127"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="772"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (62, 8) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllPurchaseOrder&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McFilterContainer&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPanelWidget&quot;, &quot;&quot;).SWTObject(&quot;Button&quot;, &quot;All Purchase Orders&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6919248843"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="10"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="132"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 14">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6920501968"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="14"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="3"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Created Purchase Order is available in system"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 12">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="233"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo"/>
+					<Prp name="object top" type="I" value="214"/>
+					<Prp name="line #" type="I" value="136"/>
+					<Prp name="image file name" type="S" value="visImage7.png"/>
+					<Prp name="object left" type="I" value="263"/>
+					<Prp name="object right" type="I" value="345"/>
+					<Prp name="datetime" type="D" value="43822.4628197685"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="'[Tab]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;McWorkspaceSheafGui$McDecoratedPaneGui&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;McFilterPaneWidget&quot;, &quot;&quot;).SWTObject(&quot;McTableWidget&quot;, &quot;&quot;, 3).SWTObject(&quot;McGrid&quot;, &quot;&quot;, 2).SWTObject(&quot;McValuePickerWidget&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6919879745"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="12"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="136"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 51">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="192"/>
+					<Prp name="object name" type="S" value="NameMapping.Sys"/>
+					<Prp name="object top" type="I" value="172"/>
+					<Prp name="line #" type="I" value="379"/>
+					<Prp name="image file name" type="S" value="visImage36.png"/>
+					<Prp name="object left" type="I" value="1338"/>
+					<Prp name="object right" type="I" value="1353"/>
+					<Prp name="datetime" type="D" value="43822.4656699884"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="182"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1345"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;style&gt;body {font-family : Courier New, Arial; font-size : 10pt; font-weight : normal; padding : 14px 8px 8px 14px; margin : 0 0 0 0;} p {margin : 4px 0 4px 0; padding : 0 0 0 0;} h4 {font-size: 10pt; font-weight : bold; margin : 12px 0 0 16px; padding : 0 0 0 0;} table {margin-left : 16px; border-top: 1px solid grey;} td {font-size : 10pt; font-weight : normal; padding-left : 8px;} &lt;/style&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;imagerepository://2581346899|{B9230814-9775-4DDF-8206-84F846BE8FF1}|{8FCB4A05-EBFB-4475-9481-7011D23352A8}&quot;&gt;Open the image in the editor&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6948384954"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="51"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="379"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The image 'Maximize' was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 0">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6912813426"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="210"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="C:\Users\674087\Documents\RegressionCode\WppTestSuite\WppRegPack\TestResource\Regression\DS_IND_Regression.xlsx"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 36">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="195"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Login&quot;)"/>
+					<Prp name="object top" type="I" value="170"/>
+					<Prp name="line #" type="I" value="158"/>
+					<Prp name="image file name" type="S" value="visImage27.png"/>
+					<Prp name="object left" type="I" value="154"/>
+					<Prp name="object right" type="I" value="246"/>
+					<Prp name="datetime" type="D" value="43822.464078044"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="182"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="200"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (46, 12) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;Button&quot;, &quot;Login&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6932456019"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="36"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="158"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 42">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6944575231"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="42"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="3"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Created Purchase Order is available in Approval List"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 31">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="line #" type="I" value="153"/>
+					<Prp name="image file name" type="S" value="visImage21.png"/>
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43822.4640644792"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6932324884"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="31"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="153"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window got focus."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 53">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="140"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2"/>
+					<Prp name="object top" type="I" value="114"/>
+					<Prp name="line #" type="I" value="21"/>
+					<Prp name="image file name" type="S" value="visImage37.png"/>
+					<Prp name="object left" type="I" value="237"/>
+					<Prp name="object right" type="I" value="331"/>
+					<Prp name="datetime" type="D" value="43822.4657105208"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="127"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="284"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (47, 13) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6948786574"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="53"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="21"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="6"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 54">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6949165625"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="54"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="3"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Purchase Order is Approved by 1707 Finance (TSTAUTO)"/>
+			<Prp name="unit id" type="I" value="3"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 20">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6921835069"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="20"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="185"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Approver level :0: 1707*1707105320*NEERAJ KHATTRI (170210237)*OpCo - Finance"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 6">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="object top" type="I" value="48"/>
+					<Prp name="line #" type="I" value="87"/>
+					<Prp name="image file name" type="S" value="visImage1.png"/>
+					<Prp name="object left" type="I" value="31"/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="datetime" type="D" value="43822.4626340509"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="63"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="97"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6918027778"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="6"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="87"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 29">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="object top" type="I" value="48"/>
+					<Prp name="line #" type="I" value="18"/>
+					<Prp name="image file name" type="S" value="visImage20.png"/>
+					<Prp name="object left" type="I" value="31"/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="datetime" type="D" value="43822.4634460764"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="63"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="97"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6926148727"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="29"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="18"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was double-clicked by the left mouse button."/>
+			<Prp name="unit id" type="I" value="4"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 16">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="104"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl"/>
+					<Prp name="object top" type="I" value="82"/>
+					<Prp name="line #" type="I" value="160"/>
+					<Prp name="image file name" type="S" value="visImage9.png"/>
+					<Prp name="object left" type="I" value="1244"/>
+					<Prp name="object right" type="I" value="1350"/>
+					<Prp name="datetime" type="D" value="43822.4628893519"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="93"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="1297"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (53, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;SingleToolItemControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.692057419"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="16"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="160"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 5">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+					<Prp name="object top" type="I" value="48"/>
+					<Prp name="line #" type="I" value="23"/>
+					<Prp name="image file name" type="S" value="visImage0.png"/>
+					<Prp name="object left" type="I" value="31"/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="datetime" type="D" value="43822.4623660764"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="63"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="97"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (66, 15) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 4).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6915341551"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="5"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="23"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 4">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6915155903"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="4"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="133"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="1707_ApprovePurchaseOrder"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 2">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6914565046"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="id" type="I" value="2"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="34"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="-----------------------------------------------------"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 28">
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6926113889"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="28"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="283"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="Logins :1707 Finance (TSTAUTO)*3"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 39">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="105"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh"/>
+					<Prp name="object top" type="I" value="83"/>
+					<Prp name="line #" type="I" value="306"/>
+					<Prp name="image file name" type="S" value="visImage29.png"/>
+					<Prp name="object left" type="I" value="37"/>
+					<Prp name="object right" type="I" value="59"/>
+					<Prp name="datetime" type="D" value="43822.464214213"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="94"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="48"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="A click at point (11, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;McClumpSashForm&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;SingleToolItemControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6933821991"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="39"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="306"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 49">
+			<Prp name="remarks" type="S" value="Hover at point (12, 118).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;PTabItemPanel&quot;, &quot;&quot;, 3).SWTObject(&quot;TabControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.694780625"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="49"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="374"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 33">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+					<Prp name="object top" type="I" value="75"/>
+					<Prp name="line #" type="I" value="155"/>
+					<Prp name="image file name" type="S" value="visImage23.png"/>
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43822.4640679167"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 2)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6932356829"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="33"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="155"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The text 'CORE@WPP123' was entered in the text editor."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 37">
+			<Prp name="remarks" type="S" value="Hover at point (39, 15).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.TodoGrid.PTabFolder.TabFolderPanel.ToDo&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;TabControl&quot;, &quot;&quot;, 4))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6933227546"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="37"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="292"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 43">
+			<Prp name="remarks" type="S" value="Hover at point (53, 11).&#xA;&#xA;Tested object:&#xA;Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter&#xA;(Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Deltek Maconomy - 1707 Finance (TSTAUTO)&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 3).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 5).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;PTabFolder&quot;, &quot;&quot;).SWTObject(&quot;TabFolderPanel&quot;, &quot;&quot;, 1).SWTObject(&quot;Composite&quot;, &quot;&quot;, 2).SWTObject(&quot;SingleToolItemControl&quot;, &quot;&quot;))"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6944593634"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="43"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="354"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The mouse pointer hovered over the window."/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 32">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="65"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+					<Prp name="object top" type="I" value="44"/>
+					<Prp name="line #" type="I" value="154"/>
+					<Prp name="image file name" type="S" value="visImage22.png"/>
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43822.4640663657"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Text&quot;, &quot;&quot;, 1)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.693233831"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="32"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="154"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The text '1707 Finance (TSTAUTO)' was entered in the text editor."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Node name="message 34">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="object name" type="S" value="Aliases.Maconomy.Shell7.SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+					<Prp name="object top" type="I" value="106"/>
+					<Prp name="line #" type="I" value="156"/>
+					<Prp name="image file name" type="S" value="visImage24.png"/>
+					<Prp name="object left" type="I" value="76"/>
+					<Prp name="object right" type="I" value="344"/>
+					<Prp name="datetime" type="D" value="43822.4640699884"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Sys.Process(&quot;Maconomy&quot;).SWTObject(&quot;Shell&quot;, &quot;Login to Deltek Maconomy&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;).SWTObject(&quot;Composite&quot;, &quot;&quot;, 1).SWTObject(&quot;Combo&quot;, &quot;&quot;)"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="date" type="D" value="43822.6932397569"/>
+			<Prp name="owner id" type="I" value="4"/>
+			<Prp name="id" type="I" value="34"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="line no" type="I" value="156"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="message" type="S" value="The drop-down box was displayed."/>
+			<Prp name="unit id" type="I" value="5"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+		</Node>
+		<Prp name="status" type="I" value="0"/>
+	</Node>
+</Nodes>
