@@ -5,7 +5,10 @@
 			<child name="Events" key="{BC9D771E-B020-4A1E-88E4-959AFF2F400F}" type="Events" typeId="{E7ABA87F-E873-4452-9921-6F4BAAEB2BCC}" pluginName="" path="Events\Events.tcAX" />
 			<child name="Script" key="{A997569A-D4EA-4417-80FA-EDEC8D838F31}" type="Script" typeId="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" pluginName="Script" path="Script\Script.tcScript" />
 		</folder>
+		<folder name="TestResource" />
 		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
+		<child name="NameMapping" key="{63138B44-92CD-4787-BFE7-D450728F7290}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
+		<child name="ImageRepository" key="{F5D4A069-4A02-4D85-8830-F5B5B12BF892}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
 	</children>
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
@@ -119,17 +122,24 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="-1" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="3" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
-			<data />
+			<data>
+				<row val0="org.apache.pdfbox.pdmodel.PDDocument" />
+				<row val0="org.apache.pdfbox.util.PDFTextStripper" />
+				<row val0="javax.imageio.ImageIO" />
+				<row val0="java.io.File" />
+			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="-1" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="0" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
-			<data />
+			<data>
+				<row val0="..\..\..\..\Downloads\pdfbox-app-1.8.16.jar" />
+			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />
 		<setting name="JavaFXOpenApp_ExposedCustomNodes" type="6" rowIndex="-1" colIndex="2">

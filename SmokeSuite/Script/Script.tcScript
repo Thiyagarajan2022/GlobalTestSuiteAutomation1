@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
 	<children>
+		<folder name="BusinessComponents">
+			<folder name="Windows">
+				<child name="Expenses" key="{8C8BE56A-4C15-4CBA-BDD0-BB288039A985}" path="Expenses.js" />
+			</folder>
+		</folder>
+		<folder name="ControlBasedFunctions" />
+		<folder name="EnvConfig" />
+		<folder name="SupportLibraries" />
+		<folder name="TestScripts" />
 		<child name="Unit1" key="{F89B70BF-08E5-480C-ACAE-9EBCCA6BDD5C}" path="Unit1.js" />
 	</children>
 </Root>
