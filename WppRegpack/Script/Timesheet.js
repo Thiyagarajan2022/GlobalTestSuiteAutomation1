@@ -120,12 +120,12 @@ ReportUtils.logStep("INFO", "Create Timesheet started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME);
 getDetails();
 goToJobMenuItem();
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
-  if((jobNumber=="")||(jobNumber==null)){
-//  jobNumber = readlog();
+
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if((jobNumber=="")||(jobNumber==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
   }
   
   if((jobNumber=="")||(jobNumber==null))

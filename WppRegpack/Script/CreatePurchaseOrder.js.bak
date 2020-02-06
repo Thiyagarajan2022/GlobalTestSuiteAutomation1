@@ -17,7 +17,7 @@ var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
-
+ 
 
 function CreatePurchaseOrder(){ 
 TextUtils.writeLog("Create Purchase Order Started"); 

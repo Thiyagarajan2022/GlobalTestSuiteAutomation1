@@ -125,10 +125,11 @@ if((company==null)||(company=="")){
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Vendor Invoice");
 }
 //Log.Message(company)
-PurchOrderNo = ExcelUtils.getColumnDatas("Purch Order No",EnvParams.Opco)
-if((PurchOrderNo=="")||(PurchOrderNo==null)){
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 PurchOrderNo = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
+if((PurchOrderNo=="")||(PurchOrderNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+PurchOrderNo = ExcelUtils.getColumnDatas("Purch Order No",EnvParams.Opco)
 }
 if((PurchOrderNo==null)||(PurchOrderNo=="")){ 
 ValidationUtils.verify(false,true,"PO Number is Needed to Create a Vendor Invoice");

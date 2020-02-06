@@ -83,12 +83,12 @@ ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
 sheetName ="JobBudgetCreation";
 
   goToJobMenuItem();
-
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  if((jobNumber=="")||(jobNumber==null)){
+  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if((jobNumber=="")||(jobNumber==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   
   if((jobNumber=="")||(jobNumber==null))

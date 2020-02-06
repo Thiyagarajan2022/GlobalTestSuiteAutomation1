@@ -16,7 +16,7 @@ var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var InvoiceNo ="";
-
+ 
 function RejectInvoice(){ 
 TextUtils.writeLog("Reject Vendor Invoice Started"); 
 Indicator.PushText("waiting for window to open");

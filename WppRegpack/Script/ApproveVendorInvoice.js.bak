@@ -370,4 +370,4 @@ ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, Indicator.Text);;  
 }
 }
-}
+} 

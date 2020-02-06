@@ -15,7 +15,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var EmpNumber,weekno,TYear,comapany,level = "";
 var Approve_Level = [];
 var ApproveInfo = [];
-var level = 0;
+var level = 0; 
 function RejectTimesheet(){ 
   Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -55,29 +55,29 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Rejecting Timesheet started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME);
 
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  EmpNumber = ExcelUtils.getRowDatas("Employee Name",EnvParams.Opco)
-  if((EmpNumber=="")||(EmpNumber==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   EmpNumber = ReadExcelSheet("Timesheet Employee Name",EnvParams.Opco,"Data Management");
+  if((EmpNumber=="")||(EmpNumber==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  EmpNumber = ExcelUtils.getRowDatas("Employee Name",EnvParams.Opco)
   }  
   if((EmpNumber=="")||(EmpNumber==null))
   ValidationUtils.verify(false,true,"Employee Name is needed to Approve Timesheet");
   
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  weekno = ExcelUtils.getRowDatas("Weekno",EnvParams.Opco)
-  if((weekno=="")||(weekno==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   weekno = ReadExcelSheet("Timesheet Week No",EnvParams.Opco,"Data Management");
+  if((weekno=="")||(weekno==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  weekno = ExcelUtils.getRowDatas("Weekno",EnvParams.Opco)
   }  
   if((weekno=="")||(weekno==null))
   ValidationUtils.verify(false,true,"Week No is needed to Approve Timesheet");
   
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  TYear = ExcelUtils.getRowDatas("Year",EnvParams.Opco)
-  if((TYear=="")||(TYear==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   TYear = ReadExcelSheet("Timesheet Year",EnvParams.Opco,"Data Management");
+  if((TYear=="")||(TYear==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  TYear = ExcelUtils.getRowDatas("Year",EnvParams.Opco)
   }  
   if((TYear=="")||(TYear==null))
   ValidationUtils.verify(false,true,"Year is needed to Approve Timesheet");

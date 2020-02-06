@@ -75,10 +75,12 @@ WorkspaceUtils.closeAllWorkspaces();
 function getDetails(){ 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
-InvoiceNo = ExcelUtils.getRowDatas("Invoice NO",EnvParams.Opco)
-if((InvoiceNo=="")||(InvoiceNo==null)){
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 InvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
+
+if((InvoiceNo=="")||(InvoiceNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+InvoiceNo = ExcelUtils.getRowDatas("Invoice NO",EnvParams.Opco)
 }
 if((InvoiceNo==null)||(InvoiceNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Invoice NO is Needed to Approve Vendor Invoice");

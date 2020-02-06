@@ -57,11 +57,12 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Approving PO started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-ExcelUtils.setExcelName(workBook, sheetName, true);
-POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
-  if((POnumber=="")||(POnumber==null)){
+
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   POnumber = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
+  if((POnumber=="")||(POnumber==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
   }
 if((POnumber==null)||(POnumber=="")){ 
 ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");

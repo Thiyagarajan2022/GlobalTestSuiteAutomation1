@@ -55,34 +55,34 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Rejecting Timesheet started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME);
 
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  EmpNumber = ExcelUtils.getRowDatas("Employee Name",EnvParams.Opco)
-  if((EmpNumber=="")||(EmpNumber==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   EmpNumber = ReadExcelSheet("Timesheet Employee Name",EnvParams.Opco,"Data Management");
+  if((EmpNumber=="")||(EmpNumber==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  EmpNumber = ExcelUtils.getRowDatas("Employee Name",EnvParams.Opco)
   }  
   if((EmpNumber=="")||(EmpNumber==null))
   ValidationUtils.verify(false,true,"Employee Name is needed to Approve Timesheet");
   
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  weekno = ExcelUtils.getRowDatas("Weekno",EnvParams.Opco)
-  if((weekno=="")||(weekno==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   weekno = ReadExcelSheet("Timesheet Week No",EnvParams.Opco,"Data Management");
+  if((weekno=="")||(weekno==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  weekno = ExcelUtils.getRowDatas("Weekno",EnvParams.Opco)
   }  
   if((weekno=="")||(weekno==null))
   ValidationUtils.verify(false,true,"Week No is needed to Approve Timesheet");
   
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  TYear = ExcelUtils.getRowDatas("Year",EnvParams.Opco)
-  if((TYear=="")||(TYear==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   TYear = ReadExcelSheet("Timesheet Year",EnvParams.Opco,"Data Management");
+  if((TYear=="")||(TYear==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  TYear = ExcelUtils.getRowDatas("Year",EnvParams.Opco)
   }  
   if((TYear=="")||(TYear==null))
   ValidationUtils.verify(false,true,"Year is needed to Approve Timesheet");
   
-  
+ExcelUtils.setExcelName(workBook, sheetName, true);  
 goToJobMenuItem();  
 sheetName = "RejectTimesheet";
 selectWeek();
