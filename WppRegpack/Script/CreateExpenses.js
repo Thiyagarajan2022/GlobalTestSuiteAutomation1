@@ -10,11 +10,10 @@ var excelName = EnvParams.getEnvironment();
 var workBook = Project.Path+excelName;
 var sheetName = "CreateExpense";
   Indicator.Show();
-  Indicator.PushText("waiing for window to open");
- 
-//Log.Message(workBook);
+  Indicator.PushText("waiting for window to open");
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
-//Log.Message(sheetName);
+
 var Arrays = [];
 var count = true;
 var STIME = "";
@@ -37,7 +36,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Description= ExcelUtils.getColumnDatas("Description",EnvParams.Opco)
 if((Description==null)||(Description=="")){ 
 ValidationUtils.verify(false,true,"Description is Needed to Create a Expenses");
-//Log.Message(Description);
+Log.Message(Description);
 }
 }
 
@@ -72,14 +71,14 @@ function goToJobMenuItem(){
       menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     menuBar.DblClick();
-     if(ImageRepository.ImageSet2.TE.Exists()){
-       ImageRepository.ImageSet2.TE.Click();// GL
+     if(ImageRepository.ImageSet01.TE.Exists()){
+       ImageRepository.ImageSet01.TE.Click();// GL
       }
-     else if(ImageRepository.ImageSet2.TE1.Exists()){
-       ImageRepository.ImageSet2.TE1.Click();
+     else if(ImageRepository.ImageSet01.TE1.Exists()){
+       ImageRepository.ImageSet01.TE1.Click();
       }
      else{
-       ImageRepository.ImageSet2.TE2.Click();
+       ImageRepository.ImageSet01.TE2.Click();
     }
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
@@ -125,6 +124,7 @@ Client_Managt.DblClickItem("|Time & Expenses");
 }
 
 function gotoTimeExpenses(){
+//  TextUtils.writeLog("Create Expenses Sheet Started");
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
     ReportUtils.logStep("INFO", "Enter Expenses Details");
   aqUtils.Delay(2000, Indicator.Text);
@@ -170,7 +170,7 @@ ReportUtils.logStep_Screenshot("");
      ////----From Excel------ 
       ExcelUtils.setExcelName(workBook, sheetName, true);
     var employeeNo = ExcelUtils.getColumnDatas("Employeeno",EnvParams.Opco)
-//    Log.Message(employeeNo);
+    Log.Message(employeeNo);
       var employee = Sys.Process("Maconomy").SWTObject("Shell", "Create Expense Sheet").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2)
 //      Log.Message(employee.getText());
       if(employee.getText()!=employeeNo){
@@ -227,6 +227,7 @@ sheetName = "CreateExpense";
 createbtn.HoverMouse();
 ReportUtils.logStep_Screenshot(""); 
     createbtn.Click();
+//    TextUtils.writeLog("Create Expenses Sheet is CREATED");
     ValidationUtils.verify(true,true,"Expenses is CREATED");
     ReportUtils.logStep("INFO",Description+" "+STIME +" : is Created");
   } 
@@ -236,6 +237,7 @@ ReportUtils.logStep_Screenshot("");
     cancelbtn.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     cancelbtn.Click();
+//    TextUtils.writeLog("Expenses Sheet is not CREATED");
     ValidationUtils.verify(true,false,"Expenses is not Created");
     ReportUtils.logStep("ERROR","Expenses is not Created");
   } 
@@ -289,11 +291,7 @@ ReportUtils.logStep_Screenshot("");
   for(var i=0;i<table.getItemCount();i++){
     if(table.getItem(i).getText_2(2).OleValue.toString().trim()==(Description+" "+STIME)){
       flag = true;
-//      Log.Message("Created Expenses Sheet is listed Below :" +Description);
-//      var path = Project.Path+"RegressionLogs\\"+EnvParams.instanceData+"\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+TestRunner.sheet.substring(TestRunner.sheet.lastIndexOf("\\")+1,TestRunner.sheet.indexOf("."))+".txt";
-//      TextUtils.writeDetails(path,"Expenses Number ",get);
-
-ReportUtils.logStep_Screenshot("");
+      ReportUtils.logStep_Screenshot("");
           Sys.Desktop.KeyDown(0x11);
           Sys.Desktop.KeyDown(0x46);
          Sys.Desktop.KeyUp(0x11);
@@ -303,8 +301,7 @@ ReportUtils.logStep_Screenshot("");
     else{
       table.Keys("[Down]");
     } 
-  }   
-  
+  }     
   ValidationUtils.verify(flag,true,"Created Expenses is available in system");
   ValidationUtils.verify(true,true,"Expenses Number :"+table.getItem(i).getText_2(2).OleValue.toString().trim())
   ReportUtils.logStep("INFO", "Created Expenses is listed in table"); 
@@ -508,7 +505,8 @@ Ref.Refresh();
      currency1 =  commAdd.Child(jId);
 //     Log.Message(currency1.FullName);
      }}
-       
+     
+     Sys.Process("Maconomy").Refresh();  
     currency1.Keys(" ");    
     if(currency!=""){
        currency1.Click();
@@ -644,8 +642,8 @@ ReportUtils.logStep_Screenshot("");
     submit.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     submit.Click();  
+//    TextUtils.writeLog("Expenses Sheet is Submitted");
     ValidationUtils.verify(true,true,"Expense Sheet is Submitted")
-//    Log.Message("Expense Sheet is Submitted"); 
     aqUtils.Delay(2000, Indicator.Text);
 
 //    var printstatus = false;

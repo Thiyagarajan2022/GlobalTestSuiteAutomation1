@@ -13,7 +13,7 @@ var workBook = Project.Path+excelName;
 var sheetName = "FixedAssetDepreciation";
   Indicator.Show();
   Indicator.PushText("waiting for window to open");
- 
+
 var comapany= "";
 var AssetsNo="";
 var Transaction="";

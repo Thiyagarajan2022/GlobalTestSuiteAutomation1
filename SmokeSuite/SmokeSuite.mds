@@ -5,10 +5,14 @@
 			<child name="Events" key="{BC9D771E-B020-4A1E-88E4-959AFF2F400F}" type="Events" typeId="{E7ABA87F-E873-4452-9921-6F4BAAEB2BCC}" pluginName="" path="Events\Events.tcAX" />
 			<child name="Script" key="{A997569A-D4EA-4417-80FA-EDEC8D838F31}" type="Script" typeId="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" pluginName="Script" path="Script\Script.tcScript" />
 		</folder>
-		<folder name="TestResource" />
+		<folder name="TestResource">
+			<child name="DS_CHN_SYSTEST.xlsx" key="{78A766BA-0CCD-421D-8530-0DB88056D359}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_CHN_SYSTEST.xlsx" />
+			<child name="EnvParamaters.xlsx" key="{6AA8947F-10F8-4BAF-9C40-30F458CFB1F7}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="..\..\..\..\Music\Rajeev\Wpp_Project_Final\Wpp_Project\wppGTCRegressionAutomation\SmokeSuite\TestResource\EnvParamaters.xlsx" />
+			<child name="TC_RunManager.xlsx" key="{CE28CFF5-B306-47EE-8702-3EF31A2A73EA}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="..\..\..\..\Music\Rajeev\Wpp_Project_Final\Wpp_Project\wppGTCRegressionAutomation\SmokeSuite\TestResource\TC_RunManager.xlsx" />
+		</folder>
 		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
 		<child name="NameMapping" key="{63138B44-92CD-4787-BFE7-D450728F7290}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
-		<child name="ImageRepository" key="{F5D4A069-4A02-4D85-8830-F5B5B12BF892}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
+		<child name="ImageRepository" key="{22746466-E4D7-4FA2-9F43-ED370A5B696A}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
 	</children>
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
@@ -122,7 +126,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="3" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="15" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -131,6 +135,18 @@
 				<row val0="org.apache.pdfbox.util.PDFTextStripper" />
 				<row val0="javax.imageio.ImageIO" />
 				<row val0="java.io.File" />
+				<row val0="com.relevantcodes.extentreports.Extent_Craft" />
+				<row val0="java.io" />
+				<row val0="org.apache.pdfbox.pdmodel.PDDocument" />
+				<row val0="org.apache.pdfbox.util.PDFTextStripper" />
+				<row val0="javax.imageio.ImageIO" />
+				<row val0="java.io.File" />
+				<row val0="MLT.MultiLingualTranslator" />
+				<row val0="com.relevantcodes.extentreports.ExtentReports" />
+				<row val0="com.relevantcodes.extentreports.LogStatus" />
+				<row val0="com.cts.ZephyrApiUsecases.UpdateExecutionStatus" />
+				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
+				<row val0="com.ImageComparison.ImageCompMain" />
 			</data>
 		</setting>
 		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="0" colIndex="0">
@@ -138,7 +154,20 @@
 				<column type="5" enabled="True" />
 			</columns>
 			<data>
-				<row val0="..\..\..\..\Downloads\pdfbox-app-1.8.16.jar" />
+				<row val0=".\ProjectLibraries\zfj-cloud-rest-client-3.0.jar" />
+				<row val0=".\ProjectLibraries\sqlite-jdbc-3.8.11.1.jar" />
+				<row val0=".\ProjectLibraries\pdfbox-app-1.8.16.jar" />
+				<row val0=".\ProjectLibraries\mongodb-driver-core-3.0.4.jar" />
+				<row val0=".\ProjectLibraries\mongodb-driver-3.0.4.jar" />
+				<row val0=".\ProjectLibraries\MLT_1.0.0.jar" />
+				<row val0=".\ProjectLibraries\jwt-plugin-3.1.0.jar" />
+				<row val0=".\ProjectLibraries\jsoup-1.8.3.jar" />
+				<row val0=".\ProjectLibraries\Jira_Integration-0.0.1-SNAPSHOT-jar-with-dependencies.jar" />
+				<row val0=".\ProjectLibraries\ImageComparison.jar" />
+				<row val0=".\ProjectLibraries\freemarker-2.3.23.jar" />
+				<row val0=".\ProjectLibraries\extentreports-3.1.5.jar" />
+				<row val0=".\ProjectLibraries\extentreports-2.41.2.jar" />
+				<row val0=".\ProjectLibraries\bson-3.0.4.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />

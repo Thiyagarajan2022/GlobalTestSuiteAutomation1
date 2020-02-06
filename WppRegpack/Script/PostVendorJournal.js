@@ -7,7 +7,7 @@
 //USEUNIT Restart
 //USEUNIT EventHandler
 
- 
+
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -102,10 +102,8 @@ if((companyNo==null)||(companyNo=="")){
 ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
 }
 
-//Job_Number.Click();
   gotoMenu();
   Delay(5000);
-// goToCreatePurchase();
 searchForJournal();
 
 }
@@ -113,6 +111,9 @@ searchForJournal();
 function gotoMenu(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
+
+ TextUtils.writeLog(" Post Vendor Journal Started "); 
+     ReportUtils.logStep_Screenshot("");
 if(ImageRepository.ImageSet.AccountPayable.Exists()){
 ImageRepository.ImageSet.AccountPayable.Click();// GL
 }
@@ -146,6 +147,8 @@ Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").
 Client_Managt.ClickItem("|AP Transactions");
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|AP Transactions");
+ TextUtils.writeLog(" Navigate AP Transactions "); 
+     ReportUtils.logStep_Screenshot("");
 }
 
 } 
@@ -153,6 +156,8 @@ Client_Managt.DblClickItem("|AP Transactions");
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
 
+ 
+ 
 }
 
 function postJournal(){ 
@@ -170,7 +175,8 @@ var pdf =    Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print postin
 //Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
 //    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print job quote")!=-1){
  
-
+ TextUtils.writeLog("Post Vendor Journal"); 
+     ReportUtils.logStep_Screenshot("");
 
 Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -248,6 +254,9 @@ var journalNo = Aliases.ObjectGroup.JournalNoField;
 journalNo.Keys(JournalNo);
 
 Delay(5000);
+
+ TextUtils.writeLog("Post Vendor Journal"); 
+ ReportUtils.logStep_Screenshot("");
  
   
   var closefilter =  Aliases.ObjectGroup.CloseFilterVendorJournal

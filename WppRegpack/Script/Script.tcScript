@@ -63,6 +63,7 @@
 				<child name="PostVendorJournal" key="{9187B3B4-6BCF-47A2-8651-26FF24762E44}" path="PostVendorJournal.js" />
 				<child name="Reject_Expenses" key="{8AED6E2E-5B77-45EB-8D7F-377ACB714843}" path="Reject_Expenses.js" />
 				<child name="Reverse_Invoice" key="{3202CF2D-0731-4EC0-B0A8-81F95A735F07}" path="Reverse_Invoice.js" />
+				<child name="Writing_Off_Bad_Debts" key="{2D45C1F9-497F-40B2-A55A-EAFA8CDC57B8}" path="Writing_Off_Bad_Debts.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

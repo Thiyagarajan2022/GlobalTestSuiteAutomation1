@@ -35,6 +35,7 @@ function changeuser()
 {
   Indicator.PushText("waiting for window to open");
 //aqTestCase.Begin("Job Creation", "zfj://CH1-67");
+TextUtils.writeLog("Change User Started"); 
 excelName = EnvParams.getEnvironment();
 workBook = Project.Path+excelName;
 sheetName = "ChangeUser";
@@ -68,11 +69,7 @@ WorkspaceUtils.Language = Language;
     user_Approval();
 
   closeAllWorkspaces();
-//  Approver level :0: 1307 Senior Finance (13079510)*1307 Management (13079507)	15:51:02	Normal			2.35
- // Approve_Level[1] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
  
- //Approve_Level[0] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
-// Approve_Level[1] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
   CredentialLogin();
 
 for(var i=level;i<ApproveInfo.length;i++){
@@ -162,7 +159,8 @@ Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 }
 
 function goToMenu(){ 
-  
+ ReportUtils.logStep_Screenshot("Navigating to Menu"); 
+ TextUtils.writeLog("Navigating to Menu"); 
     var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
       menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
@@ -290,7 +288,8 @@ ReportUtils.logStep_Screenshot("");
   Delay(4000);
   var firstcell = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
  firstcell.Keys(nameValue);
-
+ ReportUtils.logStep_Screenshot(""); 
+ TextUtils.writeLog("Searching For User"); 
      ReportUtils.logStep_Screenshot("");
   firstcell.Keys("[Tab][Tab]");
   Delay(2000);
@@ -340,6 +339,9 @@ ReportUtils.logStep_Screenshot("");
   add.Click();
   Delay(5000);
   
+   ReportUtils.logStep_Screenshot(""); 
+ TextUtils.writeLog(""); 
+  
   var cell = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 6).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
 //  SearchByValues_Col_1(ObjectAddrs,popupName,value,fieldName)
 
@@ -354,6 +356,9 @@ ReportUtils.logStep_Screenshot("");
   save.Click();
 }
 Delay(3000);
+
+   ReportUtils.logStep_Screenshot(""); 
+ TextUtils.writeLog(""); 
 
   if((validFrom!="")&&(validFrom!=null)){ 
     
@@ -378,6 +383,10 @@ Delay(3000);
   }  
   
   }
+  
+     ReportUtils.logStep_Screenshot(""); 
+ TextUtils.writeLog(""); 
+ 
        Delay(4000);
 var savebtn =""
   // Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 2);;
@@ -397,18 +406,18 @@ Delay(4000);
      savebtn.HoverMouse();
      savebtn.Click();
     ReportUtils.logStep_Screenshot(); 
+
+ TextUtils.writeLog("Saving the changes"); 
   
     
  //   var resubmitpopup = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
     
   Delay(10000)
-//    if(Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK").isVisible())
+
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Users - User Information")    
 {
 var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
       var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Label", "*").WndCaption;
-      
- //Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
       Log.Message(label );
        button.HoverMouse();
    //  ReportUtils.logStep_Screenshot("");
@@ -418,13 +427,11 @@ var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Informatio
      
      
         Delay(2000)
-//    if(Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK").isVisible())
+
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Users - User Information")    
 {
 var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
       var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Label", "*").WndCaption;
-      
- //Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
       Log.Message(label );
        button.HoverMouse();
    //  ReportUtils.logStep_Screenshot("");
@@ -433,7 +440,9 @@ var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - User Informatio
   }   
   
   
+ ReportUtils.logStep_Screenshot(); 
 
+ TextUtils.writeLog("Saving the changes"); 
 
 
 var submitbtn =""
@@ -485,7 +494,8 @@ submitbtn = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SW
 //   var apprve_table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
     Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
  var apprve_table = Aliases.ObjectGroup.ChangeUserApprovalTable;
- 
+ TextUtils.writeLog("Search For Approver"); 
+  ReportUtils.logStep_Screenshot();
 // Aliases.Maconomy.Shell4.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.ApproverTable
 //Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 4).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
 
@@ -532,7 +542,8 @@ Approve.Click();
 ValidationUtils.verify(true,true,"Created User is Approved by" +Project_manager)
  ReportUtils.logStep("INFO", "Created User is Approved by" +Project_manager);
  
- 
+  TextUtils.writeLog("Approve User"); 
+
 if(Approve_Level.length==1){
   Delay(5000);
   var Ok = 
@@ -958,5 +969,5 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 
 
 }
-  
+ 
  
