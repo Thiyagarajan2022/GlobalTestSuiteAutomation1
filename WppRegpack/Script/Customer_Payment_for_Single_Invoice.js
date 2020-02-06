@@ -24,6 +24,23 @@ var STIME = "";
 var Clientbalance ="";
 
 function AccountsReceivable() {
+  
+Indicator.PushText("waiting for window to open");
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+  menuBar.Click();
+  aqUtils.Delay(3000, Indicator.Text);
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - AR","Username")
+Log.Message(Project_manager);
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
+Restart.login(Project_manager);  
+}
       Language = "";
     Language = EnvParams.Language;
     if((Language==null)||(Language=="")){
@@ -361,7 +378,7 @@ function gotoReceivable(){
 
       var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.savee;
       save.Click();
-      aqUtils.Delay(3000,Indicator.Text);
+      aqUtils.Delay(5000,Indicator.Text);
      
        var getjournal = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.journal.getText();
        ValidationUtils.verify(true,true,"Journal Number is : "+getjournal);

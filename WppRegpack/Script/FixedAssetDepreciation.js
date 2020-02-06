@@ -60,6 +60,24 @@ function getDetails(){
       }
       
 function fixedassest(){
+//  TextUtils.writeLog("Create a Asset Adjustment Started"); 
+
+Indicator.PushText("waiting for window to open");
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+  menuBar.Click();
+  aqUtils.Delay(3000, Indicator.Text);
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
+Log.Message(Project_manager);
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
+Restart.login(Project_manager);  
+}
       Language = "";
       Language = EnvParams.Language;
         if((Language==null)||(Language=="")){
@@ -147,12 +165,12 @@ function address(){
 }
 
 function assetcost(){
-  var assettable = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+  var assettable = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid  
   Sys.HighlightObject(assettable);
-  var comp = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
+  var comp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
   comp.Click();
   comp.Keys("[Tab]");
-  var assetno = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.firstcell;
+  var assetno = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.firstcell;
   assetno.setText(AssetsNo);
   aqUtils.Delay(3000,Indicator.Text);
     var i=0;
@@ -164,13 +182,14 @@ function assetcost(){
 }
 
 function goToregistration(){
+  TextUtils.writeLog("Fixed Asset Depreciation is Started")
    ReportUtils.logStep("INFO","Fixed Asset Depreciation is Started:"+STIME);    
-  var register = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Registrations;
+  var register = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Registrations;
   Sys.HighlightObject(register);
   register.Click();
   aqUtils.Delay(4000,Indicator.Text);
   
-  var Newassetadjust = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.newassetadjust;
+  var Newassetadjust = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;  
 //   Newassetadjust.HoverMouse();
     ReportUtils.logStep_Screenshot("");
    Newassetadjust.Click();
@@ -227,17 +246,17 @@ function goToregistration(){
 
 function goToAsset(){
   
-  var entries = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;
+  var entries = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;
   Sys.HighlightObject(entries)
-  var addbutton = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.addbutton;
+  var addbutton = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.addbutton;
   addbutton.Click();
   
-  var firstcell = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.firstcell;
+  var firstcell = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.firstcell;
   firstcell.Click();
   firstcell.Keys("[Tab][Tab][Tab]");
   aqUtils.Delay(1000,Indicator.Text);
   
-  var assetno = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assetno;
+  var assetno = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assetno;
   if(AssetsNo!=""){  
     assetno.Click();
     WorkspaceUtils.SearchByValueTableComp(assetno,"Asset",AssetsNo,"AssetNumber");    
@@ -248,8 +267,9 @@ function goToAsset(){
       
   assetno.Keys("[Tab]");
   aqUtils.Delay(1000,Indicator.Text);
-//  Sys.Process("Maconomy").Refresh();
-  var assettype = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
+  Sys.Process("Maconomy").Refresh();
+  
+  var assettype = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
   assettype.Keys(" ");
   if(Transactiontype!=""){
     assettype.Click();aqUtils.Delay(1000, Indicator.Text);
@@ -261,32 +281,33 @@ function goToAsset(){
     } 
     assettype.Keys("[Tab]");
     
-    var amount = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.amount;
+    var amount = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.amount;
     amount.Click();
     amount.setText(Amountbase);
     aqUtils.Delay(1000, Indicator.Text);
     
-    var save = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+    var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
     save.HoverMouse();
     ReportUtils.logStep_Screenshot("");
     save.Click(); 
     ValidationUtils.verify(true,true,"Entries is added and saved");
     aqUtils.Delay(1000, Indicator.Text);          
     
-    var approve = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.approve;
+    var approve = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.approve;
     if(approve.isEnabled()){      
       approve.HoverMouse();
       ReportUtils.logStep_Screenshot();
       approve.Click();
       
         if(CostValue>Amountbase){
+          ValidationUtils.verify(false,true,"Cost is exceeds the posted value");
+          ReportUtils.logStep("INFO","Cost is exceeds the posted value");
+        } 
+        else{
           ValidationUtils.verify(true,true,"CostValue is:"+CostValue);
           ValidationUtils.verify(true,true,"Amountbase is:"+Amountbase);
           ValidationUtils.verify(true,true,"Cost is greater than the Fixed Amount");
-        } 
-        else{
-          ValidationUtils.verify(false,true,"Cost is exceeds the posted value");
-          ReportUtils.logStep("INFO","Cost is exceeds the posted value");
+          
         } 
       
       ValidationUtils.verify(true,true,"Create Asset is Approved");
@@ -297,38 +318,39 @@ function goToAsset(){
     
     aqUtils.Delay(2000, Indicator.Text);       
     
-    var home = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite10.Composite.PTabFolder.TabFolderPanel.home;
+    var home = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite10.Composite.PTabFolder.TabFolderPanel.home;
     home.Click();
     aqUtils.Delay(5000, Indicator.Text);
     
-    var table = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+    var table = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
     Sys.HighlightObject(table);
-
-    var company = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.company;
-    company.Click();
-    company.setText(comapany);
-    company.Keys("[Tab]");
-    aqUtils.Delay(5000, Indicator.Text);
-    
-    var asset = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.asset;
-    asset.Click();
-    asset.setText(AssetsNo); 
-     var flag =false;
-    for(var i=0;i<table.getItemCount();i++){
-    if(table.getItem(i).getText_2(1).OleValue.toString().trim()==AssetsNo){
-      flag = true;
-      ReportUtils.logStep_Screenshot("");          
-    } 
-    else{
-      table.Keys("[Down]");
-    } 
-  } 
+//
+//    var company = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.company;
+//    company.Click();
+//    company.setText(comapany);
+//    company.Keys("[Tab]");
+//    aqUtils.Delay(5000, Indicator.Text);
+//    
+//    var asset = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.asset;
+//    asset.Click();
+//    asset.setText(AssetsNo); 
+//     var flag =false;
+//    for(var i=0;i<table.getItemCount();i++){
+//    if(table.getItem(i).getText_2(1).OleValue.toString().trim()==AssetsNo){
+//      flag = true;
+//      ReportUtils.logStep_Screenshot("");          
+//    } 
+//    else{
+//      table.Keys("[Down]");
+//    } 
+//  } 
   aqUtils.Delay(3000, Indicator.Text);   
   ReportUtils.logStep_Screenshot("");
   var b=0;
   var bookvalue = table.getItem(b).getText_2(9).OleValue.toString().trim();
   ValidationUtils.verify(true,true,"BookValue is:"+ bookvalue);    
-  ValidationUtils.verify(true,true,"Created Asset Adjustment is available in system");  
+   TextUtils.writeLog("Created Asset Adjustment is available in system")
+  ValidationUtils.verify(true,true,"Created Asset Adjustment Book Value has changed");  
   
           Sys.Desktop.KeyDown(0x11);
           Sys.Desktop.KeyDown(0x46);
