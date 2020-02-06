@@ -7,8 +7,8 @@
 		</folder>
 		<folder name="TestResource">
 			<child name="DS_CHN_SYSTEST.xlsx" key="{78A766BA-0CCD-421D-8530-0DB88056D359}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_CHN_SYSTEST.xlsx" />
-			<child name="EnvParamaters.xlsx" key="{6AA8947F-10F8-4BAF-9C40-30F458CFB1F7}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="..\..\..\..\Music\Rajeev\Wpp_Project_Final\Wpp_Project\wppGTCRegressionAutomation\SmokeSuite\TestResource\EnvParamaters.xlsx" />
-			<child name="TC_RunManager.xlsx" key="{CE28CFF5-B306-47EE-8702-3EF31A2A73EA}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="..\..\..\..\Music\Rajeev\Wpp_Project_Final\Wpp_Project\wppGTCRegressionAutomation\SmokeSuite\TestResource\TC_RunManager.xlsx" />
+			<child name="EnvParamaters.xlsx" key="{A36665FC-710C-4E6B-A540-CE7EAAB9F372}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\EnvParamaters.xlsx" />
+			<child name="TC_RunManager.xlsx" key="{F21CC1B4-C2BA-4636-9B96-5DD3FB064A34}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\TC_RunManager.xlsx" />
 		</folder>
 		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
 		<child name="NameMapping" key="{63138B44-92CD-4787-BFE7-D450728F7290}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
