@@ -366,6 +366,7 @@ ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
+Delay(4000);
 // Packes the resutls
 if (slPacker.Pack(fileList, workDir, archivePath))
   Log.Message("Files compressed successfully.");

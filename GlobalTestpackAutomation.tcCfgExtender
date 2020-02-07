@@ -21,7 +21,7 @@
 	<Node name="root">
 		<Node name="data">
 			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
-				<Prp name="activity" type="S" value="{6770B973-FA20-480D-BD91-BB8447AFB93F}"/>
+				<Prp name="activity" type="S" value="{808405B8-0747-445B-9F6E-64BEF03B5AF9}"/>
 			</Node>
 			<Node name="{2c786620-2489-4cbb-9c1e-1a94437a9245}">
 				<Node name="{a997569a-d4ea-4417-80fa-edec8d838f31}">
@@ -30,7 +30,28 @@
 			</Node>
 			<Node name="{415b5aa1-c6ac-4d4d-9a53-063a521a45ab}">
 				<Node name="workspace">
-					<Prp name="editorscount" type="I" value="0"/>
+					<Node name="0">
+						<Node name="editor">
+							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}">
+								<Prp name="key" type="S" value="{6BEBBAB3-C8CF-433E-8B0A-36D5BA22C999}"/>
+							</Node>
+							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}">
+								<Prp name="col" type="I" value="12"/>
+								<Prp name="key" type="S" value="{814FA705-1486-49F4-9970-96E363A55D08}"/>
+								<Prp name="line" type="I" value="368"/>
+								<Prp name="sellength" type="I" value="0"/>
+								<Prp name="selstart" type="I" value="14425"/>
+								<Prp name="windowchar" type="I" value="0"/>
+								<Prp name="windowline" type="I" value="331"/>
+							</Node>
+							<Prp name="editor" type="S" value="{684D899B-0BA5-46DA-9CE0-882194F42A5E}"/>
+							<Prp name="focused" type="S" value="{814FA705-1486-49F4-9970-96E363A55D08}"/>
+						</Node>
+						<Prp name="edititem" type="S" value="{808405B8-0747-445B-9F6E-64BEF03B5AF9}"/>
+					</Node>
+					<Prp name="docking" type="H" value="617162696E00000001000000D20100007801730C74F177F6E66680023120ADCBC2C060CB0413C14777324264EF783F7BEFDEFAD17971E7F52BA56F643919038012CC40B9DF2FBC8F4C99BBD5B3F7F073219F0DE97F5580E2CD40F140560686559856002DC60FFE43C121A03927804AD1F97875278064412E5E0B6200C1EC4EDF8CA5DCB7DCE63CE8509CF2452B4E1D28391F28EE0374DD3264D7710105431852198A194A1882184A19F2803095A108284A0717036D210900007B4A4D36"/>
+					<Prp name="editorscount" type="I" value="1"/>
+					<Prp name="enabled" type="B" value="-1"/>
 				</Node>
 			</Node>
 			<Node name="{78a745b3-10ae-4253-9f16-55a8bcaf43c6}"/>
@@ -3154,55 +3175,55 @@
 								<Prp name="top" type="I" value="354"/>
 							</Node>
 							<Node name="8">
-								<Prp name="bottom" type="I" value="398"/>
+								<Prp name="bottom" type="I" value="399"/>
 								<Prp name="collapsed" type="B" value="0"/>
-								<Prp name="top" type="I" value="394"/>
+								<Prp name="top" type="I" value="395"/>
 							</Node>
-							<Prp name="bottom" type="I" value="399"/>
+							<Prp name="bottom" type="I" value="400"/>
 							<Prp name="collapsed" type="B" value="0"/>
 							<Prp name="top" type="I" value="22"/>
 						</Node>
 						<Node name="2">
-							<Prp name="bottom" type="I" value="425"/>
+							<Prp name="bottom" type="I" value="426"/>
 							<Prp name="collapsed" type="B" value="0"/>
-							<Prp name="top" type="I" value="401"/>
+							<Prp name="top" type="I" value="402"/>
 						</Node>
 						<Node name="3">
-							<Prp name="bottom" type="I" value="443"/>
+							<Prp name="bottom" type="I" value="444"/>
 							<Prp name="collapsed" type="B" value="0"/>
-							<Prp name="top" type="I" value="427"/>
+							<Prp name="top" type="I" value="428"/>
 						</Node>
 						<Node name="4">
 							<Node name="0">
-								<Prp name="bottom" type="I" value="457"/>
+								<Prp name="bottom" type="I" value="458"/>
 								<Prp name="collapsed" type="B" value="0"/>
-								<Prp name="top" type="I" value="455"/>
+								<Prp name="top" type="I" value="456"/>
 							</Node>
-							<Prp name="bottom" type="I" value="460"/>
+							<Prp name="bottom" type="I" value="461"/>
 							<Prp name="collapsed" type="B" value="0"/>
-							<Prp name="top" type="I" value="446"/>
+							<Prp name="top" type="I" value="447"/>
 						</Node>
 						<Node name="5">
 							<Node name="0">
-								<Prp name="bottom" type="I" value="466"/>
+								<Prp name="bottom" type="I" value="467"/>
 								<Prp name="collapsed" type="B" value="0"/>
-								<Prp name="top" type="I" value="465"/>
+								<Prp name="top" type="I" value="466"/>
 							</Node>
-							<Prp name="bottom" type="I" value="492"/>
+							<Prp name="bottom" type="I" value="493"/>
 							<Prp name="collapsed" type="B" value="0"/>
-							<Prp name="top" type="I" value="462"/>
+							<Prp name="top" type="I" value="463"/>
 						</Node>
 						<Node name="6">
 							<Node name="0">
-								<Prp name="bottom" type="I" value="501"/>
+								<Prp name="bottom" type="I" value="502"/>
 								<Prp name="collapsed" type="B" value="0"/>
-								<Prp name="top" type="I" value="498"/>
+								<Prp name="top" type="I" value="499"/>
 							</Node>
-							<Prp name="bottom" type="I" value="528"/>
+							<Prp name="bottom" type="I" value="529"/>
 							<Prp name="collapsed" type="B" value="0"/>
-							<Prp name="top" type="I" value="495"/>
+							<Prp name="top" type="I" value="496"/>
 						</Node>
-						<Prp name="bottom" type="I" value="529"/>
+						<Prp name="bottom" type="I" value="530"/>
 						<Prp name="collapsed" type="B" value="0"/>
 						<Prp name="top" type="I" value="0"/>
 					</Node>
