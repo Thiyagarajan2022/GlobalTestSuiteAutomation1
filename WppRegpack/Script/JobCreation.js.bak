@@ -19,7 +19,7 @@ var count = true;
 var checkmark = false;
 var STIME = "";
 var comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile;
-
+ 
 
 
 //getting data from datasheet
