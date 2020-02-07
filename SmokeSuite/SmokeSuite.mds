@@ -16,7 +16,12 @@
 	</children>
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
-		<children />
+		<children>
+			<testItem name="ProjectTestItem1" key="{04B8CD53-85DD-46A4-B4EA-97C0848282A0}" group="False" enabled="True" testMoniker="{026D01DC-007B-4C4C-AAB4-11025D236684}executeTestCases" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
+				<testParameters />
+				<children />
+			</testItem>
+		</children>
 	</testItems>
 	<variables key="{F6EFEAC4-85A0-40A0-ACD1-4C0638AF1FCA}">
 		<data Version="3" />
