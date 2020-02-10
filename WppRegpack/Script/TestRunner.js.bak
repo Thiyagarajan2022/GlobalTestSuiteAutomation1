@@ -72,7 +72,7 @@ businessFlow = EnvParams.getBusinessFlow();
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 var rowcount = ExcelUtils.getRowCount()-1;
 var excelRow=1;
-if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")){   //Checking whether need to execute ALL TestCase or NOT
+if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")||(EnvParams.TestingType=="Critical Regression")){   //Checking whether need to execute ALL TestCase or NOT
 var excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 

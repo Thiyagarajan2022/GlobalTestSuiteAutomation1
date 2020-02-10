@@ -65,7 +65,7 @@ if(BuiltIn.ParamStr(i).indexOf("Country")!=-1){
    }
    }
    Log.Message("CountryList :"+CountryList);
-   Log.Message("Country :"+Country);
+//   Log.Message("Country :"+Country);
 }
 
 
@@ -265,16 +265,22 @@ temp = "";
 
 
 
-if(EnvParams.TestingType.toLowerCase()=="regression")
+if(EnvParams.TestingType.toLowerCase()=="full regression")
 t_Type = "Regression";
-if(EnvParams.TestingType.toLowerCase()=="systest")
-t_Type = "SysTest";
+if(EnvParams.TestingType.toLowerCase()=="critical regression")
+t_Type = "Critical Regression";
+if(EnvParams.TestingType.toLowerCase()=="sit")
+t_Type = "SIT";
 if(EnvParams.TestingType.toLowerCase()=="smoke")
 t_Type = "Smoke";
 
 
 if(EnvParams.TestingType.toLowerCase()=="smoke")
 temp = "Smoke";
+else if(EnvParams.TestingType.toLowerCase()=="critical regression")
+temp = temp+"_"+t_Type;
+else if(EnvParams.TestingType.toLowerCase()=="sit")
+temp = temp+"_"+t_Type+"_FullCycle";
 else if(EnvParams.testcase!="ALL")
 temp = temp+"_"+t_Type+"_FullCycle";
 else
@@ -336,8 +342,13 @@ case "SINGAPORE":{
 temp = "SNG"
 }
 break;
-case "chinese (simplified)":{
-temp = "CNY"
+case "MALAYSIA":{
+temp = "MYR"
+}
+break;
+
+case "SPAIN":{
+temp = "EUR"
 }
 break;
 

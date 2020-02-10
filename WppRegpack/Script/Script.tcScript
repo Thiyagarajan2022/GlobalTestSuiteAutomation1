@@ -82,6 +82,12 @@
 				<folder name="Regression" />
 				<folder name="CriticalRegression" />
 			</folder>
+			<folder name="Smoke">
+				<child name="PrintJobBudgetMPL" key="{AEE06CFD-A052-45E0-AC8F-8ED9C878E17F}" path="PrintJobBudgetMPL.js" />
+				<child name="QueryAndValidateExistingEmployee" key="{BBBA909E-A488-4C07-914C-82D53FDE5BAC}" path="QueryAndValidateExistingEmployee.js" />
+				<child name="QueryAndValidateExistingJob" key="{DD87738A-FABC-4B6E-9998-1038BCFF10F7}" path="QueryAndValidateExistingJob.js" />
+				<child name="VerfiyTimesheet" key="{BE98BE9E-9EF6-4894-9E56-217A0791581F}" path="VerfiyTimesheet.js" />
+			</folder>
 		</folder>
 		<folder name="EnvConfig">
 			<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" path="EnvParams.js" />
