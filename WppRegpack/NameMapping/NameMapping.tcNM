@@ -4628,6 +4628,52 @@
 																																																			</Child>
 																																																		</Children>
 																																																	</Child>
+																																																	<Child Name="McGroupWidget2" Key="{8103BA5E-6DCE-44B1-B884-84E608C6C687}" ParallelWalk="True">
+																																																		<Image FileName="2072272340" Left="824" Top="282" Right="1044" Bottom="326" />
+																																																		<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="5" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																		<Children>
+																																																			<Child Name="Composite" Key="{089854DB-37A8-4C08-901C-DE67B9468653}" ParallelWalk="True">
+																																																				<Image FileName="2072272340" Left="824" Top="302" Right="1044" Bottom="321" />
+																																																				<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																																				<Properties>
+																																																					<Property Name="JavaFullClassName">
+																																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																					</Property>
+																																																					<Property Name="WndCaption">
+																																																						<Value PropertyType="0" Value="" Type="5" />
+																																																					</Property>
+																																																				</Properties>
+																																																				<Children>
+																																																					<Child Name="McPopupPickerWidget" Key="{C7772DAB-8057-41AF-BCD3-B294D0F0C66D}" ParallelWalk="True">
+																																																						<Image FileName="2072272340" Left="978" Top="302" Right="1039" Bottom="321" />
+																																																						<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																																						<Properties>
+																																																							<Property Name="JavaFullClassName">
+																																																								<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																							</Property>
+																																																							<Property Name="WndCaption">
+																																																								<Value PropertyType="0" Value="" Type="5" />
+																																																							</Property>
+																																																							<Property Name="Index">
+																																																								<Value PropertyType="0" Value="2" Type="0" />
+																																																							</Property>
+																																																						</Properties>
+																																																					</Child>
+																																																				</Children>
+																																																			</Child>
+																																																		</Children>
+																																																	</Child>
 																																																</Children>
 																																															</Child>
 																																														</Children>
@@ -41777,6 +41823,11 @@
 																								<Child Name="McGroupWidget" Owner="{DA4DDBCE-55B2-4984-870F-8F9F4591DAD7}">
 																									<Child Name="Composite" Owner="{CA9BF010-3AA0-4E44-AA19-49A5EEC2D7C0}">
 																										<Child Name="McPopupPickerWidget" Owner="{A009E636-DA6E-42DE-85A7-7C1DA3480527}" />
+																									</Child>
+																								</Child>
+																								<Child Name="McGroupWidget2" Owner="{8103BA5E-6DCE-44B1-B884-84E608C6C687}">
+																									<Child Name="Composite" Owner="{089854DB-37A8-4C08-901C-DE67B9468653}">
+																										<Child Name="McPopupPickerWidget" Owner="{C7772DAB-8057-41AF-BCD3-B294D0F0C66D}" />
 																									</Child>
 																								</Child>
 																							</Child>

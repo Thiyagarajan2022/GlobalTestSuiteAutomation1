@@ -80,6 +80,7 @@ gotoMenu();
 gotoClientSearch();
 globalClient();
 client();
+WorkspaceUtils.closeAllWorkspaces();
 }
 
 
@@ -125,7 +126,7 @@ Client_Managt.DblClickItem("|Client Management");
 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable Menu");
-//TextUtils.writeLog("Entering into Purchase Orders from Accounts Payable Menu");
+TextUtils.writeLog("Entering into Client Management from Accounts Receivable Menu");
 }
 
 function gotoClientSearch(){ 
@@ -155,6 +156,7 @@ function gotoClientSearch(){
  var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
  save.Click();
  aqUtils.Delay(5000, Indicator.Text);
+  TextUtils.writeLog("Company Number, Client Number, Currency has entered and Saved in Client Search screen");
 }
 
 function globalClient(){ 
@@ -192,6 +194,7 @@ function globalClient(){
   }
   
   aqUtils.Delay(5000, Indicator.Text);
+  TextUtils.writeLog("Global Client is available in maconomy to block Global Brand");
 }
 
 function client(){ 
@@ -201,12 +204,14 @@ function client(){
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
   sublevels.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  TextUtils.writeLog("Navigating to Sub Level");
   var gblSublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
   gblSublevels.Click();
   aqUtils.Delay(2000, Indicator.Text);
   var activeBrand = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button2;
   activeBrand.Click();
   aqUtils.Delay(3000, Indicator.Text);
+  TextUtils.writeLog("Active Brand is selected");
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   var brandNmae = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
   brandNmae.Click();
@@ -240,7 +245,7 @@ function client(){
   
   aqUtils.Delay(5000, Indicator.Text);
 
-  
+  TextUtils.writeLog("Global Brand is available in maconomy to block");
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
@@ -255,10 +260,19 @@ function client(){
   DropDownList("Yes")
 //  blockClient.Keys("Yes");
   aqUtils.Delay(5000, Indicator.Text);
+  ReportUtils.logStep_Screenshot();
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   save.Click();
   aqUtils.Delay(5000, Indicator.Text);
   ValidationUtils.verify(true,true,"Global Brand is Blocked");
+  ReportUtils.logStep_Screenshot();
+  TextUtils.writeLog("Global Brand is Blocked");
+  var AllowForJobs_and_Order = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPopupPickerWidget;
+  if(AllowForJobs_and_Order.getText()=="No")
+  ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has Changed to NO");
+  else
+  ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has NOT Changed to NO");
+  TextUtils.writeLog("Allow for use on Jobs and Order has Changed to NO");
   }
 }
 

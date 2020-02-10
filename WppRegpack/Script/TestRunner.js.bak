@@ -368,8 +368,8 @@ fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
 Delay(4000);
 // Packes the resutls
-if (slPacker.Pack(fileList, workDir, archivePath))
-  Log.Message("Files compressed successfully.");
+//if (slPacker.Pack(fileList, workDir, archivePath))
+//  Log.Message("Files compressed successfully.");
 Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
 
 }
