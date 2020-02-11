@@ -4,7 +4,7 @@ function exlApprove() {
 	var ApproveInfo = [];
 	var level =0;
 
-		
+		 
 //		Approve_Level[0] = "1307*1307200440*1307 Senior Finance (13079510)*1307 Management (13079507)";
 //		Approve_Level[1] = "1307*1307100030*1307 Senior Finance (13079510)*muthu*";
 //		Approve_Level[2] = "1307*1307100030*1307 Senior Finance (13079510)*1307 Billers*";
@@ -372,6 +372,10 @@ return STIME;
 }
 
 function getFormattedCurrentTime(){
-    TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
-    return TodayValue;
+//    TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
+//    return TodayValue;
+    var Currenc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget;
+//    var Currenc = ClientNumber;
+Sys.HighlightObject(Currenc)
+    Log.Message(Currenc.getText());
 }

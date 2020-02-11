@@ -643,6 +643,21 @@
 																																																			</Property>
 																																																		</Properties>
 																																																	</Child>
+																																																	<Child Name="McTextWidget" Key="{3104669F-EE5C-48E3-BBC6-C1A7A62B6A6E}" ParallelWalk="True">
+																																																		<Image FileName="-1578945355" Left="255" Top="199" Right="393" Bottom="218" />
+																																																		<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="1" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
 																																																</Children>
 																																															</Child>
 																																															<Child Name="Composite3" Key="{85BED194-37C1-41C0-BF7A-E26B63E53F92}" ParallelWalk="True">
@@ -672,6 +687,21 @@
 																																																			</Property>
 																																																			<Property Name="Index">
 																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																	<Child Name="ClientNumber" Key="{A8818394-23A7-4C28-869F-558F0A578A85}" Description="ClientNumber" ParallelWalk="True">
+																																																		<Image FileName="865070250" Left="255" Top="221" Right="393" Bottom="240" />
+																																																		<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="1" Type="0" />
 																																																			</Property>
 																																																		</Properties>
 																																																	</Child>
@@ -41382,9 +41412,11 @@
 																							</Child>
 																							<Child Name="Composite2" Owner="{DBE18FEA-2859-43BD-960B-F7C9D223B365}">
 																								<Child Name="McPopupPickerWidget" Owner="{AA1D8FB5-5529-4289-8F1E-6BF36D0CF8A9}" />
+																								<Child Name="McTextWidget" Owner="{3104669F-EE5C-48E3-BBC6-C1A7A62B6A6E}" />
 																							</Child>
 																							<Child Name="Composite3" Owner="{85BED194-37C1-41C0-BF7A-E26B63E53F92}">
 																								<Child Name="McValuePickerWidget" Owner="{C3354F1B-8AD6-4D23-9F31-A192552C2F3E}" />
+																								<Child Name="ClientNumber" Owner="{A8818394-23A7-4C28-869F-558F0A578A85}" />
 																							</Child>
 																							<Child Name="Composite4" Owner="{797CBB40-C166-47A8-9C14-14BAC6EC6DE8}">
 																								<Child Name="McTextWidget" Owner="{1118A802-7676-4F16-8794-7F6925529DCE}" />

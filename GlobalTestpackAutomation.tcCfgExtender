@@ -21,9 +21,12 @@
 	<Node name="root">
 		<Node name="data">
 			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
-				<Prp name="activity" type="S" value="{F2D1F7C4-636D-4BF8-9712-068E157F0B3E}"/>
+				<Prp name="activity" type="S" value="{AD1F16F9-D8DB-4844-B1D1-DFA23B5E1E61}"/>
 			</Node>
 			<Node name="{2c786620-2489-4cbb-9c1e-1a94437a9245}">
+				<Node name="{213d7fc8-45d2-4a7b-819d-5caa04f4ed2c}">
+					<Prp name="hash" type="I" value="1"/>
+				</Node>
 				<Node name="{a997569a-d4ea-4417-80fa-edec8d838f31}">
 					<Prp name="hash" type="I" value="1"/>
 				</Node>
@@ -8175,7 +8178,9 @@
 						<Node name="testresource"/>
 					</Node>
 				</Node>
-				<Node name="globaltestpackautomation logs"/>
+				<Node name="globaltestpackautomation logs">
+					<Node name="globaltestpack logs"/>
+				</Node>
 			</Node>
 		</Node>
 		<Prp name="signature" type="S" value="{8EBE6EB3-803D-4913-AD7A-D71552123A67}"/>

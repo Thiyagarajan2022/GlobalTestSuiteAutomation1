@@ -372,6 +372,10 @@ return STIME;
 }
 
 function getFormattedCurrentTime(){
-    TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
-    return TodayValue;
+//    TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
+//    return TodayValue;
+//    var Currenc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget;
+    var Currenc = ClientNumber;
+Sys.HighlightObject(Currenc)
+    Log.Message(Currenc.getText());
 }
