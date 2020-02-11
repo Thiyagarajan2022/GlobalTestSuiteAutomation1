@@ -273,6 +273,10 @@ function client(){
   else
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has NOT Changed to NO");
   TextUtils.writeLog("Allow for use on Jobs and Order has Changed to NO");
+  
+  ExcelUtils.setExcelName(workBook,"Data Management", true);    
+  ExcelUtils.WriteExcelSheet("Blocked Global Brand No",EnvParams.Opco,"Data Management",BrandNo)
+  TextUtils.writeLog("Blocked Global Brand No: "+BrandNo);
   }
 }
 
