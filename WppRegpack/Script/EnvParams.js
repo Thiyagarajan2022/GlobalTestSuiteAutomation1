@@ -265,9 +265,9 @@ temp = "";
 
 
 
-if(EnvParams.TestingType.toLowerCase()=="full regression")
+if(EnvParams.TestingType.toLowerCase()=="full_regression")
 t_Type = "Regression";
-if(EnvParams.TestingType.toLowerCase()=="critical regression")
+if(EnvParams.TestingType.toLowerCase()=="critical_regression")
 t_Type = "Critical Regression";
 if(EnvParams.TestingType.toLowerCase()=="sit")
 t_Type = "SIT";
@@ -277,7 +277,7 @@ t_Type = "Smoke";
 
 if(EnvParams.TestingType.toLowerCase()=="smoke")
 temp = "Smoke";
-else if(EnvParams.TestingType.toLowerCase()=="critical regression")
+else if(EnvParams.TestingType.toLowerCase()=="critical_regression")
 temp = temp+"_"+t_Type;
 else if(EnvParams.TestingType.toLowerCase()=="sit")
 temp = temp+"_"+t_Type+"_FullCycle";
