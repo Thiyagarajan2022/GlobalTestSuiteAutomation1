@@ -22,6 +22,7 @@ var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
 function CreatePurchaseOrder(){ 
 TextUtils.writeLog("Create Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
+aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);

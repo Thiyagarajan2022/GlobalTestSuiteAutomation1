@@ -212,7 +212,11 @@ function client(){
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has Changed to NO");
   else
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has NOT Changed to NO"); 
-  TextUtils.writeLog("Allow for use on Jobs and Order has Changed to NO");                            
+  
+  TextUtils.writeLog("Allow for use on Jobs and Order has Changed to NO");  
+  ExcelUtils.setExcelName(workBook,"Data Management", true);    
+  ExcelUtils.WriteExcelSheet("Blocked Global Client No",EnvParams.Opco,"Data Management",ClientNo)
+  TextUtils.writeLog("Blocked Global Client No: "+ClientNo);                      
   }
 }
 

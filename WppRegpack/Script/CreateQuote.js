@@ -24,7 +24,8 @@ var clientEstimate = [];
 var RevisionNo = "";
 function CreateQuote(){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
-Indicator.PushText("waiing for window to open");
+Indicator.PushText("waiting for window to open");
+aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
  
 ExcelUtils.setExcelName(workBook, "Server Details", true);

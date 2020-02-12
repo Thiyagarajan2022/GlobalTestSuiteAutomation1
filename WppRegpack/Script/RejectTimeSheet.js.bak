@@ -82,7 +82,7 @@ TextUtils.writeLog("Execution Start Time :"+STIME);
   if((TYear=="")||(TYear==null))
   ValidationUtils.verify(false,true,"Year is needed to Approve Timesheet");
   
-  
+ExcelUtils.setExcelName(workBook, sheetName, true);  
 goToJobMenuItem();  
 sheetName = "RejectTimesheet";
 selectWeek();

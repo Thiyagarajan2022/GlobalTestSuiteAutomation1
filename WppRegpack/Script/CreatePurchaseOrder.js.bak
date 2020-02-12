@@ -71,24 +71,26 @@ TextUtils.writeLog("Execution Start Time :"+STIME);
 //EventHandler.testCaseId = TestID; 
 //}
 
-VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
-  if((VendorID=="")||(VendorID==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
+
+  if((VendorID=="")||(VendorID==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
   }
 if((VendorID==null)||(VendorID=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
 }
-
-Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  if((Job_Number=="")||(Job_Number==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if((Job_Number=="")||(Job_Number==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
 if((Job_Number==null)||(Job_Number=="")){ 
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
-
+ExcelUtils.setExcelName(workBook, "Data Management", true);
 //Log.Message("VendorID :"+VendorID);
 //Log.Message("Job_Number :"+Job_Number);
   gotoMenu();
