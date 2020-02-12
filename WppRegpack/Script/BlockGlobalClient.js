@@ -63,6 +63,7 @@ gotoMenu();
 gotoClientSearch();
 globalClient();
 client();
+aqUtils.Delay(2000, Indicator.Text);
 WorkspaceUtils.closeAllWorkspaces();
 }
 
