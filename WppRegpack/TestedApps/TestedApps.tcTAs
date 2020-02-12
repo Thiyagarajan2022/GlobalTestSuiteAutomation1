@@ -10,7 +10,7 @@
 					<param name="RunAs" parameters="" workFolder="" userName="" password="" domain="" />
 					<param name="Profile" parameters="" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
 					<param name="Debug" parameters="" workFolder="" />
-					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Program Files (x86)\Deltek Maconomy 19.0.100.3\" parameters="" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\BAUTESTAPAC\" parameters="" workFolder="" />
 				</runModeParams>
 			</config>
 			<testData />
