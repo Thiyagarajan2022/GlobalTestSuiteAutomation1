@@ -11752,6 +11752,121 @@
 																																									</Child>
 																																								</Children>
 																																							</Child>
+																																							<Child Name="McFilterPaneWidget" Key="{F02A5496-A663-42F7-B490-5F847E7CF8EC}" ParallelWalk="True">
+																																								<Image FileName="-1918639474" Left="243" Top="455" Right="1350" Bottom="717" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPaneWidget" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="McFilterContainer" Key="{6A1769D6-C11B-4FE1-A48B-E03D9E2C5C63}" ParallelWalk="True">
+																																										<Image FileName="-1918639474" Left="243" Top="455" Right="1350" Bottom="487" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterContainer" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="1" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="Composite" Key="{AD117A2E-5AEE-41BE-9638-5C50D61EBA88}" ParallelWalk="True">
+																																												<Image FileName="-1918639474" Left="248" Top="460" Right="1345" Bottom="482" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McFilterPanelWidget" Key="{9EB3F864-EA81-487F-A461-7C8F1CA9D5CA}" ParallelWalk="True">
+																																														<Image FileName="-1918639474" Left="248" Top="460" Right="1302" Bottom="482" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPanelWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Button" Key="{DBC89E35-069C-4368-A8B9-4A1E7ECF316B}" ParallelWalk="True">
+																																																<Image FileName="-1918639474" Left="530" Top="463" Right="689" Bottom="479" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active Company Products" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																															<Child Name="Button_new" Key="{2AEFDA81-E648-465E-934B-E2B91440EC7F}" ParallelWalk="True">
+																																																<Image FileName="-1184679405" Left="424" Top="445" Right="478" Bottom="461" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																									<Child Name="McTableWidget" Key="{50B4F9C6-F8A2-4969-8EA3-064EC1564A35}" ParallelWalk="True">
+																																										<Image FileName="-605788152" Left="243" Top="504" Right="1350" Bottom="717" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McTableWidget" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="3" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="McGrid" Key="{B5E84E65-2611-4B81-867D-AA4DA456CD5A}" ParallelWalk="True">
+																																												<Image FileName="-605788152" Left="243" Top="504" Right="1350" Bottom="717" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McGrid" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																													<Property Name="Index">
+																																														<Value PropertyType="0" Value="2" Type="0" />
+																																													</Property>
+																																												</Properties>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
 																																						</Children>
 																																					</Child>
 																																				</Children>
@@ -13037,6 +13152,200 @@
 																																															</Child>
 																																														</Children>
 																																													</Child>
+																																													<Child Name="McGroupWidget2" Key="{ACFD3870-C08B-45BE-90A1-268910E7C733}" ParallelWalk="True">
+																																														<Image FileName="-2072195965" Left="931" Top="570" Right="1291" Bottom="636" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																															<Property Name="Index">
+																																																<Value PropertyType="0" Value="3" Type="0" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Composite" Key="{A9726B85-C804-4158-8D23-89DEFFF2FE39}" ParallelWalk="True">
+																																																<Image FileName="-2072195965" Left="931" Top="590" Right="1291" Bottom="609" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="1" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McPopupPickerWidget" Key="{5D01BB5F-8DFB-4BDB-B88F-F93028190336}" ParallelWalk="True">
+																																																		<Image FileName="-2072195965" Left="1135" Top="590" Right="1286" Bottom="609" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																													<Child Name="McGroupWidget3" Key="{DC79151F-B242-42EF-9264-DE0CC642E051}" ParallelWalk="True">
+																																														<Image FileName="1476250784" Left="931" Top="446" Right="1291" Bottom="556" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																															<Property Name="Index">
+																																																<Value PropertyType="0" Value="2" Type="0" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Composite" Key="{B13C36BC-55EB-436A-A6F6-22932A2D23CE}" ParallelWalk="True">
+																																																<Image FileName="1476250784" Left="931" Top="466" Right="1291" Bottom="485" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="1" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McPopupPickerWidget" Key="{8508E01A-7FAA-48FC-871E-135D419A3A75}" ParallelWalk="True">
+																																																		<Image FileName="1476250784" Left="1135" Top="466" Right="1286" Bottom="485" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite2" Key="{FDC144A5-10FE-4FA3-9B2D-B00EF7F63237}" ParallelWalk="True">
+																																																<Image FileName="558305433" Left="931" Top="488" Right="1291" Bottom="507" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="2" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McPopupPickerWidget" Key="{BCCB277E-AB63-46DB-84CC-866875437D87}" ParallelWalk="True">
+																																																		<Image FileName="558305433" Left="1135" Top="488" Right="1286" Bottom="507" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite3" Key="{1C386283-652D-4F02-959D-11CA45C7EDBB}" ParallelWalk="True">
+																																																<Image FileName="920359297" Left="931" Top="510" Right="1291" Bottom="529" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="3" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McPopupPickerWidget" Key="{7C7C3CE3-AEB5-4BB2-B9B0-1DA9CD8F6AF2}" ParallelWalk="True">
+																																																		<Image FileName="920359297" Left="1135" Top="510" Right="1286" Bottom="529" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite4" Key="{CDF48DF5-E5EA-4CAC-905E-8B9DB2E19B52}" ParallelWalk="True">
+																																																<Image FileName="1776205200" Left="931" Top="532" Right="1291" Bottom="551" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="4" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McPopupPickerWidget" Key="{893EFB69-9ACF-4A3C-9F81-7B5FB9EABCED}" ParallelWalk="True">
+																																																		<Image FileName="1776205200" Left="1135" Top="532" Right="1286" Bottom="551" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																														</Children>
+																																													</Child>
 																																												</Children>
 																																											</Child>
 																																										</Children>
@@ -13569,6 +13878,21 @@
 																																				</Properties>
 																																			</Child>
 																																		</Children>
+																																	</Child>
+																																	<Child Name="TabControl" Key="{7E96E527-EB8A-462C-8AA4-2400E7E78AF1}" ParallelWalk="True">
+																																		<Image FileName="-318424937" Left="240" Top="148" Right="317" Bottom="180" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
+																																			</Property>
+																																		</Properties>
 																																	</Child>
 																																</Children>
 																															</Child>
@@ -16731,6 +17055,114 @@
 																																	</Child>
 																																</Children>
 																															</Child>
+																															<Child Name="Composite_new" Key="{BA334D46-AC9A-4FD0-8829-6E9FBC8D963B}" ParallelWalk="True">
+																																<Image FileName="-1451964732" Left="241" Top="435" Right="1352" Bottom="719" />
+																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																<Properties>
+																																	<Property Name="JavaFullClassName">
+																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																	</Property>
+																																	<Property Name="WndCaption">
+																																		<Value PropertyType="0" Value="" Type="5" />
+																																	</Property>
+																																	<Property Name="Index">
+																																		<Value PropertyType="0" Value="4" Type="0" />
+																																	</Property>
+																																</Properties>
+																																<Children>
+																																	<Child Name="McClumpSashForm" Key="{AF4CFB4B-5D26-4534-96A8-76E93E09BDC6}" ParallelWalk="True">
+																																		<Image FileName="-1451964732" Left="241" Top="435" Right="1352" Bottom="719" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.client.workspace.gui.local.McClumpSashForm" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="Composite" Key="{3C3FD0BE-D60C-4E4C-89C8-C4DFF74AC441}" ParallelWalk="True">
+																																				<Image FileName="-1451964732" Left="241" Top="435" Right="1352" Bottom="719" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="1" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																				<Children>
+																																					<Child Name="Composite" Key="{031BB215-5E22-49C8-8A22-03B91A6B06C0}" ParallelWalk="True">
+																																						<Image FileName="-1451964732" Left="241" Top="435" Right="1352" Bottom="719" />
+																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																						<Properties>
+																																							<Property Name="JavaFullClassName">
+																																								<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																							</Property>
+																																							<Property Name="WndCaption">
+																																								<Value PropertyType="0" Value="" Type="5" />
+																																							</Property>
+																																						</Properties>
+																																						<Children>
+																																							<Child Name="McFilterPaneWidget" Key="{C5BB55A2-B40F-4982-8279-21F16F6CFF5C}" ParallelWalk="True">
+																																								<Image FileName="-1451964732" Left="243" Top="437" Right="1350" Bottom="717" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPaneWidget" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="McTableWidget" Key="{4BB98B9E-D989-438F-8D16-31DB041727B2}" ParallelWalk="True">
+																																										<Image FileName="-1451964732" Left="243" Top="504" Right="1350" Bottom="717" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McTableWidget" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="3" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="McGrid" Key="{BE4AE966-3826-4345-A9BE-1C09EAC89171}" ParallelWalk="True">
+																																												<Image FileName="-1451964732" Left="243" Top="504" Right="1350" Bottom="717" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McGrid" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																													<Property Name="Index">
+																																														<Value PropertyType="0" Value="2" Type="0" />
+																																													</Property>
+																																												</Properties>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																						</Children>
+																																					</Child>
+																																				</Children>
+																																			</Child>
+																																		</Children>
+																																	</Child>
+																																</Children>
+																															</Child>
 																														</Children>
 																													</Child>
 																												</Children>
@@ -18791,6 +19223,147 @@
 																																																</Children>
 																																															</Child>
 																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																							<Child Name="McFilterPaneWidget" Key="{FA4E6971-3107-4160-B921-B7F701BB089A}" ParallelWalk="True">
+																																								<Image FileName="-1191028124" Left="243" Top="437" Right="1350" Bottom="717" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPaneWidget" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="McFilterContainer" Key="{A1547633-98A1-4088-9C9D-FB56FE57948D}" ParallelWalk="True">
+																																										<Image FileName="-1191028124" Left="243" Top="437" Right="1350" Bottom="469" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterContainer" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="1" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="Composite" Key="{243EB7A7-A20D-4499-820A-07F3C5DD1688}" ParallelWalk="True">
+																																												<Image FileName="-1191028124" Left="248" Top="442" Right="1345" Bottom="464" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McFilterPanelWidget" Key="{710C3F28-F523-488F-BDA7-5E3FFF2F53EB}" ParallelWalk="True">
+																																														<Image FileName="-1191028124" Left="248" Top="442" Right="1302" Bottom="464" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPanelWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Button" Key="{DA65AB4A-0FF1-4E47-84AD-46DF1FF8265B}" ParallelWalk="True">
+																																																<Image FileName="-1191028124" Left="324" Top="445" Right="378" Bottom="461" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																															<Child Name="Button2" Key="{6E45C412-04D9-42CB-8EEC-890EF58DA7DA}" ParallelWalk="True">
+																																																<Image FileName="-1592830172" Left="380" Top="480" Right="473" Bottom="496" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active Brands" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																															<Child Name="Button3" Key="{17C8B35C-7EE7-4E48-BF00-41580B96A525}" ParallelWalk="True">
+																																																<Image FileName="729786054" Left="475" Top="480" Right="579" Bottom="496" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active Products" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																									<Child Name="McTableWidget" Key="{AB278F8B-431F-43D4-845B-E91AE5BF4B68}" ParallelWalk="True">
+																																										<Image FileName="-829814001" Left="243" Top="504" Right="1350" Bottom="717" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McTableWidget" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="3" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="McGrid" Key="{16CFEE1E-A582-4E46-BD99-D65AEAD37718}" ParallelWalk="True">
+																																												<Image FileName="-829814001" Left="243" Top="504" Right="1350" Bottom="717" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McGrid" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																													<Property Name="Index">
+																																														<Value PropertyType="0" Value="2" Type="0" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McTextWidget" Key="{F0ECF595-2DD6-4A22-BD92-3774AC4444DB}" ParallelWalk="True">
+																																														<Image FileName="505306380" Left="442" Top="560" Right="612" Bottom="579" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
 																																													</Child>
 																																												</Children>
 																																											</Child>
@@ -26723,6 +27296,286 @@
 																																				<Value PropertyType="0" Value="6" Type="0" />
 																																			</Property>
 																																		</Properties>
+																																	</Child>
+																																	<Child Name="TabControl3" Key="{DDD51CE8-2185-411A-99CB-6C786A58F709}" ParallelWalk="True">
+																																		<Image FileName="424316281" Left="245" Top="186" Right="335" Bottom="212" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																	</Child>
+																																	<Child Name="Composite" Key="{C67F9C57-476D-4511-BEDD-7D9BCCFEF216}" ParallelWalk="True">
+																																		<Image FileName="-1361773434" Left="335" Top="181" Right="1347" Bottom="211" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="1" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="SingleToolItemControl" Key="{7851666D-9A84-4C35-AC2F-0ABA0E9EC2D2}" ParallelWalk="True">
+																																				<Image FileName="-1361773434" Left="390" Top="185" Right="412" Bottom="207" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="3" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																			</Child>
+																																		</Children>
+																																	</Child>
+																																</Children>
+																															</Child>
+																															<Child Name="Composite" Key="{32D71438-A146-442C-854B-954E582E3A10}" ParallelWalk="True">
+																																<Image FileName="-1361773434" Left="241" Top="212" Right="1352" Bottom="719" />
+																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																<Properties>
+																																	<Property Name="JavaFullClassName">
+																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																	</Property>
+																																	<Property Name="WndCaption">
+																																		<Value PropertyType="0" Value="" Type="5" />
+																																	</Property>
+																																	<Property Name="Index">
+																																		<Value PropertyType="0" Value="3" Type="0" />
+																																	</Property>
+																																</Properties>
+																																<Children>
+																																	<Child Name="McClumpSashForm" Key="{BDC8AEFC-2B92-41B9-B538-EFFB5671D445}" ParallelWalk="True">
+																																		<Image FileName="-1361773434" Left="241" Top="212" Right="1352" Bottom="719" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.client.workspace.gui.local.McClumpSashForm" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="Composite" Key="{02D07C5A-E244-406A-9F55-D05B2C031E1B}" ParallelWalk="True">
+																																				<Image FileName="-1361773434" Left="241" Top="212" Right="1352" Bottom="690" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="1" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																				<Children>
+																																					<Child Name="McClumpSashForm" Key="{DD1A0FA2-F1B5-432B-A432-B228129D545B}" ParallelWalk="True">
+																																						<Image FileName="-1361773434" Left="241" Top="212" Right="1352" Bottom="690" />
+																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																						<Properties>
+																																							<Property Name="JavaFullClassName">
+																																								<Value PropertyType="0" Value="com.maconomy.client.workspace.gui.local.McClumpSashForm" Type="5" />
+																																							</Property>
+																																							<Property Name="WndCaption">
+																																								<Value PropertyType="0" Value="" Type="5" />
+																																							</Property>
+																																						</Properties>
+																																						<Children>
+																																							<Child Name="Composite" Key="{0A8119BB-574C-40B9-B8EA-268D45AF9592}" ParallelWalk="True">
+																																								<Image FileName="-1361773434" Left="241" Top="212" Right="1323" Bottom="690" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																									<Property Name="Index">
+																																										<Value PropertyType="0" Value="1" Type="0" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="Composite" Key="{8AE20451-C855-4CC1-8136-A4F738229510}" ParallelWalk="True">
+																																										<Image FileName="-1361773434" Left="241" Top="212" Right="1323" Bottom="690" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="McPaneGui_10" Key="{7CCCAC7C-F712-49EC-A35F-CAFB743F4906}" ParallelWalk="True">
+																																												<Image FileName="-1361773434" Left="243" Top="214" Right="1321" Bottom="688" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.client.pane.gui.local.McPaneGui$10" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="Composite" Key="{B0C06EE8-EF06-486F-BFE5-5F6C9852A151}" ParallelWalk="True">
+																																														<Image FileName="-1361773434" Left="243" Top="-128" Right="1304" Bottom="753" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Composite" Key="{8472573F-BAE9-4378-9529-FB7537A0307B}" ParallelWalk="True">
+																																																<Image FileName="-1361773434" Left="974" Top="-123" Right="1293" Bottom="661" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="3" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="McGroupWidget" Key="{FDDAE4AE-0F9F-470B-9BEA-057291E5EC82}" ParallelWalk="True">
+																																																		<Image FileName="-1361773434" Left="976" Top="389" Right="1291" Bottom="455" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="6" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																		<Children>
+																																																			<Child Name="Composite" Key="{8CF4C101-32B9-44AD-ABAB-9F6FCE7621D9}" ParallelWalk="True">
+																																																				<Image FileName="-1361773434" Left="976" Top="409" Right="1291" Bottom="428" />
+																																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																				<Properties>
+																																																					<Property Name="JavaFullClassName">
+																																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																					</Property>
+																																																					<Property Name="WndCaption">
+																																																						<Value PropertyType="0" Value="" Type="5" />
+																																																					</Property>
+																																																					<Property Name="Index">
+																																																						<Value PropertyType="0" Value="1" Type="0" />
+																																																					</Property>
+																																																				</Properties>
+																																																				<Children>
+																																																					<Child Name="McPopupPickerWidget" Key="{9E868972-3225-443B-A343-8C549488E857}" ParallelWalk="True">
+																																																						<Image FileName="-1361773434" Left="1170" Top="409" Right="1286" Bottom="428" />
+																																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																						<Properties>
+																																																							<Property Name="JavaFullClassName">
+																																																								<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																							</Property>
+																																																							<Property Name="WndCaption">
+																																																								<Value PropertyType="0" Value="" Type="5" />
+																																																							</Property>
+																																																							<Property Name="Index">
+																																																								<Value PropertyType="0" Value="2" Type="0" />
+																																																							</Property>
+																																																						</Properties>
+																																																					</Child>
+																																																				</Children>
+																																																			</Child>
+																																																		</Children>
+																																																	</Child>
+																																																	<Child Name="McGroupWidget2" Key="{6D381574-EE5C-4F3A-A97A-522534A15E3D}" ParallelWalk="True">
+																																																		<Image FileName="1022658545" Left="816" Top="646" Right="1032" Bottom="690" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="5" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																		<Children>
+																																																			<Child Name="Composite" Key="{D55247E8-9C9D-48EF-A19A-93ABD456095F}" ParallelWalk="True">
+																																																				<Image FileName="1022658545" Left="816" Top="666" Right="1032" Bottom="685" />
+																																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																				<Properties>
+																																																					<Property Name="JavaFullClassName">
+																																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																					</Property>
+																																																					<Property Name="WndCaption">
+																																																						<Value PropertyType="0" Value="" Type="5" />
+																																																					</Property>
+																																																				</Properties>
+																																																				<Children>
+																																																					<Child Name="McTextWidget" Key="{57FA851C-E950-42E2-85EE-421A792A622F}" ParallelWalk="True">
+																																																						<Image FileName="1022658545" Left="816" Top="666" Right="954" Bottom="685" />
+																																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																						<Properties>
+																																																							<Property Name="JavaFullClassName">
+																																																								<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																																							</Property>
+																																																							<Property Name="WndCaption">
+																																																								<Value PropertyType="0" Value="" Type="5" />
+																																																							</Property>
+																																																							<Property Name="Index">
+																																																								<Value PropertyType="0" Value="1" Type="0" />
+																																																							</Property>
+																																																						</Properties>
+																																																					</Child>
+																																																				</Children>
+																																																			</Child>
+																																																		</Children>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																						</Children>
+																																					</Child>
+																																				</Children>
+																																			</Child>
+																																		</Children>
 																																	</Child>
 																																</Children>
 																															</Child>
@@ -39429,6 +40282,256 @@
 																																							</Child>
 																																						</Children>
 																																					</Child>
+																																					<Child Name="Composite" Key="{A7F00B2D-6E58-4FF3-BFF7-E852467F03ED}" ParallelWalk="True">
+																																						<Image FileName="1574036275" Left="241" Top="148" Right="1368" Bottom="409" />
+																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																						<Properties>
+																																							<Property Name="JavaFullClassName">
+																																								<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																							</Property>
+																																							<Property Name="WndCaption">
+																																								<Value PropertyType="0" Value="" Type="5" />
+																																							</Property>
+																																						</Properties>
+																																						<Children>
+																																							<Child Name="McPaneGui_10" Key="{4FF92A80-8D24-4A51-9FF3-4FABCD4C16D9}" ParallelWalk="True">
+																																								<Image FileName="1574036275" Left="243" Top="150" Right="1366" Bottom="407" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.client.pane.gui.local.McPaneGui$10" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="Composite" Key="{50A8C0DC-4E88-43C3-8456-9DCF45870A40}" ParallelWalk="True">
+																																										<Image FileName="-2031011566" Left="243" Top="150" Right="1366" Bottom="384" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="Composite" Key="{5E0F06BD-BA76-4E89-9BE7-782FCB570CD9}" ParallelWalk="True">
+																																												<Image FileName="-2031011566" Left="253" Top="155" Right="1356" Bottom="379" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McGroupWidget" Key="{AB1018AB-8EBF-4D7C-B4BD-1B34489B5DEB}" ParallelWalk="True">
+																																														<Image FileName="-2031011566" Left="255" Top="157" Right="541" Bottom="377" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																															<Property Name="Index">
+																																																<Value PropertyType="0" Value="1" Type="0" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Composite" Key="{67B52417-A958-4143-AB96-B2CC69DED8B1}" ParallelWalk="True">
+																																																<Image FileName="-2031011566" Left="255" Top="177" Right="541" Bottom="196" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="1" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="CompanyNameClientManagement" Key="{672888F5-E919-48FF-A5D6-FC70CAFCACA0}" ParallelWalk="True">
+																																																		<Image FileName="-674657686" Left="0" Top="0" Right="0" Bottom="0" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McValuePickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite2" Key="{82CF0823-C77F-45BF-97C4-248FB680A2FD}" ParallelWalk="True">
+																																																<Image FileName="-682959994" Left="255" Top="199" Right="541" Bottom="218" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="2" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="CurrencyPicker" Key="{C1CEB7BB-A88D-4367-832D-17C1CD1C4F6D}" ParallelWalk="True">
+																																																		<Image FileName="-2031011566" Left="398" Top="199" Right="536" Bottom="218" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite3" Key="{E4FD35F7-D91F-4FAB-B716-5B2FD2073714}" ParallelWalk="True">
+																																																<Image FileName="1574036275" Left="255" Top="221" Right="541" Bottom="240" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="3" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="ClientNoField" Key="{18A208C7-C08F-482D-9BAE-504C8D135D4E}" ParallelWalk="True">
+																																																		<Image FileName="757042105" Left="398" Top="221" Right="536" Bottom="240" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McValuePickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																															<Child Name="Composite4" Key="{5BD2C89D-0982-4DA2-899A-C70BB118AB44}" ParallelWalk="True">
+																																																<Image FileName="-827435094" Left="255" Top="243" Right="541" Bottom="262" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="4" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="ClientName" Key="{63765846-FEED-467B-B017-1D3950157745}" ParallelWalk="True">
+																																																		<Image FileName="-827435094" Left="398" Top="243" Right="536" Bottom="262" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																													<Child Name="McGroupWidget2" Key="{C63168C8-B3C6-4279-B7DE-CFA406FA388D}" ParallelWalk="True">
+																																														<Image FileName="2058026372" Left="979" Top="717" Right="1291" Bottom="783" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McGroupWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																															<Property Name="Index">
+																																																<Value PropertyType="0" Value="6" Type="0" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="Composite" Key="{6353E4DD-A5B8-4D32-96C5-8463DEB18734}" ParallelWalk="True">
+																																																<Image FileName="2058026372" Left="979" Top="737" Right="1291" Bottom="756" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="" Type="5" />
+																																																	</Property>
+																																																	<Property Name="Index">
+																																																		<Value PropertyType="0" Value="1" Type="0" />
+																																																	</Property>
+																																																</Properties>
+																																																<Children>
+																																																	<Child Name="BlockedIsland" Key="{63F262D8-B7CF-4373-ACE5-275C501DB0BB}" ParallelWalk="True">
+																																																		<Image FileName="2058026372" Left="1168" Top="737" Right="1286" Bottom="756" />
+																																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																		<Properties>
+																																																			<Property Name="JavaFullClassName">
+																																																				<Value PropertyType="0" Value="com.maconomy.widgets.ui.McPopupPickerWidget" Type="5" />
+																																																			</Property>
+																																																			<Property Name="WndCaption">
+																																																				<Value PropertyType="0" Value="" Type="5" />
+																																																			</Property>
+																																																			<Property Name="Index">
+																																																				<Value PropertyType="0" Value="2" Type="0" />
+																																																			</Property>
+																																																		</Properties>
+																																																	</Child>
+																																																</Children>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																						</Children>
+																																					</Child>
 																																				</Children>
 																																			</Child>
 																																		</Children>
@@ -39478,6 +40581,53 @@
 																																				</Properties>
 																																			</Child>
 																																		</Children>
+																																	</Child>
+																																	<Child Name="Composite2" Key="{95543B30-37F1-4B46-9BC1-05D15B45FF16}" ParallelWalk="True">
+																																		<Image FileName="1826914698" Left="341" Top="117" Right="1363" Bottom="147" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="1" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="SaveButtonClientManagement" Key="{D3EA07E1-6214-4DCC-BEA8-5193646B9C08}" ParallelWalk="True">
+																																				<Image FileName="-1211868245" Left="396" Top="121" Right="418" Bottom="143" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="3" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																			</Child>
+																																		</Children>
+																																	</Child>
+																																	<Child Name="InformationTab" Key="{BCC6CD9B-BCB4-47D4-B3B7-6A3047F8EAC6}" ParallelWalk="True">
+																																		<Image FileName="-2026320931" Left="245" Top="155" Right="335" Bottom="181" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
+																																			</Property>
+																																		</Properties>
 																																	</Child>
 																																</Children>
 																															</Child>
@@ -39623,6 +40773,21 @@
 																																				</Properties>
 																																			</Child>
 																																		</Children>
+																																	</Child>
+																																	<Child Name="HomeTab" Key="{0A3A1C38-B693-4F44-A6D8-4D280C428252}" ParallelWalk="True">
+																																		<Image FileName="595865715" Left="240" Top="117" Right="317" Bottom="149" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
+																																			</Property>
+																																		</Properties>
 																																	</Child>
 																																</Children>
 																															</Child>
@@ -40549,6 +41714,21 @@
 																																			</Property>
 																																			<Property Name="Index">
 																																				<Value PropertyType="0" Value="5" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																	</Child>
+																																	<Child Name="TabControl" Key="{FFED9282-63DD-4C0D-ACE1-7A332F9B85D9}" ParallelWalk="True">
+																																		<Image FileName="-1107841328" Left="263" Top="148" Right="340" Bottom="180" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
 																																			</Property>
 																																		</Properties>
 																																	</Child>
@@ -41675,6 +42855,392 @@
 																																				<Value PropertyType="0" Value="5" Type="0" />
 																																			</Property>
 																																		</Properties>
+																																	</Child>
+																																	<Child Name="companySublevels" Key="{95B1A144-71BD-42EE-99A5-17B413A54988}" ParallelWalk="True">
+																																		<Image FileName="-1088733185" Left="268" Top="444" Right="405" Bottom="470" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.TabControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="4" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																	</Child>
+																																</Children>
+																															</Child>
+																															<Child Name="Composite" Key="{367DC7D1-F6D9-4A44-BC23-40D58A46C26A}" ParallelWalk="True">
+																																<Image FileName="1572774020" Left="241" Top="442" Right="1368" Bottom="735" />
+																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																<Properties>
+																																	<Property Name="JavaFullClassName">
+																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																	</Property>
+																																	<Property Name="WndCaption">
+																																		<Value PropertyType="0" Value="" Type="5" />
+																																	</Property>
+																																	<Property Name="Index">
+																																		<Value PropertyType="0" Value="3" Type="0" />
+																																	</Property>
+																																</Properties>
+																																<Children>
+																																	<Child Name="McClumpSashForm" Key="{5C56113B-A610-4A76-94CD-82D94BBB05E8}" ParallelWalk="True">
+																																		<Image FileName="1572774020" Left="241" Top="442" Right="1368" Bottom="735" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.client.workspace.gui.local.McClumpSashForm" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="Composite" Key="{44CA9851-A24F-4BCD-BB21-E0151CBAE868}" ParallelWalk="True">
+																																				<Image FileName="1572774020" Left="241" Top="442" Right="1368" Bottom="735" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="1" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																				<Children>
+																																					<Child Name="Composite" Key="{C2EE2C11-19EB-4899-93AF-9556504439CA}" ParallelWalk="True">
+																																						<Image FileName="1572774020" Left="241" Top="442" Right="1368" Bottom="735" />
+																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																						<Properties>
+																																							<Property Name="JavaFullClassName">
+																																								<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																							</Property>
+																																							<Property Name="WndCaption">
+																																								<Value PropertyType="0" Value="" Type="5" />
+																																							</Property>
+																																						</Properties>
+																																						<Children>
+																																							<Child Name="McFilterPaneWidget" Key="{84B8C18F-7030-4B7F-8692-8C2620B04B0E}" ParallelWalk="True">
+																																								<Image FileName="1572774020" Left="243" Top="444" Right="1366" Bottom="733" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPaneWidget" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="McFilterContainer" Key="{5AD5CD57-A6ED-49FA-8E0F-86CD009445CE}" ParallelWalk="True">
+																																										<Image FileName="1572774020" Left="243" Top="444" Right="1366" Bottom="476" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterContainer" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="1" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="Composite" Key="{A21C24B5-FA18-4CFD-9E08-C2D7F94133C8}" ParallelWalk="True">
+																																												<Image FileName="1572774020" Left="248" Top="449" Right="1361" Bottom="471" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McFilterPanelWidget" Key="{FEEB18E7-4327-4BCE-A81D-AB0DE4BBE779}" ParallelWalk="True">
+																																														<Image FileName="1572774020" Left="248" Top="449" Right="1318" Bottom="471" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPanelWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="ActiveRadio" Key="{506CFE60-0704-4AEC-84E5-E1D1BFFBD8F4}" ParallelWalk="True">
+																																																<Image FileName="-1596712037" Left="324" Top="452" Right="378" Bottom="468" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																															<Child Name="ActivecmpBrand" Key="{D1BA8FFD-F230-4620-9920-90D8F55ADA77}" ParallelWalk="True">
+																																																<Image FileName="469114386" Left="403" Top="480" Right="551" Bottom="496" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active Company Brands" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																									<Child Name="McTableWidget" Key="{9BFD3A57-1686-4E5A-98C0-FFEEF88E0F17}" ParallelWalk="True">
+																																										<Image FileName="-1110872871" Left="243" Top="511" Right="1366" Bottom="733" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McTableWidget" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="3" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="CompanyClientSearchTable" Key="{D7FC760D-4D17-4BE4-89B9-E449E20E57EB}" ParallelWalk="True">
+																																												<Image FileName="-1110872871" Left="243" Top="511" Right="1366" Bottom="733" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McGrid" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																													<Property Name="Index">
+																																														<Value PropertyType="0" Value="2" Type="0" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="ActiveBrandName" Key="{A7A8C09B-D9A5-4B4A-BA2D-F5D5BD0A95E6}" ParallelWalk="True">
+																																														<Image FileName="-53249863" Left="465" Top="575" Right="635" Bottom="594" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																															<Property Name="Index">
+																																																<Value PropertyType="0" Value="2" Type="0" />
+																																															</Property>
+																																														</Properties>
+																																													</Child>
+																																													<Child Name="ActiveNameBrand" Key="{FC586A27-3FA8-4BD6-B02C-1D849D255F15}" ParallelWalk="True">
+																																														<Image FileName="845757410" Left="465" Top="575" Right="635" Bottom="594" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.McTextWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																						</Children>
+																																					</Child>
+																																				</Children>
+																																			</Child>
+																																		</Children>
+																																	</Child>
+																																</Children>
+																															</Child>
+																															<Child Name="Composite2" Key="{4B1A73D4-F9EA-4AB9-ABA0-A80E5FFAE5B7}" ParallelWalk="True">
+																																<Image FileName="115170294" Left="264" Top="435" Right="1352" Bottom="719" />
+																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																<Properties>
+																																	<Property Name="JavaFullClassName">
+																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																	</Property>
+																																	<Property Name="WndCaption">
+																																		<Value PropertyType="0" Value="" Type="5" />
+																																	</Property>
+																																	<Property Name="Index">
+																																		<Value PropertyType="0" Value="4" Type="0" />
+																																	</Property>
+																																</Properties>
+																																<Children>
+																																	<Child Name="McClumpSashForm" Key="{D6CC9A25-12B2-44C7-A03A-4067024BEBCD}" ParallelWalk="True">
+																																		<Image FileName="115170294" Left="264" Top="435" Right="1352" Bottom="719" />
+																																		<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.client.workspace.gui.local.McClumpSashForm" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																		</Properties>
+																																		<Children>
+																																			<Child Name="Composite" Key="{6436EBC6-1BF8-4568-B42A-A2F59168E487}" ParallelWalk="True">
+																																				<Image FileName="115170294" Left="264" Top="435" Right="1352" Bottom="719" />
+																																				<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="1" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																				<Children>
+																																					<Child Name="Composite" Key="{69DA6B5F-8906-4519-A7FB-4353AA08A25C}" ParallelWalk="True">
+																																						<Image FileName="115170294" Left="264" Top="435" Right="1352" Bottom="719" />
+																																						<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																						<Properties>
+																																							<Property Name="JavaFullClassName">
+																																								<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																							</Property>
+																																							<Property Name="WndCaption">
+																																								<Value PropertyType="0" Value="" Type="5" />
+																																							</Property>
+																																						</Properties>
+																																						<Children>
+																																							<Child Name="McFilterPaneWidget" Key="{8132C96E-C410-4597-A3C4-42CD8EEB8687}" ParallelWalk="True">
+																																								<Image FileName="115170294" Left="266" Top="437" Right="1350" Bottom="717" />
+																																								<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																								<Properties>
+																																									<Property Name="JavaFullClassName">
+																																										<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPaneWidget" Type="5" />
+																																									</Property>
+																																									<Property Name="WndCaption">
+																																										<Value PropertyType="0" Value="" Type="5" />
+																																									</Property>
+																																								</Properties>
+																																								<Children>
+																																									<Child Name="McFilterContainer" Key="{5D111290-5765-479B-825B-8EFF7D6E26AF}" ParallelWalk="True">
+																																										<Image FileName="109679039" Left="266" Top="437" Right="1350" Bottom="469" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterContainer" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="1" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="Composite" Key="{E322E7B1-EF28-4449-9B01-DE8B1244C479}" ParallelWalk="True">
+																																												<Image FileName="109679039" Left="271" Top="442" Right="1345" Bottom="464" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																												</Properties>
+																																												<Children>
+																																													<Child Name="McFilterPanelWidget" Key="{4BBC5698-6F91-48CB-8D96-3D22672E2EDB}" ParallelWalk="True">
+																																														<Image FileName="109679039" Left="271" Top="442" Right="1302" Bottom="464" />
+																																														<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																														<Properties>
+																																															<Property Name="JavaFullClassName">
+																																																<Value PropertyType="0" Value="com.maconomy.widgets.ui.filterpane.McFilterPanelWidget" Type="5" />
+																																															</Property>
+																																															<Property Name="WndCaption">
+																																																<Value PropertyType="0" Value="" Type="5" />
+																																															</Property>
+																																														</Properties>
+																																														<Children>
+																																															<Child Name="ActiveRadioGlobal" Key="{E7B36825-61D8-40CF-A20C-90C5981EEBF1}" ParallelWalk="True">
+																																																<Image FileName="-253461751" Left="347" Top="445" Right="401" Bottom="461" />
+																																																<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																																<Properties>
+																																																	<Property Name="JavaFullClassName">
+																																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Button" Type="5" />
+																																																	</Property>
+																																																	<Property Name="WndCaption">
+																																																		<Value PropertyType="0" Value="Active" Type="5" />
+																																																	</Property>
+																																																</Properties>
+																																															</Child>
+																																														</Children>
+																																													</Child>
+																																												</Children>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																									<Child Name="McTableWidget" Key="{1434EDA5-96B8-46D0-A2D0-451ED93075FD}" ParallelWalk="True">
+																																										<Image FileName="109679039" Left="266" Top="504" Right="1350" Bottom="717" />
+																																										<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																										<Properties>
+																																											<Property Name="JavaFullClassName">
+																																												<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McTableWidget" Type="5" />
+																																											</Property>
+																																											<Property Name="WndCaption">
+																																												<Value PropertyType="0" Value="" Type="5" />
+																																											</Property>
+																																											<Property Name="Index">
+																																												<Value PropertyType="0" Value="3" Type="0" />
+																																											</Property>
+																																										</Properties>
+																																										<Children>
+																																											<Child Name="GlobalClientTable" Key="{F78B3093-99F4-4941-9CDF-8D5AE8355B5B}" ParallelWalk="True">
+																																												<Image FileName="109679039" Left="266" Top="504" Right="1350" Bottom="717" />
+																																												<TypeInfo Item0="{0C3A9892-AC0D-4A64-9D50-E9500D8803D0}" />
+																																												<Properties>
+																																													<Property Name="JavaFullClassName">
+																																														<Value PropertyType="0" Value="com.maconomy.widgets.ui.table.McGrid" Type="5" />
+																																													</Property>
+																																													<Property Name="WndCaption">
+																																														<Value PropertyType="0" Value="" Type="5" />
+																																													</Property>
+																																													<Property Name="Index">
+																																														<Value PropertyType="0" Value="2" Type="0" />
+																																													</Property>
+																																												</Properties>
+																																											</Child>
+																																										</Children>
+																																									</Child>
+																																								</Children>
+																																							</Child>
+																																						</Children>
+																																					</Child>
+																																				</Children>
+																																			</Child>
+																																		</Children>
 																																	</Child>
 																																</Children>
 																															</Child>
@@ -43432,6 +44998,15 @@
 																					<Child Name="McTextWidget" Owner="{A211D296-6311-437E-9438-00C21BA6D406}" />
 																				</Child>
 																			</Child>
+																			<Child Name="McFilterPaneWidget" Owner="{F02A5496-A663-42F7-B490-5F847E7CF8EC}">
+																				<Child Name="McFilterContainer" Owner="{6A1769D6-C11B-4FE1-A48B-E03D9E2C5C63}">
+																					<Child Name="Composite" Owner="{AD117A2E-5AEE-41BE-9638-5C50D61EBA88}">
+																						<Child Name="McFilterPanelWidget" Owner="{9EB3F864-EA81-487F-A461-7C8F1CA9D5CA}">
+																							<Child Name="Button" Owner="{DBC89E35-069C-4368-A8B9-4A1E7ECF316B}" />
+																						</Child>
+																					</Child>
+																				</Child>
+																			</Child>
 																		</Child>
 																	</Child>
 																</Child>
@@ -43512,6 +45087,28 @@
 																				</Child>
 																			</Child>
 																		</Child>
+																		<Child Name="Composite" Owner="{004D2EB3-ADCD-48EA-98F9-A85553743A6B}">
+																			<Child Name="McPaneGui_10" Owner="{465FFC09-6379-4E27-A4AA-2201BF707BD3}">
+																				<Child Name="Composite" Owner="{B30711C6-F716-447E-B578-8B93D842AB66}">
+																					<Child Name="Composite" Owner="{874CC5AF-5B70-4836-83B6-D1794E0D8103}">
+																						<Child Name="McGroupWidget" Owner="{ECA4EA81-FD53-4A58-BCED-954A2AC925E7}">
+																							<Child Name="Composite" Owner="{38A1F3D1-E2DA-4253-884E-5B5976B25C30}">
+																								<Child Name="McValuePickerWidget" Owner="{CF7A26D0-B70E-47BA-9FCF-E6FA2CB45814}" />
+																							</Child>
+																							<Child Name="Composite2" Owner="{513E178E-83D0-4643-A28B-290626E0DCAA}">
+																								<Child Name="McPopupPickerWidget" Owner="{08F47377-E9AC-44F1-950A-686CEC8085E2}" />
+																							</Child>
+																							<Child Name="Composite3" Owner="{D6E346DB-386F-4809-BFC8-0298D274EEDC}">
+																								<Child Name="McValuePickerWidget" Owner="{C9586A89-DD30-44B4-B00F-FFE149D7601E}" />
+																							</Child>
+																							<Child Name="Composite4" Owner="{50DF1F22-C3A6-4625-BCCC-59710FB79A9B}">
+																								<Child Name="McTextWidget" Owner="{0E306E17-C820-42D0-9FCA-C21868DA6F3F}" />
+																							</Child>
+																						</Child>
+																					</Child>
+																				</Child>
+																			</Child>
+																		</Child>
 																	</Child>
 																</Child>
 															</Child>
@@ -43547,6 +45144,7 @@
 																<Child Name="Composite" Owner="{8A17F53A-90AC-4C38-9BC2-1AF66511D51E}">
 																	<Child Name="SingleToolItemControl" Owner="{4C86C48C-CFBD-4192-8211-AF3F03A41837}" />
 																</Child>
+																<Child Name="TabControl" Owner="{7E96E527-EB8A-462C-8AA4-2400E7E78AF1}" />
 															</Child>
 														</Child>
 													</Child>
@@ -43645,6 +45243,25 @@
 															<Child Name="Composite" Owner="{8CD22544-40B4-4FA5-991C-6DB373A6E8DD}">
 																<Child Name="SingleToolItemControl" Owner="{DBD25F6E-CE7D-4778-ADC4-48E90C4870B3}">
 																	<Child Name="New_Asset_Adjustment" Owner="{6B2CC357-79CB-434E-84D0-4A527E8A8DA2}" />
+																</Child>
+															</Child>
+														</Child>
+													</Child>
+												</Child>
+												<Child Name="Composite2" Owner="{60603B22-D7B9-4FC5-A6FE-C1A4849FEECB}">
+													<Child Name="Composite" Owner="{83E287FA-A9FF-4055-BF31-772E55D5DC52}">
+														<Child Name="PTabFolder" Owner="{CA51DC9E-903B-4F86-8EEF-DABDB26CF2EC}">
+															<Child Name="Composite" Owner="{BA334D46-AC9A-4FD0-8829-6E9FBC8D963B}">
+																<Child Name="McClumpSashForm" Owner="{AF4CFB4B-5D26-4534-96A8-76E93E09BDC6}">
+																	<Child Name="Composite" Owner="{3C3FD0BE-D60C-4E4C-89C8-C4DFF74AC441}">
+																		<Child Name="Composite" Owner="{031BB215-5E22-49C8-8A22-03B91A6B06C0}">
+																			<Child Name="McFilterPaneWidget" Owner="{C5BB55A2-B40F-4982-8279-21F16F6CFF5C}">
+																				<Child Name="McTableWidget" Owner="{4BB98B9E-D989-438F-8D16-31DB041727B2}">
+																					<Child Name="McGrid" Owner="{BE4AE966-3826-4345-A9BE-1C09EAC89171}" />
+																				</Child>
+																			</Child>
+																		</Child>
+																	</Child>
 																</Child>
 															</Child>
 														</Child>
@@ -43759,6 +45376,22 @@
 																					</Child>
 																				</Child>
 																			</Child>
+																			<Child Name="McFilterPaneWidget" Owner="{FA4E6971-3107-4160-B921-B7F701BB089A}">
+																				<Child Name="McFilterContainer" Owner="{A1547633-98A1-4088-9C9D-FB56FE57948D}">
+																					<Child Name="Composite" Owner="{243EB7A7-A20D-4499-820A-07F3C5DD1688}">
+																						<Child Name="McFilterPanelWidget" Owner="{710C3F28-F523-488F-BDA7-5E3FFF2F53EB}">
+																							<Child Name="Button" Owner="{DA65AB4A-0FF1-4E47-84AD-46DF1FF8265B}" />
+																							<Child Name="Button2" Owner="{6E45C412-04D9-42CB-8EEC-890EF58DA7DA}" />
+																							<Child Name="Button3" Owner="{17C8B35C-7EE7-4E48-BF00-41580B96A525}" />
+																						</Child>
+																					</Child>
+																				</Child>
+																				<Child Name="McTableWidget" Owner="{AB278F8B-431F-43D4-845B-E91AE5BF4B68}">
+																					<Child Name="McGrid" Owner="{16CFEE1E-A582-4E46-BD99-D65AEAD37718}">
+																						<Child Name="McTextWidget" Owner="{F0ECF595-2DD6-4A22-BD92-3774AC4444DB}" />
+																					</Child>
+																				</Child>
+																			</Child>
 																		</Child>
 																	</Child>
 																</Child>
@@ -43870,6 +45503,38 @@
 															<Child Name="TabFolderPanel" Owner="{EC4DF70C-C251-4E0D-BD3B-305B52C0F587}">
 																<Child Name="TabControl" Owner="{3468795C-34EF-416C-879D-D145D325E7DD}" />
 																<Child Name="TabControl2" Owner="{FB61F37A-7CD5-4FD3-8AB1-BEFA89B8623A}" />
+																<Child Name="TabControl3" Owner="{DDD51CE8-2185-411A-99CB-6C786A58F709}" />
+																<Child Name="Composite" Owner="{C67F9C57-476D-4511-BEDD-7D9BCCFEF216}">
+																	<Child Name="SingleToolItemControl" Owner="{7851666D-9A84-4C35-AC2F-0ABA0E9EC2D2}" />
+																</Child>
+															</Child>
+															<Child Name="Composite" Owner="{32D71438-A146-442C-854B-954E582E3A10}">
+																<Child Name="McClumpSashForm" Owner="{BDC8AEFC-2B92-41B9-B538-EFFB5671D445}">
+																	<Child Name="Composite" Owner="{02D07C5A-E244-406A-9F55-D05B2C031E1B}">
+																		<Child Name="McClumpSashForm" Owner="{DD1A0FA2-F1B5-432B-A432-B228129D545B}">
+																			<Child Name="Composite" Owner="{0A8119BB-574C-40B9-B8EA-268D45AF9592}">
+																				<Child Name="Composite" Owner="{8AE20451-C855-4CC1-8136-A4F738229510}">
+																					<Child Name="McPaneGui_10" Owner="{7CCCAC7C-F712-49EC-A35F-CAFB743F4906}">
+																						<Child Name="Composite" Owner="{B0C06EE8-EF06-486F-BFE5-5F6C9852A151}">
+																							<Child Name="Composite" Owner="{8472573F-BAE9-4378-9529-FB7537A0307B}">
+																								<Child Name="McGroupWidget" Owner="{FDDAE4AE-0F9F-470B-9BEA-057291E5EC82}">
+																									<Child Name="Composite" Owner="{8CF4C101-32B9-44AD-ABAB-9F6FCE7621D9}">
+																										<Child Name="McPopupPickerWidget" Owner="{9E868972-3225-443B-A343-8C549488E857}" />
+																									</Child>
+																								</Child>
+																								<Child Name="McGroupWidget2" Owner="{6D381574-EE5C-4F3A-A97A-522534A15E3D}">
+																									<Child Name="Composite" Owner="{D55247E8-9C9D-48EF-A19A-93ABD456095F}">
+																										<Child Name="McTextWidget" Owner="{57FA851C-E950-42E2-85EE-421A792A622F}" />
+																									</Child>
+																								</Child>
+																							</Child>
+																						</Child>
+																					</Child>
+																				</Child>
+																			</Child>
+																		</Child>
+																	</Child>
+																</Child>
 															</Child>
 														</Child>
 													</Child>
@@ -44029,6 +45694,18 @@
 																					<Child Name="McTextWidget" Owner="{52687D81-839E-4E04-B954-E267B5274F09}" />
 																				</Child>
 																			</Child>
+																			<Child Name="McFilterPaneWidget" Owner="{F02A5496-A663-42F7-B490-5F847E7CF8EC}">
+																				<Child Name="McFilterContainer" Owner="{6A1769D6-C11B-4FE1-A48B-E03D9E2C5C63}">
+																					<Child Name="Composite" Owner="{AD117A2E-5AEE-41BE-9638-5C50D61EBA88}">
+																						<Child Name="McFilterPanelWidget" Owner="{9EB3F864-EA81-487F-A461-7C8F1CA9D5CA}">
+																							<Child Name="Button" Owner="{2AEFDA81-E648-465E-934B-E2B91440EC7F}" />
+																						</Child>
+																					</Child>
+																				</Child>
+																				<Child Name="McTableWidget" Owner="{50B4F9C6-F8A2-4969-8EA3-064EC1564A35}">
+																					<Child Name="McGrid" Owner="{B5E84E65-2611-4B81-867D-AA4DA456CD5A}" />
+																				</Child>
+																			</Child>
 																		</Child>
 																	</Child>
 																</Child>
@@ -44160,6 +45837,25 @@
 																							</Child>
 																							<Child Name="Composite4" Owner="{50DF1F22-C3A6-4625-BCCC-59710FB79A9B}">
 																								<Child Name="McTextWidget" Owner="{0E306E17-C820-42D0-9FCA-C21868DA6F3F}" />
+																							</Child>
+																						</Child>
+																						<Child Name="McGroupWidget2" Owner="{ACFD3870-C08B-45BE-90A1-268910E7C733}">
+																							<Child Name="Composite" Owner="{A9726B85-C804-4158-8D23-89DEFFF2FE39}">
+																								<Child Name="McPopupPickerWidget" Owner="{5D01BB5F-8DFB-4BDB-B88F-F93028190336}" />
+																							</Child>
+																						</Child>
+																						<Child Name="McGroupWidget3" Owner="{DC79151F-B242-42EF-9264-DE0CC642E051}">
+																							<Child Name="Composite" Owner="{B13C36BC-55EB-436A-A6F6-22932A2D23CE}">
+																								<Child Name="McPopupPickerWidget" Owner="{8508E01A-7FAA-48FC-871E-135D419A3A75}" />
+																							</Child>
+																							<Child Name="Composite2" Owner="{FDC144A5-10FE-4FA3-9B2D-B00EF7F63237}">
+																								<Child Name="McPopupPickerWidget" Owner="{BCCB277E-AB63-46DB-84CC-866875437D87}" />
+																							</Child>
+																							<Child Name="Composite3" Owner="{1C386283-652D-4F02-959D-11CA45C7EDBB}">
+																								<Child Name="McPopupPickerWidget" Owner="{7C7C3CE3-AEB5-4BB2-B9B0-1DA9CD8F6AF2}" />
+																							</Child>
+																							<Child Name="Composite4" Owner="{CDF48DF5-E5EA-4CAC-905E-8B9DB2E19B52}">
+																								<Child Name="McPopupPickerWidget" Owner="{893EFB69-9ACF-4A3C-9F81-7B5FB9EABCED}" />
 																							</Child>
 																						</Child>
 																					</Child>
@@ -45754,6 +47450,22 @@
 				</Child>
 			</Child>
 			<Child Name="Button" Owner="{DC459AF2-6829-4896-B315-CCDAF034695D}" />
+			<Child Name="Shell_new2" Owner="{600C9695-A333-4ECF-BAED-9E76E7819519}">
+				<Child Name="Composite" Owner="{46279DC0-A9EB-4D11-B24D-97B3AE3A63B2}">
+					<Child Name="Composite" Owner="{429845BF-8FD4-4751-B5CD-4B36B00124D9}">
+						<Child Name="Composite" Owner="{72DE30E4-0BEE-4A01-9B62-A91C432CAEE0}">
+							<Child Name="McFilterPaneWidget" Owner="{567209DB-C1F4-4FDF-B425-942B46FF537F}">
+								<Child Name="McTableWidget" Owner="{22C8CC5A-E0C8-4C20-9F0C-432E8486C75E}">
+									<Child Name="McGrid" Owner="{53FB718F-791E-41F2-A67D-CB1159B862C4}">
+										<Child Name="cmpnynumber" Owner="{433F1E3D-D823-47FC-9340-1EDC0D647CD5}" />
+										<Child Name="banknumber" Owner="{61B9064A-5DD5-4CDD-B329-620E0A6F3628}" />
+									</Child>
+								</Child>
+							</Child>
+						</Child>
+					</Child>
+				</Child>
+			</Child>
 		</Child>
 		<Child Name="todo" Owner="{718BC520-43B2-4B33-8328-0D051AC4C8A2}" />
 		<Child Name="DeleteUSerButton" Owner="{D73E30B4-9266-4BFA-A445-48618879C3B0}" />
@@ -45813,6 +47525,23 @@
 			<Child Name="jobtypecodevalue" Owner="{14447216-9FAD-4A41-9AD3-75948F61CC65}" />
 			<Child Name="jobdepartmentcode" Owner="{53685111-51D2-4498-AEBD-2CBE36E36950}" />
 			<Child Name="businessUnitCode" Owner="{99F2B2D9-B8C9-4A83-80AA-388C4955B231}" />
+			<Child Name="CompanyNameClientManagement" Owner="{672888F5-E919-48FF-A5D6-FC70CAFCACA0}" />
+			<Child Name="CurrencyPicker" Owner="{C1CEB7BB-A88D-4367-832D-17C1CD1C4F6D}" />
+			<Child Name="ClientNoField" Owner="{18A208C7-C08F-482D-9BAE-504C8D135D4E}" />
+			<Child Name="ClientName" Owner="{63765846-FEED-467B-B017-1D3950157745}" />
+			<Child Name="SaveButtonClientManagement" Owner="{D3EA07E1-6214-4DCC-BEA8-5193646B9C08}" />
+			<Child Name="ActiveRadio" Owner="{506CFE60-0704-4AEC-84E5-E1D1BFFBD8F4}" />
+			<Child Name="CompanyClientSearchTable" Owner="{D7FC760D-4D17-4BE4-89B9-E449E20E57EB}">
+				<Child Name="ActiveBrandName" Owner="{A7A8C09B-D9A5-4B4A-BA2D-F5D5BD0A95E6}" />
+				<Child Name="ActiveNameBrand" Owner="{FC586A27-3FA8-4BD6-B02C-1D849D255F15}" />
+			</Child>
+			<Child Name="HomeTab" Owner="{0A3A1C38-B693-4F44-A6D8-4D280C428252}" />
+			<Child Name="InformationTab" Owner="{BCC6CD9B-BCB4-47D4-B3B7-6A3047F8EAC6}" />
+			<Child Name="BlockedIsland" Owner="{63F262D8-B7CF-4373-ACE5-275C501DB0BB}" />
+			<Child Name="ActiveRadioGlobal" Owner="{E7B36825-61D8-40CF-A20C-90C5981EEBF1}" />
+			<Child Name="GlobalClientTable" Owner="{F78B3093-99F4-4941-9CDF-8D5AE8355B5B}" />
+			<Child Name="companySublevels" Owner="{95B1A144-71BD-42EE-99A5-17B413A54988}" />
+			<Child Name="ActivecmpBrand" Owner="{D1BA8FFD-F230-4620-9920-90D8F55ADA77}" />
 		</Child>
 		<Child Name="UserResubmitPopupOk" Owner="{A95AFC20-65F1-4C0B-8532-FBB02F17E691}" />
 		<Child Name="ResubmitCancel" Owner="{88BB6CB4-5B70-47B1-A70D-BBB9316CC86A}" />

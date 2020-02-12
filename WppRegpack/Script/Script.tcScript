@@ -66,6 +66,11 @@
 				<child name="Writing_Off_Bad_Debts" key="{2D45C1F9-497F-40B2-A55A-EAFA8CDC57B8}" path="Writing_Off_Bad_Debts.js" />
 				<child name="BlockGlobalVendor" key="{85B0E3A3-851F-4DC6-BA18-E5907A10C006}" path="BlockGlobalVendor.js" />
 				<child name="AmendGlobalClient" key="{BB01AB97-106A-4AAE-8AB5-2587C9E8CAD6}" path="AmendGlobalClient.js" />
+				<child name="BlockCompanyBrand" key="{AF5FE7D6-CF3F-4761-B3DC-82B6672A2E2C}" path="BlockCompanyBrand.js" />
+				<child name="BlockCompanyClient" key="{CDB99195-EEB9-44E0-913D-AC73D4B6E49C}" path="BlockCompanyClient.js" />
+				<child name="BlockGlobalProduct" key="{771D5055-744C-42D6-8D2B-440901B19FCB}" path="BlockGlobalProduct.js" />
+				<child name="BlockCompanyProduct" key="{82EE9020-1234-4378-9F0F-8DFFD987E12B}" path="BlockCompanyProduct.js" />
+				<child name="BlockCompanyVendor" key="{F4C63C35-D380-4D0D-9527-175D07D69280}" path="BlockCompanyVendor.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
