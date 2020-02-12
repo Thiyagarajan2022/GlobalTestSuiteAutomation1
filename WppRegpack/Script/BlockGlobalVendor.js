@@ -228,7 +228,18 @@ function goToVendor(){
   var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information");
   var OK = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
   OK.Click();
+  } 
+   if(Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").isVisible()){
+  var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information");
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+  OK.Click();
   }
+   if(Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").isVisible()){
+  var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information");
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+  OK.Click();
+  }
+  
   TextUtils.writeLog("Global Vendor is Blocked");
   var AllowForJobs_and_Order = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite3.McGroupWidget3.Composite.McPopupPickerWidget;
   if(AllowForJobs_and_Order.getText()=="No")
@@ -236,6 +247,7 @@ function goToVendor(){
   else
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has NOT Changed to NO");
   TextUtils.writeLog("Allow for use on Jobs and Order has Changed to NO");
+  ReportUtils.logStep_Screenshot();
   }
   
 }
