@@ -18,10 +18,8 @@ Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-//ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var Project_manager = EnvParams.Opco+" Finance";
-//var Project_manager = ExcelUtils.getRowDatas("Central Team - Vendor Account Management","Username")
-Log.Message(Project_manager);
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -29,8 +27,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.
     Sys.Desktop.KeyUp(0x46); //Alt
     Sys.Desktop.KeyUp(0x12);     
     Sys.Desktop.KeyUp(0x58);
-Restart.login(Project_manager);
-  
+Restart.login(Project_manager);  
 }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;

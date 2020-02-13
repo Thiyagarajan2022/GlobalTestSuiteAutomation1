@@ -21,10 +21,8 @@ aqUtils.Delay(1000, Indicator.Text);
   
   var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-ExcelUtils.setExcelName(workBook, "SSC Users", true);
-//var Project_manager = EnvParams.Opco+" Finance";
-var Project_manager = ExcelUtils.getRowDatas("Central Team - Client Account Management","Username")
-Log.Message(Project_manager);
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -212,7 +210,7 @@ function globalClient(){
 
 
 function client(){ 
-  var home =NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
+  var home = NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
   //Aliases.ObjectGroup.HomeTab;
   // Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
   home.Click();

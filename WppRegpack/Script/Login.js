@@ -161,7 +161,12 @@ ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
       dropdown.DropDown();
       dropdown.ClickItem(Language);
       btnLogin.click();
-       
+      aqUtils.Delay(2000, Indicator.Text);
+        if(ImageRepository.ImageSet.Icon.Exists()){ 
+    
+  }
+  var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - "+loginuser).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+  menuBar.Click();
     }
     
     
