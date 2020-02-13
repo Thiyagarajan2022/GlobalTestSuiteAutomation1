@@ -154,7 +154,8 @@ fileList = slPacker.GetFileListFromFolder(LworkDir);
 archivePath = LpackedResults +reportName;
 // Packes the resutls
 if (slPacker.Pack(fileList, LworkDir, archivePath))
-  Log.Message("Files compressed successfully.");  
+  Log.Message("Files compressed successfully."); 
+   
 }
 
 //if((nxtID!=OpID)&&(!server)) {
@@ -210,7 +211,8 @@ if (slPacker.Pack(fileList, workDir, archivePath))
 Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
 }
  
-excelRow++;
+excelRow++;AmendGlobalClient
+
 } 
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
