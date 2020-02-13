@@ -15,7 +15,7 @@ var ClientNo,BrandNo,Currency ="";
 function Blockglobalclient(){ 
 //  TextUtils.writeLog("Block Gloabl brand Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(4000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
@@ -68,7 +68,8 @@ WorkspaceUtils.closeAllWorkspaces();
 }
 
 
-function gotoMenu(){ 
+function gotoMenu(){
+aqUtils.Delay(4000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 if(ImageRepository.ImageSet.Account_Receivable.Exists()){

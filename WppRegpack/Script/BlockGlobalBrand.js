@@ -265,7 +265,7 @@ function client(){
   ReportUtils.logStep_Screenshot();
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   save.Click();
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(6000, "Waiting to Save");
   ValidationUtils.verify(true,true,"Global Brand is Blocked");
   ReportUtils.logStep_Screenshot();
   TextUtils.writeLog("Global Brand is Blocked");

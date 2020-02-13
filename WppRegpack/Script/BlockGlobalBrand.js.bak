@@ -86,6 +86,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function gotoMenu(){ 
+  aqUtils.Delay(4000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 if(ImageRepository.ImageSet.Account_Receivable.Exists()){
