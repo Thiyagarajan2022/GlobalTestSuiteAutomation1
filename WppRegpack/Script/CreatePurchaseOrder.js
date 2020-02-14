@@ -212,16 +212,39 @@ var BaseCurrency;
   Log.Message("BaseCurrency :"+BaseCurrency)
 var RowCount = 0;
 var addedlines = false;
+var jB = true;
  for(var i=1;i<=10;i++){
+var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
+var IHSN ="";
+
+sheetName = "JobBudgetCreation";
 ExcelUtils.setExcelName(workBook, sheetName, true);
-var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-var Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
-var Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
-var UnitPrice = ExcelUtils.getColumnDatas("UnitPrice_"+i,EnvParams.Opco)
-var OHSN = ExcelUtils.getColumnDatas("OutwardHSN_"+i,EnvParams.Opco)
-var IHSN = ExcelUtils.getColumnDatas("InwardHSN_"+i,EnvParams.Opco)
-var POS = ExcelUtils.getColumnDatas("POS_"+i,EnvParams.Opco)
-if((wCodeID!="")&&(wCodeID!=null)){
+ wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+ Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
+ Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
+ UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+ OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+ IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+ 
+if((wCodeID=="")||(wCodeID==null)){
+ jB = false; 
+}
+ 
+if(!jB){
+sheetName = "CreatePurchaseOrder";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+ wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+ Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
+ Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
+ UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+ OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+ IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+}
+sheetName = "CreatePurchaseOrder";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
+
+if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 addBudget.Click();
 Delay(2000);
@@ -249,6 +272,10 @@ var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
    if(UnitPrice!=""){
    Unit_Price.setText(UnitPrice);
      }
+     
+Log.Message("OHSN :"+OHSN);
+Log.Message("IHSN :"+IHSN);
+Log.Message("POS :"+POS);
   if(EnvParams.Country.toUpperCase()=="INDIA")
    Runner.CallMethod("IND_PurchaseOrder.IND_Specific",Unit_Price,OHSN,IHSN,POS);
 //   IND_Specific(Unit_Price,OHSN,IHSN,POS);
@@ -287,7 +314,10 @@ aqUtils.Delay(4000, Indicator.Text);
   var lcA;
   
   if(ClientCurrency==ContryCurrency){ 
+    Log.Message(Qly)
+    Log.Message(UnitPrice)
     lcA = parseFloat(Qly)*parseFloat(UnitPrice);
+    Log.Message(lcA)
   }
   else if(ClientCurrency!="GBP"){
    convertCurr = 1/BaseCurrency;
@@ -300,9 +330,9 @@ aqUtils.Delay(4000, Indicator.Text);
   else{ 
     lcA = parseFloat(CA)*parseFloat(ExchangeRate);
   }
-
+  Log.Message(lcA)
   lcA = lcA.toFixed(2);
-  
+  Log.Message(lcA)
   var lowerRange = parseFloat(lcA)-parseFloat("1000.00");
   var higherRange = parseFloat(lcA)+parseFloat("1000.00");
 

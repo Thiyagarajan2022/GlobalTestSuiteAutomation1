@@ -211,7 +211,7 @@ if (slPacker.Pack(fileList, workDir, archivePath))
 Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
 }
  
-excelRow++;AmendGlobalClient
+excelRow++;
 
 } 
 

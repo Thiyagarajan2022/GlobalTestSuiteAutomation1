@@ -712,6 +712,7 @@ Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
+aqUtils.Delay(3000, Indicator.Text);
 getDetails();
 goToJobMenuItem();   
 createAJob();   

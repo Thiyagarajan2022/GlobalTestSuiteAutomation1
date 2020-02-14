@@ -339,6 +339,7 @@ closefilter.Click();
 aqUtils.Delay(5000, Indicator.Text);;
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl2;
 Sys.HighlightObject(Approve)
+if(Approve.text=="Approve all"){
 if(Approve.isEnabled()){ 
 Approve.HoverMouse();
 ReportUtils.logStep_Screenshot();
@@ -370,6 +371,10 @@ ReportUtils.logStep_Screenshot();
 
   ValidationUtils.verify(true,true,"Vendor Invoice is Approved by "+Apvr)
   aqUtils.Delay(8000, Indicator.Text);;  
+}
+}
+else{ 
+ ValidationUtils.verify(true,false,"Approve all Button is not available in maconomy") ;
 }
 }
 } 

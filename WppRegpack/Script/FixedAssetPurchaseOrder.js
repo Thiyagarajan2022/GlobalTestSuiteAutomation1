@@ -210,15 +210,37 @@ var BaseCurrency;
 var RowCount = 0;
 var addedlines = false;
  for(var i=1;i<=10;i++){
+var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
+var IHSN ="";
+
+sheetName = "JobBudgetCreation";
 ExcelUtils.setExcelName(workBook, sheetName, true);
-var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-var Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
-var Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
-var UnitPrice = ExcelUtils.getColumnDatas("UnitPrice_"+i,EnvParams.Opco)
-var OHSN = ExcelUtils.getColumnDatas("OutwardHSN_"+i,EnvParams.Opco)
-var IHSN = ExcelUtils.getColumnDatas("InwardHSN_"+i,EnvParams.Opco)
-var POS = ExcelUtils.getColumnDatas("POS_"+i,EnvParams.Opco)
-if((wCodeID!="")&&(wCodeID!=null)){
+ wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+ Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
+ Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
+ UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+ OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+ IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+ 
+if((wCodeID=="")||(wCodeID==null)){
+ jB = false; 
+}
+ 
+if(!jB){
+sheetName = "FixedAssetPurchaseOrder";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+ wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+ Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
+ Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
+ UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+ OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+ IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+}
+sheetName = "CreatePurchaseOrder";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
+
+if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("238000000")!=-1)){
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 addBudget.Click();
 Delay(2000);

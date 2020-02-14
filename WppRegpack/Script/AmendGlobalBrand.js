@@ -9,13 +9,14 @@
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-var sheetName = "AmendGlobalClient";
-var ClientNo,BrandNo,Currency,Add1,Add2,Add3,Phone,Email ="";
+var sheetName = "AmendGlobalBrand";
+var ClientNo,BrandNo,BrandName,Currency,Add1,Add2,Add3,Phone,Email ="";
 var Approve_Level =[];
 var ApproveInfo = [];
 var Project_manager="";
 var level =0;
-function AmendGlobalClient(){ 
+
+function AmendGlobalBrand(){ 
 //  TextUtils.writeLog("Amend Gloabl brand Started"); 
 Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
@@ -37,10 +38,11 @@ Restart.login(Project_manager);
 }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "AmendGlobalClient";
-ClientNo,BrandNo,Currency,Add1,Add2,Add3,Phone,Email ="";
+sheetName = "AmendGlobalBrand";
+ClientNo,BrandNo,BrandName,Currency,Add1,Add2,Add3,Phone,Email ="";
 Approve_Level =[];
 ApproveInfo = [];
+level =0;
 ExcelUtils.setExcelName(workBook, sheetName, true);
 ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   if((ClientNo=="")||(ClientNo==null)){
@@ -48,12 +50,29 @@ ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
   }
 if((ClientNo==null)||(ClientNo=="")){ 
-ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
+ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Brand");
+}
+BrandNo = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
+  if((BrandNo=="")||(BrandNo==null)){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  BrandNo = ReadExcelSheet("Brand Number",EnvParams.Opco,"Data Management");
+  }
+if((BrandNo==null)||(BrandNo=="")){ 
+ValidationUtils.verify(false,true,"Brand Number is Needed to Amend Global Brand");
+}
+
+BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
+  if((BrandName=="")||(BrandName==null)){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  BrandName = ReadExcelSheet("Brand Name",EnvParams.Opco,"Data Management");
+  }
+if((BrandName==null)||(BrandName=="")){ 
+ValidationUtils.verify(false,true,"Brand Name is Needed to Amend Global Brand");
 }
 
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 
-ValidationUtils.verify(false,true,"Currency is Needed to Amend Global Client");
+ValidationUtils.verify(false,true,"Currency is Needed to Amend Global Brand");
 }
 
 Language = EnvParams.Language;
@@ -210,20 +229,64 @@ function globalClient(){
 function client(){ 
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
   home.Click();
+  var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
+  sublevels.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  TextUtils.writeLog("Navigating to Sub Level");
+  var gblSublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  gblSublevels.Click();
+  aqUtils.Delay(2000, Indicator.Text);
+  var activeBrand = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button2;
+  activeBrand.Click();
+  aqUtils.Delay(3000, Indicator.Text);
+  TextUtils.writeLog("Active Brand is selected");
+  var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+  var brandNmae = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+  brandNmae.Click();
+  brandNmae.Keys(BrandName);
+  aqUtils.Delay(4000, Indicator.Text);
+    
+  if(table.getItem(0).getText_2(0).OleValue.toString().trim()==BrandNo){
+  table.HoverMouse(49, 52);
+  ReportUtils.logStep_Screenshot();
+  table.Click(49, 52);
+  ValidationUtils.verify(true,true,"Global Brand is available in maconomy to Amend");
+  }
+  else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==BrandNo){
+  table.HoverMouse(49, 71);
+  ReportUtils.logStep_Screenshot();  
+  table.Click(49, 71);
+  ValidationUtils.verify(true,true,"Global Brand is available in maconomy to Amend");
+  }
+  else if(table.getItem(2).getText_2(0).OleValue.toString().trim()==BrandNo){
+  table.HoverMouse(49, 90);
+  ReportUtils.logStep_Screenshot();
+  table.Click(49, 90);
+  ValidationUtils.verify(true,true,"Global Brand is available in maconomy to Amend");
+  }
+  else if(table.getItem(3).getText_2(0).OleValue.toString().trim()==BrandNo){
+  table.HoverMouse(49, 109);
+  ReportUtils.logStep_Screenshot();
+  table.Click(49, 109);
+  ValidationUtils.verify(true,true,"Global Brand is available in maconomy to Amend");
+  }
+  
+  aqUtils.Delay(5000, Indicator.Text);
+
+  TextUtils.writeLog("Global Brand is available in maconomy to Amend");
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
-  var C_Add1 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite5.McTextWidget;
-  var C_Add2 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite6.McTextWidget;
-  var C_Add3 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite7.McTextWidget;
-  var C_Phone = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite8.McTextWidget;
-  var C_mail = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite9.McTextWidget;
+  var B_Add1 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite5.McTextWidget;
+  var B_Add2 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite6.McTextWidget;
+  var B_Add3 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite7.McTextWidget;
+  var B_Phone = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite8.McTextWidget;
+  var B_mail = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite9.McTextWidget;
   
   var changes = false;
   if(Add1!=""){
-    if(C_Add1.getText()!=Add1){
-    C_Add1.setText(Add1);
+    if(B_Add1.getText()!=Add1){
+    B_Add1.setText(Add1);
     ValidationUtils.verify(true,true,"Address 1 is Changed");
     TextUtils.writeLog("Address 1 is Changed");
     changes = true;
@@ -233,8 +296,8 @@ function client(){
     }
     
   if(Add2!=""){
-    if(C_Add2.getText()!=Add2){
-    C_Add2.setText(Add2);
+    if(B_Add2.getText()!=Add2){
+    B_Add2.setText(Add2);
     ValidationUtils.verify(true,true,"Address 2 is Changed");
     TextUtils.writeLog("Address 2 is Changed");
     changes = true;
@@ -244,8 +307,8 @@ function client(){
     }
     
     if(Add3!=""){
-    if(C_Add3.getText()!=Add3){
-    C_Add3.setText(Add3);
+    if(B_Add3.getText()!=Add3){
+    B_Add3.setText(Add3);
     ValidationUtils.verify(true,true,"Address 3 is Changed");
     TextUtils.writeLog("Address 3 is Changed");
     changes = true;
@@ -256,8 +319,8 @@ function client(){
     
     
     if(Phone!=""){
-    if(C_Phone.getText()!=Phone){
-    C_Phone.setText(Phone);
+    if(B_Phone.getText()!=Phone){
+    B_Phone.setText(Phone);
     ValidationUtils.verify(true,true,"Phone Number is Changed");
     TextUtils.writeLog("Phone Number is Changed");
     changes = true;
@@ -268,8 +331,8 @@ function client(){
     
 
     if(Email!=""){
-    if(C_mail.getText()!=Email){
-    C_mail.setText(Email);
+    if(B_mail.getText()!=Email){
+    B_mail.setText(Email);
     ValidationUtils.verify(true,true,"Email is Changed");
     TextUtils.writeLog("Email is Changed");
     changes = true;
@@ -307,7 +370,7 @@ function client(){
      for(var i=0;i<ApproverTable.getItemCount();i++){   
      var approvers="";
 
-      approvers = EnvParams.Opco+"*"+ClientNo+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+      approvers = EnvParams.Opco+"*"+BrandNo+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
       Log.Message("Approver level :" +i+ ": " +approvers);
       ReportUtils.logStep("INFO","Approver Level "+i+": "+approvers);
 //      Approve_Level[y] = "1307*1307100030*1307 SeniorFinance (13079510)*1307 Management (13079507)*"
@@ -322,6 +385,8 @@ function client(){
     var OpCo1 = EnvParams.Opco;
     Log.Message(Approve_Level[0])
     var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
+    Log.Message(Approve_Level[0])
+    Log.Message(Project_manager)
     if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
     level = 1;
     var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl5;
@@ -330,12 +395,12 @@ function client(){
     Approve.HoverMouse();
     ReportUtils.logStep_Screenshot();
       Approve.Click();
-     TextUtils.writeLog("Approve button is Clicked"); 
+      TextUtils.writeLog("Approve button is Clicked"); 
     //ImageRepository.ImageSet.ApprovePurchaseOrder.Click();
     ReportUtils.logStep_Screenshot();
     aqUtils.Delay(8000, Indicator.Text);;
-    ValidationUtils.verify(true,true,"Amend Global Client is Approved by "+Project_manager)
-    TextUtils.writeLog("Levels 0 has  Approved Amend Global Client");
+    ValidationUtils.verify(true,true,"Amend Global Brand is Approved by "+Project_manager)
+    TextUtils.writeLog("Levels 0 has  Approved the Amend Global Brand");
     aqUtils.Delay(8000, Indicator.Text);;
     }
     }
@@ -357,7 +422,7 @@ Add3 = ExcelUtils.getRowDatas("Address_3",EnvParams.Opco)
 Phone = ExcelUtils.getRowDatas("Phone",EnvParams.Opco)
 Email = ExcelUtils.getRowDatas("E-mail",EnvParams.Opco)
 if(((Add1==null)||(Add1==""))&&((Add2==null)||(Add2==""))&&((Add3==null)||(Add3==""))&&((Phone==null)||(Phone==""))&&((Email==null)||(Email==""))){ 
-ValidationUtils.verify(false,true,"Any value from Address 1,Address 2,Address 3,Phone,Email is Needed to Amend Global Client");
+ValidationUtils.verify(false,true,"Any value from Address 1,Address 2,Address 3,Phone,Email is Needed to Amend Global Brand");
 }
 
 }
@@ -500,7 +565,7 @@ TextUtils.writeLog("Entering into Approve Customer by Type (Substitute) from To-
 }
 
 
-function FinalApprove(C_Num,Apvr){ 
+function FinalApprove(B_Num,Apvr){ 
   aqUtils.Delay(5000, Indicator.Text);
 if(ImageRepository.ImageSet.Show_Filter.Exists()){
 aqUtils.Delay(2000, Indicator.Text);
@@ -509,13 +574,13 @@ ImageRepository.ImageSet.Show_Filter.Click();
 
 var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
 var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.McValuePickerWidget;
-firstCell.setText(C_Num);
+firstCell.setText(B_Num);
 var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
   
 aqUtils.Delay(6000, Indicator.Text);;
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
-  if(table.getItem(v).getText_2(0).OleValue.toString().trim()==C_Num){ 
+  if(table.getItem(v).getText_2(0).OleValue.toString().trim()==B_Num){ 
     flag=true;    
     break;
   }
@@ -524,8 +589,8 @@ for(var v=0;v<table.getItemCount();v++){
   }
 }
 
-ValidationUtils.verify(flag,true,"Amended Client is available in Approval List");
-TextUtils.writeLog("Amended Client is available in Approval List");
+ValidationUtils.verify(flag,true,"Amended Brand is available in Approval List");
+TextUtils.writeLog("Amended Brand is available in Approval List");
 if(flag){ 
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
@@ -540,8 +605,8 @@ ReportUtils.logStep_Screenshot();
 Approve.Click();
 TextUtils.writeLog("Approve button is Clicked"); 
 aqUtils.Delay(9000, "Waiting to Approve");;
-ValidationUtils.verify(true,true,"Amended Client is Approved by "+Apvr)
-TextUtils.writeLog("Amended Client is Approved by "+Apvr);
+ValidationUtils.verify(true,true,"Amended Brand is Approved by "+Apvr)
+TextUtils.writeLog("Amended Brand is Approved by "+Apvr);
 }
 }
 }
