@@ -330,8 +330,8 @@ ReportUtils.logStep_Screenshot("");
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print job quote")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Quote")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -460,8 +460,8 @@ ReportUtils.logStep_Screenshot("");
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job order confirmation"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job order confirmation"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print job order confirmation")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Order Confirmation"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Order Confirmation"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Order Confirmation")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -1530,7 +1530,7 @@ function todo(lvl){
 
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
 refresh.Click();
-aqUtils.Delay(15000, Indicator.Text);
+aqUtils.Delay(25000, Indicator.Text);
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
