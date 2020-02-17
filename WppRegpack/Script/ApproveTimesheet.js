@@ -427,7 +427,8 @@ var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 var TempAprVl = Approve_Level[0].substring(Approve_Level[0].indexOf("*")+1);
 TempAprVl = TempAprVl.substring(TempAprVl.indexOf("*")+1);
 var OpCo2 = TempAprVl.replace(/OpCo -/g,OpCo1);
-if((TempAprVl.indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+//if((TempAprVl.indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+if((Project_manager.indexOf(TempAprVl)!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
 level = 1;
 var temp = Approve_Level[0].split("*");
 for(var hi=2;hi<4;hi++){

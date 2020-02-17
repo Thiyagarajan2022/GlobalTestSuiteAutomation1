@@ -1530,7 +1530,7 @@ function todo(lvl){
 
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
 refresh.Click();
-aqUtils.Delay(15000, Indicator.Text);
+aqUtils.Delay(25000, Indicator.Text);
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 

@@ -2671,6 +2671,36 @@
 																																					</Property>
 																																				</Properties>
 																																			</Child>
+																																			<Child Name="SingleToolItemControl4" Key="{62681F15-606D-466A-B178-D7430A8310A9}" ParallelWalk="True">
+																																				<Image FileName="-1924914906" Left="867" Top="118" Right="954" Bottom="140" />
+																																				<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="9" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																			</Child>
+																																			<Child Name="SingleToolItemControl5" Key="{BC57A41C-AE59-419E-AF4A-67170830097E}" ParallelWalk="True">
+																																				<Image FileName="-1924914906" Left="957" Top="118" Right="1031" Bottom="140" />
+																																				<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																				<Properties>
+																																					<Property Name="JavaFullClassName">
+																																						<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																					</Property>
+																																					<Property Name="WndCaption">
+																																						<Value PropertyType="0" Value="" Type="5" />
+																																					</Property>
+																																					<Property Name="Index">
+																																						<Value PropertyType="0" Value="10" Type="0" />
+																																					</Property>
+																																				</Properties>
+																																			</Child>
 																																		</Children>
 																																	</Child>
 																																</Children>
@@ -44630,6 +44660,8 @@
 																	<Child Name="SingleToolItemControl" Owner="{C68F71A1-4236-4CE0-AB4A-42DF00C6A77C}" />
 																	<Child Name="SingleToolItemControl2" Owner="{750AFF46-23F9-4DD7-8DCA-D02C2C9536DF}" />
 																	<Child Name="SingleToolItemControl3" Owner="{28F2E0FF-2977-4ED6-859B-E3F34073F286}" />
+																	<Child Name="SingleToolItemControl4" Owner="{62681F15-606D-466A-B178-D7430A8310A9}" />
+																	<Child Name="SingleToolItemControl5" Owner="{BC57A41C-AE59-419E-AF4A-67170830097E}" />
 																</Child>
 															</Child>
 															<Child Name="Composite2" Owner="{B8A99185-B227-4D53-B75F-59E9F3733797}">
