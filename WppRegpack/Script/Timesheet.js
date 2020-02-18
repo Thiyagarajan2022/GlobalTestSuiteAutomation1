@@ -39,14 +39,16 @@ ValidationUtils.verify(false,true,"Weekno is Needed to Create Timesheet");
  for(var i=1;i<=10;i++){
 sheetName = "JobBudgetCreation";
 ExcelUtils.setExcelName(workBook, sheetName, true);
- wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")!=-1)){
+ workID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+ Log.Message(workID);
+if((workID!="")&&(workID!=null)&&(workID.indexOf("T")!=-1)){
  break;
 }else{ 
- wCodeID = ""; 
+ workID = ""; 
 }
 }
 sheetName = "CreateTimesheet";
+ExcelUtils.setExcelName(workBook, sheetName, true);
 if((workID==null)||(workID=="")){ 
 workID = ExcelUtils.getRowDatas("Workcode",EnvParams.Opco)
 }
