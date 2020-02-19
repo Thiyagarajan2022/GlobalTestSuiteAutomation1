@@ -372,10 +372,30 @@ return STIME;
 }
 
 function getFormattedCurrentTime(){
-//    TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
-//    return TodayValue;
-//    var Currenc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget;
-    var Currenc = ClientNumber;
-Sys.HighlightObject(Currenc)
-    Log.Message(Currenc.getText());
+var add = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").Child(kk).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);;;
+Sys.HighlightObject(add);
+}
+
+
+function bn(){ 
+  var SaveTitle = "";
+var sFolder = "";
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Quote")!=-1){
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x41);
+    
+    if(ImageRepository.PDF.ChooseFolder.Exists())
+    ImageRepository.PDF.ChooseFolder.Click();
+    
+    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+    aqUtils.Delay(2000, Indicator.Text);
+    SaveTitle = save.wText;
+    }
 }

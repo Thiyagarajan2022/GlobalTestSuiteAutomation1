@@ -3371,3 +3371,44 @@ var checkmark =  false;
     }
     return checkmark;
 }
+
+
+
+function StartTime(){ 
+var dif;
+var TodayValue = aqDateTime.Today();
+var StringTodayValue = aqConvert.DateTimeToStr(TodayValue);
+var EncodedDate = aqConvert.DateTimeToFormatStr(StringTodayValue,"%d%#B%Y"); 
+var STIME = getFormattedCurrentTime()
+Log.Message("Start DATE & TIME :"+EncodedDate +" "+STIME)
+var start = STIME.split(":");
+if(start[1]>0){ 
+dif = Number(start[2]) + Number(start[1]*60);
+}
+if(start[0]>0){ 
+dif = dif + Number(start[0]*60*60);
+}
+return dif;
+}
+
+function EndTime(){ 
+var dif2;
+TodayValue = aqDateTime.Today();
+StringTodayValue = aqConvert.DateTimeToStr(TodayValue);
+EncodedDate = aqConvert.DateTimeToFormatStr(StringTodayValue,"%d%#B%Y"); 
+var ETIME =getFormattedCurrentTime()
+Log.Message("End DATE & TIME :"+EncodedDate +" "+ETIME); 
+var end = ETIME.split(":");
+if(end[1]>0){ 
+dif2 = Number( end[2]) + Number(end[1]*60);
+}
+if(end[0]>0){ 
+dif2 = dif2 + Number(end[0]*60*60);
+}
+return dif2;
+}  
+
+function getFormattedCurrentTime(){
+  TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
+  return TodayValue;
+}

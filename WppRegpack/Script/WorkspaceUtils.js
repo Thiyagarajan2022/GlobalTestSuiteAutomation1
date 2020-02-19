@@ -3374,7 +3374,7 @@ var checkmark =  false;
 
 
 
-function StartTime(){ 
+function STime(){ 
 var dif;
 var TodayValue = aqDateTime.Today();
 var StringTodayValue = aqConvert.DateTimeToStr(TodayValue);
@@ -3408,7 +3408,3 @@ dif2 = dif2 + Number(end[0]*60*60);
 return dif2;
 }  
 
-function getFormattedCurrentTime(){
-  TodayValue = aqConvert.DateTimeToFormatStr(aqDateTime.Time(), "%H:%M:%S");
-  return TodayValue;
-}

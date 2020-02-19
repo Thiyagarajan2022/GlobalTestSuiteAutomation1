@@ -404,7 +404,62 @@ ReportUtils.logStep_Screenshot("");
     ValidationUtils.verify(true,true,"Quote is Approved by :"+ approvedby.getText());
     TextUtils.writeLog("Quote is Approved by :"+ approvedby.getText()); 
 
+        var printQuote = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.Composite2.SingleToolItemControl;
+    Sys.HighlightObject(printQuote)
+    printQuote.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+    printQuote.Click();
+    TextUtils.writeLog("Print Quote is Clicked and saved"); 
+    aqUtils.Delay(5000, Indicator.Text);
+var SaveTitle = "";
+var sFolder = "";
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Quote")!=-1){
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x41);
     
+    if(ImageRepository.PDF.ChooseFolder.Exists())
+    ImageRepository.PDF.ChooseFolder.Click();
+    
+    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+    aqUtils.Delay(2000, Indicator.Text);
+    SaveTitle = save.wText;
+    
+sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
+if (! aqFileSystem.Exists(sFolder)){
+if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+}
+else{
+Log.Error("Could not create the folder " + sFolder);
+}
+}
+save.Keys(sFolder+SaveTitle+".pdf");
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+saveAs.Click();
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.SaveAs.Exists()){
+var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
+conSaveAs.Click();
+}
+Sys.HighlightObject(pdf);
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
+    }
+ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
+Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
+ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+
  
 }
 

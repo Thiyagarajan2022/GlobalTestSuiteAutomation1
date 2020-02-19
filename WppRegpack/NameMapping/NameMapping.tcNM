@@ -9234,6 +9234,38 @@
 																																	</Child>
 																																</Children>
 																															</Child>
+																															<Child Name="Composite2" Key="{50950509-4C18-4476-9202-EC2058F5AB0A}" ParallelWalk="True">
+																																<Image FileName="-858058615" Left="241" Top="181" Right="1368" Bottom="210" />
+																																<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																<Properties>
+																																	<Property Name="JavaFullClassName">
+																																		<Value PropertyType="0" Value="org.eclipse.swt.widgets.Composite" Type="5" />
+																																	</Property>
+																																	<Property Name="WndCaption">
+																																		<Value PropertyType="0" Value="" Type="5" />
+																																	</Property>
+																																	<Property Name="Index">
+																																		<Value PropertyType="0" Value="2" Type="0" />
+																																	</Property>
+																																</Properties>
+																																<Children>
+																																	<Child Name="SingleToolItemControl" Key="{D7413C0E-0504-4AE2-AE75-43F7BD3C87D7}" ParallelWalk="True">
+																																		<Image FileName="-858058615" Left="537" Top="184" Right="625" Bottom="206" />
+																																		<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="6" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																	</Child>
+																																</Children>
+																															</Child>
 																														</Children>
 																													</Child>
 																												</Children>
@@ -10968,6 +11000,21 @@
 																																			</Property>
 																																			<Property Name="Index">
 																																				<Value PropertyType="0" Value="14" Type="0" />
+																																			</Property>
+																																		</Properties>
+																																	</Child>
+																																	<Child Name="SingleToolItemControl3" Key="{AD9EF18E-706E-47AD-9ACC-C704FD4BC6C8}" ParallelWalk="True">
+																																		<Image FileName="856425783" Left="1170" Top="184" Right="1350" Bottom="206" />
+																																		<TypeInfo Item0="{F8C06D53-C20E-46D6-A7E1-AE5BBF361AFD}" />
+																																		<Properties>
+																																			<Property Name="JavaFullClassName">
+																																				<Value PropertyType="0" Value="com.maconomy.widgets.tabs.toolbar.SingleToolItemControl" Type="5" />
+																																			</Property>
+																																			<Property Name="WndCaption">
+																																				<Value PropertyType="0" Value="" Type="5" />
+																																			</Property>
+																																			<Property Name="Index">
+																																				<Value PropertyType="0" Value="18" Type="0" />
 																																			</Property>
 																																		</Properties>
 																																	</Child>
@@ -45385,6 +45432,9 @@
 																	</Child>
 																</Child>
 															</Child>
+															<Child Name="Composite2" Owner="{50950509-4C18-4476-9202-EC2058F5AB0A}">
+																<Child Name="SingleToolItemControl" Owner="{D7413C0E-0504-4AE2-AE75-43F7BD3C87D7}" />
+															</Child>
 														</Child>
 													</Child>
 												</Child>
@@ -45594,6 +45644,7 @@
 															<Child Name="Composite2" Owner="{E7D71ECF-7C3F-4A66-8A7C-40D9708C8BD6}">
 																<Child Name="SingleToolItemControl" Owner="{98662D46-434F-4FEE-A122-8793B8B22942}" />
 																<Child Name="SingleToolItemControl2" Owner="{D09E3F01-40B7-42C9-8C06-A7EA11AEEA45}" />
+																<Child Name="SingleToolItemControl3" Owner="{AD9EF18E-706E-47AD-9ACC-C704FD4BC6C8}" />
 															</Child>
 														</Child>
 													</Child>

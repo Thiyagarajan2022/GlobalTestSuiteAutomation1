@@ -12,6 +12,8 @@
 			<child name="DS_IND_SYSTEST.xlsx" key="{C81161CF-65B9-460C-B496-C6E068F8C92B}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_IND_SYSTEST.xlsx" />
 			<child name="DS_CHN_FULL_REGRESSION.xlsx" key="{920D5E47-E667-4322-8DEE-975093D4786C}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Full_Regression\DS_CHN_FULL_REGRESSION.xlsx" />
 			<child name="DS_IND_FULL_REGRESSION.xlsx" key="{F2D1F7C4-636D-4BF8-9712-068E157F0B3E}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Full_Regression\DS_IND_FULL_REGRESSION.xlsx" />
+			<child name="DS_CHN_CRITICAL_REGRESSION.xlsx" key="{30C8092C-FC3C-4AB2-B3AF-5DCD80BB0FE2}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Critical_Regression\DS_CHN_CRITICAL_REGRESSION.xlsx" />
+			<child name="DS_IND_CRITICAL_REGRESSION.xlsx" key="{B10D5470-596E-4F5D-B4B5-557F75149062}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Critical_Regression\DS_IND_CRITICAL_REGRESSION.xlsx" />
 		</folder>
 		<child name="KeywordTests" key="{801E20D3-EDFB-4422-9C03-80D3B421D37F}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
 		<child name="ImageRepository" key="{2D2E4DEA-8F6D-4014-ACD4-6722F195D9CA}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
