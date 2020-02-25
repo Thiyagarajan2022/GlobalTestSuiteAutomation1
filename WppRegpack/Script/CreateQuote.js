@@ -456,7 +456,7 @@ Sys.HighlightObject(pdf);
     Sys.Desktop.KeyUp(0x12);     
     Sys.Desktop.KeyUp(0x58);
     }
-ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
+ValidationUtils.verify(true,true,"Print Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
@@ -1510,8 +1510,8 @@ var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
-//if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
-if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
+if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+//if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
 level = 1;
 ImageRepository.ImageSet.ApproveBudget.Click();
 aqUtils.Delay(5000, Indicator.Text);

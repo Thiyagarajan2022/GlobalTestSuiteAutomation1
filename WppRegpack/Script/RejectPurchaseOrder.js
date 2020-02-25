@@ -38,7 +38,7 @@ Restart.login(Project_manager);
 }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "ApprovePurchaseOrder";
+sheetName = "RejectPurchaseOrder";
 level =0;
 Approve_Level = [];
 ApproveInfo = [];
@@ -83,6 +83,7 @@ todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i);
 break;
 }
+
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -201,8 +202,8 @@ var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
-//if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
-if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
+if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+//if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
 level = 1;
 var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
 var remarks = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid.Remarks;
@@ -373,7 +374,9 @@ TextUtils.writeLog("Entering into Approve Purchase Order (Substitute) from To-Do
 
 
 }
-
+//var PONum = "1707109739";
+//var Apvr = "1707 Finace";
+//var lvl = "0";
 function FinalApprovePO(PONum,Apvr,lvl){ 
 aqUtils.Delay(5000, Indicator.Text);
 if(ImageRepository.ImageSet.Show_Filter.Exists()){
@@ -405,7 +408,8 @@ ReportUtils.logStep_Screenshot();
 closefilter.Click();
 aqUtils.Delay(5000, Indicator.Text);;
 
-var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
+//var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
+var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();
@@ -436,8 +440,24 @@ aqUtils.Delay(3000, Indicator.Text);;
 ImageRepository.ImageSet.Rejected.Click();
 ReportUtils.logStep_Screenshot();
 aqUtils.Delay(8000, Indicator.Text);;
-
-
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.HoverMouse();
+aqUtils.Delay(2000, Indicator.Text);;
+if(ImageRepository.ImageSet.Undo.Exists())
+ImageRepository.ImageSet.Undo.Click();
+ReportUtils.logStep_Screenshot();
+aqUtils.Delay(8000, Indicator.Text);;
+    Sys.Desktop.KeyDown(0x09);
+    Sys.Desktop.KeyUp(0x09);
+aqUtils.Delay(2000, Indicator.Text);;
+var remarks = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.PORemarks;
+remarks.setText(" ");
+aqUtils.Delay(1000, Indicator.Text);;
+var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.RemarksSave;
+save.HoverMouse();
+ReportUtils.logStep_Screenshot();
+save.Click();
+  
 /*
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action;
 Sys.HighlightObject(Approve)

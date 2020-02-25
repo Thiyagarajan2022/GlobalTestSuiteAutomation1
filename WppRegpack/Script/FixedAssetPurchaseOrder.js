@@ -22,6 +22,7 @@ var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
 function CreatePurchaseOrder(){ 
 TextUtils.writeLog("Create Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
+aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -79,7 +80,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
   }
 if((VendorID==null)||(VendorID=="")){ 
-ValidationUtils.verify(false,true,"Vendor Number is Needed to Create Fixed Asset Purchase Order");
+ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
 }
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
@@ -88,10 +89,9 @@ ValidationUtils.verify(false,true,"Vendor Number is Needed to Create Fixed Asset
   Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
 if((Job_Number==null)||(Job_Number=="")){ 
-ValidationUtils.verify(false,true,"Job Number is Needed to Create Fixed Asset Purchase Order");
+ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
 ExcelUtils.setExcelName(workBook, "Data Management", true);
-
 //Log.Message("VendorID :"+VendorID);
 //Log.Message("Job_Number :"+Job_Number);
   gotoMenu();
@@ -196,6 +196,7 @@ var ClientCurrency =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Compo
 Log.Message(ClientCurrency);
   ExcelUtils.setExcelName(workBook, "CountryCurrency", true);
 var ContryCurrency = ExcelUtils.getRowDatas(EnvParams.Country,"Currency");
+Log.Message(ContryCurrency)
 var ExchangeRate;
 var BaseCurrency;
   ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
@@ -203,12 +204,15 @@ var BaseCurrency;
   ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
   else
   ExchangeRate = "1.00";
-  if(ClientCurrency!="GBP")  
+  if(ClientCurrency!=ContryCurrency)  
   BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
   else
   BaseCurrency = "1.00";
+  Log.Message("ExchangeRate :"+ExchangeRate);
+  Log.Message("BaseCurrency :"+BaseCurrency)
 var RowCount = 0;
 var addedlines = false;
+var jB = true;
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -227,7 +231,7 @@ if((wCodeID=="")||(wCodeID==null)){
 }
  
 if(!jB){
-sheetName = "FixedAssetPurchaseOrder";
+sheetName = "CreatePurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
  wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
  Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
@@ -236,11 +240,11 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
  OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
  IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
 }
-sheetName = "CreatePurchaseOrder";
+sheetName = "FixedAssetPurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
 
-if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("238000000")!=-1)){
+if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 addBudget.Click();
 Delay(2000);
@@ -268,6 +272,10 @@ var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
    if(UnitPrice!=""){
    Unit_Price.setText(UnitPrice);
      }
+     
+Log.Message("OHSN :"+OHSN);
+Log.Message("IHSN :"+IHSN);
+Log.Message("POS :"+POS);
   if(EnvParams.Country.toUpperCase()=="INDIA")
    Runner.CallMethod("IND_PurchaseOrder.IND_Specific",Unit_Price,OHSN,IHSN,POS);
 //   IND_Specific(Unit_Price,OHSN,IHSN,POS);
@@ -280,18 +288,17 @@ var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-
 aqUtils.Delay(4000, Indicator.Text);
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(RowCount).getText_2(7).OleValue.toString().trim();
   var local_currency_Amount = tableGrid.getItem(RowCount).getText_2(8).OleValue.toString().trim();
-  var Taxcode1 = tableGrid.getItem(RowCount).getText_2(9).OleValue.toString().trim();
-  var Taxcode2 = tableGrid.getItem(RowCount).getText_2(10).OleValue.toString().trim();
-  var Tax_Amount_currency_1 = tableGrid.getItem(RowCount).getText_2(12).OleValue.toString().trim();
-  var Tax_Amount_currency_2 = tableGrid.getItem(RowCount).getText_2(14).OleValue.toString().trim();
-  var Tax_Amount_1_base = tableGrid.getItem(RowCount).getText_2(11).OleValue.toString().trim();
-  var Tax_Amount_2_base = tableGrid.getItem(RowCount).getText_2(13).OleValue.toString().trim();
-  var Tax_Amount = tableGrid.getItem(RowCount).getText_2(15).OleValue.toString().trim();
+  var Taxcode1 = tableGrid.getItem(RowCount).getText_2(12).OleValue.toString().trim();
+  var Taxcode2 = tableGrid.getItem(RowCount).getText_2(13).OleValue.toString().trim();
+  var Tax_Amount_currency_1 = tableGrid.getItem(RowCount).getText_2(15).OleValue.toString().trim();
+  var Tax_Amount_currency_2 = tableGrid.getItem(RowCount).getText_2(17).OleValue.toString().trim();
+  var Tax_Amount_1_base = tableGrid.getItem(RowCount).getText_2(14).OleValue.toString().trim();
+  var Tax_Amount_2_base = tableGrid.getItem(RowCount).getText_2(16).OleValue.toString().trim();
+  var Tax_Amount = tableGrid.getItem(RowCount).getText_2(18).OleValue.toString().trim();
   currency_Amount = currency_Amount.replace(/,/g, '');
   local_currency_Amount = local_currency_Amount.replace(/,/g, '');
   Tax_Amount_currency_1 = Tax_Amount_currency_1.replace(/,/g, '');
@@ -305,19 +312,27 @@ aqUtils.Delay(4000, Indicator.Text);
   
   var convertCurr;
   var lcA;
-  if(ClientCurrency!="GBP"){
+  
+  if(ClientCurrency==ContryCurrency){ 
+    Log.Message(Qly)
+    Log.Message(UnitPrice)
+    lcA = parseFloat(Qly)*parseFloat(UnitPrice);
+    Log.Message(lcA)
+  }
+  else if(ClientCurrency!="GBP"){
    convertCurr = 1/BaseCurrency;
 //     Log.Message("convertCurr :"+convertCurr)
   var QtyXCurr = parseFloat(convertCurr)*parseFloat(CA);
 //  Log.Message("QtyXCurr :"+QtyXCurr)
    lcA = parseFloat(QtyXCurr)*parseFloat(ExchangeRate);
 //  Log.Message("lcA :"+lcA)
-  }else{ 
+  }
+  else{ 
     lcA = parseFloat(CA)*parseFloat(ExchangeRate);
   }
-
+  Log.Message(lcA)
   lcA = lcA.toFixed(2);
-  
+  Log.Message(lcA)
   var lowerRange = parseFloat(lcA)-parseFloat("1000.00");
   var higherRange = parseFloat(lcA)+parseFloat("1000.00");
 
@@ -331,9 +346,9 @@ aqUtils.Delay(4000, Indicator.Text);
   ValidationUtils.verify(true,true,"Tax Code 2 is populated");
   
   
-//Log.Message(lowerRange) 
-//Log.Message(higherRange) 
-//Log.Message(local_currency_Amount)
+Log.Message(lowerRange) 
+Log.Message(higherRange) 
+Log.Message(local_currency_Amount)
 
   if(CA==currency_Amount)
   ValidationUtils.verify(true,true,"Currency Amount is verified");
@@ -445,7 +460,7 @@ Delay(5000);
 }
 
 if(!addedlines)
-ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Budget");
+ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Purchase Order");
 else{
   TextUtils.writeLog("Purchase Order lines are Saved");
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;

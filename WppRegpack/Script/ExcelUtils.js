@@ -6,6 +6,7 @@ var excelObj;
 function setExcelName(excelname, excelSheet){
 excelName = excelname;
 sheet = excelSheet;
+JavaClasses.org_excelwrite.companyinfo.setExcelName(excelname, excelSheet);
 //Log.Message("excelName :"+excelName);
 //Log.Message("sheet :"+sheet);
 //excelObj = DDT.ExcelDriver(excelName,sheet,true);
@@ -212,33 +213,34 @@ var colsList = [];
 
 function getRowDatas(rowidentifier,column)
 {
+var temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(rowidentifier,column);
 
-//Log.Message("excelName :"+excelName);
-//Log.Message("sheet :"+sheet);
-//Log.Message("column :"+column);
-var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
-var id =0;
-var colsList = [];
- var temp ="";
-
-     while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
-       if(xlDriver.Value(0).toString().trim()==rowidentifier){
-        try{
-          
-         temp = temp+xlDriver.Value(column).toString().trim();
-         }
-        catch(e){
-        temp = "";
-        }
-
-//      Log.Message("temp :"+temp);
-      break;
-      }
-//      Log.Message("temp :"+temp);
-    xlDriver.Next();
-     }
-     DDT.CloseDriver(xlDriver.Name);
+////Log.Message("excelName :"+excelName);
+////Log.Message("sheet :"+sheet);
+////Log.Message("column :"+column);
+//var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
+//var id =0;
+//var colsList = [];
+// var temp ="";
+//
+//     while (!DDT.CurrentDriver.EOF()) {
+////    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
+//       if(xlDriver.Value(0).toString().trim()==rowidentifier){
+//        try{
+//          
+//         temp = temp+xlDriver.Value(column).toString().trim();
+//         }
+//        catch(e){
+//        temp = "";
+//        }
+//
+////      Log.Message("temp :"+temp);
+//      break;
+//      }
+////      Log.Message("temp :"+temp);
+//    xlDriver.Next();
+//     }
+//     DDT.CloseDriver(xlDriver.Name);
      return temp;
 }
 
@@ -278,6 +280,45 @@ if(rowidentifier.indexOf("SSC - Expense Cashiers")!=-1)
     xlDriver.Next();
      }
      DDT.CloseDriver(xlDriver.Name);
+     
+     if((temp=="")||(temp==null)){ 
+if((rowidentifier.indexOf("(")!=-1)&&(rowidentifier.indexOf(")")!=-1))
+    rowidentifier = rowidentifier.substring(0,rowidentifier.indexOf("(")-1);
+id =0;
+colsList = [];
+  xlDriver = DDT.ExcelDriver(excelName,sheet,true);
+  var Col = "";
+  for(var i=0;i<DDT.CurrentDriver.ColumnCount;i++){ 
+  if(DDT.CurrentDriver.ColumnName(i).toString().trim().indexOf(column)!=-1)
+  Col = DDT.CurrentDriver.ColumnName(i).toString().trim();
+//  else
+//  Log.Message(DDT.CurrentDriver.ColumnName(i).toString().trim())
+}
+     while (!DDT.CurrentDriver.EOF()) {
+//    Log.Message("Colunm :"+xlDriver.Value(Col).toString().trim())
+       if(xlDriver.Value(Col).toString().trim().indexOf(rowidentifier.toString().trim())!=-1){
+        try{
+         temp = temp+xlDriver.Value(Col).toString().trim();
+         }
+        catch(e){
+        temp = "";
+        }
+//      Log.Message("temp :"+temp);
+      break;
+      }
+
+    xlDriver.Next();
+     }
+     DDT.CloseDriver(xlDriver.Name);
+     }
+     
+     
+     
+     
+     
+     
+     
+     
      return temp;
 }
 

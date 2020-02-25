@@ -247,7 +247,10 @@
 			<image imageFileName="Data\ApproveBudget.png" initialHash="7F461E84" selectionLeft="468" selectionTop="176" selectionWidth="71" selectionHeight="21" initialLeft="468" initialTop="176" initialWidth="71" initialHeight="21" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Icon" moniker="{F79D4D2C-5E4C-4A7F-BF39-B37F4E0F5B11}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Icon.png" initialHash="00000000" selectionLeft="1163" selectionTop="53" selectionWidth="182" selectionHeight="45" initialLeft="1163" initialTop="53" initialWidth="182" initialHeight="45" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Icon.png" initialHash="A6A476F8" selectionLeft="1163" selectionTop="53" selectionWidth="182" selectionHeight="45" initialLeft="1163" initialTop="53" initialWidth="182" initialHeight="45" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Undo" moniker="{631B7F32-1E5B-4178-8AAC-E9AFDB2FA1A3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Undo_1.png" initialHash="00000000" selectionLeft="382" selectionTop="188" selectionWidth="20" selectionHeight="14" initialLeft="382" initialTop="188" initialWidth="20" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>
