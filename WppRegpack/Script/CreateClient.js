@@ -798,7 +798,6 @@ OK.Click();
   
   
 function globalClientTable(){ 
-
   var blocked = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Blocked;
   Sys.HighlightObject(blocked);
   blocked.HoverMouse();
@@ -921,7 +920,13 @@ save.Click();
 function attachDocument(){ 
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Document
+  
+ if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
+  }
+  else{ 
+  var doc =  Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document
+  }
   Sys.HighlightObject(doc);
   doc.HoverMouse();
   doc.HoverMouse();
@@ -1290,6 +1295,7 @@ aqUtils.Delay(8000, Indicator.Text); ;
  
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
+  TextUtils.writeLog("Global Client Number :"+ClientNum); 
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
 // var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;

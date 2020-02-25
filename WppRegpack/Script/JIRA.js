@@ -10,7 +10,8 @@ function JIRAUpdate(folderName,testCaseId){
 
      projectName = EnvParams.Pname;
 		 versionName = EnvParams.Vname;
-		 cycleName = EnvParams.Cname;
+//		 cycleName = EnvParams.Cname;
+     cycleName = EnvParams.Country;
 		var userName = "muthukumar.m@cognizant.com";
 		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
 		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
