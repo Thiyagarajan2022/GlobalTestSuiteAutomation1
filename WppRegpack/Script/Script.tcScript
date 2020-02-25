@@ -84,7 +84,7 @@
 					<child name="IND_ApprovePurchaseOrder" key="{939FD3C0-F614-4C1F-9640-397BC9C15E4A}" path="IND_ApprovePurchaseOrder.js" />
 					<child name="IND_VendorInvoice" key="{C02D3DE5-951F-45D6-BA85-F9821A2ED9E5}" path="IND_VendorInvoice.js" />
 					<child name="IND_ApproveVendorInvoice" key="{F7CCBCD0-286E-4AB2-9F56-4C4747655992}" path="IND_ApproveVendorInvoice.js" />
-					<child name="IND_CreateClient" key="{24051DF9-22CD-4331-BB95-F0E926D080E8}" path="IND_CreateClient.js" />
+					<child name="IND_CreationClient" key="{24051DF9-22CD-4331-BB95-F0E926D080E8}" path="IND_CreationClient.js" />
 				</folder>
 			</folder>
 			<folder name="UK">

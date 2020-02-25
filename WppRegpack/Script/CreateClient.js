@@ -79,7 +79,7 @@ GlobalClient_Screen2();
 ClientDueDiligencePolicy();
 globalClientTable();
 if(EnvParams.Country.toUpperCase()=="INDIA"){
-Runner.CallMethod("IND_CreateClient.indiaSpecific",State,GST,PAN,TAN);
+Runner.CallMethod("IND_CreationClient.indiaSpecific",State,GST,PAN,TAN);
 }
 attachDocument();
 Information();
