@@ -214,6 +214,7 @@ var colsList = [];
 function getRowDatas(rowidentifier,column)
 {
 var temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(rowidentifier,column);
+
 ////Log.Message("excelName :"+excelName);
 ////Log.Message("sheet :"+sheet);
 ////Log.Message("column :"+column);
