@@ -1293,8 +1293,14 @@ aqUtils.Delay(8000, Indicator.Text); ;
 //   }
  }
  
+
   ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
+  ExcelUtils.WriteExcelSheet("Global Client Number",EnvParams.Opco,"Data Management",ClientNum)
+  ExcelUtils.WriteExcelSheet("Global Client Name",EnvParams.Opco,"Data Management",clientName)
+  ExcelUtils.WriteExcelSheet("Global Brand Number",EnvParams.Opco,"Data Management",ClientNum+"001")
+  ExcelUtils.WriteExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management",brand)
+  ExcelUtils.WriteExcelSheet("Global Product Number",EnvParams.Opco,"Data Management",ClientNum+"001001")
+  ExcelUtils.WriteExcelSheet("Global Product Name",EnvParams.Opco,"Data Management",product)
   TextUtils.writeLog("Global Client Number :"+ClientNum); 
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){

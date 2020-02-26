@@ -23,7 +23,7 @@ var clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyRe
 var ClientNumber = "";
 
 
-
+//Strating Of TestCase
 function ClientCreation(){
 TextUtils.writeLog("Global Client Creation Started"); 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
