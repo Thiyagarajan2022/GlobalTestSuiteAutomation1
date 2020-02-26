@@ -131,7 +131,9 @@ var checkmark = false;
 //      }
 //  }
 //Log.Message(value)
-    code.setText(value.OleValue.toString().trim());
+    
+//code.setText(value.OleValue.toString().trim());
+    code.setText(value);
 //    aqUtils.Delay(3000, Indicator.Text);;
     var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
     waitForObj(serch);
@@ -3458,7 +3460,7 @@ var TodayValue = aqDateTime.Today();
 var StringTodayValue = aqConvert.DateTimeToStr(TodayValue);
 var EncodedDate = aqConvert.DateTimeToFormatStr(StringTodayValue,"%d%#B%Y"); 
 var STIME = getFormattedCurrentTime()
-Log.Message("Start DATE & TIME :"+EncodedDate +" "+STIME)
+Log.Message("Start DATE & TIME for Object Address :"+EncodedDate +" "+STIME)
 var start = STIME.split(":");
 if(start[1]>0){ 
 dif = Number(start[2]) + Number(start[1]*60);

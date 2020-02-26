@@ -181,7 +181,7 @@
 				<row val0=".\ProjectLibraries\Jira_Integration-0.0.1-SNAPSHOT-jar-with-dependencies.jar" />
 				<row val0=".\ProjectLibraries\pdfbox-app-1.8.16.jar" />
 				<row val0=".\ProjectLibraries\ImageComparison.jar" />
-				<row val0=".\ProjectLibraries\ExcelReadWrite-0.0.1-SNAPSHOT-jar-with-dependencies.jar" />
+				<row val0=".\ProjectLibraries\ExcelFunction.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />

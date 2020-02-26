@@ -33,7 +33,7 @@ else{
   Sys.HighlightObject(StateCode);
   StateCode.HoverMouse();
   StateCode.Click();
-  DropDownList(State.OleValue.toString().trim(),"State Code")
+  DropDownList(State,"State Code")
   }
   aqUtils.Delay(2000, Indicator.Text);
   
@@ -47,11 +47,11 @@ else{
   if(PAN!=""){
   Sys.HighlightObject(C_pan);
   C_pan.HoverMouse();  
-   C_pan.setText(PAN.OleValue.toString().trim());
+   C_pan.setText(PAN);
   }
   
   if(TAN!=""){
-   C_tan.setText(TAN.OleValue.toString().trim());
+   C_tan.setText(TAN);
   }
 var save = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.Save;
 Sys.HighlightObject(save);

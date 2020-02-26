@@ -1,6 +1,7 @@
 ﻿//USEUNIT ReportUtils
 //USEUNIT ValidationUtils
 function indiaSpecific(State,GST,PAN,TAN){ 
+//Strating Of TestCase
   aqUtils.Delay(7000, Indicator.Text);
   var indiaspec = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.IndiaSpecific;
 Sys.HighlightObject(indiaspec);
