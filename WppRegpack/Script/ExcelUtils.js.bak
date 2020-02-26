@@ -214,6 +214,7 @@ var colsList = [];
 function getRowDatas(rowidentifier,column)
 {
 var temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(rowidentifier,column);
+
 ////Log.Message("excelName :"+excelName);
 ////Log.Message("sheet :"+sheet);
 ////Log.Message("column :"+column);
@@ -240,7 +241,12 @@ var temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(rowidentifier,colu
 //    xlDriver.Next();
 //     }
 //     DDT.CloseDriver(xlDriver.Name);
-     return temp;
+     
+if((temp!="")&&(temp!=null)){
+return temp.OleValue.toString().trim();
+}else{ 
+  return "";
+}
 }
 
 
@@ -374,36 +380,43 @@ for(var i=0;i<DDT.CurrentDriver.ColumnCount;i++){
 
 function getAllRowDatas(column,row)
 {
-//Log.Message("excelName :"+excelName);
-//Log.Message("sheet :"+sheet);
-var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
-var id =0;
-var colsList = [];
- var temp ="";
-//Log.Message(rowidentifier)
-//Log.Message(column)
-//Log.Message(row)
-var i=0;
-     while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
-//Log.Message(row)
-       if(i==row)
-       if((xlDriver.Value(column).toString().trim()!="")&&(xlDriver.Value(column).toString().trim()!=null)){
-        try{
-         temp = temp+xlDriver.Value(column).toString().trim();
-         }
-        catch(e){
-        temp = "";
-        }
-//      Log.Message("temp :"+temp);
-      break;
-      }
-
-    xlDriver.Next();
-    i++;
-     }
-     DDT.CloseDriver(xlDriver.Name);
-     return temp;
+var temp = JavaClasses.org_excelwrite.companyinfo.getAllRowDatas(column,row)
+////Log.Message("excelName :"+excelName);
+////Log.Message("sheet :"+sheet);
+//var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
+//var id =0;
+//var colsList = [];
+// var temp ="";
+////Log.Message(rowidentifier)
+////Log.Message(column)
+////Log.Message(row)
+//var i=0;
+//     while (!DDT.CurrentDriver.EOF()) {
+////    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
+////Log.Message(row)
+//       if(i==row)
+//       if((xlDriver.Value(column).toString().trim()!="")&&(xlDriver.Value(column).toString().trim()!=null)){
+//        try{
+//         temp = temp+xlDriver.Value(column).toString().trim();
+//         }
+//        catch(e){
+//        temp = "";
+//        }
+////      Log.Message("temp :"+temp);
+//      break;
+//      }
+//
+//    xlDriver.Next();
+//    i++;
+//     }
+//     DDT.CloseDriver(xlDriver.Name);
+//     return temp;
+//Log.Message("Temp :"+temp)
+if((temp!="")&&(temp!=null)){
+return temp.OleValue.toString().trim();
+}else{ 
+  return "";
+}
 }
 
 
