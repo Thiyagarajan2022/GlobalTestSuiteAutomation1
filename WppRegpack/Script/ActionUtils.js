@@ -1,4 +1,5 @@
 ﻿//Click on the element and clear the text before entering
+//comment
 function ClearAndEnterKeys(control, keys)
 {
 control.HoverMouse();
