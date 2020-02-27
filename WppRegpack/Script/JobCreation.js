@@ -335,8 +335,12 @@ ValidationUtils.verify(true,true,"Job is CREATED");
 ReportUtils.logStep("INFO", Job_name+" "+STIME +" : is Created");
 TextUtils.writeLog("Job Name :"+Job_name+" "+STIME);
 aqUtils.Delay(8000, Indicator.Text);
-if(ImageRepository.ImageSet.OK_Button.Exists()){ 
-var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job", 1).SWTObject("Label", "*");
+
+  p = Sys.Process("Maconomy");
+  w = p.FindChild("WndCaption", "Jobs - Job", 2000);
+  if (w.Exists)
+{ 
+ var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job", 1).SWTObject("Label", "*");
 Log.Message(label.getText());
 var lab = label.getText().OleValue.toString().trim();
 ReportUtils.logStep("INFO",lab)
@@ -354,8 +358,30 @@ ReportUtils.logStep("INFO",lab)
 Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   Ok.Click();
+} 
 }
-}
+    
+//if(ImageRepository.ImageSet.OK_Button.Exists()){ 
+//var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job", 1).SWTObject("Label", "*");
+//Log.Message(label.getText());
+//var lab = label.getText().OleValue.toString().trim();
+//ReportUtils.logStep("INFO",lab)
+//  var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job", 1).SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//    Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot("");
+//  Ok.Click();
+// aqUtils.Delay(5000, Indicator.Text); 
+//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Jobs - Job"){ 
+//var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job").SWTObject("Label", "*");
+//Log.Message(label.getText());
+//var lab = label.getText().OleValue.toString().trim();
+//ReportUtils.logStep("INFO",lab)
+//  var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot("");
+//  Ok.Click();
+//}
+//}
 }
 else{ 
 //  Delay(4000);
