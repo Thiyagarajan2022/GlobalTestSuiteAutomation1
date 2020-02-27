@@ -324,6 +324,9 @@ function client(){
     var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
     CloseBar.Click();
     ImageRepository.ImageSet.Forward.Click();
+      ExcelUtils.setExcelName(workBook,"Data Management", true);
+      ExcelUtils.WriteExcelSheet("Amended Global Client No",EnvParams.Opco,"Data Management",ClientNo)
+      TextUtils.writeLog("Amended Global Client No :"+ClientNo); 
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 //var OpCo1 = EnvParams.Opco;
@@ -347,6 +350,7 @@ if(OpCo2[2]==Project_manager){
 aqUtils.Delay(8000, "Waiting for Approve");;
     ValidationUtils.verify(true,true,"Amend Global Client is Approved by "+Project_manager)
     TextUtils.writeLog("Levels 0 has  Approved Amend Global Client");
+    sheetName = "AmendGlobalClient";
 //    aqUtils.Delay(8000, Indicator.Text);;
     }
     }

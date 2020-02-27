@@ -1302,6 +1302,11 @@ aqUtils.Delay(8000, Indicator.Text); ;
   ExcelUtils.WriteExcelSheet("Global Product Number",EnvParams.Opco,"Data Management",ClientNum+"001001")
   ExcelUtils.WriteExcelSheet("Global Product Name",EnvParams.Opco,"Data Management",product)
   TextUtils.writeLog("Global Client Number :"+ClientNum); 
+  TextUtils.writeLog("Global Client Name :"+clientName);
+  TextUtils.writeLog("Global Brand Number :"+ClientNum+"001");
+  TextUtils.writeLog("Global Brand Name :"+brand);
+  TextUtils.writeLog("Global Product Number :"+ClientNum+"001001");
+  TextUtils.writeLog("Global Product Name :"+product);
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
 // var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;

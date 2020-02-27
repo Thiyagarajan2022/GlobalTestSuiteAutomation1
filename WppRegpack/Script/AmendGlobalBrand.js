@@ -387,6 +387,9 @@ function client(){
     var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
     CloseBar.Click();
     ImageRepository.ImageSet.Forward.Click();
+      ExcelUtils.setExcelName(workBook,"Data Management", true);
+      ExcelUtils.WriteExcelSheet("Amended Global Brand No",EnvParams.Opco,"Data Management",BrandNo)
+      TextUtils.writeLog("Amended Global Brand No :"+BrandNo);
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 //var OpCo1 = EnvParams.Opco;
