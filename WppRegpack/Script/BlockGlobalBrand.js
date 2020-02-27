@@ -10,12 +10,12 @@ Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "BlockGlobalBrand";
-var ClientNo,BrandNo,Currency ="";
-
+var ClientNo,BrandNo,Currency,BrandName ="";
+var Language = "";
 function Blockglobalbrand(){ 
 //  TextUtils.writeLog("Block Gloabl brand Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
@@ -35,33 +35,37 @@ Restart.login(Project_manager);
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "BlockGlobalBrand";
-ClientNo,BrandNo,Currency ="";
-ExcelUtils.setExcelName(workBook, sheetName, true);
-ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+ClientNo,BrandNo,Currency,BrandName ="";
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
   if((ClientNo=="")||(ClientNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   }
-if((ClientNo==null)||(ClientNo=="")){ 
-ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Brand");
-}
-BrandNo = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
-  if((BrandNo=="")||(BrandNo==null)){
+  if((ClientNo==null)||(ClientNo=="")){ 
+  ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
+  }
+
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  BrandNo = ReadExcelSheet("Brand Number",EnvParams.Opco,"Data Management");
+  BrandNo = ReadExcelSheet("Global Brand Number",EnvParams.Opco,"Data Management");
+  if((BrandNo=="")||(BrandNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+BrandNo = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
   }
 if((BrandNo==null)||(BrandNo=="")){ 
-ValidationUtils.verify(false,true,"Brand Number is Needed to Block Global Brand");
+ValidationUtils.verify(false,true,"Brand Number is Needed to Amend Global Brand");
 }
-
-BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
-  if((BrandName=="")||(BrandName==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  BrandName = ReadExcelSheet("Brand Name",EnvParams.Opco,"Data Management");
+  BrandName = ReadExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management");
+  if((BrandName=="")||(BrandName==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
   }
 if((BrandName==null)||(BrandName=="")){ 
-ValidationUtils.verify(false,true,"Brand Name is Needed to Block Global Brand");
+ValidationUtils.verify(false,true,"Brand Name is Needed to Amend Global Brand");
 }
+ExcelUtils.setExcelName(workBook, sheetName, true);
+
 
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 
@@ -86,7 +90,6 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function gotoMenu(){ 
-  aqUtils.Delay(4000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 if(ImageRepository.ImageSet.Account_Receivable.Exists()){
@@ -102,7 +105,7 @@ ImageRepository.ImageSet.Acc_Receivable_2.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -126,17 +129,21 @@ Client_Managt.DblClickItem("|Client Management");
 
 } 
 
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable Menu");
 TextUtils.writeLog("Entering into Client Management from Accounts Receivable Menu");
 }
 
 function gotoClientSearch(){ 
  var CompanyNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
+   waitForObj(CompanyNumber);
+  Sys.HighlightObject(CompanyNumber);
   CompanyNumber.Click();
   WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
 
  var curr = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
+ curr.HoverMouse();
+ Sys.HighlightObject(curr);
  curr.Keys(" ");
  aqUtils.Delay(5000, Indicator.Text);
  if(Currency!=""){
@@ -146,28 +153,43 @@ function gotoClientSearch(){
   aqUtils.Delay(2000, Indicator.Text);
   
  var ClientNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
+ ClientNumber.HoverMouse();
+ Sys.HighlightObject(ClientNumber); 
   if(ClientNo!=""){
   ClientNumber.Click();
   WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
     }
     
  var ClientName = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
+  ClientName.HoverMouse();
+ Sys.HighlightObject(ClientName);
  ClientName.setText("*");
  
  
  var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
+  save.HoverMouse();
+ Sys.HighlightObject(save);
  save.Click();
- aqUtils.Delay(5000, Indicator.Text);
+// aqUtils.Delay(5000, Indicator.Text);
   TextUtils.writeLog("Company Number, Client Number, Currency has entered and Saved in Client Search screen");
 }
 
 function globalClient(){ 
   var GblClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  GblClient.HoverMouse();
+  Sys.HighlightObject(GblClient);
   GblClient.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+//  aqUtils.Delay(3000, Indicator.Text);
   var active = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  waitForObj(active);
+  Sys.HighlightObject(active);
+  active.HoverMouse();
+  active.HoverMouse();
   active.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  active.HoverMouse();
+  active.HoverMouse();
+  active.HoverMouse();
+  aqUtils.Delay(3000, "Reading from Global Client table");
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -195,30 +217,46 @@ function globalClient(){
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block Global Brand");
   }
   
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(5000, "Playback");
   TextUtils.writeLog("Global Client is available in maconomy to block Global Brand");
 }
 
 function client(){ 
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
+  waitForObj(home);
+  Sys.HighlightObject(home);
+  home.HoverMouse(); 
   home.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
+  waitForObj(sublevels);
+  Sys.HighlightObject(sublevels);
+  sublevels.HoverMouse(); 
   sublevels.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   TextUtils.writeLog("Navigating to Sub Level");
   var gblSublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  waitForObj(gblSublevels);
+  Sys.HighlightObject(gblSublevels);
+  gblSublevels.HoverMouse(); 
   gblSublevels.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var activeBrand = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button2;
+  waitForObj(activeBrand);
+  Sys.HighlightObject(activeBrand);
+  activeBrand.HoverMouse(); 
   activeBrand.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+//  aqUtils.Delay(3000, Indicator.Text);
   TextUtils.writeLog("Active Brand is selected");
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   var brandNmae = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+  Sys.HighlightObject(brandNmae); 
+  brandNmae.HoverMouse();
+  brandNmae.HoverMouse();
   brandNmae.Click();
   brandNmae.Keys(BrandName);
-  aqUtils.Delay(4000, Indicator.Text);
+  Sys.HighlightObject(table);
+aqUtils.Delay(3000, "Reading Data from Tables");
     
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==BrandNo){
   table.HoverMouse(49, 52);
@@ -245,16 +283,22 @@ function client(){
   ValidationUtils.verify(true,true,"Global Brand is available in maconomy to block");
   }
   
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(3000, "Findind Information");
 
   TextUtils.writeLog("Global Brand is available in maconomy to block");
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   information.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+  waitForObj(screen);
+  Sys.HighlightObject(screen);
   screen.Click();
   screen.MouseWheel(-200);
   var blockClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+  waitForObj(blockClient);
+  Sys.HighlightObject(blockClient);
+  blockClient.HoverMouse();
+  blockClient.HoverMouse();
   if(blockClient.getText()=="Yes")
   ValidationUtils.verify(false,true,"Global Brand is already blocked");
   else{ 
@@ -264,12 +308,19 @@ function client(){
   aqUtils.Delay(5000, Indicator.Text);
   ReportUtils.logStep_Screenshot();
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+  waitForObj(save);
+  Sys.HighlightObject(save);
+  save.HoverMouse();
   save.Click();
   aqUtils.Delay(6000, "Waiting to Save");
   ValidationUtils.verify(true,true,"Global Brand is Blocked");
   ReportUtils.logStep_Screenshot();
   TextUtils.writeLog("Global Brand is Blocked");
   var AllowForJobs_and_Order = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPopupPickerWidget;
+  waitForObj(AllowForJobs_and_Order);
+  Sys.HighlightObject(AllowForJobs_and_Order);
+  AllowForJobs_and_Order.HoverMouse();
+  AllowForJobs_and_Order.HoverMouse();
   if(AllowForJobs_and_Order.getText()=="No")
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has Changed to NO");
   else

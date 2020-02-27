@@ -153,6 +153,8 @@ function gotoClientSearch(){
  
  
  var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
+  save.HoverMouse();
+ Sys.HighlightObject(save);
  save.Click();
 // aqUtils.Delay(5000, Indicator.Text);
  
@@ -220,9 +222,9 @@ function client(){
 //  aqUtils.Delay(2000, Indicator.Text);
   TextUtils.writeLog("Navigating to Sub Level");
   var gblSublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
-  waitForObj(sublevels);
-  Sys.HighlightObject(sublevels);
-  sublevels.HoverMouse(); 
+  waitForObj(gblSublevels);
+  Sys.HighlightObject(gblSublevels);
+  gblSublevels.HoverMouse(); 
   gblSublevels.Click();
 //  aqUtils.Delay(2000, Indicator.Text);
   var activeBrand = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button2;
@@ -240,7 +242,7 @@ function client(){
   brandNmae.Click();
   brandNmae.Keys(BrandName);
   Sys.HighlightObject(table);
-//  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(3000, "Reading Data from Tables");
     
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==BrandNo){
   table.HoverMouse(49, 52);
@@ -271,10 +273,6 @@ function client(){
 
   TextUtils.writeLog("Global Brand is available in maconomy to Amend");
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
-  Sys.HighlightObject(information); 
-  information.HoverMouse();
-  information.HoverMouse();
-  information.Click();
   information.Click();
 //  aqUtils.Delay(2000, Indicator.Text);
   var B_Add1 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite5.McTextWidget;
@@ -452,7 +450,7 @@ BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
 if((BrandName==null)||(BrandName=="")){ 
 ValidationUtils.verify(false,true,"Brand Name is Needed to Amend Global Brand");
 }
-
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 
 ValidationUtils.verify(false,true,"Currency is Needed to Amend Global Brand");
