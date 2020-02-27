@@ -649,7 +649,7 @@ function Information(){
   Sys.HighlightObject(submit);
   submit.HoverMouse();
   submit.HoverMouse();
-//  submit.Click();
+  submit.Click();
   aqUtils.Delay(2000, Indicator.Text);
   
 }
@@ -664,21 +664,21 @@ function ApprvalInformation(){
         ExcelUtils.setExcelName(workBook,"Data Management", true);
         ExcelUtils.WriteExcelSheet("Vendor Number",EnvParams.Opco,"Data Management",VendorNumber)
 
-       var VendorApprovalpane = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
+       var VendorApprovalpane = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;       
         Sys.HighlightObject(VendorApprovalpane);
         VendorApprovalpane.HoverMouse();
         VendorApprovalpane.Click();
         if(ImageRepository.ImageSet0.Maximize.Exists()){
         ImageRepository.ImageSet0.Maximize.Click();
         }
-        var VendorApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
-//        Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;        
+        var VendorApproval =  Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
+        //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
         Sys.HighlightObject(VendorApproval);
         VendorApproval.HoverMouse();
         VendorApproval.Click();
            var ApproverTable = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-//           Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-         
+//           Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+   
            var y=0;
               for(var i=0;i<ApproverTable.getItemCount();i++){   
                  var approvers="";
@@ -692,6 +692,7 @@ function ApprvalInformation(){
               }
            TextUtils.writeLog("Finding approvers for Created Global Vendor");
         var closeCAList = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
+// Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
         Sys.HighlightObject(closeCAList);
         closeCAList.HoverMouse();
         closeCAList.Click();
@@ -767,7 +768,21 @@ for(var i=0;i<Approve_Level.length;i++){
 
 function todo(lvl){ 
   TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
-  var toDo = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+ 
+    var linestatus = false;
+    if(!linestatus) 
+    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite).isVisible())
+    {
+    var toDo = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+    linestatus = true;
+    }
+     if(!linestatus) 
+    if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite2).isVisible())
+    {   
+    var toDo = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.TabControl;
+     linestatus = true;
+    }
+
   toDo.HoverMouse();
   ReportUtils.logStep_Screenshot();
   toDo.DBlClick();
@@ -780,20 +795,33 @@ function todo(lvl){
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);  
-  aqUtils.Delay(1000, Indicator.Text);
-//  if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-//  var refresh = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;  
-//  }
-  if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-  var refresh = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
-  }
+  aqUtils.Delay(1000, Indicator.Text);  
+
+  var linestatus = false;
+    if(!linestatus) 
+    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2).isVisible())
+    {
+    var refresh = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+    linestatus = true;
+    }
+     if(!linestatus) 
+    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4).isVisible())
+    {   
+    var refresh = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;  
+    linestatus = true;
+    }
+
   refresh.Click();
-  aqUtils.Delay(15000, Indicator.Text);
+  aqUtils.Delay(15000, Indicator.Text);  
+
 //  if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 //  Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 //  }
+
+ 
+
   if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-  Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+  Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
   }
   var listPass = true;
       if(lvl==2)
