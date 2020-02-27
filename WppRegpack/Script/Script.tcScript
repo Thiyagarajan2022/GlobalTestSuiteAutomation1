@@ -86,6 +86,7 @@
 					<child name="IND_VendorInvoice" key="{C02D3DE5-951F-45D6-BA85-F9821A2ED9E5}" path="IND_VendorInvoice.js" />
 					<child name="IND_ApproveVendorInvoice" key="{F7CCBCD0-286E-4AB2-9F56-4C4747655992}" path="IND_ApproveVendorInvoice.js" />
 					<child name="IND_CreationClient" key="{6928023B-CD46-4572-AD05-027F1ACAE8B1}" path="IND_CreationClient.js" />
+					<child name="IND_GlobalVendor" key="{E9B85677-B33A-4CB9-B307-80472D307429}" path="IND_GlobalVendor.js" />
 				</folder>
 			</folder>
 			<folder name="UK">
