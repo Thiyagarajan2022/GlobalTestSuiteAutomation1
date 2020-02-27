@@ -15,7 +15,7 @@ var Approve_Level =[];
 var ApproveInfo = [];
 var Project_manager="";
 var level =0;
-
+var STIME = "";
 function AmendGlobalBrand(){ 
 TextUtils.writeLog("Amend Gloabl brand Started"); 
 Indicator.PushText("waiting for window to open");
@@ -39,6 +39,7 @@ excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "AmendGlobalBrand";
 ClientNo,BrandNo,BrandName,Currency,Add1,Add2,Add3,Phone,Email ="";
+STIME = "";
 Approve_Level =[];
 ApproveInfo = [];
 level =0;
@@ -333,6 +334,11 @@ function client(){
 
     if(Email!=""){
     if(B_mail.getText()!=Email){
+  var Eml_split1 = Email.substring(0,Email.indexOf("@"));
+  var Eml_split2 = Email.substring(Email.indexOf("@"));
+  Eml_split1 = Eml_split1 +" "+STIME;
+  Eml_split1 = Eml_split1.replace(/[_: ]/g,"");
+  Email = Eml_split1+Eml_split2
     B_mail.setText(Email);
     ValidationUtils.verify(true,true,"Email is Changed");
     TextUtils.writeLog("Email is Changed");
