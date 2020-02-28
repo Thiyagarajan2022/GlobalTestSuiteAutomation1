@@ -782,6 +782,8 @@ function todo(lvl){
     var toDo = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.TabControl;
      linestatus = true;
     }
+    
+    
 
   toDo.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -810,22 +812,41 @@ function todo(lvl){
     var refresh = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;  
     linestatus = true;
     }
+     if(!linestatus) 
+    if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3).isVisible())
+    {   
+    var refresh = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+    linestatus = true;
+    }
+    
 
   refresh.Click();
   aqUtils.Delay(15000, Indicator.Text);  
 
-//  if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-//  Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
-//  }
+    var linestatus = false;
+    if(!linestatus) 
+    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2).isVisible())
+    {
+    var Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+    linestatus = true;
+    }
+     if(!linestatus) 
+    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4).isVisible())
+    {   
+    var Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+    linestatus = true;
+    }    
+      if(!linestatus) 
+    if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3).isVisible())
+    {   
+    var Client_Managt = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+    linestatus = true;
+    }
 
- 
 
-  if(Aliases.Maconomy.GVendor.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-  Client_Managt = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite4.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
-  }
   var listPass = true;
       if(lvl==2)
-        for(var j=0;j<Client_Managt.getItemCount();j++){ 
+        for(var j=0;j<Client_Managt.getItemCount();j++){
           var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
           var temp1 = temp.split("(");
           if((temp.indexOf("Approve Vendor by Type (")!=-1)&&(temp1.length==2)){ 
@@ -894,6 +915,20 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       }
 
     var table = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+//    
+//      if(!linestatus) 
+//    if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3).isVisible())
+//    {   
+//    var table = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+//    linestatus = true;
+//    }
+//     if(!linestatus) 
+//    if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3).isVisible())
+//    {   
+//    var refresh = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+//    linestatus = true;
+//    }
+//    
     var firstCell = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
     waitForObj(firstCell);
     Sys.HighlightObject(firstCell);
