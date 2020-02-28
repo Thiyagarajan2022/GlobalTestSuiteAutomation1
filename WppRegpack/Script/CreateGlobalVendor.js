@@ -29,7 +29,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 
-var Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco)
+var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //Project_manager = ExcelUtils.getRowDatas("Central Team - Client Account Management","Username")
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
