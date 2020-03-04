@@ -1,4 +1,6 @@
-﻿//USEUNIT ReportUtils
+﻿//USEUNIT EnvParams
+//USEUNIT ReportUtils
+//USEUNIT TestRunner
 var str;
 
 function ReadWholeFile(AFileName)
@@ -37,6 +39,7 @@ return value;
 
 function GetProjectValue(element)
 {
+var value = "";
 var UserConfigPath = Project.Path + "\\" + "ProjectConfig.config";
 var File, line;
    
@@ -134,8 +137,8 @@ oFile.Close();
 }
 
 function writeLog(Data){
-      if(!aqFile.Exists(ReportUtils.file_path+"\\TestLog.txt")){
-      aqFile.Create(ReportUtils.file_path+"\\TestLog.txt");
+      if(!aqFile.Exists(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")){
+      aqFile.Create(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt");
       }
    
 //Log.Message(notepadPath);

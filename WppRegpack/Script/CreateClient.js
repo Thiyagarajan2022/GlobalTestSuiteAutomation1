@@ -1325,6 +1325,12 @@ ImageRepository.ImageSet.Maximize.Click();
    var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   Sys.HighlightObject(ApproverTable);
   ReportUtils.logStep_Screenshot();
+    for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+ValidationUtils.verify(true,false,"Created Client is not Approved")
+      }
+}
   var closeApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
   Sys.HighlightObject(closeApproval);
  closeApproval.HoverMouse();
@@ -1652,6 +1658,12 @@ ImageRepository.ImageSet.Maximize.Click();
       var ApproverTable =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
       Sys.HighlightObject(ApproverTable);
       ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+      ValidationUtils.verify(true,false,"Global Brand is not Approved")
+      }
+}
 //    var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
     var CloseBar = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl
     CloseBar.Click();
@@ -1751,6 +1763,12 @@ ImageRepository.ImageSet.Maximize.Click();
       var ApproverTable =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
       Sys.HighlightObject(ApproverTable);
       ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+      ValidationUtils.verify(true,false,"Global Product is not Approved")
+      }
+}
 //    var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
     var CloseBar = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl
     CloseBar.Click();
@@ -1856,6 +1874,12 @@ ImageRepository.ImageSet.Maximize.Click();
       var ApproverTable =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
       Sys.HighlightObject(ApproverTable);
       ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+      ValidationUtils.verify(true,false,"Company Product is not Approved")
+      }
+}
     //var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
 //    var CloseBar = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl
     var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel2.TabControl
@@ -1962,6 +1986,12 @@ ImageRepository.ImageSet.Maximize.Click();
       var ApproverTable =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
       Sys.HighlightObject(ApproverTable);
       ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+      ValidationUtils.verify(true,false,"Company Brand is not Approved")
+      }
+}
     //var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
 //    var CloseBar = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl
     var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel2.TabControl
@@ -2047,6 +2077,12 @@ ImageRepository.ImageSet.Maximize.Click();
       var ApproverTable =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
       Sys.HighlightObject(ApproverTable);
       ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+      ValidationUtils.verify(true,false,"Company Client is not Approved")
+      }
+}
     //var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;
     //var CloseBar = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl
     var CloseBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel2.TabControl

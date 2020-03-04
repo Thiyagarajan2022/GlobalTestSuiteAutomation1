@@ -616,18 +616,41 @@ TextUtils.writeLog("Entering into Approve Customer by Type (Substitute) from To-
 
 
 function FinalApprove(B_Num,Apvr){ 
-  aqUtils.Delay(5000, Indicator.Text);
-if(ImageRepository.ImageSet.Show_Filter.Exists()){
-aqUtils.Delay(2000, Indicator.Text);
-ImageRepository.ImageSet.Show_Filter.Click();
+//  aqUtils.Delay(5000, Indicator.Text);
+//if(ImageRepository.ImageSet.Show_Filter.Exists()){
+//aqUtils.Delay(2000, Indicator.Text);
+//ImageRepository.ImageSet.Show_Filter.Click();
+//}
+var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder;
+waitForObj(table);
+Sys.HighlightObject(table);
+
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Visible){
+
+}else{ 
+var showFilter = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.ShowFilterList;
+waitForObj(table);
+Sys.HighlightObject(showFilter);
+showFilter.HoverMouse();
+showFilter.HoverMouse();
+showFilter.HoverMouse();
+showFilter.Click();
 }
 
 var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
 var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.McValuePickerWidget;
+waitForObj(firstCell);
+Sys.HighlightObject(firstCell);
+firstCell.HoverMouse();
+firstCell.HoverMouse();
 firstCell.setText(B_Num);
 var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
-  
-aqUtils.Delay(6000, Indicator.Text);;
+waitForObj(closefilter);
+Sys.HighlightObject(closefilter);
+closefilter.HoverMouse();
+closefilter.HoverMouse(); 
+closefilter.HoverMouse();
+closefilter.HoverMouse(); 
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(0).OleValue.toString().trim()==B_Num){ 

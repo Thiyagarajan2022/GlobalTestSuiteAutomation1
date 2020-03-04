@@ -378,6 +378,12 @@ Sys.HighlightObject(add);
 
 
 function bn(){ 
-if(ImageRepository.ImageSet.Undo.Exists())
-ImageRepository.ImageSet.Undo.Click();
+var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+Sys.HighlightObject(OK);
+OK.WaitProperty("Enabled",true,6000);
+if (OK.WaitProperty("Enabled", true, 20000))
+Log.Message("Visible")
+else
+Log.Message("Not Visible")
+Sys.HighlightObject(OK);
 }

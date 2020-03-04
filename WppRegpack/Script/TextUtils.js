@@ -1,4 +1,6 @@
-﻿//USEUNIT ReportUtils
+﻿//USEUNIT EnvParams
+//USEUNIT ReportUtils
+//USEUNIT TestRunner
 var str;
 
 function ReadWholeFile(AFileName)
@@ -135,12 +137,12 @@ oFile.Close();
 }
 
 function writeLog(Data){
-      if(!aqFile.Exists(ReportUtils.file_path+"\\TestLog.txt")){
-      aqFile.Create(ReportUtils.file_path+"\\TestLog.txt");
+      if(!aqFile.Exists(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")){
+      aqFile.Create(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt");
       }
    
 //Log.Message(notepadPath);
-oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\TestLog.txt", aqFile.faRead, aqFile.ctANSI);
+oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt", aqFile.faRead, aqFile.ctANSI);
 oFile.Cursor = 0;
 var NotePadlines = [];
 var i=0;
@@ -155,7 +157,7 @@ line = oFile.ReadLine();
 NotePadlines[i] = Data;
 oFile.Close();
 
-  oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\TestLog.txt", aqFile.faWrite, aqFile.ctANSI, true);
+  oFile = aqFile.OpenTextFile(ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt", aqFile.faWrite, aqFile.ctANSI, true);
   for(var i=0;i<NotePadlines.length;i++)
   oFile.WriteLine(NotePadlines[i]);
 

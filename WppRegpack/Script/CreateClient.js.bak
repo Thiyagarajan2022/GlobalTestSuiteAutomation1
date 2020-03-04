@@ -1302,6 +1302,11 @@ aqUtils.Delay(8000, Indicator.Text); ;
   ExcelUtils.WriteExcelSheet("Global Product Number",EnvParams.Opco,"Data Management",ClientNum+"001001")
   ExcelUtils.WriteExcelSheet("Global Product Name",EnvParams.Opco,"Data Management",product)
   TextUtils.writeLog("Global Client Number :"+ClientNum); 
+  TextUtils.writeLog("Global Client Name :"+clientName);
+  TextUtils.writeLog("Global Brand Number :"+ClientNum+"001");
+  TextUtils.writeLog("Global Brand Name :"+brand);
+  TextUtils.writeLog("Global Product Number :"+ClientNum+"001001");
+  TextUtils.writeLog("Global Product Name :"+product);
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
 // var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;
@@ -1320,6 +1325,12 @@ ImageRepository.ImageSet.Maximize.Click();
    var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   Sys.HighlightObject(ApproverTable);
   ReportUtils.logStep_Screenshot();
+    for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(3)!="Approved"){
+ValidationUtils.verify(true,false,"Created Client is not Approved")
+      }
+}
   var closeApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
   Sys.HighlightObject(closeApproval);
  closeApproval.HoverMouse();
