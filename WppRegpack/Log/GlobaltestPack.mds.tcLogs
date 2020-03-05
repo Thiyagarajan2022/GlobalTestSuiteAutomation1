@@ -31,7 +31,7 @@
 				<Prp name="status" type="I" value="1"/>
 			</Node>
 			<Node name="log idx=0001">
-				<Prp name="caption" type="S" value=""/>
+				<Prp name="caption" type="S" value="Job Creation"/>
 				<Prp name="datetime" type="D" value="43895.5420105208"/>
 				<Prp name="description" type="S" value=""/>
 				<Prp name="key" type="S" value="{5D5AC7D1-75A6-4D6E-A41B-E75BCBDA291D}"/>
