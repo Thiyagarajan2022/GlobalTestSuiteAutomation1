@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<folder name="BusinessComponents">
+			<folder name="Windows">
+				<child name="Expenses" key="{8C8BE56A-4C15-4CBA-BDD0-BB288039A985}" path="Expenses.js" />
+				<child name="Login" key="{7CF47092-00B5-43D4-AA39-7A7E0356B647}" path="Login.js" />
+				<child name="Restart" key="{6A8CC830-187F-473F-BE13-603C031D3B61}" path="Restart.js" />
+				<child name="ServerConfig" key="{C2B46A3D-BD78-4618-8077-F29931E1F6EE}" path="ServerConfig.js" />
+				<child name="WorkspaceUtils" key="{3EF05E74-6952-407B-8A7F-BA651CE88D6C}" path="WorkspaceUtils.js" />
+			</folder>
+		</folder>
+		<folder name="ControlBasedFunctions">
+			<child name="ActionUtils" key="{BD1D7B42-2EF8-4055-85DC-2323BA58C124}" path="ActionUtils.js" />
+			<child name="ValidationUtils" key="{31874E00-7B7D-46BB-B800-0AB48BF6B839}" path="ValidationUtils.js" />
+		</folder>
+		<folder name="EnvConfig">
+			<child name="EnvParams" key="{1CCB9DD4-8B6D-4227-8952-FCC97D930209}" path="EnvParams.js" />
+		</folder>
+		<folder name="SupportLibraries">
+			<child name="EventHandler" key="{835B0570-8E8C-4FCE-A903-6C9F6E04E8E2}" path="EventHandler.js" />
+			<child name="ExcelUtils" key="{4FCCD190-8FB3-4A48-8114-5700DF4DE09B}" path="ExcelUtils.js" />
+			<child name="JIRA" key="{EC1BFB57-254A-4E66-BDBB-7C596BCDCF03}" path="JIRA.js" />
+			<child name="LanguageUtils" key="{5EA58175-B5A6-4082-8FA9-1AFFFD197052}" path="LanguageUtils.js" />
+			<child name="PdfUtils" key="{0082CFF1-FC21-4F6A-9CDC-0A6873A8F4C2}" path="PdfUtils.js" />
+			<child name="ReportUtils" key="{0B01066A-2514-4516-8DB5-69B1936FCCD5}" path="ReportUtils.js" />
+			<child name="TextUtils" key="{946ED8FD-F62F-44A5-8D65-95FF60DF2C41}" path="TextUtils.js" />
+		</folder>
+		<folder name="TestScripts">
+			<child name="PrintJobBudgetMPL" key="{ED0135EE-EA12-41D7-BEF0-63F145AD9C1F}" path="PrintJobBudgetMPL.js" />
+			<child name="QueryAndValidateExistingEmployee" key="{768CEDC4-50E0-4FC1-946C-4E76017A56CC}" path="QueryAndValidateExistingEmployee.js" />
+			<child name="QueryAndValidateExistingJob" key="{8FA6B68D-7358-4393-A767-5263B06CB46E}" path="QueryAndValidateExistingJob.js" />
+			<child name="VerfiyTimesheet" key="{37E395CB-1826-49D5-954A-44B3DC305FA3}" path="VerfiyTimesheet.js" />
+		</folder>
+		<child name="Unit1" key="{F89B70BF-08E5-480C-ACAE-9EBCCA6BDD5C}" path="Unit1.js" />
+		<child name="TestRunner" key="{026D01DC-007B-4C4C-AAB4-11025D236684}" path="TestRunner.js" />
+	</children>
+</Root>
