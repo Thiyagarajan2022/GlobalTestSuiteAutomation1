@@ -199,7 +199,7 @@ server = false;
 
 reportName = "Report_"+EnvParams.Opco+"_"+unitName;
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-//ReportUtils.createTest(unitName+" "+testCase, description)
+
 
 workDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
@@ -215,10 +215,7 @@ ReportUtils.report.flush();
 
 fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
-// Packes the resutls
-////Log.Message(fileList)
-////Log.Message(LworkDir)
-////Log.Message(archivePath)
+
 if (slPacker.Pack(fileList, workDir, archivePath))
   Log.Message("Files compressed successfully.");
   
@@ -252,16 +249,6 @@ Delay(3000);
 
 else{ 
   
-//if(EnvParams.OpcoNum=="ALL"){ 
-//excelName = EnvParams.path;
-//workBook = Project.Path+excelName;
-//Opcolist = columnCount(workBook,"Server Details");
-//  }else{ 
-//  excelName = EnvParams.path;
-//  workBook = Project.Path+excelName;
-//  Opcolist [0] = EnvParams.Opco;
-//  }
- 
 businessFlow = EnvParams.getBusinessFlow(); 
 if((EnvParams.OpcoNum==null)||(EnvParams.OpcoNum=="")||(EnvParams.OpcoNum=="ALL")){ //Checking whether need to execute ALL TestCase for ALL Country or NOT
 excelName = EnvParams.path;

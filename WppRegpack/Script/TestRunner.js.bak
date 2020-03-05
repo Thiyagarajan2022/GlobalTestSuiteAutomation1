@@ -141,7 +141,9 @@ testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
 
 description = ExcelUtils.getAllRowDatas("Description",excelRow);
 
-//execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
+if(TestingType.toUpperCase()=="SMOKE")
+execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
+else
 execute = ExcelUtils.getAllRowDatas(businessFlow,excelRow);
 
 if(execute.toUpperCase()=="YES"){   //Login for each Opco 

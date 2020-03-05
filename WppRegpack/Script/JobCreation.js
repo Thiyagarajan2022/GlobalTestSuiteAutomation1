@@ -158,6 +158,7 @@ ReportUtils.logStep("INFO", "Enter Job Details");
 //  aqUtils.Delay(1000, Indicator.Text);
   Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
   var all_job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
+  WorkspaceUtils.waitForObj(all_job);
 all_job.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   all_job.Click();
@@ -165,11 +166,13 @@ ReportUtils.logStep_Screenshot("");
   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
     
   var newJobBtn = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3);
+  WorkspaceUtils.waitForObj(newJobBtn);
   newJobBtn.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   newJobBtn.Click();
 TextUtils.writeLog("New Job is clicked");
 //  Delay(1000);
+aqUtils.Delay(3000, "Checking Labels");
   JobAddress();
   
 //----------Entering Company Number-------------
@@ -189,7 +192,7 @@ WorkspaceUtils.config_with_Maconomy_Validation(companyName,JavaClasses.MLT.Multi
 
 if(Job_group!=""){
 job.Click();
-//aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(3000, "Waiting for ScrolledComposite");
 //Delay(5000);
 var list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
 var Add_Visible2 = true;
@@ -437,7 +440,8 @@ function GoToJob() {
   job.Click();
 
   job.setText(Job_name+" "+STIME);
-  aqUtils.Delay(5000, "Reading Table Data in Job List");
+  WorkspaceUtils.waitForObj(table);
+  aqUtils.Delay(2000, "Reading Table Data in Job List");
 //  Delay(7000);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
