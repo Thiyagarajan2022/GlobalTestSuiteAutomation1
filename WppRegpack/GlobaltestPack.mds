@@ -8,12 +8,9 @@
 		<folder name="TestResource">
 			<child name="EnvParamaters.xlsx" key="{AD1F16F9-D8DB-4844-B1D1-DFA23B5E1E61}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\EnvParamaters.xlsx" />
 			<child name="TC_RunManager.xlsx" key="{2A39D18B-21C9-436B-A03A-E6E7DE65278E}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\TC_RunManager.xlsx" />
-			<child name="DS_CHN_SYSTEST.xlsx" key="{0C381A37-F4D5-484C-A284-D2F1634C09E1}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_CHN_SYSTEST.xlsx" />
-			<child name="DS_IND_SYSTEST.xlsx" key="{C81161CF-65B9-460C-B496-C6E068F8C92B}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_IND_SYSTEST.xlsx" />
-			<child name="DS_CHN_FULL_REGRESSION.xlsx" key="{920D5E47-E667-4322-8DEE-975093D4786C}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Full_Regression\DS_CHN_FULL_REGRESSION.xlsx" />
-			<child name="DS_IND_FULL_REGRESSION.xlsx" key="{F2D1F7C4-636D-4BF8-9712-068E157F0B3E}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Full_Regression\DS_IND_FULL_REGRESSION.xlsx" />
-			<child name="DS_CHN_CRITICAL_REGRESSION.xlsx" key="{30C8092C-FC3C-4AB2-B3AF-5DCD80BB0FE2}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Critical_Regression\DS_CHN_CRITICAL_REGRESSION.xlsx" />
-			<child name="DS_IND_CRITICAL_REGRESSION.xlsx" key="{B10D5470-596E-4F5D-B4B5-557F75149062}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Critical_Regression\DS_IND_CRITICAL_REGRESSION.xlsx" />
+			<child name="DS_CHN_REGRESSION.xlsx" key="{5D78871C-95AC-44E5-809E-D845ED708EBD}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Regression\DS_CHN_REGRESSION.xlsx" />
+			<child name="DS_IND_REGRESSION.xlsx" key="{CB2B128B-8B21-4634-9CF5-3F47B444B84D}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Regression\DS_IND_REGRESSION.xlsx" />
+			<child name="DS_SNG_REGRESSION.xlsx" key="{6FC92852-D931-4B6E-B079-D3A28121FD7E}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\Regression\DS_SNG_REGRESSION.xlsx" />
 		</folder>
 		<child name="KeywordTests" key="{801E20D3-EDFB-4422-9C03-80D3B421D37F}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
 		<child name="ImageRepository" key="{2D2E4DEA-8F6D-4014-ACD4-6722F195D9CA}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />

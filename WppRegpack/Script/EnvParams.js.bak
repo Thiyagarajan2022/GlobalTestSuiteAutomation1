@@ -253,8 +253,13 @@ case "SINGAPORE":{
 temp = "SNG"
 }
 break;
-case "chinese (simplified)":{
-temp = "CNY"
+case "MALAYSIA":{
+temp = "MLY"
+}
+break;
+
+case "SPAIN":{
+temp = "SPN"
 }
 break;
 
@@ -343,12 +348,12 @@ temp = "SNG"
 }
 break;
 case "MALAYSIA":{
-temp = "MYR"
+temp = "MLY"
 }
 break;
 
 case "SPAIN":{
-temp = "EUR"
+temp = "SPN"
 }
 break;
 

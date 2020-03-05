@@ -69,7 +69,11 @@ for(var contyID =0;contyID<CountryList.length;contyID++){
   setPath(CountryList[contyID]);
 //Log.Message("Path :"+EnvParams.path);
 businessFlow = EnvParams.getBusinessFlow();
-ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+//ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+if(TestingType.toUpperCase()=="SMOKE")
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
+else
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 var rowcount = ExcelUtils.getRowCount()-1;
 var excelRow=1;
 if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")||(EnvParams.TestingType=="Full_Regression")||(EnvParams.TestingType=="Smoke")){   //Checking whether need to execute ALL TestCase or NOT
@@ -101,7 +105,11 @@ if(EnvParams.OpcoNum=="ALL"){ //Checking whether need to execute ALL TestCase fo
   
   
 
- ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+// ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+ if(TestingType.toUpperCase()=="SMOKE")
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
+else
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 var server = true;
 var nxtID = -1;
 for(var OpID=0;OpID<Opcolist.length;OpID++){
@@ -122,15 +130,21 @@ while(excelRow<=rowcount){
 folderName = Opcolist[OpID];
 
 
-ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+//ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+if(TestingType.toUpperCase()=="SMOKE")
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
+else
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
 
 testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
 
 description = ExcelUtils.getAllRowDatas("Description",excelRow);
 
+if(TestingType.toUpperCase()=="SMOKE")
 execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
-
+else
+execute = ExcelUtils.getAllRowDatas(businessFlow,excelRow);
 
 if(execute.toUpperCase()=="YES"){   //Login for each Opco 
 
@@ -276,7 +290,11 @@ var testList = [];
    testList [0] = EnvParams.testcase;
    }
   
-ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+//ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+if(TestingType.toUpperCase()=="SMOKE")
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
+else
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 for(var OpID=0;OpID<Opcolist.length;OpID++){
 EnvParams.Opco = Opcolist[OpID];
 testOpco = Opcolist[OpID];
@@ -341,7 +359,12 @@ for(var tL=0;tL<testList.length;tL++){
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(testList[tL],EnvParams.Country);
 
-ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+//ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
+if(TestingType.toUpperCase()=="SMOKE")
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
+else
+ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
+
 testCase = ExcelUtils.getRowDatas(testList[tL],"TestCases");
 description = ExcelUtils.getRowDatas(testList[tL],"Description");
 reportName = "Report_"+EnvParams.Opco+"_"+testList[tL];
