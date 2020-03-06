@@ -52,11 +52,12 @@ TemplateNo = ExcelUtils.getRowDatas("Template",EnvParams.Opco)
 if((TemplateNo==null)||(TemplateNo=="")){ 
 ValidationUtils.verify(false,true,"Template Number is Needed to Create a Job");
 }
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
+if((Product=="")||(Product==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
-  if((Product=="")||(Product==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  Product = ReadExcelSheet("Product Number",EnvParams.Opco,"Data Management");
-  }
+}
 if((Product==null)||(Product=="")){ 
 ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
 }

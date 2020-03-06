@@ -229,7 +229,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
     
     WorkspaceUtils.waitForObj(show_budget);
     show_budget.Keys("Working Estimate"); 
-    aqUtils.Delay(5000,Indicator.Text)
+    aqUtils.Delay(5000,"Working Estimate")
     ValidationUtils.verify(true,true,"Working Estimate is Selected");
     TextUtils.writeLog("Working Estimate is Selected"); 
   if(ImageRepository.ImageSet.Forward.Exists()){ 
