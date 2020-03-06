@@ -441,7 +441,7 @@ function GoToJob() {
 
   job.setText(Job_name+" "+STIME);
   WorkspaceUtils.waitForObj(table);
-//  aqUtils.Delay(3000, "Reading Table Data in Job List");
+  aqUtils.Delay(2000, "Reading Table Data in Job List");
 //  Delay(7000);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 

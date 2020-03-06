@@ -567,7 +567,6 @@ ReportUtils.logStep_Screenshot("");
   if((Dlang!="")&&(Dlang!=null)){
   if(JobLang.getText()!=Dlang){ 
   JobLang.Keys(" ")
-//  Delay(5000);
   JobLang.Click();
   WorkspaceUtils.DropDownList(Dlang,"Language")
   }
@@ -581,7 +580,6 @@ ReportUtils.logStep_Screenshot("");
   if((pTerm!="")&&(pTerm!=null)){
   if(paymentTerm.getText()!=pTerm){ 
   paymentTerm.Keys(" ")
-//  Delay(5000);
   paymentTerm.Click();
   WorkspaceUtils.DropDownList(pTerm,"Payment Term") 
   }
@@ -616,7 +614,6 @@ ReportUtils.logStep_Screenshot("");
     save_change.Click();
     ValidationUtils.verify(true,true,"Changes is Saved");
     TextUtils.writeLog("Changes is Saved");
-//    Log.Message("Changes is Saved");
 aqUtils.Delay(5000, "Saving changes  in Jobs");
 //    Delay(5000);
   }
