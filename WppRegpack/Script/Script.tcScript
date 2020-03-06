@@ -73,6 +73,14 @@
 				<child name="BlockCompanyVendor" key="{F4C63C35-D380-4D0D-9527-175D07D69280}" path="BlockCompanyVendor.js" />
 				<child name="AmendGlobalBrand" key="{344D1860-62D3-4D37-97E6-DEC89BF82F3E}" path="AmendGlobalBrand.js" />
 				<child name="CreateGlobalVendor" key="{BD4AB8CD-32EA-4ECF-9ABB-5C971E259C30}" path="CreateGlobalVendor.js" />
+				<child name="CreateGlobalProduct" key="{8A586667-0376-42D7-8EAD-6DDF7DB4D04F}" path="CreateGlobalProduct.js" />
+				<child name="CreateGlobalBrand" key="{56D1DFA4-1920-4201-8524-46EB2D72FA6C}" path="CreateGlobalBrand.js" />
+				<child name="AmendCompanyProduct" key="{74BC9D43-51E1-4F90-8E3F-D258E2480730}" path="AmendCompanyProduct.js" />
+				<child name="AmendGlobalProduct" key="{5220DA13-3DB1-462B-A839-415B273B6D11}" path="AmendGlobalProduct.js" />
+				<child name="CreateCompanyClient" key="{C4977212-0146-4819-907D-73F133EF4484}" path="CreateCompanyClient.js" />
+				<child name="CreateCompanyBrand" key="{D576EC46-7321-4BEA-8122-56C48258D09B}" path="CreateCompanyBrand.js" />
+				<child name="AmendCompanyClient" key="{937EE9E4-353B-40D3-8C45-9DE3EC7CB287}" path="AmendCompanyClient.js" />
+				<child name="AmendCompanyBrand" key="{EA349005-E1A3-4D2A-AB70-ABD58DDA19BA}" path="AmendCompanyBrand.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
