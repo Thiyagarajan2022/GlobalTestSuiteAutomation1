@@ -113,7 +113,7 @@ var table =Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder
 waitForObj(table);
 Sys.HighlightObject(table);
 
-if(Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Visible){
+if(Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
 
 }else{ 
 var showFilter = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.ShowFilter;
