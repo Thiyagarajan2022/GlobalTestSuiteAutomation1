@@ -61,6 +61,7 @@ Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
 if((Product==null)||(Product=="")){ 
 ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
 }
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Job_name= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
 if((Job_name==null)||(Job_name=="")){ 

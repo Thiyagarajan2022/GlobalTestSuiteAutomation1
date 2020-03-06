@@ -378,12 +378,16 @@ Sys.HighlightObject(add);
 
 
 function bn(){ 
-var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-Sys.HighlightObject(OK);
-OK.WaitProperty("Visible",true,6000);
-if (OK.WaitProperty("Visible", true, 20000))
-Log.Message("Visible")
-else
-Log.Message("Not Visible")
-Sys.HighlightObject(OK);
+var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+//var loginPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").WndCaption;
+//Log.Message(loginPerson)
+
+var i=0;
+while ((ApvPerson.getText().OleValue.toString().trim().indexOf("1707")==-1)&&(i!=60))
+{
+  aqUtils.Delay(100);
+  i++;
+  ApvPerson.Refresh();
+}
+
 }
