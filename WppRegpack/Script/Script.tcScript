@@ -81,6 +81,7 @@
 				<child name="CreateCompanyBrand" key="{D576EC46-7321-4BEA-8122-56C48258D09B}" path="CreateCompanyBrand.js" />
 				<child name="AmendCompanyClient" key="{937EE9E4-353B-40D3-8C45-9DE3EC7CB287}" path="AmendCompanyClient.js" />
 				<child name="AmendCompanyBrand" key="{EA349005-E1A3-4D2A-AB70-ABD58DDA19BA}" path="AmendCompanyBrand.js" />
+				<child name="CompanyVendor" key="{EEA57796-EA65-43D3-BB71-1F56078F8877}" path="CompanyVendor.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
