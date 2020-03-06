@@ -25,7 +25,6 @@ var RevisionNo = "";
 function CreateQuote(){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
  
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -55,32 +54,10 @@ y=0;
 ApproveInfo = [];
 level =0;
 
-//sheetName = "JobCreation";
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//comapany = ExcelUtils.getRowDatas("company",EnvParams.Opco)
-//if((comapany==null)||(comapany=="")){ 
-//ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
-//}
-
 comapany = EnvParams.Opco;
 sheetName ="CreateQuote";
+getDetails();
 goToJobMenuItem();
-  
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-  if((jobNumber=="")||(jobNumber==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
-  }
-  
-  if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Create Budget");
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  RevisionNo = ExcelUtils.getRowDatas("Revision",EnvParams.Opco)
-  if((RevisionNo=="")||(RevisionNo==null))
-  ValidationUtils.verify(false,true,"Revision Number is needed to Create Budget");
-  
-//sheetName ="JobBudgetCreation";
 goToBudget();
 validatingWorkEstimate();
 transferToQuote();
@@ -103,7 +80,33 @@ aprvBudget(temp[0],temp[1],temp[2]);
 closeAllWorkspaces();
 }
 
-  function closeAllWorkspaces(){
+
+function getDetails(){ 
+sheetName ="CreateQuote";  
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if((jobNumber=="")||(jobNumber==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+  }
+  if((jobNumber=="")||(jobNumber==null))
+  ValidationUtils.verify(false,true,"Job Number is needed to Create Quote");
+  
+
+  
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  RevisionNo = ReadExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management");
+  if((RevisionNo=="")||(RevisionNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  RevisionNo = ExcelUtils.getRowDatas("Revision",EnvParams.Opco)
+  }
+  if((RevisionNo=="")||(RevisionNo==null))
+  ValidationUtils.verify(false,true,"Revision Number is needed to Create Quote");
+}
+
+
+
+function closeAllWorkspaces(){
   Sys.Desktop.KeyDown(0x12); //Ctrl
   Sys.Desktop.KeyDown(0x57); //W
   Sys.Desktop.KeyDown(0x0D); //Enter
@@ -130,7 +133,6 @@ ImageRepository.ImageSet.Jobs1.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -142,7 +144,6 @@ for(var bi=0;bi<WrkspcCount;bi++){
 
 var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
   var Client_Managt;
-//Log.Message(childCC)
 for(var i=1;i<=childCC;i++){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
@@ -154,7 +155,6 @@ Client_Managt.DblClickItem("|Jobs");
 
 } 
 
-aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
 TextUtils.writeLog("Entering into Jobs from Jobs Menu"); 
 }
@@ -162,11 +162,12 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 function goToBudget(){ 
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllJobs;
+  WorkspaceUtils.waitForObj(allJobs);
   allJobs.Click();
-  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.CompanyNumber;
   var closeFilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.CloseFilterList;
+  WorkspaceUtils.waitForObj(firstcell);
   firstcell.forceFocus();
   firstcell.setVisible(true);
   firstcell.ClickM();
@@ -180,7 +181,9 @@ function goToBudget(){
   var job = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.Jobno;
   job.Click();
   job.setText(jobNumber);
-  aqUtils.Delay(7000, Indicator.Text);
+  WorkspaceUtils.waitForObj(job);
+  WorkspaceUtils.waitForObj(table);
+//  aqUtils.Delay(7000, Indicator.Text);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(2).OleValue.toString().trim()==jobNumber){ 
@@ -197,10 +200,11 @@ function goToBudget(){
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job is available in maconommy to create Quote"); 
   closeFilter.Click();
-  aqUtils.Delay(8000, Indicator.Text);
+//  aqUtils.Delay(8000, Indicator.Text);
 var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
+WorkspaceUtils.waitForObj(Budget);
 Budget.Click();
-aqUtils.Delay(6000, Indicator.Text);
+//aqUtils.Delay(6000, Indicator.Text);
 
 
 var show_budget = "";
@@ -222,8 +226,8 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
     show_budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2);
 
 //Log.Message(show_budget.FullName);
-
-    Sys.HighlightObject(show_budget);
+    
+    WorkspaceUtils.waitForObj(show_budget);
     show_budget.Keys("Working Estimate"); 
     aqUtils.Delay(5000,Indicator.Text)
     ValidationUtils.verify(true,true,"Working Estimate is Selected");

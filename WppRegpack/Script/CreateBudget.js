@@ -73,28 +73,8 @@ level =0;
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 sheetName = "JobCreation";
-ExcelUtils.setExcelName(workBook, sheetName, true);
-comapany = ExcelUtils.getRowDatas("company",EnvParams.Opco)
-if((comapany==null)||(comapany=="")){ 
-ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
-}
-sheetName ="JobBudgetCreation";
-  
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-  if((jobNumber=="")||(jobNumber==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  }
-  
-  if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Create Budget");
-  
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  templateJob = ExcelUtils.getColumnDatas("Template Number",EnvParams.Opco)
-  if((templateJob=="")||(templateJob==null))
-  ValidationUtils.verify(false,true,"Template Job Number is needed to Create Budget");
-  
+
+  getDetails();
   goToJobMenuItem();
   goToBudget();
   sheetName ="JobBudgetCreation";
@@ -115,6 +95,29 @@ aprvBudget(temp[0],temp[1],temp[2]);
 
 closeAllWorkspaces();
 }
+
+function getDetails(){ 
+
+comapany = EnvParams.Opco
+sheetName ="JobBudgetCreation";
+  
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if((jobNumber=="")||(jobNumber==null)){
+  sheetName ="JobBudgetCreation";
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+  }
+  
+  if((jobNumber=="")||(jobNumber==null))
+  ValidationUtils.verify(false,true,"Job Number is needed to Create Budget");
+  
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  templateJob = ExcelUtils.getColumnDatas("Template Number",EnvParams.Opco)
+//  if((templateJob=="")||(templateJob==null))
+//  ValidationUtils.verify(false,true,"Template Job Number is needed to Create Budget");
+}
+
 
 function goToBudget(){ 
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
@@ -999,6 +1002,17 @@ Approve.Click();
 ValidationUtils.verify(true,true,"Levels 0 has  Approved the Created Budget");
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
 
+if(ApproveInfo.length == 1){
+TextUtils.writeLog("Budget is created for :"+jobNumber);
+TextUtils.writeLog("Revision : 1");
+ExcelUtils.setExcelName(workBook,"CreateQuote", true);
+ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote","1");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Working Estimate",EnvParams.Opco,"Data Management",jobNumber);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management","1");
+}
+
 ////Approve.Click();
 //var Add_Visible8 = true;
 //while(Add_Visible8){
@@ -1040,7 +1054,6 @@ TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
 
 
 function goToJobMenuItem(){
-//   var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "");
     var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
     menuBar.DblClick();
 if(ImageRepository.ImageSet3.Jobs.Exists()){
@@ -1055,7 +1068,6 @@ ImageRepository.ImageSet.Jobs1.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-//Delay(3000);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -1067,7 +1079,6 @@ for(var bi=0;bi<WrkspcCount;bi++){
 
 var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
   var Client_Managt;
-//Log.Message(childCC)
 for(var i=1;i<=childCC;i++){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
@@ -1079,8 +1090,6 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 
 }
 
-//  aqUtils.Delay(2000, Indicator.Text);
-//  Delay(2000);
 ReportUtils.logStep("INFO", "Moved to Jobs from job Menu");
 TextUtils.writeLog("Entering into Jobs from Jobs Menu"); 
 }
@@ -1490,6 +1499,18 @@ else{
   ReportUtils.logStep("INFO","Approve Button Is Invisible");
   Log.Warning(ComId+" - "+JobNo +" - Approver :"+userNmae);
 }
+
+if((ApproveInfo.length -1)== level){
+TextUtils.writeLog("Budget is created for :"+jobNumber);
+TextUtils.writeLog("Revision : 1");
+ExcelUtils.setExcelName(workBook,"CreateQuote", true);
+ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote","1");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Working Estimate",EnvParams.Opco,"Data Management",jobNumber);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management","1");
+}
+
     }
 
 }
