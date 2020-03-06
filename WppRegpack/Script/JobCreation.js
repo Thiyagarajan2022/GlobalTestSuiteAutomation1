@@ -52,11 +52,12 @@ TemplateNo = ExcelUtils.getRowDatas("Template",EnvParams.Opco)
 if((TemplateNo==null)||(TemplateNo=="")){ 
 ValidationUtils.verify(false,true,"Template Number is Needed to Create a Job");
 }
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
+if((Product=="")||(Product==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
-  if((Product=="")||(Product==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  Product = ReadExcelSheet("Product Number",EnvParams.Opco,"Data Management");
-  }
+}
 if((Product==null)||(Product=="")){ 
 ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
 }
@@ -567,7 +568,6 @@ ReportUtils.logStep_Screenshot("");
   if((Dlang!="")&&(Dlang!=null)){
   if(JobLang.getText()!=Dlang){ 
   JobLang.Keys(" ")
-//  Delay(5000);
   JobLang.Click();
   WorkspaceUtils.DropDownList(Dlang,"Language")
   }
@@ -581,7 +581,6 @@ ReportUtils.logStep_Screenshot("");
   if((pTerm!="")&&(pTerm!=null)){
   if(paymentTerm.getText()!=pTerm){ 
   paymentTerm.Keys(" ")
-//  Delay(5000);
   paymentTerm.Click();
   WorkspaceUtils.DropDownList(pTerm,"Payment Term") 
   }
@@ -616,7 +615,6 @@ ReportUtils.logStep_Screenshot("");
     save_change.Click();
     ValidationUtils.verify(true,true,"Changes is Saved");
     TextUtils.writeLog("Changes is Saved");
-//    Log.Message("Changes is Saved");
 aqUtils.Delay(5000, "Saving changes  in Jobs");
 //    Delay(5000);
   }
