@@ -155,7 +155,7 @@ function goToBudget(){
   if(flag){
   ReportUtils.logStep("INFO", "Job is listed in table to create budget");
   ReportUtils.logStep_Screenshot("");
-  TextUtils.writeLog("Job is available in maconommy to create budget"); 
+  TextUtils.writeLog("Job("+jobNumber+") is available in maconommy to create budget"); 
   closeFilter.Click();
   aqUtils.Delay(8000, Indicator.Text);
 var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
