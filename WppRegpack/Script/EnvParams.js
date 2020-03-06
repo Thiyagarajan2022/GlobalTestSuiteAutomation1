@@ -35,7 +35,7 @@ var xlDriver= DDT.ExcelDriver(Project.Path+TextUtils.GetProjectValue("EnvDetails
 
 
 for (i = 1; i <= nArgs ; i++){    
-//Log.Message(BuiltIn.ParamStr(i));
+Log.Message(BuiltIn.ParamStr(i));
 if(BuiltIn.ParamStr(i).indexOf("Environment")!=-1){
    var inst = BuiltIn.ParamStr(i);
    instanceData = (inst.substring(inst.indexOf(":"))).trim();

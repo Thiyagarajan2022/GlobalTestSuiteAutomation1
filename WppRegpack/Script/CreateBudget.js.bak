@@ -36,7 +36,6 @@ var Arrays = [];
 function createBudget(){ 
 TextUtils.writeLog("Job Budget Creation Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 
 menuBar.Click();
@@ -57,11 +56,9 @@ Language = EnvParams.Language;
 if((Language==null)||(Language=="")){
 ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
 }
-Log.Message(EnvParams.Opco)
-Log.Message(Language)
+
 Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
-Log.Message(Language)
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
@@ -82,8 +79,6 @@ if((comapany==null)||(comapany=="")){
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
 }
 sheetName ="JobBudgetCreation";
-
-  goToJobMenuItem();
   
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
@@ -100,11 +95,12 @@ sheetName ="JobBudgetCreation";
   if((templateJob=="")||(templateJob==null))
   ValidationUtils.verify(false,true,"Template Job Number is needed to Create Budget");
   
+  goToJobMenuItem();
   goToBudget();
   sheetName ="JobBudgetCreation";
   addingBudgetLines();
   closeAllWorkspaces();
-  CredentialLogin();
+//  CredentialLogin();
 
 for(var i=level;i<ApproveInfo.length;i++){
   level = i;
@@ -122,11 +118,13 @@ closeAllWorkspaces();
 
 function goToBudget(){ 
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
+  WorkspaceUtils.waitForObj(allJobs);
   allJobs.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.CompanyNumber;
   var closeFilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.CloseFilterList;
+  WorkspaceUtils.waitForObj(firstcell);
   firstcell.forceFocus();
   firstcell.setVisible(true);
   firstcell.ClickM();
@@ -140,7 +138,9 @@ function goToBudget(){
   var job = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.Jobno;
   job.Click();
   job.setText(jobNumber);
-  aqUtils.Delay(7000, Indicator.Text);
+  WorkspaceUtils.waitForObj(job);
+  WorkspaceUtils.waitForObj(table);
+//  aqUtils.Delay(7000, Indicator.Text);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(2).OleValue.toString().trim()==jobNumber){ 
@@ -157,11 +157,12 @@ function goToBudget(){
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy to create budget"); 
   closeFilter.Click();
-  aqUtils.Delay(8000, Indicator.Text);
+//  aqUtils.Delay(8000, Indicator.Text);
 var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
+WorkspaceUtils.waitForObj(Budget);
 Budget.Click();
-aqUtils.Delay(6000, Indicator.Text);
-
+aqUtils.Delay(3000, "Finding Show Budget");
+aqUtils.Delay(2000, "Finding Client Currency");
 
 var show_budget = "";
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).isVisible())
@@ -169,6 +170,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
   var txt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 1).getText().OleValue.toString().trim();
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", txt).OleValue.toString().trim()=="Show Budget"){
     show_budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2);
+    WorkspaceUtils.waitForObj(show_budget);
     ClientCurrency = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2).getText();    
 }
 }
@@ -178,6 +180,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
   var txt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 1).getText().OleValue.toString().trim();
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", txt).OleValue.toString().trim()=="Show Budget"){
     show_budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2);
+    WorkspaceUtils.waitForObj(show_budget);
     ClientCurrency = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2).getText();    
 }
 }
@@ -188,15 +191,17 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
   var txt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 1).getText().OleValue.toString().trim();
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", txt).OleValue.toString().trim()=="Show Budget"){
     show_budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2);
+    WorkspaceUtils.waitForObj(show_budget);
     ClientCurrency = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2).getText();
                   }
                   }
 
 //Log.Message(show_budget.FullName);
 
-    Sys.HighlightObject(show_budget);
+    
     show_budget.Keys("Working Estimate"); 
-    aqUtils.Delay(5000,Indicator.Text)
+    WorkspaceUtils.waitForObj(show_budget);
+    aqUtils.Delay(2000,"Working Estimate is Selected");
     ValidationUtils.verify(true,true,"Working Estimate is Selected");
     TextUtils.writeLog("Working Estimate is Selected"); 
 //var ClientCurrency = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
@@ -205,7 +210,7 @@ if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", t
 }
 
 function addingBudgetLines(){ 
- aqUtils.Delay(2000,Indicator.Text)
+// aqUtils.Delay(2000,Indicator.Text)
    Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Refresh();
 var line = false;
  if(!line)
@@ -227,9 +232,10 @@ var line = false;
   line = true;
   }
 //  var FullBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
-  Sys.HighlightObject(FullBudget)  ;
+//  Sys.HighlightObject(FullBudget)  ;
+WorkspaceUtils.waitForObj(FullBudget);
   FullBudget.Click();
-  aqUtils.Delay(5000,Indicator.Text)
+//  aqUtils.Delay(5000,Indicator.Text)
 
 var RowCount = 0;
 var TotalBudget = 0.00;
@@ -242,7 +248,7 @@ var addedlines = false;
   else
   ExchangeRate = "1.00";
   if(ClientCurrency!="GBP")  
-  var BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
+  var BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency.OleValue.toString().trim(),"Exchange Rate");
   else
   BaseCurrency = "1.00";
 //  Log.Message(ContryCurrency);
@@ -368,16 +374,15 @@ var linest = false
   
   
 if(linest){
-  Sys.HighlightObject(AddBudget)  ;
-  AddBudget.HoverMouse();
+  WorkspaceUtils.waitForObj(AddBudget);
   ReportUtils.logStep_Screenshot("");
   AddBudget.Click(); 
   }else{ 
       var copy = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite2.SingleToolItemControl3;
-  Sys.HighlightObject(copy)
-  copy.HoverMouse();
+  WorkspaceUtils.waitForObj(AddBudget);
   ReportUtils.logStep_Screenshot(""); 
   copy.Click();
+  
 //if(copy.text=="Copy Budget From Template"){
 //copy.HoverMouse();
 //ReportUtils.logStep_Screenshot(""); 
@@ -388,7 +393,8 @@ if(linest){
 //ReportUtils.logStep_Screenshot("");
 //copy.Click();
 //}
-aqUtils.Delay(5000, Indicator.Text);
+
+//aqUtils.Delay(5000, Indicator.Text);
 
 //var Job = Aliases.Maconomy.Shell3.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
 //Job.Click();
@@ -423,29 +429,30 @@ aqUtils.Delay(5000, Indicator.Text);
 //ApiButton.Click();
 //}
     
-aqUtils.Delay(2000, Indicator.Text);
+//aqUtils.Delay(2000, Indicator.Text);
 
 var removeZeroBudgetLine = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite2.SingleToolItemControl2;
+WorkspaceUtils.waitForObj(removeZeroBudgetLine);
 removeZeroBudgetLine.Click();
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(3000, "Jobs - Budget");
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption =="Jobs - Budget"){
 var ApiButton = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Budget").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
 ApiButton.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 ApiButton.Click();
 }
-aqUtils.Delay(3000, Indicator.Text);
+aqUtils.Delay(3000, "Jobs - Budget");
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption =="Jobs - Budget"){
 var ApiButton = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Budget").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
 ApiButton.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 ApiButton.Click();
 }
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
     
   }
   Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
-  aqUtils.Delay(3000, Indicator.Text);
+//  aqUtils.Delay(3000, Indicator.Text);
 
 //-----Work Code Selection---------    
 var workcode;
@@ -453,23 +460,24 @@ linestatus = false;
 workcode = Clientgrid().SWTObject("McValuePickerWidget", "");
 if(wCodeID!=""){
 addedlines = true;
+WorkspaceUtils.waitForObj(workcode);
 workcode.Click();
 WorkspaceUtils.SearchByValue(workcode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),wCodeID,"Work Code :"+wCodeID);
 //WorkspaceUtils.SearchByValue(workcode,"Work Code",wCodeID,"Work Code :"+wCodeID);
        }else{ 
   ValidationUtils.verify(false,true,"WorkCode Needed to create JobBudget");
 }
-  
-aqUtils.Delay(2000, Indicator.Text);  
+WorkspaceUtils.waitForObj(workcode);
+//aqUtils.Delay(2000, Indicator.Text);  
     Sys.Desktop.KeyDown(0x09); // Press Ctrl
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(1000, "Next Column");
     Sys.Desktop.KeyDown(0x09); // Press Ctrl
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(1000, "Next Column");
     Sys.Desktop.KeyDown(0x09); // Press Ctrl
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(1000, "Next Column");
 
 //-----Internal Description---------
 linestatus = false;
@@ -485,7 +493,7 @@ var External_Description;
     
     Sys.Desktop.KeyDown(0x09); // Press Ctrl
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(1000, "Next Column");
 
 //-----Employee Categories if required---------
 //var cc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 5).ChildCount;
@@ -500,7 +508,7 @@ WorkspaceUtils.SearchByValue(EmpCat,JavaClasses.MLT.MultiLingualTranslator.GetTr
          
 Sys.Desktop.KeyDown(0x09); // Press Ctrl
 Sys.Desktop.KeyUp(0x09);
-aqUtils.Delay(1000, Indicator.Text);
+aqUtils.Delay(1000, "Next Column");
 
     
 //-----Employee Number if required---------    
@@ -514,10 +522,10 @@ empno.Click();
 WorkspaceUtils.SearchByValue(empno,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),Employee_Number,"Employee Number");
      }
          
-    aqUtils.Delay(1000, Indicator.Text);
+//    aqUtils.Delay(1000, Indicator.Text);
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(1000, "Next Column");
 
     
 //-----Quantity---------
@@ -533,7 +541,7 @@ var Quality = Clientgrid().SWTObject("McTextWidget", "", 2);
 
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(2000, "Next Column");
     
 //-----Cost Base Only for Amount---------
   if(wCodeID.indexOf("T")==-1){
@@ -704,7 +712,7 @@ if(!line){
     Save.HoverMouse();
     ReportUtils.logStep_Screenshot("");
     Save.Click();
-    aqUtils.Delay(3000, Indicator.Text);
+    aqUtils.Delay(3000, "Saving added lines in Work Estimate");
   // validation part
   var tableGrid = Clientgrid();
   var total_Cost_Base = tableGrid.getItem(RowCount).getText_2(8).OleValue.toString().trim();
@@ -802,18 +810,20 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English",Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 8).getText().OleValue.toString().trim()).OleValue.toString().trim()=="Submit")
 var Submit = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 8)
 
-
-var Add_Visible8 = true;
-while(Add_Visible8){
-aqUtils.Delay(2000, Indicator.Text);
-if(Submit.isEnabled_2){
-Add_Visible8 = false;
-Sys.HighlightObject(Submit);
-Submit.HoverMouse();
+WorkspaceUtils.waitForObj(Submit);
 ReportUtils.logStep_Screenshot("");
 Submit.Click();
-}
-}
+//var Add_Visible8 = true;
+//while(Add_Visible8){
+//aqUtils.Delay(2000, Indicator.Text);
+//if(Submit.isEnabled_2){
+//Add_Visible8 = false;
+//Sys.HighlightObject(Submit);
+//Submit.HoverMouse();
+//ReportUtils.logStep_Screenshot("");
+//Submit.Click();
+//}
+//}
 
 ValidationUtils.verify(true,true,"Created Budget is Submitted");
 
@@ -847,7 +857,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
 var IndiaSpec = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 8).SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
 linestatus = true;
 }
-
+WorkspaceUtils.waitForObj(IndiaSpec);
 IndiaSpec.Click();
 linestatus = false;
 
@@ -951,12 +961,21 @@ if(ImageRepository.ImageSet.Forward.Exists()){
 ImageRepository.ImageSet.Forward.Click();// GL
 }
 TextUtils.writeLog(Approve_Level.length+" Levels of Approvals for Created Budget");
-var OpCo1 = EnvParams.Opco;
+
+CredentialLogin();
+var OpCo2 = ApproveInfo[0].split("*");
+//var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
-if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
-//if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
+sheetName = "CreateClient";
+if(OpCo2[2]==Project_manager){
+  
+//var OpCo1 = EnvParams.Opco;
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
+//if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+////if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
 level = 1;
 var Approve = "";
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).isVisible())
@@ -974,22 +993,27 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 9).getText().OleValue.toString().trim()).OleValue.toString().trim()=="Approve")
 Approve = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 9)
 
-Sys.HighlightObject(Approve)
-//Approve.Click();
-var Add_Visible8 = true;
-while(Add_Visible8){
-aqUtils.Delay(2000, Indicator.Text);
-//Delay(2000);
-if(Approve.isEnabled_2){
-Add_Visible8 = false;
-Sys.HighlightObject(Approve);
-Approve.HoverMouse();
+WorkspaceUtils.waitForObj(Approve);
 ReportUtils.logStep_Screenshot("");
 Approve.Click();
 ValidationUtils.verify(true,true,"Levels 0 has  Approved the Created Budget");
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
-}
-}
+
+////Approve.Click();
+//var Add_Visible8 = true;
+//while(Add_Visible8){
+//aqUtils.Delay(2000, Indicator.Text);
+////Delay(2000);
+//if(Approve.isEnabled_2){
+//Add_Visible8 = false;
+//Sys.HighlightObject(Approve);
+//Approve.HoverMouse();
+//ReportUtils.logStep_Screenshot("");
+//Approve.Click();
+//ValidationUtils.verify(true,true,"Levels 0 has  Approved the Created Budget");
+//TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
+//}
+//}
 }
 
 }
@@ -1031,7 +1055,7 @@ ImageRepository.ImageSet.Jobs1.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-Delay(3000);
+//Delay(3000);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -1055,7 +1079,7 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 
 }
 
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
 //  Delay(2000);
 ReportUtils.logStep("INFO", "Moved to Jobs from job Menu");
 TextUtils.writeLog("Entering into Jobs from Jobs Menu"); 
@@ -1073,158 +1097,308 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
     
     
     
-function CredentialLogin(){ 
-// var Credentials = [];
-// Credentials[0] = "1307*1307200357*1307 Finance (13079505)*OpCo - Billers";
-// Credentials[1] = "1307*1307200357*Chinese Manager 2 (120110071)*Chinese Employee 1 (130710040)";
-// Credentials[2] = "1307*1307200357*Central Team - Client Management*Central Team - Vendor Management";
-// 
-// var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
-// var sheetName = "Agency Users";
-// var sheetName = "SSC Users";
-//Central Team - Vendor Management
-//"1307*1307200357*Central Team - Client Management*SSC - Expense Cashiers"
+//function CredentialLogin(){ 
+//// var Credentials = [];
+//// Credentials[0] = "1307*1307200357*1307 Finance (13079505)*OpCo - Billers";
+//// Credentials[1] = "1307*1307200357*Chinese Manager 2 (120110071)*Chinese Employee 1 (130710040)";
+//// Credentials[2] = "1307*1307200357*Central Team - Client Management*Central Team - Vendor Management";
+//// 
+//// var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
+//// var sheetName = "Agency Users";
+//// var sheetName = "SSC Users";
+////Central Team - Vendor Management
+////"1307*1307200357*Central Team - Client Management*SSC - Expense Cashiers"
+//
+//for(var i=level;i<Approve_Level.length;i++){
+//  var UserN = true;
+//  var temp="";
+//  var Cred = Approve_Level[i].split("*");
+//  for(var j=2;j<4;j++){
+////    Log.Message(Cred[j])
+////Log.Message(j)
+//  if((Cred[j]!="")&&(Cred[j]!=null))
+//  if((Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf("1307"+" ")!=-1)))
+//  { 
+////     var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
+//     var sheetName = "Agency Users";
+//    ExcelUtils.setExcelName(workBook, sheetName, true);
+//    temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
+//  }
+//  else if((Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+//  { 
+////    var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
+//    var sheetName = "SSC Users";
+//    ExcelUtils.setExcelName(workBook, sheetName, true);
+//    temp = ExcelUtils.SSCLogin(Cred[j],"Username");
+//  }
+////  else{ 
+////   var Eno =  Cred[j].substring(Cred[j].indexOf("(")+1,Cred[j].indexOf(")") )
+////    if(UserN){ 
+////      goToHR();
+////      UserN = false;
+////    }
+////    temp = searchNumber(Eno);
+////  }
+////  Log.Message(temp)
+//  if(temp.length!=0){
+//    temp = temp+"*"+j;
+//    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+temp;
+//  break;
+//  }
+//  }
+//  if((temp=="")||(temp==null))
+//  Log.Error("User Name is Not available for level :"+i);
+////  Log.Message("Logins :"+temp);
+//}
+//WorkspaceUtils.closeAllWorkspaces();
+//
+//// ExcelUtils.setExcelName(workBook, sheetName, true);
+////
+//// Cred[2] = ExcelUtils.SSCLogin(Cred[2],"Username");
+//// Cred[3] = ExcelUtils.SSCLogin(Cred[3],"Username");
+//
+//}
 
-for(var i=level;i<Approve_Level.length;i++){
+
+function CredentialLogin(){ 
+  var AppvLevl = [];
+for(var i=0;i<Approve_Level.length;i++){
   var UserN = true;
   var temp="";
+  var temp1="";
   var Cred = Approve_Level[i].split("*");
   for(var j=2;j<4;j++){
-//    Log.Message(Cred[j])
-//Log.Message(j)
+  temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf("1307"+" ")!=-1)))
+  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
-//     var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
      var sheetName = "Agency Users";
+     workBook = Project.Path+excelName;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
   }
-  else if((Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  else if((Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
   { 
-//    var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
+
     var sheetName = "SSC Users";
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.SSCLogin(Cred[j],"Username");
   }
-//  else{ 
-//   var Eno =  Cred[j].substring(Cred[j].indexOf("(")+1,Cred[j].indexOf(")") )
-//    if(UserN){ 
-//      goToHR();
-//      UserN = false;
-//    }
-//    temp = searchNumber(Eno);
-//  }
-//  Log.Message(temp)
+
   if(temp.length!=0){
-    temp = temp+"*"+j;
-    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+temp;
-  break;
+    temp1 = temp1+temp+"*"+j+"*";
+//  break;
   }
   }
-  if((temp=="")||(temp==null))
+  if((temp1=="")||(temp1==null))
   Log.Error("User Name is Not available for level :"+i);
-//  Log.Message("Logins :"+temp);
+  Log.Message(temp1)
+  AppvLevl[i] = temp1;
 }
-WorkspaceUtils.closeAllWorkspaces();
-
-// ExcelUtils.setExcelName(workBook, sheetName, true);
-//
-// Cred[2] = ExcelUtils.SSCLogin(Cred[2],"Username");
-// Cred[3] = ExcelUtils.SSCLogin(Cred[3],"Username");
-
+  ApproveInfo = levelMatch(AppvLevl)
+  Log.Message("-----Approvers-------------")
+  for(var i=0;i<ApproveInfo.length;i++){
+    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
+    Log.Message(ApproveInfo[i]);
+    }
+//WorkspaceUtils.closeAllWorkspaces();
 }
+
     
   
 
-function todo(lvl){
+//function todo(lvl){
+//  TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
+//    var toDo = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
+//  toDo.DBlClick();
+//  aqUtils.Delay(3000, Indicator.Text);
+//  TextUtils.writeLog("Entering into To-Dos List");
+////  Delay(3000);
+//  //To Maximaize the window
+//  Sys.Desktop.KeyDown(0x12);
+//  Sys.Desktop.KeyDown(0x20);
+////  Delay(2000);
+//  Sys.Desktop.KeyUp(0x12);
+//  Sys.Desktop.KeyUp(0x20);
+//  Sys.Desktop.KeyDown(0x58);
+//  Sys.Desktop.KeyUp(0x58);  
+//  aqUtils.Delay(1000, Indicator.Text);
+////  Delay(1000);
+////  var refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("SingleToolItemControl", "");
+////  refresh.Click();
+//  
+//  var childCC= Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
+//  var refresh;
+////Log.Message(childCC)
+//for(var i=1;i<=childCC;i++){ 
+//refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i)
+//if(refresh.isVisible()){ 
+//refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("SingleToolItemControl", "");
+//refresh.Click();
+//
+//  
+//  
+//  aqUtils.Delay(15000, Indicator.Text);
+////  Delay(15000);
+//Client_Managt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "")
+//if(Client_Managt.isVisible()){ 
+//Client_Managt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Tree", "");
+//
+//if(lvl==2)
+//for(var j=0;j<Client_Managt.getItemCount();j++){ 
+//  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+//  var temp1 = temp.split("(");
+//if((temp.indexOf("Approve Job Budget by Type (")!=-1)&&(temp1.length==2)){ 
+//Client_Managt.ClickItem("|"+temp);    
+//ReportUtils.logStep_Screenshot();
+//Client_Managt.DblClickItem("|"+temp);  
+//TextUtils.writeLog("Entering into "+temp+" from To-Dos List");   
+//  }
+//}
+//if(lvl==3)
+//for(var j=0;j<Client_Managt.getItemCount();j++){ 
+//  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+//  var temp1 = temp.split("(");
+//if((temp.indexOf("Approve Job Budget by Type (Substitute) (")!=-1)&&(temp1.length==3)){
+//Client_Managt.ClickItem("|"+temp);    
+//ReportUtils.logStep_Screenshot();
+//Client_Managt.DblClickItem("|"+temp);    
+//TextUtils.writeLog("Entering into "+temp+" from To-Dos List"); 
+//  }
+//}
+//
+////if(lvl==3)
+////Client_Managt.DblClickItem("|Approve Job Budget by Type (Substitute) (*)");
+////if(lvl==2)
+////Client_Managt.DblClickItem("|Approve Job Budget by Type (*)");
+//
+//break;
+//}
+//}
+//}
+//
+//
+//
+//}
+
+function todo(lvl){ 
   TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
-    var toDo = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
+  var toDo = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.ToDos;
+  toDo.HoverMouse();
+  ReportUtils.logStep_Screenshot();
   toDo.DBlClick();
-  aqUtils.Delay(3000, Indicator.Text);
   TextUtils.writeLog("Entering into To-Dos List");
-//  Delay(3000);
+  aqUtils.Delay(3000, Indicator.Text);
   //To Maximaize the window
   Sys.Desktop.KeyDown(0x12);
   Sys.Desktop.KeyDown(0x20);
-//  Delay(2000);
   Sys.Desktop.KeyUp(0x12);
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);  
   aqUtils.Delay(1000, Indicator.Text);
-//  Delay(1000);
-//  var refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("SingleToolItemControl", "");
-//  refresh.Click();
-  
-  var childCC= Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
-  var refresh;
-//Log.Message(childCC)
-for(var i=1;i<=childCC;i++){ 
-refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i)
-if(refresh.isVisible()){ 
-refresh = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("SingleToolItemControl", "");
+
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+}
 refresh.Click();
-
-  
-  
-  aqUtils.Delay(15000, Indicator.Text);
-//  Delay(15000);
-Client_Managt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "")
-if(Client_Managt.isVisible()){ 
-Client_Managt = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", i).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Tree", "");
-
+aqUtils.Delay(15000, Indicator.Text);
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+}
+var listPass = true;
 if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
 if((temp.indexOf("Approve Job Budget by Type (")!=-1)&&(temp1.length==2)){ 
-Client_Managt.ClickItem("|"+temp);    
-ReportUtils.logStep_Screenshot();
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
-TextUtils.writeLog("Entering into "+temp+" from To-Dos List");   
+TextUtils.writeLog("Entering into Approve Job Budget by Type from To-Dos List");
+listPass = false; 
   }
 }
 if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Job Budget by Type (Substitute) (")!=-1)&&(temp1.length==3)){
+if((temp.indexOf("Approve Job Budget by Type (Substitute) (")!=-1)&&(temp1.length==3)){ 
 Client_Managt.ClickItem("|"+temp);    
-ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|"+temp);    
-TextUtils.writeLog("Entering into "+temp+" from To-Dos List"); 
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Job Budget by Type (Substitute) from To-Dos List");
+var listPass = true;   
+  }
+}  
+if(listPass){
+if(lvl==2)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Job Budget (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Job Budget from To-Dos List");
+listPass = false; 
   }
 }
-
-//if(lvl==3)
-//Client_Managt.DblClickItem("|Approve Job Budget by Type (Substitute) (*)");
-//if(lvl==2)
-//Client_Managt.DblClickItem("|Approve Job Budget by Type (*)");
-
-break;
-}
-}
-}
-
-
-
-}
-
-
-function aprvBudget(ComId,JobNo,userNmae){ 
-aqUtils.Delay(5000, Indicator.Text);
-// Delay(5000) 
-if(ImageRepository.ImageSet.Show_Filter.Exists()){
-aqUtils.Delay(2000, Indicator.Text);
-//Delay(5000)
-ImageRepository.ImageSet.Show_Filter.Click();
-aqUtils.Delay(2000, Indicator.Text);
-//Delay(3000);
+if(lvl==3)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Job Budget (Substitute) (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);    
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Job Budget (Substitute) from To-Dos List");
+var listPass = true;   
+  }
 } 
+  }
+
+}
+
+
+
+
+function aprvBudget(ComId,JobNo,userNmae){
+  
+//aqUtils.Delay(5000, Indicator.Text);
+//// Delay(5000) 
+//if(ImageRepository.ImageSet.Show_Filter.Exists()){
+//aqUtils.Delay(2000, Indicator.Text);
+////Delay(5000)
+//ImageRepository.ImageSet.Show_Filter.Click();
+//aqUtils.Delay(2000, Indicator.Text);
+////Delay(3000);
+//} 
+
+var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "");
+waitForObj(table);
+Sys.HighlightObject(table);
+
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).Visible){
+
+}else{ 
+var showFilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("SingleToolItemControl", "", 2);
+waitForObj(table);
+Sys.HighlightObject(showFilter);
+showFilter.HoverMouse();
+showFilter.HoverMouse();
+showFilter.HoverMouse();
+showFilter.Click();
+}
 
  var closeFilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "");
-   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
+    var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
    var companyFilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
     SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).
     SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 7).
@@ -1232,15 +1406,19 @@ aqUtils.Delay(2000, Indicator.Text);
     SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").
     SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
    
-    aqUtils.Delay(2000, Indicator.Text);
+//    aqUtils.Delay(2000, Indicator.Text);
 //    Delay(2000);
     
     companyFilter.forceFocus();
     companyFilter.setVisible(true);
     companyFilter.ClickM();
+waitForObj(companyFilter);
+Sys.HighlightObject(companyFilter);
+companyFilter.HoverMouse();
+companyFilter.HoverMouse();
     table.Child(0).setText("^a[BS]");
     table.Child(0).setText(ComId);
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(1000, "Moving to Job Name");;
 //    Delay(2000);
     table.Child(0).Keys("[Tab][Tab]");
 
@@ -1251,7 +1429,7 @@ aqUtils.Delay(2000, Indicator.Text);
     table.Child(2).setVisible(true);
     table.Child(2).setText("^a[BS]");
     table.Child(2).setText(JobNo);
-    aqUtils.Delay(3000, Indicator.Text);
+    aqUtils.Delay(3000, "Reading Data in table");;
 //    Delay(3000);
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
@@ -1270,7 +1448,6 @@ else{
 TextUtils.writeLog("Created JobBudget is listed in Approval list");
 ReportUtils.logStep_Screenshot("");
     closeFilter.Click();
-    aqUtils.Delay(8000, Indicator.Text);
 //    Delay(8000);
     
 //    var Budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5)
@@ -1283,10 +1460,11 @@ ReportUtils.logStep_Screenshot("");
 
 //    var Budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5);
     var Budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5)
+WorkspaceUtils.waitForObj(Budget);
     Budget.Click();
     var ref = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3)
     ref.Refresh();
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(5000, "Waiting for McClumpSashForm");
 //    Delay(5000);
     if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "").Index==1)
     var show_budget = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2);
@@ -1297,7 +1475,7 @@ ReportUtils.logStep_Screenshot("");
     
 
     show_budget.Keys("Working Estimate");
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(2000, Indicator.Text);
 //    Delay(7000);
     var Approve = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 9);
 Sys.HighlightObject(Approve)
