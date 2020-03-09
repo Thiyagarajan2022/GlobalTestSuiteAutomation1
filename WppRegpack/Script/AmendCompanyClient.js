@@ -39,19 +39,16 @@ workBook = Project.Path+excelName;
 sheetName = "AmendCompanyClient";
 ClientNo,BrandNo,Currency ="";
 ExcelUtils.setExcelName(workBook, sheetName, true);
-ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  if((ClientNo=="")||(ClientNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
-  }
-if((ClientNo==null)||(ClientNo=="")){ 
-ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
-}
+//ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+//  if((ClientNo=="")||(ClientNo==null)){
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+//  }
+//if((ClientNo==null)||(ClientNo=="")){ 
+//ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
+//}
 
-Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-if((Currency==null)||(Currency=="")){ 
-ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
-}
+
 
 Language = EnvParams.Language;
 if((Language==null)||(Language=="")){
@@ -61,14 +58,28 @@ Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Block Global client started::"+STIME);
+getDetails();
 gotoMenu();
 gotoClientSearch();
 globalClient();
-getDetails();
+
 client();
 }
 
 function getDetails(){ 
+  
+
+ ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  if((ClientNo=="")||(ClientNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+  }
+  if((ClientNo==null)||(ClientNo=="")){ 
+  ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
+  }
+    Log.Message("ClientNumber"+ClientNumber)
+    
 ExcelUtils.setExcelName(workBook, sheetName, true);
 //Add1 = ExcelUtils.getRowDatas("Address_1",EnvParams.Opco)
 //Add2 = ExcelUtils.getRowDatas("Address_2",EnvParams.Opco)
@@ -77,6 +88,12 @@ Phone = ExcelUtils.getRowDatas("Phone",EnvParams.Opco)
 Email = ExcelUtils.getRowDatas("E-mail",EnvParams.Opco)
 if(((Phone==null)||(Phone==""))&&((Email==null)||(Email==""))){ 
 ValidationUtils.verify(false,true,"Phone,Email is Needed to Amend Global Client");
+}
+
+
+Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
+if((Currency==null)||(Currency=="")){ 
+ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
 }
 
 }

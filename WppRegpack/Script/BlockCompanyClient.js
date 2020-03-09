@@ -18,8 +18,10 @@ Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+Project_manager = ExcelUtils.getRowDatas("Central Team - Client Account Management","Username")
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -34,15 +36,29 @@ excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "BlockCompanyClient";
 ClientNo,BrandNo,Currency ="";
-ExcelUtils.setExcelName(workBook, sheetName, true);
-ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  if((ClientNo=="")||(ClientNo==null)){
+
+//ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+//  if((ClientNo=="")||(ClientNo==null)){
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+//  }
+//if((ClientNo==null)||(ClientNo=="")){ 
+//ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
+//}
+
+
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  if((ClientNo=="")||(ClientNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   }
-if((ClientNo==null)||(ClientNo=="")){ 
-ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
-}
+  if((ClientNo==null)||(ClientNo=="")){ 
+  ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
+  }
+
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
 
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 

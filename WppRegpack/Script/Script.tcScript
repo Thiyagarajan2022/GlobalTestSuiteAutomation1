@@ -82,6 +82,8 @@
 				<child name="AmendCompanyClient" key="{937EE9E4-353B-40D3-8C45-9DE3EC7CB287}" path="AmendCompanyClient.js" />
 				<child name="AmendCompanyBrand" key="{EA349005-E1A3-4D2A-AB70-ABD58DDA19BA}" path="AmendCompanyBrand.js" />
 				<child name="CompanyVendor" key="{EEA57796-EA65-43D3-BB71-1F56078F8877}" path="CompanyVendor.js" />
+				<child name="AmendComapnyVendor" key="{0EFDB465-DE93-4F69-8217-DB099A771624}" path="AmendComapnyVendor.js" />
+				<child name="AmendGlobalVendor" key="{D15AA8FA-0E33-4740-BC78-4A2A28D3BED5}" path="AmendGlobalVendor.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

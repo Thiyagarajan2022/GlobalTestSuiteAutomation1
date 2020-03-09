@@ -684,8 +684,8 @@ function ApprvalInformation(){
            var y=0;
               for(var i=0;i<ApproverTable.getItemCount();i++){   
                  var approvers="";
-                  if(ApproverTable.getItem(i).getText_2(5)!="Approved"){
-                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim();
+                  if(ApproverTable.getItem(i).getText_2(3)!="Approved"){
+                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(4).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim();
                   Log.Message("Approver level :" +i+ ": " +approvers);
                   Approve_Level[y] = approvers;
                   Log.Message(Approve_Level[y])
