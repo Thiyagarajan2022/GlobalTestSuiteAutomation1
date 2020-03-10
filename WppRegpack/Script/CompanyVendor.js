@@ -79,11 +79,7 @@ function getDetails(){
       Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
       if((Currency==null)||(Currency=="")){ 
       ValidationUtils.verify(false,true,"Currency is Needed to Create Company Vendor");
-      }
-      VendorName = ExcelUtils.getRowDatas("Vendor Name",EnvParams.Opco)
-      if((VendorName==null)||(VendorName=="")){ 
-      ValidationUtils.verify(false,true,"Vendor Name is Needed to Create Company Vendor");
-      }  
+      }      
       Language = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
       if((Language==null)||(Language=="")){ 
       ValidationUtils.verify(false,true,"Language is Needed to Create Company Vendor");
@@ -124,6 +120,16 @@ function getDetails(){
       if((Annualsupplier==null)||(Annualsupplier=="")){ 
       ValidationUtils.verify(false,true,"Annual Supplier is Needed to Create Global Vendor");
       }
+      VendorName = ExcelUtils.getRowDatas("Vendor Name",EnvParams.Opco)
+       if((VendorName=="")||(VendorName==null)){
+        ExcelUtils.setExcelName(workBook, "Data Management", true);
+        VendorName = ReadExcelSheet("Vendor Name",EnvParams.Opco,"Data Management");
+        Log.Message(VendorName)
+        }
+      if((VendorName==null)||(VendorName=="")){ 
+      ValidationUtils.verify(false,true,"Vendor Name is Needed to Create Company Vendor");
+      }
+      
       Indicator.PushText("Playback");
 }
 
