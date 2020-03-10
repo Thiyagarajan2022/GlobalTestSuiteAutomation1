@@ -352,6 +352,14 @@ function Policy(){
       btnCreate.Click();           
       aqUtils.Delay(1000, Indicator.Text);
       
+      
+      var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card");
+      Sys.HighlightObject(popup);
+      var popupok = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+      Sys.HighlightObject(popupok);
+      popupok.Click();
+      
+      
     var Label = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Label", "*").getText();    
     ReportUtils.logStep("INFO","Label");
     var OK = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Composite", "", 2).SWTObject("Button", "OK");    
@@ -706,14 +714,13 @@ function todo(lvl){
 
 
 function FinalApproveClient(VendorNum,Apvr,lvl){ 
-    var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
+   var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
     waitForObj(table);
     Sys.HighlightObject(table);
-    
-      if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite2).Visible){
+      if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
       }
       else{
-      var showFilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.SingleToolItemControl;
+      var showFilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.SingleToolItemControl;      
       waitForObj(table);
       Sys.HighlightObject(showFilter);
       showFilter.HoverMouse();
@@ -721,7 +728,6 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       showFilter.HoverMouse();
       showFilter.Click();
       }
-
     var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
     var cell = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
     cell.Click();
@@ -759,7 +765,7 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       closefilter.Click();
       aqUtils.Delay(5000, Indicator.Text);
 
-      var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
+      var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;      
       Sys.HighlightObject(Approve)
       if(Approve.isEnabled()){ 
       Approve.HoverMouse();
@@ -770,8 +776,6 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       aqUtils.Delay(8000, Indicator.Text);
       TextUtils.writeLog("Company Vendor is Approved by "+Apvr);
       if(Approve_Level.length==lvl+1){
-     if((Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*")).isVisible())
-     {
       var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
       Log.Message(label.getText());
       var lab = label.getText().OleValue.toString().trim();
@@ -792,20 +796,19 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       aqUtils.Delay(8000, Indicator.Text); 
       }
       }
-      }
        TextUtils.writeLog("Vendor Number :"+ VendorNum); 
-       var ClientApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;
-       Sys.HighlightObject(ClientApproval);
-       ClientApproval.HoverMouse();
-       ClientApproval.Click();
+       var VendorApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;
+       Sys.HighlightObject(VendorApproval);
+       VendorApproval.HoverMouse();
+       VendorApproval.Click();
       // }
        if(ImageRepository.ImageSet.Maximize.Exists()){
       ImageRepository.ImageSet.Maximize.Click();
       }
-       var ClientApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
-       Sys.HighlightObject(ClientApproval);
-       ClientApproval.HoverMouse();
-       ClientApproval.Click();
+       var VendorApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
+       Sys.HighlightObject(VendorApproval);
+       VendorApproval.HoverMouse();
+       VendorApproval.Click();
          var ApproverTable = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
         Sys.HighlightObject(ApproverTable);
         ReportUtils.logStep_Screenshot();

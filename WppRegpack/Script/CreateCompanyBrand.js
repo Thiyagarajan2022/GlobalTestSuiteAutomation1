@@ -49,10 +49,10 @@ Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
   aqUtils.Delay(10000, Indicator.Text);
-//ExcelUtils.setExcelName(workBook, "Server Details", true);
-ExcelUtils.setExcelName(workBook, "Agency Users", true);
-var Project_manager = ExcelUtils.getRowDatas("Agency - Finance","1712")
-//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+  //ExcelUtils.setExcelName(workBook, "Agency Users", true);
+//var Project_manager = ExcelUtils.getRowDatas("Agency - Finance","1707")
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -90,7 +90,7 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Company Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
-EnvParams.Opco = "1712";
+//EnvParams.Opco = "1712";
 getDetails();
 gotoMenu(); 
 gotoClientSearch();
@@ -311,8 +311,8 @@ function getDetails(){
 
 
  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Global Client Number","1707","Data Management");
-  ClientNumber =ReadExcelSheet("Global Client Number","1707","Data Management");
+  ClientNo = ReadExcelSheet("Global Client Number","1712","Data Management");
+  ClientNumber =ReadExcelSheet("Global Client Number","1712","Data Management");
   if((ClientNo=="")||(ClientNo==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
@@ -327,7 +327,7 @@ function getDetails(){
   
   
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  clientName = ReadExcelSheet("Global Client Name","1707","Data Management");
+  clientName = ReadExcelSheet("Global Client Name","1712","Data Management");
   if((clientName=="")||(clientName==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
@@ -338,7 +338,7 @@ ValidationUtils.verify(false,true,"Client Name is Needed to Create Company Brand
 
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  brandName = ReadExcelSheet("Global Brand Name","1707","Data Management");
+  brandName = ReadExcelSheet("Global Brand Name","1712","Data Management");
   if((brandName=="")||(brandName==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
@@ -356,7 +356,7 @@ ValidationUtils.verify(false,true,"Brand Name is Needed to Create Company Brand"
 
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  brandNumber = ReadExcelSheet("Global Brand Number","1707","Data Management");
+  brandNumber = ReadExcelSheet("Global Brand Number","1712","Data Management");
   if((brandNumber=="")||(brandNumber==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandNumber = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
