@@ -906,26 +906,26 @@ var listPass = true;
 //  C_Name.HoverMouse();
 //  C_Name.HoverMouse();
 //  aqUtils.Delay(3000, "Reading Table Data");
-      if(table.getItem(0).getText_2(3).OleValue.toString().trim()==clientName){
+      if(table.getItem(0).getText_2(1).OleValue.toString().trim()==clientName){
   //  table.getItem(0).
   table.HoverMouse(51, 60);
   ReportUtils.logStep_Screenshot();
   table.Click(51, 60);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
-  else if(table.getItem(1).getText_2(3).OleValue.toString().trim()==clientName){
+  else if(table.getItem(1).getText_2(1).OleValue.toString().trim()==clientName){
   table.HoverMouse(49, 71);
   ReportUtils.logStep_Screenshot();  
   table.Click(49, 71);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
-  else if(table.getItem(2).getText_2(3).OleValue.toString().trim()==clientName){
+  else if(table.getItem(2).getText_2(1).OleValue.toString().trim()==clientName){
   table.HoverMouse(49, 90);
   ReportUtils.logStep_Screenshot();
   table.Click(49, 90);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
-  else if(table.getItem(3).getText_2(3).OleValue.toString().trim()==clientName){
+  else if(table.getItem(3).getText_2(1).OleValue.toString().trim()==clientName){
   table.HoverMouse(49, 109);
   ReportUtils.logStep_Screenshot();
   table.Click(49, 109);
