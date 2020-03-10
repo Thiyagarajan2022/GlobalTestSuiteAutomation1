@@ -970,7 +970,7 @@ var OpCo2 = ApproveInfo[0].split("*");
 //var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-sheetName = "CreateClient";
+sheetName = "JobBudgetCreation";
 if(OpCo2[2]==Project_manager){
   
 //var OpCo1 = EnvParams.Opco;
@@ -1023,16 +1023,16 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
 }
 
     if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
-  ValidationUtils.verify(true,true,"Job is Approved by :"+userNmae)
-  TextUtils.writeLog("Job is Approved by :"+userNmae); 
+  ValidationUtils.verify(true,true,"Job is Approved by :"+loginPer)
+  TextUtils.writeLog("Job is Approved by :"+loginPer); 
   }else{ 
-  TextUtils.writeLog("Job is Approved by :"+userNmae+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Job is Approved by :"+userNmae+ "But its Not Reflected")
+  TextUtils.writeLog("Job is Approved by :"+loginPer+ "But its Not Reflected"); 
+  ValidationUtils.verify(true,false,"Job is Approved by :"+loginPer+ "But its Not Reflected")
   }
 }
 else{ 
   ReportUtils.logStep("INFO","Approve Button Is Invisible");
-  Log.Warning(ComId+" - "+JobNo +" - Approver :"+userNmae);
+  Log.Warning(ComId+" - "+JobNo +" - Approver :"+loginPer);
 }
 
 

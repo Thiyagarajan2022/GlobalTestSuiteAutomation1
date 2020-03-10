@@ -970,7 +970,7 @@ var OpCo2 = ApproveInfo[0].split("*");
 //var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-sheetName = "CreateClient";
+sheetName = "JobBudgetCreation";
 if(OpCo2[2]==Project_manager){
   
 //var OpCo1 = EnvParams.Opco;
@@ -1382,7 +1382,7 @@ Client_Managt.ClickItem("|"+temp);
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
 TextUtils.writeLog("Entering into Approve Job Budget by Type (Substitute) from To-Dos List");
-var listPass = true;   
+var listPass = false;   
   }
 }  
 if(listPass){
@@ -1407,7 +1407,7 @@ Client_Managt.ClickItem("|"+temp);
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
 TextUtils.writeLog("Entering into Approve Job Budget (Substitute) from To-Dos List");
-var listPass = true;   
+var listPass = false;   
   }
 } 
   }
