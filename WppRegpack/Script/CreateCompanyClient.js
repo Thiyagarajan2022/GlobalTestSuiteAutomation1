@@ -22,23 +22,25 @@ var STIME = "";
 //var clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product ="";
 var ClientNo = "";
 
-var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,ClientNumber="";
+var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,ClientNumber,Currency="";
 
 function CompanyClientCreation(){
   
-Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-if((Currency==null)||(Currency=="")){ 
-ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
-
-}
+//Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
+//if((Currency==null)||(Currency=="")){ 
+//ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
+//
+//}
 
 
 TextUtils.writeLog("Company Client Creation Started"); 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+  aqUtils.Delay(10000, Indicator.Text);
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+var Project_manager = ExcelUtils.getRowDatas("Agency - Finance","1712")
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -76,6 +78,8 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Company Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
+
+EnvParams.Opco = "1712";
 getDetails();
 gotoMenu(); 
 gotoClientSearch();
@@ -113,7 +117,7 @@ var table =Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder
 waitForObj(table);
 Sys.HighlightObject(table);
 
-if(Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Visible){
+if(Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
 
 }else{ 
 var showFilter = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.ShowFilter;
@@ -201,7 +205,7 @@ aqUtils.Delay(8000, Indicator.Text);
  
 //  ExcelUtils.setExcelName(workBook,"Data Management", true);
 //  ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
-  TextUtils.writeLog("Global Client Number :"+ClientNum); 
+  TextUtils.writeLog("Company Client Number :"+ClientNum); 
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
 // var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;
@@ -292,18 +296,50 @@ TextUtils.writeLog("Entering into Client Management from Accounts Receivable Men
 function getDetails(){ 
   
 
-    ExcelUtils.setExcelName(workBook, sheetName, true);
- ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  ClientNumber=ExcelUtils.getRowDatas("Client Number",EnvParams.Opco);
+//    ExcelUtils.setExcelName(workBook, sheetName, true);
+// ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+//  ClientNumber=ExcelUtils.getRowDatas("Client Number",EnvParams.Opco);
+//  if((ClientNo=="")||(ClientNo==null)){
+// ValidationUtils.verify(false,true,"ClientNo is Needed to Create a Client");
+//  
+//  }
+  
+  
+//  clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
+//if((clientName==null)||(clientName=="")){ 
+//ValidationUtils.verify(false,true,"clientName is Needed to Create a Client");
+//}
+
+
+ ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ClientNo = ReadExcelSheet("Global Client Number","1707","Data Management");
+  ClientNumber =ReadExcelSheet("Global Client Number","1707","Data Management");
   if((ClientNo=="")||(ClientNo==null)){
- ValidationUtils.verify(false,true,"ClientNo is Needed to Create a Client");
-  
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNumber =ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   }
-  
+  if((ClientNo==null)||(ClientNo=="")){ 
+  ValidationUtils.verify(false,true,"Client Number is Needed to Create Company Brand");
+  }
+    Log.Message("ClientNumber"+ClientNo)
+    
+      ExcelUtils.setExcelName(workBook, "Data Management", true);
+  clientName = ReadExcelSheet("Global Client Name","1707","Data Management");
+  if((clientName=="")||(clientName==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
+  }
+if((clientName==null)||(clientName=="")){ 
+ValidationUtils.verify(false,true,"Client Name is Needed to Create Company Brand");
+}
+
+
+      ExcelUtils.setExcelName(workBook, sheetName, true);
   Log.Message("ClientNumber"+ClientNumber)
   Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 
-ValidationUtils.verify(false,true,"Currency is Needed to Create a Client");
+ValidationUtils.verify(false,true,"Currency is Needed to Create Company Brand");
 
 }
 Log.Message("Currency"+Currency)
@@ -313,7 +349,7 @@ Log.Message("Currency"+Currency)
  // ExcelUtils.setExcelName(workBook, sheetName, true);
 settlingcompanyvalue = ExcelUtils.getRowDatas("Settling company",EnvParams.Opco)
 if((settlingcompanyvalue==null)||(settlingcompanyvalue=="")){ 
-ValidationUtils.verify(false,true,"settlingcompanyvalue is Needed to Create a Client");
+ValidationUtils.verify(false,true,"settling companyvalue is Needed to Create a Client");
 }
 
 languageValue = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
@@ -326,10 +362,7 @@ if((attnValue==null)||(attnValue=="")){
 ValidationUtils.verify(false,true,"attnValue is Needed to Create a Client");
 }
 
-clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
-if((clientName==null)||(clientName=="")){ 
-ValidationUtils.verify(false,true,"clientName is Needed to Create a Client");
-}
+
 
 
 //
@@ -747,7 +780,7 @@ var refresh =Aliases.CreateCompanyClient.Composite.Composite42.Composite.Composi
 Log.Message("true")
 }
 refresh.Click();
-aqUtils.Delay(15000, Indicator.Text);
+aqUtils.Delay(25000, Indicator.Text);
 
 //if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 //var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
@@ -967,7 +1000,9 @@ function Information(){
   function test()
   {
     
-getDetails()
+
+var test =Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel;
+Sys.HighlightObject(test);
 
   }
 

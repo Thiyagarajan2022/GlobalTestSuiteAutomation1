@@ -21,6 +21,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
 //var Project_manager = EnvParams.Opco+" Finance";
+
 Project_manager = ExcelUtils.getRowDatas("Central Team - Client Account Management","Username")
 Log.Message(Project_manager);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
@@ -39,33 +40,33 @@ workBook = Project.Path+excelName;
 sheetName = "AmendCompanyBrand";
 ClientNo,BrandNo,Currency ="";
 ExcelUtils.setExcelName(workBook, sheetName, true);
-ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  if((ClientNo=="")||(ClientNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
-  }
-if((ClientNo==null)||(ClientNo=="")){ 
-ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
-}
-
-
-BrandNo = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
-  if((BrandNo=="")||(BrandNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  BrandNo = ReadExcelSheet("Brand Number",EnvParams.Opco,"Data Management");
-  }
-if((BrandNo==null)||(BrandNo=="")){ 
-ValidationUtils.verify(false,true,"Brand Number is Needed to Block Global Brand");
-}
-
-BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
-  if((BrandName=="")||(BrandName==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  BrandName = ReadExcelSheet("Brand Name",EnvParams.Opco,"Data Management");
-  }
-if((BrandName==null)||(BrandName=="")){ 
-ValidationUtils.verify(false,true,"Brand Name is Needed to Block Global Brand");
-}
+//ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+//  if((ClientNo=="")||(ClientNo==null)){
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+//  }
+//if((ClientNo==null)||(ClientNo=="")){ 
+//ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
+//}
+//
+//
+//BrandNo = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
+//  if((BrandNo=="")||(BrandNo==null)){
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  BrandNo = ReadExcelSheet("Brand Number",EnvParams.Opco,"Data Management");
+//  }
+//if((BrandNo==null)||(BrandNo=="")){ 
+//ValidationUtils.verify(false,true,"Brand Number is Needed to Block Global Brand");
+//}
+//
+//BrandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
+//  if((BrandName=="")||(BrandName==null)){
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  BrandName = ReadExcelSheet("Brand Name",EnvParams.Opco,"Data Management");
+//  }
+//if((BrandName==null)||(BrandName=="")){ 
+//ValidationUtils.verify(false,true,"Brand Name is Needed to Block Global Brand");
+//}
 
 
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
@@ -81,14 +82,63 @@ Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Block Global client started::"+STIME);
+getDetails();
 gotoMenu();
 gotoClientSearch();
 globalClient();
-getDetails();
 client();
 }
 
 function getDetails(){ 
+  
+ ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  if((ClientNo=="")||(ClientNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
+  }
+  if((ClientNo==null)||(ClientNo=="")){ 
+  ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
+  }
+    Log.Message("ClientNumber"+ClientNumber)
+
+
+  
+  
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  clientName = ReadExcelSheet("Global Client Name",EnvParams.Opco,"Data Management");
+//  if((clientName=="")||(clientName==null)){
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
+//  }
+//if((clientName==null)||(clientName=="")){ 
+//ValidationUtils.verify(false,true,"Client Name is Needed to Amend Global Brand");
+//}
+
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  brandNumber = ReadExcelSheet("Global Brand Number",EnvParams.Opco,"Data Management");
+  if((brandNumber=="")||(brandNumber==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+brandNumber = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
+  }
+if((brandNumber==null)||(brandNumber=="")){ 
+ValidationUtils.verify(false,true,"Brand Number is Needed to Amend Global Brand");
+}
+Log.Message("brandNumber"+brandNumber)
+
+
+
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  brandName = ReadExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management");
+  if((brandName=="")||(brandName==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+brandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
+  }
+if((brandName==null)||(brandName=="")){ 
+ValidationUtils.verify(false,true,"Brand Name is Needed to Amend Global Brand");
+}
+
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 //Add1 = ExcelUtils.getRowDatas("Address_1",EnvParams.Opco)
 //Add2 = ExcelUtils.getRowDatas("Address_2",EnvParams.Opco)

@@ -181,7 +181,8 @@ function gotoVendorSearch(){
 
  var curr = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
- aqUtils.Delay(5000, Indicator.Text);
+ curr.HoverMouse();
+ Sys.HighlightObject(curr);
  if(Currency!=""){
   curr.Click();
   WorkspaceUtils.DropDownList(Currency,"Currency")
@@ -447,9 +448,11 @@ function Information(){
 
 function ApprvalInformation(){ 
 
-        ExcelUtils.setExcelName(workBook,"Data Management", true);
-        VendorNumber = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-
+        VendorNumber = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText();        
+        Log.Message("Vendor Number :" + VendorNumber);
+         aqUtils.Delay(3000, Indicator.Text);
+         
+         
        var VendorApprovalpane = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;       
         Sys.HighlightObject(VendorApprovalpane);
         VendorApprovalpane.HoverMouse();
@@ -689,7 +692,7 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
     waitForObj(table);
     Sys.HighlightObject(table);
     
-      if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
+      if((Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite2).Visible){
       }
       else{
       var showFilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.SingleToolItemControl;
@@ -746,9 +749,11 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       Approve.Click();      
       aqUtils.Delay(8000, "Waiting To Approve");;
       ValidationUtils.verify(true,true,"Company Vendor is Approved by "+Apvr)
-      aqUtils.Delay(8000, Indicator.Text);;
+      aqUtils.Delay(8000, Indicator.Text);
       TextUtils.writeLog("Company Vendor is Approved by "+Apvr);
       if(Approve_Level.length==lvl+1){
+     if((Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*")).isVisible())
+     {
       var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
       Log.Message(label.getText());
       var lab = label.getText().OleValue.toString().trim();
@@ -769,8 +774,8 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       aqUtils.Delay(8000, Indicator.Text); 
       }
       }
-
-        TextUtils.writeLog("Company Vendor Number :"+ VendorNum); 
+      }
+       TextUtils.writeLog("Vendor Number :"+ VendorNum); 
        var ClientApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;
        Sys.HighlightObject(ClientApproval);
        ClientApproval.HoverMouse();

@@ -20,6 +20,7 @@
 <Nodes version="1">
 	<Node name="root">
 		<Node name="folders"/>
+<<<<<<< HEAD
 		<Node name="logs">
 			<Node name="log idx=0000">
 				<Prp name="caption" type="S" value=""/>
@@ -184,6 +185,9 @@
 				<Prp name="status" type="I" value="1"/>
 			</Node>
 		</Node>
+=======
+		<Node name="logs"/>
+>>>>>>> 3e07f8ddad9293e421cd1c0793f9f4e84e8d90b5
 		<Prp name="signature" type="S" value="{681DCC69-A39F-4C4D-8E7D-B2D9362FAF4F}"/>
 		<Prp name="version" type="S" value="11.0"/>
 	</Node>

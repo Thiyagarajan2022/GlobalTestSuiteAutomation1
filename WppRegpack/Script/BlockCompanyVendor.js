@@ -29,30 +29,25 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.
     Sys.Desktop.KeyUp(0x58);
 Restart.login(Project_manager);  
 }
+
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "BlockCompanyVendor";
 CmpyVendorNo,Currency,CmpyVendorName ="";
 ExcelUtils.setExcelName(workBook, sheetName, true);
-CmpyVendorNo = ExcelUtils.getRowDatas("CompanyVendor Number",EnvParams.Opco)
-Log.Message(CmpyVendorNo)
-  if((CmpyVendorNo=="")||(CmpyVendorNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  CmpyVendorNo = ReadExcelSheet("CompanyVendor Number",EnvParams.Opco,"Data Management");
-  }
-if((CmpyVendorNo==null)||(CmpyVendorNo=="")){ 
-ValidationUtils.verify(false,true,"Company Vendor Number is Needed to Block Global Vendor");
-}
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-Log.Message(Currency)
 if((Currency==null)||(Currency=="")){ 
 ValidationUtils.verify(false,true,"Currency is Needed to Block Global Vendor");
 }
-CmpyVendorName = ExcelUtils.getRowDatas("CompanyVendor Name",EnvParams.Opco)
-Log.Message(CmpyVendorName)
-if((CmpyVendorName==null)||(CmpyVendorName=="")){ 
-ValidationUtils.verify(false,true,"Company Vendor Name is Needed to Block Global Vendor");
+CmpyVendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
+  if((CmpyVendorNo=="")||(CmpyVendorNo==null)){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  CmpyVendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
+  }
+if((CmpyVendorNo==null)||(CmpyVendorNo=="")){ 
+ValidationUtils.verify(false,true,"Vendor Number is Needed to Block Global Vendor");
 }
+
 
 Language = EnvParams.Language;
 if((Language==null)||(Language=="")){
@@ -107,26 +102,27 @@ Client_Managt.ClickItem("|Vendor Management");
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|Vendor Management");
 }
-
 } 
-
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Vendor Management from Accounts Payable Menu");
 }
 
 function gotoVendorSearch(){ 
  var CompanyNumber = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget; 
+  waitForObj(CompanyNumber);
+  Sys.HighlightObject(CompanyNumber)
   CompanyNumber.Click();
   WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
 
  var curr = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
- aqUtils.Delay(5000, Indicator.Text);
+ curr.HoverMouse();
+ Sys.HighlightObject(curr);
  if(Currency!=""){
   curr.Click();
   WorkspaceUtils.DropDownList(Currency,"Currency")
   }
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(1000, Indicator.Text);
   
  var VendorNumber = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
   if(CmpyVendorNo!=""){
@@ -135,22 +131,28 @@ function gotoVendorSearch(){
     }
     
  var VendorName = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
- VendorName.setText("*");
+ VendorName.HoverMouse();
+ Sys.HighlightObject(VendorName); 
+  VendorName.setText("*");
  
  
  var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
  save.Click();
- aqUtils.Delay(5000, Indicator.Text);
+// aqUtils.Delay(5000, Indicator.Text);
  TextUtils.writeLog("Company Number, Company Vendor Number, Currency has entered and Saved in Vendor Search screen");
 }
 
 function CompanyVendor(){ 
   var CmpyClient = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+  waitForObj(CmpyClient);
+  CmpyClient.HoverMouse();
   CmpyClient.Click();
-  aqUtils.Delay(3000, Indicator.Text);
   var active = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  waitForObj(active);
+  active.HoverMouse();
+  Sys.HighlightObject(active);
   active.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(3000, "Reading from Global Vendor table");
   var table = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;  
 
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==CmpyVendorNo){
@@ -177,45 +179,36 @@ function CompanyVendor(){
   table.Click(51, 117);
   ValidationUtils.verify(true,true,"Company Vendor is available in maconomy to block Company Vendor");
   }    
-//  else{
-//    ValidationUtils.verify(false,true,"Company Vendor is not available in maconomy to block Company Vendor");
-//    aqUtils.Delay(2000,Indicator.Text);
-//    TextUtils.writeLog("Company Vendor is not available in maconomy to block Company Vendor");
-//  }
-
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(5000, "Playback");
     TextUtils.writeLog("Company Vendor is available in maconomy to block Company Vendor");
 }
 
 function goToCompanyVendor(){ 
   var home = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;  
-  home.Click();
-  aqUtils.Delay(5000, Indicator.Text);
-  
-////        Sys.Desktop.KeyDown(0x11);
-////        Sys.Desktop.KeyDown(0x46);
-////        Sys.Desktop.KeyUp(0x11);
-////        Sys.Desktop.KeyUp(0x46);
-  
+  waitForObj(home);
+  Sys.HighlightObject(home);
+  home.HoverMouse();   
+  home.Click();  
+
   TextUtils.writeLog("Comapny Vendor is available in maconomy to block");
   var information = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  waitForObj(information);
+  Sys.HighlightObject(information);
+  information.HoverMouse(); 
   information.Click();
-  aqUtils.Delay(2000, Indicator.Text);
   ReportUtils.logStep_Screenshot();
-//  var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
-//  screen.Click();
-//  screen.MouseWheel(-200);
+
   var blockVendor = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPopupPickerWidget;
   if(blockVendor.getText()=="Yes")
   ValidationUtils.verify(false,true,"Company Vendor is already blocked");
   else{ 
   blockVendor.Click();
   DropDownList("Yes")
-//  blockClient.Keys("Yes");
-  aqUtils.Delay(5000, Indicator.Text);
   var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
+  waitForObj(save);
+  Sys.HighlightObject(save);
+  save.HoverMouse(); 
   save.Click();
-  aqUtils.Delay(5000, Indicator.Text);
   ReportUtils.logStep_Screenshot();
   ValidationUtils.verify(true,true,"Company Vendor is Blocked");
   
@@ -223,15 +216,18 @@ function goToCompanyVendor(){
   Sys.HighlightObject(popup);
   var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
   Sys.HighlightObject(OK);
+  Sys.HighlightObject(OK);
+  OK.HoverMouse();
   ReportUtils.logStep_Screenshot();
   OK.Click();  
-  if(Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").isVisible()){
-  var popup = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information");
-  var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-  OK.Click();
-  }
-  aqUtils.Delay(4000, Indicator.Text);
-    TextUtils.writeLog("Company Vendor is Blocked");
+//  if(Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").isVisible()){
+//  var popup = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information");
+//  var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//  Sys.HighlightObject(OK);
+//  OK.HoverMouse();
+//  OK.Click();
+//  }
+  TextUtils.writeLog("Company Vendor is Blocked");
   var Allow_Registrations = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.McPopupPickerWidget;
   if(Allow_Registrations.getText()=="No")  
   ValidationUtils.verify(true,true,"Allow Registrations has Changed to NO");
