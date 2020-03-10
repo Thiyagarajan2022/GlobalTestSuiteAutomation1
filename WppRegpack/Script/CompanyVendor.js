@@ -187,7 +187,7 @@ function gotoVendorSearch(){
   curr.Click();
   WorkspaceUtils.DropDownList(Currency,"Currency")
   }
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
     
  var Vendorname = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
  Vendorname.HoverMouse();
@@ -195,19 +195,30 @@ function gotoVendorSearch(){
  Vendorname.setText(VendorName);
   
  var save = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
- save.Click();
-  aqUtils.Delay(5000, Indicator.Text);
+ save.HoverMouse();
+ Sys.HighlightObject(save);
+  save.Click();
+//  aqUtils.Delay(5000, Indicator.Text);
   TextUtils.writeLog("Company Number, Vendor Number, Currency has entered and Saved in Vendor Search screen");
 }
 
 function globalVendor(){ 
   var Gblvendor = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
-  Gblvendor.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+  Gblvendor.HoverMouse();
+  Sys.HighlightObject(Gblvendor);
+    Gblvendor.Click();
+//  aqUtils.Delay(3000, Indicator.Text);
   
+   var active = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;  
+   waitForObj(active);
+  active.HoverMouse();
+  Sys.HighlightObject(active);
+  active.Click();
+  aqUtils.Delay(3000, "Reading from Global Vendor table");
   var Newcompanyvendor = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
+  Newcompanyvendor.HoverMouse();
+  Sys.HighlightObject(Newcompanyvendor);
   Newcompanyvendor.Click();
-  aqUtils.Delay(3000, Indicator.Text); 
   }
   
 ////=======================Vendor Creation=============////////
@@ -312,15 +323,17 @@ function Policy(){
   Sys.HighlightObject(duediligence)   
   duediligence.Keys("yes");
      
-     var servicerequired = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.McPopupPickerWidget;
+     var servicerequired = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.McPopupPickerWidget;     
     Sys.HighlightObject(servicerequired)  ;
    servicerequired.Keys("yes");    
    
     var abilitytodeliver = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite14.McTextWidget;
+    Sys.HighlightObject(abilitytodeliver)  ;
      abilitytodeliver.Keys("yes"); 
     
      var agencyemployee = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.McPopupPickerWidget;
-     agencyemployee.Keys("yes");
+     Sys.HighlightObject(agencyemployee)  ;
+    agencyemployee.Keys("yes");
      
      var impactrequest = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite8.McTextWidget;
     Sys.HighlightObject(impactrequest) 
@@ -332,16 +345,17 @@ function Policy(){
     
      var annualsuppliercurrency = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite13.McTextWidget;
       annualsuppliercurrency.setText(Annualsupplier)
-     aqUtils.Delay(2000, Indicator.Text);     
+     aqUtils.Delay(1000, Indicator.Text);     
      
      var btnCreate = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite2.Composite.Button;
      Sys.HighlightObject(btnCreate);
       btnCreate.Click();           
-      aqUtils.Delay(3000, Indicator.Text);
+      aqUtils.Delay(1000, Indicator.Text);
       
     var Label = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Label", "*").getText();    
     ReportUtils.logStep("INFO","Label");
     var OK = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Composite", "", 2).SWTObject("Button", "OK");    
+    
     OK.Click();      
   }
   
@@ -349,18 +363,21 @@ function Policy(){
   function globalVendorTable(){ 
     
     var companyvendor = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
-    Sys.HighlightObject(companyvendor);
+  companyvendor.HoverMouse();   
+ Sys.HighlightObject(companyvendor);
+        companyvendor.HoverMouse();
         companyvendor.HoverMouse();
         companyvendor.Click();
         
         var blocked = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+        blocked.HoverMouse();
         Sys.HighlightObject(blocked);
+        blocked.HoverMouse();
         blocked.HoverMouse();
         blocked.Click();
          
       var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;      
       Sys.HighlightObject(table);
-      aqUtils.Delay(8000, Indicator.Text);
       var vendorname = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget3;
       vendorname.Click();
       vendorname.setText(VendorName)
@@ -406,6 +423,7 @@ function AttachDocument(){
   Sys.HighlightObject(doc);
   doc.HoverMouse();
   doc.HoverMouse();
+  waitForObj(doc);
   doc.Click();
   var attchDocument = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   attchDocument.HoverMouse();
@@ -415,7 +433,7 @@ function AttachDocument(){
   attchDocument.HoverMouse();
   ReportUtils.logStep_Screenshot();
   attchDocument.Click();
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(4000, "Attaching Document");
   var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);  
   dicratory.Keys(workBook);
   var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
@@ -423,7 +441,7 @@ function AttachDocument(){
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(2000, "Attaching Document");
 }
 
 function Information(){ 
@@ -435,13 +453,13 @@ function Information(){
   info.HoverMouse();
   info.HoverMouse();
   info.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(2000, "Playback");
   var submit = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;  
   Sys.HighlightObject(submit);
   submit.HoverMouse();
   submit.HoverMouse();
   submit.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(2000, "Playback");
   
 }
 
