@@ -37,7 +37,7 @@ function JIRAUpdate(folderName,testCaseId){
 //    Log.Message("testCaseId :"+testCaseId);
 //    Log.Message("status :"+status);
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
-    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.file_path+"\\TestLog.txt",expirationInsec, comment)
+    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt",expirationInsec, comment)
     }
 }
 
