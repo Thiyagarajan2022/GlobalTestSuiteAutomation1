@@ -493,6 +493,9 @@ return excelData;
 
 
 function gotoClientSearch(){ 
+
+
+ aqUtils.Delay(8000, Indicator.Text);
   
   var GblClient = Aliases.CreateCompanyClient.Composite.GlobalClient;
   
