@@ -359,11 +359,24 @@ function Policy(){
       aqUtils.Delay(1000, Indicator.Text);
       
       
-      var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card");
-      Sys.HighlightObject(popup);
-      var popupok = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-      Sys.HighlightObject(popupok);
-      popupok.Click();
+//       if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Vendors - Information")    
+//        {
+//        var button = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//        var label = Sys.Process("Maconomy").SWTObject("Shell", "Vendors - Information").SWTObject("Label", "*").WndCaption;
+//                   button.HoverMouse();
+//               waitForObj(button);
+//            Sys.HighlightObject(button);
+//            button.HoverMouse();
+//            button.Click();   
+//                    
+//         }       
+//         
+//    
+//      var popup = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card");
+//      Sys.HighlightObject(popup);
+//      var popupok = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//      Sys.HighlightObject(popupok);
+//      popupok.Click();
       
       
     var Label = Sys.Process("Maconomy").SWTObject("Shell", "Vendor Management - Company Specific Vendor Information Card").SWTObject("Label", "*").getText();    
@@ -782,28 +795,28 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
       aqUtils.Delay(8000, Indicator.Text);
       TextUtils.writeLog("Company Vendor is Approved by "+Apvr);
       if(Approve_Level.length==lvl+1){
-      var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
-      Log.Message(label.getText());
-      var lab = label.getText().OleValue.toString().trim();
-      var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-      Ok.HoverMouse(); 
-      ReportUtils.logStep_Screenshot();
-      Ok.Click(); 
-      aqUtils.Delay(8000, Indicator.Text); ;
-       for(var j=0;j<12;j++){ 
-      if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Approve Company Vendor by Type"){ 
-      var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
-      Log.Message(label.getText());
-      var lab = label.getText().OleValue.toString().trim();
-      var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-      Ok.HoverMouse(); 
-      ReportUtils.logStep_Screenshot();
-      Ok.Click(); 
-      aqUtils.Delay(8000, Indicator.Text); 
-      }
-      }
+//      var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
+//      Log.Message(label.getText());
+//      var lab = label.getText().OleValue.toString().trim();
+//      var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//      Ok.HoverMouse(); 
+//      ReportUtils.logStep_Screenshot();
+//      Ok.Click(); 
+//      aqUtils.Delay(8000, Indicator.Text); ;
+//       for(var j=0;j<12;j++){ 
+//      if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Approve Company Vendor by Type"){ 
+//      var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Label", "*");
+//      Log.Message(label.getText());
+//      var lab = label.getText().OleValue.toString().trim();
+//      var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Vendor by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//      Ok.HoverMouse(); 
+//      ReportUtils.logStep_Screenshot();
+//      Ok.Click(); 
+//      aqUtils.Delay(8000, Indicator.Text); 
+//      }
+//      }
        TextUtils.writeLog("Vendor Number :"+ VendorNum); 
-       var VendorApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;
+       var VendorApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl;        
        Sys.HighlightObject(VendorApproval);
        VendorApproval.HoverMouse();
        VendorApproval.Click();
@@ -811,14 +824,14 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
        if(ImageRepository.ImageSet.Maximize.Exists()){
       ImageRepository.ImageSet.Maximize.Click();
       }
-       var VendorApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
+       var VendorApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2       
        Sys.HighlightObject(VendorApproval);
        VendorApproval.HoverMouse();
        VendorApproval.Click();
-         var ApproverTable = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+         var ApproverTable = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
         Sys.HighlightObject(ApproverTable);
         ReportUtils.logStep_Screenshot();
-        var closeApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel2.TabControl;
+        var closeApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel2.TabControl;
         Sys.HighlightObject(closeApproval);
        closeApproval.HoverMouse();
        closeApproval.Click();
@@ -873,7 +886,7 @@ return excelData;
 
 
 function GVData_1_Address(){ 
-  aqUtils.Delay(4000, Indicator.Text);;
+  aqUtils.Delay(4000, Indicator.Text);
 Sys.Process("Maconomy").Refresh();
 var country_1 = (Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget).getText().OleValue.toString().trim()
 if(country_1!="Country")
