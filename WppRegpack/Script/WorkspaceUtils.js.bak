@@ -3536,7 +3536,7 @@ if (ObjAdd.WaitProperty("Enabled", true, 20000)){
 ObjAdd.HoverMouse(); 
 }
 else
-Log.Message("Object is not Visible/Enabled")
+Log.Error("Object is not Visible/Enabled")
 
 //var Start = StartwaitTime();
 //var waitTime = true;

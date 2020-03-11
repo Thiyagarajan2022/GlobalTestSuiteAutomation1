@@ -56,31 +56,37 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-  if((VendorID=="")||(VendorID==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
-  }
-if((VendorID==null)||(VendorID=="")){ 
-ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
-}
 
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-  if((Job_Number=="")||(Job_Number==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  }
-if((Job_Number==null)||(Job_Number=="")){ 
-ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
-}
-
+getDetails();
 ExcelUtils.setExcelName(workBook, sheetName, true);
   gotoMenu();
   Delay(5000);
   selectJobs();
   listPurchaseOrder();
+}
+
+function getDetails(){ 
+  
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
+if((VendorID=="")||(VendorID==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
+}
+if((VendorID==null)||(VendorID=="")){ 
+ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
+}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+if((Job_Number=="")||(Job_Number==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+}
+if((Job_Number==null)||(Job_Number=="")){ 
+ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
+}
+
 }
 
 function gotoMenu(){ 
@@ -99,7 +105,7 @@ ImageRepository.ImageSet.Jobs1.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -123,7 +129,7 @@ Client_Managt.DblClickItem("|Jobs");
 
 } 
 
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
 
 }
@@ -131,14 +137,16 @@ ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
 
 function selectJobs(){ 
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllJobs;
+  WorkspaceUtils.waitForObj(allJobs);
   allJobs.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.CompanyNumber;
   var closeFilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.CloseFilterList;
   firstcell.forceFocus();
   firstcell.setVisible(true);
   firstcell.ClickM();
+  WorkspaceUtils.waitForObj(firstcell);
   Sys.Desktop.KeyDown(0x09); // Press Ctrl
   aqUtils.Delay(1000, Indicator.Text);
   Sys.Desktop.KeyDown(0x09);
@@ -147,9 +155,11 @@ function selectJobs(){
   Sys.Desktop.KeyUp(0x09);
   
   var job = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.Jobno;
+  WorkspaceUtils.waitForObj(job);
   job.Click();
   job.setText(Job_Number);
-  aqUtils.Delay(7000, Indicator.Text);
+  WorkspaceUtils.waitForObj(table);
+  aqUtils.Delay(3000, Indicator.Text);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(2).OleValue.toString().trim()==Job_Number){ 
@@ -165,15 +175,18 @@ function selectJobs(){
   ReportUtils.logStep("INFO", "Job is listed in table to create PO");
   ReportUtils.logStep_Screenshot("");
   closeFilter.Click();
-  aqUtils.Delay(8000, Indicator.Text);
+//  aqUtils.Delay(8000, Indicator.Text);
   var jobActivities = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.JobActivities;
+  WorkspaceUtils.waitForObj(jobActivities);
   jobActivities.Click();
   var iniatePOfromBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.InitiatePO;
+  WorkspaceUtils.waitForObj(iniatePOfromBudget);
   iniatePOfromBudget.Click();
   ReportUtils.logStep_Screenshot("");
-  aqUtils.Delay(5000, Indicator.Text);
+//  aqUtils.Delay(5000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid;
-  
+  WorkspaceUtils.waitForObj(table);
+
    for(var i=1;i<=10;i++){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)

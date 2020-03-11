@@ -22,7 +22,7 @@ var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
 function CreatePurchaseOrder(){ 
 TextUtils.writeLog("Create Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -57,48 +57,52 @@ WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
-//if((fName=="")||(fName==null))
-//ValidationUtils.verify(false,true,"JIRA Opco Name is Needed to update status of Create a Purchase Order");
-//else{ 
-//EventHandler.folderName = fName;
-//}
-//
-//var TestID = ExcelUtils.getColumnDatas("JIRA TestCase ID",EnvParams.Opco)
-//if((TestID=="")||(TestID==null))
-//ValidationUtils.verify(false,true,"JIRA TestCase ID is Needed to update status of Create a Purchase Order");
-//else{ 
-//EventHandler.testCaseId = TestID; 
-//}
 
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
 
-  if((VendorID=="")||(VendorID==null)){
+
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//Log.Message("VendorID :"+VendorID);
+//Log.Message("Job_Number :"+Job_Number);
+  getDetails()
+  gotoMenu();
+//  Delay(5000);
+  goToCreatePurchase();
+  closeAllWorkspaces();
+}
+
+function closeAllWorkspaces(){
+  Sys.Desktop.KeyDown(0x12); //Ctrl
+  Sys.Desktop.KeyDown(0x57); //W
+  Sys.Desktop.KeyDown(0x0D); //Enter
+  Sys.Desktop.KeyUp(0x12); //Ctrl
+  Sys.Desktop.KeyUp(0x57);
+  Sys.Desktop.KeyUp(0x0D);
+}  
+
+
+function getDetails(){ 
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
+
+if((VendorID=="")||(VendorID==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
-  }
+}
 if((VendorID==null)||(VendorID=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
 }
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-  if((Job_Number=="")||(Job_Number==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  }
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+if((Job_Number=="")||(Job_Number==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+}
 if((Job_Number==null)||(Job_Number=="")){ 
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
+} 
 }
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-//Log.Message("VendorID :"+VendorID);
-//Log.Message("Job_Number :"+Job_Number);
-  gotoMenu();
-  Delay(5000);
-  goToCreatePurchase();
-  WorkspaceUtils.closeAllWorkspaces();
-}
+
+
 
 function gotoMenu(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -116,7 +120,7 @@ ImageRepository.ImageSet.AccountPayable2.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -140,25 +144,28 @@ Client_Managt.DblClickItem("|Purchase Orders");
 
 } 
 
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
 TextUtils.writeLog("Entering into Purchase Orders from Accounts Payable Menu");
 }
 
 function goToCreatePurchase(){ 
-Delay(3000);
+//Delay(3000);
 var allPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllPurchaseOrder;
+WorkspaceUtils.waitForObj(allPurchase);
 allPurchase.Click();
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
+WorkspaceUtils.waitForObj(closefilter);
 closefilter.Click();
-Delay(3000);
+//Delay(3000);
 var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.SingleToolItemControl;
+WorkspaceUtils.waitForObj(craetePurchase);
 craetePurchase.HoverMouse();
 ReportUtils.logStep_Screenshot(); 
 craetePurchase.Click();
 TextUtils.writeLog("Create Purchase Order is Clicked");
-Delay(3000);
+//Delay(3000);
 var company = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
   if(EnvParams.Opco!=""){
   company.Click();
@@ -176,22 +183,23 @@ var jobNo = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Comp
   jobNo.Click();
   WorkspaceUtils.SearchByValues_all_Col_2(jobNo,"Job",Job_Number,"Job Number","All Jobs");
 
-    Delay(3000);
+//    Delay(3000);
     
 
 var create = Aliases.Maconomy.Shell6.Composite.Composite.Composite2.Composite.Button;
 create.HoverMouse();
 ReportUtils.logStep_Screenshot();
 create.Click();
-Delay(5000);
+//Delay(5000);
 TextUtils.writeLog("New Purchase Order is created");
 ValidationUtils.verify(true,true,"New Purchase Order is created")
 //Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
 
 var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+WorkspaceUtils.waitForObj(screen);
   screen.Click();
   screen.MouseWheel(-40);
-  Delay(5000);
+//  Delay(5000);
 var ClientCurrency =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget.getText();  
 Log.Message(ClientCurrency);
   ExcelUtils.setExcelName(workBook, "CountryCurrency", true);
@@ -213,6 +221,7 @@ var BaseCurrency;
 var RowCount = 0;
 var addedlines = false;
 var jB = true;
+var line_i = 1;
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -245,10 +254,14 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
 
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
+  TextUtils.writeLog("Line item "+line_i+" is adding in PO");
+  line_i++;
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
+WorkspaceUtils.waitForObj(addBudget);
 addBudget.Click();
-Delay(2000);
+//Delay(2000);
 var jobNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
+WorkspaceUtils.waitForObj(jobNo);
 jobNo.Keys("[Tab][Tab]");
 
 var workcode = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
@@ -283,12 +296,12 @@ Log.Message("POS :"+POS);
      
      
 //  UnitPrice.Keys("[Tab][Tab][Tab]");
-  Delay(2000);
+//  Delay(2000);
 var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-aqUtils.Delay(4000, Indicator.Text);
+aqUtils.Delay(4000, "Validating Tax");
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(RowCount).getText_2(7).OleValue.toString().trim();
   var local_currency_Amount = tableGrid.getItem(RowCount).getText_2(8).OleValue.toString().trim();
@@ -453,7 +466,7 @@ Log.Message(Tax_Amount_currency_1)
 
 
 
-Delay(5000);
+//Delay(5000);
 
 }
 
@@ -464,11 +477,12 @@ ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Purchas
 else{
   TextUtils.writeLog("Purchase Order lines are Saved");
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+  WorkspaceUtils.waitForObj(action)
   action.Click();
-  Delay(3000);
+  aqUtils.Delay(1000, Indicator.Text);;
   action.PopupMenu.Click("Submit Purchase Order");
   ReportUtils.logStep_Screenshot();
-  aqUtils.Delay(8000, Indicator.Text);;
+  aqUtils.Delay(8000, "Submit Purchase Order");;
   TextUtils.writeLog("Submit Purchase Order is Clicked");
 /*
   Sys.Process("Maconomy").Refresh();
@@ -484,13 +498,13 @@ else{
 */
 //ReportUtils.logStep_Screenshot();
 //ImageRepository.ImageSet.SubmitPurchaseOrder.Click();
-  Delay(4000);
+//  Delay(4000);
   ValidationUtils.verify(true,true,"Purchase Order is Created and Submitted");
   var PurchaseNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText();
-  ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
+  ValidationUtils.verify(true,true,"Created Fixed Asset Purchase Order Number :"+PurchaseNumber);
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
-  TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
+  TextUtils.writeLog("Created Fixed Asset Purchase Order Number :"+PurchaseNumber);
 }
 
 
