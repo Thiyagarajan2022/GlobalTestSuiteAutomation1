@@ -229,6 +229,12 @@ ImageRepository.ImageSet.Maximize.Click();
    //Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   Sys.HighlightObject(ApproverTable);
   ReportUtils.logStep_Screenshot();
+      for(var i=0;i<ApproverTable.getItemCount();i++){   
+     var approvers="";
+      if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+ValidationUtils.verify(true,false,"Created Client is not Approved")
+      }
+}
   var closeApproval = Aliases.CreateCompanyClient.Composite.PTabItemPanel2.CloseApproverTable;
   //Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
   Sys.HighlightObject(closeApproval);
