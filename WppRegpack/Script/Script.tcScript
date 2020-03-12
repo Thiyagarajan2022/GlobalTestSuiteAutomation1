@@ -84,6 +84,7 @@
 				<child name="CompanyVendor" key="{EEA57796-EA65-43D3-BB71-1F56078F8877}" path="CompanyVendor.js" />
 				<child name="AmendComapnyVendor" key="{0EFDB465-DE93-4F69-8217-DB099A771624}" path="AmendComapnyVendor.js" />
 				<child name="AmendGlobalVendor" key="{D15AA8FA-0E33-4740-BC78-4A2A28D3BED5}" path="AmendGlobalVendor.js" />
+				<child name="CreateAGeneralJournal" key="{7862DAD5-E540-4272-B69E-B9783C7C281C}" path="CreateAGeneralJournal.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
