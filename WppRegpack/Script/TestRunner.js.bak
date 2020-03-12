@@ -151,26 +151,26 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 
-if(server){ 
-
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
-var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-fileList = slPacker.GetFileListFromFolder(LworkDir);
-archivePath = LpackedResults +reportName;
-// Packes the resutls
-if (slPacker.Pack(fileList, LworkDir, archivePath))
-  Log.Message("Files compressed successfully."); 
-   
-}
+//if(server){ 
+//
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
+//fileList = slPacker.GetFileListFromFolder(LworkDir);
+//archivePath = LpackedResults +reportName;
+//// Packes the resutls
+//if (slPacker.Pack(fileList, LworkDir, archivePath))
+//  Log.Message("Files compressed successfully."); 
+//   
+//}
 
 //if((nxtID!=OpID)&&(!server)) {
 //nxtID = OpID;
