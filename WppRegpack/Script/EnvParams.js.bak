@@ -206,8 +206,11 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
 xlDriver.Next();
  }
  
-// path = "Testing Type\\"+TestingType+"\\"+Country+"\\DS_"+TestingType+"_"+Lang+".xlsx";
- path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+// path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+ if(TestingType.toUpperCase()=="SMOKE")
+ path = "TestResource\\Smoke\\DS"+"_"+Lang+"_SMOKE.xlsx";
+ else
+ path = "TestResource\\Regression\\DS"+"_"+Lang+"_REGRESSION.xlsx";
  Log.Message(Project.Path+path)
  DDT.CloseDriver(xlDriver.Name);
  return path;    
@@ -218,8 +221,11 @@ xlDriver.Next();
 function setPath(Region){ 
   Country = Region;
   Lang = County();
-//  Log.Message("Lang :"+Lang);
-  path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+//  path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+  if(TestingType.toUpperCase()=="SMOKE")
+   path = "TestResource\\Smoke\\DS"+"_"+Lang+"_SMOKE.xlsx";
+  else
+   path = "TestResource\\Regression\\DS"+"_"+Lang+"_REGRESSION.xlsx";
 //  Log.Message(Project.Path+path)
 }
 
@@ -270,12 +276,34 @@ temp = "";
 
 
 
+//if(EnvParams.TestingType.toLowerCase()=="full_regression")
+//t_Type = "Regression";
+//if(EnvParams.TestingType.toLowerCase()=="critical_regression")
+//t_Type = "Critical Regression";
+//if(EnvParams.TestingType.toLowerCase()=="sit")
+//t_Type = "SIT";
+//if(EnvParams.TestingType.toLowerCase()=="smoke")
+//t_Type = "Smoke";
+//
+//
+//if(EnvParams.TestingType.toLowerCase()=="smoke")
+//temp = "Smoke";
+//else if(EnvParams.TestingType.toLowerCase()=="critical_regression")
+//temp = temp+"_"+t_Type;
+//else if(EnvParams.TestingType.toLowerCase()=="sit")
+//temp = temp+"_"+t_Type+"_FullCycle";
+//else if(EnvParams.testcase!="ALL")
+//temp = temp+"_"+t_Type+"_FullCycle";
+//else
+//temp = "GlobalTestPack";
+
+
 if(EnvParams.TestingType.toLowerCase()=="full_regression")
 t_Type = "Regression";
 if(EnvParams.TestingType.toLowerCase()=="critical_regression")
 t_Type = "Critical Regression";
 if(EnvParams.TestingType.toLowerCase()=="sit")
-t_Type = "SIT";
+t_Type = "Critical Regression";
 if(EnvParams.TestingType.toLowerCase()=="smoke")
 t_Type = "Smoke";
 
@@ -285,11 +313,9 @@ temp = "Smoke";
 else if(EnvParams.TestingType.toLowerCase()=="critical_regression")
 temp = temp+"_"+t_Type;
 else if(EnvParams.TestingType.toLowerCase()=="sit")
-temp = temp+"_"+t_Type+"_FullCycle";
-else if(EnvParams.testcase!="ALL")
-temp = temp+"_"+t_Type+"_FullCycle";
-else
-temp = "GlobalTestPack";
+temp = temp+"_"+t_Type;
+else if(EnvParams.TestingType.toLowerCase()=="full_regression")
+temp = temp+"_"+t_Type;
 
 return temp;
 

@@ -180,19 +180,19 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
   }
   }
   
-  if((Vname==null)||(Vname=="")){
-  if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
-  Vname = xlDriver.Value(colsList[idx+1]).toString().trim();    
-
-  }
-  }
-  
-  if((Cname==null)||(Cname=="")){
-  if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
-  Cname = xlDriver.Value(colsList[idx+1]).toString().trim();    
-
-  }
-  }
+//  if((Vname==null)||(Vname=="")){
+//  if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+//  Vname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+//
+//  }
+//  }
+//  
+//  if((Cname==null)||(Cname=="")){
+//  if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+//  Cname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+//
+//  }
+//  }
 
   
 //  testcase = "ALL";
