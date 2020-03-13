@@ -29,8 +29,11 @@ function ReverseGL(){
 TextUtils.writeLog("Reverse GL Started"); 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+var Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -165,6 +168,14 @@ TextUtils.writeLog("Entering into GL Transaction from General Ledger Menu");
 function getDetails(){ 
 Indicator.PushText("Reading Data from Excel");
 ExcelUtils.setExcelName(workBook, sheetName, true);
+sheetName="ReverseGL";
+  aqUtils.Delay(3000, Indicator.Text);
+Entrydate = ExcelUtils.getRowDatas("DateEntry",EnvParams.Opco)
+if((Entrydate==null)||(Entrydate=="")){ 
+ValidationUtils.verify(false,true,"DateEntry is Needed to Create a Client");
+}
+Log.Message(Entrydate)
+
 JournalNumber = ExcelUtils.getRowDatas("JournalNo",EnvParams.Opco)
 Log.Message(JournalNumber)
   if((JournalNumber=="")||(JournalNumber==null)){
@@ -173,12 +184,7 @@ Log.Message(JournalNumber)
   Log.Message(JournalNumber)
   }
   
-  aqUtils.Delay(3000, Indicator.Text);
-Entrydate = ExcelUtils.getRowDatas("DateEntry",EnvParams.Opco)
-if((Entrydate==null)||(Entrydate=="")){ 
-ValidationUtils.verify(false,true,"DateEntry is Needed to Create a Client");
-}
-Log.Message(Entrydate)
+
 
 
 Indicator.PushText("Playback");
@@ -246,7 +252,7 @@ var cgl=Aliases.Maconomy.ReverseGL.Composite.Composite.Composite.Composite.Compo
 Sys.HighlightObject(cgl);
 cgl.Click();
 
- if(Entrydate!=""){
+if(Entrydate!=""){
     var date1=Aliases.Maconomy.ReverseGL1.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.McDatePickerWidget;
 Sys.HighlightObject(date1);
 Log.Message(Entrydate);
@@ -315,6 +321,7 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
   JournalNumber1 = ReadExcelSheet("ReserveJournalNo",EnvParams.Opco,"Data Management");
   Log.Message(JournalNumber1)
 var glno= Aliases.Maconomy.ReverseGL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
+waitForObj(glno);
 Sys.HighlightObject(glno);
 glno.Click();
 glno.setText(JournalNumber1);
@@ -1201,3 +1208,4 @@ ok.Click();
 //    return checkmark;
 //}
 //
+
