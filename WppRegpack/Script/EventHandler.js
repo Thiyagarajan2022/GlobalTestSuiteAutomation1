@@ -55,8 +55,8 @@ function GeneralEvents_OnStopTest(Sender)
 {
 
     var projectName = EnvParams.Pname;
-		var versionName = EnvParams.Vname;
-		var cycleName = EnvParams.Cname;
+		var versionName = TestRunner.releasename;
+		var cycleName = TestRunner.cyclename;
     var folderName = TestRunner.folderName;
 		var testCaseId = TestRunner.testCaseId; 
     var userName = "muthukumar.m@cognizant.com";
