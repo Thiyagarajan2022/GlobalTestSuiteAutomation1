@@ -367,7 +367,7 @@ reportName = "Report_"+EnvParams.Opco+"_"+testList[tL];
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 workDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-
+unitName = testList[tL];
 //ReportUtils.createTest(testList[tL]+" "+testCase, description)
 ReportUtils.createTest(testList[tL], description)
 var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+testList[tL]);
