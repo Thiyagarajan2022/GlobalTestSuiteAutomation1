@@ -67,6 +67,7 @@ Restart.login(username);
 aqUtils.Delay(5000, Indicator.Text);
 todo();
 ApproveGL();
+WorkspaceUtils.closeAllWorkspaces();
 }
 
 function getDetails(){ 

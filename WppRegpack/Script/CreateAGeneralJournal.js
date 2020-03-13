@@ -492,6 +492,9 @@ function submit(){
   
 
   ValidationUtils.verify(true,true,"Journal Number :"+jornalNumber);
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("General Journal No",EnvParams.Opco,"Data Management",jornalNumber);
+  TextUtils.writeLog("General Journal No :"+jornalNumber); 
  
 }
 
@@ -644,9 +647,7 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
 var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.Button;
 OKay.Click();
 
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("General Journal No",EnvParams.Opco,"Data Management",jornalNumber);
-  TextUtils.writeLog("General Journal No :"+jornalNumber); 
+
   
 }
 }
