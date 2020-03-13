@@ -16,6 +16,8 @@ var datasheetPath = [];
 var workBook = "";
 var folderName = null;
 var testCaseId = null;
+var releasename =null;
+var cyclename =null;
 var workDir = "";
 var packedResults = "";
 var reportName = "";
@@ -150,27 +152,29 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
+releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
+cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
-if(server){ 
-
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
-var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
-Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-fileList = slPacker.GetFileListFromFolder(LworkDir);
-archivePath = LpackedResults +reportName;
-// Packes the resutls
-if (slPacker.Pack(fileList, LworkDir, archivePath))
-  Log.Message("Files compressed successfully."); 
-   
-}
+//if(server){ 
+//
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
+//fileList = slPacker.GetFileListFromFolder(LworkDir);
+//archivePath = LpackedResults +reportName;
+//// Packes the resutls
+//if (slPacker.Pack(fileList, LworkDir, archivePath))
+//  Log.Message("Files compressed successfully."); 
+//   
+//}
 
 //if((nxtID!=OpID)&&(!server)) {
 //nxtID = OpID;
@@ -219,7 +223,7 @@ archivePath = packedResults + reportName;
 if (slPacker.Pack(fileList, workDir, archivePath))
   Log.Message("Files compressed successfully.");
   
-Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
+Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
 }
  
 excelRow++;
@@ -296,6 +300,8 @@ if(!Coun_Opco){
 
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(testList[0],EnvParams.Country);
+releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
+cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
 folderName = Opcolist[OpID];   //Login for each Opco
 if(OpID==0){ 
@@ -345,6 +351,8 @@ if (slPacker.Pack(fileList, LworkDir, archivePath))
 for(var tL=0;tL<testList.length;tL++){
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(testList[tL],EnvParams.Country);
+releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
+cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
 //ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 if(TestingType.toUpperCase()=="SMOKE")
@@ -359,7 +367,7 @@ reportName = "Report_"+EnvParams.Opco+"_"+testList[tL];
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 workDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-
+unitName = testList[tL];
 //ReportUtils.createTest(testList[tL]+" "+testCase, description)
 ReportUtils.createTest(testList[tL], description)
 var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+testList[tL]);
@@ -382,7 +390,7 @@ Delay(4000);
 // Packes the resutls
 //if (slPacker.Pack(fileList, workDir, archivePath))
 //  Log.Message("Files compressed successfully.");
-Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId);
+Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
 
 }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
