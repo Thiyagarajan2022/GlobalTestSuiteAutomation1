@@ -386,7 +386,7 @@ ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
-Delay(4000);
+aqUtils.Delay(4000, "Updating Result in JIRA");
 // Packes the resutls
 //if (slPacker.Pack(fileList, workDir, archivePath))
 //  Log.Message("Files compressed successfully.");
@@ -396,7 +396,7 @@ Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename)
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 
-Delay(3000);
+aqUtils.Delay(3000, "Closing Maconomy");
     Sys.Desktop.KeyDown(0x12); //Alt  //  Log.Message("Maconomy is Already in Running")
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
