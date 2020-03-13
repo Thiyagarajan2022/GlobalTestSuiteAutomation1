@@ -18,6 +18,7 @@ var level =0;
 var STIME = "";
 var jornalNumber = "";
 
+//Main Function
 function CreateGeneralJournal(){ 
 TextUtils.writeLog("Create General Journal Started"); 
 Indicator.PushText("waiting for window to open");
