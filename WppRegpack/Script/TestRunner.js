@@ -156,18 +156,29 @@ releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
 if(server){ 
-
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+reportName = "Report_"+EnvParams.Opco+"_Login";
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
+//ReportUtils.createTest("Login login", "Login using given Credentials")
+ReportUtils.createTest("Login", "Login using given Credentials")
+var FolderID = Log.CreateFolder("Login");
 Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
+Runner.CallMethod("Login.login");
 Log.PopLogFolder();
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(LworkDir);
 archivePath = LpackedResults +reportName;
 // Packes the resutls
@@ -305,20 +316,32 @@ cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
 folderName = Opcolist[OpID];   //Login for each Opco
 if(OpID==0){ 
-reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+reportName = "Report_"+EnvParams.Opco+"_Login";
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-//ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
-
 var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-
-ReportUtils.createTest("ServerConfiguration", "Login using given Credentials")
-var FolderID = Log.CreateFolder("ServerConfiguration");
+//ReportUtils.createTest("Login login", "Login using given Credentials")
+ReportUtils.createTest("Login", "Login using given Credentials")
+var FolderID = Log.CreateFolder("Login");
 Log.PushLogFolder(FolderID);
-Runner.CallMethod("ServerConfig.login");
-Log.PopLogFolder();  
+Runner.CallMethod("Login.login");
+Log.PopLogFolder();
 ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
+ReportUtils.report.flush();  
+//reportName = "Report_"+EnvParams.Opco+"_ServerConfiguration"
+//ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+////ReportUtils.createTest("ServerConfiguration login", "Login using given Credentials")
+//
+//var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//
+//ReportUtils.createTest("ServerConfiguration", "Login using given Credentials")
+//var FolderID = Log.CreateFolder("ServerConfiguration");
+//Log.PushLogFolder(FolderID);
+//Runner.CallMethod("ServerConfig.login");
+//Log.PopLogFolder();  
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
 //Log.Message(LworkDir)
 Delay(4000);
 fileList = slPacker.GetFileListFromFolder(LworkDir);

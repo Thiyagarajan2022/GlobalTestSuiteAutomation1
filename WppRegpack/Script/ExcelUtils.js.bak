@@ -425,31 +425,40 @@ return temp.OleValue.toString().trim();
 
 function getColumnDatas(rowidentifier,column)
 {
-//Log.Message("excelName :"+excelName)
-//Log.Message("sheet :"+sheet);
-var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
-var id =0;
-var colsList = [];
- var temp ="";
-//Log.Message("rowidentifier :"+rowidentifier)
-//Log.Message("column :"+column);
-     while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
-       if(xlDriver.Value(0).toString().trim()==column){
-        try{
-         temp = temp+xlDriver.Value(rowidentifier).toString().trim();
-         }
-        catch(e){
-        temp = "";
-        }
-//      Log.Message("temp :"+temp);
-      break;
-      }
+var temp = JavaClasses.org_excelwrite.companyinfo.getColumnDatas(rowidentifier,column)
+Log.Message("temp :"+temp);
+if((temp!="")&&(temp!=null)){
+return temp.OleValue.toString().trim();
+}else{ 
+  return "";
+}
 
-    xlDriver.Next();
-     }
-     DDT.CloseDriver(xlDriver.Name);
-     return temp;
+////Log.Message("excelName :"+excelName)
+////Log.Message("sheet :"+sheet);
+//var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
+//var id =0;
+//var colsList = [];
+// var temp ="";
+////Log.Message("rowidentifier :"+rowidentifier)
+////Log.Message("column :"+column);
+//     while (!DDT.CurrentDriver.EOF()) {
+////    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
+//       if(xlDriver.Value(0).toString().trim()==column){
+//        try{
+//         temp = temp+xlDriver.Value(rowidentifier).toString().trim();
+//         }
+//        catch(e){
+//        temp = "";
+//        }
+////      Log.Message("temp :"+temp);
+//      break;
+//      }
+//
+//    xlDriver.Next();
+//     }
+//     DDT.CloseDriver(xlDriver.Name);
+//Log.Message("temp :"+temp);
+//     return temp;
 }
 
 
