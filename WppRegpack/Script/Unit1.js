@@ -376,27 +376,156 @@ var add = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTO
 Sys.HighlightObject(add);
 }
 
-
+//.Enabled
 function bn(){ 
-//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 6).SWTObject("McTextWidget", "", 1);
-//
-////var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
-//
-////var loginPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").WndCaption;
-////Log.Message(loginPerson)
-//
-//var i=0;
-//while ((ApvPerson.getText().OleValue.toString().trim().indexOf("1707")==-1)&&(i!=60))
-//{
-//  aqUtils.Delay(100);
-//  i++;
-//  ApvPerson.Refresh();
+var mainP = Sys.Process("Maconomy");
+
+for(var i=0;i<mainP.ChildCount;i++){ 
+  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
+var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
+Log.Message(label1);
+var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+Ok.Click();
+aqUtils.Delay(5000, Indicator.Text);
+  }
+}
+
+for(var i=0;i<mainP.ChildCount;i++){ 
+  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
+var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
+Log.Message(label1);
+var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+Ok.Click();
+aqUtils.Delay(5000, Indicator.Text);
+  }
+}
+
+for(var i=0;i<mainP.ChildCount;i++){ 
+  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
+var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
+Log.Message(label1);
+var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+Ok.Click();
+aqUtils.Delay(5000, Indicator.Text);
+  }
+}
+
+for(var i=0;i<mainP.ChildCount;i++){ 
+  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
+var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
+Log.Message(label1);
+var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+Ok.Click();
+aqUtils.Delay(5000, Indicator.Text);
+  }
+}
+
+for(var i=0;i<mainP.ChildCount;i++){ 
+  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
+var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
+Log.Message(label1);
+var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+Ok.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+Ok.Click();
+aqUtils.Delay(5000, Indicator.Text);
+  }
+}
+
+
+
+//  p = Sys.Process("Maconomy");
+//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
+//  if (w.Exists)
+//{ 
+//  Log.Message(w.Index);
+//  w.Activate();
+//  aqUtils.Delay(500, Indicator.Text);
+//  w.Activate();
+//var label1 = w.SWTObject("Label", "*").getText();
+//Log.Message(label1);
+//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+//Ok.Activate();
+//Ok.HoverMouse();
+////ReportUtils.logStep_Screenshot();
+//Ok.Click();
+//aqUtils.Delay(5000, Indicator.Text);
 //}
-
-var Language = "Spanish";
-var companyName = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").WaitSWTObject("McTextWidget", "", 1,60000).getText().OleValue.toString().trim();
-Log.Message(companyName);
-
-
+//
+//  p = Sys.Process("Maconomy");
+//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
+//  if (w.Exists)
+//{ 
+//  w.Activate();
+//  aqUtils.Delay(500, Indicator.Text);
+//  w.Activate();
+//var label1 = w.SWTObject("Label", "*").getText();
+//Log.Message(label1);
+//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+//Ok.Activate();
+//Ok.HoverMouse();
+////ReportUtils.logStep_Screenshot();
+//Ok.Click();
+//aqUtils.Delay(5000, Indicator.Text);
+//}
+//
+//  p = Sys.Process("Maconomy");
+//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
+//  if (w.Exists)
+//{ 
+//  w.Activate();
+//  aqUtils.Delay(500, Indicator.Text);
+//  w.Activate();
+//var label1 = w.SWTObject("Label", "*").getText();
+//Log.Message(label1);
+//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+//Ok.Activate();
+//Ok.HoverMouse();
+////ReportUtils.logStep_Screenshot();
+//Ok.Click();
+//aqUtils.Delay(5000, Indicator.Text);
+//}
+//
+//  p = Sys.Process("Maconomy");
+//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
+//  if (w.Exists)
+//{ 
+//  w.Activate();
+//  aqUtils.Delay(500, Indicator.Text);
+//  w.Activate();
+//var label1 = w.SWTObject("Label", "*").getText();
+//Log.Message(label1);
+//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+//Ok.Activate();
+//Ok.HoverMouse();
+////ReportUtils.logStep_Screenshot();
+//Ok.Click();
+//aqUtils.Delay(5000, Indicator.Text);
+//}
+//
+//  p = Sys.Process("Maconomy");
+//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
+//  if (w.Exists)
+//{ 
+//  w.Activate();
+//  aqUtils.Delay(500, Indicator.Text);
+//  w.Activate();
+//var label1 = w.SWTObject("Label", "*").getText();
+//Log.Message(label1);
+//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+//Ok.Activate();
+//Ok.HoverMouse();
+////ReportUtils.logStep_Screenshot();
+//Ok.Click();
+//aqUtils.Delay(5000, Indicator.Text);
+//}
 
 }

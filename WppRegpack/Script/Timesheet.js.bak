@@ -512,7 +512,7 @@ var Rejectline = false;
 ReportUtils.logStep_Screenshot("");
     day.Click();
     TextUtils.writeLog("Week has been Selected");
-    aqUtils.Delay(4000, Indicator.Text);
+//    aqUtils.Delay(4000, Indicator.Text);
 //    Delay(4000);
 var create_Timesheet = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4).getText();
 if(create_Timesheet=="Create Time Sheet"){
@@ -525,7 +525,13 @@ create_Timesheet.Click();
 TextUtils.writeLog("Entering Timesheet Details");
     aqUtils.Delay(2000, Indicator.Text);
 //    Delay(2000);
-
+var parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
+for(var i=0;i<parent.ChildCount;i++){ 
+  if((parent.Child(i).isVisible())&&(parent.Child(i).toolTipText=="Add Time Sheet Line (Ctrl+M)")){
+    Sys.HighlightObject(parent.Child(i));
+    break;
+  }
+  }
     var linegrid = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
     var linecount = linegrid.getItemCount();
 var linecount_Status = true;
@@ -544,13 +550,15 @@ ReportUtils.logStep_Screenshot("");
     var Registration = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
     Registration.Click();
     }
-    aqUtils.Delay(2000, Indicator.Text);
+//    aqUtils.Delay(2000, Indicator.Text);
 //    Delay(2000);
     var keep = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).SWTObject("McPlainCheckboxView", "");
+    WorkspaceUtils.waitForObj(keep);
     keep.Keys("[Tab][Tab][Tab]");
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(1000, Indicator.Text);
 //    Delay(1000);
     var Job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).WaitSWTObject("McValuePickerWidget", "", 2,60000);
+    WorkspaceUtils.waitForObj(Job);
     Job.Click();
     if(Job.getText()!=jobNumber){
     WorkspaceUtils.SearchByValues_all_Col_1(Job,"Job",jobNumber,"Job Number");
@@ -613,7 +621,7 @@ ValidationUtils.verify(true,true,"Time is Entered for "+Time_for_day[z]);
 Save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     Save.Click();
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(3000, "Saving Timesheet");
 //    Delay(5000);
     ValidationUtils.verify(true,true,"Line of Timesheet is Saved");
     TextUtils.writeLog("Timesheet is Saved");
@@ -641,7 +649,7 @@ ReportUtils.logStep_Screenshot("");
     ValidationUtils.verify(true,true,"Timesheet is Submit");
     TextUtils.writeLog("Timesheet is Submit");
     }
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(4000, "Submitting Timesheet");
 //    Delay(5000);
     
 //  for(i=invisible_Startindex;i<=invisible_Endindex;i++){  
@@ -662,7 +670,7 @@ nextMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     nextMonth.Click();
     TextUtils.writeLog("Navigating to next month to create Time sheet for that week");
-    aqUtils.Delay(4000, Indicator.Text);
+    aqUtils.Delay(3000, Indicator.Text);
 //    Delay(4000);
     var days = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McCalendarWidget", "", 2).SWTObject("McDateChooser", "").SWTObject("McComposite", "", 2).SWTObject("Composite", "", 4).SWTObject("DateChooser$CellLabel", "", 1+invisible_Startindex);  
     days.HoverMouse();
@@ -680,7 +688,7 @@ ReportUtils.logStep_Screenshot("");
 create_Timesheet.Click();
 }
 TextUtils.writeLog("Entering Timesheet Details");
-    aqUtils.Delay(4000, Indicator.Text);
+    aqUtils.Delay(3000, "Entering Timesheet Details");
 //    Delay(4000);
     var linegrid = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
     var linecount = linegrid.getItemCount()
@@ -699,13 +707,15 @@ ReportUtils.logStep_Screenshot("");
     var Registration = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
     Registration.Click();
     }
-    aqUtils.Delay(4000, Indicator.Text);
+//    aqUtils.Delay(4000, Indicator.Text);
 //    Delay(4000);
     var keep = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).SWTObject("McPlainCheckboxView", "");
+    WorkspaceUtils.waitForObj(keep)
     keep.Keys("[Tab][Tab][Tab]");
     aqUtils.Delay(1000, Indicator.Text);
 //    Delay(1000);
     var Job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).WaitSWTObject("McValuePickerWidget", "", 2,60000);
+    WorkspaceUtils.waitForObj(Job)
     Job.Click();
 if(Job.getText()!=jobNumber){
     WorkspaceUtils.SearchByValues_all_Col_1(Job,"Job",jobNumber,"Job Number");
@@ -767,7 +777,7 @@ ValidationUtils.verify(true,true,"Time is Entered for "+Time_for_day[z]);
 Save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     Save.Click();
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(3000, "Saving Timesheet");
 //    Delay(5000);
     ValidationUtils.verify(true,true,"Line of Timesheet is Saved");
     TextUtils.writeLog("Timesheet is Saved");
