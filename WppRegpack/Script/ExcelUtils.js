@@ -493,7 +493,12 @@ var colsList = [];
 
 
 function ReadExcelSheet(array,Opco,sheets){
-var temp = ""
+var temp = "";
+setExcelName(excelName, sheets, true);
+temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(array,Opco);
+
+
+/*
 
 //Log.Message("Execution completed,sending result to excel book , FileName:"+excelName+"sheetname:"+sheet);
   var app = Sys.OleObject("Excel.Application");
@@ -528,7 +533,16 @@ var temp = ""
   }
 // book.Save();
  app.Quit();
- return temp;
+ 
+ */
+ 
+ 
+if((temp!="")&&(temp!=null)){
+return temp.OleValue.toString().trim();
+}else{ 
+  return "";
+}
+ 
 }
 
 

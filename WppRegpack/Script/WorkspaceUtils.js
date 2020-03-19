@@ -2361,7 +2361,7 @@ var tl = 0;
   waitForObj(OK);
         
           var itemCount = table.getItemCount();
-          Log.Message(itemCount)
+//          Log.Message(itemCount)
           if(itemCount>0){ 
           for(var i=0;i<itemCount;i++){
           tableList[tl] = table.getItem(i).getText_2(0).OleValue.toString().trim()+"-"+table.getItem(i).getText_2(1).OleValue.toString().trim();

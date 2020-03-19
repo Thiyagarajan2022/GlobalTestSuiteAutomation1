@@ -89,15 +89,15 @@ function JobAddress(){
 //Sys.Process("Maconomy").Refresh();
 Sys.HighlightObject(Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", ""))
 var companyName = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").WaitSWTObject("McTextWidget", "", 1,60000).getText().OleValue.toString().trim();
-Log.Message(companyName);
-Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", companyName).OleValue.toString().trim())
+//Log.Message(companyName);
+//Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", companyName).OleValue.toString().trim())
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", companyName).OleValue.toString().trim()!="Company")
 ValidationUtils.verify(false,true,"Company field is missing in Maconomy for Job Creation");
 else
 ValidationUtils.verify(true,true,"Company field is available in Maconomy for Job Creation");
 var job = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 1).getText().OleValue.toString().trim()
-Log.Message(job);
-Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", job).OleValue.toString().trim())
+//Log.Message(job);
+//Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", job).OleValue.toString().trim())
 if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English", job).OleValue.toString().trim()!="Job Group")
 ValidationUtils.verify(false,true,"Job Group field is missing in Maconomy for Job Creation");
 else
@@ -337,7 +337,7 @@ TextUtils.writeLog("Job is CREATED");
 ValidationUtils.verify(true,true,"Job is CREATED");
 ReportUtils.logStep("INFO", Job_name+" "+STIME +" : is Created");
 TextUtils.writeLog("Job Name :"+Job_name+" "+STIME);
-aqUtils.Delay(8000, "Job is Created");
+aqUtils.Delay(3000, "Job is Created");
 
   p = Sys.Process("Maconomy");
   w = p.FindChild("WndCaption", "Jobs - Job", 2000);
@@ -351,7 +351,7 @@ ReportUtils.logStep("INFO",lab)
     Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   Ok.Click();
- aqUtils.Delay(5000, Indicator.Text); 
+ aqUtils.Delay(3000, Indicator.Text); 
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Jobs - Job"){ 
 var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs - Job").SWTObject("Label", "*");
 Log.Message(label.getText());
@@ -759,76 +759,78 @@ WorkspaceUtils.closeAllWorkspaces();
 
 }
 
-function getExcel(rowidentifier,column) { 
-excelData =[];  
-//Log.Message(" ");
-//Log.Message(excelName)
-//Log.Message(workBook);
-//Log.Message(sheetName);
-var xlDriver = DDT.ExcelDriver(workBook,sheetName,true);
-var id =0;
-var colsList = [];
- var temp ="";
-//Log.Message(rowidentifier);
-     while (!DDT.CurrentDriver.EOF()) {
-//Log.Message(xlDriver.Value(0).toString().trim())
-//Log.Message("Excel Column :"+xlDriver.Value(0).toString().trim())
-       if(xlDriver.Value(0).toString().trim().toUpperCase()==rowidentifier.toUpperCase()){
-//       Log.Message("Row Identifier is Matched");
-        try{
-         temp = temp+xlDriver.Value(column).toString().trim();
-         }
-        catch(e){
-        temp = "";
-        }
-//      Log.Message(temp);
-      break;
-      }
-
-    xlDriver.Next();
-     }
-     
-     if(temp.indexOf(",")!=-1){
-     var excelData =  temp.split(",");
-//     Log.Message(excelData);
-//     for(var i=0;i<comma_separator.length;i++){ 
-//       
+//function getExcel(rowidentifier,column) { 
+//excelData =[];  
+////Log.Message(" ");
+////Log.Message(excelName)
+////Log.Message(workBook);
+////Log.Message(sheetName);
+//var xlDriver = DDT.ExcelDriver(workBook,sheetName,true);
+//var id =0;
+//var colsList = [];
+// var temp ="";
+////Log.Message(rowidentifier);
+//     while (!DDT.CurrentDriver.EOF()) {
+////Log.Message(xlDriver.Value(0).toString().trim())
+////Log.Message("Excel Column :"+xlDriver.Value(0).toString().trim())
+//       if(xlDriver.Value(0).toString().trim().toUpperCase()==rowidentifier.toUpperCase()){
+////       Log.Message("Row Identifier is Matched");
+//        try{
+//         temp = temp+xlDriver.Value(column).toString().trim();
+//         }
+//        catch(e){
+//        temp = "";
+//        }
+////      Log.Message(temp);
+//      break;
+//      }
+//
+//    xlDriver.Next();
 //     }
-       
-     }else if(temp.length>0){ 
-      excelData[0] = temp;
-//       excelData[0] = temp.substring(0, temp.indexOf("-"));
-//       excelData[1] = temp.substring(temp.indexOf("-")+1)
-     }
-     
-     DDT.CloseDriver(xlDriver.Name);
- for(var i=0;i<excelData.length;i++)
-// Log.Message(excelData[i]);
-     return excelData;
-  
-}
+//     
+//     if(temp.indexOf(",")!=-1){
+//     var excelData =  temp.split(",");
+////     Log.Message(excelData);
+////     for(var i=0;i<comma_separator.length;i++){ 
+////       
+////     }
+//       
+//     }else if(temp.length>0){ 
+//      excelData[0] = temp;
+////       excelData[0] = temp.substring(0, temp.indexOf("-"));
+////       excelData[1] = temp.substring(temp.indexOf("-")+1)
+//     }
+//     
+//     DDT.CloseDriver(xlDriver.Name);
+// for(var i=0;i<excelData.length;i++)
+//// Log.Message(excelData[i]);
+//     return excelData;
+//  
+//}
 
 
 
 function getExcelData(rowidentifier,column) { 
 var temp = ""
-//var array = "Validate_EmployeeCategories";
-//var Opco = "1307"
+
 var excelData = [];
-//Log.Message("Execution completed,sending result to excel book , FileName:"+excelName+"sheetname:"+sheet);
+//Log.Message(workBook+":")
+//Log.Message(sheetName+":")
+//Log.Message(rowidentifier+":")
+//Log.Message(column+":")
+ExcelUtils.setExcelName(workBook, sheetName, true);
+temp = ExcelUtils.getRowDatas(rowidentifier,column);
+//Log.Message(temp);
+//temp = temp.OleValue.toString().trim();
+
+/*
   var app = Sys.OleObject("Excel.Application");
-//  app.Visible = "True";
   var curArrayVals = [];  
-//  Log.Message(workBook)
-//  Log.Message(sheetName)
-//  Log.Message(rowidentifier)
-//  Log.Message(column)
   var book = app.Workbooks.Open(workBook);
   var sheet = book.Sheets.Item(sheetName);;
   var columnCount = sheet.UsedRange.Columns.Count;
   var rowCount = sheet.UsedRange.Rows.Count;
-//  Log.Message(columnCount);
-//  Log.Message(rowCount);
+
   var arrays={};
   var idx =0;
   var col =0;
@@ -840,23 +842,18 @@ var excelData = [];
   }
   var rowStatus = false;
   for(var k = 1; k<=rowCount;k++){
-//  Log.Message(sheet.Cells.Item(k, 1).Text.toString().trim())
   if(sheet.Cells.Item(k, 1).Text.toString().trim().toUpperCase()==rowidentifier.toUpperCase()){
   row = k;
   rowStatus = true;
   }
   }
-//  Log.Message(col)
-//  Log.Message(row);
   if(rowStatus){ 
    temp = sheet.Cells.Item(row,  col).Text;
-//   Log.Message(temp)
+
   }
   
-  
-// book.Save();
  app.Quit();
- 
+*/
  
  if(temp.indexOf(",")!=-1){ 
 //       Log.Message(temp)
@@ -873,18 +870,20 @@ var excelData = [];
      }
      
 
- for(var i=0;i<excelData.length;i++)
-// Log.Message(excelData[i]);
+// for(var i=0;i<excelData.length;i++)
+// Log.Message(" :"+excelData[i]);
 
  return excelData;
 }
 
 function getExcelData_Company(rowidentifier,column) { 
-excelData =[];  
-//Log.Message(" ");
-//Log.Message(excelName)
-//Log.Message(workBook);
-//Log.Message(sheetName);
+var excelData =[];  
+var temp ="";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+temp = ExcelUtils.getRowDatas(rowidentifier,column);
+//temp = temp.OleValue.toString().trim();
+
+/*
 var xlDriver = DDT.ExcelDriver(workBook,sheetName,true);
 var id =0;
 var colsList = [];
@@ -908,6 +907,9 @@ var colsList = [];
     xlDriver.Next();
      }
      
+DDT.CloseDriver(xlDriver.Name);
+*/
+     
      if(temp.indexOf("*")!=-1){
      var excelData =  temp.split("*");
 //     Log.Message(excelData);
@@ -921,8 +923,9 @@ var colsList = [];
 //       excelData[1] = temp.substring(temp.indexOf("-")+1)
      }
      
-     DDT.CloseDriver(xlDriver.Name);
- for(var i=0;i<excelData.length;i++)
+//     DDT.CloseDriver(xlDriver.Name);
+
+// for(var i=0;i<excelData.length;i++)
 // Log.Message(excelData[i]);
      return excelData;
   

@@ -1,4 +1,5 @@
-﻿
+﻿//USEUNIT ExcelUtils
+//USEUNIT WorkspaceUtils
 function exlApprove() {
 	var Approve_Level = [];
 	var ApproveInfo = [];
@@ -378,154 +379,72 @@ Sys.HighlightObject(add);
 
 //.Enabled
 function bn(){ 
-var mainP = Sys.Process("Maconomy");
 
-for(var i=0;i<mainP.ChildCount;i++){ 
-  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
-var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(5000, Indicator.Text);
-  }
+var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Senior Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
+Sys.HighlightObject(table);
+Log.Message(table.getItemCount())
+var name = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Senior Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 2);
+name.setText("Auto*");
+
+var result = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Senior Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 2).SWTObject("Label", "*");
+var i=0;
+
+while((result.getText().OleValue.toString().trim().indexOf("results")==-1)&&(i!=60)){ 
+  aqUtils.Delay(100);
+  i++;
+  result.Refresh();
 }
 
-for(var i=0;i<mainP.ChildCount;i++){ 
-  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
-var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(5000, Indicator.Text);
-  }
+Log.Message(table.getItemCount())
 }
 
-for(var i=0;i<mainP.ChildCount;i++){ 
-  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
-var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(5000, Indicator.Text);
-  }
-}
-
-for(var i=0;i<mainP.ChildCount;i++){ 
-  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
-var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(5000, Indicator.Text);
-  }
-}
-
-for(var i=0;i<mainP.ChildCount;i++){ 
-  if((mainP.Child(i).Enabled)&&(mainP.Child(i).Name.indexOf("Approve Employee - Employee Information")!=-1)){ 
-var label1 = mainP.Child(i).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = mainP.Child(i).SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(5000, Indicator.Text);
-  }
-}
-
-
-
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
-//  if (w.Exists)
-//{ 
-//  Log.Message(w.Index);
-//  w.Activate();
-//  aqUtils.Delay(500, Indicator.Text);
-//  w.Activate();
-//var label1 = w.SWTObject("Label", "*").getText();
-//Log.Message(label1);
-//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-//Ok.Activate();
-//Ok.HoverMouse();
-////ReportUtils.logStep_Screenshot();
-//Ok.Click();
-//aqUtils.Delay(5000, Indicator.Text);
-//}
+function bv(){ 
+//  var workBook = "C:\\Users\\674087\\Documents\\BAU\\GlobalTestSuiteAutomation\\WppRegpack\\TestResource\\Regression\\DS_IND_REGRESSION.xlsx";
+//  var sheetName = "JobCreation";
+//  var jd = "ValidateJobtype_CB(Client Billable)";
+//  var Opco = "1707";
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//FullName = ExcelUtils.getRowDatas("ValidateJobtype_CB(Client Billable)","1707");
+////FullName = ExcelUtils.getRowDatas("ValidateJobtype_CB(Client billable)","1707");
+//Log.Message(FullName);
 //
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
-//  if (w.Exists)
-//{ 
-//  w.Activate();
-//  aqUtils.Delay(500, Indicator.Text);
-//  w.Activate();
-//var label1 = w.SWTObject("Label", "*").getText();
-//Log.Message(label1);
-//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-//Ok.Activate();
-//Ok.HoverMouse();
-////ReportUtils.logStep_Screenshot();
-//Ok.Click();
-//aqUtils.Delay(5000, Indicator.Text);
-//}
+//var excelData = [];
+//      if(FullName.indexOf(",")!=-1){
+//     excelData =  FullName.split(",");
+//     }else if(FullName.length>0){ 
+//      excelData[0] = FullName;
+//     }
+//     
 //
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
-//  if (w.Exists)
-//{ 
-//  w.Activate();
-//  aqUtils.Delay(500, Indicator.Text);
-//  w.Activate();
-//var label1 = w.SWTObject("Label", "*").getText();
-//Log.Message(label1);
-//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-//Ok.Activate();
-//Ok.HoverMouse();
-////ReportUtils.logStep_Screenshot();
-//Ok.Click();
-//aqUtils.Delay(5000, Indicator.Text);
-//}
-//
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
-//  if (w.Exists)
-//{ 
-//  w.Activate();
-//  aqUtils.Delay(500, Indicator.Text);
-//  w.Activate();
-//var label1 = w.SWTObject("Label", "*").getText();
-//Log.Message(label1);
-//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-//Ok.Activate();
-//Ok.HoverMouse();
-////ReportUtils.logStep_Screenshot();
-//Ok.Click();
-//aqUtils.Delay(5000, Indicator.Text);
-//}
-//
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", "Approve Employee - Employee Information", 2000);
-//  if (w.Exists)
-//{ 
-//  w.Activate();
-//  aqUtils.Delay(500, Indicator.Text);
-//  w.Activate();
-//var label1 = w.SWTObject("Label", "*").getText();
-//Log.Message(label1);
-//var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", "OK")
-//Ok.Activate();
-//Ok.HoverMouse();
-////ReportUtils.logStep_Screenshot();
-//Ok.Click();
-//aqUtils.Delay(5000, Indicator.Text);
-//}
+// for(var i=0;i<excelData.length;i++)
+// Log.Message(excelData[i]);
 
+ 
+ 
+ var ApvPerson = Aliases.Maconomy.EmployeeAndUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
+var ApvPerson = Aliases.Maconomy.EmployeeAndUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.Composite.McTextWidget
+//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
+//WorkspaceUtils.waitForObj(ApvPerson);
+ApvPerson.Click();
+var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
+    var i=0;
+    
+Log.Message((ApvPerson.getText().OleValue.toString().trim().indexOf("approved")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf("Approved")==-1))
+Log.Message((ApvPerson.getText().OleValue.toString().trim().indexOf("By You")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf("by you")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))
+while ((ApvPerson.getText().OleValue.toString().trim().indexOf("approved")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf("Approved")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf("By You")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf("by you")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=600))
+{
+  aqUtils.Delay(100);
+  i++;
+  ApvPerson.Refresh();  
+}
+  if((ApvPerson.getText().OleValue.toString().trim().indexOf("By You")==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf("by you")==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)){
+    Log.Checkpoint("Pass")
+//  ValidationUtils.verify(true,true,"Created Employee and User is Approved by :"+loginPer)
+//  TextUtils.writeLog("Created Employee and User is Rejected by :"+loginPer); 
+  }else{ 
+    Log.Checkpoint("Fail")
+//  TextUtils.writeLog("Created Employee and User is Rejected by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected")
+  }
 }
