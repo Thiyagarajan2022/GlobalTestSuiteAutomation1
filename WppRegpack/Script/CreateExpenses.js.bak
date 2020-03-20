@@ -71,14 +71,14 @@ function goToJobMenuItem(){
       menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     menuBar.DblClick();
-     if(ImageRepository.ImageSet01.TE.Exists()){
-       ImageRepository.ImageSet01.TE.Click();// GL
+     if(ImageRepository.ImageSet0.TimeExpense.Exists()){
+       ImageRepository.ImageSet0.TimeExpense.Click();// GL
       }
-     else if(ImageRepository.ImageSet01.TE1.Exists()){
-       ImageRepository.ImageSet01.TE1.Click();
+     else if(ImageRepository.ImageSet0.TimeExpense1.Exists()){
+       ImageRepository.ImageSet0.TimeExpense1.Click();
       }
      else{
-       ImageRepository.ImageSet01.TE2.Click();
+       ImageRepository.ImageSet0.TimeExpense2.Click();
     }
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
