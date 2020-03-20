@@ -60,7 +60,7 @@ ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 getDetails();
 ExcelUtils.setExcelName(workBook, sheetName, true);
   gotoMenu();
-  Delay(5000);
+//  Delay(5000);
   selectJobs();
   listPurchaseOrder();
 }
@@ -187,11 +187,41 @@ function selectJobs(){
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid;
   WorkspaceUtils.waitForObj(table);
 
+var jB = true;
+var StartPO = false;
+
+for(var i=1;i<=10;i++){
+sheetName = "JobBudgetCreation";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+//Log.Message("wCodeID :"+wCodeID)
+if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
+ jB = false; 
+ break;
+}
+}
+
+if(jB){
+StartPO = true;
+sheetName = "CreatePurchaseOrder";
+}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Log.Message(sheetName);
+  
    for(var i=1;i<=10;i++){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
   var ChkWorkCode = false;
-  if((wCodeID!="")&&(wCodeID!=null)){
+  if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
     for(var j=0;j<table.getItemCount();j++){
     if(table.getItem(j).getText_2(3).OleValue.toString().trim()==wCodeID){ 
       ChkWorkCode = true;
@@ -208,7 +238,7 @@ function selectJobs(){
        for(var i=1;i<=10;i++){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-  if((wCodeID!="")&&(wCodeID!=null)){
+  if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
   if(table.getItem(j).getText_2(3).OleValue.toString().trim()==wCodeID){ 
   workcodeList[wcL] = table.getItem(j).getText_2(3).OleValue.toString().trim()+"*"+table.getItem(j).getText_2(4).OleValue.toString().trim();
   wcL++;
@@ -221,7 +251,7 @@ function selectJobs(){
   ReportUtils.logStep_Screenshot("");
   selected.Click();
   }
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   // 8 TAB to move to Vendor
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
@@ -248,7 +278,7 @@ function selectJobs(){
   save.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   save.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+  aqUtils.Delay(3000, "Saving Changes");
   // 9 SHIFT+TAB to move to LineType
   Sys.Desktop.KeyDown(0x10);
   Sys.Desktop.KeyDown(0x09);
@@ -296,12 +326,13 @@ if(j<table.getItemCount()-2)
   }
   
   }
-  aqUtils.Delay(4000,Indicator.Text);
+//  aqUtils.Delay(4000,Indicator.Text);
   var createPurchaseOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.CreatePO;
+  WorkspaceUtils.waitForObj(createPurchaseOrder);
   createPurchaseOrder.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   createPurchaseOrder.Click();
-  aqUtils.Delay(8000,Indicator.Text);
+//  aqUtils.Delay(8000,Indicator.Text);
   
   var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs").SWTObject("Label", "*");
   ReportUtils.logStep(label.getText());
@@ -313,20 +344,23 @@ if(j<table.getItemCount()-2)
   Okay.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   Okay.Click();
-  aqUtils.Delay(4000,Indicator.Text);
+  aqUtils.Delay(2000,"Created PO Number :");
 }
 
 
 function listPurchaseOrder(){ 
   var listPO = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.ListPO;
+  WorkspaceUtils.waitForObj(listPO);
   listPO.Click();
-  aqUtils.Delay(5000,Indicator.Text);
+//  aqUtils.Delay(5000,Indicator.Text);
   var myPO = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.MyOpenPO;
+  WorkspaceUtils.waitForObj(myPO);
   myPO.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.POTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.POTable.McGrid.companyNo;
   var closeFilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
+  WorkspaceUtils.waitForObj(firstcell);
   firstcell.forceFocus();
   firstcell.setVisible(true);
   firstcell.ClickM();
@@ -337,7 +371,8 @@ function listPurchaseOrder(){
   var POcolumn = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.POTable.McGrid.POcolumn;
   POcolumn.Click();
   POcolumn.setText(PONumber);
-  aqUtils.Delay(7000, Indicator.Text);
+  WorkspaceUtils.waitForObj(table);
+  aqUtils.Delay(3000, "Reading table data");
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(1).OleValue.toString().trim()==PONumber){ 
@@ -353,19 +388,68 @@ function listPurchaseOrder(){
     closeFilter.HoverMouse();
     ReportUtils.logStep_Screenshot("");
     closeFilter.Click();
-    aqUtils.Delay(5000, Indicator.Text);
-    var POLine = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
-    POLine.Click();
-    aqUtils.Delay(5000, Indicator.Text);
+//    aqUtils.Delay(5000, Indicator.Text);
     
+//    var POLine = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+//    POLine.Click();
+//    aqUtils.Delay(5000, Indicator.Text);
+    
+  var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+WorkspaceUtils.waitForObj(screen);
+  screen.Click();
+  screen.MouseWheel(-40);
+  aqUtils.Delay(3000, "Reading Vendor Currency");
+var ClientCurrency =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget;
+//WorkspaceUtils.waitForObj(ClientCurrency);
+ClientCurrency =  ClientCurrency.getText();  
+Log.Message(ClientCurrency);
+ExcelUtils.setExcelName(workBook, "CountryCurrency", true);
+var ContryCurrency = ExcelUtils.getRowDatas(EnvParams.Country,"Currency");
+Log.Message(ContryCurrency)
+var ExchangeRate;
+var BaseCurrency;
+  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
+  if(ContryCurrency!="GBP")  
+  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
+  else
+  ExchangeRate = "1.00";
+  if(ClientCurrency!=ContryCurrency)  
+  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
+  else
+  BaseCurrency = "1.00";
+  Log.Message("ExchangeRate :"+ExchangeRate);
+  Log.Message("BaseCurrency :"+BaseCurrency)  
+    
+    
+    var POLine = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+    WorkspaceUtils.waitForObj(POLine);
+    POLine.Click();
+//    aqUtils.Delay(5000, Indicator.Text);    
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+  WorkspaceUtils.waitForObj(table);
   for(var j=0;j<table.getItemCount();j++){
    for(var i=1;i<=10;i++){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
   var Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
   var Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
-  var UnitPrice = ExcelUtils.getColumnDatas("UnitPrice_"+i,EnvParams.Opco)
+  var UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+  var OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+  var IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+  
+
+  ExcelUtils.setExcelName(workBook, "CreatePurchaseOrder", true);
+  var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
+
+  
+//  Log.Message(wCodeID)
+//  Log.Message(Desp)
+//  Log.Message(Qly)
+//  Log.Message(UnitPrice)
+//  Log.Message(OHSN)
+//  Log.Message(IHSN)
+//  Log.Message(POS)
+  
   for(var wcL=0;wcL<workcodeList.length;wcL++){
   if((wCodeID!="")&&(wCodeID!=null)&&(workcodeList[wcL].indexOf(wCodeID)!=-1)){
   var temp = workcodeList[wcL].split("*");
@@ -373,7 +457,7 @@ function listPurchaseOrder(){
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
   aqUtils.Delay(1000, Indicator.Text);
-Delay(2000);
+//Delay(2000);
 var jobNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
 jobNo.Keys("[Tab][Tab]");
 
@@ -383,7 +467,7 @@ var workcode = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Co
 //  WorkspaceUtils.SearchByValue(workcode,"Work Code",wCodeID,"WorkCode");
   workcode.Keys("[Tab]");
 var detailedDescription = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
-   if(Desp!=""){
+   if((Desp!="")&&(detailedDescription.getText()!=Desp)){
    detailedDescription.setText(Desp);
    ReportUtils.logStep_Screenshot("");
    }else{ 
@@ -391,25 +475,34 @@ var detailedDescription = Aliases.Maconomy.Shell.Composite.Composite.Composite.C
      }
    detailedDescription.Keys("[Tab]"); 
 var Quantity = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-   if(Qly!=""){
+   if((Qly!="")&&(Quantity.getText()!=Qly)){
    Quantity.setText(Qly);
    ReportUtils.logStep_Screenshot("");
    }
    Quantity.Keys("[Tab]");
 var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-   if(UnitPrice!=""){
+   if((UnitPrice!="")&&(Unit_Price.getText()!=UnitPrice)){
    Unit_Price.setText(UnitPrice);
    ReportUtils.logStep_Screenshot("");
      }
+     
+//Log.Message("OHSN :"+OHSN);
+//Log.Message("IHSN :"+IHSN);
+//Log.Message("POS :"+POS);
+  if(EnvParams.Country.toUpperCase()=="INDIA")
+   Runner.CallMethod("IND_PurchaseOrderfromJobActivities.IND_Specific",Unit_Price,OHSN,IHSN,POS);
+   
 //  UnitPrice.Keys("[Tab][Tab][Tab]");
-  Delay(2000);
+//aqUtils.Delay(2000, Indicator.Text);
 var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+if(save.toolTipText=="Save Purchase Order Line"){
 save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 save.Click();
-Delay(5000);
+}
+//Delay(5000);
 
-  aqUtils.Delay(3000, Indicator.Text);
+  aqUtils.Delay(3000, "Saving Changes");
   
   
   // 6 SHIFT+TAB to move to LineType
@@ -437,21 +530,157 @@ Delay(5000);
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
   Sys.Desktop.KeyUp(0x10);
-//  Sys.Desktop.KeyDown(0x10);
-//  Sys.Desktop.KeyDown(0x09);
-//  Sys.Desktop.KeyUp(0x09);
-//  Sys.Desktop.KeyUp(0x10);
-//  Sys.Desktop.KeyDown(0x10);
-//  Sys.Desktop.KeyDown(0x09);
-//  Sys.Desktop.KeyUp(0x09);
-//  Sys.Desktop.KeyUp(0x10);
-//  Sys.Desktop.KeyDown(0x10);
-//  Sys.Desktop.KeyDown(0x09);
-//  Sys.Desktop.KeyUp(0x09);
-//  Sys.Desktop.KeyUp(0x10);
+  
+if(EnvParams.Country.toUpperCase()=="INDIA"){
+  Sys.Desktop.KeyDown(0x10);
+  Sys.Desktop.KeyDown(0x09);
+  Sys.Desktop.KeyUp(0x09);
+  Sys.Desktop.KeyUp(0x10);
+  Sys.Desktop.KeyDown(0x10);
+  Sys.Desktop.KeyDown(0x09);
+  Sys.Desktop.KeyUp(0x09);
+  Sys.Desktop.KeyUp(0x10);
+  Sys.Desktop.KeyDown(0x10);
+  Sys.Desktop.KeyDown(0x09);
+  Sys.Desktop.KeyUp(0x09);
+  Sys.Desktop.KeyUp(0x10);
+  Sys.Desktop.KeyDown(0x10);
+  Sys.Desktop.KeyDown(0x09);
+  Sys.Desktop.KeyUp(0x09);
+  Sys.Desktop.KeyUp(0x10);
+  Sys.Desktop.KeyDown(0x10);
+  Sys.Desktop.KeyDown(0x09);
+  Sys.Desktop.KeyUp(0x09);
+  Sys.Desktop.KeyUp(0x10);
+  }
  
+
+aqUtils.Delay(4000, "Validating Tax");
+  var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  var currency_Amount = tableGrid.getItem(j).getText_2(7).OleValue.toString().trim();
+  var local_currency_Amount = tableGrid.getItem(j).getText_2(8).OleValue.toString().trim();
+  var Taxcode1 = tableGrid.getItem(j).getText_2(12).OleValue.toString().trim();
+  var Taxcode2 = tableGrid.getItem(j).getText_2(13).OleValue.toString().trim();
+  var Tax_Amount_currency_1 = tableGrid.getItem(j).getText_2(15).OleValue.toString().trim();
+  var Tax_Amount_currency_2 = tableGrid.getItem(j).getText_2(17).OleValue.toString().trim();
+  var Tax_Amount_1_base = tableGrid.getItem(j).getText_2(14).OleValue.toString().trim();
+  var Tax_Amount_2_base = tableGrid.getItem(j).getText_2(16).OleValue.toString().trim();
+  var Tax_Amount = tableGrid.getItem(j).getText_2(18).OleValue.toString().trim();
+  currency_Amount = currency_Amount.replace(/,/g, '');
+  local_currency_Amount = local_currency_Amount.replace(/,/g, '');
+  Tax_Amount_currency_1 = Tax_Amount_currency_1.replace(/,/g, '');
+  Tax_Amount_currency_2 = Tax_Amount_currency_2.replace(/,/g, '');
+  Tax_Amount_1_base = Tax_Amount_1_base.replace(/,/g, '');
+  Tax_Amount_2_base = Tax_Amount_2_base.replace(/,/g, '');
+  Tax_Amount = Tax_Amount.replace(/,/g, '');
+  
+  var CA = parseFloat(Qly)*parseFloat(UnitPrice);
+  CA = CA.toFixed(2);
+  
+  var convertCurr;
+  var lcA;
+  
+  if(ClientCurrency==ContryCurrency){ 
+//    Log.Message(Qly)
+//    Log.Message(UnitPrice)
+    lcA = parseFloat(Qly)*parseFloat(UnitPrice);
+    Log.Message(lcA)
+  }
+  else if(ClientCurrency!="GBP"){
+   convertCurr = 1/BaseCurrency;
+//     Log.Message("convertCurr :"+convertCurr)
+  var QtyXCurr = parseFloat(convertCurr)*parseFloat(CA);
+//  Log.Message("QtyXCurr :"+QtyXCurr)
+   lcA = parseFloat(QtyXCurr)*parseFloat(ExchangeRate);
+//  Log.Message("lcA :"+lcA)
+  }
+  else{ 
+    lcA = parseFloat(CA)*parseFloat(ExchangeRate);
+  }
+//  Log.Message(lcA)
+  lcA = lcA.toFixed(2);
+//  Log.Message(lcA)
+  var lowerRange = parseFloat(lcA)-parseFloat("1000.00");
+  var higherRange = parseFloat(lcA)+parseFloat("1000.00");
+
+//  Log.Message(Taxcode1);
+//  Log.Message(Taxcode2);
+  if((Taxcode1=="")&&(Taxcode2==""))
+  ValidationUtils.verify(false,true,"Tax Code 1 and Tax Code 2 is not Populated");
+  if(Taxcode1!="")
+  ValidationUtils.verify(true,true,"Tax Code 1 is populated");
+  if(Taxcode2!="")
+  ValidationUtils.verify(true,true,"Tax Code 2 is populated");
+  
+  
+//Log.Message(lowerRange) 
+//Log.Message(higherRange) 
+//Log.Message(local_currency_Amount)
+
+  if(CA==currency_Amount)
+  ValidationUtils.verify(true,true,"Currency Amount is verified");
+  else
+  ValidationUtils.verify(false,true,"Currency Amount is Not Matched ");
+  
+  if((lowerRange<local_currency_Amount)&&(higherRange>local_currency_Amount))
+  ValidationUtils.verify(true,true,"Local Currency Amount is verified");
+  else
+  ValidationUtils.verify(false,true,"Local Currency Amount is Not Matched ");
+  
+
+if((Taxcode1.indexOf("@")!=-1)&&(Taxcode2.indexOf("@")!=-1)){
+if(Taxcode1!=""){
+var lstIndex = Taxcode1.lastIndexOf("%");
+var str = Taxcode1.substring(0, lstIndex);
+lstIndex = str.lastIndexOf(" ");
+Taxcode1 = str.substring(lstIndex+1).replace(/@/g,'');
+
+var TAC_1 = (parseFloat(currency_Amount)/100)*parseFloat(Taxcode1)
+var TAB_1 = (parseFloat(local_currency_Amount)/100)*parseFloat(Taxcode1)
+
+  var lowerRange = parseFloat(TAC_1)-parseFloat("5.00");
+  var higherRange = parseFloat(TAC_1)+parseFloat("5.00");
+
+  if(((lowerRange<Tax_Amount_currency_1)&&(higherRange>Tax_Amount_currency_1))||((lowerRange<Tax_Amount)&&(higherRange>Tax_Amount)))
+  ValidationUtils.verify(true,true,"Tax Amount Currency 1 is verified");
+  else
+  ValidationUtils.verify(false,true,"Tax Amount Currency 1 is Not Matched ");
+  
+}
+
+
+
+}
+else if(Taxcode1.indexOf("%")!=-1){ 
+if(Taxcode1!=""){
+var lstIndex = Taxcode1.lastIndexOf("%");
+var str = Taxcode1.substring(0, lstIndex);
+lstIndex = str.lastIndexOf(" ");
+Taxcode1 = str.substring(lstIndex+1).replace(/@/g,'');
+//Log.Message(Taxcode1)
+var TAC_1 = (parseFloat(currency_Amount)/100)*parseFloat(Taxcode1)
+var TAB_1 = (parseFloat(local_currency_Amount)/100)*parseFloat(Taxcode1)
+
+  var lowerRange = parseFloat(TAC_1)-parseFloat("5.00");
+  var higherRange = parseFloat(TAC_1)+parseFloat("5.00");
+  
+//Log.Message(parseFloat(currency_Amount))
+//Log.Message(parseFloat(currency_Amount)/100)
+//Log.Message(parseFloat(Taxcode1))
+//Log.Message(TAC_1)
+//Log.Message(Tax_Amount_currency_1)
+  if(((lowerRange<Tax_Amount_currency_1)&&(higherRange>Tax_Amount_currency_1))||((lowerRange<Tax_Amount)&&(higherRange>Tax_Amount)))
+  ValidationUtils.verify(true,true,"Tax Amount Currency 1 is verified");
+  else
+  ValidationUtils.verify(false,true,"Tax Amount Currency 1 is Not Matched ");
+  
+}
+}
+
+
   
   }
+  
   }
   }
   }
@@ -465,8 +694,10 @@ if(j<table.getItemCount()-2)
   action.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   action.Click();
-  Delay(3000);
+//  Delay(3000);
   action.PopupMenu.Click("Submit Purchase Order");
+  
+//var submittedBy = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.McTextWidget;
 /*
   Sys.Process("Maconomy").Refresh();
   var table = Sys.Process("Maconomy").Window("#32768", "", 1);
