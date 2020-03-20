@@ -86,6 +86,7 @@
 				<child name="AmendGlobalVendor" key="{D15AA8FA-0E33-4740-BC78-4A2A28D3BED5}" path="AmendGlobalVendor.js" />
 				<child name="CreateAGeneralJournal" key="{7862DAD5-E540-4272-B69E-B9783C7C281C}" path="CreateAGeneralJournal.js" />
 				<child name="ReverseAGeneralJournal" key="{5558565F-4231-4F39-B09E-6CC9C0C0A48C}" path="ReverseAGeneralJournal.js" />
+				<child name="ImportBudgetModel" key="{FBEA4060-8E3F-4F6C-BC5C-BD018A9BDF4C}" path="ImportBudgetModel.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

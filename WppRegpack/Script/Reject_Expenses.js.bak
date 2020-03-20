@@ -12,7 +12,7 @@ var workBook = Project.Path+excelName;
 var sheetName = "Reject Expenses";
   Indicator.Show();
   Indicator.PushText("waiting for window to open");
- 
+
 Log.Message(workBook);
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Log.Message(sheetName);
