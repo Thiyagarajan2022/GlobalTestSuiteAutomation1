@@ -48,10 +48,17 @@
 					<Node name="1">
 						<Node name="editor">
 							<Node name="{fdf3932b-fcdb-4512-87e9-fa5e5d91def4}">
+<<<<<<< HEAD
 								<Prp name="key" type="S" value="{8267BC71-1E45-4DC8-8899-85EF93E19B9D}"/>
 							</Node>
 							<Prp name="editor" type="S" value="{116A0387-289F-4771-B011-80F7CEAFEFFE}"/>
 							<Prp name="focused" type="S" value="{8267BC71-1E45-4DC8-8899-85EF93E19B9D}"/>
+=======
+								<Prp name="key" type="S" value="{7F4054D5-61E6-4FD8-834C-957F14B581E4}"/>
+							</Node>
+							<Prp name="editor" type="S" value="{116A0387-289F-4771-B011-80F7CEAFEFFE}"/>
+							<Prp name="focused" type="S" value="{7F4054D5-61E6-4FD8-834C-957F14B581E4}"/>
+>>>>>>> eddf4197ba254584e7a82b9a053536dcdbc9f166
 						</Node>
 						<Prp name="edititem" type="S" value="{59681A3C-7467-49FB-B414-FC1FDBE2B33E}"/>
 					</Node>
@@ -187,6 +194,7 @@
 						</Node>
 					</Node>
 				</Node>
+				<Node name="globaltestpackautomation logs"/>
 			</Node>
 		</Node>
 		<Prp name="signature" type="S" value="{8EBE6EB3-803D-4913-AD7A-D71552123A67}"/>
