@@ -216,10 +216,12 @@ var BaseCurrency;
   BaseCurrency = "1.00";
   Log.Message("ExchangeRate :"+ExchangeRate);
   Log.Message("BaseCurrency :"+BaseCurrency)
+  
 var RowCount = 0;
 var addedlines = false;
 var jB = true;
 var line_i =1;
+
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -236,8 +238,10 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 if((wCodeID=="")||(wCodeID==null)){
  jB = false; 
 }
+
  
 if(!jB){
+StartPO = true;
 sheetName = "CreatePurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
  wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
@@ -250,6 +254,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 sheetName = "CreatePurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
+
 
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
 TextUtils.writeLog("Line item "+line_i+" is adding in PO");
@@ -301,6 +306,7 @@ WorkspaceUtils.waitForObj(save);
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
+
 aqUtils.Delay(4000, "Validating Tax");
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(RowCount).getText_2(7).OleValue.toString().trim();

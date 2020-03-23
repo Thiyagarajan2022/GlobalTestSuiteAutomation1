@@ -175,7 +175,7 @@ if((GRP_2=="P")||(GRP_2=="R")){
   }
   }
  else{ 
-  desp_1 = ExcelUtils.getColumnDatas("Description_2",EnvParams.Opco); 
+  desp_2 = ExcelUtils.getColumnDatas("Description_2",EnvParams.Opco); 
  }
  
 if(GRP_2=="P"){
