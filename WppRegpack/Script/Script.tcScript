@@ -87,6 +87,9 @@
 				<child name="CreateAGeneralJournal" key="{7862DAD5-E540-4272-B69E-B9783C7C281C}" path="CreateAGeneralJournal.js" />
 				<child name="ReverseAGeneralJournal" key="{5558565F-4231-4F39-B09E-6CC9C0C0A48C}" path="ReverseAGeneralJournal.js" />
 				<child name="ImportBudgetModel" key="{FBEA4060-8E3F-4F6C-BC5C-BD018A9BDF4C}" path="ImportBudgetModel.js" />
+				<child name="CopyGL" key="{C0D458DF-3609-4424-B0F8-EF57414F40F4}" path="CopyGL.js" />
+				<child name="CurrencyGL" key="{D3B2FA90-C2BD-41EB-B802-70BC5D76D1F1}" path="CurrencyGL.js" />
+				<child name="ReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="ReverseGL.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
