@@ -194,7 +194,7 @@ for(var i=1;i<=10;i++){
 sheetName = "JobBudgetCreation";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-Log.Message("wCodeID :"+wCodeID)
+//Log.Message("wCodeID :"+wCodeID)
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
  jB = false; 
  break;
@@ -486,18 +486,20 @@ var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
    ReportUtils.logStep_Screenshot("");
      }
      
-Log.Message("OHSN :"+OHSN);
-Log.Message("IHSN :"+IHSN);
-Log.Message("POS :"+POS);
+//Log.Message("OHSN :"+OHSN);
+//Log.Message("IHSN :"+IHSN);
+//Log.Message("POS :"+POS);
   if(EnvParams.Country.toUpperCase()=="INDIA")
    Runner.CallMethod("IND_PurchaseOrderfromJobActivities.IND_Specific",Unit_Price,OHSN,IHSN,POS);
    
 //  UnitPrice.Keys("[Tab][Tab][Tab]");
 //aqUtils.Delay(2000, Indicator.Text);
 var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+if(save.toolTipText=="Save Purchase Order Line"){
 save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 save.Click();
+}
 //Delay(5000);
 
   aqUtils.Delay(3000, "Saving Changes");
@@ -579,8 +581,8 @@ aqUtils.Delay(4000, "Validating Tax");
   var lcA;
   
   if(ClientCurrency==ContryCurrency){ 
-    Log.Message(Qly)
-    Log.Message(UnitPrice)
+//    Log.Message(Qly)
+//    Log.Message(UnitPrice)
     lcA = parseFloat(Qly)*parseFloat(UnitPrice);
     Log.Message(lcA)
   }
@@ -595,9 +597,9 @@ aqUtils.Delay(4000, "Validating Tax");
   else{ 
     lcA = parseFloat(CA)*parseFloat(ExchangeRate);
   }
-  Log.Message(lcA)
+//  Log.Message(lcA)
   lcA = lcA.toFixed(2);
-  Log.Message(lcA)
+//  Log.Message(lcA)
   var lowerRange = parseFloat(lcA)-parseFloat("1000.00");
   var higherRange = parseFloat(lcA)+parseFloat("1000.00");
 
@@ -611,9 +613,9 @@ aqUtils.Delay(4000, "Validating Tax");
   ValidationUtils.verify(true,true,"Tax Code 2 is populated");
   
   
-Log.Message(lowerRange) 
-Log.Message(higherRange) 
-Log.Message(local_currency_Amount)
+//Log.Message(lowerRange) 
+//Log.Message(higherRange) 
+//Log.Message(local_currency_Amount)
 
   if(CA==currency_Amount)
   ValidationUtils.verify(true,true,"Currency Amount is verified");
@@ -655,18 +657,18 @@ var lstIndex = Taxcode1.lastIndexOf("%");
 var str = Taxcode1.substring(0, lstIndex);
 lstIndex = str.lastIndexOf(" ");
 Taxcode1 = str.substring(lstIndex+1).replace(/@/g,'');
-Log.Message(Taxcode1)
+//Log.Message(Taxcode1)
 var TAC_1 = (parseFloat(currency_Amount)/100)*parseFloat(Taxcode1)
 var TAB_1 = (parseFloat(local_currency_Amount)/100)*parseFloat(Taxcode1)
 
   var lowerRange = parseFloat(TAC_1)-parseFloat("5.00");
   var higherRange = parseFloat(TAC_1)+parseFloat("5.00");
   
-Log.Message(parseFloat(currency_Amount))
-Log.Message(parseFloat(currency_Amount)/100)
-Log.Message(parseFloat(Taxcode1))
-Log.Message(TAC_1)
-Log.Message(Tax_Amount_currency_1)
+//Log.Message(parseFloat(currency_Amount))
+//Log.Message(parseFloat(currency_Amount)/100)
+//Log.Message(parseFloat(Taxcode1))
+//Log.Message(TAC_1)
+//Log.Message(Tax_Amount_currency_1)
   if(((lowerRange<Tax_Amount_currency_1)&&(higherRange>Tax_Amount_currency_1))||((lowerRange<Tax_Amount)&&(higherRange>Tax_Amount)))
   ValidationUtils.verify(true,true,"Tax Amount Currency 1 is verified");
   else

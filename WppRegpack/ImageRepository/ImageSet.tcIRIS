@@ -253,7 +253,10 @@
 			<image imageFileName="Data\Undo_1.png" initialHash="46328D6E" selectionLeft="382" selectionTop="188" selectionWidth="20" selectionHeight="14" initialLeft="382" initialTop="188" initialWidth="20" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="ToDos_Icon" moniker="{C599BD0C-33FA-4D05-A05B-8499890B0304}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\ToDos_Icon.png" initialHash="00000000" selectionLeft="35" selectionTop="50" selectionWidth="29" selectionHeight="25" initialLeft="35" initialTop="50" initialWidth="29" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\ToDos_Icon.png" initialHash="BD0B7FE4" selectionLeft="35" selectionTop="50" selectionWidth="29" selectionHeight="25" initialLeft="35" initialTop="50" initialWidth="29" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Tab_Icon" moniker="{904C8BE7-24B3-4ACC-BE88-B174E5AF38FD}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Tab_Icon.png" initialHash="00000000" selectionLeft="249" selectionTop="62" selectionWidth="22" selectionHeight="19" initialLeft="249" initialTop="62" initialWidth="22" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>

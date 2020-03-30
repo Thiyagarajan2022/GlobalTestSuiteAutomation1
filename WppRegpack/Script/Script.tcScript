@@ -90,6 +90,8 @@
 				<child name="CopyGL" key="{C0D458DF-3609-4424-B0F8-EF57414F40F4}" path="CopyGL.js" />
 				<child name="CurrencyGL" key="{D3B2FA90-C2BD-41EB-B802-70BC5D76D1F1}" path="CurrencyGL.js" />
 				<child name="ReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="ReverseGL.js" />
+				<child name="Old_CreateBudget" key="{886BC509-75D7-448A-B9DA-0D8319F14999}" path="Old_CreateBudget.js" />
+				<child name="InvoicePreparation" key="{8702BF45-087C-4819-A366-E82806556EB2}" path="InvoicePreparation.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

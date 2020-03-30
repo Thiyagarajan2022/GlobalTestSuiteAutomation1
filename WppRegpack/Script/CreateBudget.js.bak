@@ -834,7 +834,7 @@ ValidationUtils.verify(true,true,"Created Budget is Submitted");
 
 TextUtils.writeLog("Working Estimate is Submitted"); 
 
-quteNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+quteNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().toString().trim();
 //if(ImageRepository.ImageSet.Forward.Exists()){
 //ImageRepository.ImageSet.Forward.Click();// GL
 //}
@@ -1063,13 +1063,13 @@ else{
 
 if(ApproveInfo.length == 1){
 TextUtils.writeLog("Budget is created for :"+jobNumber);
-TextUtils.writeLog("Revision : 1");
+TextUtils.writeLog("Revision : "+quteNumber);
 ExcelUtils.setExcelName(workBook,"CreateQuote", true);
-ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote","1");
+ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote",quteNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Working Estimate",EnvParams.Opco,"Data Management",jobNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management","1");
+ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management",quteNumber);
 }
 
 ////Approve.Click();
