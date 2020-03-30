@@ -21,23 +21,42 @@
 	<Node name="root">
 		<Node name="data">
 			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
-				<Prp name="activity" type="S" value="{59681A3C-7467-49FB-B414-FC1FDBE2B33E}"/>
+				<Prp name="activity" type="S" value="{7862DAD5-E540-4272-B69E-B9783C7C281C}"/>
 			</Node>
 			<Node name="{2c786620-2489-4cbb-9c1e-1a94437a9245}"/>
 			<Node name="{415b5aa1-c6ac-4d4d-9a53-063a521a45ab}">
 				<Node name="workspace">
 					<Node name="0">
 						<Node name="editor">
+							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}">
+								<Prp name="key" type="S" value="{915A8F91-FA78-4FE7-A802-69F4BD40F63D}"/>
+							</Node>
+							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}">
+								<Prp name="col" type="I" value="16"/>
+								<Prp name="key" type="S" value="{C91AC798-632B-4627-937F-3B12F65EC7B6}"/>
+								<Prp name="line" type="I" value="20"/>
+								<Prp name="sellength" type="I" value="0"/>
+								<Prp name="selstart" type="I" value="585"/>
+								<Prp name="windowchar" type="I" value="0"/>
+								<Prp name="windowline" type="I" value="0"/>
+							</Node>
+							<Prp name="editor" type="S" value="{268708A5-FC9C-4E00-89F4-73762D2CCF6B}"/>
+							<Prp name="focused" type="S" value="{C91AC798-632B-4627-937F-3B12F65EC7B6}"/>
+						</Node>
+						<Prp name="edititem" type="S" value="{7862DAD5-E540-4272-B69E-B9783C7C281C}"/>
+					</Node>
+					<Node name="1">
+						<Node name="editor">
 							<Node name="{fdf3932b-fcdb-4512-87e9-fa5e5d91def4}">
-								<Prp name="key" type="S" value="{7F4054D5-61E6-4FD8-834C-957F14B581E4}"/>
+								<Prp name="key" type="S" value="{DDBF0789-653F-4496-A5E3-7E0A3D8D7813}"/>
 							</Node>
 							<Prp name="editor" type="S" value="{116A0387-289F-4771-B011-80F7CEAFEFFE}"/>
-							<Prp name="focused" type="S" value="{7F4054D5-61E6-4FD8-834C-957F14B581E4}"/>
+							<Prp name="focused" type="S" value="{DDBF0789-653F-4496-A5E3-7E0A3D8D7813}"/>
 						</Node>
 						<Prp name="edititem" type="S" value="{59681A3C-7467-49FB-B414-FC1FDBE2B33E}"/>
 					</Node>
-					<Prp name="docking" type="H" value="617162696E00000001000000D40100007801730C74F177F6E666800231203D899981C1960926828FEE6684C8DEF17EF6DEBDF5A3F3E2CEEB574ADFC8723206012580A6307418647744CE64729F326F2B53DBD9DD1AFB81E2CD40F140560686559856B0E0B30C24F71F0A0E01CD3981858F577F024816E4E2F5200610B4336709CED72874DF20D8F0FDDCFAF7FF40A6CE078AFB005DB70CD975A0E0F1634864C8654865F005D2054098C990C7900E14A7839B81B690040040664C8D"/>
-					<Prp name="editorscount" type="I" value="1"/>
+					<Prp name="docking" type="H" value="617162696E000000010000009B0200007801730C74F177F6E666800231203D899981C1960926828F0E82AABAE3FDECBD7BEB47E7C59DD7AF94BE91E56494044A004D61E830C8EE889CC9E43E65DE56A6B6B3BB35F63332303403C50359191856615AC182CF3290DC7F28380434E704163E5EFD09205990A5EB410C206867CE129CAF51E8BE41B0E1FBB9F5EFFF814C9D0F14F701BA6E19B2EB40C1E3C790C890CB90CAE00BA40B803093218F211D284E0737036D390CC420B094A35D6DCE1F06BFCE2FC565BA3AE7B3713A5914A8D899A108E8E044861220E9C8E00E24F380B8082892C3E0C590CF500A64E78179F4F20630808907000AD67223"/>
+					<Prp name="editorscount" type="I" value="2"/>
 					<Prp name="enabled" type="B" value="-1"/>
 				</Node>
 			</Node>
@@ -46,7 +65,75 @@
 			<Node name="{90fe4d39-229d-4887-ac6f-07b02ce523fc}">
 				<Node name="{90fe4d39-229d-4887-ac6f-07b02ce523fc}"/>
 			</Node>
-			<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}"/>
+			<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}">
+				<Node name="{00000000-0000-0000-0000-000000000000}">
+					<Node name="{7862dad5-e540-4272-b69e-b9783c7c281c}">
+						<Node name="0">
+							<Prp name="bottom" type="I" value="6"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="0"/>
+						</Node>
+						<Node name="1">
+							<Prp name="bottom" type="I" value="70"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="21"/>
+						</Node>
+						<Node name="2">
+							<Prp name="bottom" type="I" value="296"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="72"/>
+						</Node>
+						<Node name="3">
+							<Prp name="bottom" type="I" value="340"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="299"/>
+						</Node>
+						<Node name="4">
+							<Prp name="bottom" type="I" value="378"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="342"/>
+						</Node>
+						<Node name="5">
+							<Prp name="bottom" type="I" value="532"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="380"/>
+						</Node>
+						<Node name="6">
+							<Node name="0">
+								<Prp name="bottom" type="I" value="547"/>
+								<Prp name="collapsed" type="B" value="0"/>
+								<Prp name="top" type="I" value="544"/>
+							</Node>
+							<Prp name="bottom" type="I" value="557"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="535"/>
+						</Node>
+						<Node name="7">
+							<Prp name="bottom" type="I" value="578"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="560"/>
+						</Node>
+						<Node name="8">
+							<Prp name="bottom" type="I" value="625"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="580"/>
+						</Node>
+						<Node name="9">
+							<Node name="0">
+								<Prp name="bottom" type="I" value="712"/>
+								<Prp name="collapsed" type="B" value="0"/>
+								<Prp name="top" type="I" value="709"/>
+							</Node>
+							<Prp name="bottom" type="I" value="732"/>
+							<Prp name="collapsed" type="B" value="0"/>
+							<Prp name="top" type="I" value="628"/>
+						</Node>
+						<Prp name="bottom" type="I" value="732"/>
+						<Prp name="collapsed" type="B" value="0"/>
+						<Prp name="top" type="I" value="0"/>
+					</Node>
+				</Node>
+			</Node>
 			<Node name="{d02cce92-fd05-4f42-a803-fe08e8104e33}">
 				<Node name="hosts"/>
 				<Node name="tests">
@@ -61,7 +148,14 @@
 				<Node name="globaltestpackautomation">
 					<Node name="globaltestpack">
 						<Node name="advanced">
-							<Node name="script"/>
+							<Node name="script">
+								<Node name="testscripts">
+									<Node name="global test case"/>
+									<Node name="india">
+										<Node name="criticalregression"/>
+									</Node>
+								</Node>
+							</Node>
 						</Node>
 					</Node>
 				</Node>

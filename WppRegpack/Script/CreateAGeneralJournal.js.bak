@@ -59,15 +59,15 @@ AddJournalLines();
 attachDocument();
 submit();
 WorkspaceUtils.closeAllWorkspaces();
-//WorkspaceUtils.closeMaconomy();
-//aqUtils.Delay(10000, Indicator.Text);
-//ExcelUtils.setExcelName(workBook, "SSC Users", true);
-//var username = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
-//Restart.login(username);
-//aqUtils.Delay(5000, Indicator.Text);
-//todo();
-//ApproveGL();
-//WorkspaceUtils.closeAllWorkspaces();
+WorkspaceUtils.closeMaconomy();
+aqUtils.Delay(10000, Indicator.Text);
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var username = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
+Restart.login(username);
+aqUtils.Delay(5000, Indicator.Text);
+todo();
+ApproveGL();
+WorkspaceUtils.closeAllWorkspaces();
 }
 
 function getDetails(){ 
