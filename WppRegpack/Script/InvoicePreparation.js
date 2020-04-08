@@ -17,7 +17,7 @@ var level =0;
 var STIME = "";
 var percentage,jobNumber = "";
 
-//Main Function
+//----Main Function----------
 function InvoicePreparation(){ 
 TextUtils.writeLog("Create General Journal Started"); 
 Indicator.PushText("waiting for window to open");
