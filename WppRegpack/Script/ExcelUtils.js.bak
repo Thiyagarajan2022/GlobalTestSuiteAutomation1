@@ -495,7 +495,7 @@ var colsList = [];
 function ReadExcelSheet(array,Opco,sheets){
 var temp = "";
 setExcelName(excelName, sheets, true);
-temp = ExcelUtils.getRowDatas(array,Opco);
+temp = JavaClasses.org_excelwrite.companyinfo.getRowDatas(array,Opco);
 
 
 /*

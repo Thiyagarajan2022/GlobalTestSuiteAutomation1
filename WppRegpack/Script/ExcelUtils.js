@@ -548,52 +548,55 @@ return temp.OleValue.toString().trim();
 
 
 function WriteExcelSheet(array,Opco,sheets,val){
-//Log.Message("Execution completed,sending result to excel book , FileName:"+excelName+"  sheetname:"+sheets);
-//  Log.Message(val);
-//  Log.Message(array)
-  var app = Sys.OleObject("Excel.Application");
-  app.Visible = "True";
-  var curArrayVals = [];  
-  var book = app.Workbooks.Open(excelName);
-//  Log.Message(sheets)
-  var sheet = book.Sheets.Item(sheets);;
-  var columnCount = sheet.UsedRange.Columns.Count;
-  var rowCount = sheet.UsedRange.Rows.Count;
-//  Log.Message(columnCount);
-//  Log.Message(rowCount);
-  var arrays={};
-  var idx =0;
-  var col =0;
-  var row = 0;
-  for(var k = 1; k<=columnCount;k++){
-  if(sheet.Cells.Item(1, k).Text.toString().trim()==Opco){
-  col = k;
-//  Log.Message(sheet.Cells.Item(1, k).Text)
-  }
-  }
-  var rowStatus = false;
-  for(var k = 1; k<=rowCount;k++){
-  if(sheet.Cells.Item(k, 1).Text.toString().trim()==array){
-//  Log.Message(sheet.Cells.Item(k, 1).Text);
-//  Log.Message(sheet.Cells.Item(k, col).Text);
-  row = k;
-  rowStatus = true;
-  }
-  }
   
-  if(!rowStatus){ 
-   sheet.Cells.Item(rowCount+1,  1).Value = array
-   sheet.Cells.Item(rowCount+1,  col).Value = val
-//   Log.Message("Row :"+rowCount)
-//   Log.Message("Column :"+col)
-  }
-  else{ 
-    sheet.Cells.Item(row,  col).Value = val
-//  Log.Message("Row :"+row)
-//   Log.Message("Column :"+col)
-  }
- book.Save();
- app.Quit();
+JavaClasses.org_excelwrite.companyinfo.WriteExcelSheet(array,Opco,sheets,val)
+
+////Log.Message("Execution completed,sending result to excel book , FileName:"+excelName+"  sheetname:"+sheets);
+////  Log.Message(val);
+////  Log.Message(array)
+//  var app = Sys.OleObject("Excel.Application");
+//  app.Visible = "True";
+//  var curArrayVals = [];  
+//  var book = app.Workbooks.Open(excelName);
+////  Log.Message(sheets)
+//  var sheet = book.Sheets.Item(sheets);;
+//  var columnCount = sheet.UsedRange.Columns.Count;
+//  var rowCount = sheet.UsedRange.Rows.Count;
+////  Log.Message(columnCount);
+////  Log.Message(rowCount);
+//  var arrays={};
+//  var idx =0;
+//  var col =0;
+//  var row = 0;
+//  for(var k = 1; k<=columnCount;k++){
+//  if(sheet.Cells.Item(1, k).Text.toString().trim()==Opco){
+//  col = k;
+////  Log.Message(sheet.Cells.Item(1, k).Text)
+//  }
+//  }
+//  var rowStatus = false;
+//  for(var k = 1; k<=rowCount;k++){
+//  if(sheet.Cells.Item(k, 1).Text.toString().trim()==array){
+////  Log.Message(sheet.Cells.Item(k, 1).Text);
+////  Log.Message(sheet.Cells.Item(k, col).Text);
+//  row = k;
+//  rowStatus = true;
+//  }
+//  }
+//  
+//  if(!rowStatus){ 
+//   sheet.Cells.Item(rowCount+1,  1).Value = array
+//   sheet.Cells.Item(rowCount+1,  col).Value = val
+////   Log.Message("Row :"+rowCount)
+////   Log.Message("Column :"+col)
+//  }
+//  else{ 
+//    sheet.Cells.Item(row,  col).Value = val
+////  Log.Message("Row :"+row)
+////   Log.Message("Column :"+col)
+//  }
+// book.Save();
+// app.Quit();
 }
 
 

@@ -305,16 +305,92 @@ Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.
 if(EnvParams.Country.toUpperCase()=="INDIA")
    Runner.CallMethod("IND_ApprovePurchaseOrder.todo",lvl);
 else{
+//if(lvl==3){
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+//}
+//if(lvl==2){
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line (*)");
+//}
+
+
+var listPass = true;
 if(lvl==3){
-Client_Managt.ClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Allocation Line by Type (Substitute) (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type (Substitute) from To-Dos List"); 
+  }
+}  
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line by Type (Substitute) (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line by Type (Substitute) (*)");
+//TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type (Substitute) from To-Dos List");
+listPass = false;
 }
 if(lvl==2){
-Client_Managt.ClickItem("|Approve Invoice Allocation Line (*)");
+  
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Allocation Line by Type (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|Approve Invoice Allocation Line (*)");
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type (Substitute) from To-Dos List"); 
+  }
+} 
+
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line by Type (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line by Type (*)");
+//TextUtils.writeLog("Entering into Approve Invoice Allocation Line by Type from To-Dos List");
+listPass = false;
 }
+if(listPass){
+if(lvl==3){
+
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Allocation Line (Substitute) (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line (Substitute) from To-Dos List"); 
+  }
+}
+
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line (Substitute) (*)");
+//TextUtils.writeLog("Entering into Approve Invoice Allocation Line (Substitute) from To-Dos List");
+}
+if(lvl==2){
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Allocation Line (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Invoice Allocation Line from To-Dos List"); 
+  }
+} 
+//Client_Managt.ClickItem("|Approve Invoice Allocation Line (*)");
+//ReportUtils.logStep_Screenshot(); 
+//Client_Managt.DblClickItem("|Approve Invoice Allocation Line (*)");
+//TextUtils.writeLog("Entering into Approve Invoice Allocation Line from To-Dos List");
+}
+}
+
 }
 
 }

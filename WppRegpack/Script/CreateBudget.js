@@ -34,6 +34,8 @@ var count = true;
 var Arrays = [];
 
 function createBudget(){ 
+
+  
 TextUtils.writeLog("Job Budget Creation Started"); 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -73,6 +75,7 @@ level =0;
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 sheetName = "JobCreation";
+
 
   getDetails();
   goToJobMenuItem();
@@ -245,6 +248,7 @@ var show_budget = "";
 //Log.Message(show_budget.FullName);
 
     show_budget = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+    Sys.HighlightObject(show_budget);
     WorkspaceUtils.waitForObj(show_budget);
     show_budget.HoverMouse();
     show_budget.HoverMouse();
@@ -902,7 +906,7 @@ ValidationUtils.verify(true,true,"Created Budget is Submitted");
 
 TextUtils.writeLog("Working Estimate is Submitted"); 
 
-quteNumber = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().toString().trim();
+quteNumber = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().OleValue.toString().trim();
 //quteNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().toString().trim();
 
 ////if(ImageRepository.ImageSet.Forward.Exists()){

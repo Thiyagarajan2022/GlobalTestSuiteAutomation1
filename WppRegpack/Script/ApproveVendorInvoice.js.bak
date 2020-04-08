@@ -201,7 +201,7 @@ TextUtils.writeLog("Created Vendor Invoice is available in system");
   //      Approve_Level[y] = "1307*1307100030*1307 SeniorFinance (13079510)*1307 Management (13079507)*"
   Approve_Level[y] = approvers;
   y++;
-  break;
+//  break;
       }
 }
 TextUtils.writeLog("Finding approvers for Created Vendor Invoice");

@@ -354,13 +354,28 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x12); 
     Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
     Sys.Desktop.KeyUp(0x41);
     
     if(ImageRepository.PDF.ChooseFolder.Exists())
     ImageRepository.PDF.ChooseFolder.Click();
-    
+    else{ 
+      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+      WorkspaceUtils.waitForObj(window);
+      Sys.Desktop.KeyDown(0x12); //Alt
+      Sys.Desktop.KeyDown(0x73); //F4
+      Sys.Desktop.KeyUp(0x12); //Alt
+      Sys.Desktop.KeyUp(0x73); //F4
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x12); 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x41);
+    }
     var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
     aqUtils.Delay(2000, Indicator.Text);
     SaveTitle = save.wText;
@@ -411,8 +426,7 @@ ReportUtils.logStep_Screenshot("");
     Sys.HighlightObject(submittedby);
     ValidationUtils.verify(true,true,"Quote is Submitted by :"+ submittedby.getText());
     var approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SingleToolItemControl2;
-    Sys.HighlightObject(approve)
-    approve.HoverMouse();
+WorkspaceUtils.waitForObj(approve);
 ReportUtils.logStep_Screenshot("");
     approve.Click();
     ValidationUtils.verify(true,true,"Quote has Approved");
@@ -458,7 +472,22 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote
     
     if(ImageRepository.PDF.ChooseFolder.Exists())
     ImageRepository.PDF.ChooseFolder.Click();
-    
+    else{ 
+      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+      WorkspaceUtils.waitForObj(window);
+      Sys.Desktop.KeyDown(0x12); //Alt
+      Sys.Desktop.KeyDown(0x73); //F4
+      Sys.Desktop.KeyUp(0x12); //Alt
+      Sys.Desktop.KeyUp(0x73); //F4
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x12); 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x41);
+    }
     var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
     aqUtils.Delay(2000, Indicator.Text);
     SaveTitle = save.wText;
@@ -576,7 +605,22 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Order
     
     if(ImageRepository.PDF.ChooseFolder.Exists())
     ImageRepository.PDF.ChooseFolder.Click();
-    
+     else{ 
+      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+      WorkspaceUtils.waitForObj(window);
+      Sys.Desktop.KeyDown(0x12); //Alt
+      Sys.Desktop.KeyDown(0x73); //F4
+      Sys.Desktop.KeyUp(0x12); //Alt
+      Sys.Desktop.KeyUp(0x73); //F4
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x12); 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x41);
+    }
     var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
     aqUtils.Delay(2000, Indicator.Text);
     SaveTitle = save.wText;
