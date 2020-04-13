@@ -63,6 +63,9 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 //  Delay(5000);
   selectJobs();
   listPurchaseOrder();
+  var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+closeAllWorkspaces();
 }
 
 function getDetails(){ 
@@ -495,7 +498,8 @@ var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
 //  UnitPrice.Keys("[Tab][Tab][Tab]");
 //aqUtils.Delay(2000, Indicator.Text);
 var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-if(save.toolTipText=="Save Purchase Order Line"){
+Sys.HighlightObject(save);
+if(save.toolTipText.OleValue.toString().trim().indexOf("Save Purchase Order Line")!=-1){
 save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 save.Click();
@@ -690,12 +694,29 @@ if(j<table.getItemCount()-2)
 
   }
   
-  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
-  action.HoverMouse();
-  ReportUtils.logStep_Screenshot("");
-  action.Click();
-//  Delay(3000);
-  action.PopupMenu.Click("Submit Purchase Order");
+//  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+//  action.HoverMouse();
+//  ReportUtils.logStep_Screenshot("");
+//  action.Click();
+////  Delay(3000);
+//  action.PopupMenu.Click("Submit Purchase Order");
+  
+  var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
+Sys.HighlightObject(SubmitPurchase);
+for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
+  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText=="Submit Purchase Order")){
+    SubmitPurchase = SubmitPurchase.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(SubmitPurchase);
+SubmitPurchase.HoverMouse();
+ReportUtils.logStep_Screenshot(); 
+SubmitPurchase.Click();
+
+  ReportUtils.logStep_Screenshot();
+  aqUtils.Delay(8000, "Submit Purchase Order");;
+  TextUtils.writeLog("Submit Purchase Order is Clicked");
   
 //var submittedBy = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.McTextWidget;
 /*

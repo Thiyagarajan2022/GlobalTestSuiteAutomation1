@@ -1607,7 +1607,8 @@ else
 ValidationUtils.verify(false,true,"Budget Currency is Not Matched ");        
 TextUtils.writeLog("Client Approved Estimate is validated");
 TextUtils.writeLog("Total Budget Currency is Matched");
-ImageRepository.ImageSet.Submit1.Click();             
+ImageRepository.ImageSet.Submit1.Click();   
+ReportUtils.logStep_Screenshot("");          
 var Add_Visible8 = true;
 
 ValidationUtils.verify(true,true,"Created Budget is Submitted");
@@ -1678,6 +1679,7 @@ level = 1;
 if(ImageRepository.ImageSet.ApproveBudget.Exists())
 ImageRepository.ImageSet.ApproveBudget.Click();
 
+ReportUtils.logStep_Screenshot("");
 var ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2)
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);

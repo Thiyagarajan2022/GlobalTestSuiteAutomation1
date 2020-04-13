@@ -134,7 +134,7 @@ Client_Managt.DblClickItem("|Jobs");
 
 //aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
-
+TextUtils.writeLog("Moved to Jobs from Jobs Menu");
 }
 
 
@@ -142,6 +142,7 @@ function selectJobs(){
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllJobs;
   WorkspaceUtils.waitForObj(allJobs);
   allJobs.Click();
+  ReportUtils.logStep_Screenshot("");
 //  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.CompanyNumber;
@@ -177,6 +178,7 @@ function selectJobs(){
   if(flag){
   ReportUtils.logStep("INFO", "Job is listed in table to create PO");
   ReportUtils.logStep_Screenshot("");
+  TextUtils.writeLog("Job is listed in table to create PO");
   closeFilter.Click();
 //  aqUtils.Delay(8000, Indicator.Text);
   var jobActivities = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.JobActivities;
@@ -186,6 +188,7 @@ function selectJobs(){
   WorkspaceUtils.waitForObj(iniatePOfromBudget);
   iniatePOfromBudget.Click();
   ReportUtils.logStep_Screenshot("");
+  TextUtils.writeLog("Initiate Purchase Order is clicked");
 //  aqUtils.Delay(5000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid;
   WorkspaceUtils.waitForObj(table);
@@ -347,7 +350,8 @@ if(j<table.getItemCount()-2)
   Okay.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   Okay.Click();
-  aqUtils.Delay(2000,"Created PO Number :");
+  aqUtils.Delay(2000,"Created PO Number :"+PONumber);
+  TextUtils.writeLog("Purchase Order is Created :"+PONumber);
 }
 
 
@@ -391,6 +395,7 @@ function listPurchaseOrder(){
     closeFilter.HoverMouse();
     ReportUtils.logStep_Screenshot("");
     closeFilter.Click();
+    TextUtils.writeLog("Created Purchase order is listed in Table");
 //    aqUtils.Delay(5000, Indicator.Text);
     
 //    var POLine = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -498,10 +503,12 @@ var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
 //  UnitPrice.Keys("[Tab][Tab][Tab]");
 //aqUtils.Delay(2000, Indicator.Text);
 var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-if(save.toolTipText=="Save Purchase Order Line"){
+Sys.HighlightObject(save);
+if(save.toolTipText.OleValue.toString().trim().indexOf("Save Purchase Order Line")!=-1){
 save.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 save.Click();
+TextUtils.writeLog("Modified Lines are Saved");
 }
 //Delay(5000);
 
@@ -693,12 +700,29 @@ if(j<table.getItemCount()-2)
 
   }
   
-  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
-  action.HoverMouse();
-  ReportUtils.logStep_Screenshot("");
-  action.Click();
-//  Delay(3000);
-  action.PopupMenu.Click("Submit Purchase Order");
+//  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+//  action.HoverMouse();
+//  ReportUtils.logStep_Screenshot("");
+//  action.Click();
+////  Delay(3000);
+//  action.PopupMenu.Click("Submit Purchase Order");
+  
+  var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
+Sys.HighlightObject(SubmitPurchase);
+for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
+  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText=="Submit Purchase Order")){
+    SubmitPurchase = SubmitPurchase.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(SubmitPurchase);
+SubmitPurchase.HoverMouse();
+ReportUtils.logStep_Screenshot(); 
+SubmitPurchase.Click();
+
+  ReportUtils.logStep_Screenshot();
+  aqUtils.Delay(8000, "Submit Purchase Order");;
+  TextUtils.writeLog("Submit Purchase Order is Clicked");
   
 //var submittedBy = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.McTextWidget;
 /*

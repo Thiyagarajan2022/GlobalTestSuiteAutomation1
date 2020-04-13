@@ -221,67 +221,67 @@ ImageRepository.ImageSet.Show_Filter.Click();
 }
 TextUtils.writeLog("Finding approvers for Created Purchase Order");
 CredentialLogin();
-//var OpCo2 = ApproveInfo[0].split("*");
-////var OpCo1 = EnvParams.Opco;
+var OpCo2 = ApproveInfo[0].split("*");
+//var OpCo1 = EnvParams.Opco;
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+sheetName = "RejectPurchaseOrder";
+if(OpCo2[2]==Project_manager){
+//var OpCo1 = EnvParams.Opco;
 //ExcelUtils.setExcelName(workBook, "Server Details", true);
 //var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-//sheetName = "RejectPurchaseOrder";
-//if(OpCo2[2]==Project_manager){
-////var OpCo1 = EnvParams.Opco;
-////ExcelUtils.setExcelName(workBook, "Server Details", true);
-////var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-////var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
-////if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
-////if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
-//level = 1;
-//var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
-//var remarks = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid.Remarks;
-//remarks.setText("Rejected");
-//aqUtils.Delay(1000, Indicator.Text);;
-//var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
-//save.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-//save.Click();
-////ImageRepository.ImageSet.Rejected.HoverMouse();
-//ImageRepository.ImageSet.Rejected.Click();
-//ReportUtils.logStep_Screenshot();
-////aqUtils.Delay(8000, Indicator.Text);;
-//aqUtils.Delay(1000, Indicator.Text);;
-//ValidationUtils.verify(true,true,"Purchase Order is Rejected by "+Project_manager)
-//TextUtils.writeLog("Levels 0 has  Rejected the Purchase Order by "+Project_manager);
-//
-//var ii=0;
-//while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected")&&(ii!=60))
-//{
-//  aqUtils.Delay(100);
-//  ii++;
-//  approvertable.Refresh();
-//}
-////Log.Message(approvertable.getItem(0).getText_2(3).OleValue.toString().trim())
-////Log.Message(approvertable.getItem(0).getText_2(4).OleValue.toString().trim())
-////Log.Message(approvertable.getItem(0).getText_2(5).OleValue.toString().trim())
-////Log.Message(approvertable.getItem(0).getText_2(6).OleValue.toString().trim())
-////Log.Message(approvertable.getItem(0).getText_2(7).OleValue.toString().trim())
-////Log.Message(approvertable.getItem(0).getText_2(8).OleValue.toString().trim())
-//  if(approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected"){
-//  ValidationUtils.verify(true,true,"Purchase Order is Rejected by :"+Project_manager)
-//  TextUtils.writeLog("Purchase Order is Rejected by :"+Project_manager); 
-//  }else{ 
-//  TextUtils.writeLog("Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected"); 
-//  ValidationUtils.verify(true,false,"Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected")
-//  }
-// 
-//  WorkspaceUtils.waitForObj(approvertable);
-//  ImageRepository.ImageSet.Undo.Click();
-//  aqUtils.Delay(1000);
-//  approvertable.Keys("[Tab]");
-//  aqUtils.Delay(1000);
-//  remarks.setText(" ");
-//  save.HoverMouse();
-//  ReportUtils.logStep_Screenshot();
-//  save.Click();
-//aqUtils.Delay(1000, "Waiting to Save");; 
-//}
+//var OpCo2 = Approve_Level[0].replace(/OpCo -/g,OpCo1);
+//if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
+//if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
+level = 1;
+var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
+var remarks = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid.Remarks;
+remarks.setText("Rejected");
+aqUtils.Delay(1000, Indicator.Text);;
+var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
+save.HoverMouse();
+ReportUtils.logStep_Screenshot();
+save.Click();
+//ImageRepository.ImageSet.Rejected.HoverMouse();
+ImageRepository.ImageSet.Rejected.Click();
+ReportUtils.logStep_Screenshot();
+//aqUtils.Delay(8000, Indicator.Text);;
+aqUtils.Delay(1000, Indicator.Text);;
+ValidationUtils.verify(true,true,"Purchase Order is Rejected by "+Project_manager)
+TextUtils.writeLog("Levels 0 has  Rejected the Purchase Order by "+Project_manager);
+
+var ii=0;
+while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected")&&(ii!=60))
+{
+  aqUtils.Delay(100);
+  ii++;
+  approvertable.Refresh();
+}
+//Log.Message(approvertable.getItem(0).getText_2(3).OleValue.toString().trim())
+//Log.Message(approvertable.getItem(0).getText_2(4).OleValue.toString().trim())
+//Log.Message(approvertable.getItem(0).getText_2(5).OleValue.toString().trim())
+//Log.Message(approvertable.getItem(0).getText_2(6).OleValue.toString().trim())
+//Log.Message(approvertable.getItem(0).getText_2(7).OleValue.toString().trim())
+//Log.Message(approvertable.getItem(0).getText_2(8).OleValue.toString().trim())
+  if(approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected"){
+  ValidationUtils.verify(true,true,"Purchase Order is Rejected by :"+Project_manager)
+  TextUtils.writeLog("Purchase Order is Rejected by :"+Project_manager); 
+  }else{ 
+  TextUtils.writeLog("Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected"); 
+  ValidationUtils.verify(true,false,"Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected")
+  }
+ 
+  WorkspaceUtils.waitForObj(approvertable);
+  ImageRepository.ImageSet.Undo.Click();
+  aqUtils.Delay(1000);
+  approvertable.Keys("[Tab]");
+  aqUtils.Delay(1000);
+  remarks.setText(" ");
+  save.HoverMouse();
+  ReportUtils.logStep_Screenshot();
+  save.Click();
+aqUtils.Delay(1000, "Waiting to Save");; 
+}
 
 
 /*

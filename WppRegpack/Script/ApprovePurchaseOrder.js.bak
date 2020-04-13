@@ -186,6 +186,13 @@ ImageRepository.ImageSet.Show_Filter.Click();
   var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
   WorkspaceUtils.waitForObj(purchaseOrderApproval);
   purchaseOrderApproval.Click();
+  
+  
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 //  if(ImageRepository.ImageSet.Forward.Exists()){ 
 //   if(ImageRepository.ImageSet.Maximize.Exists()){
 //   ImageRepository.ImageSet.Maximize.Click();
@@ -227,7 +234,7 @@ var OpCo2 = ApproveInfo[0].split("*");
 //var OpCo1 = EnvParams.Opco;
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-sheetName = "RejectPurchaseOrder";
+sheetName = "ApprovePurchaseOrder";
 if(OpCo2[2]==Project_manager){
 //var OpCo1 = EnvParams.Opco;
 //ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -236,15 +243,23 @@ if(OpCo2[2]==Project_manager){
 //if((Approve_Level[0].indexOf(Project_manager)!=-1)||(OpCo2.indexOf(Project_manager)!=-1)){
 //if((Project_manager.indexOf(Approve_Level[0])!=-1)||(Project_manager.indexOf(OpCo2)!=-1)){
 level = 1;
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+//var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText=="Approve")){
+    Approve = Approve.Child(i);
+    break;
+  }
+}
 Sys.HighlightObject(Approve)
 if(Approve.isEnabled()){ 
 Approve.HoverMouse();
 ReportUtils.logStep_Screenshot();
   Approve.Click();
-  Approve.PopupMenu.Click("Approve Purchase Order");
+//  Approve.PopupMenu.Click("Approve Purchase Order");
 //ImageRepository.ImageSet.ApprovePurchaseOrder.Click();
-ReportUtils.logStep_Screenshot();
+//ReportUtils.logStep_Screenshot();
 //aqUtils.Delay(8000, Indicator.Text);;
 ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Project_manager)
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
@@ -600,19 +615,29 @@ closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
 //aqUtils.Delay(5000, Indicator.Text);;
+ 
 
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action;
+//var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.Action;
 //var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl2
+
+var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2;
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText=="Approve")){
+    Approve = Approve.Child(i);
+    break;
+  }
+}
 WorkspaceUtils.waitForObj(Approve);
 Sys.HighlightObject(Approve)
 if(Approve.isEnabled()){ 
 Approve.HoverMouse();
 ReportUtils.logStep_Screenshot();
 Approve.Click();
-aqUtils.Delay(3000, Indicator.Text);
-Approve.PopupMenu.Click("Approve Purchase Order");
-//ImageRepository.ImageSet.ApprovePurchaseOrder.Click();
-ReportUtils.logStep_Screenshot();
+//aqUtils.Delay(3000, Indicator.Text);
+//Approve.PopupMenu.Click("Approve Purchase Order");
+////ImageRepository.ImageSet.ApprovePurchaseOrder.Click();
+//ReportUtils.logStep_Screenshot();
 //aqUtils.Delay(8000, Indicator.Text);;
 ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
 //aqUtils.Delay(8000, Indicator.Text);;
