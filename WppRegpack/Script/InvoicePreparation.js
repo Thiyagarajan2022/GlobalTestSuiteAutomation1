@@ -17,7 +17,7 @@ var level =0;
 var STIME = "";
 var percentage,jobNumber = "";
 
-//----Main Function----------
+//Main Function
 function InvoicePreparation(){ 
 TextUtils.writeLog("Create General Journal Started"); 
 Indicator.PushText("waiting for window to open");
@@ -58,7 +58,18 @@ ReportUtils.logStep("INFO", "Invoice Preparation started::"+STIME);
 getDetails();
 gotoMenu();
 gotoInvoicing();
-
+WorkspaceUtils.closeAllWorkspaces();
+for(var i=level;i<ApproveInfo.length;i++){
+  level=i;
+WorkspaceUtils.closeMaconomy();
+aqUtils.Delay(10000, Indicator.Text);
+var temp = ApproveInfo[i].split("*");
+Restart.login(temp[2]);
+aqUtils.Delay(5000, Indicator.Text);
+todo(temp[3]);
+FinalApprove(temp[1],temp[2],i);
+}
+WorkspaceUtils.closeAllWorkspaces();
 }
 
 function getDetails(){ 
@@ -140,15 +151,15 @@ for(var i=0;i<labels.ChildCount;i++){
 }
 
 WorkspaceUtils.waitForObj(labels);
-var i=0;
-while((labels.getText().OleValue.toString().trim().indexOf("results")!=-1)&&(i!=60)){ 
-  aqUtils.Delay(100);
-  i++;
-  labels.Refresh();
-}
-if(labels.getText().OleValue.toString().trim().indexOf("results")!=-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
-}
+//var i=0;
+//while((labels.getText().OleValue.toString().trim().indexOf("results")==-1)&&(i!=60)){ 
+//  aqUtils.Delay(100);
+//  i++;
+//  labels.Refresh();
+//}
+//if(labels.getText().OleValue.toString().trim().indexOf("results")!=-1){ 
+// ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+//}
 
   var table = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.JobTable;
   var firstcell = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.JobTable.CompanyNo;
@@ -196,6 +207,33 @@ if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy for Invoice Preparation"); 
   closeFilter.Click();
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+  var clientApproved = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
+  WorkspaceUtils.waitForObj(clientApproved);
+  if(clientApproved.background!=10674625){
+    ValidationUtils.verify(true,false,"Client Approved Estimate is not Fully Approved")
+    }
+    else{ 
+    ValidationUtils.verify(true,true,"Client Approved Estimate is Fully Approved")  
+    }
+  var workingEstimate = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite2.McTextWidget;
+  WorkspaceUtils.waitForObj(workingEstimate);
+  if(workingEstimate.background!=10674625){
+    ValidationUtils.verify(true,false,"Working Approved Estimate is not Fully Approved")
+    }
+    else{ 
+    ValidationUtils.verify(true,true,"Working Approved Estimate is Fully Approved")  
+    }
+  var lastInvoice = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+  var totalInvoice = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McTextWidget;
+  var billingPrice = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
+  var netInvoiceOnAcc = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite5.McTextWidget;
+  
 
 /*
   var Budget = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
@@ -387,7 +425,8 @@ CloseFilter.Click();
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
-var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite;
+var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+//var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite;
 //                  Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite
                   
   WorkspaceUtils.waitForObj(SubmitDraft);
@@ -404,8 +443,9 @@ var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Compos
   }else{ 
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
-    
- var PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.EditableBar;
+
+ var PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+// var PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.EditableBar;
   WorkspaceUtils.waitForObj(PrintDraft);
   for(var i=0;i<PrintDraft.ChildCount;i++){ 
     if((PrintDraft.Child(i).isVisible())&&(PrintDraft.Child(i).toolTipText=="Print Draft")){
@@ -432,7 +472,22 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice E
     
     if(ImageRepository.PDF.ChooseFolder.Exists())
     ImageRepository.PDF.ChooseFolder.Click();
-    
+    else{ 
+      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+      WorkspaceUtils.waitForObj(window);
+      Sys.Desktop.KeyDown(0x12); //Alt
+      Sys.Desktop.KeyDown(0x73); //F4
+      Sys.Desktop.KeyUp(0x12); //Alt
+      Sys.Desktop.KeyUp(0x73); //F4
+    aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x12); 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x41);
+    }
     var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
     aqUtils.Delay(2000, Indicator.Text);
     SaveTitle = save.wText;
@@ -466,9 +521,450 @@ ValidationUtils.verify(true,true,"Print Order Confirmation is Clicked and PDF is
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
+   
     
+var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+WorkspaceUtils.waitForObj(appvBar);
+appvBar.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+  
+ImageRepository.ImageSet.Maximize.Click();
+var DraftApproval = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl
+WorkspaceUtils.waitForObj(DraftApproval);
+DraftApproval.Click();
+
+//WorkspaceUtils.waitForObj(DraftApproval);
+//  for(var i=0;i<DraftApproval.ChildCount;i++){ 
+//    if((DraftApproval.Child(i).isVisible())&&(DraftApproval.Child(i).text=="All Approval Actions")){
+//      WorkspaceUtils.waitForObj(DraftApproval.Child(i));
+//      DraftApproval.Child(i).Click();
+//      break;
+//    }
+//  } 
+  
+//purchaseApproval.Click();
+var ApproverTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+WorkspaceUtils.waitForObj(ApproverTable);
+ var y=0;
+for(var i=0;i<ApproverTable.getItemCount();i++){   
+   var approvers="";
+    if(ApproverTable.getItem(i).getText_2(6)!="Approved"){
+    approvers = EnvParams.Opco+"*"+jobNumber+"*"+ApproverTable.getItem(i).getText_2(3).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(4).OleValue.toString().trim();
+    Log.Message("Approver level :" +i+ ": " +approvers);
+//      Approve_Level[y] = "1307*1307100030*1307 SeniorFinance (13079510)*1307 Management (13079507)*"
+    Approve_Level[y] = approvers;
+    y++;
+    }
+}
+
+var closeBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
+WorkspaceUtils.waitForObj(closeBar);
+closeBar.Click();
+ImageRepository.ImageSet.Forward.Click();
+CredentialLogin();
+var OpCo2 = ApproveInfo[0].split("*");
+//sheetName = "ApprovePurchaseOrder";
+Log.Message(OpCo2[2]);
+Log.Message(Project_manager);
+if(OpCo2[2]==Project_manager){
+level = 1;
+
+var Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText=="Approve Draft")){
+    Approve = Approve.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(Approve);
+ReportUtils.logStep_Screenshot();
+Approve.Click();
+ValidationUtils.verify(true,true,"Draft Invoice is Approved by "+Project_manager)
+TextUtils.writeLog("Levels 0 has  Approved Draft Invoice");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+
+var screen = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+WorkspaceUtils.waitForObj(screen);
+  screen.Click();
+  screen.MouseWheel(-100);
+//  aqUtils.Delay(5000, Indicator.Text);
+var ApvPerson = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.Composite.McTextWidget;
+var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
+    var i=0;
+while (((ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("APPROVED")==-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))&&(i!=60))
+{
+  aqUtils.Delay(100);
+  i++;
+  ApvPerson.Refresh();
+}
+
+  if((ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("APPROVED")!=-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")!=-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1)){
+  ValidationUtils.verify(true,true,"Draft Invoice is Approved by :"+loginPer)
+  TextUtils.writeLog("Draft Invoice is Approved by :"+loginPer); 
+  }else{ 
+  TextUtils.writeLog("Draft Invoice is Approved by :"+loginPer+ "But its Not Reflected"); 
+  ValidationUtils.verify(true,false,"Draft Invoice is Approved by :"+loginPer+ "But its Not Reflected")
+  }
+  
+if(Approve_Level.length==1){
+var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+WorkspaceUtils.waitForObj(appvBar);
+appvBar.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+  
+ImageRepository.ImageSet.Maximize.Click();
+var DraftApproval = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl
+WorkspaceUtils.waitForObj(DraftApproval);
+DraftApproval.Click();
+
+//var DraftApproval = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel;
+//WorkspaceUtils.waitForObj(DraftApproval);
+//  for(var i=0;i<DraftApproval.ChildCount;i++){ 
+//    if((DraftApproval.Child(i).isVisible())&&(DraftApproval.Child(i).text=="All Approval Actions")){
+//      WorkspaceUtils.waitForObj(DraftApproval.Child(i));
+//      DraftApproval.Child(i).Click();
+//      break;
+//    }
+//  } 
+  
+var ApproverTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+WorkspaceUtils.waitForObj(ApproverTable);
+ReportUtils.logStep_Screenshot();
+var closeBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
+WorkspaceUtils.waitForObj(closeBar);
+closeBar.Click();
+ImageRepository.ImageSet.Forward.Click();
+
+}
+}
   
   }
   }
 
 }
+
+
+function CredentialLogin(){ 
+  var AppvLevl = [];
+for(var i=0;i<Approve_Level.length;i++){
+  var UserN = true;
+  var temp="";
+  var temp1="";
+  var Cred = Approve_Level[i].split("*");
+  for(var j=2;j<4;j++){
+  temp="";
+  if((Cred[j]!="")&&(Cred[j]!=null))
+  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  { 
+     var sheetName = "Agency Users";
+     workBook = Project.Path+excelName;
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
+    Log.Message(temp);
+  }
+  else if((Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  { 
+
+    var sheetName = "SSC Users";
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    temp = ExcelUtils.SSCLogin(Cred[j],"Username");
+  }
+
+  if(temp.length!=0){
+    temp1 = temp1+temp+"*"+j+"*";
+//  break;
+  }
+  }
+  if((temp1=="")||(temp1==null))
+  Log.Error("User Name is Not available for level :"+i);
+  Log.Message(temp1)
+  AppvLevl[i] = temp1;
+}
+  ApproveInfo = levelMatch(AppvLevl)
+  Log.Message("-----Approvers-------------")
+  for(var i=0;i<ApproveInfo.length;i++){
+    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
+    Log.Message(ApproveInfo[i]);
+    }
+//WorkspaceUtils.closeAllWorkspaces();
+}
+
+function todo(lvl){ 
+  TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
+  var toDo = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.ToDos;
+  toDo.HoverMouse();
+  ReportUtils.logStep_Screenshot();
+  toDo.DBlClick();
+  TextUtils.writeLog("Entering into To-Dos List");
+  aqUtils.Delay(3000, Indicator.Text);
+  //To Maximaize the window
+  Sys.Desktop.KeyDown(0x12);
+  Sys.Desktop.KeyDown(0x20);
+  Sys.Desktop.KeyUp(0x12);
+  Sys.Desktop.KeyUp(0x20);
+  Sys.Desktop.KeyDown(0x58);
+  Sys.Desktop.KeyUp(0x58);  
+  aqUtils.Delay(1000, Indicator.Text);
+
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+}
+refresh.Click();
+if(ImageRepository.ImageSet.ToDos_Icon.Exists())
+{ 
+  
+}else{ 
+  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+}
+var listPass = true;
+if(lvl==2)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Drafts (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Purchase Order from To-Dos List"); 
+listPass = false; 
+  }
+}
+if(lvl==3)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Drafts Substitute) (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);    
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Invoice Drafts (Substitute) from To-Dos List");  
+var listPass = false;   
+  }
+}  
+
+
+if(listPass){
+if(lvl==2)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Drafts by Type (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Invoice Drafts by Type from To-Dos List"); 
+listPass = false; 
+  }
+}
+if(lvl==3)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf("Approve Invoice Drafts by Type (Substitute) (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);    
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Invoice Drafts by Type (Substitute) from To-Dos List"); 
+var listPass = false;   
+  }
+} 
+  }
+  
+}
+
+
+
+function FinalApprove(PONum,Apvr,lvl){ 
+var table = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder;
+WorkspaceUtils.waitForObj(table);
+Sys.HighlightObject(table);
+
+if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.TabFolderPanel.Visible){
+
+}else{ 
+ImageRepository.ImageSet.Show_Filter.Click();
+}
+
+var table = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+var firstCell = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
+WorkspaceUtils.waitForObj(firstCell);
+firstCell.setText(PONum);
+var closefilter = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+
+var labels = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.SWTObject("McPagingWidget", "", 2);
+
+WorkspaceUtils.waitForObj(labels);
+for(var i=0;i<labels.ChildCount;i++){ 
+  if((labels.Child(i).isVisible())&&(labels.Child(i).WndCaption.indexOf("Now showing")!=-1)){
+    labels = labels.Child(i);
+    break;
+  }
+}
+
+WorkspaceUtils.waitForObj(labels);
+var i=0;
+while((labels.getText().OleValue.toString().trim().indexOf("results")==-1)&&(i!=60)){ 
+  aqUtils.Delay(100);
+  i++;
+  labels.Refresh();
+}
+if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){ 
+ ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+}
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+WorkspaceUtils.waitForObj(table);
+var flag=false;
+for(var v=0;v<table.getItemCount();v++){ 
+  if(table.getItem(v).getText_2(0).OleValue.toString().trim()==PONum){ 
+    flag=true;    
+    break;
+  }
+  else{ 
+    table.Keys("[Down]");
+  }
+}
+
+ValidationUtils.verify(flag,true,"Created Draft Invoice is available in Approval List");
+TextUtils.writeLog("Created Draft Invoice is available in Approval List");
+if(flag){ 
+closefilter.HoverMouse();
+ReportUtils.logStep_Screenshot();
+closefilter.Click();
+
+var Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText=="Approve Draft")){
+    Approve = Approve.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(Approve);
+Sys.HighlightObject(Approve)
+if(Approve.isEnabled()){ 
+Approve.HoverMouse();
+ReportUtils.logStep_Screenshot();
+Approve.Click();
+
+ValidationUtils.verify(true,true,"Draft Invoice is Approved by "+Apvr)
+TextUtils.writeLog("Draft Invoice is Approved by "+Apvr);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+
+var screen = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+WorkspaceUtils.waitForObj(screen);
+  screen.Click();
+  screen.MouseWheel(-100);
+
+var ApvPerson = "";
+var Apv = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite;
+for(var a=0;a<Apv.ChildCount;a++){ 
+  if((Apv.Child(a).Visible)&&(Apv.Child(a).JavaClassName == "McTextWidget")){ 
+    ApvPerson = Apv.Child(a);
+    Log.Message("short");
+    break;
+  }
+}
+if((ApvPerson=="")||(ApvPerson==null)){ 
+ApvPerson = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.Composite.McTextWidget;  
+Log.Message("Long")
+}  
+  
+//                Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.ApproveStatus
+//var ApvPerson = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.Composite.McTextWidget;
+var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
+    var i=0;
+while (((ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("APPROVED")==-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))&&(i!=60))
+{
+  aqUtils.Delay(100);
+  i++;
+  ApvPerson.Refresh();
+}
+
+if((ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("APPROVED")!=-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")!=-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1)){
+  ValidationUtils.verify(true,true,"Draft Invoice is Approved by :"+loginPer)
+  TextUtils.writeLog("Draft Invoice is Approved by :"+loginPer); 
+  }else{ 
+  TextUtils.writeLog("Draft Invoice is Approved by :"+loginPer+ "But its Not Reflected"); 
+  ValidationUtils.verify(true,false,"Draft Invoice is Approved by :"+loginPer+ "But its Not Reflected")
+  }
+  
+
+
+
+if(Approve_Level.length==lvl+1){
+var printInvoice = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;  
+
+var approvalBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+approvalBar.HoverMouse();
+ReportUtils.logStep_Screenshot();
+approvalBar.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+    ImageRepository.ImageSet.Maximize.Click();
+
+var DraftApproval = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl
+WorkspaceUtils.waitForObj(DraftApproval);
+DraftApproval.Click();
+//  for(var i=0;i<DraftApproval.ChildCount;i++){ 
+//    if((DraftApproval.Child(i).isVisible())&&(DraftApproval.Child(i).text=="All Approval Actions")){
+//      WorkspaceUtils.waitForObj(DraftApproval.Child(i));
+//      DraftApproval.HoverMouse();
+//      ReportUtils.logStep_Screenshot();
+//      DraftApproval.Child(i).Click();
+//      break;
+//    }
+//  } 
+  
+
+var ApproverTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+WorkspaceUtils.waitForObj(ApproverTable);
+ReportUtils.logStep_Screenshot();
+
+}
+
+  ValidationUtils.verify(true,true,"Draft Invoice is Approved by "+Apvr)
+  
+  
+}
+}
+
+}
+

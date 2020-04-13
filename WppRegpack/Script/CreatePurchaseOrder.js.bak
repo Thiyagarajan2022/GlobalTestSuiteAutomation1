@@ -216,6 +216,7 @@ var BaseCurrency;
   BaseCurrency = "1.00";
   Log.Message("ExchangeRate :"+ExchangeRate);
   Log.Message("BaseCurrency :"+BaseCurrency)
+  
 var RowCount = 0;
 var addedlines = false;
 var jB = true;
@@ -305,6 +306,7 @@ WorkspaceUtils.waitForObj(save);
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
+
 aqUtils.Delay(4000, "Validating Tax");
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(RowCount).getText_2(7).OleValue.toString().trim();

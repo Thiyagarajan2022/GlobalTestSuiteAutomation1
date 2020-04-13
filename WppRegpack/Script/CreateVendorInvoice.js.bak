@@ -20,10 +20,10 @@ var company,PurchOrderNo,InvoiceNo,Description,IDate,EDate ="";
 function CreateInvoice(){ 
 TextUtils.writeLog("Create Vendor Invoice Started"); 
 Indicator.PushText("waiting for window to open");
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(1000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+//  aqUtils.Delay(3000, Indicator.Text);
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
 var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
@@ -89,7 +89,7 @@ ImageRepository.ImageSet.AccountPayable2.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -112,7 +112,7 @@ Client_Managt.DblClickItem("|AP Transactions");
 }
 
 } 
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to AP Transactions from Accounts Payable Menu");
 TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
@@ -162,19 +162,23 @@ ValidationUtils.verify(false,true,"Description is Needed to Create a Vendor Invo
 
 function invoiceAllocation(){ 
   var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
-  allocation.Click();
-  aqUtils.Delay(3000, Indicator.Text);
-if(ImageRepository.ImageSet.Show_Filter.Exists()){
+  allocation.Click(); 
+  var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
+  WorkspaceUtils.waitForObj(closefilter);
+//  aqUtils.Delay(3000, Indicator.Text);
+//if(ImageRepository.ImageSet.Show_Filter.Exists()){
+if(closefilter.text=="Show Filter List"){
 }else{ 
   var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
+  WorkspaceUtils.waitForObj(closefilter);
   closefilter.Click();
 }
-aqUtils.Delay(2000, Indicator.Text);
+//aqUtils.Delay(2000, Indicator.Text);
 var newInvoice = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl2;
-newInvoice.HoverMouse();
+WorkspaceUtils.waitForObj(newInvoice);
 ReportUtils.logStep_Screenshot();
 newInvoice.Click();
-aqUtils.Delay(2000, Indicator.Text);
+//aqUtils.Delay(2000, Indicator.Text);
 TextUtils.writeLog("New Invoice Button is Clicked");
 var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
 if(company!=""){
@@ -229,7 +233,12 @@ if(ImageRepository.ImageSet.OK_Button.Exists()){
 var Okay = Aliases.Maconomy.Shell7.Composite.Button;
 Okay.Click();
 }
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, "Waiting to save changes");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 var npEdit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -246,11 +255,11 @@ var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Comp
 action.HoverMouse();
 ReportUtils.logStep_Screenshot();
 action.Click();
-  Delay(2000);
+aqUtils.Delay(2000, "Waiting for Action");
 action.Click();
-Delay(2000);
+aqUtils.Delay(2000, "Waiting for Action");
 action.Click();
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(3000, Indicator.Text);
 action.PopupMenu.Click("Get Purchase Order");
 ReportUtils.logStep_Screenshot();
 
@@ -264,10 +273,16 @@ ReportUtils.logStep_Screenshot();
 //  ReportUtils.logStep_Screenshot();
 //  Sys.Desktop.KeyDown(0x0D);
 //  Sys.Desktop.KeyUp(0x0D);
-aqUtils.Delay(5000, Indicator.Text);
+
+//aqUtils.Delay(5000, Indicator.Text);
   }
   }
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 var curncy = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.Composite7.McTextWidget.getText().toString();
 Log.Message(curncy);
 var grid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
@@ -308,10 +323,10 @@ TextUtils.writeLog("Tax is Validated");
 TextUtils.writeLog("Tax Details is Entered and Saved");
 var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
 action.Click();
-  Delay(2000);
+aqUtils.Delay(2000, "Waiting for Action");
 action.Click();
-Delay(2000);
-aqUtils.Delay(3000, Indicator.Text);
+//aqUtils.Delay(2000, "Waiting for Action");
+//aqUtils.Delay(3000, Indicator.Text);
 action.PopupMenu.Click("Attach Document");
 /*
 //  Sys.Process("Maconomy").Refresh();
@@ -339,26 +354,27 @@ action.PopupMenu.Click("Attach Document");
   Sys.Desktop.KeyDown(0x0D);
   Sys.Desktop.KeyUp(0x0D);
 */
-  aqUtils.Delay(4000, Indicator.Text);;
+//  aqUtils.Delay(4000, Indicator.Text);;
   TextUtils.writeLog("Document is Attached for Invoice");
   var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+  WorkspaceUtils.waitForObj(dicratory);
   dicratory.Keys(workBook);
   var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(2000, "Attaching Document");
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
+  WorkspaceUtils.waitForObj(action);
   action.Click();
-    Delay(2000);
-  aqUtils.Delay(3000, Indicator.Text);
+  aqUtils.Delay(2000, "Waiting for Action");
   if(EnvParams.Country.toUpperCase()=="INDIA")
   Runner.CallMethod("IND_VendorInvoice.InvoiceSubmit",action);
   else
   action.PopupMenu.Click("Submit for Approval");
   ReportUtils.logStep_Screenshot();
-  aqUtils.Delay(8000, Indicator.Text);;
+  aqUtils.Delay(8000, "Submitted for Approval");;
   TextUtils.writeLog("Invoice is Submitted for Approval");
   /*
   action.Click();
@@ -378,7 +394,9 @@ action.PopupMenu.Click("Attach Document");
   Sys.Desktop.KeyDown(0x0D);
   Sys.Desktop.KeyUp(0x0D);
   */
-aqUtils.Delay(5000, Indicator.Text);
+  
+  
+//aqUtils.Delay(5000, Indicator.Text);
 
 var journalNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McTextWidget.getText();
 ValidationUtils.verify(true,true,"Created Vendor Invoice Journal Number :"+journalNumber);
@@ -391,31 +409,37 @@ TextUtils.writeLog("Created Vendor Invoice Journal Number :"+journalNumber);
 
 function SearchByValue(ObjectAddrs,popupName,fieldName){ 
 var checkmark = false;
-  aqUtils.Delay(1000, Indicator.Text);;
+  aqUtils.Delay(1000, popupName);;
     Sys.Desktop.KeyDown(0x11);
     Sys.Desktop.KeyDown(0x47);
     Sys.Desktop.KeyUp(0x11);
     Sys.Desktop.KeyUp(0x47);
-    aqUtils.Delay(3000, Indicator.Text);;
+//    aqUtils.Delay(3000, Indicator.Text);;
+    
 //    Log.Message(ObjectAddrs)
 //    Log.Message(popupName)
 //    Log.Message(value)
     var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
+    WorkspaceUtils.waitForObj(code);
     code.setText("Vendor Invoice");
-    aqUtils.Delay(3000, Indicator.Text);;
+//    aqUtils.Delay(3000, Indicator.Text);;
     code.Keys("[Tab]");
     var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
+    WorkspaceUtils.waitForObj(code);
     code.setText(EnvParams.Opco);
-    aqUtils.Delay(3000, Indicator.Text);;
+//    aqUtils.Delay(3000, Indicator.Text);;
     var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Search").OleValue.toString().trim()+" ");
-    Sys.HighlightObject(serch);
-    if(serch.isEnabled())
+    WorkspaceUtils.waitForObj(serch);
+//    Sys.HighlightObject(serch);
+//    if(serch.isEnabled())
   serch.Click();
-  else{ 
-    aqUtils.Delay(3000, Indicator.Text);;
-   serch.Click(); 
-  }
-    aqUtils.Delay(5000, Indicator.Text);;
+//  else{ 
+//    aqUtils.Delay(3000, Indicator.Text);;
+//   serch.Click(); 
+//  }
+//    aqUtils.Delay(5000, Indicator.Text);;
+var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "OK").OleValue.toString().trim())
+WorkspaceUtils.waitForObj(OK);
     var table = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
     Sys.HighlightObject(table);
     var itemCount = table.getItemCount();
@@ -423,17 +447,18 @@ var checkmark = false;
     for(var i=0;i<itemCount;i++){
       if((table.getItem(i).getText_2(0).OleValue.toString().trim()=="Vendor Invoice")&&(table.getItem(i).getText_2(1).OleValue.toString().trim()==EnvParams.Opco)){ 
        var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "OK").OleValue.toString().trim())
-  if(OK.isEnabled()){
-  OK.HoverMouse();
+       WorkspaceUtils.waitForObj(OK);
+//  if(OK.isEnabled()){
+//  OK.HoverMouse();
 ReportUtils.logStep_Screenshot();
   OK.Click();
-  }
-  else{ 
-    aqUtils.Delay(3000, Indicator.Text);;
-    OK.HoverMouse();
-ReportUtils.logStep_Screenshot();
-   OK.Click(); 
-  }
+//  }
+//  else{ 
+//    aqUtils.Delay(3000, Indicator.Text);;
+//    OK.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+//   OK.Click(); 
+//  }
           checkmark = true;
           ValidationUtils.verify(true,true,fieldName+" is listed and  Selected in Maconomy");
           break;
@@ -444,18 +469,19 @@ ReportUtils.logStep_Screenshot();
         Sys.Desktop.KeyUp(0x28);
         if(i==itemCount-1){ 
           var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Cancel").OleValue.toString().trim());
-if(cancel.isEnabled()){
-  cancel.HoverMouse();
+          WorkspaceUtils.waitForObj(cancel);
+//if(cancel.isEnabled()){
+//  cancel.HoverMouse();
 ReportUtils.logStep_Screenshot();
   cancel.Click();
-  }
-  else{ 
-    aqUtils.Delay(3000, Indicator.Text);;
-      cancel.HoverMouse();
-ReportUtils.logStep_Screenshot();
-   cancel.Click(); 
-  }
-          aqUtils.Delay(1000, Indicator.Text);;
+//  }
+//  else{ 
+//    aqUtils.Delay(3000, Indicator.Text);;
+//      cancel.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+//   cancel.Click(); 
+//  }
+          WorkspaceUtils.waitForObj(ObjectAddrs);
           ObjectAddrs.setText("");
           ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
         }
@@ -465,18 +491,20 @@ ReportUtils.logStep_Screenshot();
     }
     else { 
       var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Cancel").OleValue.toString().trim());
-if(cancel.isEnabled()){
-    cancel.HoverMouse();
+      WorkspaceUtils.waitForObj(cancel);
+//if(cancel.isEnabled()){
+//    cancel.HoverMouse();
 ReportUtils.logStep_Screenshot();
   cancel.Click();
-  }
-  else{ 
-    aqUtils.Delay(3000, Indicator.Text);;
-      cancel.HoverMouse();
-ReportUtils.logStep_Screenshot();
-   cancel.Click(); 
-  }
-      aqUtils.Delay(1000, Indicator.Text);;
+//  }
+//  else{ 
+//    aqUtils.Delay(3000, Indicator.Text);;
+//      cancel.HoverMouse();
+//ReportUtils.logStep_Screenshot();
+//   cancel.Click(); 
+//  }
+//      aqUtils.Delay(1000, Indicator.Text);;
+WorkspaceUtils.waitForObj(ObjectAddrs);
       ObjectAddrs.setText("");
       ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
     }

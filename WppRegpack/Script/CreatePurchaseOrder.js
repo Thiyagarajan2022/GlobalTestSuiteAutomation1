@@ -155,7 +155,18 @@ var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite
 WorkspaceUtils.waitForObj(closefilter);
 closefilter.Click();
 //Delay(3000);
-var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.SingleToolItemControl;
+//var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.SingleToolItemControl;
+
+//var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite;
+var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite;
+Sys.HighlightObject(craetePurchase)
+for(var i=0;i<craetePurchase.ChildCount;i++){ 
+  if((craetePurchase.Child(i).isVisible())&&(craetePurchase.Child(i).toolTipText=="New Purchase Order (Ctrl+N)")){
+    craetePurchase = craetePurchase.Child(i);
+  Log.Message(craetePurchase.FullName)
+    break;
+  }
+}
 WorkspaceUtils.waitForObj(craetePurchase);
 craetePurchase.HoverMouse();
 ReportUtils.logStep_Screenshot(); 
@@ -482,11 +493,25 @@ if(!addedlines)
 ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Budget");
 else{
   TextUtils.writeLog("Purchase Order lines are Saved");
-  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
-  WorkspaceUtils.waitForObj(action)
-  action.Click();
-  aqUtils.Delay(1000, Indicator.Text);;
-  action.PopupMenu.Click("Submit Purchase Order");
+//  var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.Action;
+//  WorkspaceUtils.waitForObj(action)
+//  action.Click();
+//  aqUtils.Delay(1000, Indicator.Text);;
+//  action.PopupMenu.Click("Submit Purchase Order");
+
+var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
+Sys.HighlightObject(SubmitPurchase);
+for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
+  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText=="Submit Purchase Order")){
+    SubmitPurchase = SubmitPurchase.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(SubmitPurchase);
+SubmitPurchase.HoverMouse();
+ReportUtils.logStep_Screenshot(); 
+SubmitPurchase.Click();
+
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, "Submit Purchase Order");;
   TextUtils.writeLog("Submit Purchase Order is Clicked");
@@ -506,7 +531,7 @@ else{
 //ImageRepository.ImageSet.SubmitPurchaseOrder.Click();
 //  Delay(4000);
   ValidationUtils.verify(true,true,"Purchase Order is Created and Submitted");
-  var PurchaseNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText();
+  var PurchaseNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText().OleValue.toString().trim();;
   ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
