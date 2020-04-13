@@ -416,6 +416,13 @@ function globalClient(){
   AllClients.HoverMouse();
   AllClients.HoverMouse();
   AllClients.HoverMouse();
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+  
 //  aqUtils.Delay(2000, Indicator.Text);
   var NewGlobalClient = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.TabFolderPanel.Composite.NewGlobalClient
   NewGlobalClient.HoverMouse();
@@ -431,7 +438,12 @@ function globalClient(){
   ActiveClient.Click();
   ActiveClient.HoverMouse();
   ActiveClient.HoverMouse();
-  ActiveClient.HoverMouse();     
+  ActiveClient.HoverMouse();  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }   
 //  aqUtils.Delay(2000, Indicator.Text); 
   NewGlobalClient.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -921,6 +933,11 @@ function attachDocument(){
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Document
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
   }

@@ -415,7 +415,13 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 //    Sys.HighlightObject(submit)
     submit.HoverMouse();
 ReportUtils.logStep_Screenshot("");
-    submit.Click()
+    submit.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
+    
     ValidationUtils.verify(true,true,"Quote has Submitted");
     TextUtils.writeLog("Quote has Submitted"); 
 //    aqUtils.Delay(8000, Indicator.Text);
@@ -429,6 +435,11 @@ ReportUtils.logStep_Screenshot("");
 WorkspaceUtils.waitForObj(approve);
 ReportUtils.logStep_Screenshot("");
     approve.Click();
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
     ValidationUtils.verify(true,true,"Quote has Approved");
 //    aqUtils.Delay(6000, Indicator.Text);
     var approvedby = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McTextWidget; 
