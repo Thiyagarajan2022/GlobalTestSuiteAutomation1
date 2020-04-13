@@ -4,7 +4,7 @@
 //USEUNIT EnvParams
 //USEUNIT ReportUtils
 //USEUNIT Restart
- 
+
 var excelName = EnvParams.getEnvironment();
 var workBook = Project.Path+excelName;
 var userInfo = [];
@@ -134,7 +134,7 @@ function goToMenu(){
       menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     menuBar.DblClick();
-    
+    TextUtils.writeLog("Create User Started"); 
 
      if(ImageRepository.ImageSet.HR.Exists()){
     ImageRepository.ImageSet.HR.Click();
@@ -344,6 +344,7 @@ function UserInformation(){
   create.Click();
   ReportUtils.logStep("INFO",+nameValue+" : is Created");
   Delay(8000);  
+   TextUtils.writeLog(" User is Created "); 
 //  var cancel = Sys.Process("Maconomy").SWTObject("Shell", "Create User").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", "Cancel");
 //  Sys.HighlightObject(cancel);
 
@@ -401,15 +402,29 @@ var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTOb
       Delay(5000);
  }
  
-//  if(Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Composite", "", 2).SWTObject("Button", "OK").isVisible()){     
+ 
+// if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Users - Users")    
+//{
 //var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-//      var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
+////Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//   var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
 //      Log.Message(label.getText());
 //       button.HoverMouse();
 //     ReportUtils.logStep_Screenshot("");
 //      button.Click();
 //      Delay(5000);
-// }
+//  }  
+// 
+// 
+  if(Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Composite", "", 2).SWTObject("Button", "OK").isVisible()){     
+var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+      var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
+      Log.Message(label.getText());
+       button.HoverMouse();
+     ReportUtils.logStep_Screenshot("");
+      button.Click();
+      Delay(5000);
+ }
 
       
 return true; 
@@ -431,6 +446,23 @@ return true;
       return false;
     }
 }
+
+function test()
+{
+ // Sys.Process("Maconomy").SWTObject("Shell", "Users - Users", 2)
+ // Sys.Process("Maconomy").SWTObject("Shell", "Users - Users", 2)
+ if(Sys.Process("Maconomy").SWTObject("Shell", "2").WndCaption=="Users - Users")    
+{
+var button = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+//Sys.Process("Maconomy").SWTObject("Shell", "Users - User Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+   var label = Sys.Process("Maconomy").SWTObject("Shell", "Users - Users",1).SWTObject("Label", "*");
+      Log.Message(label.getText());
+       button.HoverMouse();
+     ReportUtils.logStep_Screenshot("");
+      button.Click();
+      Delay(5000);
+  }  
+}
    
   
 function user_Approval(){ 
@@ -447,7 +479,8 @@ function user_Approval(){
 
   firstcell.Keys("[Tab][Tab]");
   Delay(2000);
-
+ ReportUtils.logStep_Screenshot("");
+ TextUtils.writeLog("Search For User"); 
   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
    Delay(4000);  
     var flag=false;
@@ -544,6 +577,9 @@ Delay(3000);
     
        getApproverDetails();
         ReportUtils.logStep_Screenshot();
+        
+         ReportUtils.logStep_Screenshot("");
+ TextUtils.writeLog("Get approver details"); 
        
 //    if(ImageRepository.ImageSet.Forward.Exists()){
 //ImageRepository.ImageSet.Forward.Click();// GL
@@ -706,6 +742,8 @@ All_User.Click();
   Sys.HighlightObject( approve );
 
   approve.Click();
+          ReportUtils.logStep_Screenshot("");
+ TextUtils.writeLog("User is Approved"); 
   Delay(5000);
   var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Users").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
   Ok.Click();
@@ -900,19 +938,10 @@ WorkspaceUtils.Language = Language;
    goToMenu();
     getDetails();
     goToUsers(); 
-//  userInfo =  excel(sheetName);
   var status = UserInformation();
-//var status = true;
   if(status){
   user_Approval();
-
-//Approve_Level[0] = " Muthu 22:06:31*170710134*SACHINDRA P KARKERA (170710011)*";
   closeAllWorkspaces();
-//  Approver level :0: 1307 Senior Finance (13079510)*1307 Management (13079507)	15:51:02	Normal			2.35
- // Approve_Level[1] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
- 
- //Approve_Level[0] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
-// Approve_Level[1] = "1307"+"*"+"1307_AutomationUser 18October2019 12:58:29"+"*"+"1307 Senior Finance (13079510)*1307 Management (13079507)"; 
   CredentialLogin();
 
 for(var i=level;i<ApproveInfo.length;i++){

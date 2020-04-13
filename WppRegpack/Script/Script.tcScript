@@ -92,6 +92,9 @@
 				<child name="ReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="ReverseGL.js" />
 				<child name="Old_CreateBudget" key="{886BC509-75D7-448A-B9DA-0D8319F14999}" path="Old_CreateBudget.js" />
 				<child name="InvoicePreparation" key="{8702BF45-087C-4819-A366-E82806556EB2}" path="InvoicePreparation.js" />
+				<child name="JobClosure" key="{67FAD047-0D9A-4340-A157-B0B4F08646B1}" path="JobClosure.js" />
+				<child name="ReallocateJobEntries" key="{B837B349-4A94-4D2D-B009-75CED4096657}" path="ReallocateJobEntries.js" />
+				<child name="BlockUser" key="{E88E4BEE-92D1-4753-9320-0EADE8DBABB0}" path="BlockUser.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
