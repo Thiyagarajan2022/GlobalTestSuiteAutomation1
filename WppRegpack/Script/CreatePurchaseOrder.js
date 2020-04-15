@@ -16,7 +16,7 @@ var ApproveInfo = [];
 var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
-var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
+var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
  
 
 function CreatePurchaseOrder(){ 
@@ -46,7 +46,7 @@ ApproveInfo = [];
 mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 STIME = "";
-VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
+VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
   
 Language = EnvParams.Language;
 if((Language==null)||(Language=="")){
@@ -97,10 +97,24 @@ if((Job_Number==null)||(Job_Number=="")){
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
  
+ExcelUtils.setExcelName(workBook, sheetName, true);
+NOL = ExcelUtils.getColumnDatas("Number of Lines To ADD",EnvParams.Opco)
+
 }
 
 
 function gotoMenu(){ 
+  
+//var LTA = 0;
+//if((NOL==null)||(NOL==""))
+//{ 
+//  LTA = 10;
+//}else{ 
+//  LTA = aqConvert.StrToInt(NOL);
+//}
+// for(var i=1;i<=LTA;i++){
+//   Log.Message(i);
+//   }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 if(ImageRepository.ImageSet.AccountPayable.Exists()){
@@ -232,7 +246,13 @@ var RowCount = 0;
 var addedlines = false;
 var jB = true;
 var line_i =1;
-
+var LTA = 1;
+if((NOL==null)||(NOL==""))
+{ 
+  LTA = 10;
+}else{ 
+  LTA = aqConvert.StrToInt(NOL);
+}
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -268,7 +288,9 @@ var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
 
 
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
+  if(line_i<=LTA){
 TextUtils.writeLog("Line item "+line_i+" is adding in PO");
+line_i++;
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(addBudget);
 addBudget.Click();
@@ -317,11 +339,11 @@ WorkspaceUtils.waitForObj(save);
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }else{ 
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  } 
+  }
 aqUtils.Delay(4000, "Validating Tax");
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(RowCount).getText_2(7).OleValue.toString().trim();
@@ -485,7 +507,7 @@ Log.Message(Tax_Amount_currency_1)
 
   RowCount++;
 
-
+}
 
 //aqUtils.Delay(4000, "Tax is Validated and Matched");
 
