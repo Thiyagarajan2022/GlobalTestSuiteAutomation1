@@ -73,6 +73,7 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i,temp[3]);
 }
+TextUtils.writeLog("Purchase Orders("+POnumber+") is Approved");
 WorkspaceUtils.closeAllWorkspaces();
 }
 

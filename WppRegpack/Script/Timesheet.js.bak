@@ -102,7 +102,7 @@ sun = ExcelUtils.getRowDatas("Sun",EnvParams.Opco)
 function CreateTimeSheet(){ 
 TextUtils.writeLog("Timesheet Creation Started"); 
 Indicator.PushText("waiting for window to reponse");
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -147,12 +147,10 @@ ReportUtils.logStep("INFO", "Create Timesheet started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME);
 getDetails();
 goToJobMenuItem();
-
-
   
 sheetName = "CreateTimesheet";
 selectWeek();
-aqUtils.Delay(5000, Indicator.Text);
+//aqUtils.Delay(5000, Indicator.Text);
 //Delay(5000);
 WorkspaceUtils.closeAllWorkspaces();
 
@@ -203,7 +201,7 @@ Client_Managt.DblClickItem("|Time & Expenses");
 
 } 
 
-//aqUtils.Delay(15000, Indicator.Text);
+aqUtils.Delay(10000, Indicator.Text);
 //Delay(10000); 
 ReportUtils.logStep("INFO", "Moved to Time & Expenses from Time & Expenses Menu");
 TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
@@ -277,14 +275,14 @@ while(Visiblestatus){
 previousMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   previousMonth.Click();
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(4000, "Changing Month");
 //  Delay(5000);  
   }
   if(week6.getText()<weekno){ 
 nextMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   nextMonth.Click();
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(4000, "Changing Month");
 //  Delay(5000);  
   }
   }
@@ -346,6 +344,7 @@ create_Timesheet.Click();
 }
 TextUtils.writeLog("Entering Timesheet Details");
     aqUtils.Delay(2000, Indicator.Text);
+    
 //    Delay(2000);
 //startdate =   
 var parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
@@ -441,7 +440,7 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("
 ReportUtils.logStep_Screenshot("");
     Save.Click();
 TextUtils.writeLog("Timesheet is Saved");
-    aqUtils.Delay(5000, Indicator.Text);
+    aqUtils.Delay(3000, "Timesheet is Saved");
 //    Delay(5000);
     ValidationUtils.verify(true,true,"Line of Timesheet is Saved");
     if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption =="Time & Expenses - Registrations"){ 
@@ -449,7 +448,7 @@ TextUtils.writeLog("Timesheet is Saved");
 Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
       Ok.Click();
-      aqUtils.Delay(5000, Indicator.Text);
+      aqUtils.Delay(3000, "Timesheet is Saved");
 //      Delay(5000);
     }
   var balance = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 9);
@@ -523,7 +522,7 @@ ReportUtils.logStep_Screenshot("");
 create_Timesheet.Click();
 }
 TextUtils.writeLog("Entering Timesheet Details");
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(2000, "Entering Timesheet Details");
 //    Delay(2000);
 var parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
 for(var i=0;i<parent.ChildCount;i++){ 
@@ -630,7 +629,7 @@ ReportUtils.logStep_Screenshot("");
 Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
       Ok.Click();
-      aqUtils.Delay(5000, Indicator.Text);
+      aqUtils.Delay(3000, "Saving Timesheet");
 //      Delay(5000);
     }
   var balance = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 9);
@@ -670,14 +669,14 @@ nextMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     nextMonth.Click();
     TextUtils.writeLog("Navigating to next month to create Time sheet for that week");
-    aqUtils.Delay(3000, Indicator.Text);
+    aqUtils.Delay(3000, "Moving to next month");
 //    Delay(4000);
     var days = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McCalendarWidget", "", 2).SWTObject("McDateChooser", "").SWTObject("McComposite", "", 2).SWTObject("Composite", "", 4).SWTObject("DateChooser$CellLabel", "", 1+invisible_Startindex);  
     days.HoverMouse();
 ReportUtils.logStep_Screenshot("");
     days.Click();
     TextUtils.writeLog("Week has been Selected");
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(2000, "Week has been Selected");
 //    Delay(2000);
 var create_Timesheet = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4).getText();
 if(create_Timesheet=="Create Time Sheet"){
@@ -787,7 +786,7 @@ ReportUtils.logStep_Screenshot("");
 Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
       Ok.Click();
-      aqUtils.Delay(5000, Indicator.Text);
+      aqUtils.Delay(3000, "Timesheet is Saved");
 //      Delay(5000);
     }
     

@@ -755,6 +755,7 @@ ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compo
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
     var i=0;
+ApvPerson.Click();
 while ((((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1))&&(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))&&(i!=600))
 {
   aqUtils.Delay(100);
@@ -762,7 +763,10 @@ while ((((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)
   ApvPerson.Refresh();
 }
 
-    if(((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1))||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)){
+  Log.Message(ApvPerson.getText())
+  Log.Message((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1))
+  Log.Message(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)
+  if(((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf("YOU")==-1))||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1)){
   ValidationUtils.verify(true,true,"Vendor Invoice is Rejected by :"+loginPer)
   TextUtils.writeLog("Vendor Invoice is Rejected by :"+loginPer); 
   }else{ 

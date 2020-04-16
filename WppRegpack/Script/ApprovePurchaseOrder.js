@@ -266,46 +266,38 @@ ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Project_manage
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
 //aqUtils.Delay(8000, Indicator.Text);;
 
-var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "");;
-WorkspaceUtils.waitForObj(screen);
-  screen.Click();
-  screen.MouseWheel(-5);
-//  aqUtils.Delay(5000, Indicator.Text);
-var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
+
+
+//var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "");;
+//WorkspaceUtils.waitForObj(screen);
+//  screen.Click();
+//  screen.MouseWheel(-5);
+////  aqUtils.Delay(5000, Indicator.Text);
+//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-    var i=0;
-while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
-{
-  aqUtils.Delay(100);
-  i++;
-  ApvPerson.Refresh();
-}
+//    var i=0;
+//while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
+//{
+//  aqUtils.Delay(100);
+//  i++;
+//  ApvPerson.Refresh();
+//}
 
-    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Purchase Order is Approved by :"+loginPer)
   TextUtils.writeLog("Purchase Order is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Purchase Order is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Purchase Order is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
   
 if(Approve_Level.length==1){
   var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
   purchaseOrderApproval.Click();
-//  if(ImageRepository.ImageSet.Forward.Exists()){ 
-//   if(ImageRepository.ImageSet.Maximize.Exists()){
+
    ImageRepository.ImageSet.Maximize.Click();
-//   }
-//  }else{
-//    var approveAction = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
-//    approveAction.Click();
-//    aqUtils.Delay(3000, Indicator.Text);;
-//    if(ImageRepository.ImageSet.Maximize.Exists()){
-//    ImageRepository.ImageSet.Maximize.Click();
-//    }
-//  }
-//  aqUtils.Delay(3000, Indicator.Text);;
+
   var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
 WorkspaceUtils.waitForObj(purchaseApproval)
   purchaseApproval.Click();
@@ -685,7 +677,7 @@ approvalBar.Click();
 //    }
 //aqUtils.Delay(3000, Indicator.Text);;
 
-if(EnvParams.Country.toUpperCase()=="INDIA")
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN"))
    Runner.CallMethod("IND_ApprovePurchaseOrder.ApprovalStatus");
 else{
 var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
