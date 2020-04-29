@@ -6,7 +6,7 @@
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
 
-//Indicator.Show();
+
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "CreateClient";

@@ -933,6 +933,11 @@ function attachDocument(){
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Document
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
   }
