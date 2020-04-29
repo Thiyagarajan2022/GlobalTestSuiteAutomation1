@@ -2,7 +2,11 @@
 //USEUNIT ValidationUtils
 function indiaSpecific(State,GST,PAN,TAN){ 
 //Strating Of TestCase
-  aqUtils.Delay(7000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
   var indiaspec = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.IndiaSpecific;
 Sys.HighlightObject(indiaspec);
 var Start = StartwaitTime();
