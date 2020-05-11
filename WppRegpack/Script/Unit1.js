@@ -450,10 +450,10 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf("approved")==-1)&
 }
 
 function nm(){ 
-  var drop = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabChevron", "", 3);
-  drop.Click();
-  Delay(2000);
-  var popUp = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("LightweightContainer", "");
-  Sys.HighlightObject(popUp);
-  ImageRepository.ImageSet.JobInvoiceApplication.Click();
+  var IndiaSpec;
+ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.isVisible())
+ IndiaSpec = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel.TabControl
+ else if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.isVisible())
+ IndiaSpec = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.PTabItemPanel.TabControl;
+Sys.HighlightObject(IndiaSpec);
 }

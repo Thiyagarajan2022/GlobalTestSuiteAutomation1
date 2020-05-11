@@ -87,7 +87,7 @@ sheetName ="CreateQuote";
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
   ValidationUtils.verify(false,true,"Job Number is needed to Create Quote");
@@ -206,7 +206,11 @@ WorkspaceUtils.waitForObj(Budget);
 Budget.Click();
 //aqUtils.Delay(6000, Indicator.Text);
 
-
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
 var show_budget = "";
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).isVisible())
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").Index==1)
@@ -290,12 +294,13 @@ for(var i=0;i<Grid.getItemCount();i++){
   var costBase = Grid.getItem(i).getText_2(7).OleValue.toString().trim();
   var billingPrice = Grid.getItem(i).getText_2(9).OleValue.toString().trim();
   if((workcode!="")||(description!="")||(quantity!="")||(costBase!="")||(billingPrice!="")){ 
-   workEstimate[j] = workcode+"*"+description+"*"+quantity+"*"
-   if(workcode.indexOf("T")!=-1){ 
-   workEstimate[j] = workEstimate[j]+billingPrice+"*"
-   }else{ 
-   workEstimate[j] = workEstimate[j]+costBase+"*";
-   }
+//   workEstimate[j] = workcode+"*"+description+"*"+quantity+"*"
+   workEstimate[j] = workcode+"*"+description+"*"+quantity+"*"+costBase+"*"+billingPrice+"*";
+//   if(workcode.indexOf("T")!=-1){ 
+//   workEstimate[j] = workEstimate[j]+billingPrice+"*"
+//   }else{ 
+//   workEstimate[j] = workEstimate[j]+costBase+"*";
+//   }
   if(EnvParams.Country.toUpperCase()=="INDIA"){ 
   var Ohsn = Grid.getItem(i).getText_2(12).OleValue.toString().trim();
   var Ihsn = Grid.getItem(i).getText_2(13).OleValue.toString().trim();
@@ -408,6 +413,11 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 
 //    aqUtils.Delay(4000, Indicator.Text);
     var submit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.TransferToQuote;
@@ -431,6 +441,11 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     var submittedby = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget; 
     Sys.HighlightObject(submittedby);
     ValidationUtils.verify(true,true,"Quote is Submitted by :"+ submittedby.getText());
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
     var approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(approve);
 ReportUtils.logStep_Screenshot("");
@@ -850,12 +865,13 @@ for(var i=0;i<Grid.getItemCount();i++){
   var costBase = Grid.getItem(i).getText_2(7).OleValue.toString().trim();
   var billingPrice = Grid.getItem(i).getText_2(9).OleValue.toString().trim();
 //  if(workcode!=""){ 
-   clientEstimate[j] = workcode+"*"+description+"*"+quantity+"*";
-   if(workcode.indexOf("T")!=-1){ 
-   clientEstimate[j] = clientEstimate[j]+billingPrice+"*"
-   }else{ 
-   clientEstimate[j] = clientEstimate[j]+costBase+"*";
-   }
+//   clientEstimate[j] = workcode+"*"+description+"*"+quantity+"*";
+   clientEstimate[j] = workcode+"*"+description+"*"+quantity+"*"+costBase+"*"+billingPrice+"*";
+//   if(workcode.indexOf("T")!=-1){ 
+//   clientEstimate[j] = clientEstimate[j]+billingPrice+"*"
+//   }else{ 
+//   clientEstimate[j] = clientEstimate[j]+costBase+"*";
+//   }
    
   if(EnvParams.Country.toUpperCase()=="INDIA"){ 
   var Ohsn = Grid.getItem(i).getText_2(12).OleValue.toString().trim();
@@ -874,8 +890,8 @@ var z=0;
 var y=0;
 //Log.Message(clientEstimate.length)
 for(var i=0;i<clientEstimate.length;i++){
-if(clientEstimate[i]=="**0.00*0.00*"){ 
- Duplicate[y]= "**0.00*0.00*";
+if(clientEstimate[i]=="**0.00*0.00*0.00*"){ 
+ Duplicate[y]= "**0.00*0.00*0.00*";
  y++;
 }
 else if(Unique.indexOf(clientEstimate[i])==-1){
@@ -936,15 +952,15 @@ var billingPrice = Grid.getItem(i).getText_2(9).OleValue.toString().trim();
 }
 
 
-var temp = workcode+"*"+description+"*"+quantity+"*"; 
-
+//var temp = workcode+"*"+description+"*"+quantity+"*"; 
+var temp = workcode+"*"+description+"*"+quantity+"*"+costBase+"*"+billingPrice+"*";
   
 
-if(workcode.indexOf("T")!=-1){ 
-temp = temp+billingPrice+"*"
-}else{ 
-temp = temp+costBase+"*";
-}
+//if(workcode.indexOf("T")!=-1){ 
+//temp = temp+billingPrice+"*"
+//}else{ 
+//temp = temp+costBase+"*";
+//}
 
 if(EnvParams.Country.toUpperCase()=="INDIA"){
   temp = temp+Ohsn+"*"+Ihsn+"*";
@@ -1098,12 +1114,16 @@ var wCodeID = temp[0];
 var Desp = temp[1];
 var Qly = temp[2];
 var CostBase = temp[3];
+var bill = temp[4];
 
 var Country = EnvParams.Country;
 if(Country.toUpperCase()=="INDIA")
 {
-var OutwardHSN = temp[4]   
-var InwardHSN = temp[5] 
+//var OutwardHSN = temp[4]   
+//var InwardHSN = temp[5] 
+
+var OutwardHSN = temp[5]   
+var InwardHSN = temp[6] 
 }
 
 if((wCodeID!="")&&(wCodeID!=null)){
@@ -1297,7 +1317,8 @@ linestatus = false;
     
     
 //-----Cost Base Only for Amount---------
-    if(wCodeID.indexOf("T")==-1){
+//    if(wCodeID.indexOf("T")==-1){
+      
 //var Cost_base = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;;
 //var Cost_base = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.SWTObject("McTextWidget", "", 2);
 var Cost_base = Clientgrid().SWTObject("McTextWidget", "", 2);
@@ -1311,14 +1332,15 @@ linestatus = false;
     Cost_base.setText(CostBase);
     ValidationUtils.verify(true,true,"Cost is Entered");
     }
-    }
+//    }
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
     
 //-----Cost Base Only for Time---------
-    if(wCodeID.indexOf("T")>-1){
+//    if(wCodeID.indexOf("T")>-1){
+      
 //var Billing_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;;
 //var Billing_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.SWTObject("McTextWidget", "", 2);
 var Billing_Price = Clientgrid().SWTObject("McTextWidget", "", 2);
@@ -1327,11 +1349,12 @@ linestatus = false;
 
     Sys.HighlightObject(Billing_Price);
     Billing_Price.Click();
-    if(CostBase!=""){      
-    Billing_Price.setText(CostBase);
-    ValidationUtils.verify(true,true,"Cost is Entered");
+    if(bill!=""){      
+    Billing_Price.setText(bill);
+    ValidationUtils.verify(true,true,"Billing Price is Entered is Entered");
     }
-    }
+    
+//    }
 var Country = EnvParams.Country;
 if(Country.toUpperCase()=="INDIA")
 {
@@ -1607,7 +1630,8 @@ else
 ValidationUtils.verify(false,true,"Budget Currency is Not Matched ");        
 TextUtils.writeLog("Client Approved Estimate is validated");
 TextUtils.writeLog("Total Budget Currency is Matched");
-ImageRepository.ImageSet.Submit1.Click();             
+ImageRepository.ImageSet.Submit1.Click();   
+ReportUtils.logStep_Screenshot("");          
 var Add_Visible8 = true;
 
 ValidationUtils.verify(true,true,"Created Budget is Submitted");
@@ -1678,6 +1702,7 @@ level = 1;
 if(ImageRepository.ImageSet.ApproveBudget.Exists())
 ImageRepository.ImageSet.ApproveBudget.Click();
 
+ReportUtils.logStep_Screenshot("");
 var ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2)
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);

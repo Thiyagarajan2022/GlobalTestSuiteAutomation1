@@ -448,3 +448,12 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf("approved")==-1)&
 //  ValidationUtils.verify(true,false,"Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected")
   }
 }
+
+function nm(){ 
+  var drop = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TSTAUTO)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabChevron", "", 3);
+  drop.Click();
+  Delay(2000);
+  var popUp = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("LightweightContainer", "");
+  Sys.HighlightObject(popUp);
+  ImageRepository.ImageSet.JobInvoiceApplication.Click();
+}

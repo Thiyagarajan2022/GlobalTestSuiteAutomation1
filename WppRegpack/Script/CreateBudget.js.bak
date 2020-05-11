@@ -32,8 +32,11 @@ var count = true;
 //var Emp_cate = "EC1007"
 //var Emp = "170210001"
 var Arrays = [];
-
+var workCodeList = [];
+var workActivity = [];
 function createBudget(){ 
+
+  
 TextUtils.writeLog("Job Budget Creation Started"); 
 Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -69,10 +72,13 @@ templateJob="";
 Approve_Level = [];
 y=0;
 ApproveInfo = [];
+workCodeList = [];
+workActivity = [];
 level =0;
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 sheetName = "JobCreation";
+
 
   getDetails();
   goToJobMenuItem();
@@ -202,13 +208,56 @@ function goToBudget(){
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy to create budget"); 
   closeFilter.Click();
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+var workCodeAdd = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+WorkspaceUtils.waitForObj(workCodeAdd);
+workCodeAdd.Click();
+
+workCodeList = [];
+ExcelUtils.setExcelName(workBook, sheetName, true);
+ for(var i=1;i<=10;i++){
+
+ var temp = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco);
+ if(temp!=""){
+ workCodeList[i] = temp;
+ Log.Message(workCodeList[i])
+ }
+}
+
+workActivity = [];
+var i=0
+var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+for(var v=0;v<WorkCodeGrid.getItemCount();v++){ 
+  for(var y=0;y<workCodeList.length;y++){ 
+  if(WorkCodeGrid.getItem(v).getText(0).OleValue.toString().trim()==workCodeList[y]){ 
+    workActivity[i] = WorkCodeGrid.getItem(v).getText(0).OleValue.toString().trim()+"*"+WorkCodeGrid.getItem(v).getText(6).OleValue.toString().trim()
+    Log.Message(workActivity[i]);
+    i++;
+  }
+  
+  }
+}
+
+
+
 //  aqUtils.Delay(8000, Indicator.Text);
-var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
+//var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
+var Budget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
 WorkspaceUtils.waitForObj(Budget);
 Budget.Click();
 //aqUtils.Delay(3000, "Finding Show Budget");
 //aqUtils.Delay(2000, "Finding Client Currency");
 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 var show_budget = "";
 
 //if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).isVisible())
@@ -245,6 +294,7 @@ var show_budget = "";
 //Log.Message(show_budget.FullName);
 
     show_budget = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+    Sys.HighlightObject(show_budget);
     WorkspaceUtils.waitForObj(show_budget);
     show_budget.HoverMouse();
     show_budget.HoverMouse();
@@ -258,6 +308,11 @@ var show_budget = "";
     aqUtils.Delay(2000,"Working Estimate is Selected");
     ValidationUtils.verify(true,true,"Working Estimate is Selected");
     TextUtils.writeLog("Working Estimate is Selected"); 
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 //var ClientCurrency = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
     }
     
@@ -605,6 +660,17 @@ var Quality = Clientgrid.SWTObject("McTextWidget", "", 2);
     aqUtils.Delay(2000, "Next Column");
     
 //-----Cost Base Only for Amount---------
+
+  for(var yy=0;yy<workActivity.length;yy++){ 
+  if((workActivity[yy].indexOf(wCodeID)!=-1)&&(workActivity[yy].indexOf("Outlays")!=-1)){ 
+  wCodeID  = "T1001";
+  break;
+  }
+  
+  }
+
+
+
   if(wCodeID.indexOf("T")==-1){
 
 var Cost_base;
@@ -777,6 +843,10 @@ var Save = "";
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
     }
+    
+ 
+/*
+       
   // validation part
   var tableGrid = Clientgrid;
   var total_Cost_Base = tableGrid.getItem(RowCount).getText_2(8).OleValue.toString().trim();
@@ -835,13 +905,15 @@ Log.Message(total_Billing_Price_Currency)
   ValidationUtils.verify(true,true,"Tax Code 2 is populated");
   
   TotalBudget = parseFloat(TotalBudget.toString()) + parseFloat(total_Billing_Price_Currency.toString());
-  
+  */
 RowCount++;
 } 
 }
 if(!addedlines)
 ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Budget");
 else{ 
+/*
+
 //Log.Message(TotalBudget);
 //try{
 if(Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.ChildCount==1)
@@ -880,7 +952,7 @@ TextUtils.writeLog("Total Budget Currency is validated and matched");
 //if(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,"English",Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 8).getText().OleValue.toString().trim()).OleValue.toString().trim()=="Submit")
 //var Submit = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 9).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 8)
 
-
+*/
 var Submit = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.SingleToolItemControl;
 WorkspaceUtils.waitForObj(Submit);
 ReportUtils.logStep_Screenshot("");
@@ -901,8 +973,12 @@ Submit.Click();
 ValidationUtils.verify(true,true,"Created Budget is Submitted");
 
 TextUtils.writeLog("Working Estimate is Submitted"); 
-
-quteNumber = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().toString().trim();
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
+quteNumber = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().OleValue.toString().trim();
 //quteNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget.getText().toString().trim();
 
 ////if(ImageRepository.ImageSet.Forward.Exists()){
@@ -1094,7 +1170,11 @@ ReportUtils.logStep_Screenshot("");
 Approve.Click();
 ValidationUtils.verify(true,true,"Levels 0 has  Approved the Created Budget");
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
-
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
 var ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.McTextWidget;
 //var ApvPerson = "";
 //
@@ -1628,6 +1708,11 @@ if(Approve.isEnabled()){
   Approve.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   Approve.Click();
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  } 
 var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
