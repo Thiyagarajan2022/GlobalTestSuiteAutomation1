@@ -261,5 +261,14 @@
 		<item caption="JobInvoiceAllocation" moniker="{5B5A2B38-31A9-4532-8A32-61677B263932}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\JobInvoiceApplication.png" initialHash="E4FDB864" selectionLeft="1110" selectionTop="324" selectionWidth="126" selectionHeight="17" initialLeft="1110" initialTop="324" initialWidth="126" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
+		<item caption="Maximize1" moniker="{861A911F-D1A1-4AF0-90F3-599D106B78CB}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Maximize1.png" initialHash="EC046CCE" selectionLeft="1338" selectionTop="409" selectionWidth="16" selectionHeight="15" initialLeft="1338" initialTop="409" initialWidth="16" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Close_Down" moniker="{A6D615C5-2911-4955-B0F1-E4653C13ACA4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Close_Down.png" initialHash="5645A150" selectionLeft="1319" selectionTop="409" selectionWidth="16" selectionHeight="15" initialLeft="1319" initialTop="409" initialWidth="16" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobInvoiceAllocation_1" moniker="{2B952F9B-D5E0-4D60-BC56-1661875E1C3D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobInvoiceAllocation_1.png" initialHash="00000000" selectionLeft="1150" selectionTop="325" selectionWidth="129" selectionHeight="15" initialLeft="1150" initialTop="325" initialWidth="129" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
 	</data>
 </Root>
