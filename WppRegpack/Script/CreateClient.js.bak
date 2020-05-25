@@ -6,7 +6,7 @@
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
 
-
+//Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "CreateClient";
@@ -19,7 +19,7 @@ var Arrays = [];
 var count = true;
 var checkmark = false;
 var STIME = "";
-var clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN ="";
+var clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN,SII_Tax ="";
 var ClientNumber = "";
 
 
@@ -50,7 +50,7 @@ Arrays = [];
 count = true;
 checkmark = false;
 STIME = "";
-clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN ="";
+clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN,SII_Tax ="";
 ClientNumber = "";
 Approve_Level = [];
 
@@ -80,6 +80,9 @@ ClientDueDiligencePolicy();
 globalClientTable();
 if(EnvParams.Country.toUpperCase()=="INDIA"){
 Runner.CallMethod("IND_CreationClient.indiaSpecific",State,GST,PAN,TAN);
+}
+if(EnvParams.Country.toUpperCase()=="SPAIN"){
+Runner.CallMethod("SPA_CreateClient.spainSpecific",SII_Tax);
 }
 attachDocument();
 Information();
@@ -335,7 +338,13 @@ ValidationUtils.verify(false,true,"TAN is Needed to Create a Client");
 }
 Log.Message(TAN)
 }
+if(EnvParams.Country.toUpperCase()=="SPAIN"){
+SII_Tax = ExcelUtils.getRowDatas("SII Tax Group",EnvParams.Opco)
+if((SII_Tax==null)||(SII_Tax=="")){ 
+ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Client");
+}
 
+}
 Indicator.PushText("Playback");
 }
 
@@ -940,6 +949,8 @@ function attachDocument(){
   } 
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
+  }else if(EnvParams.Country.toUpperCase()=="SPAIN"){ 
+    var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl
   }
   else{ 
   var doc =  Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document
@@ -949,6 +960,11 @@ function attachDocument(){
   doc.HoverMouse();
   doc.HoverMouse();
   doc.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+} 
   var attchDocument = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.TabFolderPanel.Composite.AttachDocument;
   attchDocument.HoverMouse();
   attchDocument.HoverMouse();
@@ -979,6 +995,11 @@ function Information(){
   info.HoverMouse();
   info.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+} 
   var submit = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.Submit;
   Sys.HighlightObject(submit);
   submit.HoverMouse();
@@ -998,6 +1019,11 @@ ImageRepository.ImageSet.Maximize.Click();
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}else{ 
+ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+} 
    var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.ApprovarTable;
    var y=0;
   for(var i=0;i<ApproverTable.getItemCount();i++){   

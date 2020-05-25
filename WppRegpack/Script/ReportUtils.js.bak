@@ -37,12 +37,12 @@ function logStep(result,stepName, stepDesc="")
 {
 if(result.toUpperCase()=="INFO"){
 //Log.Message(stepName)
-TextUtils.writeLog(stepName);
+//TextUtils.writeLog(stepName);
 test.log(logStatus.INFO,stepName);
 testConsolidated.log(logStatus.INFO,stepName);
 }
 if(result.toUpperCase()=="PASS"){
-TextUtils.writeLog(stepName);
+//TextUtils.writeLog(stepName);
 test.log(logStatus.PASS,stepName);
 testConsolidated.log(logStatus.PASS,stepName);
 }

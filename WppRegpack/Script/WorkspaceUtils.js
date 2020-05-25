@@ -6,24 +6,47 @@
 var Language = "";
 
 function closeAllWorkspaces(){
+  if(Language == "English"){
   Sys.Desktop.KeyDown(0x12); //Alt
   Sys.Desktop.KeyDown(0x57); //W
   Sys.Desktop.KeyDown(0x0D); //Enter
   Sys.Desktop.KeyUp(0x12); 
   Sys.Desktop.KeyUp(0x57);
   Sys.Desktop.KeyUp(0x0D);
+  }
+  else if(Language =="Spanish"){ 
+  Sys.Desktop.KeyDown(0x12); //Alt
+  Sys.Desktop.KeyDown(0x56); //W
+  Sys.Desktop.KeyDown(0x0D); //Enter
+  Sys.Desktop.KeyUp(0x12); 
+  Sys.Desktop.KeyUp(0x56);
+  Sys.Desktop.KeyUp(0x0D);
+  }
 }
 
 function closeMaconomy(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 //  Log.Message("Maconomy is Already in Running")
+if(Language == "English"){
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
     Sys.Desktop.KeyUp(0x46); //Alt
     Sys.Desktop.KeyUp(0x12);     
     Sys.Desktop.KeyUp(0x58);
+    
+    }
+else if(Language =="Spanish"){ 
+    Sys.Desktop.KeyDown(0x12); //Alt
+  Sys.Desktop.KeyDown(0x41); //A
+  Sys.Desktop.KeyDown(0x0D); //Enter
+  Sys.Desktop.KeyDown(0x4C);//L
+  Sys.Desktop.KeyUp(0x12); 
+  Sys.Desktop.KeyUp(0x57);
+  Sys.Desktop.KeyUp(0x0D);
+  Sys.Desktop.KeyUp(0x4C);
+  }
 }
 
 function SpanishcloseAllWorkspaces(){
@@ -35,6 +58,29 @@ function SpanishcloseAllWorkspaces(){
   Sys.Desktop.KeyUp(0x57);
   Sys.Desktop.KeyUp(0x0D);
   Sys.Desktop.KeyUp(0x4C);
+}
+
+// Calculate time difference between startTime and endTime
+function timeDifference(stime, etime)
+{
+  var time1, time2;
+  var start = stime.split(":");
+  if(start[1]>0){ 
+  time1 = Number(start[2]) + Number(start[1]*60);
+  }
+    if(start[0]>0){ 
+    time1 = time1 + Number(start[0]*60*60);
+  }
+    
+  var end = etime.split(":");
+  if(end[1]>0){ 
+  time2 = Number( end[2]) + Number(end[1]*60);
+  }
+  if(end[0]>0){ 
+  time2 = time2 + Number(end[0]*60*60);
+  }
+  
+  return time2-time1;
 }
 
 function VPWSearchByValue(ObjectAddrs,popupName,value,fieldName){ 
@@ -804,7 +850,8 @@ var checkmark =  false;
 function SearchByValuePicker_Col_2(ObjectAddrs,popupName,value,fieldName){
 var checkmark =  false;
   ObjectAddrs.Click();
-  aqUtils.Delay(1000, Indicator.Text);;
+  aqUtils.Delay(3000, Indicator.Text);;
+
 //  aqUtils.Delay(1000, Indicator.Text);;
     Sys.Desktop.KeyDown(0x11);
     Sys.Desktop.KeyDown(0x47);
@@ -812,6 +859,10 @@ var checkmark =  false;
     Sys.Desktop.KeyUp(0x47);
     var grid = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
     waitForObj(grid);
+    var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
+    waitForObj(code);
+    var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim())
+    waitForObj(cancel);
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
     aqUtils.Delay(1000, Indicator.Text);;
@@ -1199,10 +1250,17 @@ return UserPasswd;
 
 
 
-function DropDownList(value,feild){ 
+function DropDownList(value,feild,Address){ 
 var checkMark = false;
 Sys.Process("Maconomy").Refresh();
-  var list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+var list = "";
+try{
+  list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+  }
+  catch(e){ 
+   Address.Click(); 
+   list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+  }
   var Add_Visible4 = true;
   while(Add_Visible4){
   if(list.isEnabled()){
@@ -1224,6 +1282,7 @@ Sys.Process("Maconomy").Refresh();
         Log.Message(list.getItem(i).getText_2(0).OleValue.toString().trim());
           list.Keys("[Down]");
         }
+
       }
   }
   }
@@ -1845,6 +1904,7 @@ var tl = 0;
 function config_with_Maconomy_Validation(Obj_Address,wizName,value,ExcelData,fieldName){ 
 var temp = "";
    if(value!=""){
+     Sys.HighlightObject(Obj_Address);
   Obj_Address.Click();
   aqUtils.Delay(1000, wizName);;
   Sys.Desktop.KeyDown(0x11);
@@ -2004,6 +2064,8 @@ var tl = 0;
 //  aqUtils.Delay(4000, Indicator.Text);;
   var table = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
   Sys.HighlightObject(table);
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+  waitForObj(OK);
   var itemCount = table.getItemCount();
   if(itemCount>0){ 
   for(var i=0;i<itemCount;i++){
@@ -2692,10 +2754,10 @@ splits[1] = ExcelData[exl].substring(ExcelData[exl].indexOf(splits[0])+(splits[0
     var stat = true;
     for(var exl =0;exl<billable.length;exl++){
         var compStatus = false;
-//          Log.Message("billable[exl] :"+billable[exl]);
+          Log.Message("billable[exl] :"+billable[exl]);
     for(var cnt = 0;cnt<tableList.length;cnt++){ 
 
-//      Log.Message("tableList[cnt] :"+tableList[cnt]);      
+      Log.Message("tableList[cnt] :"+tableList[cnt]);      
       if(tableList[cnt].toLowerCase().indexOf(billable[exl].toLowerCase())!=-1){ 
 //      Log.Message("billable[exl] :"+billable[exl]);
 //      Log.Message("tableList[cnt] :"+tableList[cnt]);
@@ -2703,17 +2765,14 @@ splits[1] = ExcelData[exl].substring(ExcelData[exl].indexOf(splits[0])+(splits[0
        break;
       }
       }
-      if(!compStatus){ 
-        if(stat){
-        Log.Message(billable[exl])
-        ValidationUtils.verify(false,true,"Some Expected Template are missing in Maconomy compared to ConfigPack:");
-//        Log.Warning("Some Expected Template are missing in Maconomy :");
-        stat = false;
-        }
-//        var splits = billable[exl].split("*");
-       ReportUtils.logStep("INFO", billable[exl]);
-//        Log.Message(billable[exl]);
-      }
+//      if(!compStatus){ 
+//        if(stat){
+//        Log.Message(billable[exl])
+//        ValidationUtils.verify(false,true,"Some Expected Template are missing in Maconomy compared to ConfigPack:");
+//        stat = false;
+//        }
+//       ReportUtils.logStep("INFO", billable[exl]);
+//      }
     }
     
    var stat = true; 
@@ -3353,3 +3412,26 @@ var list_D = [];
 
 }
 //Strating Of TestCase
+
+//// Calculate time difference between startTime and endTime
+//function timeDifference(stime, etime)
+//{
+//  var time1, time2;
+//  var start = stime.split(":");
+//  if(start[1]>0){ 
+//  time1 = Number(start[2]) + Number(start[1]*60);
+//  }
+//    if(start[0]>0){ 
+//    time1 = time1 + Number(start[0]*60*60);
+//  }
+//    
+//  var end = etime.split(":");
+//  if(end[1]>0){ 
+//  time2 = Number( end[2]) + Number(end[1]*60);
+//  }
+//  if(end[0]>0){ 
+//  time2 = time2 + Number(end[0]*60*60);
+//  }
+//  
+//  return time2-time1;
+//}

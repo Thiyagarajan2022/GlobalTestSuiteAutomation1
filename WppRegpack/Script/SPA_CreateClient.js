@@ -1,5 +1,6 @@
 ﻿//USEUNIT ReportUtils
 //USEUNIT ValidationUtils
+//USEUNIT CreateClient
 function spainSpecific(SII_Tax){ 
 //Strating Of TestCase
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -8,6 +9,13 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 } 
   var spainspec = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.IndiaSpecific;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(2000, "Selecting Spain");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 Sys.HighlightObject(spainspec);
 var Start = StartwaitTime();
 var waitTime = true;
@@ -16,6 +24,9 @@ while(waitTime)
 if(Difference<61){
 if((spainspec.isEnabled())&&(spainspec.text=="Spain")){
 Sys.HighlightObject(spainspec);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
 spainspec.HoverMouse();
 spainspec.Click();
 waitTime = false;
@@ -33,7 +44,7 @@ var SIITaxGroup = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Co
   if(SII_Tax!=""){
   Sys.HighlightObject(SIITaxGroup);
   SIITaxGroup.Click();
-  WorkspaceUtils.SearchByValue(SIITaxGroup,"Option",SII_Tax,"SII Tax Group");
+  WorkspaceUtils.SearchByValue(SIITaxGroup, JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,CreateClient.Language,"Option").OleValue.toString().trim(),SII_Tax,"SII Tax Group");
          } 
          
   aqUtils.Delay(2000, Indicator.Text);

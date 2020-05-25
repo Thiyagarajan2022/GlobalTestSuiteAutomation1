@@ -1,6 +1,7 @@
 ﻿//USEUNIT ReportUtils
 //USEUNIT ValidationUtils
-function indiaSpecific(State,GST,PAN,TAN){ 
+//USEUNIT CreateClient
+function indiaSpecific(State,GST,PAN,TAN,TIN){ 
 //Strating Of TestCase
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -8,6 +9,13 @@ function indiaSpecific(State,GST,PAN,TAN){
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   } 
   var indiaspec = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.IndiaSpecific;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(2000, "Selecting India");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 Sys.HighlightObject(indiaspec);
 var Start = StartwaitTime();
 var waitTime = true;
@@ -16,6 +24,9 @@ while(waitTime)
 if(Difference<61){
 if((indiaspec.isEnabled())&&(indiaspec.text=="India Specific")){
 Sys.HighlightObject(indiaspec);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 indiaspec.HoverMouse();
 indiaspec.Click();
 waitTime = false;
@@ -33,7 +44,7 @@ else{
   var debtorType = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
   var C_pan = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.PAN;
   var C_tan = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.TAN;
-    
+  var C_tin = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);  
   if(State!=""){
   Sys.HighlightObject(StateCode);
   StateCode.HoverMouse();
@@ -57,6 +68,12 @@ else{
   
   if(TAN!=""){
    C_tan.setText(TAN);
+  }
+  
+  if(TIN!=""){
+  Sys.HighlightObject(C_tin);
+  C_tin.HoverMouse();  
+   C_tin.setText(TIN);
   }
 var save = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.Save;
 Sys.HighlightObject(save);

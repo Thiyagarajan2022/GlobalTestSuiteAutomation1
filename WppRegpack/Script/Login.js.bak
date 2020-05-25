@@ -55,7 +55,49 @@ var colsList = [];
 var login_colsList = [];
 email_ID =[];
 
-TestedApps.Maconomy.Run();
+//TestedApps.Maconomy.Run();
+
+if(EnvParams.instanceData=="BAUTESTAPAC")
+TestedApps.BAUTESTAPAC.Run();
+if(EnvParams.instanceData=="BAUTESTEMEA")
+TestedApps.BAUTESTEMEA.Run();
+if(EnvParams.instanceData=="DATAAPAC")
+TestedApps.DATAAPAC.Run();
+if(EnvParams.instanceData=="DATAEMEA")
+TestedApps.DATAEMEA.Run();
+if(EnvParams.instanceData=="DEV1EMEA")
+TestedApps.DEV1EMEA.Run();
+if(EnvParams.instanceData=="DEV2EMEA")
+TestedApps.DEV2EMEA.Run();
+if(EnvParams.instanceData=="DEV3EMEA")
+TestedApps.DEV3EMEA.Run();
+if(EnvParams.instanceData=="DEV4EMEA")
+TestedApps.DEV4EMEA.Run();
+if(EnvParams.instanceData=="PRODAPAC")
+TestedApps.PRODAPAC.Run();
+if(EnvParams.instanceData=="PRODEMEA")
+TestedApps.PRODEMEA.Run();
+if(EnvParams.instanceData=="PRPRAPAC")
+TestedApps.PRPRAPAC.Run();
+if(EnvParams.instanceData=="PRPREMEA")
+TestedApps.PRPREMEA.Run();
+if(EnvParams.instanceData=="SUPPAPAC")
+TestedApps.SUPPAPAC.Run();
+if(EnvParams.instanceData=="SUPPEMEA")
+TestedApps.SUPPEMEA.Run();
+if(EnvParams.instanceData=="TESTAPAC")
+TestedApps.TESTAPAC.Run();
+if(EnvParams.instanceData=="TESTEMEA")
+TestedApps.TESTEMEA.Run();
+if(EnvParams.instanceData=="TRNAPAC")
+TestedApps.TRNAPAC.Run();
+if(EnvParams.instanceData=="TRNEMEA")
+TestedApps.TRNEMEA.Run();
+if(EnvParams.instanceData=="UATAPAC")
+TestedApps.UATAPAC.Run();
+if(EnvParams.instanceData=="UATEMEA")
+TestedApps.UATEMEA.Run();
+
 aqUtils.Delay(20000, "Waiting for Maconomy to Start");
 var status = true;
 while(status){

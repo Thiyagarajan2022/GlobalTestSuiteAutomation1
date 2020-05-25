@@ -1,18 +1,69 @@
-﻿
-
-var excelName, sheet;
+﻿var excelName, sheet,excelpath;
 var excelObj;
+var excelApp,wrkbook,columnCount,rowCount,excel_App,workbook;
+
 
 function setExcelName(excelname, excelSheet){
 excelName = excelname;
 sheet = excelSheet;
 JavaClasses.org_excelwrite.companyinfo.setExcelName(excelname, excelSheet);
-//Log.Message("excelName :"+excelName);
-//Log.Message("sheet :"+sheet);
 //excelObj = DDT.ExcelDriver(excelName,sheet,true);
-
 }
 
+// Create Excel
+function create_AutomationStat_Excel(fileName)
+{
+excelApp = Sys.OleObject("Excel.Application");
+wrkbook = excelApp.Workbooks.Add();
+excelApp.Visible = "False";
+wrkbook.ActiveSheet.Cells.Item(1,1).Value="TestCase_Name";
+wrkbook.ActiveSheet.Cells.Item(1,2).Value="Execution_TimeTaken(seconds)";
+wrkbook.SaveAs(fileName);
+wrkbook.Close();
+excelApp.Quit();
+}
+
+// Publish values to workbook excel
+function writeTo_AutomationStat_Excel(filePath,testname,executionTime)
+{
+  excel_App = Sys.OleObject("Excel.Application");
+  workbook = excel_App.Workbooks.Open(filePath);
+  excel_App.Visible = "True";
+  columnCount = workbook.ActiveSheet.UsedRange.Columns.Count;
+  rowCount = workbook.ActiveSheet.UsedRange.Rows.Count+1;
+  
+  var existingTime=0;
+  var totalTime = 0;
+  var keyrow=0;
+  var tcFound = false;
+  for(var i=1;i<=rowCount;i++){
+    if(workbook.ActiveSheet.Cells.Item(i,1).Text.toString().trim() == testname.trim())
+    {
+      keyrow=i;
+      tcFound = true;
+      break;
+     }
+  }
+  if(tcFound)
+    {
+      existingTime = workbook.ActiveSheet.Cells.Item(keyrow,2).Text;
+      totalTime = executionTime+parseInt(existingTime);
+      workbook.ActiveSheet.Cells.Item(keyrow,2).Value=totalTime;
+    }
+    else
+    {
+      workbook.ActiveSheet.Cells.Item(rowCount,1).Value=testname;
+      workbook.ActiveSheet.Cells.Item(rowCount,columnCount).Value=executionTime;
+    }
+  workbook.Save();
+  //workbook.Close();
+}
+
+// Close Excel
+function close_AutomationStat_Excel()
+{
+  excel_App.Quit();
+}
 
 
 function getColumnValue( rowName, columnNum)
@@ -25,7 +76,6 @@ for(var i=1; i!=0; i++){
     if(rowName==excelObj.ColumnName(0)){
         
       value = excelObj.ColumnName(columnNum);
-      //excelObj.Value(columnNum);
       break;
         
     }
@@ -55,11 +105,9 @@ var value ;
 excelObj = DDT.ExcelDriver(excelName,sheet,true);
 try{
 excelObj.First();
-//Log.Message(excelObj.ColumnCount)
  for(var j=0; j<excelObj.ColumnCount; j++){
        if(columnName==excelObj.ColumnName(j)){
        columnIndex = j;
-//       Log.Message(columnIndex);
        break;
        }
  }
@@ -124,7 +172,6 @@ for(var i=1; i!=0; i++){
     if(rowName==excelObj.Value(0)){
         
       value = excelObj.Value(colNum);
-      //excelObj.Value(columnNum);
       break;
         
     }
@@ -157,7 +204,6 @@ var colsList = [];
 
    for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){   
      colsList[idx] = DDT.CurrentDriver.ColumnName(idx);
-//         Log.Message( colsList[idx]);
    }
      while (!DDT.CurrentDriver.EOF()) {
     
@@ -200,7 +246,6 @@ var colsList = [];
         catch(e){
         temp = "";
         }
-//      Log.Message(temp);
       break;
       }
       }
@@ -253,24 +298,22 @@ return temp.OleValue.toString().trim();
 
 function SSCLogin(rowidentifier,column)
 {
-//Log.Message("excelName :"+excelName);
-//Log.Message("sheet :"+sheet);
+
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];
  var temp ="";
-//Log.Message(rowidentifier)
-//Log.Message(column)
-
 if(rowidentifier.indexOf("Central Team - Client Management")!=-1)
  rowidentifier = "Central Team - Client Account Management";
 if(rowidentifier.indexOf("Central Team - Vendor Management")!=-1)
  rowidentifier = "Central Team - Vendor Account Management";
 if(rowidentifier.indexOf("SSC - Expense Cashiers")!=-1)
  rowidentifier = "SSC - Cashier";
-
+if(rowidentifier.indexOf("SSC - Billers")!=-1)
+ rowidentifier = "SSC - Biller";
+ 
      while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(2).toString().trim())
+
        if(xlDriver.Value(0).toString().trim()==rowidentifier){
         try{
          temp = temp+xlDriver.Value(column).toString().trim();
@@ -278,7 +321,7 @@ if(rowidentifier.indexOf("SSC - Expense Cashiers")!=-1)
         catch(e){
         temp = "";
         }
-//      Log.Message("temp :"+temp);
+
       break;
       }
 
@@ -296,11 +339,10 @@ colsList = [];
   for(var i=0;i<DDT.CurrentDriver.ColumnCount;i++){ 
   if(DDT.CurrentDriver.ColumnName(i).toString().trim().indexOf(column)!=-1)
   Col = DDT.CurrentDriver.ColumnName(i).toString().trim();
-//  else
-//  Log.Message(DDT.CurrentDriver.ColumnName(i).toString().trim())
+
 }
      while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(Col).toString().trim())
+
        if(xlDriver.Value(Col).toString().trim().indexOf(rowidentifier.toString().trim())!=-1){
         try{
          temp = temp+xlDriver.Value(Col).toString().trim();
@@ -308,7 +350,6 @@ colsList = [];
         catch(e){
         temp = "";
         }
-//      Log.Message("temp :"+temp);
       break;
       }
 
@@ -331,8 +372,6 @@ colsList = [];
 
 function AgencyLogin(rowidentifier,column)
 {
-//Log.Message("excelName :"+excelName);
-//Log.Message("sheet :"+sheet);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var colsList = [];
@@ -342,7 +381,6 @@ if(rowidentifier.indexOf("OpCo -")!=-1){
   }
 if(rowidentifier.indexOf("Billers")!=-1)
     rowidentifier = rowidentifier.replace(/Billers/g,"Biller");
-//Log.Message(rowidentifier)    
 if((rowidentifier.indexOf("(")!=-1)&&(rowidentifier.indexOf(")")!=-1))
     rowidentifier = rowidentifier.substring(0,rowidentifier.indexOf("(")-1);
     
@@ -350,14 +388,8 @@ var Col = "";
 for(var i=0;i<DDT.CurrentDriver.ColumnCount;i++){ 
   if(DDT.CurrentDriver.ColumnName(i).toString().trim().indexOf(column)!=-1)
   Col = DDT.CurrentDriver.ColumnName(i).toString().trim();
-//  else
-//  Log.Message(DDT.CurrentDriver.ColumnName(i).toString().trim())
 }
-//Log.Message(rowidentifier)
-//Log.Message(Col)
-//Log.Message(column)
      while (!DDT.CurrentDriver.EOF()) {
-//    Log.Message("Colunm :"+xlDriver.Value(Col).toString().trim())
        if(xlDriver.Value(Col).toString().trim().indexOf(rowidentifier.toString().trim())!=-1){
         try{
          temp = temp+xlDriver.Value(Col).toString().trim();
@@ -365,7 +397,6 @@ for(var i=0;i<DDT.CurrentDriver.ColumnCount;i++){
         catch(e){
         temp = "";
         }
-//      Log.Message("temp :"+temp);
       break;
       }
 
@@ -597,8 +628,10 @@ JavaClasses.org_excelwrite.companyinfo.WriteExcelSheet(array,Opco,sheets,val)
 //  }
 // book.Save();
 // app.Quit();
+
+
 }
 
 
-//Strating Of TestCase
+
 

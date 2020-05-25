@@ -68,6 +68,7 @@ ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(TestRunner.workDir);
 TestRunner.archivePath = TestRunner.packedResults + TestRunner.reportName;
+aqUtils.Delay(4000, "Compressing the Document");
 // Packes the resutls
 if (slPacker.Pack(fileList, TestRunner.workDir, TestRunner.archivePath))
   Log.Message("Files compressed successfully.");
