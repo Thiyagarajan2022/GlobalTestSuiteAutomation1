@@ -55,10 +55,15 @@ STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
+try{
 getDetails();
 goToJobMenuItem();   
 createAJob();   
 GoToJob();
+}
+  catch(err){
+    Log.Message(err);
+  }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -716,7 +721,7 @@ ReportUtils.logStep_Screenshot("");
   if((BFC!="")&&(BFC!=null)){
   if(counterBFC.getText()!=BFC){ 
   counterBFC.Click();
-  WorkspaceUtils.SearchByValue(counterBFC,"Counter Party BFC",BFC,"Counter Party BFC");
+  WorkspaceUtils.SearchByValue(counterBFC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Counter Party BFC").OleValue.toString().trim(),BFC,"Counter Party BFC");
   }
   }
   if((pTerm!="")&&(pTerm!=null)){

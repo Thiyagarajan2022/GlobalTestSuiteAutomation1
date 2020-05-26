@@ -20,7 +20,10 @@ var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.
 POapproval.HoverMouse();
 ReportUtils.logStep_Screenshot();
 POapproval.Click();
-aqUtils.Delay(3000, Indicator.Text);;
+aqUtils.Delay(1000, Indicator.Text);;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
 ReportUtils.logStep_Screenshot();
 }

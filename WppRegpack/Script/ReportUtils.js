@@ -64,18 +64,19 @@ ig++;
 test.log(logStatus.FAIL,stepName+test.addScreenCapture("."+img));
 testConsolidated.log(logStatus.FAIL,stepName+testConsolidated.addScreenCapture(".\\"+file_name+img));
 TextUtils.writeLog(unitName+" is FAILED "+stepName);
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-fileList = slPacker.GetFileListFromFolder(TestRunner.workDir);
-TestRunner.archivePath = TestRunner.packedResults + TestRunner.reportName;
-aqUtils.Delay(4000, "Compressing the Document");
-// Packes the resutls
-if (slPacker.Pack(fileList, TestRunner.workDir, TestRunner.archivePath))
-  Log.Message("Files compressed successfully.");
-  
-ReportUtils.reportConsolidated.endTest(testConsolidated);
-ReportUtils.reportConsolidated.flush();
-
+//ReportUtils.report.endTest(test);
+//ReportUtils.report.flush();
+//fileList = slPacker.GetFileListFromFolder(TestRunner.workDir);
+//TestRunner.archivePath = TestRunner.packedResults + TestRunner.reportName;
+//aqUtils.Delay(4000, "Compressing the Document");
+//// Packes the resutls
+//if (slPacker.Pack(fileList, TestRunner.workDir, TestRunner.archivePath))
+//  Log.Message("Files compressed successfully.");
+//  
+//ReportUtils.reportConsolidated.endTest(testConsolidated);
+//ReportUtils.reportConsolidated.flush();
+var err;
+throw err;
 }
 if(result.toUpperCase()=="WARNING"){
 test.log(logStatus.WARNING,stepName);

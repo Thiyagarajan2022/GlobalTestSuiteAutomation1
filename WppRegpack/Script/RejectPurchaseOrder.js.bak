@@ -75,7 +75,7 @@ todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i);
 break;
 }
-
+TextUtils.writeLog("Purchase Orders("+POnumber+") is Rejected");
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -251,7 +251,7 @@ ValidationUtils.verify(true,true,"Purchase Order is Rejected by "+Project_manage
 TextUtils.writeLog("Levels 0 has  Rejected the Purchase Order by "+Project_manager);
 
 var ii=0;
-while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected")&&(ii!=60))
+while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()!="Rejected")&&(ii!=60))
 {
   aqUtils.Delay(100);
   ii++;
@@ -270,7 +270,7 @@ while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejec
   TextUtils.writeLog("Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected"); 
   ValidationUtils.verify(true,false,"Purchase Order is Rejected by :"+Project_manager+ "But its Not Reflected")
   }
- 
+  ReportUtils.logStep_Screenshot();
   WorkspaceUtils.waitForObj(approvertable);
   ImageRepository.ImageSet.Undo.Click();
   aqUtils.Delay(1000);
@@ -281,6 +281,11 @@ while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejec
   ReportUtils.logStep_Screenshot();
   save.Click();
 aqUtils.Delay(1000, "Waiting to Save");; 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
 }
 
 
@@ -666,7 +671,7 @@ ValidationUtils.verify(true,true,"Purchase Order is Rejected by "+Apvr)
 TextUtils.writeLog("Levels 0 has  Rejected the Purchase Order by "+Apvr);
 
 var ii=0;
-while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejected")&&(ii!=60))
+while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()!="Rejected")&&(ii!=60))
 {
   aqUtils.Delay(100);
   ii++;
@@ -680,7 +685,7 @@ while ((approvertable.getItem(0).getText_2(6).OleValue.toString().trim()=="Rejec
   TextUtils.writeLog("Purchase Order is Rejected by :"+Apvr+ "But its Not Reflected"); 
   ValidationUtils.verify(true,false,"Purchase Order is Rejected by :"+Apvr+ "But its Not Reflected")
   }
- 
+  ReportUtils.logStep_Screenshot();
   WorkspaceUtils.waitForObj(approvertable);
   ImageRepository.ImageSet.Undo.Click();
   aqUtils.Delay(1000);

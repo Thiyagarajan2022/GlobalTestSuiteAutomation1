@@ -64,6 +64,8 @@ workActivity = [];
 level =0;
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
+
+try{
 //sheetName = "JobCreation";
 getDetails();
 goToJobMenuItem();
@@ -84,6 +86,10 @@ todo(temp[3]);
 aprvBudget(temp[0],temp[1],temp[2]);
 }
 
+}
+  catch(err){
+    Log.Message(err);
+  }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 closeAllWorkspaces();

@@ -2,7 +2,7 @@
 function todo(lvl){ 
 aqUtils.Delay(5000, Indicator.Text);
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
-
+ 
 if(lvl==3){
 Client_Managt.ClickItem("|Approve Purchase Order by Type (Substitute) (*)");
 ReportUtils.logStep_Screenshot(); 

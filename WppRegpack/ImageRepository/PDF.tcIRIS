@@ -4,13 +4,13 @@
 	<testData />
 	<data>
 		<item caption="AccRece" moniker="{380F36BC-1207-4CFC-831C-2BCAFCD074BE}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\AccRece.png" initialHash="8B8385DD" selectionLeft="45" selectionTop="375" selectionWidth="162" selectionHeight="33" initialLeft="45" initialTop="375" initialWidth="162" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\AccRece.png" initialHash="00000000" selectionLeft="45" selectionTop="377" selectionWidth="31" selectionHeight="31" initialLeft="45" initialTop="377" initialWidth="31" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="AccRec1" moniker="{6DC3D59E-56A8-4992-B344-88200B95A02B}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\AccRec1.png" initialHash="3C41B55D" selectionLeft="44" selectionTop="376" selectionWidth="162" selectionHeight="33" initialLeft="44" initialTop="376" initialWidth="162" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\AccRec1.png" initialHash="00000000" selectionLeft="44" selectionTop="376" selectionWidth="32" selectionHeight="31" initialLeft="44" initialTop="376" initialWidth="32" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="AccRecee" moniker="{EE2437F0-EA2B-43BE-8B27-93C558FE52AB}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\AccRecee.png" initialHash="4EE01480" selectionLeft="43" selectionTop="239" selectionWidth="177" selectionHeight="33" initialLeft="43" initialTop="239" initialWidth="177" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\AccRecee.png" initialHash="00000000" selectionLeft="43" selectionTop="239" selectionWidth="33" selectionHeight="31" initialLeft="43" initialTop="239" initialWidth="33" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="ChooseFolder" moniker="{6B596831-BF54-4E2E-A1F5-908B4B4A425B}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\ChooseFolder.png" initialHash="529CC5E1" selectionLeft="660" selectionTop="603" selectionWidth="205" selectionHeight="29" initialLeft="660" initialTop="603" initialWidth="205" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />

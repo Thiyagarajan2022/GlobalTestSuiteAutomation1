@@ -61,6 +61,7 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
 
+try{
 //Fetching Variables in Excel
 getDetails();
 //Entering Client Management
@@ -142,6 +143,10 @@ companyProduct();
 WorkspaceUtils.closeAllWorkspaces();
 Log.PopLogFolder();
 TextUtils.writeLog("     ");
+}
+  catch(err){
+    Log.Message(err);
+  }
 }
 
 

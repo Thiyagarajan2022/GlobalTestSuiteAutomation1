@@ -16,26 +16,26 @@ var ApproveInfo = [];
 var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
-var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
+var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
 var PONumber = "";
 var workcodeList = [];
- 
+var Language = "";
+
 function CreatePurchaseOrder(){ 
 Indicator.PushText("waiting for window to open");
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-  menuBar.Click();
+menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
+WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
   
 }
+
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "CreatePurchaseOrder";
@@ -45,25 +45,24 @@ ApproveInfo = [];
 mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 STIME = "";
-VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
+VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
 PONumber = "";
-Language = EnvParams.Language;
-if((Language==null)||(Language=="")){
-ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-}
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
+
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
-
+try{
 getDetails();
 ExcelUtils.setExcelName(workBook, sheetName, true);
   gotoMenu();
-//  Delay(5000);
   selectJobs();
   listPurchaseOrder();
-  var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+}
+  catch(err){
+    Log.Message(err);
+  }
+  
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 closeAllWorkspaces();
 }
@@ -89,6 +88,10 @@ Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
 if((Job_Number==null)||(Job_Number=="")){ 
 ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
 }
+
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
+NOL = ExcelUtils.getColumnDatas("Number of Lines To ADD",EnvParams.Opco)
 
 }
 
@@ -125,25 +128,30 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Jobs");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Jobs").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Jobs");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Jobs").OleValue.toString().trim());
 }
 
 } 
 
-//aqUtils.Delay(5000, Indicator.Text);
+
 ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
 TextUtils.writeLog("Moved to Jobs from Jobs Menu");
 }
 
 
 function selectJobs(){ 
-  var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.AllJobs;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
   WorkspaceUtils.waitForObj(allJobs);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   allJobs.Click();
   ReportUtils.logStep_Screenshot("");
-//  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.CompanyNumber;
   var closeFilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.CloseFilterList;
@@ -163,7 +171,10 @@ function selectJobs(){
   job.Click();
   job.setText(Job_Number);
   WorkspaceUtils.waitForObj(table);
-  aqUtils.Delay(3000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+//  aqUtils.Delay(3000, Indicator.Text);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(2).OleValue.toString().trim()==Job_Number){ 
@@ -180,16 +191,23 @@ function selectJobs(){
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job is listed in table to create PO");
   closeFilter.Click();
-//  aqUtils.Delay(8000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var jobActivities = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.JobActivities;
   WorkspaceUtils.waitForObj(jobActivities);
   jobActivities.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var iniatePOfromBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.InitiatePO;
   WorkspaceUtils.waitForObj(iniatePOfromBudget);
   iniatePOfromBudget.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Initiate Purchase Order is clicked");
-//  aqUtils.Delay(5000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid;
   WorkspaceUtils.waitForObj(table);
 
@@ -200,7 +218,6 @@ for(var i=1;i<=10;i++){
 sheetName = "JobBudgetCreation";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-//Log.Message("wCodeID :"+wCodeID)
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
  jB = false; 
  break;
@@ -212,15 +229,7 @@ StartPO = true;
 sheetName = "CreatePurchaseOrder";
 }
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
 Log.Message(sheetName);
   
    for(var i=1;i<=10;i++){
@@ -238,6 +247,17 @@ Log.Message(sheetName);
     ValidationUtils.verify(false,true,"Given WorkCode "+wCodeID+" is not availble in Maconomy Screen");
   }
   }
+  
+  
+var line_i =1;
+var LTA = 1;
+if((NOL==null)||(NOL==""))
+{ 
+  LTA = 10;
+}else{ 
+  LTA = aqConvert.StrToInt(NOL);
+}
+
   workcodeList = [];
   var wcL = 0;
   for(var j=0;j<table.getItemCount();j++){
@@ -246,6 +266,8 @@ Log.Message(sheetName);
   var wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
   if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
   if(table.getItem(j).getText_2(3).OleValue.toString().trim()==wCodeID){ 
+    if(line_i<=LTA){
+    line_i++;
   workcodeList[wcL] = table.getItem(j).getText_2(3).OleValue.toString().trim()+"*"+table.getItem(j).getText_2(4).OleValue.toString().trim();
   wcL++;
   Sys.Desktop.KeyDown(0x09);
@@ -258,6 +280,9 @@ Log.Message(sheetName);
   selected.Click();
   }
   aqUtils.Delay(1000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   // 8 TAB to move to Vendor
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
@@ -276,16 +301,21 @@ Log.Message(sheetName);
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
   aqUtils.Delay(1000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var vendor = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid.vendor;
   vendor.Click();
-  WorkspaceUtils.SearchByValues_Col_1_all(vendor,"Vendor",VendorID,"Vendor Number","All Vendors");
+  WorkspaceUtils.SearchByValues_Col_1_all(vendor,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Vendor").OleValue.toString().trim(),VendorID,"Vendor Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "All Vendors").OleValue.toString().trim());
   aqUtils.Delay(1000, Indicator.Text);
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.RemarksSave;
   save.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   save.Click();
   aqUtils.Delay(3000, "Saving Changes");
-  // 9 SHIFT+TAB to move to LineType
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   Sys.Desktop.KeyDown(0x10);
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
@@ -322,6 +352,8 @@ Log.Message(sheetName);
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
   Sys.Desktop.KeyUp(0x10);
+  }// to check Number of lines
+  
   }
   }
   }
@@ -340,13 +372,13 @@ if(j<table.getItemCount()-2)
   createPurchaseOrder.Click();
 //  aqUtils.Delay(8000,Indicator.Text);
   
-  var label = Sys.Process("Maconomy").SWTObject("Shell", "Jobs").SWTObject("Label", "*");
+  var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Jobs").OleValue.toString().trim()).SWTObject("Label", "*");
   ReportUtils.logStep(label.getText());
   Log.Message(label.getText())
   PONumber = label.WndCaption;
   PONumber = PONumber.substring(PONumber.lastIndexOf(" ")+1);
   ValidationUtils.verify(true,true,"Purchase Order Number :"+PONumber);   
-  var Okay = Sys.Process("Maconomy").SWTObject("Shell", "Jobs").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+  var Okay = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Jobs").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "OK").OleValue.toString().trim());
   Okay.HoverMouse();
   ReportUtils.logStep_Screenshot("");
   Okay.Click();
@@ -360,9 +392,15 @@ function listPurchaseOrder(){
   WorkspaceUtils.waitForObj(listPO);
   listPO.Click();
 //  aqUtils.Delay(5000,Indicator.Text);
-  var myPO = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.MyOpenPO;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  var myPO = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "My Purchase Orders").OleValue.toString().trim());
   WorkspaceUtils.waitForObj(myPO);
   myPO.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 //  aqUtils.Delay(2000, Indicator.Text);
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.POTable.McGrid;
   var firstcell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.POTable.McGrid.companyNo;
@@ -379,7 +417,14 @@ function listPurchaseOrder(){
   POcolumn.Click();
   POcolumn.setText(PONumber);
   WorkspaceUtils.waitForObj(table);
-  aqUtils.Delay(3000, "Reading table data");
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(1).OleValue.toString().trim()==PONumber){ 
@@ -401,7 +446,9 @@ function listPurchaseOrder(){
 //    var POLine = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
 //    POLine.Click();
 //    aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
+  }
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
 WorkspaceUtils.waitForObj(screen);
   screen.Click();
@@ -444,24 +491,26 @@ var BaseCurrency;
   var UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
   var OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
   var IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
-  
+  Log.Message(workBook)
+  Log.Message(sheetName) 
 
   ExcelUtils.setExcelName(workBook, "CreatePurchaseOrder", true);
   var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
 
-  
-//  Log.Message(wCodeID)
-//  Log.Message(Desp)
-//  Log.Message(Qly)
-//  Log.Message(UnitPrice)
-//  Log.Message(OHSN)
-//  Log.Message(IHSN)
-//  Log.Message(POS)
+
+  Log.Message(wCodeID)
+  Log.Message(Desp)
+  Log.Message(Qly)
+  Log.Message(UnitPrice)
+  Log.Message(OHSN)
+  Log.Message(IHSN)
+  Log.Message(POS)
   
   for(var wcL=0;wcL<workcodeList.length;wcL++){
   if((wCodeID!="")&&(wCodeID!=null)&&(workcodeList[wcL].indexOf(wCodeID)!=-1)){
   var temp = workcodeList[wcL].split("*");
   if(table.getItem(j).getText_2(3).OleValue.toString().trim()==temp[1]){ 
+    Log.Message(temp[1])
   Sys.Desktop.KeyDown(0x09);
   Sys.Desktop.KeyUp(0x09);
   aqUtils.Delay(1000, Indicator.Text);
@@ -475,12 +524,15 @@ var workcode = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Co
 //  WorkspaceUtils.SearchByValue(workcode,"Work Code",wCodeID,"WorkCode");
   workcode.Keys("[Tab]");
 var detailedDescription = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
+//Log.Message(Desp)
+//Log.Message(detailedDescription.getText())
+//Log.Message(Desp!="")
+//Log.Message(detailedDescription.getText()!=Desp)
+//Log.Message((Desp!="")&&(detailedDescription.getText()!=Desp))
    if((Desp!="")&&(detailedDescription.getText()!=Desp)){
    detailedDescription.setText(Desp);
    ReportUtils.logStep_Screenshot("");
-   }else{ 
-   ValidationUtils.verify(false,true,"Detailed Description Needed to create PurchaseOrder");
-     }
+   }
    detailedDescription.Keys("[Tab]"); 
 var Quantity = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
    if((Qly!="")&&(Quantity.getText()!=Qly)){
@@ -566,6 +618,7 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
  
 
 aqUtils.Delay(4000, "Validating Tax");
+/*
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var currency_Amount = tableGrid.getItem(j).getText_2(7).OleValue.toString().trim();
   var local_currency_Amount = tableGrid.getItem(j).getText_2(8).OleValue.toString().trim();
@@ -591,30 +644,22 @@ aqUtils.Delay(4000, "Validating Tax");
   var lcA;
   
   if(ClientCurrency==ContryCurrency){ 
-//    Log.Message(Qly)
-//    Log.Message(UnitPrice)
     lcA = parseFloat(Qly)*parseFloat(UnitPrice);
     Log.Message(lcA)
   }
   else if(ClientCurrency!="GBP"){
    convertCurr = 1/BaseCurrency;
-//     Log.Message("convertCurr :"+convertCurr)
   var QtyXCurr = parseFloat(convertCurr)*parseFloat(CA);
-//  Log.Message("QtyXCurr :"+QtyXCurr)
    lcA = parseFloat(QtyXCurr)*parseFloat(ExchangeRate);
-//  Log.Message("lcA :"+lcA)
   }
   else{ 
     lcA = parseFloat(CA)*parseFloat(ExchangeRate);
   }
-//  Log.Message(lcA)
+
   lcA = lcA.toFixed(2);
-//  Log.Message(lcA)
   var lowerRange = parseFloat(lcA)-parseFloat("1000.00");
   var higherRange = parseFloat(lcA)+parseFloat("1000.00");
 
-//  Log.Message(Taxcode1);
-//  Log.Message(Taxcode2);
   if((Taxcode1=="")&&(Taxcode2==""))
   ValidationUtils.verify(false,true,"Tax Code 1 and Tax Code 2 is not Populated");
   if(Taxcode1!="")
@@ -622,11 +667,6 @@ aqUtils.Delay(4000, "Validating Tax");
   if(Taxcode2!="")
   ValidationUtils.verify(true,true,"Tax Code 2 is populated");
   
-  
-//Log.Message(lowerRange) 
-//Log.Message(higherRange) 
-//Log.Message(local_currency_Amount)
-
   if(CA==currency_Amount)
   ValidationUtils.verify(true,true,"Currency Amount is verified");
   else
@@ -667,18 +707,12 @@ var lstIndex = Taxcode1.lastIndexOf("%");
 var str = Taxcode1.substring(0, lstIndex);
 lstIndex = str.lastIndexOf(" ");
 Taxcode1 = str.substring(lstIndex+1).replace(/@/g,'');
-//Log.Message(Taxcode1)
 var TAC_1 = (parseFloat(currency_Amount)/100)*parseFloat(Taxcode1)
 var TAB_1 = (parseFloat(local_currency_Amount)/100)*parseFloat(Taxcode1)
 
   var lowerRange = parseFloat(TAC_1)-parseFloat("5.00");
   var higherRange = parseFloat(TAC_1)+parseFloat("5.00");
   
-//Log.Message(parseFloat(currency_Amount))
-//Log.Message(parseFloat(currency_Amount)/100)
-//Log.Message(parseFloat(Taxcode1))
-//Log.Message(TAC_1)
-//Log.Message(Tax_Amount_currency_1)
   if(((lowerRange<Tax_Amount_currency_1)&&(higherRange>Tax_Amount_currency_1))||((lowerRange<Tax_Amount)&&(higherRange>Tax_Amount)))
   ValidationUtils.verify(true,true,"Tax Amount Currency 1 is verified");
   else
@@ -687,6 +721,7 @@ var TAB_1 = (parseFloat(local_currency_Amount)/100)*parseFloat(Taxcode1)
 }
 }
 
+*/
 
   
   }
@@ -710,7 +745,7 @@ if(j<table.getItemCount()-2)
   var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
 Sys.HighlightObject(SubmitPurchase);
 for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
-  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText=="Submit Purchase Order")){
+  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Submit Purchase Order").OleValue.toString().trim())){
     SubmitPurchase = SubmitPurchase.Child(i);
     break;
   }
