@@ -227,10 +227,26 @@ if(EnvParams.instanceData.indexOf("TRN")!=-1){
   if(loginuser.indexOf("1006 Finance")!=-1){ 
     loginpassword = "CORE@WPP456"
   }
+  if(loginuser.indexOf("SPA Biller (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  if(loginuser.indexOf("SPA Management (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  if(loginuser.indexOf("SPA Senior Accountant (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  
 }
 
 if(EnvParams.instanceData.indexOf("BAU")!=-1){
   if(loginuser.indexOf("1707 Finance")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+    if(loginuser.indexOf("IND Junior APs")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+    if(loginuser.indexOf("MYS Junior Accountants")!=-1){ 
     loginpassword = "CORE@WPP123"
   }
 }
