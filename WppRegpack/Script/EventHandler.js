@@ -5,8 +5,12 @@ var img = 0;
 
 function GeneralEvents_OnLogError(Sender, LogParams)
 {
+  try{
   Log.Message(LogParams.MessageText)
  ReportUtils.logStep("FAIL", LogParams.MessageText);
+ }catch(e){ 
+   
+ }
 }
 
 function GeneralEvents_OnLogEvent(Sender, LogParams)

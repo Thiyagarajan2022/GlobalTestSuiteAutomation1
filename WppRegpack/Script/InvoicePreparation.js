@@ -24,6 +24,7 @@ Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
@@ -35,15 +36,7 @@ ValidationUtils.verify(false,true,"Login Credentials required for anyone of Agen
 
 Log.Message(Project_manager);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-  WorkspaceUtils.closeMaconomy();
-    /*
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
-    */
+WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
  
 }
@@ -55,17 +48,16 @@ STIME = "";
 Approve_Level =[];
 ApproveInfo = [];
 percentage,jobNumber = "";
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Invoice Preparation started::"+STIME);
 
+//try{
 getDetails();
 gotoMenu();
 gotoInvoicing();
 WorkspaceUtils.closeAllWorkspaces();
 for(var i=level;i<ApproveInfo.length;i++){
-  level=i;
+level=i;
 WorkspaceUtils.closeMaconomy();
 aqUtils.Delay(10000, Indicator.Text);
 var temp = ApproveInfo[i].split("*");
@@ -74,8 +66,12 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprove(temp[1],temp[2],i);
 }
+//}
+//catch(err){ 
+//  Log.Message(err);
+//}
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-  menuBar.Click();
+menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -85,7 +81,7 @@ sheetName ="InvoicePreparation";
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
   ValidationUtils.verify(false,true,"Job Number is needed for Invoice Preparation");
@@ -94,7 +90,7 @@ sheetName ="InvoicePreparation";
   
 
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  percentage = ExcelUtils.getRowDatas("Percentage",EnvParams.Opco)
+  percentage = ExcelUtils.getColumnDatas("Percentage",EnvParams.Opco)
   if((percentage=="")||(percentage==null))
   ValidationUtils.verify(false,true,"Percentage is needed for Invoice Preparation");
 }
@@ -292,6 +288,7 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
 
   
   var iPreparation = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.invoicePreparation;
+  
 //  var iPreparation = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel;
 //                     Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5)
 //  WorkspaceUtils.waitForObj(iPreparation);
@@ -502,6 +499,57 @@ var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Compos
   }else{ 
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
+
+var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
+var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
+Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
+grandTotal = grandTotal.getText().OleValue.toString().trim();
+Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();
+
+var Q_total = 0;
+var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  var q = 0;
+QuoteDetails = [];
+for(var i=0;i<specification.getItemCount();i++){ 
+
+  var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
+  if(Q_Desp!=""){
+  var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
+  var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
+  var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
+  var Q_Tax1 = specification.getItem(i).getText_2(7).OleValue.toString().trim();
+  var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
+  var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
+  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
+//  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+//  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+//  Log.Message(QuoteDetails[q]);
+  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  Log.Message(Q_total);
+  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+  Log.Message(QuoteDetails[q]);
+  q++;
+  ExcelUtils.setExcelName(workBook,"InvoicePreparation", true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,"InvoicePreparation",Q_Desp);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,"InvoicePreparation",Q_Qty);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,"InvoicePreparation",Q_Billing);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,"InvoicePreparation",Q_BillingTotoal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,"InvoicePreparation",Q_Tax1);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,"InvoicePreparation",Q_Tax2);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,"InvoicePreparation",Q_Tax1currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,"InvoicePreparation",Q_Tax2currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,"InvoicePreparation",Q_total);
+
+  }
+  }
+
+  ExcelUtils.setExcelName(workBook,"InvoicePreparation", true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX","InvoicePreparation",Excl_Tax);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL","InvoicePreparation",grandTotal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms","InvoicePreparation",Payment_Terms);
+  
+  
 var PrintDraft;
   if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
   PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;

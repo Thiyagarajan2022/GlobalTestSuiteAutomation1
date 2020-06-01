@@ -31,7 +31,7 @@ var count = true;
 var Arrays = [];
 var workCodeList = [];
 var workActivity = [];
-
+var quteNumber ="";
 function createBudget(){ 
   
 TextUtils.writeLog("Job Budget Creation Started"); 
@@ -734,7 +734,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
 
 var BarStat = true;
-var quteNumber = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6;  
+quteNumber = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6;  
 for(var a=0;a<quteNumber.ChildCount;a++){ 
   Log.Message(quteNumber.Child(a).FullName)
   if((quteNumber.Child(a).isVisible())&&(quteNumber.Child(a).Name.indexOf("Composite")!=-1)&&(quteNumber.Child(a).Index==1)){ 
@@ -959,7 +959,7 @@ if(ApproveInfo.length == 1){
 TextUtils.writeLog("Budget is created for :"+jobNumber);
 TextUtils.writeLog("Revision : "+quteNumber);
 ExcelUtils.setExcelName(workBook,"CreateQuote", true);
-ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote",quteNumber);
+ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Revision","CreateQuote",quteNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Working Estimate",EnvParams.Opco,"Data Management",jobNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
@@ -1283,11 +1283,11 @@ if((ApproveInfo.length -1)== level){
 TextUtils.writeLog("Budget is created for :"+jobNumber);
 TextUtils.writeLog("Revision : 1");
 ExcelUtils.setExcelName(workBook,"CreateQuote", true);
-ExcelUtils.WriteExcelSheet("Revision",EnvParams.Opco,"CreateQuote","1");
+ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Revision","CreateQuote",quteNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Working Estimate",EnvParams.Opco,"Data Management",jobNumber);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management","1");
+ExcelUtils.WriteExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management",quteNumber);
 }
 
     }
