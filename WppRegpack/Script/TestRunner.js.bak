@@ -34,7 +34,14 @@ var businessFlow = "";
 
 //var businessFlow = EnvParams.getBusinessFlow();
 globalTime = WorkspaceUtils.StartTime();
-
+//Log.Message(EnvParams.instanceData);
+//Log.Message(EnvParams.Country)
+//Log.Message(EnvParams.testcase)
+//Log.Message(EnvParams.TestingType)
+//Log.Message(EnvParams.OpcoNum)
+//Log.Message(EnvParams.Lang_Jenk)
+//Log.Message(EnvParams.Opco)
+//Log.Message(EnvParams.Language)
 
 var ReportDate = aqConvert.DateTimeToFormatStr(aqDateTime.Now(),"%d%m%Y_%H.%M.%S");
 var automationStat_Date = aqConvert.DateTimeToFormatStr(aqDateTime.Now(),"%d%m%Y");
@@ -141,7 +148,8 @@ else
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
 testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
-description = ExcelUtils.getAllRowDatas("Description",excelRow);
+moduleName = ExcelUtils.getAllRowDatas("ModuleName",excelRow);
+description = moduleName;
 
 if(TestingType.toUpperCase()=="SMOKE")
 execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
@@ -155,23 +163,23 @@ testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 
+
 //if(server){ 
 //      reportName = "Report_"+EnvParams.Opco+"_Login";
 //      ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 //      var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 //      var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-//      //ReportUtils.createTest("Login login", "Login using given Credentials")
+//    //ReportUtils.createTest("Login login", "Login using given Credentials")
 //      ReportUtils.createTest("Login", "Login using given Credentials")
 //
 //      var FolderID = Log.CreateFolder("Login");
 //      Log.PushLogFolder(FolderID);
-//      Runner.CallMethod("Login.login");
+//     Runner.CallMethod("Login.login");
 //      Log.PopLogFolder();
 //      ReportUtils.report.endTest(test);
 //      ReportUtils.report.flush();
 //      fileList = slPacker.GetFileListFromFolder(LworkDir);
 //      archivePath = LpackedResults +reportName;
-//      aqUtils.Delay(4000, "Compressing the Document");
 //// Packes the resutls
 //if (slPacker.Pack(fileList, LworkDir, archivePath))
 //      Log.Message("Files compressed successfully."); 
@@ -181,6 +189,7 @@ cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 server = false;
 
 testName = unitName;
+
 testCase_Stat_updated_flag = false;
 
 reportName = "Report_"+EnvParams.Opco+"_"+unitName;
@@ -202,7 +211,7 @@ var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
 Log.PushLogFolder(FolderID);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
-TextUtils.writeLog(unitName+" PASSED and Completed Successfully");
+TextUtils.writeLog(unitName+" Completed Successfully");
 
 // capture EndTime
 eTime = WorkspaceUtils.StartTime();
@@ -216,7 +225,7 @@ if(!aqFile.Exists(automationStat_file))
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,unitName,executionTime);
+ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,unitName,EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
 
 ReportUtils.report.endTest(test);
@@ -225,9 +234,8 @@ ReportUtils.report.flush();
 fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
 
-aqUtils.Delay(5000, "Files compressing...........");
 if (slPacker.Pack(fileList, workDir, archivePath))
-  Log.Message("Files compressed successfully.");
+  Log.Message("Files compressed successfully");
   
 Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
 }
@@ -235,8 +243,7 @@ Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename)
 excelRow++;
 
 } 
-//book.SaveAs(packedResults+"RunTime_statistics.xlsx");
-//app.Quit();
+
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
@@ -475,8 +482,12 @@ function columnCount(excelName,sheet){
   var i=0;
    for(var idx=1;idx<DDT.CurrentDriver.ColumnCount;idx++){   
    colsList[i] = DDT.CurrentDriver.ColumnName(idx);
+//   Log.Message("Column :"+colsList[i]);
    i++;
  }
+// Log.Message(colsList.length);
+// Log.Message(colsList[0])
+// Log.Message(colsList[1])
 DDT.CloseDriver(xlDriver.Name);
  return colsList;
 }
@@ -484,12 +495,16 @@ DDT.CloseDriver(xlDriver.Name);
 function getRowDatas(excelName,sheet,column)
 {
 
+//Log.Message("excelName :"+excelName);
+//Log.Message("sheet :"+sheet);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var rowList = [];
  var temp ="";
 
      while (!DDT.CurrentDriver.EOF()) {
+//    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
+
         try{
           
          rowList[id] = xlDriver.Value(column).toString().trim();
@@ -499,9 +514,13 @@ var rowList = [];
         temp = "";
         }
 
+//      Log.Message("temp :"+temp);
+
+
     xlDriver.Next();
      }
      DDT.CloseDriver(xlDriver.Name);
+//      Log.Message("rowList :"+rowList);
      return rowList;
 }
 
@@ -509,12 +528,18 @@ var rowList = [];
 function getRowOPco(excelName,sheet,column,OpID)
 {
 
+//Log.Message("excelName :"+excelName);
+//Log.Message("sheet :"+sheet);
+//Log.Message("column :"+column);
+//Log.Message("OpID :"+OpID);
 var xlDriver = DDT.ExcelDriver(excelName,sheet,true);
 var id =0;
 var rowList = [];
  var temp =false;
 
      while (!DDT.CurrentDriver.EOF()) {
+//    Log.Message("Colunm :"+xlDriver.Value(0).toString().trim())
+
         try{
           if(OpID==xlDriver.Value(column).toString().trim()){
           temp = true;
@@ -522,11 +547,15 @@ var rowList = [];
           }
          }
         catch(e){
+//        temp = "";
         }
 
+//      Log.Message("temp :"+temp);
+
+//      Log.Message("temp :"+temp);
     xlDriver.Next();
      }
      DDT.CloseDriver(xlDriver.Name);
-   
+//      Log.Message("temp :"+temp);     
      return temp;
 }
