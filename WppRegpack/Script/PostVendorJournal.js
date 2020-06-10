@@ -56,7 +56,7 @@ ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
 Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
-ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
+ReportUtils.logStep("INFO", "Post Vendor started::"+STIME);
 
 //ExcelUtils.setExcelName(workBook, sheetName, true);
 //var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
@@ -94,17 +94,18 @@ ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
 JournalNo = ExcelUtils.getRowDatas("journal No",EnvParams.Opco)
 if((JournalNo==null)||(JournalNo=="")){ 
-ValidationUtils.verify(false,true,"journal No is required to create USER");
+ValidationUtils.verify(false,true,"journal No is required to Post JOurnal");
 }
 
 companyNo = ExcelUtils.getRowDatas("company",EnvParams.Opco)
 if((companyNo==null)||(companyNo=="")){ 
-ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
+ValidationUtils.verify(false,true,"CompanyNo is required to Post JOurnal");
 }
 
   gotoMenu();
   Delay(5000);
 searchForJournal();
+postJournal();
 
 }
 
@@ -154,7 +155,7 @@ Client_Managt.DblClickItem("|AP Transactions");
 } 
 
 aqUtils.Delay(5000, Indicator.Text);
-ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
+ReportUtils.logStep("INFO", "Moved to  Accounts Payable Menu");
 
  
  
@@ -162,81 +163,88 @@ ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu
 
 function postJournal(){ 
   
-var postVendotJournal = NameMapping.Sys_new.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.postVendorJournal;
+var postVendotJournal = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.SingleToolItemControl;
+
+//NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.postVendorJournal;
 postVendotJournal.click();
 
-Delay(20000);
+Delay(30000);
 
 var SaveTitle = "";
 var sFolder = "";
-var pdf =    Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print posting journal.pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5)
-   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print posting journal.pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print posting journal")!=-1){
+var pdf =   
+//NameMapping.Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal.pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5)
+ Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow","*"+".pdf "+ "- Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5)
+   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*"+".pdf "+ "- Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Posting Journal")!=-1){
 
 //Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
 //    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print job quote")!=-1){
  
- TextUtils.writeLog("Post Vendor Journal"); 
-     ReportUtils.logStep_Screenshot("");
+
 
 Sys.HighlightObject(pdf);
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
-    
-    
-ValidationUtils.verify(true,true,"Print is Generated");
-Log.Message("Print is Generated")
-ReportUtils.logStep("INFO","Print is Generated");
-
-    
-//  aqUtils.Delay(2000, Indicator.Text);
-//    Sys.HighlightObject(pdf)
-//    Sys.Desktop.KeyDown(0x12); //Alt
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x41); //A 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x41);
-//    
-//        
-//    if(ImageRepository.PDF.ChooseFolder.Exists())
-//    ImageRepository.PDF.ChooseFolder.Click();
-//    
-//    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-//    aqUtils.Delay(2000, Indicator.Text);
-//    SaveTitle = save.wText;
-//    
-//sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-//if (! aqFileSystem.Exists(sFolder)){
-//if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-//    
-//}
-//else{
-//Log.Error("Could not create the folder " + sFolder);
-//}
-//}
-//save.Keys(sFolder+SaveTitle+".pdf");
-//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-//saveAs.Click();
-//aqUtils.Delay(2000, Indicator.Text);
-//if(ImageRepository.ImageSet.SaveAs.Exists()){
-//var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-//conSaveAs.Click();
-//}
-//Sys.HighlightObject(pdf);
 //    Sys.Desktop.KeyDown(0x12); //Alt
 //    Sys.Desktop.KeyDown(0x46); //F
 //    Sys.Desktop.KeyDown(0x58); //X 
 //    Sys.Desktop.KeyUp(0x46); //Alt
 //    Sys.Desktop.KeyUp(0x12);     
 //    Sys.Desktop.KeyUp(0x58);
-//    }
-//ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
-//Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-//ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+    
+    
+ValidationUtils.verify(true,true,"Vendor Journal is Generated");
+Log.Message("Print is Generated")
+ReportUtils.logStep("INFO","Vendor Journal is Generated");
+
+    
+  aqUtils.Delay(2000, Indicator.Text);
+    Sys.HighlightObject(pdf)
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x41); //A 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x41);
+    
+        
+    if(ImageRepository.PDF.ChooseFolder.Exists())
+    ImageRepository.PDF.ChooseFolder.Click();
+    
+    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+    aqUtils.Delay(2000, Indicator.Text);
+    SaveTitle = save.wText;
+    
+sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
+if (! aqFileSystem.Exists(sFolder)){
+if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+}
+else{
+Log.Error("Could not create the folder " + sFolder);
+}
+}
+save.Keys(sFolder+SaveTitle+".pdf");
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+saveAs.Click();
+aqUtils.Delay(2000, Indicator.Text);
+//if(ImageRepository.ImageSet.SaveAs.Exists()){
+//var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
+//conSaveAs.Click();
+//}
+Sys.HighlightObject(pdf);
+//    Sys.Desktop.KeyDown(0x12); //Alt
+//    Sys.Desktop.KeyDown(0x46); //F
+//    Sys.Desktop.KeyDown(0x58); //X 
+//    Sys.Desktop.KeyUp(0x46); //Alt
+//    Sys.Desktop.KeyUp(0x12);     
+//    Sys.Desktop.KeyUp(0x58);
+    
+ValidationUtils.verify(true,true,"Post Button  is Clicked and PDF is Saved");
+ TextUtils.writeLog("Post Vendor done for Journal No "+JournalNo); 
+  TextUtils.writeLog("Post Vendor done for companyNo "+companyNo); 
+ TextUtils.writeLog("Print Draft Quote is Clicked and PDF is Saved"); 
+Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
+ TextUtils.writeLog("PDF saved location : "+sFolder+SaveTitle+".pdf"); 
+ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
 }
 }
