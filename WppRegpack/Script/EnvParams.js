@@ -226,6 +226,7 @@ xlDriver.Next();
  }
  
 // path = "TestResource\\"+TestingType+"\\DS"+"_"+Lang+"_"+TestingType+".xlsx";
+//Environments
  if(TestingType.toUpperCase()=="SMOKE")
  path = "TestResource\\Smoke\\DS"+"_"+Lang+"_SMOKE.xlsx";
  else

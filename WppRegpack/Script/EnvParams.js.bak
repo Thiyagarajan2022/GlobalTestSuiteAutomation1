@@ -16,6 +16,11 @@ var Lang_Jenk = null;
 var Vname = null;
 var Pname = null;
 var Cname = null;
+var JiraUsername =null;
+var JiraAccessKey =null;
+var JiraSecrekey =null;
+var JirazephyrBaseUrl =null;
+
 function getEnvironment(){
 var i;
 var nArgs = BuiltIn.ParamCount();
@@ -180,16 +185,30 @@ for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){
   }
   }
   
-  if((Vname==null)||(Vname=="")){
-  if(("VersionName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
-  Vname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+if((JiraUsername ==null)||(JiraUsername =="")){
+  if(("JIRA User Name".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  JiraUsername  = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+ 
+  if((JiraAccessKey ==null)||(JiraAccessKey =="")){
+  if(("JIRA Access Key".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  JiraAccessKey  = xlDriver.Value(colsList[idx+1]).toString().trim();    
 
   }
   }
   
-  if((Cname==null)||(Cname=="")){
-  if(("CycleName".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
-  Cname = xlDriver.Value(colsList[idx+1]).toString().trim();    
+   if((JirazephyrBaseUrl  ==null)||(JirazephyrBaseUrl  =="")){
+  if(("Zephyr BaseUrl".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  JirazephyrBaseUrl   = xlDriver.Value(colsList[idx+1]).toString().trim();    
+
+  }
+  }
+  
+   if((JiraSecrekey  ==null)||(JiraSecrekey  =="")){
+  if(("JIRA Secret Key".indexOf(xlDriver.Value(colsList[idx]).toString().trim()))!=-1){
+  JiraSecrekey   = xlDriver.Value(colsList[idx+1]).toString().trim();    
 
   }
   }

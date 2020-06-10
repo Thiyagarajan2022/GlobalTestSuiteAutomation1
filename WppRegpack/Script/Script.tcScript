@@ -133,6 +133,9 @@
 			<folder name="Spain">
 				<child name="SPA_CreateClient" key="{525F44A3-7652-48E7-9CFB-5FDB91CBCB36}" path="SPA_CreateClient.js" />
 			</folder>
+			<folder name="Dependency TestCases">
+				<child name="Approve_VI" key="{387C1CFD-5A83-4864-9541-127F9CE3C1D1}" path="Approve_VI.js" />
+			</folder>
 		</folder>
 		<folder name="EnvConfig">
 			<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" path="EnvParams.js" />

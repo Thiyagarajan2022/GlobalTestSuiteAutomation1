@@ -37,7 +37,7 @@ function GeneralEvents_OnStopTest(Sender)
 		var cycleName = TestRunner.cyclename;
     var folderName = TestRunner.folderName;
 		var testCaseId = TestRunner.testCaseId; 
-   // var userName = "muthukumar.m@cognizant.com";   //
+   // var userName = "muthukumar.m@cognizant.com";   
 //		var  accessKey = "MDA1MDIyZWQtZmEyMC0zOTc4LWI2ZmEtZDM3MTcxMGU1YzRjIDVjYjc1OTJmOWE4NTc5MTA4OTZmZTc5OSBVU0VSX0RFRkFVTFRfTkFNRQ";
 //		var secretKey = "jf9LV-GHNp6MKw35xCTPo43WC0V4bwYC4SdsZC5K-Ho"; 
   //  var zephyrBaseUrl ="https://prod-api.zephyr4jiracloud.com/connect";
