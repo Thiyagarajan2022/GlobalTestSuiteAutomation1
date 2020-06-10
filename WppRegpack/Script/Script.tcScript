@@ -100,6 +100,9 @@
 				<child name="InvoicingFromBudget" key="{818AF22B-4E1C-4575-BF76-8D593A873E8D}" path="InvoicingFromBudget.js" />
 				<child name="JobInvoiceAllocation_WIP" key="{555C6FF8-C3E9-4230-96E0-DB7F7C3DD3C1}" path="JobInvoiceAllocation_WIP.js" />
 				<child name="Partial_invoicing_WriteOff" key="{7BE03D8F-F349-4088-9DFD-38AD50FBEA4F}" path="Partial_invoicing_WriteOff.js" />
+				<child name="CreateAnAccrualForGroupOfJobs" key="{F677612A-4F7D-41CF-A7BE-3B52503ADA27}" path="CreateAnAccrualForGroupOfJobs.js" />
+				<child name="CreateAnAccrualForJobByJobs" key="{C44F4B42-7869-4A89-AA62-A59065456693}" path="CreateAnAccrualForJobByJobs.js" />
+				<child name="TimeAndMaterialInvoicing" key="{3775E345-25F6-4C58-9094-B1417747AE20}" path="TimeAndMaterialInvoicing.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
