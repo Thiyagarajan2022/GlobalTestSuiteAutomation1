@@ -25,6 +25,218 @@ aqUtils.Delay(1000, Indicator.Text);
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
 
+
+
+excelName = EnvParams.path;
+workBook = Project.Path+excelName;
+sheetName = "InvoicePreparation";
+STIME = "";
+Approve_Level =[];
+ApproveInfo = [];
+percentage,jobNumber = "";
+STIME = WorkspaceUtils.StartTime();
+ReportUtils.logStep("INFO", "Invoice Preparation started::"+STIME);
+
+try{
+  
+
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  var invoicePreparation = ExcelUtils.getRowDatas("Invoice preparation Job",EnvParams.Opco);
+  var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
+  var invoiceBudget = ExcelUtils.getRowDatas("Invoicing from Budget Job",EnvParams.Opco);
+  var invoiceAccount = ExcelUtils.getRowDatas("Invoicing on Account Job",EnvParams.Opco);
+  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
+  
+  template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
+  if(((jobNumber=="")||(jobNumber==null))&&(template.indexOf("Fixed Price")!=-1)&&(invoicePreparation!=jobNumber)&&(AllocationWIP!=jobNumber)&&(invoiceBudget!=jobNumber)&&(invoiceAccount!=jobNumber)&&(writeoffInvoice!=jobNumber)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+  }
+  
+  else { 
+    //Creation of Job
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
+    if(jobSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Job to Create Invoice preparation")
+    }
+    
+    ExcelUtils.setExcelName(workBook, jobSheet, true);
+    var serialOder = ExcelUtils.getRowDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
+    
+    if((jobNumber=="")||(jobNumber==null)){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("Creation_Of_Job.createJob",jobSheet,serialOder);
+    Log.PopLogFolder();
+    }
+    //Creation of Budget
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
+    if(budgetSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Working Estimate for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, budgetSheet, true);
+    var serialOder = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Budget")
+    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var WE_Number = ExcelUtils.getRowDatas("Working Estimate_"+serialOder,EnvParams.Opco)
+    if((WE_Number=="")||(WE_Number==null)){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job Budget");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("BudgetCreation.createBudget",budgetSheet,serialOder);
+    Log.PopLogFolder();
+    }
+  //Creation of Quote 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var quoteSheet = ExcelUtils.getColumnDatas("Quote Sheet",EnvParams.Opco)
+    if(quoteSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Client Approved Estimate for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, quoteSheet, true);
+    var serialOder = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Quote")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var CE_Number = ExcelUtils.getRowDatas("Client Approved Estimate_"+serialOder,EnvParams.Opco)
+    if((CE_Number=="")||(CE_Number==null)){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Quote");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("Creation_of_Quote.CreateQuote",quoteSheet,serialOder);
+    Log.PopLogFolder();
+    }
+    
+    //Creation of PO
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
+    if(POSheet==""){ 
+      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, POSheet, true);
+    var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(JobSO==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create PO")
+    }
+    var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
+    if(PO_SO==""){ 
+      ValidationUtils.verify(true,false,"Need PO Serial Order to Create PO")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var PO_Number = ExcelUtils.getRowDatas("PO Number_"+PO_SO,EnvParams.Opco)
+    if((PO_Number=="")||(PO_Number==null)){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Purchase Order");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("CreatePO.CreatePurchaseOrder",POSheet,JobSO,PO_SO);
+    Log.PopLogFolder();
+    }
+  //Approving PO
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
+    if(APSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, APSheet, true);
+    var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need PO Serial Order to Approve PO")
+    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var AP_Number = ExcelUtils.getRowDatas("Approved PO_"+serialOder,EnvParams.Opco)
+    if((AP_Number=="")||(AP_Number==null)){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Approve Purchase Order");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("ApprovePO.ApprovePurchaseOrder",APSheet,serialOder);
+    Log.PopLogFolder();
+   }
+
+   //Creation of Vendor Invoice
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var VISheet = ExcelUtils.getColumnDatas("Vendor Invoice Sheet",EnvParams.Opco)
+    if(VISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, VISheet, true);
+    var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
+    if(PO_SO==""){ 
+      ValidationUtils.verify(true,false,"Need PO Serial Order to Create vendor Invocie")
+    }
+    
+    var VI_SO = ExcelUtils.getColumnDatas("Vendor Invoice Serial Order",EnvParams.Opco)
+    if(VI_SO==""){ 
+      ValidationUtils.verify(true,false,"Need Vendor Invoice Serial Order to Create vendor Invocie")
+    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var VI_Number = ExcelUtils.getRowDatas("Vendor Invoice NO_"+VI_SO,EnvParams.Opco)
+    var Journal_Number = ExcelUtils.getRowDatas("Invoice Journal NO_"+VI_SO,EnvParams.Opco)
+    if(((VI_Number=="")||(VI_Number==null))&&((Journal_Number=="")||(Journal_Number==null))){
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Vendor Invoice");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("VendorInvoice.CreateInvoice",VISheet,PO_SO,VI_SO);
+    Log.PopLogFolder();
+    }
+ 
+    //Approve Vendor Invocie
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var AISheet = ExcelUtils.getColumnDatas("Approve Vendor Invocie sheet",EnvParams.Opco)
+    if(AISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, AISheet, true);
+    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Vendor Invoice Serial Order to Approve VI")
+    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var AI_Number = ExcelUtils.getRowDatas("Approved Vendor Invoice_"+serialOder,EnvParams.Opco)
+    if((AI_Number=="")||(AI_Number==null)){   
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Approve Vendor Invoice");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("Approve_VI.ApproveInvoice",AISheet,serialOder);
+    Log.PopLogFolder();
+    }
+    
+    //Post Vendor Journal
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var PVISheet = ExcelUtils.getColumnDatas("Post Vendor Invoice sheet",EnvParams.Opco)
+    if(PVISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
+    }
+//    ExcelUtils.setExcelName(workBook, PVISheet, true);
+//    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
+//    if(serialOder==""){ 
+//      ValidationUtils.verify(true,false,"Need Vendor Invoice Serial Order to Post Vendor Journal")
+//    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var PVI_Number = ExcelUtils.getRowDatas("Post Vendor Journal_"+serialOder,EnvParams.Opco)
+    if((PVI_Number=="")||(PVI_Number==null)){ 
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Post Vendor Invoice");
+    Log.PushLogFolder(FolderID);
+    Runner.CallMethod("Post_VI.postVendorJournal",PVISheet,VI_SO);
+    Log.PopLogFolder();
+    }
+
+}
+
+
+
+Log.Message(jobNumber)
+Log.Message(template)
+
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
@@ -41,17 +253,7 @@ Restart.login(Project_manager);
  
 }
 
-excelName = EnvParams.path;
-workBook = Project.Path+excelName;
-sheetName = "InvoicePreparation";
-STIME = "";
-Approve_Level =[];
-ApproveInfo = [];
-percentage,jobNumber = "";
-STIME = WorkspaceUtils.StartTime();
-ReportUtils.logStep("INFO", "Invoice Preparation started::"+STIME);
 
-//try{
 getDetails();
 gotoMenu();
 gotoInvoicing();
@@ -66,10 +268,10 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprove(temp[1],temp[2],i);
 }
-//}
-//catch(err){ 
-//  Log.Message(err);
-//}
+}
+catch(err){ 
+  Log.Message(err);
+}
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -77,15 +279,15 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function getDetails(){ 
 sheetName ="InvoicePreparation";  
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-  if((jobNumber=="")||(jobNumber==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  }
-  if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed for Invoice Preparation");
-  
+//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+//  if((jobNumber=="")||(jobNumber==null)){
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+//  }
+//  if((jobNumber=="")||(jobNumber==null))
+//  ValidationUtils.verify(false,true,"Job Number is needed for Invoice Preparation");
+//  
 
   
 
@@ -763,6 +965,8 @@ while (((ApvPerson.getText().OleValue.toString().trim().toLowerCase().indexOf(Ja
   }
   
 if(Approve_Level.length==1){
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management",PONum)
 var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 WorkspaceUtils.waitForObj(appvBar);
 appvBar.Click();
@@ -1228,6 +1432,7 @@ var textobj;
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
+  ExcelUtils.WriteExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management",PONum)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 

@@ -231,12 +231,23 @@ var addedlines = false;
 var jB = true;
 var line_i =1;
 var LTA = 1;
+var init = 1;
 if((NOL==null)||(NOL==""))
 { 
   LTA = 10;
 }else{ 
+  if(NOL.indexOf("-")!=-1){ 
+    var line_Temp = NOL.split("-");
+    init = aqConvert.StrToInt(line_Temp[0]);
+    LTA = aqConvert.StrToInt(line_Temp[1]);
+  }else{
   LTA = aqConvert.StrToInt(NOL);
+  }
 }
+
+Log.Message(init)
+Log.Message(LTA)
+
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -250,14 +261,49 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
  OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
  IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
  
-if((wCodeID=="")||(wCodeID==null)){
+if((wCodeID!="")||(wCodeID!=null)){
  jB = false; 
+ break;
+}
+else{ 
+sheetName = "CreatePurchaseOrder"; 
+init = 0;
+LTA = 10;
 }
 
+ }
+
+Log.Message(sheetName)
+Log.Message(init)
+Log.Message(LTA)
+
+
+ for(var i=init;i<=LTA;i++){
+var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
+var IHSN ="";
+
+if(!jB){ 
+ sheetName = "JobBudgetCreation"; 
+}else{ 
+ sheetName = "CreatePurchaseOrder"; 
+}
+
+//sheetName = "JobBudgetCreation";
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+// wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
+// Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
+// Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
+// UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
+// OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
+// IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
+// 
+//if((wCodeID=="")||(wCodeID==null)){
+// jB = false; 
+//}
+
  
-if(!jB){
-StartPO = true;
-sheetName = "CreatePurchaseOrder";
+//if(!jB){
+//sheetName = "CreatePurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
  wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
  Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
@@ -265,14 +311,14 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
  UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
  OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
  IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
-}
+//}
 sheetName = "CreatePurchaseOrder";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
 
 
 if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
-if(line_i<=LTA){
+//if(line_i<=LTA){
 TextUtils.writeLog("Line item "+line_i+" is adding in PO");
 line_i++;
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
@@ -488,7 +534,7 @@ Log.Message(Tax_Amount_currency_1)
 
   RowCount++;
 
-}
+//}
 
 //aqUtils.Delay(4000, "Tax is Validated and Matched");
 

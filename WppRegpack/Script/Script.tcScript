@@ -138,6 +138,13 @@
 			</folder>
 			<folder name="Dependency TestCases">
 				<child name="Approve_VI" key="{387C1CFD-5A83-4864-9541-127F9CE3C1D1}" path="Approve_VI.js" />
+				<child name="CreatePO" key="{0C2A8E76-0062-4193-952A-452D7326A95F}" path="CreatePO.js" />
+				<child name="BudgetCreation" key="{93245980-F620-4603-B480-9320A2C9EC56}" path="BudgetCreation.js" />
+				<child name="Post_VI" key="{B93AF095-E55E-43EF-BC3E-3AD1DD9C411F}" path="Post_VI.js" />
+				<child name="ApprovePO" key="{8ABCEA86-8356-4B9F-906E-5FC026F2F4AE}" path="ApprovePO.js" />
+				<child name="Creation_of_Quote" key="{0D78F5F4-85D2-4314-80C9-929087E43FF5}" path="Creation_of_Quote.js" />
+				<child name="VendorInvoice" key="{3F05C8EC-300A-40B3-93F7-B9BEBFF49F88}" path="VendorInvoice.js" />
+				<child name="Creation_Of_Job" key="{24011612-ED53-4D8F-9489-A5A30F0420A1}" path="Creation_Of_Job.js" />
 			</folder>
 		</folder>
 		<folder name="EnvConfig">
