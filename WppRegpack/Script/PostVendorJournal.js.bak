@@ -162,7 +162,7 @@ ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu
 
 function postJournal(){ 
   
-var postVendotJournal = NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.postVendorJournal;
+var postVendotJournal = NameMapping.Sys_new.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.postVendorJournal;
 postVendotJournal.click();
 
 Delay(20000);
