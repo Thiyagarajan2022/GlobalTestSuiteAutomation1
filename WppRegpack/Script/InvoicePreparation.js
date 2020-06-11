@@ -49,12 +49,24 @@ try{
   var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
   
   template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
-  if(((jobNumber=="")||(jobNumber==null))&&(template.indexOf("Fixed Price")!=-1)&&(invoicePreparation!=jobNumber)&&(AllocationWIP!=jobNumber)&&(invoiceBudget!=jobNumber)&&(invoiceAccount!=jobNumber)&&(writeoffInvoice!=jobNumber)){
+  Log.Message((jobNumber!="")||(jobNumber!=null))
+//  Log.Message(template.indexOf("FP")!=-1)
+  Log.Message(invoicePreparation==jobNumber)
+  Log.Message(AllocationWIP==jobNumber)
+  Log.Message(invoiceBudget==jobNumber)
+  Log.Message(invoiceAccount==jobNumber)
+  Log.Message(writeoffInvoice==jobNumber)
+//  if((jobNumber=="")||(jobNumber==null)){
+  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+  Log.Message(jobNumber);
   }
-  
-  else { 
+  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+//    Log.Message(jobNumber+"Job Number is already used")
+    jobNumber = "";
+  }
+  if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
@@ -229,8 +241,8 @@ try{
     Log.PopLogFolder();
     }
 
+//}
 }
-
 
 
 Log.Message(jobNumber)

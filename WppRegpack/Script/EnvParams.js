@@ -38,11 +38,40 @@ var xlDriver= DDT.ExcelDriver(Project.Path+TextUtils.GetProjectValue("EnvDetails
 //OpcoNum = 1707;
 //Lang_Jenk = "English";
 
-
+var Stringtemp = "";
+var stats = false;
+Log.Message(BuiltIn)
 for (i = 1; i <= nArgs ; i++){    
-//Log.Message(BuiltIn.ParamStr(i));
-if(BuiltIn.ParamStr(i).indexOf("Environment")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+Log.Message(BuiltIn.ParamStr(i));
+var Params = "";
+if((BuiltIn.ParamStr(i).indexOf("{")!=-1)&&(BuiltIn.ParamStr(i).indexOf("}")!=-1)){ 
+  Params = BuiltIn.ParamStr(i);
+}else{ 
+  if((BuiltIn.ParamStr(i).indexOf("{")!=-1)&&(BuiltIn.ParamStr(i).indexOf("}")==-1)){ 
+    Stringtemp = Stringtemp + BuiltIn.ParamStr(i)+" "; 
+    Log.Message("Stringtemp :"+Stringtemp)
+    stats = true  
+    continue;
+  }else if((BuiltIn.ParamStr(i).indexOf("{")==-1)&&(BuiltIn.ParamStr(i).indexOf("}")==-1)&&(stats)){ 
+    Stringtemp = Stringtemp + BuiltIn.ParamStr(i)+" ";
+    Log.Message("Stringtemp :"+Stringtemp)
+    continue;
+  }else if((BuiltIn.ParamStr(i).indexOf("{")==-1)&&(BuiltIn.ParamStr(i).indexOf("}")!=-1)){ 
+    Stringtemp = Stringtemp + BuiltIn.ParamStr(i);
+    Log.Message("Stringtemp :"+Stringtemp)
+    Params = Stringtemp;
+    Stringtemp = "";
+    stats = false;
+  }
+  else{ 
+    Params = BuiltIn.ParamStr(i);
+  }
+  
+}
+
+Log.Message("Params :"+Params)
+if(Params.indexOf("Environment")!=-1){
+   var inst = Params;
    instanceData = (inst.substring(inst.indexOf(":"))).trim();
    if(instanceData!=null)
    instanceData = instanceData.substring(instanceData.indexOf("=")+2,instanceData.length-1);
@@ -50,8 +79,8 @@ if(BuiltIn.ParamStr(i).indexOf("Environment")!=-1){
 
 }
 
-if(BuiltIn.ParamStr(i).indexOf("Country")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+if(Params.indexOf("Country")!=-1){
+   var inst = Params;
    CountryList = (inst.substring(inst.indexOf(":"))).trim(); 
 //   if(Country!=null)
 //   Country = Country.substring(Country.indexOf("=")+2,Country.length-1);     
@@ -75,8 +104,8 @@ if(BuiltIn.ParamStr(i).indexOf("Country")!=-1){
 
 
 
-if(BuiltIn.ParamStr(i).indexOf("TestCases")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+if(Params.indexOf("TestCases")!=-1){
+   var inst = Params;
    testcase = (inst.substring(inst.indexOf(":"))).trim(); 
    if(testcase!=null)
    testcase = testcase.substring(testcase.indexOf("=")+2,testcase.length-1);
@@ -84,8 +113,8 @@ if(BuiltIn.ParamStr(i).indexOf("TestCases")!=-1){
 
 }
 
-if(BuiltIn.ParamStr(i).indexOf("TestingType")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+if(Params.indexOf("TestingType")!=-1){
+   var inst = Params;
    TestingType = (inst.substring(inst.indexOf(":"))).trim(); 
    if(TestingType!=null)
    TestingType = TestingType.substring(TestingType.indexOf("=")+2,TestingType.length-1);
@@ -93,8 +122,8 @@ if(BuiltIn.ParamStr(i).indexOf("TestingType")!=-1){
 
 }
 
-if(BuiltIn.ParamStr(i).indexOf("OpCo")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+if(Params.indexOf("OpCo")!=-1){
+   var inst = Params;
   OpcoNum = (inst.substring(inst.indexOf(":"))).trim(); 
    if(OpcoNum!=null){
    OpcoNum = OpcoNum.substring(OpcoNum.indexOf("=")+2,OpcoNum.length-1);
@@ -112,8 +141,8 @@ if(BuiltIn.ParamStr(i).indexOf("OpCo")!=-1){
 
 }
 
-if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
-   var inst = BuiltIn.ParamStr(i);
+if(Params.indexOf("Language")!=-1){
+   var inst = Params;
   Lang_Jenk = (inst.substring(inst.indexOf(":"))).trim(); 
    if(Lang_Jenk!=null){
    Lang_Jenk = Lang_Jenk.substring(Lang_Jenk.indexOf("=")+2,Lang_Jenk.length-1);
@@ -121,24 +150,11 @@ if(BuiltIn.ParamStr(i).indexOf("Language")!=-1){
    Log.Message(Language);
    }
 
-//   Log.Message("Opco :"+Opco);     
-//Language = "English";
-
 }
 
 }
 
-//instanceData = "TESTAPAC"
-//Country = "China"
-//testcase = "CreatePurchaseOrder";
-//TestingType = "SysTest"
-//OpcoNum = "1307";
-//Language = "English";
-//Opco = "1307"
 
-//if(result==null){
-//  result =  "InstanceToRun";
-//}
 for(var idx=0;idx<DDT.CurrentDriver.ColumnCount;idx++){   
  colsList[idx] = DDT.CurrentDriver.ColumnName(idx);     
 }
@@ -213,13 +229,7 @@ if((JiraUsername ==null)||(JiraUsername =="")){
   }
   }
 
-  
-//  testcase = "ALL";
-//  OpcoNum = "1307";
   Lang = County();
-//  Log.Message(Lang);
-  
-  
  
   }
 xlDriver.Next();
