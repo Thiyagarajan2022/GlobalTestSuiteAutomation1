@@ -53,7 +53,7 @@ jobNumber,EmpNo = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
 
-try{
+//try{
   
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -64,13 +64,13 @@ try{
   var invoiceAccount = ExcelUtils.getRowDatas("Invoicing on Account Job",EnvParams.Opco);
 //  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
   
-  template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
-  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+//  template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
+  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   Log.Message(jobNumber);
   }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)){
 //    Log.Message(jobNumber+"Job Number is already used")
     jobNumber = "";
   }
@@ -261,9 +261,9 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprove(temp[1],temp[2],i);
 }
-}catch(err){ 
-  Log.Message(err);
-}
+//}catch(err){ 
+//  Log.Message(err);
+//}
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -373,6 +373,9 @@ WorkspaceUtils.waitForObj(labels);
   job.setText(jobNumber);
   WorkspaceUtils.waitForObj(job);
   WorkspaceUtils.waitForObj(table);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 
 var i=0;
 while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1)&&(i!=60)){ 

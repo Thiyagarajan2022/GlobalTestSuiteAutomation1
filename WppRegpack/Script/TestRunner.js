@@ -161,8 +161,10 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
-cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
-
+//cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
+folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 
 if(server){ 
       reportName = "Report_"+EnvParams.Opco+"_Login";
@@ -231,6 +233,9 @@ testCase_Stat_updated_flag=true;
 ReportUtils.report.endTest(test);
 ReportUtils.report.flush();
 
+
+
+
 fileList = slPacker.GetFileListFromFolder(workDir);
 archivePath = packedResults + reportName;
 
@@ -280,7 +285,6 @@ var testList = [];
    testList [0] = EnvParams.testcase;
    }
   
-//ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 if(TestingType.toUpperCase()=="SMOKE")
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
 else
@@ -300,9 +304,11 @@ if(!Coun_Opco){
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(testList[0],EnvParams.Country);
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
-cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
+folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 
-folderName = Opcolist[OpID];   //Login for each Opco
+//folderName = Opcolist[OpID];   //Login for each Opco
 if(OpID==0){ 
 reportName = "Report_"+EnvParams.Opco+"_Login";
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);

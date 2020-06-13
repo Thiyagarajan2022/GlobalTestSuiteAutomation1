@@ -519,6 +519,9 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   ReportUtils.logStep_Screenshot("");
   iPreparation.Click();
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   
   var CreateIPreparation = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.EditableBar;
   WorkspaceUtils.waitForObj(CreateIPreparation);
@@ -547,6 +550,9 @@ if(BasicOfInvoice.getText()!=JavaClasses.MLT.MultiLingualTranslator.GetTransText
 var next = Aliases.Maconomy.PrepareInvoice.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim())
 next.Click();
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
 var Percentage = Aliases.Maconomy.PrepareInvoice.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.Composite.Percentage;
 WorkspaceUtils.waitForObj(Percentage);
@@ -666,8 +672,11 @@ draftNo.Keys("[Tab][Tab][Tab]");
 var billiablePrice = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(billiablePrice);
 billiablePrice.Click();
-//billiablePrice.setText(BudgetAmount);
-//
+billiablePrice.setText(BudgetAmount);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+
 //var DraftTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
 //  var flag=false;
 //  for(var v=0;v<DraftTable.getItemCount();v++){ 

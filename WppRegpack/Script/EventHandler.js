@@ -40,6 +40,7 @@ function GeneralEvents_OnStopTest(Sender)
     var entityName = "execution";
     var expirationInsec = 360;
     var comment = "TestReport_Uploaded_Successfully_in_JIRA.";
+    
     var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl,accessKey,secretKey,userName);
     if(Log.ErrCount>0){   
     var status = "Failed";// Passed
