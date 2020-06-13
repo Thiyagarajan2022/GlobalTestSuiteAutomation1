@@ -161,10 +161,15 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
+<<<<<<< HEAD
 //cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
+=======
+cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
+
+>>>>>>> ce24afbcec15dd1836fc7831cab3c55c9f88e965
 
 if(server){ 
       reportName = "Report_"+EnvParams.Opco+"_Login";
