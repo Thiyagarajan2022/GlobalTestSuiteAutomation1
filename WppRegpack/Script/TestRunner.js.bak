@@ -161,15 +161,10 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
-<<<<<<< HEAD
 //cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
-=======
-cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
-
->>>>>>> ce24afbcec15dd1836fc7831cab3c55c9f88e965
 
 if(server){ 
       reportName = "Report_"+EnvParams.Opco+"_Login";
@@ -367,7 +362,9 @@ for(var tL=0;tL<testList.length;tL++){
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(testList[tL],EnvParams.Country);
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
-cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
+ExcelUtils.setExcelName(workBook, "Server Details", true);
+cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
+folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 
 //ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 if(TestingType.toUpperCase()=="SMOKE")
@@ -430,13 +427,13 @@ Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename)
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 
-//aqUtils.Delay(3000, "Closing Maconomy");
-//    Sys.Desktop.KeyDown(0x12); //Alt  //  Log.Message("Maconomy is Already in Running")
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x58); //X 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x58);
+aqUtils.Delay(3000, "Closing Maconomy");
+    Sys.Desktop.KeyDown(0x12); //Alt  //  Log.Message("Maconomy is Already in Running")
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
 
 }
 }

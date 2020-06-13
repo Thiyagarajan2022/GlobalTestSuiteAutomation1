@@ -161,7 +161,6 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
-//cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
