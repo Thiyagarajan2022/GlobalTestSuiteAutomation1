@@ -103,6 +103,7 @@
 				<child name="CreateAnAccrualForGroupOfJobs" key="{F677612A-4F7D-41CF-A7BE-3B52503ADA27}" path="CreateAnAccrualForGroupOfJobs.js" />
 				<child name="CreateAnAccrualForJobByJobs" key="{C44F4B42-7869-4A89-AA62-A59065456693}" path="CreateAnAccrualForJobByJobs.js" />
 				<child name="TimeAndMaterialInvoicing" key="{3775E345-25F6-4C58-9094-B1417747AE20}" path="TimeAndMaterialInvoicing.js" />
+				<child name="Approve_Expense_SSC" key="{560444C8-60E5-42BB-9793-0B35E07F0522}" path="Approve_Expense_SSC.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
@@ -121,6 +122,7 @@
 					<child name="IND_InvoiceOnAccount" key="{3F81E911-A713-4A79-A2C2-A7BF09D71EE9}" path="IND_InvoiceOnAccount.js" />
 					<child name="IND_InvoicingFromBudget" key="{2D887A36-ACCD-49F8-833C-CDEC3281ADF4}" path="IND_InvoicingFromBudget.js" />
 					<child name="IND_Partical_Invoicing_WriteOff" key="{6AC8DE57-A6D6-4B68-AD49-A6C73234C617}" path="IND_Partical_Invoicing_WriteOff.js" />
+					<child name="IND_ExpenseCreation" key="{3DF6CFF9-6D28-4AF2-929A-7173A0FA8532}" path="IND_ExpenseCreation.js" />
 				</folder>
 			</folder>
 			<folder name="UK">
