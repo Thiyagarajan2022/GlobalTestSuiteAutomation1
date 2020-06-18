@@ -8,11 +8,20 @@
     var testCaseId = "";
 function JIRAUpdate(folderName,testCaseId,versionName,cycleName){
 
-     projectName = EnvParams.Pname;
-     	var userName = EnvParams.JiraUsername;
+   projectName = EnvParams.Pname;
+   var userName = EnvParams.JiraUsername;
 		var  accessKey = EnvParams.JiraAccessKey;
 		var secretKey = EnvParams.JiraSecrekey;
     var zephyrBaseUrl =EnvParams.JirazephyrBaseUrl;
+    
+    Log.Message(projectName)
+    Log.Message(versionName)
+    Log.Message(cycleName)
+    Log.Message(folderName)
+    Log.Message(testCaseId)
+      Log.Message(accessKey)
+        Log.Message(secretKey)
+         Log.Message(zephyrBaseUrl)
 //		 versionName = EnvParams.Vname;
 //		 cycleName = EnvParams.Cname;
 //     cycleName = EnvParams.Country;

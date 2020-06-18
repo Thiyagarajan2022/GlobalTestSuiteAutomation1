@@ -52,6 +52,9 @@ jobNumber,EmpNo = "";
 
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
+//gotoMenu();
+
+
 
 //try{
   
@@ -70,6 +73,9 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   Log.Message(jobNumber);
   }
+  
+
+  
   if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)){
 //    Log.Message(jobNumber+"Job Number is already used")
     jobNumber = "";
@@ -249,6 +255,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
 
 getDetails();
 gotoMenu();
+
 gotoInvoicing();
 WorkspaceUtils.closeAllWorkspaces();
 for(var i=level;i<ApproveInfo.length;i++){
@@ -264,6 +271,8 @@ FinalApprove(temp[1],temp[2],i);
 //}catch(err){ 
 //  Log.Message(err);
 //}
+
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();

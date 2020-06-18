@@ -124,6 +124,7 @@ if(Params.indexOf("TestingType")!=-1){
 
 if(Params.indexOf("OpCo")!=-1){
    var inst = Params;
+   Log.Message("Opco NO Jenkins" +Params);
   OpcoNum = (inst.substring(inst.indexOf(":"))).trim(); 
    if(OpcoNum!=null){
    OpcoNum = OpcoNum.substring(OpcoNum.indexOf("=")+2,OpcoNum.length-1);
