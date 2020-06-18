@@ -28,39 +28,48 @@ function getDetails(){
 //Log.Message("sheet :"+sheetName);
 ExcelUtils.setExcelName(workBook, sheetName, true);
 //Log.Message(EnvParams.Opco)
-comapany = ExcelUtils.getRowDatas("company",EnvParams.Opco)
-if((comapany==null)||(comapany=="")){ 
-ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
+JobNoFrom = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
+if((JobNo==null)||(JobNo=="")){ 
+ValidationUtils.verify(false,true,"Job Number is Needed to Create a Job");
 }
-Job_group = ExcelUtils.getRowDatas("Job_group",EnvParams.Opco)
-if((Job_group==null)||(Job_group=="")){ 
-ValidationUtils.verify(false,true,"Job Group is Needed to Create a Job");
+
+JobNoTo = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
+if((JobNo==null)||(JobNo=="")){ 
+ValidationUtils.verify(false,true,"Job Number is Needed to Create a Job");
 }
-Job_Type = ExcelUtils.getRowDatas("Job_Type",EnvParams.Opco)
-if((Job_Type==null)||(Job_Type=="")){ 
-ValidationUtils.verify(false,true,"Job Type Number is Needed to Create a Job");
+WorkCodeFrom = ExcelUtils.getRowDatas("WorkCodeFrom",EnvParams.Opco)
+if((WorkCodeFrom==null)||(WorkCodeFrom=="")){ 
+ValidationUtils.verify(false,true,"WorkCodeFrom is Needed to Create a Job");
 }
-department = ExcelUtils.getRowDatas("Department",EnvParams.Opco)
-if((department==null)||(department=="")){ 
-ValidationUtils.verify(false,true,"Department Number is Needed to Create a Job");
+WorkCodeTo = ExcelUtils.getRowDatas("WorkCodeTo",EnvParams.Opco)
+if((WorkCodeTo==null)||(WorkCodeTo=="")){ 
+ValidationUtils.verify(false,true,"WorkCodeTo is Needed to Create a Job");
 }
-buss_unit = ExcelUtils.getRowDatas("BusinessUnit",EnvParams.Opco)
-if((buss_unit==null)||(buss_unit=="")){ 
-ValidationUtils.verify(false,true,"BusinessUnit Number is Needed to Create a Job");
+EntryDate = ExcelUtils.getRowDatas("EntryDate",EnvParams.Opco)
+if((EntryDate==null)||(EntryDate=="")){ 
+ValidationUtils.verify(false,true,"EntryDate is Needed to Create a Job");
 }
-TemplateNo = ExcelUtils.getRowDatas("Template",EnvParams.Opco)
-if((TemplateNo==null)||(TemplateNo=="")){ 
-ValidationUtils.verify(false,true,"Template Number is Needed to Create a Job");
+NoForAccrual = ExcelUtils.getRowDatas("NoForAccrual",EnvParams.Opco)
+if((NoForAccrual==null)||(NoForAccrual=="")){ 
+ValidationUtils.verify(false,true,"NoForAccrual Number is Needed to Create a Job");
 }
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
-if((Product=="")||(Product==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
+PoNoFrom = ExcelUtils.getRowDatas("PoNoFrom",EnvParams.Opco)
+if((PoNoFrom==null)||(PoNoFrom=="")){ 
+ValidationUtils.verify(false,true,"PoNoFrom is Needed to Create a Job");
+
+PoNoTo = ExcelUtils.getRowDatas("PoNoTo",EnvParams.Opco)
+if((PoNoFrom==null)||(PoNoFrom=="")){ 
+ValidationUtils.verify(false,true,"PoNoTo is Needed to Create a Job");
 }
-if((Product==null)||(Product=="")){ 
-ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
-}
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
+//if((Product=="")||(Product==null)){
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
+//}
+//if((Product==null)||(Product=="")){ 
+//ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
+//}
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Job_name= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
@@ -69,9 +78,9 @@ ValidationUtils.verify(false,true,"Job Name is Needed to Create a Job");
 }
 Dlang= ExcelUtils.getRowDatas("Language",EnvParams.Opco)
 
-BFC= ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
+//BFC= ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
 
-pTerm= ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
+//pTerm= ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 //OpCoFile=ExcelUtils.getRowData1("OpCo File")
@@ -79,7 +88,6 @@ Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 //ValidationUtils.verify(false,true,"OpCoFile is Needed to Create a Job");
 //}
 }
-
 
 
 
