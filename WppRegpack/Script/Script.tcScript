@@ -104,6 +104,9 @@
 				<child name="CreateAnAccrualForJobByJobs" key="{C44F4B42-7869-4A89-AA62-A59065456693}" path="CreateAnAccrualForJobByJobs.js" />
 				<child name="TimeAndMaterialInvoicing" key="{3775E345-25F6-4C58-9094-B1417747AE20}" path="TimeAndMaterialInvoicing.js" />
 				<child name="Approve_Expense_SSC" key="{560444C8-60E5-42BB-9793-0B35E07F0522}" path="Approve_Expense_SSC.js" />
+				<child name="ChangePaymentSelection" key="{9C0DFA05-D5DA-4C79-84CE-F8A7F316A3AA}" path="ChangePaymentSelection.js" />
+				<child name="CreatePaymentFile" key="{806F4BC6-3147-48F3-AE17-5332BCF24E06}" path="CreatePaymentFile.js" />
+				<child name="CreatePaymentSelection" key="{0B3B30DC-60BE-4DB8-A642-CFB40F3CBC94}" path="CreatePaymentSelection.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
