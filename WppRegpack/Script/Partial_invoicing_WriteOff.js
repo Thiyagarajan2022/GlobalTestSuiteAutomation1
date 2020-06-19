@@ -1663,6 +1663,7 @@ var textobj;
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Write Off Invoice No",EnvParams.Opco,"Data Management",textobj)
+  ExcelUtils.WriteExcelSheet("Write Off Job",EnvParams.Opco,"Data Management",JobNum)
   TextUtils.writeLog("Write Off Invoice No: "+textobj);
 
 

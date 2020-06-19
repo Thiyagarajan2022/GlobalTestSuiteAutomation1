@@ -1536,7 +1536,9 @@ var textobj;
     Log.Error("Exception while getting text from document::"+objEx);
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
+  ExcelUtils.WriteExcelSheet("Invoice from Budget No",EnvParams.Opco,"Data Management",textobj)
+  ExcelUtils.WriteExcelSheet("Invoice from Budget Job",EnvParams.Opco,"Data Management",JobNum)
+//  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 

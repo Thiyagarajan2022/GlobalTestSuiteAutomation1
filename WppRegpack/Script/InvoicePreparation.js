@@ -1452,7 +1452,7 @@ var textobj;
     Log.Error("Exception while getting text from document::"+objEx);
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
+  ExcelUtils.WriteExcelSheet("Invoice preparation No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management",PONum)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
