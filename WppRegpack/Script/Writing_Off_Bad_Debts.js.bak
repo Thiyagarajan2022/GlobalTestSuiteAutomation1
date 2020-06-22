@@ -28,6 +28,24 @@ var Jobdepart = "";
 var Jobbusiness = "";
 
 function Writingoffbad() {
+  
+Indicator.PushText("waiting for window to open");
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+  menuBar.Click();
+  aqUtils.Delay(3000, Indicator.Text);
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior Accountant","Username")
+Log.Message(Project_manager);
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+    Sys.Desktop.KeyDown(0x12); //Alt
+    Sys.Desktop.KeyDown(0x46); //F
+    Sys.Desktop.KeyDown(0x58); //X 
+    Sys.Desktop.KeyUp(0x46); //Alt
+    Sys.Desktop.KeyUp(0x12);     
+    Sys.Desktop.KeyUp(0x58);
+Restart.login(Project_manager);  
+}
+
       Language = "";
     Language = EnvParams.Language;
     if((Language==null)||(Language=="")){
@@ -90,11 +108,17 @@ function getDetails(){
         if((EntryJob==null)||(EntryJob=="")){ 
         ValidationUtils.verify(false,true,"Job Number is needed to Create Writing off Bad Debts");
         }
-        login = ExcelUtils.getColumnDatas("Login",EnvParams.Opco)
+        
+             
+      ExcelUtils.setExcelName(workBook, "SSC Users", true);
+      login = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
         Log.Message(login);
-        if((login==null)||(login=="")){ 
-        ValidationUtils.verify(false,true,"Login is needed to Post Writing off Bad Debts");
-        }
+        
+//        login = ExcelUtils.getColumnDatas("Login",EnvParams.Opco)
+//        Log.Message(login);
+//        if((login==null)||(login=="")){ 
+//        ValidationUtils.verify(false,true,"Login is needed to Post Writing off Bad Debts");
+//        }
         
 }
 

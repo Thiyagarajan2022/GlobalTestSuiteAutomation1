@@ -107,6 +107,7 @@
 				<child name="ChangePaymentSelection" key="{9C0DFA05-D5DA-4C79-84CE-F8A7F316A3AA}" path="ChangePaymentSelection.js" />
 				<child name="CreatePaymentFile" key="{806F4BC6-3147-48F3-AE17-5332BCF24E06}" path="CreatePaymentFile.js" />
 				<child name="CreatePaymentSelection" key="{0B3B30DC-60BE-4DB8-A642-CFB40F3CBC94}" path="CreatePaymentSelection.js" />
+				<child name="Customer_Payment_for_Foreign_Invoice" key="{78565790-6D88-47E1-B1F3-5CCD41B05E53}" path="Customer_Payment_for_Foreign_Invoice.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
