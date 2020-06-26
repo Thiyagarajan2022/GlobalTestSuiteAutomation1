@@ -89,7 +89,7 @@
 				<child name="ImportBudgetModel" key="{FBEA4060-8E3F-4F6C-BC5C-BD018A9BDF4C}" path="ImportBudgetModel.js" />
 				<child name="CopyGL" key="{C0D458DF-3609-4424-B0F8-EF57414F40F4}" path="CopyGL.js" />
 				<child name="CurrencyGL" key="{D3B2FA90-C2BD-41EB-B802-70BC5D76D1F1}" path="CurrencyGL.js" />
-				<child name="ReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="ReverseGL.js" />
+				<child name="CreateReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="CreateReverseGL.js" />
 				<child name="Old_CreateBudget" key="{886BC509-75D7-448A-B9DA-0D8319F14999}" path="Old_CreateBudget.js" />
 				<child name="InvoicePreparation" key="{8702BF45-087C-4819-A366-E82806556EB2}" path="InvoicePreparation.js" />
 				<child name="JobClosure" key="{67FAD047-0D9A-4340-A157-B0B4F08646B1}" path="JobClosure.js" />
@@ -115,6 +115,8 @@
 				<child name="RejectAllowanceRequest" key="{03E1C2AF-C8E3-488C-A19E-0116375F1AF3}" path="RejectAllowanceRequest.js" />
 				<child name="ApproveAllowanceRequest" key="{F534EE73-71CE-49D4-B0A6-64DA5244F93D}" path="ApproveAllowanceRequest.js" />
 				<child name="AbsenceAllowanceRequest" key="{6149B96E-5416-4375-B7AC-05D9DDEC1CCD}" path="AbsenceAllowanceRequest.js" />
+				<child name="PostJounalEntries" key="{654A9DC4-A4BB-454F-88C6-602FF2BB95EA}" path="PostJounalEntries.js" />
+				<child name="CreateCurrencyJournal" key="{E34CEB80-B362-47EF-A9D7-0D1E8E21C46D}" path="CreateCurrencyJournal.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

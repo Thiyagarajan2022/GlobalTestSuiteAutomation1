@@ -112,6 +112,8 @@ ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
   Delay(5000);
 searchForJournal();
 postJournal();
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 
 }
@@ -252,6 +254,11 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     
 }
 
+//Sys.Process("Maconomy").SWTObject("Shell", "AP Transactions - Vendor Invoice Journal").SWTObject("Label", "Maconomy cannot show more lines. The table cannot be modified")
+//Sys.Process("Maconomy").SWTObject("Shell", "AP Transactions - Vendor Invoice Journal").SWTObject("Composite", "", 2).SWTObject("Button", "OK")
+var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OKay.Click();
+
 
 //var SaveTitle = "";
 //var sFolder = "";
@@ -329,18 +336,24 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 
 function searchForJournal(){ 
-Delay(3000);
-
+aqUtils.Delay(2000, "finding Company field");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var companyNoField = Aliases.ObjectGroup.CompanyNoVendorJournal;
 
 companyNoField.setText(companyNo)
 companyNoField.Keys("[Tab]"); 
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var journalNo = Aliases.ObjectGroup.JournalNoField;
 journalNo.Keys(JournalNo);
 
-Delay(5000);
-
+aqUtils.Delay(5000, "Searching Journal in Table");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  TextUtils.writeLog("Post Vendor Journal"); 
  ReportUtils.logStep_Screenshot("");
  
@@ -348,7 +361,12 @@ Delay(5000);
   var closefilter =  Aliases.ObjectGroup.CloseFilterVendorJournal
 closefilter.Click();
 
-Delay(3000);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
+
 }
 
 

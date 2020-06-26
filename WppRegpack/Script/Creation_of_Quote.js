@@ -374,6 +374,7 @@ newQuote = Q_revision.getText().OleValue.toString().trim();
 EffQuotePrice = EffQuotePrice.getText().OleValue.toString().trim();
 Q_revision = Q_revision.getText().OleValue.toString().trim();
 Log.Message(sheetName)
+/*
 ExcelUtils.setExcelName(workBook,sheetName, true);
 ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Revision"+q,sheetName,Q_revision);
 ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Total"+q,sheetName,EffQuotePrice);
@@ -410,7 +411,7 @@ for(var i=0;i<specification.getItemCount();i++){
   }
   }
 
-
+*/
 
 
 
@@ -806,9 +807,12 @@ ReportUtils.logStep_Screenshot("");
 copy.Click();
 TextUtils.writeLog("Copy Button is Clicked");
 }
-    if(ImageRepository.ImageSet.Img_search.Exists()){ 
-      
-    }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+//    if(ImageRepository.ImageSet.Img_search.Exists()){ 
+//      
+//    }
 //    var Job = Aliases.Maconomy.Shell3.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
     var Job = Aliases.Maconomy.Shell3.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
     WorkspaceUtils.waitForObj(Job);

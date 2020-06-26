@@ -68,13 +68,15 @@ function WriteOff(writeOff_Line,SelectionBilling){
                   var EntStatus = false;
                 for(var y=0;y<InvoiceData.length;y++){
                 var Etemp = InvoiceData[y].split("*");
-//                Log.Message(temp[0]+" : "+Etemp[0])
-//                Log.Message(temp[0] == Etemp[0])
-//                Log.Message(Etemp[5])
-//                Log.Message(Etemp[5]== "Write Off")
+                Log.Message(temp[0]+" : "+Etemp[0])
+                Log.Message(temp[0] == Etemp[0])
+                Log.Message(Etemp[5])
+                Log.Message(Etemp[5]== "Write Off")
                 if((temp[0] == Etemp[0])&&(Etemp[5]== "Write Off")){ 
                   var EQanty = EntryGrid.getItem(s).getText_2(3).OleValue.toString().trim().replace(/,/g, '');
                   var EUnitP = EntryGrid.getItem(s).getText_2(6).OleValue.toString().trim().replace(/,/g, '');
+Log.Message(Etemp[2])
+if(Etemp[2]!=""){
                   var WQty = parseFloat(Etemp[2]);
                   WQty = parseFloat(WQty.toFixed(2));
                   var WUnitP = parseFloat(Etemp[3]);
@@ -83,6 +85,7 @@ function WriteOff(writeOff_Line,SelectionBilling){
 //                  Log.Message(EQanty==WQty)
 //                  Log.Message(EUnitP+"  :"+WUnitP)
 //                  Log.Message(EUnitP==WUnitP)
+
                   if((EQanty==WQty)&&(EUnitP==WUnitP)){ 
                     W_Off[w] = InvoiceData[y];
                     w++;
@@ -202,6 +205,127 @@ break;
 
 
       }
+//---------Today Chnages------------------
+}else{ 
+  
+                    W_Off[w] = InvoiceData[y];
+                    w++;
+                    aqUtils.Delay(1000, Indicator.Text);
+                    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+                    }
+                    entries.Click();
+                    EntStatus = true;
+//      /*
+                var EmpNo = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+                WorkspaceUtils.waitForObj(EmpNo);
+                EmpNo.Click();
+                Sys.Desktop.KeyDown(0x09); // Press Ctrl
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyDown(0x09); 
+                
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                Sys.Desktop.KeyUp(0x09);
+                
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+                Sys.Desktop.KeyDown(0x09);
+                aqUtils.Delay(1000, Indicator.Text);
+                Sys.Desktop.KeyUp(0x09);
+
+                aqUtils.Delay(100, Indicator.Text);
+                var allocate = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
+                WorkspaceUtils.waitForObj(allocate);
+                allocate.Keys("Write Off");
+                aqUtils.Delay(1000, Indicator.Text);
+                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+                }else{ 
+                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+                }
+                var save = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
+                WorkspaceUtils.waitForObj(save);
+                save.Click();
+                aqUtils.Delay(100, Indicator.Text);
+                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+                }else{ 
+                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+                }
+                
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(100, Indicator.Text);
+      
+//      */
+      
+//                    if(EntStatus){
+//                    Log.Message(s)
+//                    Log.Message(EntryGrid.getItemCount())
+//                    Log.Message(EntryGrid.getItemCount()-1)
+//                    if(s<EntryGrid.getItemCount()-2){
+//                    EntryGrid.Keys("[Down]");
+//                    }
+//                   }       
+break;
+
+
+
+}
+//---------------------------------
                 }  
                } 
                     if(EntStatus){

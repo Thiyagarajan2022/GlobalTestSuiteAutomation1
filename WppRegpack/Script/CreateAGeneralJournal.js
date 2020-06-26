@@ -23,18 +23,15 @@ function CreateGeneralJournal(){
 TextUtils.writeLog("Create General Journal Started"); 
 Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-  menuBar.Click();
+menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
 Project_manager = ExcelUtils.getRowDatas("SSC - Junior Accountant","Username")
 Log.Message(Project_manager);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
+WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
  
 }
@@ -47,8 +44,7 @@ Approve_Level =[];
 ApproveInfo = [];
 GRP_1,desp_1,VC1,Job_Number1,work1,Debit_1,Credit_1,GRP_2,desp_2,VC2,Job_Number2,work2,Debit_2,Credit_2,Job_Type,department,buss_unit = ""
 jornalNumber = "";
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
+
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Create General Journal started::"+STIME);
 
@@ -58,16 +54,20 @@ gotoGeneralJournal();
 AddJournalLines();
 attachDocument();
 submit();
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
-WorkspaceUtils.closeMaconomy();
-aqUtils.Delay(10000, Indicator.Text);
-ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var username = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
-Restart.login(username);
-aqUtils.Delay(5000, Indicator.Text);
-todo();
-ApproveGL();
-WorkspaceUtils.closeAllWorkspaces();
+//WorkspaceUtils.closeMaconomy();
+//aqUtils.Delay(10000, Indicator.Text);
+//ExcelUtils.setExcelName(workBook, "SSC Users", true);
+//var username = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
+//Restart.login(username);
+//aqUtils.Delay(5000, Indicator.Text);
+//todo();
+//ApproveGL();
+//var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+//menuBar.Click();
+//WorkspaceUtils.closeAllWorkspaces();
 }
 
 function getDetails(){ 
@@ -244,9 +244,9 @@ ValidationUtils.verify(false,true,"Workcode_2 is Needed to Create General Journa
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Debit_2 = ExcelUtils.getColumnDatas("Debit_2",EnvParams.Opco)
 Credit_2 = ExcelUtils.getColumnDatas("Credit_2",EnvParams.Opco)
-if(((Debit_2==null)||(Debit_2==""))&&((Credit_2==null)||(Credit_2==""))){ 
-ValidationUtils.verify(false,true,"Debit_2 or Credit_2 is Needed to Create General Journal");
-}
+//if(((Debit_2==null)||(Debit_2==""))&&((Credit_2==null)||(Credit_2==""))){ 
+//ValidationUtils.verify(false,true,"Debit_2 or Credit_2 is Needed to Create General Journal");
+//}
 
 ExcelUtils.setExcelName(workBook, "JobCreation", true);
 Job_Type = ExcelUtils.getRowDatas("Job_Type",EnvParams.Opco)
@@ -328,9 +328,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|GL Transactions");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|GL Transactions");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions").OleValue.toString().trim());
 }
 
 } 
@@ -351,11 +351,13 @@ var closeFilter = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Comp
 WorkspaceUtils.waitForObj(closeFilter);
 closeFilter.Click();
 }
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var Tabfolder = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine;
 WorkspaceUtils.waitForObj(Tabfolder);
 for(var i=0;i<Tabfolder.ChildCount;i++){ 
-  if((Tabfolder.Child(i).isVisible())&&(Tabfolder.Child(i).toolTipText=="New Journal (Ctrl+N)")){
+  if((Tabfolder.Child(i).isVisible())&&(Tabfolder.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Journal (Ctrl+N)").OleValue.toString().trim())){
     Tabfolder.Child(i).Click();
     break;
   }
@@ -363,11 +365,17 @@ for(var i=0;i<Tabfolder.ChildCount;i++){
 
 //var NewJournal = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.NewJournal;
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var company = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.CompanyNumber;
 WorkspaceUtils.waitForObj(company);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   if(EnvParams.Opco!=""){
   company.Click();
-  WorkspaceUtils.SearchByValue(company,"Company",EnvParams.Opco,"Company");
+  WorkspaceUtils.SearchByValue(company,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company");
     }else{ 
     ValidationUtils.verify(false,true,"Company Number is Need to create PurchaseOrder");
   }
@@ -375,22 +383,31 @@ WorkspaceUtils.waitForObj(company);
 var Save = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Save;
 WorkspaceUtils.waitForObj(Save);
 Save.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 
 }
 
 function AddJournalLines() {
   for(var i=0;i<2;i++){
+    
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var addline = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.AddLine;
 WorkspaceUtils.waitForObj(addline);
 var ii=0;
-while ((addline.toolTipText!="Add Entry (Ctrl+M)")&&(ii<60))
+while ((addline.toolTipText!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Add Entry (Ctrl+M)").OleValue.toString().trim())&&(ii<60))
 {
   aqUtils.Delay(100);
   ii++;
   addline.Refresh();
 }
 addline.Click();
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 var entryDate = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.EntryDate;
 WorkspaceUtils.waitForObj(entryDate);
 entryDate.Keys("[Tab]");
@@ -428,7 +445,7 @@ VC.HoverMouse();
 Sys.HighlightObject(VC); 
 if(VC1!=""){
 VC.Click();
-WorkspaceUtils.VPWSearchByValue(VC,"Client",VC1,"Client Number");
+WorkspaceUtils.VPWSearchByValue(VC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),VC1,"Client Number");
 }
 }
 
@@ -437,7 +454,7 @@ VC.HoverMouse();
 Sys.HighlightObject(VC); 
 if(VC1!=""){
 VC.Click();
-  SearchByValues_Col_1_all(VC,"Vendor",VC1,"Vendor Number","All Vendors");
+  SearchByValues_Col_1_all(VC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VC1,"Vendor Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Vendors").OleValue.toString().trim());
   }
 }
 }
@@ -458,7 +475,7 @@ VC.HoverMouse();
 Sys.HighlightObject(VC); 
 if(VC2!=""){
 VC.Click();
-WorkspaceUtils.VPWSearchByValue(VC,"Client",VC2,"Client Number");
+WorkspaceUtils.VPWSearchByValue(VC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),VC2,"Client Number");
 }
 }
 
@@ -467,7 +484,7 @@ VC.HoverMouse();
 Sys.HighlightObject(VC); 
 if(VC2!=""){
 VC.Click();
-  SearchByValues_Col_1_all(VC,"Vendor",VC2,"Vendor Number","All Vendors");
+  SearchByValues_Col_1_all(VC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VC2,"Vendor Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Vendors").OleValue.toString().trim());
   }
 }
 
@@ -479,17 +496,17 @@ var Job = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Co
 Job.Click();
 
 if(i==0)
-WorkspaceUtils.SearchByValues_all_Col_2(Job,"Job",Job_Number1,"Job Number","All Jobs");
+WorkspaceUtils.SearchByValues_all_Col_2(Job,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),Job_Number1,"Job Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 if(i==1)
-WorkspaceUtils.SearchByValues_all_Col_2(Job,"Job",Job_Number2,"Job Number","All Jobs");
+WorkspaceUtils.SearchByValues_all_Col_2(Job,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),Job_Number2,"Job Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 Job.Keys("[Tab]");
 
 var work = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.VendorCustomer_No;
 work.Click();
 if(i==0)
-WorkspaceUtils.SearchByValue(work,"Work Code",work1,"WorkCode");
+WorkspaceUtils.SearchByValue(work,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),work1,"WorkCode");
 if(i==1)
-WorkspaceUtils.SearchByValue(work,"Work Code",work2,"WorkCode");
+WorkspaceUtils.SearchByValue(work,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),work2,"WorkCode");
 work.Keys("[Tab][Tab]");
 
 var Debit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.Amount;
@@ -518,23 +535,28 @@ if(i==1){
 credit.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
 
 var JType = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.VendorCustomer_No;
-WorkspaceUtils.SearchByValue(JType,"Local Specification 1",Job_Type,"Job Type");
+WorkspaceUtils.SearchByValue(JType,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Local Specification 1").OleValue.toString().trim(),Job_Type,"Job Type");
 JType.Keys("[Tab]");
 var JDepartment = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.VendorCustomer_No;
-WorkspaceUtils.SearchByValue(JDepartment,"Local Specification 2",department,"Job Department");
+WorkspaceUtils.SearchByValue(JDepartment,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Local Specification 2").OleValue.toString().trim(),department,"Job Department");
 JDepartment.Keys("[Tab][Tab]");
 var JBusinessUnit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.VendorCustomer_No;
-WorkspaceUtils.SearchByValue(JBusinessUnit,"Local Specification 4",buss_unit,"Job BusinessUnit");
+WorkspaceUtils.SearchByValue(JBusinessUnit,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Local Specification 4").OleValue.toString().trim(),buss_unit,"Job BusinessUnit");
 
 var save = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.Save;
 WorkspaceUtils.waitForObj(save);
 save.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 }
 
 
 function attachDocument(){ 
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var doc =  Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.AttachDocument;
 
   Sys.HighlightObject(doc);
@@ -547,27 +569,40 @@ function attachDocument(){
 //  ReportUtils.logStep_Screenshot();
 //  attchDocument.Click();
   aqUtils.Delay(4000, "Waiting to Open file");;
-  var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+  var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
-  var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
+  var opendoc = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Document Attached");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 
 
 function submit(){ 
   jornalNumber = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.JournalNumber;
   Sys.HighlightObject(jornalNumber);
+  jornalNumber.Click();
   jornalNumber = jornalNumber.getText().OleValue.toString().trim();
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+    aqUtils.Delay(2000, "Submitting General Ledger");
   var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   WorkspaceUtils.waitForObj(submit);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   submit.Click();
   
-  var Okay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.Button;
+  var Okay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
   Okay.Click();
   
 
@@ -603,6 +638,10 @@ var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Co
 }
 refresh.Click();
 aqUtils.Delay(15000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists())
+{ 
+  
+}
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 }
@@ -614,7 +653,7 @@ var listPass = true;
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("GL Journals Awaiting Approval (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Journals Awaiting Approval").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -629,7 +668,7 @@ listPass = false;
 function ApproveGL(){ 
   var showFilter = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.CloseFilter
   WorkspaceUtils.waitForObj(showFilter)
-  if(showFilter.text=="Show Filter List"){ 
+  if(showFilter.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Show Filter List").OleValue.toString().trim()){ 
     showFilter.Click();
   }
   var table = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget2.McGrid;
@@ -724,7 +763,7 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
 
-var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.Button;
+var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 OKay.Click();
 
 

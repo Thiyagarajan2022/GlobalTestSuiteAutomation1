@@ -437,6 +437,9 @@ if(linest){
 WorkspaceUtils.waitForObj(AddBudget);
 ReportUtils.logStep_Screenshot("");
 AddBudget.Click(); 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }else{ 
 var copy = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite2.SingleToolItemControl3;
 WorkspaceUtils.waitForObj(AddBudget);
@@ -479,6 +482,9 @@ workcode = Clientgrid.SWTObject("McValuePickerWidget", "");
 
 if(wCodeID!=""){
 addedlines = true;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 WorkspaceUtils.waitForObj(workcode);
 workcode.Click();
 WorkspaceUtils.SearchByValue(workcode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),wCodeID,"Work Code :"+wCodeID);

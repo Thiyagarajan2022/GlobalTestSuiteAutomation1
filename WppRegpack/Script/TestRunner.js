@@ -25,7 +25,9 @@ var archivePath = "";
 var exeResults ="";
 var automationStat_file = "";
 var testCase_Stat_updated_flag;
-
+var TempUnit = "";
+var JiraUpdate = true;
+var JiraStat = true;
 
 
 function executeTestCases(){
@@ -45,9 +47,9 @@ globalTime = WorkspaceUtils.StartTime();
 
 var ReportDate = aqConvert.DateTimeToFormatStr(aqDateTime.Now(),"%d%m%Y_%H.%M.%S");
 var automationStat_Date = aqConvert.DateTimeToFormatStr(aqDateTime.Now(),"%d%m%Y");
-Log.Message("HTML REPORT PATH::"+Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate);
+Log.Message("HTML REPORT PATH::"+Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate);
 Log.Message("-----------------------------------------------------");
-ReportUtils.createConsolidatedReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", "ConsolidatedReport");
+ReportUtils.createConsolidatedReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\", "ConsolidatedReport");
 //ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 //var rowcount = ExcelUtils.getRowCount()-1;
 //var excelRow=1;
@@ -160,7 +162,6 @@ if(execute.toUpperCase()=="YES"){   //Login for each Opco
 
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
-Log.Message("testCaseId"+testCaseId)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 //cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -168,6 +169,8 @@ cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 
 if(server){ 
+JiraUpdate = true;
+JiraStat = true;
       reportName = "Report_"+EnvParams.Opco+"_Login";
       ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
       var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
@@ -196,7 +199,7 @@ testName = unitName;
 testCase_Stat_updated_flag = false;
 
 reportName = "Report_"+EnvParams.Opco+"_"+unitName;
-ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\", reportName);
 
 exeResults = Project.Path+TextUtils.GetProjectValue("ReportPath");
 automationStat_file = exeResults+"RunTime_statistics_"+automationStat_Date+".xlsx";
@@ -204,7 +207,8 @@ workDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportD
 packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
 
 ReportUtils.createTest(unitName, description);
-
+JiraUpdate = true;
+JiraStat = true;
 // capture StartTime
 sTime = WorkspaceUtils.StartTime();
 TextUtils.writeLog(unitName +" Execution Started Time :"+sTime); 
@@ -215,6 +219,17 @@ Log.PushLogFolder(FolderID);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
 TextUtils.writeLog(unitName+" Completed Successfully");
+
+ReportUtils.report.endTest(test);
+ReportUtils.report.flush();
+
+fileList = slPacker.GetFileListFromFolder(workDir);
+archivePath = packedResults + reportName;
+Delay(5000);
+if (slPacker.Pack(fileList, workDir, archivePath))
+  Log.Message("Files compressed successfully");
+  
+Runner.CallMethod("JIRA.JIRAUpdate");
 
 // capture EndTime
 eTime = WorkspaceUtils.StartTime();
@@ -230,20 +245,6 @@ executionTime = 0;
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
 ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,unitName,EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
-
-ReportUtils.report.endTest(test);
-ReportUtils.report.flush();
-
-
-
-
-fileList = slPacker.GetFileListFromFolder(workDir);
-archivePath = packedResults + reportName;
-
-if (slPacker.Pack(fileList, workDir, archivePath))
-  Log.Message("Files compressed successfully");
-  
-Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
 }
  
 excelRow++;
@@ -309,7 +310,8 @@ releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
-
+JiraUpdate = true;
+JiraStat = true;
 //folderName = Opcolist[OpID];   //Login for each Opco
 
 
@@ -374,6 +376,8 @@ cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 Log.Message(cyclename)
 Log.Message(folderName)
+JiraUpdate = true;
+JiraStat = true;
 
 //ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 if(TestingType.toUpperCase()=="SMOKE")

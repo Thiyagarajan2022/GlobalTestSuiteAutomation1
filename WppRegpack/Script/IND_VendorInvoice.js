@@ -2,7 +2,9 @@
 //USEUNIT CreateVendorInvoice
 
 function InvoiceSubmit(action){ 
+  WorkspaceUtils.waitForObj(action);
   action.Click();
+  aqUtils.Delay(2000, "Clicking Submit");
   action.PopupMenu.Click("Calc. TDS and Submit");
 } 
 
@@ -26,7 +28,7 @@ function TDS(TDSValue){
   Sys.HighlightObject(TDS);
   TDS.Click();
   if(TDS.getText()!=TDSValue){ 
-    WorkspaceUtils.SearchByValue(TDSValue,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,CreateVendorInvoice.Language, "Local Specification 8").OleValue.toString().trim(),TDS,"TDS");
+    WorkspaceUtils.TDS(TDSValue,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,CreateVendorInvoice.Language, "Local Specification 8").OleValue.toString().trim(),TDS,"TDS");
   }
   
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.RemarksSave;
@@ -49,6 +51,9 @@ function TDS(TDSValue){
   
   var closepannel = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
   closepannel.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   ImageRepository.ImageSet.Forward.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     

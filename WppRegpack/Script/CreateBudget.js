@@ -408,6 +408,10 @@ var InwardHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
 
 if((wCodeID!="")&&(wCodeID!=null)){
 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+
 var AddBudget = "";
 if(Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.isVisible()){
 AddBudget = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
@@ -425,7 +429,10 @@ for(var kk= 0;kk<AddBudget.ChildCount;kk++){
        }
   }
 }
-  
+ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
 if(linest){
 WorkspaceUtils.waitForObj(AddBudget);
 ReportUtils.logStep_Screenshot("");
@@ -457,6 +464,11 @@ ApiButton.Click();
     
 }
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+
+
 //-----Work Code Selection---------    
 
 if(Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.isVisible()){
@@ -469,7 +481,9 @@ Log.Message(Clientgrid.FullName)
 var workcode;
 linestatus = false;
 workcode = Clientgrid.SWTObject("McValuePickerWidget", "");
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 if(wCodeID!=""){
 addedlines = true;
 WorkspaceUtils.waitForObj(workcode);

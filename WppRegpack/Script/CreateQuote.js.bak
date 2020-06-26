@@ -23,6 +23,8 @@ var workEstimate = [];
 var clientEstimate = [];
 var RevisionNo = "";
 var Language = "";
+var C_Currency = "";
+var QuoteDetails = [];
 function CreateQuote(){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
 Indicator.PushText("waiting for window to open");
@@ -88,7 +90,7 @@ sheetName ="CreateQuote";
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
+  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
   ValidationUtils.verify(false,true,"Job Number is needed to Create Quote");
@@ -99,7 +101,7 @@ sheetName ="CreateQuote";
   RevisionNo = ReadExcelSheet("Budget Revision No",EnvParams.Opco,"Data Management");
   if((RevisionNo=="")||(RevisionNo==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  RevisionNo = ExcelUtils.getRowDatas("Revision",EnvParams.Opco)
+  RevisionNo = ExcelUtils.getColumnDatas("Revision",EnvParams.Opco)
   }
   if((RevisionNo=="")||(RevisionNo==null))
   ValidationUtils.verify(false,true,"Revision Number is needed to Create Quote");
@@ -279,6 +281,10 @@ ImageRepository.ImageSet.Forward.Click();
 
 
 function validatingWorkEstimate(){ 
+  C_Currency = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
+  WorkspaceUtils.waitForObj(C_Currency);
+  C_Currency = C_Currency.getText().OleValue.toString().trim();
+  Log.Message(C_Currency);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
@@ -358,6 +364,53 @@ aqUtils.Delay(3000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
+var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+var newQuote = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.SWTObject("Composite", "", 5).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
+var EffQuotePrice = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.SWTObject("Composite", "", 5).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2);
+var Q_revision = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.SWTObject("Composite", "", 5).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
+newQuote = Q_revision.getText().OleValue.toString().trim();
+EffQuotePrice = EffQuotePrice.getText().OleValue.toString().trim();
+Q_revision = Q_revision.getText().OleValue.toString().trim();
+ExcelUtils.setExcelName(workBook,"CreateQuote", true);
+ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Revision"+q,"CreateQuote",Q_revision);
+ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Total"+q,"CreateQuote",EffQuotePrice);
+
+var q = 0;
+QuoteDetails = [];
+for(var i=0;i<specification.getItemCount();i++){ 
+
+  var Q_Desp = specification.getItem(i).getText_2(0).OleValue.toString().trim();
+  if(Q_Desp!=""){
+  var Q_Qty = specification.getItem(i).getText_2(1).OleValue.toString().trim();
+  var Q_Billing = specification.getItem(i).getText_2(2).OleValue.toString().trim();
+  var Q_BillingTotoal = specification.getItem(i).getText_2(3).OleValue.toString().trim();
+  var Q_Tax1 = specification.getItem(i).getText_2(4).OleValue.toString().trim();
+  var Q_Tax2 = specification.getItem(i).getText_2(5).OleValue.toString().trim();
+  var Q_Tax1currency = specification.getItem(i).getText_2(9).OleValue.toString().trim();
+  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
+  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+  Log.Message(QuoteDetails[q]);
+  q++;
+  ExcelUtils.setExcelName(workBook,"CreateQuote", true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,"CreateQuote",Q_Desp);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,"CreateQuote",Q_Qty);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,"CreateQuote",Q_Billing);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,"CreateQuote",Q_BillingTotoal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,"CreateQuote",Q_Tax1);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,"CreateQuote",Q_Tax2);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,"CreateQuote",Q_Tax1currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,"CreateQuote",Q_Tax2currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,"CreateQuote",Q_total);
+
+  }
+  }
+
+
+
+
+
+
 var printdraft = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SingleToolItemControl;  
 WorkspaceUtils.waitForObj(printdraft);    
 printdraft.HoverMouse();

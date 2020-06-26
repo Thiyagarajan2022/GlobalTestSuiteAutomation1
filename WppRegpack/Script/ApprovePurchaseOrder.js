@@ -68,6 +68,10 @@ todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i,temp[3]);
 }
 TextUtils.writeLog("Purchase Orders("+POnumber+") is Approved");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+
 }
   catch(err){
     Log.Message(err);
@@ -456,7 +460,9 @@ if(flag){
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2;
 Sys.HighlightObject(Approve);
 for(var i=0;i<Approve.ChildCount;i++){ 
