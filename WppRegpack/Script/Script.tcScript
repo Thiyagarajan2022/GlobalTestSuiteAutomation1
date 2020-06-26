@@ -108,6 +108,13 @@
 				<child name="CreatePaymentFile" key="{806F4BC6-3147-48F3-AE17-5332BCF24E06}" path="CreatePaymentFile.js" />
 				<child name="CreatePaymentSelection" key="{0B3B30DC-60BE-4DB8-A642-CFB40F3CBC94}" path="CreatePaymentSelection.js" />
 				<child name="Customer_Payment_for_Foreign_Invoice" key="{78565790-6D88-47E1-B1F3-5CCD41B05E53}" path="Customer_Payment_for_Foreign_Invoice.js" />
+				<child name="PrintPaymentRemittance" key="{967DF998-7245-412A-AB2F-0205669507C3}" path="PrintPaymentRemittance.js" />
+				<child name="RejectAbsence" key="{EA558286-9F8A-4BE4-9401-7516FB165B65}" path="RejectAbsence.js" />
+				<child name="CreateAbsenceRequest" key="{609AFD5C-F6BF-4323-94BE-3925D218A302}" path="CreateAbsenceRequest.js" />
+				<child name="Remittanceemail" key="{98950E21-36BA-42BD-A74E-2605CAC435A2}" path="Remittanceemail.js" />
+				<child name="RejectAllowanceRequest" key="{03E1C2AF-C8E3-488C-A19E-0116375F1AF3}" path="RejectAllowanceRequest.js" />
+				<child name="ApproveAllowanceRequest" key="{F534EE73-71CE-49D4-B0A6-64DA5244F93D}" path="ApproveAllowanceRequest.js" />
+				<child name="AbsenceAllowanceRequest" key="{6149B96E-5416-4375-B7AC-05D9DDEC1CCD}" path="AbsenceAllowanceRequest.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

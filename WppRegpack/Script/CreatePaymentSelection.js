@@ -7,7 +7,7 @@
 //USEUNIT Restart
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-var sheetName = "PaymentSelection";
+var sheetName = "CreatePaymentSelection";
 var Language = "";
   Indicator.Show();
   
@@ -16,14 +16,14 @@ var Arrays = [];
 var count = true;
 var checkmark = false;
 var STIME = "";
-var DueDate="";
+var Duedate="";
 var VendorNo="";
 var Paymentagent="";
 var Paymodemode="";
 var ExchangeDate="";
-var layout="";
-
-
+var layoutTypes="";
+var Invoicenumber="";
+var amount ="";
 
 //getting data from datasheet
 function getDetails(){
@@ -38,26 +38,38 @@ Log.Message(Paymodemode)
 if((Paymodemode==null)||(Paymodemode=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
-//DueDate = ExcelUtils.getRowDatas("Due_Date",EnvParams.Opco)
-//if((DueDate==null)||(DueDate=="")){ 
-//ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
-//}
-//ExchangeDate = ExcelUtils.getRowDatas("Exchange_Date",EnvParams.Opco)
-//Log.Message(ExchangeDate)
-//if((ExchangeDate==null)||(ExchangeDate=="")){ 
-//ValidationUtils.verify(false,true,"Exchange Date  is Needed to Create a Payment Selection");
-//}
-//layout = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
-//Log.Message(layout)
-//if((layout==null)||(layout=="")){ 
-//ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
-//}
+PrintLayout = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
+Log.Message(PrintLayout)
+if((PrintLayout==null)||(PrintLayout=="")){ 
+ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
+}
+Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+Log.Message(Duedate)
+if((Duedate==null)||(Duedate=="")){ 
+ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
+}
+amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+Log.Message(amount)
+if((amount==null)||(amount=="")){ 
+ValidationUtils.verify(false,true,"Amount is Needed to Create a Payment Selection");
+}
+layoutTypes = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
+Log.Message(layoutTypes)
+if((layoutTypes==null)||(layoutTypes=="")){ 
+ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
+}
+Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+Log.Message(Invoicenumber)
+if((Invoicenumber==null)||(Invoicenumber=="")){ 
+ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
+}
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
 Log.Message(VendorNo)
 if((VendorNo=="")||(VendorNo==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 VendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
+Log.Message(VendorNo)
 }
 if((VendorNo==null)||(VendorNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment Selection");
@@ -78,22 +90,39 @@ function goToAp(){
   var company = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
   company.Click();
   company.setText(EnvParams.Opco);
-  company.Keys("[Tab][Tab][Tab]");
-  var vendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
-  Sys.HighlightObject(vendor)
-  vendor.setText(VendorNo);
-  ReportUtils.logStep_Screenshot();
-        Sys.Desktop.KeyDown(0x11);
-          Sys.Desktop.KeyDown(0x46);
-         Sys.Desktop.KeyUp(0x11);
-          Sys.Desktop.KeyUp(0x46);  
+  company.Keys("[Tab][Tab][Tab][Tab][Tab]");
+//  var vendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
+  var invoice = Aliases.Maconomy.AR.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.Composite3.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;  
+//Aliases.Maconomy.AR.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+  Sys.HighlightObject(invoice)
+  invoice.setText(Invoicenumber);
+ 
+        for(var i=0;i<table.getItemCount();i++){          
+          if(table.getItem(i).getText_2(5).OleValue.toString().trim()==Invoicenumber){
+            break;
+          }  
+          else{
+              table.Keys("[Down]");
+          } 
+        } 
+         
+        ReportUtils.logStep_Screenshot();    
+        
+  aqUtils.Delay(6000,Indicator.Text);
+  Sys.Desktop.KeyDown(0x11);
+  Sys.Desktop.KeyDown(0x46);
+  Sys.Desktop.KeyUp(0x11);
+  Sys.Desktop.KeyUp(0x46);  
    
   var Duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget;
   Sys.HighlightObject(Duedate1)  
-  WorkspaceUtils.waitForObj(Duedate1);
-  var Duedatee = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget2.getText();
+//  waitForObj(Duedate1);
+  var Duedatee = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+  waitForObj(Duedatee)
+    aqUtils.Delay(2000,"Waiting for window");
   Sys.HighlightObject(Duedatee)
   DueDate = Duedatee.getText();
+  Log.Message(DueDate)
   ReportUtils.logStep_Screenshot();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("DueDate",EnvParams.Opco,"Data Management",Duedatee)
@@ -114,8 +143,8 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   Sys.HighlightObject(vendor);
   if(VendorNo!=""){
   vendor.Click();
-//  WorkspaceUtils.VPWSearchByValue(vendor,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VendorNo,"Vendor Number");
-  WorkspaceUtils.VPWSearchByValue(vendor,"Vendor",VendorNo,"Vendor Number");
+  WorkspaceUtils.VPWSearchByValue(vendor,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VendorNo,"Vendor Number");
+//  WorkspaceUtils.VPWSearchByValue(vendor,"Vendor",VendorNo,"Vendor Number");
  }
  else{ 
     ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment Selection");
@@ -148,7 +177,7 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
    if(Paymentagent!=""){
   paymentAgent.Click();
-  WorkspaceUtils.SearchByValue(paymentAgent,"Payment Agent",Paymentagent,"Payment Agent")
+  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
 }else{ 
   ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
 }
@@ -157,7 +186,7 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget;
    if(Paymodemode!=""){
   paymentMode.Click();
-  WorkspaceUtils.SearchByValue(paymentMode,"Payment Mode",Paymodemode,"Payment Mode")
+  WorkspaceUtils.SearchByValue(paymentMode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Mode").OleValue.toString().trim(),Paymodemode,"Payment Mode")
   }else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
   }
@@ -166,14 +195,14 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   var createselection = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPlainCheckboxView.Button;
     createselection.Click();
     
-  Log.Message(DueDate)
+  Log.Message(Duedate)
    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite2.McDatePickerWidget;
    Sys.HighlightObject(duedate);
    
-   if(duedate.getText()!=DueDate){
-      if(DueDate!=""){
+   if(duedate.getText()!=Duedate){
+      if(Duedate!=""){
        aqUtils.Delay(1000, Indicator.Text);
-       duedate.setText(DueDate);
+       duedate.setText(Duedate);
 //          WorkspaceUtils.CalenderDateSelection(duedate,DueDate)
           ValidationUtils.verify(true,true,"Due Date is selected in Maconomy"); 
         }
@@ -181,7 +210,7 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
     else{ 
       ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment Selection");
     } 
-ReportUtils.logStep_Screenshot();
+  ReportUtils.logStep_Screenshot();
  var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
   scroll.MouseWheel(-200);
   aqUtils.Delay(1000, Indicator.Text);
@@ -202,14 +231,16 @@ ReportUtils.logStep_Screenshot();
 //  showall.Click();
 
   var layout = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget4.Composite2.McPopupPickerWidget;
-  layout.Keys("WPP Payment");
-//layout.Keys("Standard");
+  Log.Message(layoutTypes)
+  layout.setText(layoutTypes);
   
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+  waitForObj(save)
   Sys.HighlightObject(save)
   save.Click();
-ReportUtils.logStep_Screenshot();
+  ReportUtils.logStep_Screenshot();
   var print = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
+  waitForObj(print)
   print.Click();
 
 var SaveTitle = "";
@@ -260,6 +291,8 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
+
+var filepathforMplValidation =sFolder+SaveTitle+".pdf";
 var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
 saveAs.Click();
 aqUtils.Delay(2000, Indicator.Text);
@@ -278,7 +311,86 @@ Sys.Desktop.KeyUp(0x58);
 ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-  
+
+var  layoutType = "Standard";
+
+if(layoutType=="WPP Payment")
+{
+validateCreateChangePaymentSelection_wppLayout(filepathforMplValidation,workBook,sheetName)
+}
+else if(layoutType=="Standard")
+{
+  validateCreateChangePaymentSelection_standardLayout(filepathforMplValidation,workBook,sheetName)
+}
+
+}
+
+function validateCreateChangePaymentSelection_standardLayout(filepathforMplValidation,workBook,sheetName)
+{
+  var fileName = filepathforMplValidation;
+  var docObj;
+
+  try{
+  Log.Message(fileName)
+  docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(fileName);
+  docObj = getTextFromPDF(docObj).OleValue.toString().trim();
+  }catch(objEx){
+    Log.Error("Exception while reading document::"+objEx);
+  }
+ 
+  var pdflineSplit = docObj.split("\r\n");
+ 
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  var vendorNumber = ReadExcelSheet("Vendor Number",EnvParams.Opco,sheetName);
+  var paymentAgent  = ReadExcelSheet("Payment_Agent",EnvParams.Opco,sheetName);
+  var paymodeMode = ReadExcelSheet("Paymode_Mode",EnvParams.Opco,sheetName);
+  var exchangeDate = ReadExcelSheet("ExchangeRateDate",EnvParams.Opco,sheetName);
+  var dueDate = ReadExcelSheet("Latest Due Date",EnvParams.Opco,sheetName);
+  var amount= ReadExcelSheet("Amount",EnvParams.Opco,sheetName);
+                    
+  verifyVendorNumber(vendorNumber, pdflineSplit);     
+  verifyPaymentAgent(paymentAgent, pdflineSplit);    
+  verifyPaymodeMode(paymodeMode,pdflineSplit);          
+  verifyExchangeDate(exchangeDate,pdflineSplit);
+  verifyDueDate(dueDate,pdflineSplit);     
+  verifyAmount(amount,pdflineSplit);
+ }
+
+
+function validateCreateChangePaymentSelection_wppLayout(filepathforMplValidation,workBook,sheetName)
+{
+  var fileName = filepathforMplValidation;
+  var docObj;
+
+  // Load the PDF file to the PDDocument object
+  try{
+  Log.Message(fileName)
+  docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(fileName);
+  docObj = getTextFromPDF(docObj).OleValue.toString().trim();
+  }catch(objEx){
+    Log.Error("Exception while reading document::"+objEx);
+  }
+ // var workBook = "C:\\GlobalTestSuiteAutomation_Bank\\WppRegpack\\TestResource\\Regression\\DS_SPN_REGRESSION.xlsx";
+ //  var country = "Spain";
+  //EnvParams.Opco = "1006";
+ 
+  var pdflineSplit = docObj.split("\r\n");
+ 
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  var vendorNumber = ReadExcelSheet("Vendor Number",EnvParams.Opco,sheetName);
+  var vendorInvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,sheetName);
+  var amount= ReadExcelSheet("Amount",EnvParams.Opco,sheetName);
+  var exchangeDate = ReadExcelSheet("ExchangeDate",EnvParams.Opco,sheetName);
+  var dueDate = ReadExcelSheet("Due Date",EnvParams.Opco,sheetName);
+  var paymodeMode = ReadExcelSheet("Paymode_Mode",EnvParams.Opco,sheetName);
+               
+  verifyVendorNumber(vendorNumber, pdflineSplit);
+  verifyInvoiceNumber(vendorInvoiceNo,pdflineSplit);          
+  verifyAmount(amount,pdflineSplit);
+  verifyExchangeDate(exchangeDate,pdflineSplit);
+  verifyDueDate(dueDate,pdflineSplit);     
+  verifyPaymodeMode(paymodeMode,pdflineSplit);  
+          
 }
 
 
@@ -318,11 +430,11 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Bank Transactions");
-//Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
+//Client_Managt.ClickItem("|Bank Transactions");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-//Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
-Client_Managt.DblClickItem("|Bank Transactions");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
+//Client_Managt.DblClickItem("|Bank Transactions");
 }
 }
 ReportUtils.logStep("INFO", "Moved to Banking Transactions from job Menu");
@@ -388,7 +500,8 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var Project_manager = ExcelUtils.getRowDatas("SSC - Junior APs","Username")
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
+Log.Message(Project_manager);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -397,7 +510,7 @@ Restart.login(Project_manager);
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "PaymentSelection";
+sheetName = "CreatePaymentSelection";
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Arrays = [];
@@ -413,9 +526,9 @@ ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
 try{
 getDetails();
-goToAPMenuItem();
-goToAp();
-closeAllWorkspaces();
+//goToAPMenuItem();
+//goToAp();
+//closeAllWorkspaces();
 goToJobMenuItem();   
 CreatePaymentSeletion(); 
 }
@@ -425,6 +538,139 @@ CreatePaymentSeletion();
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
+}
+
+
+function verifyVendorNumber(vendorNumber,pdflineSplit)
+{
+    var vendorNoFound = false;
+  for (var j=0; j<pdflineSplit.length; j++)
+  {
+         if(pdflineSplit[j].includes(vendorNumber))
+             {
+             Log.Message(vendorNumber+" vendorNumber is matching with Pdf");
+             ValidationUtils.verify(true,true,"VendorNumber is matched in with Pdf");
+             vendorNoFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !vendorNoFound)
+          ValidationUtils.verify(false,true,"VendorNumber is not same in Create Payment Selection");
+  }  
+}
+
+function verifyInvoiceNumber(vendorInvoiceNo,pdflineSplit)
+{
+  var vendorInvoiceNoFound = false;
+  for (var j=0; j<pdflineSplit.length; j++)
+  {
+          if(vendorInvoiceNo.includes(pdflineSplit[j]))             {
+             Log.Message(vendorInvoiceNo+" vendorInvoiceNo is matching with Pdf");
+             vendorInvoiceNoFound = true;
+             break;
+             }
+         else
+         continue;
+         if(j==pdflineSplit.length-1 && !vendorInvoiceNoFound)
+          ValidationUtils.verify(false,true,"vendorInvoiceNo is not same in CreatePaymentFile");
+    
+  }       
+}
+
+function verifyAmount(amount,pdflineSplit)
+{
+  var amountFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(amount))
+             {
+             Log.Message(amount+" amount is matching with Pdf");
+             amountFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !amountFound)
+          ValidationUtils.verify(false,true,"amount is not same in CreatePaymentFile");
+    
+    }
+}
+
+function verifyExchangeDate(exchangeDate,pdflineSplit)
+{
+  var exchangeDateFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(exchangeDate))
+             {
+             Log.Message(exchangeDate+" exchangeDate is matching with Pdf");
+             exchangeDateFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !exchangeDateFound)
+          ValidationUtils.verify(false,true,"exchangeDate is not same in CreatePaymentFile");
+    
+    } 
+}
+
+function verifyDueDate(dueDate,pdflineSplit)
+{
+     var dueDateFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(dueDate))
+             {
+             Log.Message(dueDate+" DueDate is matching with Pdf");
+             dueDateFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !dueDateFound)
+          ValidationUtils.verify(false,true,"DueDate is not same in CreatePaymentFile");
+    
+    }    
+}
+function verifyPaymentNumber(paymentNumber,pdflineSplit)
+{
+   var paymentNumberFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(paymentNumber))
+             {
+             Log.Message(paymentNumber+" PaymentNumber is matching with Pdf");
+             paymentNumberFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !paymentNumberFound)
+          ValidationUtils.verify(false,true,"PaymentNumber is not same in PrintReimmittance");    
+    }   
+}
+
+function verifyPaymodeMode(paymodeMode, pdflineSplit)
+{
+   var paymodeModeFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(paymodeMode))
+             {
+             Log.Message(paymodeMode+" paymodeMode is matching with Pdf");
+             paymodeModeFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !paymodeModeFound)
+          ValidationUtils.verify(false,true,"paymodeMode is not same in CreatePaymentSelection/ChangePaymentSelection");    
+    }
+}
+function verifyPaymentAgent(paymentAgent,pdflineSplit)
+{
+   var paymentAgentFound = false;
+    for (var j=0; j<pdflineSplit.length; j++)
+    {
+         if(pdflineSplit[j].includes(paymentAgent))
+             {
+             Log.Message(paymentAgent+" paymentAgent is matching with Pdf");
+             paymentAgentFound = true;
+             break;
+             }
+         if(j==pdflineSplit.length-1 && !paymentAgentFound)
+          ValidationUtils.verify(false,true,"paymentAgent is not same in CreatePaymentSelection/ChangePaymentSelection");    
+    }
 }
 
 

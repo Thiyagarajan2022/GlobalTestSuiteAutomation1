@@ -20,21 +20,37 @@ var DueDate="";
 var VendorNo="";
 var Paymentagent="";
 var Paymentmode="";
-
+var amount ="";
+var Invoicenumber="";
 
 
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
+amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+Log.Message(amount)
+if((amount==null)||(amount=="")){ 
+ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
+}
 Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
 Log.Message(Paymentagent)
 if((Paymentagent==null)||(Paymentagent=="")){ 
-ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment File");
+ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
 }
 Paymentmode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
 Log.Message(Paymentmode)
 if((Paymentmode==null)||(Paymentmode=="")){ 
-ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment File");
+ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
+}
+Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+Log.Message(Invoicenumber)
+if((Invoicenumber==null)||(Invoicenumber=="")){ 
+ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
+}
+Duedate = ExcelUtils.getRowDatas("Due Date",EnvParams.Opco)
+Log.Message(Duedate)
+if((Duedate==null)||(Duedate=="")){ 
+ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
 }
 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -47,15 +63,7 @@ VendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
 if((VendorNo==null)||(VendorNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment File");
 }
-Duedate = ReadExcelSheet("DueDate",EnvParams.Opco,"Data Management");
-Log.Message(Duedate)
-if((Duedate=="")||(Duedate==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
-}
-if((Duedate==null)||(Duedate=="")){ 
-ValidationUtils.verify(false,true,"DueDate is Needed to Create a Payment File");
-}
+
 }
 
 
@@ -63,7 +71,7 @@ ValidationUtils.verify(false,true,"DueDate is Needed to Create a Payment File");
 
 function PaymentFile() {
   ReportUtils.logStep("INFO", "Enter Payment File Details");
- var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+  var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(banking);
   WorkspaceUtils.waitForObj(banking);
   var approve = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl2;
@@ -75,7 +83,8 @@ function PaymentFile() {
   if(VendorNo!=""){
   vendor.Click();
   WorkspaceUtils.VPWSearchByValue(vendor,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VendorNo,"Vendor Number");
- }
+  TextUtils.writeLog("Vendor Number is available in Macanomy: "+VendorNo);
+  }
  else{ 
     ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment File");
   }
@@ -112,7 +121,7 @@ function PaymentFile() {
           ValidationUtils.verify(true,true,"Due Date is selected in Maconomy"); 
         }
     else{ 
-      ValidationUtils.verify(false,true,"Payment Date is Needed  for Remittance Email");
+      ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment File");
     } 
     
      var duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;  duedate1.Click();
@@ -122,13 +131,14 @@ function PaymentFile() {
           ValidationUtils.verify(true,true,"Due Date is selected in Maconomy"); 
         }
     else{ 
-      ValidationUtils.verify(false,true,"Payment Date is Needed  for Remittance Email");
+      ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment File");
     } 
   
   var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;   
   if(Paymentagent!=""){
   paymentAgent.Click();
-  WorkspaceUtils.SearchByValue(paymentAgent,"Payment Agent",Paymentagent,"Payment Agent")
+  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
+  TextUtils.writeLog("Payment Agent is available in macanomy:" +Paymentagent);
   }
   else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
@@ -137,7 +147,8 @@ function PaymentFile() {
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;   
   if(Paymentmode!=""){
   paymentMode.Click();
-  WorkspaceUtils.SearchByValue(paymentMode,"Payment Mode",Paymentmode,"Payment Mode")
+  WorkspaceUtils.SearchByValue(paymentMode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Mode").OleValue.toString().trim(),Paymentmode,"Payment Mode")
+  TextUtils.writeLog("Payment Agent is available in macanomy:" +Paymentmode);
   }
   else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
@@ -198,18 +209,48 @@ function PaymentFile() {
   }
   else{
     showentry.Click();
+    TextUtils.writeLog("Show Entries is Clicked");
   }
    
   
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl;  Sys.HighlightObject(save)
+  waitForObj(save)
   save.Click();
+  TextUtils.writeLog("Create Payment File is Saved");
   
-  var entries = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
+  var entries = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;  
   Sys.HighlightObject(entries)
   
+  var table = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;  
+//Aliases.Maconomy.AR.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  Sys.HighlightObject(table);
+  var row = table.getItemCount()
+  
+    var flag = false;
+    for(var i=0;i<row;i++){
+      if(table.getItem(i).getText(2).OleValue.toString().trim()==Invoicenumber){
+            ValidationUtils.verify(true,true,"Invoice Number is available in the table");
+            flag = true
+            break;
+          }
+          else{
+            table.Keys("[Down]");
+          }
+    }
+  Log.Message(flag)
+  if(flag){
   var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl2;
   Sys.HighlightObject(ApproveConPayment);
+  waitForObj(ApproveConPayment)
   ApproveConPayment.Click();
+  ValidationUtils.verify(flag,true,"Create Payment File is Generated");
+  TextUtils.writeLog("Create Payment File is Generated");
+  }
+  else{
+    ValidationUtils.verify(flag,true,"Invoice Number is not available to Generate a Create Payment File");
+    TextUtils.writeLog("Create Payment File is not Generated");
+  }
+  
 }
 
 
@@ -249,11 +290,11 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Bank Transactions");
-//Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
+//Client_Managt.ClickItem("|Bank Transactions");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-//Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
-Client_Managt.DblClickItem("|Bank Transactions");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions").OleValue.toString().trim());
+//Client_Managt.DblClickItem("|Bank Transactions");
 }
 }
 ReportUtils.logStep("INFO", "Moved to Banking Transactions from job Menu");
@@ -274,7 +315,7 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var Project_manager = ExcelUtils.getRowDatas("SSC - Junior APs","Username")
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
