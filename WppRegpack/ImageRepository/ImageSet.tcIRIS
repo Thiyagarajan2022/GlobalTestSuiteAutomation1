@@ -270,5 +270,8 @@
 		<item caption="JobInvoiceAllocation_1" moniker="{2B952F9B-D5E0-4D60-BC56-1661875E1C3D}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\JobInvoiceAllocation_1.png" initialHash="45EBC3FE" selectionLeft="1150" selectionTop="325" selectionWidth="129" selectionHeight="15" initialLeft="1150" initialTop="325" initialWidth="129" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
+		<item caption="Allocation_Wip" moniker="{43D96A30-E5F4-4339-876D-6F9A2355AA56}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Allocation_Wip_1.png" initialHash="C9C99837" selectionLeft="1038" selectionTop="325" selectionWidth="184" selectionHeight="17" initialLeft="1038" initialTop="325" initialWidth="184" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
 	</data>
 </Root>

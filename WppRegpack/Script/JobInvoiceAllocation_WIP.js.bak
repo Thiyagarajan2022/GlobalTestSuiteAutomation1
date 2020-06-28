@@ -73,6 +73,9 @@ function getDetails(){
 sheetName ="JobInvoiceAllocation_WIP";  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  if(((jobNumber=="")||(jobNumber==null))&&(template.indexOf("Fixed Price")!=-1)){
+  jobNumber = ReadExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management"); 
+    }
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
