@@ -84,7 +84,6 @@ ImageRepository.ImageSet.Acc_Receivable_2.Click();
 
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-aqUtils.Delay(3000, Indicator.Text);
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -108,49 +107,66 @@ Client_Managt.DblClickItem("|Client Management");
 
 } 
 
-aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable Menu");
 TextUtils.writeLog("Entering into Client Management from Accounts Receivable Menu");
 }
 
 function gotoClientSearch(){ 
  var CompanyNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
+  waitForObj(CompanyNumber);
+  Sys.HighlightObject(CompanyNumber);
   CompanyNumber.Click();
   WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
 
  var curr = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
- aqUtils.Delay(5000, Indicator.Text);
+ curr.HoverMouse();
+ Sys.HighlightObject(curr);
  if(Currency!=""){
   curr.Click();
   WorkspaceUtils.DropDownList(Currency,"Currency")
   }
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   
  var ClientNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
+  ClientNumber.HoverMouse();
+ Sys.HighlightObject(ClientNumber); 
   if(ClientNo!=""){
   ClientNumber.Click();
   WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
     }
     
  var ClientName = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
+ ClientName.HoverMouse();
+ Sys.HighlightObject(ClientName);
  ClientName.setText("*");
  
  
  var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
  save.Click();
- aqUtils.Delay(5000, Indicator.Text);
+// aqUtils.Delay(5000, Indicator.Text);
  
  TextUtils.writeLog("Company Number, Client Number, Currency has entered and Saved in Client Search screen");
 }
 
 function globalClient(){ 
   var GblClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  GblClient.HoverMouse();
+  Sys.HighlightObject(GblClient);
   GblClient.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+//  aqUtils.Delay(3000, Indicator.Text);
   var active = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
   active.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  waitForObj(active);
+  Sys.HighlightObject(active);
+  active.HoverMouse();
+  active.HoverMouse();
+  active.Click();
+  active.HoverMouse();
+  active.HoverMouse();
+  active.HoverMouse();
+
+  aqUtils.Delay(3000, "Reading from Global Client table");
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -178,37 +194,54 @@ function globalClient(){
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
   
-  aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(5000, "Playback");
   TextUtils.writeLog("Global Client is available in maconomy to block");
 }
 
 function client(){ 
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
+  waitForObj(home);
+  Sys.HighlightObject(home);
+  home.HoverMouse(); 
   home.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
+  waitForObj(information);
+  Sys.HighlightObject(information);
+  information.HoverMouse(); 
   information.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+//  aqUtils.Delay(2000, Indicator.Text);
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+  waitForObj(screen);
+  Sys.HighlightObject(screen);
   screen.Click();
   screen.MouseWheel(-200);
   var blockClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+  waitForObj(blockClient);
+  Sys.HighlightObject(blockClient);
+  blockClient.HoverMouse(); 
   if(blockClient.getText()=="Yes")
   ValidationUtils.verify(false,true,"Global Client is already blocked");
-  else{ 
+  else{
   blockClient.Click();
   DropDownList("Yes")
 //  blockClient.Keys("Yes");
-  aqUtils.Delay(5000, Indicator.Text);
+//  aqUtils.Delay(5000, Indicator.Text);
   ReportUtils.logStep_Screenshot();
 
   var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+  waitForObj(save);
+  Sys.HighlightObject(save);
+  save.HoverMouse(); 
   save.Click();
   aqUtils.Delay(6000, "Waiting to Save");
   ValidationUtils.verify(true,true,"Global Client is Blocked");
   ReportUtils.logStep_Screenshot();
   TextUtils.writeLog("Global Client is Blocked");
   var AllowForJobs_and_Order = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPopupPickerWidget;
+  waitForObj(AllowForJobs_and_Order);
+  Sys.HighlightObject(AllowForJobs_and_Order);
+  AllowForJobs_and_Order.HoverMouse(); 
   if(AllowForJobs_and_Order.getText()=="No")
   ValidationUtils.verify(true,true,"Allow for use on Jobs and Order has Changed to NO");
   else
@@ -233,7 +266,7 @@ Sys.Process("Maconomy").Refresh();
         if(list.getItem(i).getText_2(0)!=null){ 
           if(list.getItem(i).getText_2(0).OleValue.toString().trim()==value){ 
             list.Keys("[Enter]");
-            aqUtils.Delay(5000, Indicator.Text);;
+            aqUtils.Delay(1000, Indicator.Text);;
             checkMark = true;
             ValidationUtils.verify(true,true,"Yes is selected in Blocked Status");
             break;

@@ -268,6 +268,10 @@ if(EnvParams.instanceData.indexOf("BAU")!=-1){
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);  
+  if(ImageRepository.ImageSet.Workspace.Exists()){ 
+    
+  }
+  
     }
     
     

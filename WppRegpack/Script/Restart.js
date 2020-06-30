@@ -243,6 +243,9 @@ if(EnvParams.instanceData.indexOf("BAU")!=-1){
   if(loginuser.indexOf("1707 Finance")!=-1){ 
     loginpassword = "CORE@WPP123"
   }
+  if(loginuser.indexOf("1707 Management")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
     if(loginuser.indexOf("IND Junior APs")!=-1){ 
     loginpassword = "CORE@WPP123"
   }
@@ -267,6 +270,9 @@ aqUtils.Delay(2000, Indicator.Text);
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);  
+  if(ImageRepository.ImageSet.Workspace.Exists()){ 
+    
+  }
 }
 function ServerConfigration(){ 
 var workBook = Project.Path+TextUtils.GetProjectValue("EnvDetailsPath")

@@ -11,11 +11,13 @@ var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "BlockGlobalClient";
 var ClientNo,BrandNo,Currency ="";
-
+var Language = "";
 function Blockglobalclient(){ 
 //  TextUtils.writeLog("Block Gloabl brand Started"); 
 Indicator.PushText("waiting for window to open");
 aqUtils.Delay(4000, Indicator.Text);
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
@@ -23,12 +25,7 @@ ExcelUtils.setExcelName(workBook, "SSC Users", true);
 var Project_manager = ExcelUtils.getRowDatas("Central Team - Client Account Management","Username")
 Log.Message(Project_manager);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
+WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
   
 }
@@ -51,12 +48,6 @@ if((Currency==null)||(Currency=="")){
 ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
 }
 
-Language = EnvParams.Language;
-if((Language==null)||(Language=="")){
-ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-}
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Block Gloabl brand started::"+STIME);
 gotoMenu();
@@ -64,6 +55,8 @@ gotoClientSearch();
 globalClient();
 client();
 aqUtils.Delay(2000, Indicator.Text);
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -100,9 +93,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Client Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Client Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 }
 
 } 
@@ -112,12 +105,17 @@ TextUtils.writeLog("Entering into Client Management from Accounts Receivable Men
 }
 
 function gotoClientSearch(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var CompanyNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   waitForObj(CompanyNumber);
   Sys.HighlightObject(CompanyNumber);
   CompanyNumber.Click();
-  WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
-
+  WorkspaceUtils.SearchByValue(CompanyNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var curr = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
  curr.HoverMouse();
@@ -133,7 +131,7 @@ function gotoClientSearch(){
  Sys.HighlightObject(ClientNumber); 
   if(ClientNo!=""){
   ClientNumber.Click();
-  WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
+  WorkspaceUtils.VPWSearchByValue(ClientNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),ClientNo,"Client Number");
     }
     
  var ClientName = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
@@ -147,15 +145,21 @@ function gotoClientSearch(){
 // aqUtils.Delay(5000, Indicator.Text);
  
  TextUtils.writeLog("Company Number, Client Number, Currency has entered and Saved in Client Search screen");
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 }
 
 function globalClient(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var GblClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
   GblClient.HoverMouse();
   Sys.HighlightObject(GblClient);
   GblClient.Click();
 //  aqUtils.Delay(3000, Indicator.Text);
-  var active = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  var active = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());
   active.Click();
   waitForObj(active);
   Sys.HighlightObject(active);
@@ -199,18 +203,27 @@ aqUtils.Delay(5000, "Playback");
 }
 
 function client(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
   waitForObj(home);
   Sys.HighlightObject(home);
   home.HoverMouse(); 
   home.Click();
 //  aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   waitForObj(information);
   Sys.HighlightObject(information);
   information.HoverMouse(); 
   information.Click();
 //  aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
   waitForObj(screen);
   Sys.HighlightObject(screen);
@@ -220,11 +233,11 @@ function client(){
   waitForObj(blockClient);
   Sys.HighlightObject(blockClient);
   blockClient.HoverMouse(); 
-  if(blockClient.getText()=="Yes")
+  if(blockClient.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
   ValidationUtils.verify(false,true,"Global Client is already blocked");
   else{
   blockClient.Click();
-  DropDownList("Yes")
+  DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
 //  blockClient.Keys("Yes");
 //  aqUtils.Delay(5000, Indicator.Text);
   ReportUtils.logStep_Screenshot();
@@ -235,6 +248,9 @@ function client(){
   save.HoverMouse(); 
   save.Click();
   aqUtils.Delay(6000, "Waiting to Save");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   ValidationUtils.verify(true,true,"Global Client is Blocked");
   ReportUtils.logStep_Screenshot();
   TextUtils.writeLog("Global Client is Blocked");

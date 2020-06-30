@@ -310,7 +310,8 @@ releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
-
+JiraUpdate = true;
+JiraStat = true;
 //folderName = Opcolist[OpID];   //Login for each Opco
 
 
@@ -375,6 +376,8 @@ cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 Log.Message(cyclename)
 Log.Message(folderName)
+JiraUpdate = true;
+JiraStat = true;
 
 //ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),businessFlow);
 if(TestingType.toUpperCase()=="SMOKE")

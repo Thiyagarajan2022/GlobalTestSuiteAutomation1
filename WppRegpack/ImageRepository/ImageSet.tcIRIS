@@ -273,5 +273,8 @@
 		<item caption="Allocation_Wip" moniker="{43D96A30-E5F4-4339-876D-6F9A2355AA56}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Allocation_Wip_1.png" initialHash="C9C99837" selectionLeft="1038" selectionTop="325" selectionWidth="184" selectionHeight="17" initialLeft="1038" initialTop="325" initialWidth="184" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
+		<item caption="Workspace" moniker="{956F9E28-051F-4886-95FB-EA0F3B8E869F}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Workspace.png" initialHash="00000000" selectionLeft="37" selectionTop="51" selectionWidth="27" selectionHeight="24" initialLeft="37" initialTop="51" initialWidth="27" initialHeight="24" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
 	</data>
 </Root>
