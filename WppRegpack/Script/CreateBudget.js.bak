@@ -481,7 +481,9 @@ Log.Message(Clientgrid.FullName)
 var workcode;
 linestatus = false;
 workcode = Clientgrid.SWTObject("McValuePickerWidget", "");
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 if(wCodeID!=""){
 addedlines = true;
 WorkspaceUtils.waitForObj(workcode);

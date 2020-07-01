@@ -92,7 +92,7 @@ aprvBudget(temp[0],temp[1],temp[2]);
   }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
-closeAllWorkspaces();
+WorkspaceUtils.closeAllWorkspaces();
 }
 
 

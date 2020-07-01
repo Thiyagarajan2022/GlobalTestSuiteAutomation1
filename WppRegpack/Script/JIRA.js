@@ -12,7 +12,7 @@ function JIRAUpdate(){
 
 		versionName = TestRunner.releasename;
 		cycleName = TestRunner.cyclename;
-    folderName = TestRunner.folderName;
+    folderName = "";
 		testCaseId = TestRunner.testCaseId;  
      projectName = EnvParams.Pname;
      	var userName = EnvParams.JiraUsername;
@@ -24,11 +24,17 @@ function JIRAUpdate(){
     var expirationInsec = 360;
     var comment = "TestReport_Uploaded_Successfully_in_JIRA.";
     Log.Message("TestRunner.JiraUpdate :"+TestRunner.JiraUpdate)
+    Log.Message("projectName :"+projectName)
+    Log.Message("cycleName :"+cycleName)
+    Log.Message("folderName :"+folderName)
+    Log.Message("testCaseId :"+testCaseId)
+
     var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl,accessKey,secretKey,userName);
     if(!TestRunner.JiraStat){
     var status = "Failed";// Passed
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
         if(ReportUtils.DStat){ 
+    folderName = TestRunner.folderName;
 var workDir = ReportUtils.Dfile_path+"\\";
 Log.Message(workDir)
 var fileList = slPacker.GetFileListFromFolder(workDir);
@@ -44,8 +50,9 @@ Delay(4000);
     }     
   else{      
     var status = "passed";// Failed
-    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
+//    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
     if(ReportUtils.DStat){ 
+    folderName = TestRunner.folderName;
       Log.Message("JIRA Attachment :"+ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")
      JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt",expirationInsec, comment) 
     }else{

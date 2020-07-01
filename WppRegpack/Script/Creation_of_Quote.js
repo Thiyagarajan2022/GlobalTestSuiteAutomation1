@@ -640,12 +640,19 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
 
 var ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite;
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.isVisible())
-ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.SingleToolItemControl;
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.isVisible()){
+//ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.SingleToolItemControl;
+ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 10);
+}
     
 var ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite2;
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.isVisible())
-var ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite2.SingleToolItemControl
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.isVisible()){
+//var ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite2.SingleToolItemControl
+var ConToOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite2.PTabFolder.Composite2.SWTObject("SingleToolItemControl", "", 10)
+}
+
+
+
 WorkspaceUtils.waitForObj(ConToOrder);    
 Sys.HighlightObject(ConToOrder)
 ConToOrder.HoverMouse();
@@ -815,7 +822,14 @@ TextUtils.writeLog("Copy Button is Clicked");
 //    }
 //    var Job = Aliases.Maconomy.Shell3.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
     var Job = Aliases.Maconomy.Shell3.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
-    WorkspaceUtils.waitForObj(Job);
+Job.Click();
+WorkspaceUtils.waitForObj(Job);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+if(ImageRepository.ImageSet.Img_search.Exists()){ 
+      
+}
     Job.Click();
     if(Job.getText()!=jobNumber){
     WorkspaceUtils.SearchByValues_all_Col_2(Job,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),jobNumber,"Job Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim())

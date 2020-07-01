@@ -341,7 +341,9 @@ function client(){
   
         }
         ImageRepository.ImageSet.Maximize.Click();
-
+        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+        }
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl3;
       ClientApproval.Click();
 //      if(ClientApproval.getText()=="Client Approval"){ 

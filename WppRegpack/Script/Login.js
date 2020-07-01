@@ -205,7 +205,7 @@ ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
       aqUtils.Delay(1000, Indicator.Text);
       usernameAddr.SetFocus();
       usernameAddr.setText(loginuser);
-if(EnvParams.instanceData.indexOf("BAU")!=-1){
+if(EnvParams.instanceData.indexOf("BAUTESTAPAC")!=-1){
 if(loginuser.indexOf(EnvParams.Opco)!=-1){ 
  loginpassword= "CORE@TESTING"+EnvParams.Opco;
 }

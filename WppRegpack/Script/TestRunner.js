@@ -6,7 +6,7 @@
 //UNEUNIT Datasheet
  
  
-var unitName, testCase, execute, description,sTime,eTime,testName;
+var unitName, testCase, execute, description,sTime,eTime,testName,JkinsName;
 var TestCase_ID, functions, Execute, Data;
 var Opcolist = [];
 var CountryList = [];
@@ -148,6 +148,8 @@ if(TestingType.toUpperCase()=="SMOKE")
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"Smoke");
 else
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
+
+JkinsName = ExcelUtils.getAllRowDatas("Jenkins Name",excelRow);
 unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
 testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
 moduleName = ExcelUtils.getAllRowDatas("ModuleName",excelRow);
@@ -161,7 +163,7 @@ execute = ExcelUtils.getAllRowDatas(businessFlow,excelRow);
 if(execute.toUpperCase()=="YES"){   //Login for each Opco 
 
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
-testCaseId = ExcelUtils.getRowDatas(unitName,EnvParams.Country)
+testCaseId = ExcelUtils.getRowDatas(JkinsName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
 //cyclename  = ExcelUtils.getRowDatas("Current Cycle Name",EnvParams.Country)
 ExcelUtils.setExcelName(workBook, "Server Details", true);
@@ -210,7 +212,7 @@ ReportUtils.createTest(unitName, description);
 JiraUpdate = true;
 JiraStat = true;
 // capture StartTime
-sTime = WorkspaceUtils.StartTime();
+sTime = new Date();
 TextUtils.writeLog(unitName +" Execution Started Time :"+sTime); 
 
 
@@ -232,7 +234,7 @@ if (slPacker.Pack(fileList, workDir, archivePath))
 Runner.CallMethod("JIRA.JIRAUpdate");
 
 // capture EndTime
-eTime = WorkspaceUtils.StartTime();
+eTime = new Date();;
 TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime); 
 
 // Verify Statistics file exists or not. If not create it.

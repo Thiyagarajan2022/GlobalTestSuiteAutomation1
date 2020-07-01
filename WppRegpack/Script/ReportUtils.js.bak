@@ -1,19 +1,28 @@
 ﻿//USEUNIT TestRunner
 //USEUNIT TextUtils
-var report,test,reportConsolidated,testConsolidated;
+var report,test,Dtest,Dreport,reportConsolidated,testConsolidated;
 var file_path;
 var file_name;
 var testExe = "";
 var ig = 0;
 var logStatus = JavaClasses.com_relevantcodes_extentreports.LogStatus;
+var Dfile_path;
+var Dfile_name;
+var DStat = false;
 function createReport(filePath,fileName)
 {
 file_path = filePath+fileName;
 file_name = fileName;
 //Log.Message(filePath+fileName)
 report = JavaClasses.com_relevantcodes_extentreports.ExtentReports.newInstance(file_path+"\\"+fileName+".html");
+}
 
-
+function createDependencyReport(fileName)
+{
+Dfile_path = file_path+"\\"+fileName;
+Dfile_name = fileName;
+Log.Message(Dfile_path)
+Dreport = JavaClasses.com_relevantcodes_extentreports.ExtentReports.newInstance(Dfile_path+"\\"+Dfile_name+".html");
 }
 
 function createConsolidatedReport(filePath,fileName)
@@ -32,23 +41,47 @@ test = report.startTest(testName,testDesc);
 testConsolidated = reportConsolidated.startTest(testName,testDesc);
 }
 
+function DependycreateTest(testName,testDesc)
+{
+testExe = testName;
+ig = 0;
+Dtest = Dreport.startTest(testName,testDesc);
+test = report.startTest(testName,testDesc);
+testConsolidated = reportConsolidated.startTest(testName,testDesc);
+}
+
 
 function logStep(result,stepName, stepDesc="")
 {
 if(result.toUpperCase()=="INFO"){
 //Log.Message(stepName)
 //TextUtils.writeLog(stepName);
+if(DStat){ 
+Dtest.log(logStatus.INFO,stepName);
+}
 test.log(logStatus.INFO,stepName);
 testConsolidated.log(logStatus.INFO,stepName);
 }
 if(result.toUpperCase()=="PASS"){
 //TextUtils.writeLog(stepName);
+
+if(DStat){ 
+Dtest.log(logStatus.PASS,stepName);
+}
 test.log(logStatus.PASS,stepName);
 testConsolidated.log(logStatus.PASS,stepName);
 }
 if(result.toUpperCase()=="FAIL"){
+TestRunner.JiraStat = false;
 
+if(DStat){ 
+sFolder = Dfile_path+"\\Screenshots\\"; 
+}else{
 sFolder = file_path+"\\Screenshots\\";
+}
+
+
+if(DStat){ 
 if (! aqFileSystem.Exists(sFolder)){
 if (aqFileSystem.CreateFolder(sFolder) == 0){ 
     
@@ -57,12 +90,32 @@ else{
 Log.Error("Could not create the folder " + sFolder);
 }
 }
+}else{
+  
+if (! aqFileSystem.Exists(sFolder)){
+if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+}
+else{
+Log.Error("Could not create the folder " + sFolder);
+}
+}
+
+}
 var img = sFolder+"Image_"+ig+".png";
 Sys.Desktop.Picture().SaveToFile(img);
 img = "\\Screenshots\\"+"Image_"+ig+".png";
 ig++;
+
+if(DStat){ 
+Dtest.log(logStatus.FAIL,stepName+test.addScreenCapture("."+img));
+test.log(logStatus.FAIL,stepName+test.addScreenCapture(".\\"+file_name+img));
+testConsolidated.log(logStatus.FAIL,stepName+testConsolidated.addScreenCapture("..\\"+file_name+img));
+}else{
 test.log(logStatus.FAIL,stepName+test.addScreenCapture("."+img));
 testConsolidated.log(logStatus.FAIL,stepName+testConsolidated.addScreenCapture(".\\"+file_name+img));
+}
+
 TextUtils.writeLog(unitName+" is FAILED "+stepName);
 //ReportUtils.report.endTest(test);
 //ReportUtils.report.flush();
@@ -72,13 +125,18 @@ TextUtils.writeLog(unitName+" is FAILED "+stepName);
 //// Packes the resutls
 //if (slPacker.Pack(fileList, TestRunner.workDir, TestRunner.archivePath))
 //  Log.Message("Files compressed successfully.");
-//  
+//  Log.Error(stepName)
+//Runner.CallMethod("JIRA.JIRAUpdate");
 //ReportUtils.reportConsolidated.endTest(testConsolidated);
 //ReportUtils.reportConsolidated.flush();
-var err;
-throw err;
+
+//var err;
+//throw err;
 }
 if(result.toUpperCase()=="WARNING"){
+if(DStat){ 
+Dtest.log(logStatus.WARNING,stepName);
+}
 test.log(logStatus.WARNING,stepName);
 testConsolidated.log(logStatus.WARNING,stepName);
 }
@@ -87,8 +145,18 @@ testConsolidated.log(logStatus.WARNING,stepName);
 
 function logStep_Screenshot(stepName)
 {
-
-
+if(DStat){ 
+ sFolder = Dfile_path+"\\Screenshots\\";
+if (! aqFileSystem.Exists(sFolder)){
+if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+}
+else{
+Log.Error("Could not create the folder " + sFolder);
+}
+} 
+}
+else{
 sFolder = file_path+"\\Screenshots\\";
 if (! aqFileSystem.Exists(sFolder)){
 if (aqFileSystem.CreateFolder(sFolder) == 0){ 
@@ -98,20 +166,36 @@ else{
 Log.Error("Could not create the folder " + sFolder);
 }
 }
+
+}
 var img = sFolder+"Image_"+ig+".png";
 Sys.Desktop.Picture().SaveToFile(img);
 
 img = "\\Screenshots\\"+"Image_"+ig+".png";
 ig++;
 if((stepName!="")&&(stepName!=null)){
+  
+if(DStat){ 
+Dtest.log(logStatus.INFO,stepName+test.addScreenCapture("."+img));
+test.log(logStatus.INFO,stepName+test.addScreenCapture(".\\"+file_name+img));
+testConsolidated.log(logStatus.INFO,stepName+testConsolidated.addScreenCapture("..\\"+file_name+img));
+}else{
 test.log(logStatus.INFO,stepName+test.addScreenCapture("."+img));
 testConsolidated.log(logStatus.INFO,stepName+testConsolidated.addScreenCapture(".\\"+file_name+img));
 }
+}
 else
 { 
+  
+if(DStat){ 
+Dtest.log(logStatus.INFO,test.addScreenCapture("."+img));
+test.log(logStatus.INFO,test.addScreenCapture(".\\"+file_name+img));
+testConsolidated.log(logStatus.INFO,testConsolidated.addScreenCapture("..\\"+file_name+img));
+}else{
 test.log(logStatus.INFO,test.addScreenCapture("."+img));
 testConsolidated.log(logStatus.INFO,testConsolidated.addScreenCapture(".\\"+file_name+img));
-  
+} 
+ 
 }
 }
 

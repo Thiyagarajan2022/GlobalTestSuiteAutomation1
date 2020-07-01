@@ -22,21 +22,18 @@ var STIME = "";
 var clientName,brandname,defaultname,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN ="";
 var ClientNumber = "";
 var client1="";
-
+var Language = "";
 
 function CreateGlobalBrand(){
-TextUtils.writeLog("Global Client Creation Started"); 
+TextUtils.writeLog("Global Brand Creation Started"); 
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
+WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
   
 }
@@ -54,13 +51,6 @@ clientName,brandname,defaultname,strt1,strt2,P_code,P_District,country,clientlan
 ClientNumber = "";
 Approve_Level = [];
 
-Language = EnvParams.Language;
-if((Language==null)||(Language=="")){
-ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-}
-
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
@@ -160,9 +150,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Client Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Client Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 }
 
 } 
@@ -176,29 +166,43 @@ TextUtils.writeLog("Entering into Client Management from Accounts Receivable Men
 function getDetails(){ 
 Indicator.PushText("Reading Data from Excel");
 ExcelUtils.setExcelName(workBook, sheetName, true);
-ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  if((ClientNo=="")||(ClientNo==null)){
+
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  if((ClientNo=="")||(ClientNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
   }
-clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
-if((clientName==null)||(clientName=="")){ 
-ValidationUtils.verify(false,true,"Client Name is Needed to Create a Client");
-}
+  
+  
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  clientName = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  if((clientName=="")||(clientName==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
+  }
+  if((clientName==null)||(clientName=="")){ 
+  ValidationUtils.verify(false,true,"Client Name is Needed to Create a Client");
+  }
 Log.Message(clientName)
 //strt1 = ExcelUtils.getRowDatas("Street 1",EnvParams.Opco)
 //if((strt1==null)||(strt1=="")){ 
 //ValidationUtils.verify(false,true,"Street 1 is Needed to Create a Client");
 //}
 
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+brandname = ReadExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management");
+if((brandname=="")||(brandname==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 brandname = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
+}
 if((brandname==null)||(brandname=="")){ 
 ValidationUtils.verify(false,true,"Brand Name is Needed to Create a Client");
 }
 
 
 Log.Message(brandname)
-
+ExcelUtils.setExcelName(workBook, sheetName, true);
 defaultname = ExcelUtils.getRowDatas("Default Name",EnvParams.Opco)
 if((defaultname==null)||(defaultname=="")){ 
 ValidationUtils.verify(false,true,"Default Name is Needed to Create a Client");
@@ -363,14 +367,21 @@ return excelData;
 
 
 function gotoClientSearch(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  var CompanyNumber = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
  waitForObj(CompanyNumber);
- 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   Sys.HighlightObject(CompanyNumber);
   CompanyNumber.Click();
   var ExlArray = getExcelData_Company("Validate_Company",EnvParams.Opco)
   WorkspaceUtils.config_with_Maconomy_Validation(CompanyNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,ExlArray,"Company Number");
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  var curr = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
  curr.HoverMouse();
@@ -383,8 +394,8 @@ function gotoClientSearch(){
 var ClientNumber = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget;
   if(ClientNo!=""){
   ClientNumber.Click();
-  WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
-    }
+  WorkspaceUtils.VPWSearchByValue(ClientNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),ClientNo,"Client Number");
+  }
 
  var ClientName = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
  ClientName.HoverMouse();
@@ -400,24 +411,39 @@ var ClientNumber = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Compo
 // aqUtils.Delay(5000, Indicator.Text);
  
  TextUtils.writeLog("Company Number, Client Number, Currency has entered and Saved in Client Search screen");
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 
 
 function globalClient(){ 
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var GblClient = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
   GblClient.HoverMouse();
   Sys.HighlightObject(GblClient);
   GblClient.Click();
 //  aqUtils.Delay(5000, Indicator.Text);
-  var AllClients = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  var AllClients = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());
   AllClients.Click();
   AllClients.HoverMouse();
   AllClients.HoverMouse();
   AllClients.HoverMouse();
   
   aqUtils.Delay(3000, "Reading from Global Client table");
-  var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   
+  var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   table.HoverMouse(49, 52);
   ReportUtils.logStep_Screenshot();
@@ -453,11 +479,15 @@ function globalClient(){
 
 function newGlobalClient(){ 
   
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 var home= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
 // var ClientName = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.ClientName_textbox;
  waitForObj(home);
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  home.Click();
  Sys.HighlightObject(home);
 // ClientName.setText(clientName.toString().trim()+" "+STIME);
@@ -466,14 +496,20 @@ var home= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Comp
 var sublevel= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
 // var ClientName = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.ClientName_textbox;
  waitForObj(sublevel);
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  sublevel.Click();
  Sys.HighlightObject(sublevel);
  
- 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  var glbclient= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
   waitForObj(glbclient);
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  glbclient.Click();
  Sys.HighlightObject(glbclient);
  
@@ -497,13 +533,13 @@ defaultname1.setText(defaultname);
 
 //Default Name
  
-var next=Aliases.Maconomy.CreateGlobalBrand2.Composite.Composite.Composite2.Composite.Composite.Button;
+var next=Aliases.Maconomy.CreateGlobalBrand2.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim())
  next.HoverMouse();
  Sys.HighlightObject(next);
  ReportUtils.logStep_Screenshot() ;
  next.Click();
  
-
+//Global Client - Client Information Card
 }
 
 function GlobalClient_Screen2(){ 
@@ -544,7 +580,7 @@ function GlobalClient_Screen2(){
   C_AcctDir.HoverMouse();
   Sys.HighlightObject(C_AcctDir);
   C_AcctDir.Click();
-  WorkspaceUtils.SearchByValue(C_AcctDir,"Employee",AccDir,"Acct Director No");
+  WorkspaceUtils.SearchByValue(C_AcctDir,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),AccDir,"Acct Director No");
   }
   
   var C_PaymentTerm = Aliases.Maconomy.CreateGlobalBrand2.Composite.Composite.Composite.Composite.Composite2.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite7.McPopupPickerWidget;
@@ -568,17 +604,17 @@ function GlobalClient_Screen2(){
   if(sales!=""){
   Sys.HighlightObject(C_JobPriceList);
   C_JobPriceList.Click();
-  WorkspaceUtils.SearchByValue(C_JobPriceList,"Job Price List",sales,"Job Price List Sales");
+  WorkspaceUtils.SearchByValue(C_JobPriceList,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Price List").OleValue.toString().trim(),sales,"Job Price List Sales");
          }  
          
 //    aqUtils.Delay(2000, Indicator.Text);
   
- var Next = Aliases.Maconomy.CreateGlobalBrand2.Composite.Composite.Composite2.Composite.Button;
+ var Next = Aliases.Maconomy.CreateGlobalBrand2.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim())
  Sys.HighlightObject(Next);
  Next.HoverMouse();
  ReportUtils.logStep_Screenshot() ;
  Next.Click();
-    Delay(5000);
+    aqUtils.Delay(5000, "Finding pop-up");
 
 }
 
@@ -596,7 +632,7 @@ function test()
        button.HoverMouse();
     // ReportUtils.logStep_Screenshot("");
       button.Click();
-      Delay(5000);
+      aqUtils.Delay(5000, "Finding pop-up");
   }
 //      
     
@@ -608,7 +644,7 @@ function test()
        button1.HoverMouse();
     // ReportUtils.logStep_Screenshot("");
       button1.Click();
-      Delay(5000);
+      aqUtils.Delay(5000, "Finding pop-up");
 }
 }
 
@@ -617,7 +653,11 @@ function test()
 function brand1(){
 //var name1=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 //name1.Click();
-//  name1.Keys(brandname);  
+//  name1.Keys(brandname); 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+ 
 var name1=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 name1.Click();
   name1.Keys(brandname); 
@@ -626,7 +666,9 @@ var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Co
 //Aliases.Maconomy.Screen3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid
  
   aqUtils.Delay(4000, Indicator.Text);
-    
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   if(table.getItem(0).getText_2(1).OleValue.toString().trim()==brandname){
   table.HoverMouse(49, 52);
   ReportUtils.logStep_Screenshot();
@@ -655,7 +697,9 @@ var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Co
   aqUtils.Delay(5000, Indicator.Text);
 
   TextUtils.writeLog("Global Brand is available in maconomy to block");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
   
 }
 
@@ -663,6 +707,9 @@ var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Co
   
 function indiaSpecific(){ 
   aqUtils.Delay(7000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var indiaspec = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.IndiaSpecific;
 Sys.HighlightObject(indiaspec);
 var Start = StartwaitTime();
@@ -724,7 +771,9 @@ save.Click();
 function attachDocument(){ 
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Document
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
   }
@@ -753,11 +802,16 @@ function attachDocument(){
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 }
   
   
 function Information(){ 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
   var info = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2;
   info.HoverMouse();
   info.HoverMouse();
@@ -767,18 +821,30 @@ function Information(){
   info.HoverMouse();
   info.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var submit = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   Sys.HighlightObject(submit);
   submit.HoverMouse();
   submit.HoverMouse();
   submit.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 }
   
 function ApprvalInformation(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var ClientApproval = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
 }
@@ -786,6 +852,9 @@ ImageRepository.ImageSet.Maximize.Click();
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
    var ApproverTable = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
    var y=0;
   for(var i=0;i<ApproverTable.getItemCount();i++){   
@@ -804,9 +873,13 @@ var closeCAList = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Compos
  Sys.HighlightObject(closeCAList);
  closeCAList.HoverMouse();
  closeCAList.Click();
- 
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 ImageRepository.ImageSet.Forward.Click();
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
@@ -912,6 +985,9 @@ var refresh= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.C
 //}
 refresh.Click();
 aqUtils.Delay(15000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
+  
+}
 var Client_Managt=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
 
 //if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
@@ -982,6 +1058,10 @@ function FinalApproveClient(ClientNum,Apvr,lvl){
 //aqUtils.Delay(2000, Indicator.Text);
 //ImageRepository.ImageSet.Show_Filter.Click();
 //}
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var table = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
 waitForObj(table);
 Sys.HighlightObject(table);
@@ -1014,6 +1094,9 @@ closefilter.HoverMouse();
 closefilter.HoverMouse();
 closefilter.HoverMouse(); 
 //aqUtils.Delay(6000, Indicator.Text);;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(0).OleValue.toString().trim()==ClientNum){ 
@@ -1032,7 +1115,9 @@ closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
 aqUtils.Delay(5000, Indicator.Text);;
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var Approve = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 Sys.HighlightObject(Approve)
 if(Approve.isEnabled()){ 
@@ -1070,13 +1155,18 @@ aqUtils.Delay(8000, Indicator.Text); ;
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
   TextUtils.writeLog("Global Client Number :"+ClientNum); 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
 // var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;
  var ClientApproval = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 // }
  if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
@@ -1085,6 +1175,9 @@ ImageRepository.ImageSet.Maximize.Click();
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
    var ApproverTable = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   Sys.HighlightObject(ApproverTable);
   ReportUtils.logStep_Screenshot();
