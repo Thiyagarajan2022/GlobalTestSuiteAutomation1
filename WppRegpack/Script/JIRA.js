@@ -50,7 +50,7 @@ Delay(4000);
     }     
   else{      
     var status = "passed";// Failed
-//    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
+    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
     if(ReportUtils.DStat){ 
     folderName = TestRunner.folderName;
       Log.Message("JIRA Attachment :"+ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")
