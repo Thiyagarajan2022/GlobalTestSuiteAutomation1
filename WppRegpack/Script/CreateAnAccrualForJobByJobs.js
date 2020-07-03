@@ -7,7 +7,7 @@
 //USEUNIT Restart
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-var sheetName = "CreateAnAccrualForAGroupOfJobs";
+var sheetName = "CreateAnAccrualJobByJob";
 var Language = "";
   Indicator.Show();
   
@@ -18,8 +18,7 @@ var Arrays = [];
 var count = true;
 var checkmark = false;
 var STIME = "";
-//var comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile;
- var JobNo,WorkCodeFrom,WorkCodeTo,EntryDate,NoForAccrual,PoNoFrom,PoNoTo ;
+var JobNo,WorkCodeFrom,WorkCodeTo,EntryDate,NoForAccrual,PoNoFrom,PoNoTo,NoOfPoLinesForAccrual ;
 
 
 //getting data from datasheet
@@ -28,35 +27,57 @@ function getDetails(){
 //Log.Message("sheet :"+sheetName);
 ExcelUtils.setExcelName(workBook, sheetName, true);
 //Log.Message(EnvParams.Opco)
+
 JobNo = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
 if((JobNo==null)||(JobNo=="")){ 
-ValidationUtils.verify(false,true,"Job Number is Needed to Create a Job");
+ValidationUtils.verify(false,true,"Job Number is Needed to CreateAnAccrualJobByJob");
 }
+
+Log.Message(JobNo)
+
 WorkCodeFrom = ExcelUtils.getRowDatas("WorkCodeFrom",EnvParams.Opco)
 if((WorkCodeFrom==null)||(WorkCodeFrom=="")){ 
-ValidationUtils.verify(false,true,"WorkCodeFrom is Needed to Create a Job");
+ValidationUtils.verify(false,true,"WorkCodeFrom is Needed to CreateAnAccrualJobByJob");
 }
+
+Log.Message(WorkCodeFrom)
+
 WorkCodeTo = ExcelUtils.getRowDatas("WorkCodeTo",EnvParams.Opco)
 if((WorkCodeTo==null)||(WorkCodeTo=="")){ 
-ValidationUtils.verify(false,true,"WorkCodeTo is Needed to Create a Job");
+ValidationUtils.verify(false,true,"WorkCodeTo is Needed to CreateAnAccrualJobByJob");
 }
+Log.Message(WorkCodeTo)
+
 EntryDate = ExcelUtils.getRowDatas("EntryDate",EnvParams.Opco)
 if((EntryDate==null)||(EntryDate=="")){ 
-ValidationUtils.verify(false,true,"EntryDate is Needed to Create a Job");
+ValidationUtils.verify(false,true,"EntryDate is Needed to CreateAnAccrualJobByJob");
 }
+Log.Message(EntryDate)
+
 NoForAccrual = ExcelUtils.getRowDatas("NoForAccrual",EnvParams.Opco)
 if((NoForAccrual==null)||(NoForAccrual=="")){ 
-ValidationUtils.verify(false,true,"NoForAccrual Number is Needed to Create a Job");
+ValidationUtils.verify(false,true,"NoForAccrual Number is Needed to CreateAnAccrualJobByJob");
 }
+Log.Message(NoForAccrual)
+
 PoNoFrom = ExcelUtils.getRowDatas("PoNoFrom",EnvParams.Opco)
 if((PoNoFrom==null)||(PoNoFrom=="")){ 
-ValidationUtils.verify(false,true,"PoNoFrom is Needed to Create a Job");
+ValidationUtils.verify(false,true,"PoNoFrom is Needed to CreateAnAccrualJobByJob");
 }
+Log.Message(PoNoFrom)
 
 PoNoTo = ExcelUtils.getRowDatas("PoNoTo",EnvParams.Opco)
 if((PoNoFrom==null)||(PoNoFrom=="")){ 
+ValidationUtils.verify(false,true,"PoNoTo is Needed to CreateAnAccrualJobByJob");
+}
+Log.Message(PoNoTo)
+
+NoOfPoLinesForAccrual =ExcelUtils.getRowDatas("NoOfPoLinesForAccrual",EnvParams.Opco)
+if((NoOfPoLinesForAccrual==null)||(NoOfPoLinesForAccrual=="")){ 
 ValidationUtils.verify(false,true,"PoNoTo is Needed to Create a Job");
 }
+Log.Message(NoOfPoLinesForAccrual)
+
 //ExcelUtils.setExcelName(workBook, "Data Management", true);
 //Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
 //if((Product=="")||(Product==null)){
@@ -67,16 +88,17 @@ ValidationUtils.verify(false,true,"PoNoTo is Needed to Create a Job");
 //ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
 //}
 
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Job_name= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
-if((Job_name==null)||(Job_name=="")){ 
-ValidationUtils.verify(false,true,"Job Name is Needed to Create a Job");
-}
-Dlang= ExcelUtils.getRowDatas("Language",EnvParams.Opco)
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//Job_name= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
+//if((Job_name==null)||(Job_name=="")){ 
+//ValidationUtils.verify(false,true,"Job Name is Needed to Create a Job");
+//}
+//Dlang= ExcelUtils.getRowDatas("Language",EnvParams.Opco)
 
 //BFC= ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
 
 //pTerm= ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
+
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 //OpCoFile=ExcelUtils.getRowData1("OpCo File")
@@ -194,15 +216,57 @@ includeFullyAccured.HoverMouse();
 //purchaseorderNoToField.setText("1707109766");  
 
 
-var NoOfPurchaseOrderLinesForAccrual =1
+//var NoOfPurchaseOrderLinesForAccrual =1
+Log.Message("NoOfPoLinesForAccrual"+NoOfPoLinesForAccrual);
 
-for(var i=1;i<=NoOfPurchaseOrderLinesForAccrual;i++){ 
+for(var i=1;i<=NoOfPoLinesForAccrual;i++){ 
   
-purchaseorderNoFromField.setText(PoNoFrom)
-purchaseorderNoToField.setText(PoNoTo);  
+//purchaseorderNoFromField.setText(PoNoFrom)
+//purchaseorderNoToField.setText(PoNoTo);  
 
-  workCodeFrom.setText(WorkCodeFrom);  
-  workCodeTo.setText(WorkCodeTo);  
+
+
+ if(PoNoFrom!=""){
+  purchaseorderNoFromField.Click();
+  WorkspaceUtils.SearchByValue(purchaseorderNoFromField,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Purchase Order").OleValue.toString().trim(),PoNoFrom,"Purchase Order");
+    }
+ else{ 
+    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+  }
+  
+  
+  if(PoNoTo!=""){
+  purchaseorderNoToField.Click();
+  WorkspaceUtils.SearchByValue(purchaseorderNoToField,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Purchase Order").OleValue.toString().trim(),PoNoTo,"Purchase Order");
+    }
+ else{ 
+    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+  }
+  
+  
+
+//  workCodeFrom.setText(WorkCodeFrom);  
+//  workCodeTo.setText(WorkCodeTo);  
+//  
+  
+    if(WorkCodeFrom!=""){
+  workCodeFrom.Click();
+  WorkspaceUtils.SearchByValue(WorkCodeFrom,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),WorkCodeFrom,"Work Code");
+    }
+ else{ 
+    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+  }
+  
+  
+    if(WorkCodeTo!=""){
+  workCodeTo.Click();
+  WorkspaceUtils.SearchByValue(workCodeTo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),WorkCodeTo,"Work Code");
+    }
+ else{ 
+    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+  }
+  
+  
   
       var savejob =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.savejobButton;
   savejob.Click();
@@ -217,8 +281,9 @@ purchaseorderNoToField.setText(PoNoTo);
   
    for(var v=0;v<purchaseOrderTable.getItemCount();v++){ 
   
-    if(purchaseOrderTable.getItem(v).getText_2(5).OleValue.toString().trim()==("WorkCodeTo")&&(purchaseOrderTable.getItem(v).getText_2(0).OleValue.toString().trim()==(PoNoFrom))){ 
+    if(purchaseOrderTable.getItem(v).getText_2(5).OleValue.toString().trim()==(WorkCodeTo)&&(purchaseOrderTable.getItem(v).getText_2(0).OleValue.toString().trim()==(PoNoFrom))){ 
 
+      flag=true;
     Sys.Keys("[Tab][Tab][Tab]");
     
     aqUtils.Delay(500);
@@ -227,7 +292,7 @@ purchaseorderNoToField.setText(PoNoTo);
 Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable.NoForrAccrual    
 //Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable.NoForAccrual;
    Sys.HighlightObject(noForAccrual)
- noForAccrual.setText("5");  
+ noForAccrual.setText(NoForAccrual);  
     
   aqUtils.Delay(500);   
    noForAccrual.Keys("[Tab]");  
@@ -245,7 +310,7 @@ Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.C
   MarkForAccrual.Click();
     
   aqUtils.Delay(1000);
-   flag=true;
+ 
       break;
       
     }
@@ -259,10 +324,10 @@ Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.C
   
    
   //Empty the Fields
-  purchaseorderNoFromField.setText("");
-  purchaseorderNoToField.setText("");  
-  workCodeFrom.setText("");     
-  workCodeTo.setText("");
+//  purchaseorderNoFromField.setText("");
+//  purchaseorderNoToField.setText("");  
+//  workCodeFrom.setText("");     
+//  workCodeTo.setText("");
   
   
   var savejob =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.savejobButton;
@@ -305,31 +370,79 @@ Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.C
 function test()
 {
   
-  var purchaseOrderTable =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable;
-  
-  purchaseOrderTable.Click();
-  purchaseOrderTable.Keys("[PageUp][PageUp]");
-  
- var flag=false; 
-  for(var v=0;v<purchaseOrderTable.getItemCount();v++){ 
-    
-    if(purchaseOrderTable.getItem(v).getText_2(5).OleValue.toString().trim()==("E1022")){ 
 
-purchaseOrderTable.Keys("[Tab][Tab]");
-purchaseOrderTable.Keys("[Space][Tab]");
-purchaseOrderTable.k
+var purchaseOrderTable =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable;
+ 
+  purchaseOrderTable.Click();
+  Sys.HighlightObject(purchaseOrderTable)
+    var flag=false;
   
+   for(var v=0;v<purchaseOrderTable.getItemCount();v++){ 
+  Log.Message("purchaseOrderTable.getItemCount()"+purchaseOrderTable.getItemCount())
+    if(purchaseOrderTable.getItem(v).getText_2(5).OleValue.toString().trim()==("E1003")&&(purchaseOrderTable.getItem(v).getText_2(0).OleValue.toString().trim()==("1707109766"))){ 
+ flag=true;
+    Sys.Keys("[Tab][Tab][Tab]");
     
-   flag=true;
+    aqUtils.Delay(500);
+    
+    var noForAccrual =
+Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable.NoForrAccrual    
+//Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable.NoForAccrual;
+   Sys.HighlightObject(noForAccrual)
+ noForAccrual.setText(NoForAccrual);  
+    
+  aqUtils.Delay(500);   
+   noForAccrual.Keys("[Tab]");  
+ aqUtils.Delay(500);
+  var entryDate = Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable.EntryDate;
+     Sys.HighlightObject(entryDate)
+  entryDate.setText("7/1/2020");  
+    aqUtils.Delay(500);
+
+  var savePOLine = Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SavePOLine
+  
+  savePOLine.Click();
+  aqUtils.Delay(3000);
+    var MarkForAccrual =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.MarkForAccrual;
+  MarkForAccrual.Click();
+    
+  aqUtils.Delay(1000);
+  
       break;
+      
     }
     else{ 
       purchaseOrderTable.Keys("[Down]");
     }
   }
-  Log.Message(flag);
-//     var purchaseorderNoFromField=Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.AccrualPanel.Accurlapanel.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget
-//     purchaseorderNoFromField.setText("1707109766");
+  
+  
+  
+//  var purchaseOrderTable =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.PurchaseOrderTable;
+//  
+//  purchaseOrderTable.Click();
+//  purchaseOrderTable.Keys("[PageUp][PageUp]");
+//  
+// var flag=false; 
+//  for(var v=0;v<purchaseOrderTable.getItemCount();v++){ 
+//    
+//    if(purchaseOrderTable.getItem(v).getText_2(5).OleValue.toString().trim()==("E1022")){ 
+//
+//purchaseOrderTable.Keys("[Tab][Tab]");
+//purchaseOrderTable.Keys("[Space][Tab]");
+//purchaseOrderTable.k
+//  
+//    
+//   flag=true;
+//      break;
+//    }
+//    else{ 
+//      purchaseOrderTable.Keys("[Down]");
+//    }
+//  }
+//  Log.Message(flag);
+////     var purchaseorderNoFromField=Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.AccrualPanel.Accurlapanel.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget
+////     purchaseorderNoFromField.setText("1707109766");
 }
 
 //Validating Created Job is available
@@ -459,7 +572,7 @@ Restart.login(Project_manager);
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "JobCreation";
+sheetName = "CreateAnAccrualJobByJob";
 Language = "";
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -468,7 +581,7 @@ count = true;
 checkmark = false;
 STIME = "";
 //comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile ="";
-
+JobNo,WorkCodeFrom,WorkCodeTo,EntryDate,NoForAccrual,PoNoFrom,PoNoTo,NoOfPoLinesForAccrual ="";
 
 Language = EnvParams.Language;
 if((Language==null)||(Language=="")){
@@ -480,8 +593,8 @@ Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
-//aqUtils.Delay(3000, Indicator.Text);
-//getDetails();
+aqUtils.Delay(3000, Indicator.Text);
+getDetails();
 goToJobMenuItem();   
 GoToAccruals();
 //createAJob();   
