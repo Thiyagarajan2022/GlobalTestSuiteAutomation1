@@ -245,7 +245,7 @@ if(!aqFile.Exists(automationStat_file))
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,unitName,EnvParams.Opco,executionTime);
+ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,JkinsName,EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
 }
  
@@ -367,6 +367,7 @@ if (slPacker.Pack(fileList, LworkDir, archivePath))
 //var col =0;
 //var row = 0;
 
+testCase_Stat_updated_flag = false;
 
 for(var tL=0;tL<testList.length;tL++){
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
@@ -390,9 +391,14 @@ Log.Message("TestCase Name"+testList[tL])
 unitName = ExcelUtils.getRowDatas(testList[tL],"UnitName");
 testCase = ExcelUtils.getRowDatas(testList[tL],"TestCases");
 description = ExcelUtils.getRowDatas(testList[tL],"Module");
+moduleName = description;
 reportName = "Report_"+EnvParams.Opco+"_"+testList[tL];
 Log.Message(testCase)
 Log.Message(description)
+
+exeResults = Project.Path+TextUtils.GetProjectValue("ReportPath");
+automationStat_file = exeResults+"RunTime_statistics_"+automationStat_Date+".xlsx";
+
 ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
 workDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
 packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
@@ -400,9 +406,10 @@ packedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+R
 
 ReportUtils.createTest(unitName, description);
 
+// capture StartTime
+sTime = new Date();
+TextUtils.writeLog(unitName +" Execution Started Time :"+sTime); 
 
-sTime = WorkspaceUtils.StartTime();
-TextUtils.writeLog(unitName +" Execution Start Time :"+sTime); 
 
 //sheet.Cells.Item(rowCount+1,  1).Value = testList(tL);
 //sheet.Cells.Item(rowCount+1,  col).Value = sTime;
@@ -436,7 +443,25 @@ aqUtils.Delay(4000, "Updating Result in JIRA");
 // Packes the resutls
 //if (slPacker.Pack(fileList, workDir, archivePath))
 //  Log.Message("Files compressed successfully.");
-Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
+
+//Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
+Runner.CallMethod("JIRA.JIRAUpdate");
+
+// capture EndTime
+eTime = new Date();;
+TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime); 
+
+// Verify Statistics file exists or not. If not create it.
+if(!aqFile.Exists(automationStat_file))
+ ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
+
+// Calculate RunTime and publish in Excel 
+
+executionTime = 0;    
+executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
+ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,testList[tL],EnvParams.Opco,executionTime);
+testCase_Stat_updated_flag=true;
+
 
 }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
