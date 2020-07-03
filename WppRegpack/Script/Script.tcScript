@@ -118,6 +118,8 @@
 				<child name="PostJounalEntries" key="{654A9DC4-A4BB-454F-88C6-602FF2BB95EA}" path="PostJounalEntries.js" />
 				<child name="CreateCurrencyJournal" key="{E34CEB80-B362-47EF-A9D7-0D1E8E21C46D}" path="CreateCurrencyJournal.js" />
 				<child name="ApproveAbsence" key="{9FDC3520-B9EB-4669-89D8-239445A8FB6F}" path="ApproveAbsence.js" />
+				<child name="ReverseCreditNote" key="{329806C9-B75E-4BCE-8CC9-8BE21DD19709}" path="ReverseCreditNote.js" />
+				<child name="CreditNotePO" key="{D92DD810-07C0-4D1B-AE7F-73F16A770C1B}" path="CreditNotePO.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
