@@ -34,7 +34,7 @@ filePath = TestRunner.automationStat_file
 moduleName = TestRunner.moduleName
 testname = TestRunner.JkinsName
 opco = EnvParams.Opco
-executionTime = TestRunner.executionTime
+//executionTime = TestRunner.executionTime
 
 
   excel_App = Sys.OleObject("Excel.Application");

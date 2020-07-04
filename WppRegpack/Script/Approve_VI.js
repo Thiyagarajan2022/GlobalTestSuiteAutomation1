@@ -721,13 +721,13 @@ while ((((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT
   ApvPerson.Refresh();
 }
 
-    if(((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "pproved").OleValue.toString().trim())==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1))||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)){
-  ValidationUtils.verify(true,true,"Vendor Invoice is Approved by :"+loginPer)
-  TextUtils.writeLog("Vendor Invoice is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Vendor Invoice is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Vendor Invoice is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//    if(((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "pproved").OleValue.toString().trim())==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1))||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)){
+//  ValidationUtils.verify(true,true,"Vendor Invoice is Approved by :"+loginPer)
+//  TextUtils.writeLog("Vendor Invoice is Approved by :"+loginPer); 
+//  }else{ 
+//  TextUtils.writeLog("Vendor Invoice is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Vendor Invoice is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
   
 ValidationUtils.verify(true,true,"Vendor Invoice is Approved by "+Apvr)
 //aqUtils.Delay(8000, Indicator.Text);;

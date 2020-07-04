@@ -20,26 +20,28 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 //var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
 var companyNo,JournalNo;
+var Language= "";
+var VInum = "";
 
 function postVendorJournal(){ 
 Indicator.PushText("waiting for window to open");
-//  var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-//    menuBar.Click();
-//  ExcelUtils.setExcelName(workBook, "Server Details", true);
-//  var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
-//  if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-//      Sys.Desktop.KeyDown(0x12); //Alt
-//      Sys.Desktop.KeyDown(0x46); //F
-//      Sys.Desktop.KeyDown(0x58); //X 
-//      Sys.Desktop.KeyUp(0x46); //Alt
-//      Sys.Desktop.KeyUp(0x12);     
-//      Sys.Desktop.KeyUp(0x58);
-//  Restart.login(Project_manager);
-//  
-//  }
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
+
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Senior AP","Username")
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
+}
+
+
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "PostVendorJournal";
+VInum = "";
 level =0;
 Approve_Level = [];
 ApproveInfo = [];
@@ -49,63 +51,33 @@ STIME = "";
 //VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
 companyNo,JournalNo ="";
   
-Language = EnvParams.Language;
-if((Language==null)||(Language=="")){
-ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-}
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
-ReportUtils.logStep("INFO", "Post Vendor started::"+STIME);
+ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//var fName = ExcelUtils.getColumnDatas("JIRA Opco Name",EnvParams.Opco)
-//if((fName=="")||(fName==null))
-//ValidationUtils.verify(false,true,"JIRA Opco Name is Needed to update status of Create a Purchase Order");
-//else{ 
-//EventHandler.folderName = fName;
-//}
-//
-//var TestID = ExcelUtils.getColumnDatas("JIRA TestCase ID",EnvParams.Opco)
-//if((TestID=="")||(TestID==null))
-//ValidationUtils.verify(false,true,"JIRA TestCase ID is Needed to update status of Create a Purchase Order");
-//else{ 
-//EventHandler.testCaseId = TestID; 
-//}
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  JournalNo = ReadExcelSheet("Invoice Journal NO",EnvParams.Opco,"Data Management");
+  if((JournalNo=="")||(JournalNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  JournalNo = ExcelUtils.getRowDatas("Journal No",EnvParams.Opco)
+  }
+  if((JournalNo=="")||(JournalNo==null))
+  ValidationUtils.verify(false,true,"journal No is required to create USER");
 
-//VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
-//  if((VendorID=="")||(VendorID==null)){
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-//  }
-//if((VendorID==null)||(VendorID=="")){ 
-//ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Purchase Order");
-//}
-//
-
-//JournalNo = ExcelUtils.getColumnDatas("journal No",EnvParams.Opco)
-//  if((JournalNo=="")||(JournalNo==null)){
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  JournalNo = ReadExcelSheet("journal No",EnvParams.Opco,"Data Management");
-//  }
-//if((JournalNo==null)||(JournalNo=="")){ 
-//ValidationUtils.verify(false,true,"Job Number is Needed to Create a Purchase Order");
-//}
-
-JournalNo = ExcelUtils.getRowDatas("journal No",EnvParams.Opco)
-if((JournalNo==null)||(JournalNo=="")){ 
-ValidationUtils.verify(false,true,"journal No is required to Post JOurnal");
-}
-
-companyNo = ExcelUtils.getRowDatas("company",EnvParams.Opco)
+companyNo = EnvParams.Opco
 if((companyNo==null)||(companyNo=="")){ 
-ValidationUtils.verify(false,true,"CompanyNo is required to Post JOurnal");
+ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
 }
 
   gotoMenu();
   Delay(5000);
 searchForJournal();
 postJournal();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
 
 }
 
@@ -155,63 +127,62 @@ Client_Managt.DblClickItem("|AP Transactions");
 } 
 
 aqUtils.Delay(5000, Indicator.Text);
-ReportUtils.logStep("INFO", "Moved to  Accounts Payable Menu");
+ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
 
  
  
 }
 
 function postJournal(){ 
-  
-var postVendotJournal = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.SingleToolItemControl;
-
-//NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.postVendorJournal;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+var postVendotJournal = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+Sys.HighlightObject(postVendotJournal);
 postVendotJournal.click();
 
-Delay(30000);
+//Delay(20000);
+aqUtils.Delay(5000, Indicator.Text);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Post Vendor Journal",EnvParams.Opco,"Data Management",JournalNo);
 
 var SaveTitle = "";
 var sFolder = "";
-var pdf =   
-//NameMapping.Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal.pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5)
- Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow","*"+".pdf "+ "- Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5)
-   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*"+".pdf "+ "- Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Posting Journal")!=-1){
-
-//Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
-//    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "print job quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("print job quote")!=-1){
- 
-
-
-Sys.HighlightObject(pdf);
-//    Sys.Desktop.KeyDown(0x12); //Alt
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x58); //X 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x58);
-    
-    
-ValidationUtils.verify(true,true,"Vendor Journal is Generated");
-Log.Message("Print is Generated")
-ReportUtils.logStep("INFO","Vendor Journal is Generated");
-
-    
-  aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x41); //A 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x41);
-    
-        
-    if(ImageRepository.PDF.ChooseFolder.Exists())
-    ImageRepository.PDF.ChooseFolder.Click();
-    
-    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Posting Journal")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    SaveTitle = save.wText;
+
+Sys.HighlightObject(pdf)
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x41); //A 
+Sys.Desktop.KeyUp(0x12); 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x41);
+    
+if(ImageRepository.PDF.ChooseFolder.Exists())
+ImageRepository.PDF.ChooseFolder.Click();
+else{ 
+var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+WorkspaceUtils.waitForObj(window);
+
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x73); //F4
+Sys.Desktop.KeyUp(0x12); //Alt
+Sys.Desktop.KeyUp(0x73); //F4
+aqUtils.Delay(2000, Indicator.Text);
+Sys.HighlightObject(pdf)
+
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x41); //A 
+Sys.Desktop.KeyUp(0x12); 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x41);
+}
+var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+aqUtils.Delay(2000, Indicator.Text);
+SaveTitle = save.wText;
     
 sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
 if (! aqFileSystem.Exists(sFolder)){
@@ -231,37 +202,45 @@ aqUtils.Delay(2000, Indicator.Text);
 //conSaveAs.Click();
 //}
 Sys.HighlightObject(pdf);
-//    Sys.Desktop.KeyDown(0x12); //Alt
-//    Sys.Desktop.KeyDown(0x46); //F
-//    Sys.Desktop.KeyDown(0x58); //X 
-//    Sys.Desktop.KeyUp(0x46); //Alt
-//    Sys.Desktop.KeyUp(0x12);     
-//    Sys.Desktop.KeyUp(0x58);
-    
-ValidationUtils.verify(true,true,"Post Button  is Clicked and PDF is Saved");
- TextUtils.writeLog("Post Vendor done for Journal No "+JournalNo); 
-  TextUtils.writeLog("Post Vendor done for companyNo "+companyNo); 
- TextUtils.writeLog("Print Draft Quote is Clicked and PDF is Saved"); 
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x58); //X 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x12);     
+Sys.Desktop.KeyUp(0x58);
+}
+ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
- TextUtils.writeLog("PDF saved location : "+sFolder+SaveTitle+".pdf"); 
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
 }
+
+
 }
   
 
 function searchForJournal(){ 
-Delay(3000);
+aqUtils.Delay(2000, "finding Company field");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
 var companyNoField = Aliases.ObjectGroup.CompanyNoVendorJournal;
 
 companyNoField.setText(companyNo)
 companyNoField.Keys("[Tab]"); 
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var journalNo = Aliases.ObjectGroup.JournalNoField;
 journalNo.Keys(JournalNo);
 
-Delay(5000);
+aqUtils.Delay(5000, "Searching Journal in Table");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
  TextUtils.writeLog("Post Vendor Journal"); 
  ReportUtils.logStep_Screenshot("");
@@ -270,7 +249,13 @@ Delay(5000);
   var closefilter =  Aliases.ObjectGroup.CloseFilterVendorJournal
 closefilter.Click();
 
-Delay(3000);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
+var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OKay.Click();
 }
 
 

@@ -29,6 +29,14 @@ excelApp.Quit();
 // Publish values to workbook excel
 function writeTo_AutomationStat_Excel(filePath,moduleName,testname,opco,executionTime)
 {
+  
+filePath = TestRunner.automationStat_file
+moduleName = TestRunner.moduleName
+testname = TestRunner.JkinsName
+opco = EnvParams.Opco
+executionTime = TestRunner.executionTime
+
+
   excel_App = Sys.OleObject("Excel.Application");
   workbook = excel_App.Workbooks.Open(filePath);
   excel_App.Visible = "false";

@@ -323,10 +323,17 @@ var tax = grid.getItem(0).getText_2(12).OleValue.toString();
 var tax2 = grid.getItem(0).getText_2(14).OleValue.toString();
 var tax3 = grid.getItem(0).getText_2(16).OleValue.toString();
 var taxcode1 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.McGroupWidget.Composite.Composite.McValuePickerWidget;
+if(tax!=""){
 if(tax!=taxcode1.getText()){
 taxcode1.Click();
 WorkspaceUtils.SearchByValue(taxcode1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "G/L Tax Code").OleValue.toString().trim(),tax,"Tax Code 1");
 }
+}
+else{ 
+taxcode1.Click();
+taxcode1.setText(" ");
+}
+
 var taxcode2 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.McGroupWidget.Composite.Composite2.McValuePickerWidget;
 if(tax2!=""){
 if(tax2!=taxcode2.getText()){
@@ -337,6 +344,15 @@ WorkspaceUtils.SearchByValue(taxcode2,JavaClasses.MLT.MultiLingualTranslator.Get
 else{ 
  taxcode2.setText(" ") ;
 }
+
+var Save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl3;
+WorkspaceUtils.waitForObj(Save);
+Save.Click();
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
 //var taxcode3 = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.McGroupWidget.Composite.Composite3.McValuePickerWidget;
 //if(tax3!=taxcode3.getText()){
 //taxcode3.Click();
@@ -430,8 +446,9 @@ action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Proje
   }
   if(EnvParams.Country.toUpperCase()=="INDIA")
   Runner.CallMethod("IND_VendorInvoice.InvoiceSubmit",action);
-  else
+  else{
   action.PopupMenu.Click("Submit for Approval");
+  }
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, "Submitted for Approval");;
   TextUtils.writeLog("Invoice is Submitted for Approval");
