@@ -409,7 +409,8 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-
+TestRunner.testCaseId = Ipreparation_ID;
+TestRunner.unitName = IpreparationUnit;
 //}
 }
 
@@ -417,8 +418,7 @@ try{
 Log.Message(jobNumber)
 Log.Message(template)
 
-TestRunner.testCaseId = Ipreparation_ID;
-TestRunner.unitName = IpreparationUnit;
+
 TestRunner.JiraStat = true;
 TestRunner.JiraUpdate = true;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)

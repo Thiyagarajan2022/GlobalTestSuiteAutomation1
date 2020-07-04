@@ -411,7 +411,8 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-
+TestRunner.testCaseId = IBudget_ID;
+TestRunner.unitName = IBudgetUnit;
 //}
 }
 
@@ -419,8 +420,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
 Log.Message(jobNumber)
 Log.Message(template)
 
-TestRunner.testCaseId = IBudget_ID;
-TestRunner.unitName = IBudgetUnit;
+
 TestRunner.JiraStat = true;
 TestRunner.JiraUpdate = true;
 

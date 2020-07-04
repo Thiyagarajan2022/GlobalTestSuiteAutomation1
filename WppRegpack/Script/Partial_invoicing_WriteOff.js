@@ -413,7 +413,8 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-
+TestRunner.testCaseId = Iwoff_ID;
+TestRunner.unitName = IwoffUnit;
 //}
 }
 
@@ -421,8 +422,7 @@ try{
 Log.Message(jobNumber)
 Log.Message(template)
 
-TestRunner.testCaseId = Iwoff_ID;
-TestRunner.unitName = IwoffUnit;
+
     TestRunner.JiraStat = true;
     TestRunner.JiraUpdate = true;
 

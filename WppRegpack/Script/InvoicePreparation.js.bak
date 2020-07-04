@@ -17,6 +17,8 @@ var level =0;
 var STIME = "";
 var percentage,jobNumber = "";
 var Language = "";
+var Ipreparation_ID = "";
+var IpreparationUnit = "";
 //Main Function
 function InvoicePreparation(){ 
 TextUtils.writeLog("Create Invoice Preparation Started"); 
@@ -36,7 +38,8 @@ ApproveInfo = [];
 percentage,jobNumber = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Invoice Preparation started::"+STIME);
-
+Ipreparation_ID = "";
+IpreparationUnit = "";
 try{
   
 
@@ -44,8 +47,8 @@ try{
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   var invoicePreparation = ExcelUtils.getRowDatas("Invoice preparation Job",EnvParams.Opco);
   var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
-  var invoiceBudget = ExcelUtils.getRowDatas("Invoicing from Budget Job",EnvParams.Opco);
-  var invoiceAccount = ExcelUtils.getRowDatas("Invoicing on Account Job",EnvParams.Opco);
+  var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
+  var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
   var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
   
   template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
@@ -68,6 +71,12 @@ try{
   }
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
+    
+    Ipreparation_ID = TestRunner.testCaseId;
+    IpreparationUnit = TestRunner.unitName; 
+    TestRunner.TempUnit = IpreparationUnit;
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
     if(jobSheet==""){ 
@@ -83,10 +92,29 @@ try{
     jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
     
     if((jobNumber=="")||(jobNumber==null)){
+      
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    Job_JIRAID = ExcelUtils.getRowDatas("JobCreation_"+serialOder,EnvParams.Country);
+    if((Job_JIRAID=="")||(Job_JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for Jobcreation_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = Job_JIRAID;
+    TestRunner.unitName = "JobCreation_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Job");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+Job_JIRAID)
     Runner.CallMethod("Creation_Of_Job.createJob",jobSheet,serialOder);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
     //Creation of Budget
     ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -103,10 +131,30 @@ try{
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var WE_Number = ExcelUtils.getRowDatas("Working Estimate_"+serialOder,EnvParams.Opco)
     if((WE_Number=="")||(WE_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreateBudget_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreateBudget_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;  
+    TestRunner.unitName = "CreateBudget_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Job Budget");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job Budget");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("BudgetCreation.createBudget",budgetSheet,serialOder);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
   //Creation of Quote 
     ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -122,10 +170,30 @@ try{
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var CE_Number = ExcelUtils.getRowDatas("Client Approved Estimate_"+serialOder,EnvParams.Opco)
     if((CE_Number=="")||(CE_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreateQuote_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreateQuote_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;    
+    TestRunner.unitName = "CreateQuote_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Quote");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Quote");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("Creation_of_Quote.CreateQuote",quoteSheet,serialOder);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
     
     //Creation of PO
@@ -146,10 +214,30 @@ try{
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var PO_Number = ExcelUtils.getRowDatas("PO Number_"+PO_SO,EnvParams.Opco)
     if((PO_Number=="")||(PO_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreatePurchaseOrder_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreatePurchaseOrder_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;   
+    TestRunner.unitName = "CreatePurchaseOrder_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Purchase Order");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Purchase Order");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("CreatePO.CreatePurchaseOrder",POSheet,JobSO,PO_SO);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
   //Approving PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -166,10 +254,30 @@ try{
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var AP_Number = ExcelUtils.getRowDatas("Approved PO_"+serialOder,EnvParams.Opco)
     if((AP_Number=="")||(AP_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("ApprovePurchaseOrder_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for ApprovePurchaseOrder_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;    
+    TestRunner.unitName = "ApprovePurchaseOrder_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Approve Purchase Order");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Approve Purchase Order");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("ApprovePO.ApprovePurchaseOrder",APSheet,serialOder);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
    }
 
    //Creation of Vendor Invoice
@@ -193,10 +301,31 @@ try{
     var VI_Number = ExcelUtils.getRowDatas("Vendor Invoice NO_"+VI_SO,EnvParams.Opco)
     var Journal_Number = ExcelUtils.getRowDatas("Invoice Journal NO_"+VI_SO,EnvParams.Opco)
     if(((VI_Number=="")||(VI_Number==null))&&((Journal_Number=="")||(Journal_Number==null))){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreateVendorInvoice_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreateVendorInvoice_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID; 
+    TestRunner.unitName = "CreateVendorInvoice_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Vendor Invoice Creation");
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Vendor Invoice");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("VendorInvoice.CreateInvoice",VISheet,PO_SO,VI_SO);
     Log.PopLogFolder();
+
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    
     }
  
     //Approve Vendor Invocie
@@ -213,11 +342,31 @@ try{
     
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var AI_Number = ExcelUtils.getRowDatas("Approved Vendor Invoice_"+serialOder,EnvParams.Opco)
-    if((AI_Number=="")||(AI_Number==null)){   
+    if((AI_Number=="")||(AI_Number==null)){ 
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("ApproveVendorInvoice_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for ApproveVendorInvoice_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;  
+    TestRunner.unitName = "ApproveVendorInvoice_"+serialOder; 
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Approve Vendor Invoice");
+    ReportUtils.DStat = true;
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Approve Vendor Invoice");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("Approve_VI.ApproveInvoice",AISheet,serialOder);
     Log.PopLogFolder();
+
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
     
     //Post Vendor Journal
@@ -235,10 +384,30 @@ try{
     ExcelUtils.setExcelName(workBook, "Data Management", true);
     var PVI_Number = ExcelUtils.getRowDatas("Post Vendor Journal_"+serialOder,EnvParams.Opco)
     if((PVI_Number=="")||(PVI_Number==null)){ 
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("PostVendorJournal_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for PostVendorJournal_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;  
+    TestRunner.unitName = "PostVendorJournal_"+serialOder; 
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Post Vendor Journal");
+    ReportUtils.DStat = true; 
     var FolderID = Log.CreateFolder(EnvParams.Opco+"_Post Vendor Invoice");
     Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
     Runner.CallMethod("Post_VI.postVendorJournal",PVISheet,VI_SO);
     Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
     }
 
 //}
@@ -248,7 +417,10 @@ try{
 Log.Message(jobNumber)
 Log.Message(template)
 
-
+TestRunner.testCaseId = Ipreparation_ID;
+TestRunner.unitName = IpreparationUnit;
+TestRunner.JiraStat = true;
+TestRunner.JiraUpdate = true;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
@@ -734,10 +906,12 @@ var Q_total = 0;
 var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var q = 0;
 QuoteDetails = [];
+var InvoiceMPL = "InvoiceMPL";
 for(var i=0;i<specification.getItemCount();i++){ 
 
   var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
   if(Q_Desp!=""){
+    
   var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
   var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
   var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
@@ -753,24 +927,24 @@ for(var i=0;i<specification.getItemCount();i++){
   QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
   Log.Message(QuoteDetails[q]);
   q++;
-  ExcelUtils.setExcelName(workBook,"InvoicePreparation", true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,"InvoicePreparation",Q_Desp);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,"InvoicePreparation",Q_Qty);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,"InvoicePreparation",Q_Billing);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,"InvoicePreparation",Q_BillingTotoal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,"InvoicePreparation",Q_Tax1);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,"InvoicePreparation",Q_Tax2);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,"InvoicePreparation",Q_Tax1currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,"InvoicePreparation",Q_Tax2currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,"InvoicePreparation",Q_total);
+  ExcelUtils.setExcelName(workBook,InvoiceMPL, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPL,Q_Desp);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPL,Q_Qty);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPL,Q_Billing);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPL,Q_BillingTotoal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPL,Q_Tax1);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPL,Q_Tax2);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPL,Q_Tax1currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPL,Q_Tax2currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPL,Q_total);
 
   }
   }
 
-  ExcelUtils.setExcelName(workBook,"InvoicePreparation", true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX","InvoicePreparation",Excl_Tax);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL","InvoicePreparation",grandTotal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms","InvoicePreparation",Payment_Terms);
+  ExcelUtils.setExcelName(workBook,InvoiceMPL, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPL,Excl_Tax);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL",InvoiceMPL,grandTotal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPL,Payment_Terms);
   
   
 var PrintDraft;
@@ -1443,11 +1617,20 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;
   try{
-  var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
-  textobj = obj.getText_2(docObj).OleValue.toString();
-  textobj = textobj.substring(textobj.indexOf("Invoice No: ")+12);
-  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf("Invoice Date")))
-  textobj = textobj.substring(0,textobj.indexOf("Invoice Date"));
+//  var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
+//  textobj = obj.getText_2(docObj).OleValue.toString();
+//  textobj = textobj.substring(textobj.indexOf("Invoice No: ")+12);
+//  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf("Invoice Date")))
+//  textobj = textobj.substring(0,textobj.indexOf("Invoice Date"));
+
+var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
+  textobj = obj.getText_2(docObj).OleValue.toString(); 
+  var invoiceName = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No:").OleValue.toString().trim();
+  invoiceName = invoiceName.length;
+  Log.Message(invoiceName)
+  textobj = textobj.substring(textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No:").OleValue.toString().trim()+" ")+invoiceName+1);
+  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim())))
+  textobj = textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()));
   }catch(objEx){
     Log.Error("Exception while getting text from document::"+objEx);
   }
