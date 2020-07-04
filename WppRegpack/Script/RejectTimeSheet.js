@@ -170,7 +170,7 @@ WorkspaceUtils.waitForObj(rejectButton);
 rejectButton.HoverMouse();
 ReportUtils.logStep_Screenshot();
 rejectButton.Click();
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(15000, Indicator.Text);
 var remarks = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 remarks.Keys("Rejected");
 //aqUtils.Delay(5000, Indicator.Text);

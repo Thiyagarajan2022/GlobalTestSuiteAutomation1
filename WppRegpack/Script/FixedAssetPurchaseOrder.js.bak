@@ -53,12 +53,10 @@ POnumber = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
+
+try{
 getPODetail();
 ExcelUtils.setExcelName(workBook, "Data Management", true);
-
-
-
-
 
 if(Job_Number==""){ 
 TextUtils.writeLog("Creating Internal Job");
@@ -137,6 +135,10 @@ Log.PopLogFolder();
 TextUtils.writeLog("     ");
 }
 
+}
+  catch(err){
+    Log.Message(err);
+  }
 }
 
 

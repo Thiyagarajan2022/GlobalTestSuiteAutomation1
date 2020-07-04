@@ -1,4 +1,6 @@
-﻿var excelName, sheet,excelpath;
+﻿//USEUNIT EnvParams
+
+var excelName, sheet,excelpath;
 var excelObj;
 var excelApp,wrkbook,columnCount,rowCount,excel_App,workbook;
 
@@ -15,46 +17,74 @@ function create_AutomationStat_Excel(fileName)
 {
 excelApp = Sys.OleObject("Excel.Application");
 wrkbook = excelApp.Workbooks.Add();
-excelApp.Visible = "False";
-wrkbook.ActiveSheet.Cells.Item(1,1).Value="TestCase_Name";
-wrkbook.ActiveSheet.Cells.Item(1,2).Value="Execution_TimeTaken(seconds)";
+excelApp.Visible = "false";
+var text = EnvParams.Opco;
+wrkbook.ActiveSheet.Cells.Item(1,1).Value="ModuleName";
+wrkbook.ActiveSheet.Cells.Item(1,2).Value="TestCase_Name";
 wrkbook.SaveAs(fileName);
 wrkbook.Close();
 excelApp.Quit();
 }
 
 // Publish values to workbook excel
-function writeTo_AutomationStat_Excel(filePath,testname,executionTime)
+function writeTo_AutomationStat_Excel(filePath,moduleName,testname,opco,executionTime)
 {
   excel_App = Sys.OleObject("Excel.Application");
   workbook = excel_App.Workbooks.Open(filePath);
-  excel_App.Visible = "True";
+  excel_App.Visible = "false";
   columnCount = workbook.ActiveSheet.UsedRange.Columns.Count;
   rowCount = workbook.ActiveSheet.UsedRange.Rows.Count+1;
   
-  var existingTime=0;
-  var totalTime = 0;
+  var columnNo;
+  var opcoHeadline = false;
+  for(var x=columnCount; x>=columnCount-1;x--)
+  {
+    if(workbook.ActiveSheet.Cells.Item(1,x).Text.toString().trim().includes(opco))
+    {
+       columnNo = x;
+       opcoHeadline = true;
+       break;
+    }      
+  }     
+  if(!opcoHeadline) 
+  {   
+      columnNo = columnCount+1;
+      workbook.ActiveSheet.Cells.Item(1,columnNo).Value="Opco_"+opco+"_ExecutionTime(min)";
+  }   
+
   var keyrow=0;
   var tcFound = false;
-  for(var i=1;i<=rowCount;i++){
-    if(workbook.ActiveSheet.Cells.Item(i,1).Text.toString().trim() == testname.trim())
+  for(var i=2;i<=rowCount;i++){
+    if(workbook.ActiveSheet.Cells.Item(i,2).Text.toString().trim() == testname.trim())
     {
-      keyrow=i;
-      tcFound = true;
-      break;
+      if(workbook.ActiveSheet.Cells.Item(i,columnNo).Text=="")
+      {
+          workbook.ActiveSheet.Cells.Item(i,columnNo).Value=executionTime;
+          tcFound = true;
+          break;
+      }
      }
   }
-  if(tcFound)
-    {
-      existingTime = workbook.ActiveSheet.Cells.Item(keyrow,2).Text;
-      totalTime = executionTime+parseInt(existingTime);
-      workbook.ActiveSheet.Cells.Item(keyrow,2).Value=totalTime;
-    }
-    else
-    {
-      workbook.ActiveSheet.Cells.Item(rowCount,1).Value=testname;
-      workbook.ActiveSheet.Cells.Item(rowCount,columnCount).Value=executionTime;
-    }
+  if(!tcFound)
+  {
+      workbook.ActiveSheet.Cells.Item(rowCount,1).Value=moduleName;
+      workbook.ActiveSheet.Cells.Item(rowCount,2).Value=testname;
+      workbook.ActiveSheet.Cells.Item(rowCount,columnNo).Value=executionTime;
+  
+  }
+//  if(tcFound)
+//    {
+//      if(workbook.ActiveSheet.Cells.Item(keyrow,columnNo).Text=="")
+//        workbook.ActiveSheet.Cells.Item(keyrow,columnNo).Value=executionTime;
+//      else
+//         workbook.ActiveSheet.Cells.Item(rowCount,columnNo).Value=executionTime;
+//    }
+//    else
+//    {
+//     workbook.ActiveSheet.Cells.Item(rowCount,1).Value=moduleName;
+//      workbook.ActiveSheet.Cells.Item(rowCount,2).Value=testname;
+//      workbook.ActiveSheet.Cells.Item(rowCount,columnNo).Value=executionTime;
+//    }
   workbook.Save();
   //workbook.Close();
 }
@@ -64,6 +94,7 @@ function close_AutomationStat_Excel()
 {
   excel_App.Quit();
 }
+
 
 
 function getColumnValue( rowName, columnNum)

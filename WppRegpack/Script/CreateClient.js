@@ -790,6 +790,10 @@ function globalClientTable(){
   C_Name.HoverMouse();
   C_Name.HoverMouse();
   aqUtils.Delay(3000, "Reading Table Data");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  
   if(table.getItem(0).getText_2(1).OleValue.toString().trim()==clientName){
   ClientNumber = table.getItem(0).getText_2(0).OleValue.toString().trim();
   table.HoverMouse(49, 52);
@@ -1007,9 +1011,11 @@ ImageRepository.ImageSet.Maximize.Click();
  ClientApproval.Click();
  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-} 
+}
+Delay(3000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
    var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.ApprovarTable;
    var y=0;
   for(var i=0;i<ApproverTable.getItemCount();i++){   
@@ -1390,6 +1396,9 @@ ImageRepository.ImageSet.Maximize.Click();
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
    var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   Sys.HighlightObject(ApproverTable);
   ReportUtils.logStep_Screenshot();

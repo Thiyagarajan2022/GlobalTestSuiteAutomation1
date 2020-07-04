@@ -28,7 +28,7 @@ var testCase_Stat_updated_flag;
 var TempUnit = "";
 var JiraUpdate = true;
 var JiraStat = true;
-
+//var JfolderName = "";
 
 function executeTestCases(){
 var instance = EnvParams.getEnvironment();
@@ -218,6 +218,7 @@ TextUtils.writeLog(unitName +" Execution Started Time :"+sTime);
 
 var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
 Log.PushLogFolder(FolderID);
+Log.Message(unitName+"."+testCase);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
 TextUtils.writeLog(unitName+" Completed Successfully");
@@ -443,7 +444,9 @@ aqUtils.Delay(4000, "Updating Result in JIRA");
 // Packes the resutls
 //if (slPacker.Pack(fileList, workDir, archivePath))
 //  Log.Message("Files compressed successfully.");
-Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
+
+//Runner.CallMethod("JIRA.JIRAUpdate",folderName,testCaseId,releasename,cyclename);
+Runner.CallMethod("JIRA.JIRAUpdate");
 
 // capture EndTime
 eTime = new Date();;

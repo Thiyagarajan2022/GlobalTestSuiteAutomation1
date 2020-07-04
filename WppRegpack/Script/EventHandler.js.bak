@@ -28,6 +28,22 @@ function GeneralEvents_OnStartTest(Sender)
 function GeneralEvents_OnStopTest(Sender)
 {
 
+  var automationStat_Date = aqConvert.DateTimeToFormatStr(aqDateTime.Now(),"%d%m%Y");
+  var filePath = TestRunner.exeResults+"RunTime_statistics_"+automationStat_Date+".xlsx";
+  var exeTime ="";
+  // Create RuntimeStatistics file if not exists. (If first testcase itself failed this steps will be executed)
+  if(!aqFile.Exists(filePath))
+      ExcelUtils.create_AutomationStat_Excel(filePath);  
+      
+   // Calculate Runtime value and publish to excel.   
+   eTime = new Date(); 
+   exeTime = WorkspaceUtils.timeDifference(TestRunner.sTime, eTime); 
+
+   if(!TestRunner.testCase_Stat_updated_flag)  
+       ExcelUtils.writeTo_AutomationStat_Excel(filePath,TestRunner.testName,exeTime);
+   ExcelUtils.close_AutomationStat_Excel(); 
+   TextUtils.writeLog(TestRunner.testName +" Execution End Time :"+eTime); 
+  
     var projectName = EnvParams.Pname;
 		var versionName = TestRunner.releasename;
 		var cycleName = TestRunner.cyclename;

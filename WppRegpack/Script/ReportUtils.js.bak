@@ -130,8 +130,8 @@ TextUtils.writeLog(unitName+" is FAILED "+stepName);
 //ReportUtils.reportConsolidated.endTest(testConsolidated);
 //ReportUtils.reportConsolidated.flush();
 
-//var err;
-//throw err;
+var err;
+throw err;
 }
 if(result.toUpperCase()=="WARNING"){
 if(DStat){ 

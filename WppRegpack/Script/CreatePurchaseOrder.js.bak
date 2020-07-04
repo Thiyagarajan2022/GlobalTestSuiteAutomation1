@@ -248,6 +248,10 @@ if((NOL==null)||(NOL==""))
 Log.Message(init)
 Log.Message(LTA)
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
  for(var i=1;i<=10;i++){
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var IHSN ="";
@@ -324,7 +328,9 @@ line_i++;
 var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(addBudget);
 addBudget.Click();
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var jobNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
 WorkspaceUtils.waitForObj(jobNo);
 jobNo.Keys("[Tab][Tab]");
@@ -364,8 +370,6 @@ ReportUtils.logStep_Screenshot();
 save.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
  /* 
@@ -552,6 +556,10 @@ else{
 //  aqUtils.Delay(1000, Indicator.Text);;
 //  action.PopupMenu.Click("Submit Purchase Order");
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
 var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
 Sys.HighlightObject(SubmitPurchase);
 for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
@@ -575,6 +583,10 @@ SubmitPurchase.Click();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
   TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 }
 
 

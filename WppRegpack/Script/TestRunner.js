@@ -28,7 +28,7 @@ var testCase_Stat_updated_flag;
 var TempUnit = "";
 var JiraUpdate = true;
 var JiraStat = true;
-
+//var JfolderName = "";
 
 function executeTestCases(){
 var instance = EnvParams.getEnvironment();
@@ -218,6 +218,7 @@ TextUtils.writeLog(unitName +" Execution Started Time :"+sTime);
 
 var FolderID = Log.CreateFolder(Opcolist[OpID]+"_"+unitName);
 Log.PushLogFolder(FolderID);
+Log.Message(unitName+"."+testCase);
 Runner.CallMethod(unitName+"."+testCase);
 Log.PopLogFolder();
 TextUtils.writeLog(unitName+" Completed Successfully");
@@ -388,6 +389,7 @@ ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath")
 else
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 Log.Message("TestCase Name"+testList[tL])
+JkinsName = testList[tL];
 unitName = ExcelUtils.getRowDatas(testList[tL],"UnitName");
 testCase = ExcelUtils.getRowDatas(testList[tL],"TestCases");
 description = ExcelUtils.getRowDatas(testList[tL],"Module");

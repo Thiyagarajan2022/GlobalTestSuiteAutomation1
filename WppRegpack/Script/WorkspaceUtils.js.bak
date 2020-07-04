@@ -63,24 +63,10 @@ function SpanishcloseAllWorkspaces(){
 // Calculate time difference between startTime and endTime
 function timeDifference(stime, etime)
 {
-  var time1, time2, timetaken;
-  var start = stime.split(":");
-  if(start[1]>0){ 
-  time1 = Number(start[2]) + Number(start[1]*60);
-  }
-    if(start[0]>0){ 
-    time1 = time1 + Number(start[0]*60*60);
-  }
-    
-  var end = etime.split(":");
-  if(end[1]>0){ 
-  time2 = Number( end[2]) + Number(end[1]*60);
-  }
-  if(end[0]>0){ 
-  time2 = time2 + Number(end[0]*60*60);
-  }
-  timetaken = ((time2-time1)/60).toFixed(2);
-  return timetaken;
+  var seconds = (etime.getTime() - stime.getTime()) / 1000;
+  var minutes = Math.floor(seconds / 60);
+  var remainingSeconds = Math.floor(seconds%60);
+  return minutes+"."+remainingSeconds;
 }
 
 
