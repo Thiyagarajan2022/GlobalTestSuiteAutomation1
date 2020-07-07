@@ -120,6 +120,10 @@
 				<child name="ApproveAbsence" key="{9FDC3520-B9EB-4669-89D8-239445A8FB6F}" path="ApproveAbsence.js" />
 				<child name="ReverseCreditNote" key="{329806C9-B75E-4BCE-8CC9-8BE21DD19709}" path="ReverseCreditNote.js" />
 				<child name="CreditNotePO" key="{D92DD810-07C0-4D1B-AE7F-73F16A770C1B}" path="CreditNotePO.js" />
+				<child name="InvoicingPlans_DriectInvoice" key="{819038CA-9B45-4A99-95BC-67323F3B150D}" path="InvoicingPlans_DriectInvoice.js" />
+				<child name="InvoicingPlans_InvoiceAccount" key="{8BB60B75-E8CC-4FEA-9D16-2EBA7D82531A}" path="InvoicingPlans_InvoiceAccount.js" />
+				<child name="JobInvoicing_WithoutWIP" key="{94572CCF-842C-43C8-9A72-7D3CC6018D44}" path="JobInvoicing_WithoutWIP.js" />
+				<child name="PartialInvoicing_CarryForward" key="{5F70EFEC-E255-40AC-AEA2-8C1EB414C218}" path="PartialInvoicing_CarryForward.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
