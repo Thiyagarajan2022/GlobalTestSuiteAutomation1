@@ -98,11 +98,11 @@ var lookups =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Comp
 waitForObj(lookups);
 lookups.Click();
 ReportUtils.logStep_Screenshot("");
-
+aqUtils.Delay(1000);
 var paymentDateFrom =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;
 
 paymentDateFrom.setText(PaymentDate);
-
+aqUtils.Delay(1000);
 var paymentDateTo =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.PaymentDateTo;
 
 paymentDateTo.setText(PaymentDate);
@@ -217,7 +217,7 @@ print.Click();
 //    
 //}
 
-var PrintPopup =Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions - Payment Orders").OleValue.toString().trim());
+var PrintPopup =Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Payment Order").OleValue.toString().trim());
 
 waitForObj(PrintPopup);
 aqUtils.Delay(1000);
@@ -858,6 +858,7 @@ getDetails();
 //closeAllWorkspaces();
 goToJobMenuItem();   
 printPaymentRemittance();
+closeAllWorkspaces();
 //CreatePaymentSeletion(); 
 //}
 //  catch(err){

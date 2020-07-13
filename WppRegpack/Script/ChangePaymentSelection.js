@@ -208,11 +208,12 @@ ReportUtils.logStep_Screenshot();
   var layoutOPtion = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget4.Composite2.McPopupPickerWidget;
   layoutOPtion.Keys(layout);
 //layout.Keys("Standard");
-  
+  aqUtils.Delay(2000, Indicator.Text);
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   Sys.HighlightObject(save)
   save.Click();
 ReportUtils.logStep_Screenshot();
+aqUtils.Delay(2000, Indicator.Text);
   var print = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   print.Click();
 
@@ -536,9 +537,9 @@ waitForObj(EntriesTable);
   ValidationUtils.verify(flag,true,"Invoice No is Present in Table");
   TextUtils.writeLog("Invoice No is Present in Table");
   aqUtils.Delay(1000, Indicator.Text);
-     var DueDateTable = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable.DueDateTableField
-       
-       DueDateTable.setText(DueDate);
+//     var DueDateTable = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable.DueDateTableField
+      EntriesTable.Keys(DueDate); 
+//       DueDateTable.setText(DueDate);
        
        var savebutton =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
        
@@ -552,9 +553,14 @@ waitForObj(EntriesTable);
 
 function test()
 {
-  var DueDate = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable.DueDateTableField
+//  var DueDate = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable.DueDateTableField
+//       
+//       DueDate.setText(" 1/12/12");
        
-       DueDate.setText(" 1/12/12");
+       
+       var EntriesTable = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable;
+       EntriesTable.Keys("[Tab][Tab][Tab]");
+      EntriesTable.Keys(" 1/12/12");
 }
 
 
@@ -616,7 +622,7 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var Project_manager = ExcelUtils.getRowDatas("SSC - Junior APs","Username")
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -649,7 +655,7 @@ changePaymentSelection();
 closeAllWorkspaces();
 goToJobMenuItem();
 CreatePaymentSeletion(); 
-
+closeAllWorkspaces();
 //}
 //  catch(err){
 //    Log.Message(err);
