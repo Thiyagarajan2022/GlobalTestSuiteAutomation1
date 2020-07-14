@@ -74,11 +74,11 @@ ValidationUtils.verify(false,true,"Template Number is Needed to Create a SubJob"
 }
 Log.Message(TemplateNo);
 
-Job_name = ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
-if((Job_name==null)||(Job_name=="")){ 
-ValidationUtils.verify(false,true,"Job Name is Needed to Create a SubJob");
-}
-Log.Message(Job_name);
+//Job_name = ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
+//if((Job_name==null)||(Job_name=="")){ 
+//ValidationUtils.verify(false,true,"Job Name is Needed to Create a SubJob");
+//}
+//Log.Message(Job_name);
 
 
 SubJobNameTemplate = ExcelUtils.getRowDatas("Job_name_Template",EnvParams.Opco)
@@ -255,7 +255,7 @@ function GoToCreatedSubjob() {
   WorkspaceUtils.waitForObj(job);
   job.Click();
 
-  job.setText(Job_name);
+//  job.setText(Job_name);
   WorkspaceUtils.waitForObj(table);
   aqUtils.Delay(2000, "Reading Table Data in Job List");
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -300,6 +300,9 @@ function GoToCreatedSubjob() {
      subjob.Click()
     aqUtils.Delay(1000);
     count=false;
+    }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+      
     }
     
     var createSubJobbtn = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 6);
@@ -455,6 +458,9 @@ Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslato
     }  
       
  Log.Message("Language :"+Language);
+aqUtils.Delay(5000, "Waiting to Check any pop-up for credit limit");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
  var p = Sys.Process("Maconomy");
   Sys.HighlightObject(p);
   Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim())
@@ -471,7 +477,7 @@ var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.Mul
 Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 Ok.Click();
-
+}
  aqUtils.Delay(10000, "Reporting in HTML about Notification");  
  var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim(), 2000);
   if (w.Exists)
@@ -538,16 +544,6 @@ Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 Ok.Click();
 
-//var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim(), 1).SWTObject("Label", "*");
-//Log.Message(label.getText());
-//var lab = label.getText().OleValue.toString().trim();
-//ReportUtils.logStep("INFO",lab)
-//TextUtils.writeLog(lab);
-//var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim(), 1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-//Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot("");
-//Ok.Click();
-
  aqUtils.Delay(10000, "Reporting in HTML about Notification");  
  var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim(), 2000);
   if (w.Exists)
@@ -563,17 +559,7 @@ ReportUtils.logStep_Screenshot("");
 Ok.Click();
 }
 
-//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()){ 
-//var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()).SWTObject("Label", "*");
-//Log.Message(label.getText());
-//var lab = label.getText().OleValue.toString().trim();
-//ReportUtils.logStep("INFO",lab)
-//TextUtils.writeLog(lab);
-//var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-//Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot("");
-//Ok.Click();
-//} 
+
  aqUtils.Delay(10000, "Reporting in HTML about Notification"); 
 
   var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim(), 2000);
@@ -589,19 +575,6 @@ Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 Ok.Click();
 }
-
-//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()){ 
-//var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()).SWTObject("Label", "*");
-//Log.Message(label.getText());
-//var lab = label.getText().OleValue.toString().trim();
-//ReportUtils.logStep("INFO",lab)
-//TextUtils.writeLog(lab);
-//var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-//Ok.HoverMouse();
-//ReportUtils.logStep_Screenshot("");
-//Ok.Click();
-//} 
-
 
  aqUtils.Delay(10000, "Reporting in HTML about Notification"); 
 
