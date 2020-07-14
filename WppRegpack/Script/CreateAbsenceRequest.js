@@ -23,21 +23,29 @@ var firstday,lasyday,duration,absencetype = "";
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
-firstday = ExcelUtils.getRowDatas("First Day",EnvParams.Opco)
-Log.Message(firstday)
-if((firstday==null)||(firstday=="")){ 
-ValidationUtils.verify(false,true,"First Day is Needed to Create a Absence Request");
-}
+
 duration = ExcelUtils.getRowDatas("Duration",EnvParams.Opco)
 Log.Message(duration)
 if((duration==null)||(duration=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Absence Request");
 }
 
-absencetype = ExcelUtils.getRowDatas("Absence Type",EnvParams.Opco)
-Log.Message(absencetype)
+absencetype = ExcelUtils.getRowDatas("First Day",EnvParams.Opco)
+  if((absencetype=="")||(absencetype==null)){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  absencetype = ReadExcelSheet("AllowanceAbsenceType",EnvParams.Opco,"Data Management");
+  }
 if((absencetype==null)||(absencetype=="")){ 
 ValidationUtils.verify(false,true,"Absence Type is Needed to Create a Absence Request");
+}
+
+firstday = ExcelUtils.getRowDatas("First Day",EnvParams.Opco)
+  if((firstday=="")||(firstday==null)){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  firstday = ReadExcelSheet("AllowanceAbsenceDate",EnvParams.Opco,"Data Management");
+  }
+if((firstday==null)||(firstday=="")){ 
+ValidationUtils.verify(false,true,"First Day is Needed to Create a Absence Request");
 }
 }
 
@@ -130,6 +138,32 @@ function gotoAbsence() {
           ValidationUtils.verify(true,false,"Absence Request is not Created");
         } 
         
+        
+         var table = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+ Sys.HighlightObject(table);
+ waitForObj(table)
+ 
+ var all = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim());
+ Sys.HighlightObject(all);
+ all.Click();
+ 
+ var Firstday = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+ Sys.HighlightObject(Firstday);
+ Firstday.Click();
+ Firstday.setText(firstday);
+ Firstday.Keys("[Tab]")
+ 
+  var Duration = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
+  Sys.HighlightObject(Duration);
+ Duration.Click();
+ Duration.setText(duration);
+ Duration.Keys("[Tab][Tab][Tab][Tab][Tab]")
+    
+ var Remarks = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
+ Sys.HighlightObject(Remarks);
+ Remarks.Click();
+ Remarks.setText(Type);
+ aqUtils.Delay(6000, "Playback");       
        var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
        Sys.HighlightObject(submit);
        ReportUtils.logStep_Screenshot();

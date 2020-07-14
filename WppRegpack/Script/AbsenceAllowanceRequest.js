@@ -226,6 +226,8 @@ aqUtils.Delay(9000, "Checking Labels");
   WorkspaceUtils.SearchByValue(C_absencetype,"Absence Type",AbsenceType,"Absence Type");
 //Log.Message(AbsenceType.getText());
 TextUtils.writeLog("Entering absence type :"+AbsenceType);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+      ExcelUtils.WriteExcelSheet("AllowanceAbsenceType",EnvParams.Opco,"Data Management",AbsenceType)
 aqUtils.Delay(6000, "Checking Labels");
 //("Job Name :"+Job_name+" "+STIME);
 }
@@ -236,6 +238,8 @@ c_enterdate.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 c_enterdate.Click();
 c_enterdate.setText(Entrydate);
+      ExcelUtils.setExcelName(workBook,"Data Management", true);
+      ExcelUtils.WriteExcelSheet("AllowanceAbsenceDate",EnvParams.Opco,"Data Management",Entrydate)
 TextUtils.writeLog("Entering EnterDate :"+Entrydate);
 aqUtils.Delay(6000, "Checking Labels");
 
@@ -253,7 +257,8 @@ WorkspaceUtils.waitForObj(c_reason);
 c_timereg.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 c_reason.Click();
-c_reason.setText(Reason1);
+c_reason.setText(Reason1+" "+STIME);
+      var Type = Reason1+" "+STIME;      
 TextUtils.writeLog("Entering Reason");
 aqUtils.Delay(6000, "Checking Labels");
 
@@ -263,6 +268,33 @@ create.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 create.Click();
 aqUtils.Delay(6000, "Checking Labels");
+
+var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim())
+WorkspaceUtils.waitForObj(all);
+all.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+all.Click();
+
+var table = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+waitForObj(table)
+Sys.HighlightObject(table);
+
+
+var c_enterdate=Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+WorkspaceUtils.waitForObj(c_enterdate);
+c_enterdate.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+c_enterdate.Click();
+c_enterdate.setText(Entrydate);
+c_enterdate.Keys("[Tab][Tab][Tab]")
+
+var Reson=Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget3
+WorkspaceUtils.waitForObj(Reson);
+Reson.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Reson.Click();
+Reson.setText(Type);
+aqUtils.Delay(4000, "Checking Labels");
 
 var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(submit);
