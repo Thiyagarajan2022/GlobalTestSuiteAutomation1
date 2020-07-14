@@ -87,7 +87,7 @@ Delay(5000);
 if (slPacker.Pack(fileList, workDir, archivePath))
   Log.Message("Files compressed successfully");
 Delay(4000);
-     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
+//     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
     }else{
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,TestRunner.archivePath+".zip",expirationInsec, comment)
     }

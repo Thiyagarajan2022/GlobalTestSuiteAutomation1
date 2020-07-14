@@ -69,29 +69,29 @@ function GeneralEvents_OnStopTest(Sender)
     Log.Message(testCaseId)
     Log.Message("TestRunner.JiraUpdate :"+TestRunner.JiraUpdate)
 if(TestRunner.JiraUpdate){
-    var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl,accessKey,secretKey,userName);
-    if(!TestRunner.JiraStat){ 
+//    var client = JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.createConnection(zephyrBaseUrl,accessKey,secretKey,userName);
+//    if(!TestRunner.JiraStat){ 
+////    var status = "Failed";// Passed
+////    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
+////    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,TestRunner.archivePath+".zip",expirationInsec, comment)
+//
 //    var status = "Failed";// Passed
 //    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
+//        if(ReportUtils.DStat){ 
+//var workDir = ReportUtils.Dfile_path+"\\";
+//Log.Message(workDir)
+//var fileList = slPacker.GetFileListFromFolder(workDir);
+//var archivePath = ReportUtils.file_path +"\\"+ ReportUtils.Dfile_name;
+//Log.Message(archivePath)
+//Delay(5000);
+//if (slPacker.Pack(fileList, workDir, archivePath))
+//  Log.Message("Files compressed successfully");
+//Delay(4000);
+////     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
+//    }else{
 //    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,TestRunner.archivePath+".zip",expirationInsec, comment)
-
-    var status = "Failed";// Passed
-    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
-        if(ReportUtils.DStat){ 
-var workDir = ReportUtils.Dfile_path+"\\";
-Log.Message(workDir)
-var fileList = slPacker.GetFileListFromFolder(workDir);
-var archivePath = ReportUtils.file_path +"\\"+ ReportUtils.Dfile_name;
-Log.Message(archivePath)
-Delay(5000);
-if (slPacker.Pack(fileList, workDir, archivePath))
-  Log.Message("Files compressed successfully");
-Delay(4000);
-//     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
-    }else{
-    JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,TestRunner.archivePath+".zip",expirationInsec, comment)
-    }
-    }   
+//    }
+//    }   
     } 
 
 }

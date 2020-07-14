@@ -170,29 +170,29 @@ ExcelUtils.setExcelName(workBook, "Server Details", true);
 cyclename = ExcelUtils.getRowDatas("JIRA Cycle Name",EnvParams.Opco)
 folderName = ExcelUtils.getRowDatas("JIRA Folder Name",EnvParams.Opco)
 
-if(server){ 
-JiraUpdate = true;
-JiraStat = true;
-      reportName = "Report_"+EnvParams.Opco+"_Login";
-      ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
-      var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
-      var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
-    //ReportUtils.createTest("Login login", "Login using given Credentials")
-      ReportUtils.createTest("Login", "Login using given Credentials")
-
-      var FolderID = Log.CreateFolder("Login");
-      Log.PushLogFolder(FolderID);
-     Runner.CallMethod("Login.login");
-      Log.PopLogFolder();
-      ReportUtils.report.endTest(test);
-      ReportUtils.report.flush();
-      fileList = slPacker.GetFileListFromFolder(LworkDir);
-      archivePath = LpackedResults +reportName;
-// Packes the resutls
-if (slPacker.Pack(fileList, LworkDir, archivePath))
-      Log.Message("Files compressed successfully."); 
-   
-}
+//if(server){ 
+//JiraUpdate = true;
+//JiraStat = true;
+//      reportName = "Report_"+EnvParams.Opco+"_Login";
+//      ReportUtils.createReport(Project.Path+TextUtils.GetProjectValue("ReportPath")+"\\"+"Report_"+ReportDate+"\\", reportName);
+//      var LworkDir = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\"+reportName+"\\";
+//      var LpackedResults = Project.Path+TextUtils.GetProjectValue("ReportPath")+"Report_"+ReportDate+"\\";
+//    //ReportUtils.createTest("Login login", "Login using given Credentials")
+//      ReportUtils.createTest("Login", "Login using given Credentials")
+//
+//      var FolderID = Log.CreateFolder("Login");
+//      Log.PushLogFolder(FolderID);
+//     Runner.CallMethod("Login.login");
+//      Log.PopLogFolder();
+//      ReportUtils.report.endTest(test);
+//      ReportUtils.report.flush();
+//      fileList = slPacker.GetFileListFromFolder(LworkDir);
+//      archivePath = LpackedResults +reportName;
+//// Packes the resutls
+//if (slPacker.Pack(fileList, LworkDir, archivePath))
+//      Log.Message("Files compressed successfully."); 
+//   
+//}
 
 server = false;
 

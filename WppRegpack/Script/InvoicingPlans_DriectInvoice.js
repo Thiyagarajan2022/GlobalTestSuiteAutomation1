@@ -282,7 +282,7 @@ if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){
   Invoicing.Click();
   
 
-/var Plan = Aliases.Maconomy.DirectInvoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
+var Plan = Aliases.Maconomy.DirectInvoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
   Log.Message(iOnAccount.FullName)
   WorkspaceUtils.waitForObj(iOnAccount);
   ReportUtils.logStep_Screenshot("");

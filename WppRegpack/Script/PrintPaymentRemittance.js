@@ -321,7 +321,7 @@ Sys.Desktop.KeyUp(0x46); //Alt
 Sys.Desktop.KeyUp(0x41);
     
 if(ImageRepository.PDF.ChooseFolder.Exists())
-ImageRepository.PDF.ChooseFolder.Exists.Click();
+ImageRepository.PDF.ChooseFolder.Click();
 else{ 
 var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
 WorkspaceUtils.waitForObj(window);
@@ -331,7 +331,7 @@ Sys.Desktop.KeyDown(0x73); //F4
 Sys.Desktop.KeyUp(0x12); //Alt
 Sys.Desktop.KeyUp(0x73); //F4
 aqUtils.Delay(2000, Indicator.Text);
-Sys.HighlightObject(pdf)
+Sys.HighlightObject(pdf);
 
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F

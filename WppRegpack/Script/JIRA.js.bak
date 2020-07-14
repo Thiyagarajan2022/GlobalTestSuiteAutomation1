@@ -43,7 +43,7 @@ Delay(5000);
 if (slPacker.Pack(fileList, workDir, archivePath))
   Log.Message("Files compressed successfully");
 Delay(4000);
-     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
+//     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,archivePath+".zip",expirationInsec, comment) 
     }else{
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,TestRunner.archivePath+".zip",expirationInsec, comment)
     }
@@ -52,9 +52,9 @@ Delay(4000);
     var status = "passed";// Failed
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.UpdateExecStatusOfTestCase(client,accessKey,projectName,versionName,cycleName,folderName,testCaseId,status)
     if(ReportUtils.DStat){ 
-    folderName = TestRunner.folderName;
-      Log.Message("JIRA Attachment :"+ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")
-     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt",expirationInsec, comment) 
+//    folderName = TestRunner.folderName;
+//      Log.Message("JIRA Attachment :"+ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt")
+//     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.Dfile_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt",expirationInsec, comment) 
     }else{
     JavaClasses.com_cts_ZephyrApiUsecases.UpdateExecutionStatus.addAttachements(client,accessKey,entityName,ReportUtils.file_path+"\\"+EnvParams.Opco+"_"+TestRunner.unitName+"_TestLog.txt",expirationInsec, comment)
     }

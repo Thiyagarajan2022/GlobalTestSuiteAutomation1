@@ -232,8 +232,8 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
 
   var layout = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget4.Composite2.McPopupPickerWidget;
   Log.Message(layoutTypes)
-  layout.setText(layoutTypes);
-  
+  layout.Keys(layoutTypes);
+  Delay(5000);
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   waitForObj(save)
   Sys.HighlightObject(save)
@@ -312,7 +312,7 @@ ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved"
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
-var  layoutType = "Standard";
+var  layoutType = layoutTypes;
 
 if(layoutType=="WPP Payment")
 {

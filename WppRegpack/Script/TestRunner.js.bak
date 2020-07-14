@@ -389,6 +389,7 @@ ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath")
 else
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 Log.Message("TestCase Name"+testList[tL])
+JkinsName = testList[tL];
 unitName = ExcelUtils.getRowDatas(testList[tL],"UnitName");
 testCase = ExcelUtils.getRowDatas(testList[tL],"TestCases");
 description = ExcelUtils.getRowDatas(testList[tL],"Module");
