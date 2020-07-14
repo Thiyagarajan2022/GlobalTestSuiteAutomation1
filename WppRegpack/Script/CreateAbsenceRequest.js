@@ -30,15 +30,17 @@ if((duration==null)||(duration=="")){
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Absence Request");
 }
 
-absencetype = ExcelUtils.getRowDatas("First Day",EnvParams.Opco)
-  if((absencetype=="")||(absencetype==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  absencetype = ReadExcelSheet("AllowanceAbsenceType",EnvParams.Opco,"Data Management");
-  }
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+absencetype = ReadExcelSheet("AllowanceAbsenceType",EnvParams.Opco,"Data Management");
+if((absencetype=="")||(absencetype==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+absencetype = ExcelUtils.getRowDatas("Absence Type",EnvParams.Opco)
+}
 if((absencetype==null)||(absencetype=="")){ 
 ValidationUtils.verify(false,true,"Absence Type is Needed to Create a Absence Request");
 }
 
+ExcelUtils.setExcelName(workBook, sheetName, true);
 firstday = ExcelUtils.getRowDatas("First Day",EnvParams.Opco)
   if((firstday=="")||(firstday==null)){
   ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -57,9 +59,15 @@ function gotoAbsence() {
  var absence = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(absence);
  waitForObj(absence);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
  var absencerequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(absencerequest);
  absencerequest.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
  var newrequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl3;
  Sys.HighlightObject(newrequest)
  waitForObj(newrequest);
@@ -146,7 +154,9 @@ function gotoAbsence() {
  var all = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim());
  Sys.HighlightObject(all);
  all.Click();
- 
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
  var Firstday = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
  Sys.HighlightObject(Firstday);
  Firstday.Click();
@@ -163,12 +173,33 @@ function gotoAbsence() {
  Sys.HighlightObject(Remarks);
  Remarks.Click();
  Remarks.setText(Type);
- aqUtils.Delay(6000, "Playback");       
+ aqUtils.Delay(6000, "Playback");  
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
+
+  var flag=false;
+  for(var v=0;v<table.getItemCount();v++){ 
+  Log.Message(table.getItem(v).getText_2(6).OleValue.toString().trim())
+  Log.Message(Type)
+  Log.Message(table.getItem(v).getText_2(6).OleValue.toString().trim()==Type)
+  if(table.getItem(v).getText_2(6).OleValue.toString().trim()==Type){ 
+  flag=true;    
+  break;
+  }
+  else{ 
+  table.Keys("[Down]");
+  }
+  }
+ ValidationUtils.verify(flag,true,"Created Absence Request is available in system");
+     
        var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
        Sys.HighlightObject(submit);
        ReportUtils.logStep_Screenshot();
        waitForObj(submit);
        submit.Click();
+
+       
        TextUtils.writeLog("Absence Request is Submitted");
        
         var submittedicon = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.Click();

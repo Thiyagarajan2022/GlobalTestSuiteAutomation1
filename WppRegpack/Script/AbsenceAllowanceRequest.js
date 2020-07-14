@@ -209,7 +209,9 @@ absenceallowance1.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 absenceallowance1.Click();
 aqUtils.Delay(9000, "waiting for new absence allowance");
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
 var newallowancerequestBtn = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl;
                                 
 WorkspaceUtils.waitForObj(newallowancerequestBtn);
@@ -295,6 +297,24 @@ ReportUtils.logStep_Screenshot("");
 Reson.Click();
 Reson.setText(Type);
 aqUtils.Delay(4000, "Checking Labels");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
+
+  var flag=false;
+  for(var v=0;v<table.getItemCount();v++){ 
+  Log.Message(table.getItem(v).getText_2(3).OleValue.toString().trim())
+  Log.Message(Type)
+  Log.Message(table.getItem(v).getText_2(3).OleValue.toString().trim()==Type)
+  if(table.getItem(v).getText_2(3).OleValue.toString().trim()==Type){ 
+  flag=true;    
+  break;
+  }
+  else{ 
+  table.Keys("[Down]");
+  }
+  }
+ ValidationUtils.verify(flag,true,"Created Allowance Request is available in system");
 
 var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(submit);
@@ -302,7 +322,9 @@ submit.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 submit.Click();
 aqUtils.Delay(6000, "Checking Labels");
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
+}
 var supervisorinfo = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
 WorkspaceUtils.waitForObj(supervisorinfo);
 supervisorinfo.HoverMouse();
@@ -313,6 +335,10 @@ ReportUtils.logStep_Screenshot("");
 //Log.Message(supervisorinfo.getText());
 TextUtils.writeLog("Supervisor Information :"+mess);
 aqUtils.Delay(6000, "Checking Labels")
+}
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  ImageRepository.ImageSet.Tab_Icon.Click();
 }
 
 //  var all_job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
@@ -909,9 +935,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Absence");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Absence").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Absence");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Absence").OleValue.toString().trim());
 }
 
 } 
