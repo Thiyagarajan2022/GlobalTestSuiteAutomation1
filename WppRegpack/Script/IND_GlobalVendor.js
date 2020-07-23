@@ -4,6 +4,9 @@
 
 function IndiaSpecific(Vendortype,StateCode,GSTVendor,TDSAplicable,Section,Method){
   aqUtils.Delay(7000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var indiaspec = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 Sys.HighlightObject(indiaspec);
 var Start = StartwaitTime();
@@ -90,6 +93,9 @@ ValidationUtils.verify(true,false,"Screen is not Responding more than a minute")
   }
   save.Click();
   aqUtils.Delay(2000, Indicator.Text); 
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 
 

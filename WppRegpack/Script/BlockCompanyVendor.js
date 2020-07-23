@@ -153,6 +153,9 @@ function CompanyVendor(){
   Sys.HighlightObject(active);
   active.Click();
   aqUtils.Delay(3000, "Reading from Global Vendor table");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var table = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;  
 
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==CmpyVendorNo){

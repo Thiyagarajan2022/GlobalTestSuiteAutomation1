@@ -51,12 +51,17 @@ PONumber = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
-
+try{
 getDetails();
 ExcelUtils.setExcelName(workBook, sheetName, true);
   gotoMenu();
   selectJobs();
   listPurchaseOrder();
+}
+  catch(err){
+    Log.Message(err);
+  }
+  
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 closeAllWorkspaces();
