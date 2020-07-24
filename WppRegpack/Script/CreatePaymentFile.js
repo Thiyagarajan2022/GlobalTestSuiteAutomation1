@@ -350,6 +350,3 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
 }
-
-
-

@@ -148,6 +148,10 @@ ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable
 }
 
 function gotoClientSearch(){ 
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
  var CompanyNumber =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   CompanyNumber.Click();
@@ -197,15 +201,18 @@ function globalClient(){
 
   active.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var table = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyClientTable;
   //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.GCtable;
 
   
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   //  table.getItem(0).
-  table.HoverMouse(51, 60);
+  table.HoverMouse(49, 52);
   ReportUtils.logStep_Screenshot();
-  table.Click(51, 60);
+  table.Click(49, 52);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
   
@@ -237,26 +244,35 @@ function globalClient(){
 function test()
 {
    var table = Aliases.ObjectGroup.CompanyClientSearchTable;
-   table.HoverMouse(51, 60);
+   table.HoverMouse(49, 52);
     if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   //  table.getItem(0).
-  table.HoverMouse(51, 60);
+  table.HoverMouse(49, 52);
   ReportUtils.logStep_Screenshot();
-  table.Click(51, 60);
+  table.Click(49, 52);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
 }
 
 function client(){ 
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var home =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Home;
   
  aqUtils.Delay(2000, Indicator.Text);
  home.Click();
   aqUtils.Delay(2000, Indicator.Text);
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var information =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.InformationTab
 
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   //var screen = NameMapping.Sys.Maconomy.CreateCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite
  // NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite;
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -316,6 +332,9 @@ function client(){
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   save.Click();
   aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   ValidationUtils.verify(true,true,"Company Client is Amended");
   ReportUtils.logStep_Screenshot();
   }

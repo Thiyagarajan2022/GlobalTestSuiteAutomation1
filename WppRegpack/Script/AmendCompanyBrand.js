@@ -201,6 +201,9 @@ ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable
 }
 
 function gotoClientSearch(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 var CompanyNumber =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   CompanyNumber.Click();
@@ -264,6 +267,9 @@ function globalClient_old(){
   active.HoverMouse();
 
   aqUtils.Delay(3000, "Reading from Global Client table");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -296,19 +302,27 @@ function globalClient_old(){
 }
 
 function globalClient(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var GblClient = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.CompanyClientTab;
   //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.GlobalClientTab;
   GblClient.Click();
   
   
   aqUtils.Delay(5000, Indicator.Text);
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var active =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());
   // Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.ActiveCompanyClient;
  // Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.ActiveButton;
 
   active.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var table = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyClientTable;
   //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.GCtable;
 
@@ -352,10 +366,14 @@ function globalClient(){
   }
   
   aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 
 function test()
 {
+  
    var table = Aliases.ObjectGroup.CompanyClientSearchTable;
    table.HoverMouse(51, 60);
 if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -373,6 +391,10 @@ function client(){
  aqUtils.Delay(2000, Indicator.Text);
  home.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  
 //  var information =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.InformationTab
 //
 //  information.Click();
@@ -385,10 +407,16 @@ function client(){
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
   cmpSublevels.Click();
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var activeBrand = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.ActiveBrand;
 
   activeBrand.Click();
   aqUtils.Delay(3000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   TextUtils.writeLog("Active Brand is selected");
   var table = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyBrandTable
   //Aliases.ObjectGroup.CompanyClientSearchTable;
@@ -426,14 +454,18 @@ function client(){
   }
   
   aqUtils.Delay(5000, Indicator.Text);
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   TextUtils.writeLog("Company Brand is available in maconomy to block");
   var information = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Information;
   //Aliases.ObjectGroup.InformationTab
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 
 
   var C_Phone = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Phone;
