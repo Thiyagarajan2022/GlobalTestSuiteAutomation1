@@ -103,7 +103,7 @@ Client_Managt.DblClickItem("|Budget");
 function getDetails(){ 
   
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobtypevalue = ExcelUtils.getRowDatas("Job_group",EnvParams.Opco)
+  jobtypevalue = ExcelUtils.getRowDatas("Job_Type",EnvParams.Opco)
 
   if((jobtypevalue==null)||(jobtypevalue=="")){ 
   ValidationUtils.verify(false,true,"Job_group is Needed");
@@ -111,14 +111,14 @@ function getDetails(){
     Log.Message("jobtypevalue"+jobtypevalue)
     
      
-  jobdepartmenvalue = ExcelUtils.getRowDatas("Job_Type",EnvParams.Opco)
+  jobdepartmenvalue = ExcelUtils.getRowDatas("Job_Department",EnvParams.Opco)
   if((jobdepartmenvalue==null)||(jobdepartmenvalue=="")){ 
   ValidationUtils.verify(false,true,"Job_Type is Needed");
   }
   
   Log.Message("jobdepartmenvalue"+jobdepartmenvalue)
   
-  jobBusinessUnitvalue = ExcelUtils.getRowDatas("Job_Department",EnvParams.Opco)
+  jobBusinessUnitvalue = ExcelUtils.getRowDatas("Job_BusinessUnit",EnvParams.Opco)
 if((jobBusinessUnitvalue==null)||(jobBusinessUnitvalue=="")){ 
 ValidationUtils.verify(false,true,"Job_Department is Needed");
 

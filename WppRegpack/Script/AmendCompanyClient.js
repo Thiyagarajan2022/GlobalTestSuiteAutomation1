@@ -78,7 +78,7 @@ function getDetails(){
   if((ClientNo==null)||(ClientNo=="")){ 
   ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
   }
-    Log.Message("ClientNumber"+ClientNumber)
+    Log.Message("ClientNumber"+ClientNo)
     
 ExcelUtils.setExcelName(workBook, sheetName, true);
 //Add1 = ExcelUtils.getRowDatas("Address_1",EnvParams.Opco)
@@ -132,11 +132,12 @@ var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWT
 //Log.Message(childCC)
 for(var i=1;i<=childCC;i++){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
+Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Client Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Client Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 }
 
 } 
@@ -147,12 +148,13 @@ ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable
 }
 
 function gotoClientSearch(){ 
- var CompanyNumber = Aliases.ObjectGroup.CompanyNameClientManagement;
+ var CompanyNumber =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   CompanyNumber.Click();
-  WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
+ // WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
+  WorkspaceUtils.SearchByValue(CompanyNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
- var curr = Aliases.ObjectGroup.CurrencyPicker;
+ var curr = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.Currency;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
  aqUtils.Delay(5000, Indicator.Text);
@@ -162,34 +164,42 @@ function gotoClientSearch(){
   }
   aqUtils.Delay(2000, Indicator.Text);
   
- var ClientNumber = Aliases.ObjectGroup.ClientNoField;
+ var ClientNumber = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.ClientNoFiled;
+ //Aliases.ObjectGroup.ClientNoField;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
   if(ClientNo!=""){
   ClientNumber.Click();
-  WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
+   WorkspaceUtils.VPWSearchByValue(ClientNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),ClientNo,"Client Number");
+ // WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
     }
     
- var ClientName = Aliases.ObjectGroup.ClientName;
+ var ClientName = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.ClientName
+ 
+  //Aliases.ObjectGroup.ClientName;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
  ClientName.setText("*");
  
  
- var save = Aliases.ObjectGroup.SaveButtonClientManagement;
+ var save = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
+ //Aliases.ObjectGroup.SaveButtonClientManagement;
  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave;
  save.Click();
  aqUtils.Delay(5000, Indicator.Text);
 }
 
 function globalClient(){ 
- // var GblClient = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl2;
- // GblClient.Click();
+  var GblClient = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.CompanyClientTab;
+  //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.GlobalClientTab;
+  GblClient.Click();
   aqUtils.Delay(3000, Indicator.Text);
-  var active = Aliases.ObjectGroup.ActiveRadio;
-  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  var active = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());;
+  //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.ActiveButton;
+
   active.Click();
   aqUtils.Delay(2000, Indicator.Text);
-  var table = Aliases.ObjectGroup.CompanyClientSearchTable;
-  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+  var table = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyClientTable;
+  //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.GCtable;
+
   
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   //  table.getItem(0).
@@ -198,12 +208,16 @@ function globalClient(){
   table.Click(51, 60);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
+  
+  
+  
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==ClientNo){
   table.HoverMouse(49, 71);
   ReportUtils.logStep_Screenshot();  
   table.Click(49, 71);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to block");
   }
+  
   else if(table.getItem(2).getText_2(0).OleValue.toString().trim()==ClientNo){
   table.HoverMouse(49, 90);
   ReportUtils.logStep_Screenshot();
@@ -224,7 +238,7 @@ function test()
 {
    var table = Aliases.ObjectGroup.CompanyClientSearchTable;
    table.HoverMouse(51, 60);
-if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
+    if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   //  table.getItem(0).
   table.HoverMouse(51, 60);
   ReportUtils.logStep_Screenshot();
@@ -234,13 +248,13 @@ if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
 }
 
 function client(){ 
-  var home =Aliases.ObjectGroup.HomeTab;
-  // Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
+  var home =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Home;
+  
  aqUtils.Delay(2000, Indicator.Text);
  home.Click();
   aqUtils.Delay(2000, Indicator.Text);
-  var information =Aliases.ObjectGroup.InformationTab;
-  // Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
+  var information =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.InformationTab
+
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
   //var screen = NameMapping.Sys.Maconomy.CreateCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite
@@ -261,9 +275,11 @@ function client(){
 //}
 
 
-  var C_Phone = Aliases.ObjectGroup.CompanyClientPhoneNo;
+  var C_Phone = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.PhoneNo;
+  //Aliases.ObjectGroup.CompanyClientPhoneNo;
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite8.McTextWidget;
-  var C_mail = Aliases.ObjectGroup.CompanyClientEmail;
+  var C_mail = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.Mail;
+  //Aliases.ObjectGroup.CompanyClientEmail;
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite9.McTextWidget;
   
   var changes = false;
@@ -295,7 +311,8 @@ function client(){
     
         if(changes){ 
     
-  var save = Aliases.ObjectGroup.SaveButtonClientManagement;
+  var save = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
+  //Aliases.ObjectGroup.SaveButtonClientManagement;
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   save.Click();
   aqUtils.Delay(5000, Indicator.Text);
