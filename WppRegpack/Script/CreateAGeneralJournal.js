@@ -54,6 +54,7 @@ gotoGeneralJournal();
 AddJournalLines();
 attachDocument();
 submit();
+GLMpl();
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -550,6 +551,96 @@ save.Click();
     
   }
 }
+}
+
+function GLMpl(){ 
+  jornalNumber = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.JournalNumber;
+  Sys.HighlightObject(jornalNumber);
+  jornalNumber.Click();
+  Log.Message(jornalNumber.FullName)
+  jornalNumber = jornalNumber.getText().OleValue.toString().trim();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(2000, "Submitting General Ledger");
+  var CompanyName = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2);
+  Sys.HighlightObject(CompanyName)
+  Log.Message(CompanyName.FullName)
+  CompanyName = CompanyName.getText().OleValue.toString().trim();
+  
+  var SubmittedBy = Project_manager;
+  
+  var SubmittedOn = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+  Sys.HighlightObject(SubmittedOn);
+  SubmittedOn.Click();
+  Log.Message(SubmittedOn.FullName)
+  SubmittedOn = SubmittedOn.getText().OleValue.toString().trim();
+  var spiltSubmit = SubmittedOn.split(" ");
+  
+  var Period = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 4).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+  Sys.HighlightObject(Period);
+  Period.Click();
+  Log.Message(Period.FullName)
+  Period = Period.getText().OleValue.toString().trim();
+  var SplitPeriod = Period.split("-");
+  var periodStart = SplitPeriod[0].trim();
+  var periodEnd = SplitPeriod[1].trim();
+  var q =0;
+  var mplSheet = "GLMPL"
+  q++;
+  ExcelUtils.setExcelName(workBook,mplSheet, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"JOURNAL NO",mplSheet,jornalNumber);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Company Name",mplSheet,CompanyName);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Submitted By",mplSheet,SubmittedBy);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Submitted On",mplSheet,spiltSubmit[0]);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Period start",mplSheet,periodStart);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Period end",mplSheet,periodEnd);
+  
+  var table = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  Sys.HighlightObject(table);
+  Log.Message(table.FullName)
+  
+  for(var i=0;i<table.getItemCount()-1;i++){ 
+    
+  var localAccount = ""; 
+  var transaction  = table.getItem(i).getText_2(26).OleValue.toString().trim();
+  var entry  = table.getItem(i).getText_2(0).OleValue.toString().trim();
+  var GRP  = table.getItem(i).getText_2(2).OleValue.toString().trim();
+  var localAccount1  = table.getItem(i).getText_2(6).OleValue.toString().trim();
+  var localAccount2  = table.getItem(i).getText_2(7).OleValue.toString().trim();
+  var Job_Num = "";
+  if(GRP=="G"){
+  localAccount = localAccount1+" - "+localAccount2;
+  Job_Num = table.getItem(i).getText_2(5).OleValue.toString().trim();
+  }
+  else if(GRP=="P"){ 
+   localAccount = "Trade Creditors"; 
+   
+  }else{ 
+    localAccount = "Trade Debtors";
+//    Job_Num = table.getItem(i).getText_2(5).OleValue.toString().trim();
+  }
+  var entryDesc  = table.getItem(i).getText_2(1).OleValue.toString().trim();
+  var JobTy  = table.getItem(i).getText_2(19).OleValue.toString().trim();
+  var dept  = table.getItem(i).getText_2(20).OleValue.toString().trim();
+  var buss  = table.getItem(i).getText_2(22).OleValue.toString().trim();
+  var debit  = table.getItem(i).getText_2(8).OleValue.toString().trim();
+  var credit  = table.getItem(i).getText_2(9).OleValue.toString().trim();
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Transaction No_"+i,mplSheet,transaction);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Entry Date_"+i,mplSheet,entry);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"GRP_"+i,mplSheet,GRP);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Job No_"+i,mplSheet,Job_Num);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Local Account_"+i,mplSheet,localAccount);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+i,mplSheet,entryDesc);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Job Type_"+i,mplSheet,JobTy);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Department_"+i,mplSheet,dept);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"BusinessUnit"+i,mplSheet,buss);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Debit_"+i,mplSheet,debit);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Credit_"+i,mplSheet,credit);
+  }
+  
+  
+  
 }
 
 

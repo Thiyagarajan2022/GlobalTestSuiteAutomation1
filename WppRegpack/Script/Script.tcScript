@@ -168,6 +168,14 @@
 				<child name="VendorInvoice" key="{3F05C8EC-300A-40B3-93F7-B9BEBFF49F88}" path="VendorInvoice.js" />
 				<child name="Creation_Of_Job" key="{24011612-ED53-4D8F-9489-A5A30F0420A1}" path="Creation_Of_Job.js" />
 			</folder>
+			<folder name="MPLs">
+				<child name="InvoiceMPL" key="{67814B51-A398-44B1-8CCD-CB5677B30462}" path="InvoiceMPL.js" />
+				<child name="DraftInvoice_MPL" key="{61473CB0-81EA-41EA-B661-AD42B6F84209}" path="DraftInvoice_MPL.js" />
+				<child name="Print_Order_Confirmation_MPL" key="{4F00E074-02FF-441B-8F1B-FD94ACD2AE5F}" path="Print_Order_Confirmation_MPL.js" />
+				<child name="Quote_MPL" key="{517932F2-214A-45E3-AC95-A2CC6B837FEC}" path="Quote_MPL.js" />
+				<child name="BudgetEstimateMPL" key="{03FFC0A9-1A2A-4EF5-89D2-4AD98C5F6342}" path="BudgetEstimateMPL.js" />
+				<child name="PostingJournal_MPL" key="{A39A50C0-E384-4182-A197-F3EDC1F073F9}" path="PostingJournal_MPL.js" />
+			</folder>
 		</folder>
 		<folder name="EnvConfig">
 			<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" path="EnvParams.js" />
