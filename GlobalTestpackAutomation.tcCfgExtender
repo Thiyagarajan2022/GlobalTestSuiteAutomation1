@@ -29,11 +29,11 @@
 					<Node name="0">
 						<Node name="editor">
 							<Node name="{8c45957c-f4b3-4dd7-9212-49cbd350f69f}">
-								<Prp name="key" type="S" value="{08C8B2BA-F85C-4FC2-B41A-F6D6D49E75AB}"/>
+								<Prp name="key" type="S" value="{77AA6923-6C35-4C7E-BB73-B792ABEE8EB7}"/>
 							</Node>
 							<Node name="{d0151f8e-51fe-49da-8534-008b9f1b7c45}">
 								<Prp name="col" type="I" value="0"/>
-								<Prp name="key" type="S" value="{2830816D-9C6A-466D-8A30-95D103015093}"/>
+								<Prp name="key" type="S" value="{84DE9F4E-FA28-4626-AD43-ED83DAC68962}"/>
 								<Prp name="line" type="I" value="132"/>
 								<Prp name="sellength" type="I" value="0"/>
 								<Prp name="selstart" type="I" value="5899"/>
@@ -41,7 +41,7 @@
 								<Prp name="windowline" type="I" value="109"/>
 							</Node>
 							<Prp name="editor" type="S" value="{12CB6F90-067A-4958-9B6F-16A68D1919B2}"/>
-							<Prp name="focused" type="S" value="{2830816D-9C6A-466D-8A30-95D103015093}"/>
+							<Prp name="focused" type="S" value="{84DE9F4E-FA28-4626-AD43-ED83DAC68962}"/>
 						</Node>
 						<Prp name="edititem" type="S" value="{E9B85677-B33A-4CB9-B307-80472D307429}"/>
 					</Node>
