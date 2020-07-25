@@ -901,7 +901,7 @@ var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Compos
 Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
 grandTotal = grandTotal.getText().OleValue.toString().trim();
 Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();
-
+Payment_Terms = Payment_Terms.replace(/[^0-9]+/g, "");;
 var Q_total = 0;
 var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var q = 0;
@@ -943,7 +943,7 @@ for(var i=0;i<specification.getItemCount();i++){
 
   ExcelUtils.setExcelName(workBook,InvoiceMPL, true);
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPL,Excl_Tax);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL",InvoiceMPL,grandTotal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPL,grandTotal);
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPL,Payment_Terms);
   
   
@@ -1032,7 +1032,8 @@ ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Save
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
-   
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")   
 
 var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 WorkspaceUtils.waitForObj(appvBar);
@@ -1613,6 +1614,9 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;
