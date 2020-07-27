@@ -124,6 +124,12 @@
 				<child name="JobInvoicing_WithoutWIP" key="{94572CCF-842C-43C8-9A72-7D3CC6018D44}" path="JobInvoicing_WithoutWIP.js" />
 				<child name="PartialInvoicing_CarryForward" key="{5F70EFEC-E255-40AC-AEA2-8C1EB414C218}" path="PartialInvoicing_CarryForward.js" />
 				<child name="FixedAssetResolution" key="{4247F3C9-7CE7-4F08-AA4E-6899E28EA9C1}" path="FixedAssetResolution.js" />
+				<child name="CreateAnAccrualJobByJob" key="{E85ABD8E-6444-46D9-8555-24249320C5F6}" path="CreateAnAccrualJobByJob.js" />
+				<child name="CopyBudget" key="{89EA977D-FF6A-4158-8984-64709965CC9E}" path="CopyBudget.js" />
+				<child name="ExpensesMPL" key="{CBB03673-53BF-4027-A8F5-383098DBA29F}" path="ExpensesMPL.js" />
+				<child name="ModifyBudget_New" key="{45F77959-87DA-4FC7-A391-9CBC43929F79}" path="ModifyBudget_New.js" />
+				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
+				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
