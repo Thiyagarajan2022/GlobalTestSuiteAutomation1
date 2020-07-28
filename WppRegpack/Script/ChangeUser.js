@@ -143,11 +143,11 @@ ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
 
 //Log.Message("companyNo"+companyNo);
 
-validateCompany = getExcelData_Company("Validate_Company",EnvParams.Opco)
-if((validateCompany==null)||(validateCompany=="")){ 
-ValidationUtils.verify(false,true,"validateCompany is required to create USER");
-}
-//Log.Message("validateCompany"+validateCompany);
+//validateCompany = getExcelData_Company("Validate_Company",EnvParams.Opco)
+//if((validateCompany==null)||(validateCompany=="")){ 
+//ValidationUtils.verify(false,true,"validateCompany is required to create USER");
+//}
+////Log.Message("validateCompany"+validateCompany);
 
 
 
@@ -447,8 +447,9 @@ submitbtn = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SW
    aqUtils.Delay(1000);
 
 
- var approval = 
- NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+ var approval = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+ //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel2.TabControl
+ //NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
 
   Sys.HighlightObject(approval);
     ReportUtils.logStep_Screenshot();

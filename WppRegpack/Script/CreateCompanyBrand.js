@@ -286,18 +286,17 @@ for(var bi=0;bi<WrkspcCount;bi++){
 
 
 var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
-  var Client_Managt;
-//Log.Message(childCC)
+var Client_Managt;
 for(var i=1;i<=childCC;i++){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Client Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Client Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 }
 
-} 
+}  
 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable Menu");
@@ -327,7 +326,7 @@ function getDetails(){
   
   
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  clientName = ReadExcelSheet("Global Client Name","1712","Data Management");
+  clientName = ReadExcelSheet("Global Client Name",EnvParams.Opco,"Data Management");
   if((clientName=="")||(clientName==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
@@ -338,7 +337,7 @@ ValidationUtils.verify(false,true,"Client Name is Needed to Create Company Brand
 
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  brandName = ReadExcelSheet("Global Brand Name","1712","Data Management");
+  brandName = ReadExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management");
   if((brandName=="")||(brandName==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
@@ -356,7 +355,7 @@ ValidationUtils.verify(false,true,"Brand Name is Needed to Create Company Brand"
 
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  brandNumber = ReadExcelSheet("Global Brand Number","1712","Data Management");
+  brandNumber = ReadExcelSheet("Global Brand Number",EnvParams.Opco,"Data Management");
   if((brandNumber=="")||(brandNumber==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandNumber = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
@@ -368,13 +367,6 @@ Log.Message("brandNumber"+brandNumber)
 
 
 
-//brandNumber = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
-//if((brandNumber==null)||(brandNumber=="")){ 
-//ValidationUtils.verify(false,true,"BrandNumber is Needed to Create a Company Brand");
-//}
-//Log.Message("brandNumber"+brandNumber)
-//
-
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
   Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
@@ -384,9 +376,6 @@ ValidationUtils.verify(false,true,"Currency is Needed to Create a Company Brand"
 }
 Log.Message("Currency"+Currency)
   
-//settlingcompanyvalue,language,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue
-  
- // ExcelUtils.setExcelName(workBook, sheetName, true);
 settlingcompanyvalue = ExcelUtils.getRowDatas("Settling company",EnvParams.Opco)
 if((settlingcompanyvalue==null)||(settlingcompanyvalue=="")){ 
 ValidationUtils.verify(false,true,"settlingcompanyvalue is Needed to Create a Company Brand");

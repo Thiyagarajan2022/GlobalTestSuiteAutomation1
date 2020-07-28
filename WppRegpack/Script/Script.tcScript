@@ -181,6 +181,8 @@
 				<child name="Quote_MPL" key="{517932F2-214A-45E3-AC95-A2CC6B837FEC}" path="Quote_MPL.js" />
 				<child name="BudgetEstimateMPL" key="{03FFC0A9-1A2A-4EF5-89D2-4AD98C5F6342}" path="BudgetEstimateMPL.js" />
 				<child name="PostingJournal_MPL" key="{A39A50C0-E384-4182-A197-F3EDC1F073F9}" path="PostingJournal_MPL.js" />
+				<child name="PaymentSelection_MPL" key="{13F93619-589E-419D-9CD8-84F131177053}" path="PaymentSelection_MPL.js" />
+				<child name="PaymentOrder_MPL" key="{756D9DD0-91F6-4445-87A7-496DF38983CA}" path="PaymentOrder_MPL.js" />
 			</folder>
 		</folder>
 		<folder name="EnvConfig">

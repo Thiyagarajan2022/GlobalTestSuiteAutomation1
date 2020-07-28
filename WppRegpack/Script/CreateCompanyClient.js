@@ -80,7 +80,6 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Company Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
 
-//EnvParams.Opco = "1712";
 getDetails();
 gotoMenu(); 
 gotoClientSearch();
@@ -281,18 +280,17 @@ for(var bi=0;bi<WrkspcCount;bi++){
 
 
 var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
-  var Client_Managt;
-//Log.Message(childCC)
+var Client_Managt;
 for(var i=1;i<=childCC;i++){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Client Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Client Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 }
 
-} 
+}  
 
 aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Client Management from Accounts Receivable Menu");
@@ -319,8 +317,8 @@ function getDetails(){
 
 
  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  ClientNo = ReadExcelSheet("Global Client Number","1712","Data Management");
-  ClientNumber =ReadExcelSheet("Global Client Number","1712","Data Management");
+  ClientNo = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  ClientNumber =ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
   if((ClientNo=="")||(ClientNo==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   ClientNumber =ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
@@ -370,9 +368,6 @@ ValidationUtils.verify(false,true,"attnValue is Needed to Create a Client");
 }
 
 
-
-
-//
 emailValue = ExcelUtils.getRowDatas("Email",EnvParams.Opco)
 if((emailValue==null)||(emailValue=="")){ 
 ValidationUtils.verify(false,true,"emailValue is Needed to Create a Client");
