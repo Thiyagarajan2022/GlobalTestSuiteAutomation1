@@ -18,7 +18,7 @@ var level =0;
   Indicator.Show();
   Indicator.PushText("waiting for window to open");
 
-
+ 
 function fixedassestpost(){
       Language = "";
       Language = EnvParams.Language;

@@ -38,23 +38,31 @@ function getDetails(){
         if((Amountbase==null)||(Amountbase=="")){ 
         ValidationUtils.verify(false,true,"Amount is Needed to Create a Asset Adjustment");
         }   
-        comapany = ExcelUtils.getRowDatas("company",EnvParams.Opco)
-        if((comapany==null)||(comapany=="")){ 
-        ValidationUtils.verify(false,true,"company is Needed to Create a Asset Adjustment");
-        }  
-        AssetsNo = ExcelUtils.getRowDatas("Assets No",EnvParams.Opco)
-        if((AssetsNo=="")||(AssetsNo==null)){
-              ExcelUtils.setExcelName(workBook, "Data Management", true);
-              AssetsNo = ReadExcelSheet("Assets No",EnvParams.Opco,"Data Management")
-        } 
-        if((AssetsNo=="")||(AssetsNo==null))
-        ValidationUtils.verify(false,true,"Asset Number is needed to Create Asset Adjustment");
+      comapany = ExcelUtils.getRowDatas("company",EnvParams.Opco)
+      Log.Message(comapany)
+      if((comapany==null)||(comapany=="")){ 
+        ValidationUtils.verify(false,true,"Company Number is Needed to Create Asset");
+      }
+      if((comapany=="")||(comapany==null))
+      ValidationUtils.verify(false,true,"Comapany Number is needed to Create Asset");
+       
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+AssetsNo = ReadExcelSheet("Assets No",EnvParams.Opco,"Data Management")
+if((AssetsNo=="")||(AssetsNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+AssetsNo = ExcelUtils.getRowDatas("Assets No",EnvParams.Opco)
+}
+if((AssetsNo=="")||(AssetsNo==null))
+ValidationUtils.verify(false,true,"Asset Number is needed to Create Asset Adjustment");
         
       }
       
-function fixedassestresolution(){
+function FixedAssetResolution(){
   TextUtils.writeLog("Create a Asset Adjustment Started"); 
 Indicator.PushText("waiting for window to open");
+aqUtils.Delay(1000, Indicator.Text);
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
   aqUtils.Delay(3000, Indicator.Text);
@@ -166,18 +174,21 @@ function assetcost(){
   var table = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   Sys.HighlightObject(table);
   
+  aqUtils.Delay(4000,Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var flag=false;
-  for(var v=0;v<table.getItemCount();v++){   
-  if(table.getItem(v).getText_2(1).OleValue.toString().trim()==AssetsNo){ 
-  flag=true;    
-  break;
+  for(var v=0;v<table.getItemCount();v++){ 
+    if(table.getItem(v).getText_2(1).OleValue.toString().trim()==AssetsNo){ 
+      flag=true;
+      break;
+    }
+    else{ 
+      table.Keys("[Down]");
+    }
   }
-  else{ 
-  table.Keys("[Down]");
-  }
-  }
- ValidationUtils.verify(flag,true,"Created Asset Number is available in system");
-     TextUtils.writeLog("Created Asset Number is available in system :"+AssetsNo);
+ ValidationUtils.verify(flag,true,"Fixed Asset is availble in maconomy") 
   
   aqUtils.Delay(3000,Indicator.Text);
     var i=0;
@@ -195,16 +206,19 @@ function goToregistration(){
   Sys.HighlightObject(register);
   register.Click();
   aqUtils.Delay(4000,Indicator.Text);
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var Newassetadjust = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;  
-  waitForObj(Newassetadjust)  
-  ReportUtils.logStep_Screenshot("");
+    ReportUtils.logStep_Screenshot("");
    Newassetadjust.Click();
    aqUtils.Delay(1000,Indicator.Text);
 //   address();
-   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
    var company = Aliases.Maconomy.Group4.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.companynumber;
-  if(comapany!=""){
+     if(comapany!=""){
         company.Click();
         SearchByValue(company,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),comapany,"Company Number");
       }
@@ -257,12 +271,16 @@ function goToAsset(){
   Sys.HighlightObject(entries)
   var addbutton = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.addbutton;
   addbutton.Click();
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var firstcell = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.firstcell;
   firstcell.Click();
   firstcell.Keys("[Tab][Tab][Tab]");
   aqUtils.Delay(1000,Indicator.Text);
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var assetno = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assetno;
   if(AssetsNo!=""){  
     assetno.Click();
@@ -281,7 +299,9 @@ function goToAsset(){
   var assettype = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
   assettype.Keys(" ");
   if(Transactiontype!=""){
-    assettype.Click();aqUtils.Delay(1000, Indicator.Text);
+    aqUtils.Delay(10000,Indicator.Text);
+    assettype.Click();
+    aqUtils.Delay(1000, Indicator.Text);
        WorkspaceUtils.DropDownList(Transactiontype,"Asset Transaction Type");
        aqUtils.Delay(1000, Indicator.Text); 
     } 
@@ -294,7 +314,9 @@ function goToAsset(){
     amount.Click();
     amount.setText(Amountbase);
     aqUtils.Delay(1000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
+  }
     var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
     save.HoverMouse();
     ReportUtils.logStep_Screenshot("");
@@ -305,6 +327,7 @@ function goToAsset(){
     
     var approve = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.approve;
     waitForObj(approve)
+    Sys.HighlightObject(approve)
     if(approve.isEnabled()){      
       approve.HoverMouse();
       ReportUtils.logStep_Screenshot();
@@ -353,6 +376,7 @@ function goToAsset(){
          aqUtils.Delay(5000, Indicator.Text);    
   
 } 
+
 
 
 function SearchByValue(ObjectAddrs,popupName,value,fieldName){ 

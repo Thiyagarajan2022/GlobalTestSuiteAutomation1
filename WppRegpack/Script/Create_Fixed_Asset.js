@@ -404,10 +404,22 @@ function Posting(){
     posting.Click();
     aqUtils.Delay(1000,Indicator.Text);
     
-//    if(Aliases.Maconomy.Shell7.Composite.Button.Visible){
-//    var popup = Aliases.Maconomy.Shell7.Composite.Button;
-//    popup.Click();
-//    }
+    aqUtils.Delay(1000,Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+ var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions - Post").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+ var Okay = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions - Post").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim()).Click();
+ 
+}
+    aqUtils.Delay(1000,Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
     
     var fromCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
     waitForObj(fromCompany)
@@ -422,7 +434,8 @@ function Posting(){
     
     if(date!=""){
       var createfrom = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget;
-      WorkspaceUtils.CalenderDateSelection(createfrom,date)
+      createfrom.setText(aqDateTime.Today())
+//      WorkspaceUtils.CalenderDateSelection(createfrom,date)
       ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
     }
     else{ 
@@ -432,7 +445,8 @@ function Posting(){
     
     if(date!=""){
       var createTo = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget2;
-      WorkspaceUtils.CalenderDateSelection(createTo,date)
+      createTo.setText(aqDateTime.Today())
+//      WorkspaceUtils.CalenderDateSelection(createTo,date)
       ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
     }
     else{ 
@@ -459,6 +473,7 @@ function Posting(){
 
 //     var transactionNo ="1006800354";
       for(var i=0;i<table.getItemCount();i++){ 
+        Log.Message(transactionNo)
        if(transactionNo==table.getItem(i).getText(3).OleValue.toString().trim()){   
        table.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");    
 aqUtils.Delay(1000,Indicator.Text);
@@ -477,20 +492,24 @@ var check =  table.SWTObject("McPlainCheckboxView", "", 5).SWTObject("Button", "
            ValidationUtils.verify(true,true,"Checkbox is Clicked");
          } 
           aqUtils.Delay(2000,Indicator.Text);
-          
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
           aqUtils.Delay(2000,Indicator.Text);
          var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.save;
          save.Click();
          aqUtils.Delay(2000,Indicator.Text);
          ReportUtils.logStep_Screenshot();
          aqUtils.Delay(2000,Indicator.Text);
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
          var Post = Aliases.Maconomy.Composite.SingleToolItemControl2;
          Sys.HighlightObject(Post);
          ReportUtils.logStep_Screenshot();
          Post.Click();
-         aqUtils.Delay(5000,Indicator.Text);
+         aqUtils.Delay(15000,Indicator.Text);
          ValidationUtils.verify(true,true,"Successfully Posted the Assest");
          TextUtils.writeLog("Asset Successfully Posted :" +asetnumber);
           break;
@@ -499,7 +518,9 @@ var check =  table.SWTObject("McPlainCheckboxView", "", 5).SWTObject("Button", "
           table.Keys("[Down]");  
        }
      } 
-     
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+} 
      
      var SaveTitle = "";
 var sFolder = "";
