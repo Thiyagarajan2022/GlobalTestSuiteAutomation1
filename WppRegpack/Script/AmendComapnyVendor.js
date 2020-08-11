@@ -16,6 +16,7 @@ var ApproveInfo = [];
 var Project_manager="";
 var level =0;
 
+//Main Function
 function AmendCompanyVendor(){ 
   TextUtils.writeLog("Amend Gloabl Vendor Started");
 Indicator.PushText("waiting for window to open");
