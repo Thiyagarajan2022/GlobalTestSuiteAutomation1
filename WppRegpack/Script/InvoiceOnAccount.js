@@ -201,9 +201,9 @@ try{
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
-    if(POSheet==""){ 
-      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice Account")
-    }
+    if(POSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice Account")
+//    }
     ExcelUtils.setExcelName(workBook, POSheet, true);
     var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
     if(JobSO==""){ 
@@ -241,12 +241,14 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    }
+    
   //Approving PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
-    if(APSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice Account")
-    }
+    if(APSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice Account")
+//    }
     ExcelUtils.setExcelName(workBook, APSheet, true);
     var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -281,13 +283,13 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
    }
-
+}
    //Creation of Vendor Invoice
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var VISheet = ExcelUtils.getColumnDatas("Vendor Invoice Sheet",EnvParams.Opco)
-    if(VISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice Account")
-    }
+    if(VISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice Account")
+//    }
     ExcelUtils.setExcelName(workBook, VISheet, true);
     var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
     if(PO_SO==""){ 
@@ -329,13 +331,13 @@ try{
     ReportUtils.DStat = false;
     
     }
- 
+ }
     //Approve Vendor Invocie
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var AISheet = ExcelUtils.getColumnDatas("Approve Vendor Invocie sheet",EnvParams.Opco)
-    if(AISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice Account")
-    }
+    if(AISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice Account")
+//    }
     ExcelUtils.setExcelName(workBook, AISheet, true);
     var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -370,13 +372,14 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    
+    }
     //Post Vendor Journal
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var PVISheet = ExcelUtils.getColumnDatas("Post Vendor Invoice sheet",EnvParams.Opco)
-    if(PVISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice Account")
-    }
+    if(PVISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice Account")
+//    }
+
 //    ExcelUtils.setExcelName(workBook, PVISheet, true);
 //    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
 //    if(serialOder==""){ 
@@ -410,6 +413,7 @@ try{
     ReportUtils.Dreport.flush();
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
+    }
     }
 TestRunner.testCaseId = IAcc_ID;
 TestRunner.unitName = IAccUnit;
@@ -853,8 +857,14 @@ aqUtils.Delay(1000, Indicator.Text);
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
 
-var SubmitDraft = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+//var SubmitDraft = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
 //var SubmitDraft = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+var SubmitDraft;
+  if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+ else
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+      
   WorkspaceUtils.waitForObj(SubmitDraft);
   for(var i=0;i<SubmitDraft.ChildCount;i++){ 
     if((SubmitDraft.Child(i).isVisible())&&(SubmitDraft.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit Draft").OleValue.toString().trim())){
@@ -873,8 +883,10 @@ var SubmitDraft = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composit
   }
   
   
+  
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
-var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+//var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.descrip
 var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
 Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
 grandTotal = grandTotal.getText().OleValue.toString().trim();
@@ -884,6 +896,7 @@ var Q_total = 0;
 var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var q = 0;
 QuoteDetails = [];
+var InvoiceMPl = "InvoiceMPL";
 for(var i=0;i<specification.getItemCount();i++){ 
 
   var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
@@ -903,24 +916,30 @@ for(var i=0;i<specification.getItemCount();i++){
   QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
   Log.Message(QuoteDetails[q]);
   q++;
-  ExcelUtils.setExcelName(workBook,"InvoiceOnAccount", true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,"InvoiceOnAccount",Q_Desp);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,"InvoiceOnAccount",Q_Qty);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,"InvoiceOnAccount",Q_Billing);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,"InvoiceOnAccount",Q_BillingTotoal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,"InvoiceOnAccount",Q_Tax1);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,"InvoiceOnAccount",Q_Tax2);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,"InvoiceOnAccount",Q_Tax1currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,"InvoiceOnAccount",Q_Tax2currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,"InvoiceOnAccount",Q_total);
+  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPl,Q_Desp);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPl,Q_Qty);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPl,Q_Billing);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPl,Q_BillingTotoal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPl,Q_Tax1);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPl,Q_Tax2);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPl,Q_Tax1currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPl,Q_Tax2currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPl,Q_total);
 
   }
   }
 
-  ExcelUtils.setExcelName(workBook,"InvoiceOnAccount", true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX","InvoiceOnAccount",Excl_Tax);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL","InvoiceOnAccount",grandTotal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms","InvoiceOnAccount",Payment_Terms);
+  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPl,Excl_Tax);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPl,grandTotal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
+  
+   
+  
+  
+  
+  
   
   
 
@@ -1007,6 +1026,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -1618,24 +1639,26 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
 //Sys.HighlightObject(printInvoice);
 //printInvoice.Click();
 
-var printStat = false;
-var printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder;
-  for(var i=0;i<printInvoice.ChildCount;i++){ 
-    if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).Name.indexOf("TabFolderPanel")!=-1)){
-      printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
-      printStat =true;
-      break;
-    }
-  } 
-  
-  if(!printStat) 
-  printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite2;
-  
-//  if(Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite2.isVisible())
+//var printStat = false;
+//var printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder;
+//  for(var i=0;i<printInvoice.ChildCount;i++){ 
+//    if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).Name.indexOf("TabFolderPanel")!=-1)){
+//      printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+//      printStat =true;
+//      break;
+//    }
+//  } 
+//  
+//  if(!printStat) 
 //  printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite2;
-// else
-//  printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
-                 
+  
+  
+var printInvoice = "";
+  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
+  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
+ else
+  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+          
   WorkspaceUtils.waitForObj(printInvoice);
   for(var i=0;i<printInvoice.ChildCount;i++){ 
     if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Invoice").OleValue.toString().trim())){
@@ -1711,6 +1734,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;

@@ -26,7 +26,7 @@ var Language = "";
 var C_Currency = "";
 var QuoteDetails = [];
 var Jobnum = "";
-
+var Project_manager = ""
 function CreateQuote(sheet,Jobnumber){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
 Indicator.PushText("waiting for window to open");
@@ -37,7 +37,7 @@ WorkspaceUtils.Language = Language;
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -503,7 +503,10 @@ submit.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
+Delay(5000)
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
+}
 ValidationUtils.verify(true,true,"Quote has Submitted");
 TextUtils.writeLog("Quote has Submitted"); 
 var scroll = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -520,6 +523,10 @@ var approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Com
 WorkspaceUtils.waitForObj(approve);
 ReportUtils.logStep_Screenshot("");
 approve.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+Delay(5000)
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
@@ -1628,8 +1635,8 @@ ImageRepository.ImageSet.Forward.Click();// GL
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //sheetName = "CreateQuote";
 if(OpCo2[2]==Project_manager){
 level = 1;
@@ -1654,13 +1661,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   i++;
   ApvPerson.Refresh();
 }
-if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Client Approved Estimate is Approved by :"+loginPer)
   TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 }
 
 
@@ -1933,13 +1940,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   i++;
   ApvPerson.Refresh();
 }
-if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Client Approved Estimate is Approved by :"+loginPer)
   TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 
 }
 else{ 

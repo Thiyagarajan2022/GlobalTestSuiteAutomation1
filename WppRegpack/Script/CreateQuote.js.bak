@@ -36,7 +36,8 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
 
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
-Project_manager = ExcelUtils.getRowDatas("Agency - Biller",EnvParams.Opco);
+//Project_manager = ExcelUtils.getRowDatas("Agency - Biller",EnvParams.Opco);
+Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -629,7 +630,8 @@ Sys.Desktop.KeyUp(0x58);
 ValidationUtils.verify(true,true,"Print Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Quote",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
  
 }
 
@@ -784,7 +786,8 @@ ValidationUtils.verify(true,true,"Print Order Confirmation is Clicked and PDF is
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
 aqUtils.Delay(4000, Indicator.Text);
-
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Print Order Confirmation",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
 }
 
 function clientApprovedEsimate(){ 
@@ -1923,7 +1926,9 @@ closeFilter.Click();
     Sys.HighlightObject(show_budget);
     show_budget.Keys("Client Approved Estimate");
     aqUtils.Delay(5000, "Client Approved Estimate");
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl;
 WorkspaceUtils.waitForObj(Approve);
 if(Approve.isEnabled()){ 

@@ -33,6 +33,7 @@ var workCodeList = [];
 var workActivity = [];
 var quteNumber ="";
 var Jobnum = "";
+var Project_manager = "";
 
 function createBudget(sheet,Jobnumber){ 
   
@@ -45,7 +46,7 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -82,7 +83,7 @@ level = i;
 WorkspaceUtils.closeMaconomy();
 aqUtils.Delay(10000, Indicator.Text);
 var temp = ApproveInfo[i].split("*");
-var temp = gg.split("*");
+//var temp = gg.split("*");
 Restart.login(temp[2]);
 aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
@@ -784,36 +785,54 @@ for(var a=0;a<quteNumber.ChildCount;a++){
 Log.Message("quteNumber :"+quteNumber)
 
 var BarStat = true;
-var AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.SWTObject("Composite", "", 6);  
-for(var a=0;a<AprveBar.ChildCount;a++){ 
-  Log.Message(AprveBar.Child(a).FullName)
-  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
-    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "")
-    Log.Message(AprveBar.FullName);
-    BarStat = false;
-    break;
-  }
-}
-if(BarStat){
-AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7;  
-for(var a=0;a<AprveBar.ChildCount;a++){ 
-  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
-    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "");
-    Log.Message(AprveBar.FullName);
-    break;
-  }
-}
-}
+//var AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.SWTObject("Composite", "", 6);  
+//for(var a=0;a<AprveBar.ChildCount;a++){ 
+//  Log.Message(AprveBar.Child(a).FullName)
+//  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
+//    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "")
+//    Log.Message(AprveBar.FullName);
+//    BarStat = false;
+//    break;
+//  }
+//}
+//if(BarStat){
+//AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7;  
+//for(var a=0;a<AprveBar.ChildCount;a++){ 
+//  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
+//    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "");
+//    Log.Message(AprveBar.FullName);
+//    break;
+//  }
+//}
+//}
+//
+//if(BarStat){
+//AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6;  
+//for(var a=0;a<AprveBar.ChildCount;a++){ 
+//  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
+//    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "");
+//    Log.Message(AprveBar.FullName);
+//    break;
+//  }
+//}
+//}
 
-if(BarStat){
-AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6;  
+var AprveBar = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
 for(var a=0;a<AprveBar.ChildCount;a++){ 
-  if((AprveBar.Child(a).isVisible())&&(AprveBar.Child(a).Name.indexOf("PTabItemPanel")!=-1)&&(AprveBar.Child(a).Index==3)){ 
-    AprveBar = AprveBar.Child(a).SWTObject("TabControl", "");
-    Log.Message(AprveBar.FullName);
-    break;
+  if(AprveBar.Child(a).isVisible()){ 
+    var temp = AprveBar.Child(a);
+    Log.Message(temp.FullName)
+    for(var b=0;b<temp.ChildCount;b++){ 
+      if((temp.Child(b).isVisible())&&(temp.Child(b).Name.indexOf("PTabItemPanel")!=-1)){ 
+       AprveBar =  temp.Child(b);
+       Log.Message(AprveBar.FullName)
+       break;
+      
+      }
+    }
+
   }
-}
+
 }
 
 AprveBar.Click();
@@ -881,8 +900,8 @@ TextUtils.writeLog(Approve_Level.length+" Levels of Approvals for Created Budget
 
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //sheetName = "JobBudgetCreation";
 
 if(OpCo2[2]==Project_manager){
@@ -955,13 +974,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   ApvPerson.Refresh();
 }
 
-  if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//  if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Job is Approved by :"+loginPer)
   TextUtils.writeLog("Job is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Job is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Job is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Job is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Job is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 }
 else{ 
   ReportUtils.logStep("INFO","Approve Button Is Invisible");
@@ -1285,13 +1304,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   ApvPerson.Refresh();
 }
 
-    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Job is Approved by :"+userNmae)
   TextUtils.writeLog("Job is Approved by :"+userNmae); 
-  }else{ 
-  TextUtils.writeLog("Job is Approved by :"+userNmae+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Job is Approved by :"+userNmae+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Job is Approved by :"+userNmae+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Job is Approved by :"+userNmae+ "But its Not Reflected")
+//  }
 }
 else{ 
   ReportUtils.logStep("INFO","Approve Button Is Invisible");

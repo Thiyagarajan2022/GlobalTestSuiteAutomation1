@@ -5,7 +5,7 @@
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
- 
+//USEUNIT CreateVendorInvoice
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "";
@@ -311,6 +311,7 @@ ReportUtils.logStep_Screenshot();
  
   var dueDate = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.SWTObject("Composite", "", 5).SWTObject("McDatePickerWidget", "", 2);
   dueDate = dueDate.getText().OleValue.toString().trim();
+  CreateVendorInvoice.Language = Language;
   if(EnvParams.Country.toUpperCase()=="INDIA"){
   Runner.CallMethod("IND_VendorInvoice.TDS",TDSValue); 
   

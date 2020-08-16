@@ -196,6 +196,7 @@ var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compo
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
 if(table.getItem(v).getText_2(6).OleValue.toString().trim()==InvoiceNo){ 
+  table.Keys("[Down]");
 flag=true;    
 break;
 }

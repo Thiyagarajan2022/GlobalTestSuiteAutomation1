@@ -32,6 +32,7 @@ function TDS(TDSValue){
   Sys.HighlightObject(TDS);
   TDS.Click();
   if(TDS.getText()!=TDSValue){ 
+    
     WorkspaceUtils.TDS(TDS,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,CreateVendorInvoice.Language, "Local Specification 8").OleValue.toString().trim(),TDSValue,"TDS");
   }
   

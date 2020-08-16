@@ -199,9 +199,9 @@ try{
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
-    if(POSheet==""){ 
-      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice preparation")
-    }
+    if(POSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice preparation")
+//    }
     ExcelUtils.setExcelName(workBook, POSheet, true);
     var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
     if(JobSO==""){ 
@@ -239,12 +239,13 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    }
   //Approving PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
-    if(APSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice preparation")
-    }
+    if(APSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice preparation")
+//    }
     ExcelUtils.setExcelName(workBook, APSheet, true);
     var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -279,13 +280,13 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
    }
-
+}
    //Creation of Vendor Invoice
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var VISheet = ExcelUtils.getColumnDatas("Vendor Invoice Sheet",EnvParams.Opco)
-    if(VISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice preparation")
-    }
+    if(VISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice preparation")
+//    }
     ExcelUtils.setExcelName(workBook, VISheet, true);
     var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
     if(PO_SO==""){ 
@@ -325,15 +326,15 @@ try{
     ReportUtils.Dreport.flush();
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
-    
+    }
     }
  
     //Approve Vendor Invocie
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var AISheet = ExcelUtils.getColumnDatas("Approve Vendor Invocie sheet",EnvParams.Opco)
-    if(AISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
-    }
+    if(AISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
+//    }
     ExcelUtils.setExcelName(workBook, AISheet, true);
     var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -368,13 +369,14 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    
+    }
     //Post Vendor Journal
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var PVISheet = ExcelUtils.getColumnDatas("Post Vendor Invoice sheet",EnvParams.Opco)
-    if(PVISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
-    }
+    if(PVISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice preparation")
+//    }
+
 //    ExcelUtils.setExcelName(workBook, PVISheet, true);
 //    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
 //    if(serialOder==""){ 
@@ -408,6 +410,7 @@ try{
     ReportUtils.Dreport.flush();
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
+    }
     }
 TestRunner.testCaseId = Ipreparation_ID;
 TestRunner.unitName = IpreparationUnit;
@@ -875,10 +878,13 @@ aqUtils.Delay(1000, Indicator.Text);
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
-var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
-//var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite;
-//                  Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite
-                  
+//var SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+var SubmitDraft;
+  if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+ else
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+            
   WorkspaceUtils.waitForObj(SubmitDraft);
   for(var i=0;i<SubmitDraft.ChildCount;i++){ 
     if((SubmitDraft.Child(i).isVisible())&&(SubmitDraft.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit Draft").OleValue.toString().trim())){
@@ -1544,11 +1550,27 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }else{ 
 ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
-var printInvoice = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 8);
-Sys.HighlightObject(printInvoice);
-Log.Message(printInvoice.toolTipText)
-Log.Message(printInvoice.text)
-printInvoice.Click();
+//var printInvoice = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 8);
+var printInvoice = "";
+  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
+  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
+ else
+  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+    
+  
+   WorkspaceUtils.waitForObj(printInvoice);
+  for(var i=0;i<printInvoice.ChildCount;i++){ 
+    if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Invoice").OleValue.toString().trim())){
+      WorkspaceUtils.waitForObj(printInvoice.Child(i));
+      ReportUtils.logStep_Screenshot("");
+      printInvoice.Child(i).Click();
+      break;
+    }
+  } 
+//Sys.HighlightObject(printInvoice);
+//Log.Message(printInvoice.toolTipText)
+//Log.Message(printInvoice.text)
+//printInvoice.Click();
     TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
@@ -1641,6 +1663,7 @@ var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Invoice preparation No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management",PONum)
+  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 

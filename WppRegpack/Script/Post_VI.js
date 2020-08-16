@@ -254,11 +254,18 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     
 }
 
+ var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Transactions - Vendor Invoice Journal").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Transactions - Vendor Invoice Journal").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+
 //Sys.Process("Maconomy").SWTObject("Shell", "AP Transactions - Vendor Invoice Journal").SWTObject("Label", "Maconomy cannot show more lines. The table cannot be modified")
 //Sys.Process("Maconomy").SWTObject("Shell", "AP Transactions - Vendor Invoice Journal").SWTObject("Composite", "", 2).SWTObject("Button", "OK")
 var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 OKay.Click();
-
+}
 
 //var SaveTitle = "";
 //var sFolder = "";

@@ -19,6 +19,8 @@ var STIME = "";
 var POnumber = "";
 var Language = "";
 var POnum = "";
+var Project_manager = "";
+
 function ApprovePurchaseOrder(sheet,PO){ 
 TextUtils.writeLog("Approve Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
@@ -28,8 +30,8 @@ WorkspaceUtils.Language = Language;
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -209,7 +211,19 @@ ImageRepository.ImageSet.Show_Filter.Click();
   for(var i=0;i<ApproverTable.getItemCount();i++){   
      var approvers="";
       if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        var mainApprover = ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
+        var substitur = ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        var temp = "";
+        if(mainApprover .indexOf(Project_manager)==-1){ 
+          temp = temp+mainApprover+"*";
+        }else{ 
+          temp = temp+"SelfApprove"+"*";
+        }
+        if(substitur .indexOf(Project_manager)==-1){ 
+          temp = temp+substitur;
+        }
+      approvers = EnvParams.Opco+"*"+POnumber+"*"+ temp;
+//      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
       Log.Message("Approver level :" +i+ ": " +approvers);
       Approve_Level[y] = approvers;
       y++;
@@ -224,8 +238,8 @@ ImageRepository.ImageSet.Forward.Click();
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //sheetName = "ApprovePurchaseOrder";
 if(OpCo2[2]==Project_manager){
 level = 1;
