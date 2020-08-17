@@ -9,7 +9,7 @@
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-var sheetName = "InvoicePlansDirectInvoice";
+var sheetName = "InvoicePlansInvoiceOnAccount";
 var Approve_Level =[];
 var ApproveInfo = [];
 var Project_manager="";
@@ -212,7 +212,7 @@ Restart.login(Project_manager);
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "InvoicePlansDirectInvoice";
+sheetName = "InvoicePlansInvoiceOnAccount";
 STIME = "";
 Approve_Level =[];
 ApproveInfo = [];
@@ -244,7 +244,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function getDetails(){ 
-sheetName ="InvoicePlansDirectInvoice";  
+sheetName ="InvoicePlansInvoiceOnAccount";  
 //  ExcelUtils.setExcelName(workBook, "Data Management", true);
 //  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
 //  if((jobNumber=="")||(jobNumber==null)){

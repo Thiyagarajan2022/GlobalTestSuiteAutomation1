@@ -224,18 +224,18 @@ ReportUtils.logStep("INFO", "InvoicingPlans-Invoice On Account started::"+STIME)
 getDetails();
 gotoMenu();
 gotoInvoicing();
-//invoiceSelection();
-//WorkspaceUtils.closeAllWorkspaces();
-//for(var i=level;i<ApproveInfo.length;i++){
-//level=i;
-//WorkspaceUtils.closeMaconomy();
-//aqUtils.Delay(10000, Indicator.Text);
-//var temp = ApproveInfo[i].split("*");
-//Restart.login(temp[2]);
-//aqUtils.Delay(5000, Indicator.Text);
-//todo(temp[3]);
-//FinalApprove(temp[1],temp[2],i);
-//}
+invoiceSelection();
+WorkspaceUtils.closeAllWorkspaces();
+for(var i=level;i<ApproveInfo.length;i++){
+level=i;
+WorkspaceUtils.closeMaconomy();
+aqUtils.Delay(10000, Indicator.Text);
+var temp = ApproveInfo[i].split("*");
+Restart.login(temp[2]);
+aqUtils.Delay(5000, Indicator.Text);
+todo(temp[3]);
+FinalApprove(temp[1],temp[2],i);
+}
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
@@ -761,7 +761,11 @@ var SelectionBilling = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composit
         if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf(temp[0])==0){
           if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf("T")==0){
       aqUtils.Delay(100, Indicator.Text);
+      if(EnvParams.Country.toUpperCase()=="INDIA"){ 
+      SelectionBilling.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
+      }else{
       SelectionBilling.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
+      }
       var Employee = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
       WorkspaceUtils.waitForObj(Employee);
       Employee.Click();
@@ -841,6 +845,14 @@ var SaveStat = true;
       Sys.Desktop.KeyUp(0x10)
       Sys.Desktop.KeyUp(0x09)
       aqUtils.Delay(1000, Indicator.Text);
+      if(EnvParams.Country.toUpperCase()=="INDIA"){ 
+      aqUtils.Delay(4000, Indicator.Text);
+      Sys.Desktop.KeyDown(0x10)
+      Sys.Desktop.KeyDown(0x09)
+      Sys.Desktop.KeyUp(0x10)
+      Sys.Desktop.KeyUp(0x09)
+      aqUtils.Delay(1000, Indicator.Text); 
+      }
       break;
     }
     }

@@ -201,9 +201,9 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
-    if(POSheet==""){ 
-      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice from Budget")
-    }
+    if(POSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice from Budget")
+//    }
     ExcelUtils.setExcelName(workBook, POSheet, true);
     var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
     if(JobSO==""){ 
@@ -241,12 +241,14 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    }
+    
   //Approving PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
-    if(APSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice from Budget")
-    }
+    if(APSheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice from Budget")
+//    }
     ExcelUtils.setExcelName(workBook, APSheet, true);
     var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -281,13 +283,14 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
    }
+}
 
    //Creation of Vendor Invoice
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var VISheet = ExcelUtils.getColumnDatas("Vendor Invoice Sheet",EnvParams.Opco)
-    if(VISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice from Budget")
-    }
+    if(VISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice from Budget")
+//    }
     ExcelUtils.setExcelName(workBook, VISheet, true);
     var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
     if(PO_SO==""){ 
@@ -329,13 +332,13 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     ReportUtils.DStat = false;
     
     }
- 
+ }
     //Approve Vendor Invocie
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var AISheet = ExcelUtils.getColumnDatas("Approve Vendor Invocie sheet",EnvParams.Opco)
-    if(AISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
-    }
+    if(AISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
+//    }
     ExcelUtils.setExcelName(workBook, AISheet, true);
     var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -370,13 +373,14 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    
+    }
     //Post Vendor Journal
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var PVISheet = ExcelUtils.getColumnDatas("Post Vendor Invoice sheet",EnvParams.Opco)
-    if(PVISheet==""){ 
-      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
-    }
+    if(PVISheet!=""){ 
+//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
+//    }
+    
 //    ExcelUtils.setExcelName(workBook, PVISheet, true);
 //    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
 //    if(serialOder==""){ 
@@ -410,6 +414,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     ReportUtils.Dreport.flush();
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
+    }
     }
 TestRunner.testCaseId = IBudget_ID;
 TestRunner.unitName = IBudgetUnit;
