@@ -39,7 +39,11 @@ menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   menuBar.DblClick();
 
-if(ImageRepository.ImageSet.HR.Exists()){
+  
+if(ImageRepository.ImageSet.Human_Resource_1.Exists()){
+ImageRepository.ImageSet.Human_Resource_1.Click();
+}    
+else if(ImageRepository.ImageSet.HR.Exists()){
 ImageRepository.ImageSet.HR.Click();
 }
 else if(ImageRepository.ImageSet.HR1.Exists()){
@@ -615,7 +619,7 @@ if(WeekCalendarNo!=""){
   
 
 var CreateUser_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "").OleValue.toString().trim());
-if(CreateUser_1.getSelection()){ 
+if(!CreateUser_1.getSelection()){ 
   CreateUser_1.Click();
    ValidationUtils.verify(true,true,"Create user is selected to create");
   }

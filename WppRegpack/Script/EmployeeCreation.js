@@ -37,11 +37,14 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 ReportUtils.logStep_Screenshot("");
   menuBar.DblClick();
 
-if(ImageRepository.ImageSet.HR2.Exists()){
-ImageRepository.ImageSet.HR2.Click();
+if(ImageRepository.ImageSet.Human_Resource_1.Exists()){
+ImageRepository.ImageSet.Human_Resource_1.Click();
+}  
+else if(ImageRepository.ImageSet.Human_Resource.Exists()){
+ImageRepository.ImageSet.Human_Resource.Click();
 }
-else if(ImageRepository.ImageSet.HR1.Exists()){
-ImageRepository.ImageSet.HR1.Click();
+else if(ImageRepository.ImageSet.HumanResource.Exists()){
+ImageRepository.ImageSet.HumanResource.Click();
 }
 else if(ImageRepository.ImageSet.HR.Exists()){
 ImageRepository.ImageSet.HR.Click();  

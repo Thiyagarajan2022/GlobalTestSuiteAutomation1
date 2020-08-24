@@ -274,7 +274,10 @@
 			<image imageFileName="Data\Allocation_Wip_1.png" initialHash="C9C99837" selectionLeft="1038" selectionTop="325" selectionWidth="184" selectionHeight="17" initialLeft="1038" initialTop="325" initialWidth="184" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Workspace" moniker="{956F9E28-051F-4886-95FB-EA0F3B8E869F}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Workspace.png" initialHash="00000000" selectionLeft="37" selectionTop="51" selectionWidth="27" selectionHeight="24" initialLeft="37" initialTop="51" initialWidth="27" initialHeight="24" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Workspace.png" initialHash="A4B29502" selectionLeft="37" selectionTop="51" selectionWidth="27" selectionHeight="24" initialLeft="37" initialTop="51" initialWidth="27" initialHeight="24" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Human_Resource_1" moniker="{096B3F7E-E40D-4AA7-8C3B-ECED1B4141BD}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Human_Resource_1.png" initialHash="00000000" selectionLeft="35" selectionTop="478" selectionWidth="143" selectionHeight="29" initialLeft="35" initialTop="478" initialWidth="143" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>
