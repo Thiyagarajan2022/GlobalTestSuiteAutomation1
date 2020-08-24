@@ -35,8 +35,6 @@ var OpCo2 = [];
 var sLevel = true;
 var Taxcode1 = "";
 var Taxcode2 = "";
-//var excelName = EnvParams.getEnvironment();
-//ExcelUtils.setExcelName(Project.Path+excelName, "Approve Expenses Sheet Opco", true);
 
 function ApproveSSC() {
 Language = "";

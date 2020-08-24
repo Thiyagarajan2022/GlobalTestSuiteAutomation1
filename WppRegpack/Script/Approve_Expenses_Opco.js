@@ -33,8 +33,7 @@ var comapany = "";
 var approvers = [];
 var OpCo2 = [];
 var sLevel = true;
-//var excelName = EnvParams.getEnvironment();
-//ExcelUtils.setExcelName(Project.Path+excelName, "Approve Expenses Sheet Opco", true);
+
 
 function ApproveOpco() {
 Language = "";
