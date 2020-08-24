@@ -167,9 +167,16 @@ Delay(3000);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
     }   
+     if(Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Index==1)
      var table = Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
- 
+     else
+     var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+     
+    if(Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Index==1) 
     var sheetno = Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+    else
+    var sheetno = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McTextWidget", "")
+    
     Sys.HighlightObject(sheetno);    
     sheetno.Click();
     sheetno.setText(Expense_Number);
@@ -189,6 +196,10 @@ Delay(3000);
      }   
      TextUtils.writeLog("Expense Sheet is available in Maconomy :"+Expense_Number);
     ValidationUtils.verify(flag,true,"Expense Sheet is available in Maconomy"); 
+        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+      
+    }
+    
         Sys.Desktop.KeyDown(0x11);
         Sys.Desktop.KeyDown(0x46);
         Sys.Desktop.KeyUp(0x11);
@@ -198,15 +209,27 @@ Delay(3000);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
     }
+    if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Index==7)
     var desp = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+    else
+    var desp = Aliases.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+   
     WorkspaceUtils.waitForObj(desp);
     desp = desp.getText().OleValue.toString().trim()
     
+    if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Index==5)
     var Lcount = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
+    else
+    var Lcount = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
+    
     WorkspaceUtils.waitForObj(Lcount);
     Lcount = Lcount.getItemCount()-1;
     Log.Message(Lcount)
+    if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
         var Allaprovetab = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel.TabControl;
+    else
+        var Allaprovetab = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.TabControl
+          
         var Add_Visible8 = true;
         while(Add_Visible8){
             if(Allaprovetab.isEnabled()){
@@ -218,7 +241,11 @@ Delay(3000);
               aqUtils.Delay(2000,Indicator.Text);
               ImageRepository.ImageSet0.Maximize.Click();
         
+              if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
               var All_Approver = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.TabControl;
+              else
+              var All_Approver = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
+                   
               aqUtils.Delay(1000,Indicator.Text);
               All_Approver.Click();
               aqUtils.Delay(3000,Indicator.Text);
@@ -226,7 +253,11 @@ Delay(3000);
               if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
               }
+              if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
               var Approval_table = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+              else
+              var Approval_table = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+
               Sys.HighlightObject(Approval_table);  
             var tableCnt = Approval_table.getItemCount();
             tableCnt = tableCnt/Lcount;
@@ -248,7 +279,11 @@ Delay(3000);
           }
           
           
+          if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
           var info_Bar = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel2.TabControl;
+          else
+          var info_Bar = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel2.TabControl;
+          
           info_Bar.Click();
           Delay(4000);
           ImageRepository.ImageSet0.Forward.Click();
