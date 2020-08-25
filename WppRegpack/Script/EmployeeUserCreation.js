@@ -1524,34 +1524,34 @@ aqUtils.Delay(5000, label1);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
-WorkspaceUtils.waitForObj(screen);
-screen.Click();
-screen.MouseWheel(-10);
+//var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
+//WorkspaceUtils.waitForObj(screen);
+//screen.Click();
+//screen.MouseWheel(-10);
 
-var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
-.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 7).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
+//.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 7).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
 
 //var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
-WorkspaceUtils.waitForObj(ApvPerson);
-ApvPerson.Click();
+//WorkspaceUtils.waitForObj(ApvPerson);
+//ApvPerson.Click();
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-    var i=0;
-while ((ApvPerson.getText().OleValue.toString().trim().indexOf("Approved")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=600))
-{
-  aqUtils.Delay(100);
-  i++;
-  ApvPerson.Refresh();
-}
+//    var i=0;
+//while ((ApvPerson.getText().OleValue.toString().trim().indexOf("Approved")==-1)&&(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=600))
+//{
+//  aqUtils.Delay(100);
+//  i++;
+//  ApvPerson.Refresh();
+//}
 
-  if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+ // if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Created Employee and User is Approved by :"+loginPer)
   TextUtils.writeLog("Created Employee and User is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Created Employee and User is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 
 if(apvLvl==(ApproveInfo.length-1)){
   
