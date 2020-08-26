@@ -33,7 +33,8 @@ var comapany = "";
 var approvers = [];
 var OpCo2 = [];
 var sLevel = true;
-
+//var excelName = EnvParams.getEnvironment();
+//ExcelUtils.setExcelName(Project.Path+excelName, "Approve Expenses Sheet Opco", true);
 
 function ApproveOpco() {
 Language = "";
@@ -162,11 +163,13 @@ Delay(3000);
      else
      var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
      
+     Log.Message(table.FullName) 
     if(Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Index==1) 
     var sheetno = Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
     else
     var sheetno = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McTextWidget", "")
     
+    Log.Message(sheetno.FullName) 
     Sys.HighlightObject(sheetno);    
     sheetno.Click();
     sheetno.setText(Expense_Number);
@@ -201,28 +204,99 @@ Delay(3000);
       
     }
     
-    if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Index==7)
-    var desp = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
-    else
-    var desp = Aliases.Composite7.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
     
+    
+    
+    
+    
+    
+    
+ var desp = "";   
+ var Add_Stat = false;
+// var Language = "English";
+   var Parent = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+   for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+   for(var j=0;j<PChild.ChildCount;j++){
+     if((PChild.Child(j).isVisible())&&(PChild.Child(j).Index==2)){ 
+       var C_Child = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
+       if(C_Child.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Expense Sheet").OleValue.toString().trim()){ 
+         desp = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2)
+         Add_Stat = true;
+         break;
+       }
+       
+     }
+     
+   }
+   if(Add_Stat){ 
+     break;
+   }
+   }
+    
+    Sys.HighlightObject(desp)
+    Log.Message(desp.FullName) 
     WorkspaceUtils.waitForObj(desp);
     desp = desp.getText().OleValue.toString().trim()
     
-    if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Index==5)
-    var Lcount = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
-    else
-    var Lcount = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
+  var Lcount = "";   
+ var Add_Stat = false;
+// var Language = "English";
+   var Parent = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+   for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+   for(var j=0;j<PChild.ChildCount;j++){
+     if((PChild.Child(j).isVisible())&&(PChild.Child(j).Index==2)){ 
+       var C_Child = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
+       if(C_Child.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Registrations").OleValue.toString().trim()){ 
+         Lcount = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2)
+         Add_Stat = true;
+         break;
+       }
+       
+     }
+     
+   }
+   if(Add_Stat){ 
+     break;
+   }
+   }
     
+    Sys.HighlightObject(Lcount)
+
+    Log.Message(Lcount.FullName) 
     WorkspaceUtils.waitForObj(Lcount);
     Lcount = Lcount.getItemCount()-1;
     Log.Message(Lcount);
     
-    if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
-        var Allaprovetab = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel.TabControl;
-    else
-        var Allaprovetab = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.TabControl
-                
+      
+    var ChildCount = 0;
+    var Add = [];
+   var Parent = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+      for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     for(var j=0;j<PChild.ChildCount;j++){
+       if((PChild.Child(j).isVisible())&&(PChild.Child(j).JavaClassName=="PTabItemPanel")&&(PChild.Child(j).Index==3)){ 
+         Add[ChildCount] = PChild.Child(j).SWTObject("TabControl", "");
+         Log.Message(Add[ChildCount].FullName)
+         ChildCount++;
+       }
+     
+     }
+     }
+     var Allaprovetab = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].ScreenTop<pos){ 
+       pos = Add[i].ScreenTop;
+       Log.Message(pos)
+       Allaprovetab = Add[i];
+     }
+     
+     }
+     Sys.HighlightObject(Allaprovetab)
+
+        Log.Message(Allaprovetab.FullName)          
         var Add_Visible8 = true;
         while(Add_Visible8){
             if(Allaprovetab.isEnabled()){
@@ -234,11 +308,31 @@ Delay(3000);
               aqUtils.Delay(2000,Indicator.Text);
               ImageRepository.ImageSet0.Maximize.Click();
         
-              if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
-              var All_Approver = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.TabControl;
-              else
-              var All_Approver = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
-                    
+              if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+      
+              }
+              
+     var All_Approver = "";
+      var Add_Stat = false;
+       var Parent = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+      for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     for(var j=0;j<PChild.ChildCount;j++){
+       if((PChild.Child(j).isVisible())&&(PChild.Child(j).Index==2)){ 
+         All_Approver = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5);
+         Add_Stat = true;
+         break;
+       }
+       }
+       if(Add_Stat){ 
+         break;
+       }
+       
+       }
+        
+       Sys.HighlightObject(All_Approver) ;
+
+              Log.Message(All_Approver.FullName)
               aqUtils.Delay(1000,Indicator.Text);
               All_Approver.Click();
               aqUtils.Delay(3000,Indicator.Text);
@@ -247,12 +341,26 @@ Delay(3000);
       
               }
               
-              if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
-              var Approval_table = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-              else
-              var Approval_table = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
-
-              
+     var Approval_table = "";
+      var Add_Stat = false;
+       var Parent = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+      for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     for(var j=0;j<PChild.ChildCount;j++){
+       if((PChild.Child(j).isVisible())&&(PChild.Child(j).Index==2)){ 
+         Approval_table = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("Composite", "", 4).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
+         Add_Stat = true;
+         break;
+       }
+       }
+       if(Add_Stat){ 
+         break;
+       }
+       
+       }
+        
+       Sys.HighlightObject(Approval_table) ;
+              Log.Message(Approval_table.FullName)
               Sys.HighlightObject(Approval_table);  
             var tableCnt = Approval_table.getItemCount();
             tableCnt = tableCnt/Lcount;
@@ -273,11 +381,28 @@ Delay(3000);
               }
           }
           
-          if(Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Index==6)
-          var info_Bar = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel2.TabControl;
-          else
-          var info_Bar = Aliases.Maconomy.CreateBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel2.TabControl;
-          
+         
+      var info_Bar = "";
+      var Add_Stat = false;
+       var Parent = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite;
+      for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     for(var j=0;j<PChild.ChildCount;j++){
+       if((PChild.Child(j).isVisible())&&(PChild.Child(j).JavaClassName=="PTabItemPanel")&&(PChild.Child(j).Index==1)){ 
+         info_Bar = PChild.Child(j).SWTObject("TabControl", "");
+         Add_Stat = true;
+         break;
+       }
+       }
+       if(Add_Stat){ 
+         break;
+       }
+       
+       }
+        
+       Sys.HighlightObject(info_Bar) ;
+
+          Log.Message(info_Bar.FullName)
           info_Bar.Click();
           Delay(4000);
           ImageRepository.ImageSet0.Forward.Click();

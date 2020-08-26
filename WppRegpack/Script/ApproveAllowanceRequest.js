@@ -84,7 +84,8 @@ aqUtils.Delay(3000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+//var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim())
                                 
 WorkspaceUtils.waitForObj(all);
 all.HoverMouse();
@@ -190,7 +191,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
   
-  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+//  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Awaiting Approval").OleValue.toString().trim())
   Sys.HighlightObject(Awaitingaprovaltab);
   Sys.HighlightObject(Awaitingaprovaltab);
   Awaitingaprovaltab.Click();
@@ -298,7 +300,7 @@ TextUtils.writeLog("Entering EnterDate :"+Reason1);
 aqUtils.Delay(3000, "Checking Labels");
 
 //Spanish
-var approverequest=Aliases.Maconomy.ApproveAllowanceRequest.Composite.Composite.Composite2.Composite.Button;
+var approverequest=Aliases.Maconomy.ApproveAllowanceRequest.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Request").OleValue.toString().trim());
  Sys.HighlightObject(approverequest);
   ReportUtils.logStep_Screenshot("");  
 approverequest.Click();

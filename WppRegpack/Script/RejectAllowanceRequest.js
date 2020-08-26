@@ -82,7 +82,7 @@ aqUtils.Delay(3000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim())
                                 
 WorkspaceUtils.waitForObj(all);
 all.HoverMouse();
@@ -183,8 +183,9 @@ aqUtils.Delay(6000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-  
-  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Awaiting Approval").OleValue.toString().trim())
+//  var Awaitingaprovaltab = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+//  .SWTObject("Button", "等待审批")
   Sys.HighlightObject(Awaitingaprovaltab);
   Sys.HighlightObject(Awaitingaprovaltab);
   Awaitingaprovaltab.Click();
@@ -273,7 +274,8 @@ ReportUtils.logStep_Screenshot("");
 rr1.Click();
 rr1.setText("Rejected");
 aqUtils.Delay(3000, "Checking Labels");
-var rejectrequest= Aliases.Maconomy.RejectAllowance.Composite.Composite.Composite2.Composite.Button;
+
+var rejectrequest= Aliases.Maconomy.RejectAllowance.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject Request").OleValue.toString().trim());
 Sys.HighlightObject(rejectrequest);
 ReportUtils.logStep_Screenshot("");  
 rejectrequest.Click();
@@ -301,8 +303,8 @@ aqUtils.Delay(3000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
-                                
+//var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+var all = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All").OleValue.toString().trim())                        
 WorkspaceUtils.waitForObj(all);
 all.HoverMouse();
 ReportUtils.logStep_Screenshot("");
@@ -367,7 +369,13 @@ Sys.HighlightObject(table);
  
 aqUtils.Delay(1000,"waiting for window");
 //Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1707 Finance (TST)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 7)
-var ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
+//var ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
+var ReOpen;
+  if(Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.isVisible())
+  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 5);
+ else
+  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 5);
+
 WorkspaceUtils.waitForObj(ReOpen);
 ReOpen.HoverMouse();
 ReportUtils.logStep_Screenshot("");
@@ -380,7 +388,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
+
+var submit;
+  if(Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.isVisible())
+  submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
+ else
+  submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);
+
+//var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(submit);
 submit.HoverMouse();
 ReportUtils.logStep_Screenshot("");

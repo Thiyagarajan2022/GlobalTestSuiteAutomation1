@@ -74,8 +74,17 @@ function gotoAbsence() {
  absencerequest.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
 
-}
- var newrequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl3;
+  }
+  
+  
+var newrequest;
+  if(Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.isVisible())
+  newrequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl3;
+ else
+  newrequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3);
+
+                
+// var newrequest = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl3;
  Sys.HighlightObject(newrequest)
  waitForObj(newrequest);
  ReportUtils.logStep_Screenshot();
@@ -202,7 +211,7 @@ aqUtils.Delay(5000, Indicator.Text);
   Log.Message(Type)
   Log.Message(table.getItem(v).getText_2(6).OleValue.toString().trim()==Type)
   if(table.getItem(v).getText_2(6).OleValue.toString().trim()==Type){ 
-    Duration = table.getItem(v).getText_2().OleValue.toString().trim()
+    Duration = table.getItem(v).getText_2(1).OleValue.toString().trim()
   flag=true;    
   break;
   }
@@ -212,7 +221,13 @@ aqUtils.Delay(5000, Indicator.Text);
   }
  ValidationUtils.verify(flag,true,"Created Absence Request is available in system");
      
-       var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
+ var submit;
+  if(Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.isVisible())
+  submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
+ else
+  submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);
+
+//       var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
        Sys.HighlightObject(submit);
        ReportUtils.logStep_Screenshot();
        waitForObj(submit);

@@ -17,6 +17,9 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var company,PurchOrderNo,InvoiceNo,Description,IDate,EDate,TDSValue ="";
 var Language = "";
+var paymentMode = "";
+var ExlAmount = "";
+var remainAmount = "";
 
 function CreateInvoice(){ 
 TextUtils.writeLog("Create Vendor Invoice Started"); 
@@ -46,17 +49,20 @@ mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 STIME = "";
 company,PurchOrderNo,InvoiceNo,Description,IDate,EDate,TDSValue ="";
+paymentMode = "";
+ExlAmount = "";
+remainAmount = "";
 
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Creating Vendor Invoice started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-try{
+//try{
 getDetails();
 goToJobMenuItem(); 
 invoiceAllocation();
-}catch(err){ 
-  Log.Message(err);
-}
+//}catch(err){ 
+//  Log.Message(err);
+//}
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -356,9 +362,11 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var npEdit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
 npEdit.Click();
 npEdit.MouseWheel(100);
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var reaminder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget2.Composite.McTextWidget;
-var remainAmount = reaminder.getText().OleValue.toString();
+remainAmount = reaminder.getText().OleValue.toString();
 remainAmount=remainAmount.replace("-","");
 var amountIncluTax = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.Composite4.McTextWidget;
 if(remainAmount!="0.00"){ 
@@ -368,6 +376,24 @@ var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+Delay(4000);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+paymentMode = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McValuePickerWidget", "", 2);
+Sys.HighlightObject(paymentMode)
+paymentMode = paymentMode.getText().OleValue.toString();
+Log.Message("paymentMode :"+paymentMode);
+ExlAmount = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.SWTObject("Composite", "", 8).SWTObject("McTextWidget", "", 2);
+ExlAmount = ExlAmount.getText().OleValue.toString();
+Log.Message("ExlAmount :"+ExlAmount);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Vendor Invoice Payment Mode",EnvParams.Opco,"Data Management",paymentMode)
+ExcelUtils.WriteExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management",remainAmount);
+ExcelUtils.WriteExcelSheet("VendorInvoice ExclAmount",EnvParams.Opco,"Data Management",ExlAmount);
 TextUtils.writeLog("Tax is Validated");
 TextUtils.writeLog("Tax Details is Entered and Saved");
 var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
@@ -377,33 +403,7 @@ action.Click();
 //aqUtils.Delay(2000, "Waiting for Action");
 //aqUtils.Delay(3000, Indicator.Text);
 action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attach Document").OleValue.toString().trim());
-/*
-//  Sys.Process("Maconomy").Refresh();
-  var table = Sys.Process("Maconomy").Window("#32768", "", 1);
-  Sys.HighlightObject(table);
-  Sys.Desktop.KeyDown(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyUp(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyDown(0x28);
-  Sys.Desktop.KeyUp(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyDown(0x28);
-  Sys.Desktop.KeyUp(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyDown(0x28);
-  Sys.Desktop.KeyUp(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyDown(0x28);
-  Sys.Desktop.KeyUp(0x28);
-  Delay(1000);
-  Sys.Desktop.KeyDown(0x28);
-  Sys.Desktop.KeyUp(0x28);
-  ReportUtils.logStep_Screenshot();
-  Sys.Desktop.KeyDown(0x0D);
-  Sys.Desktop.KeyUp(0x0D);
-*/
-//  aqUtils.Delay(4000, Indicator.Text);;
+
   TextUtils.writeLog("Document is Attached for Invoice");
   var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   WorkspaceUtils.waitForObj(dicratory);
@@ -414,6 +414,10 @@ action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Proje
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Attaching Document");
+  Delay(4000);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
   WorkspaceUtils.waitForObj(action);
   action.Click();
@@ -457,6 +461,10 @@ ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Invoice Journal NO",EnvParams.Opco,"Data Management",journalNumber);
 ExcelUtils.WriteExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management",InvoiceNo);
 ExcelUtils.WriteExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management",dueDate)
+ExcelUtils.WriteExcelSheet("Vendor Invoice Payment Mode",EnvParams.Opco,"Data Management",paymentMode)
+ExcelUtils.WriteExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management",remainAmount);
+ExcelUtils.WriteExcelSheet("VendorInvoice ExclAmount",EnvParams.Opco,"Data Management",ExlAmount);
+
 TextUtils.writeLog("Created Vendor Invoice Journal Number :"+journalNumber);
 }
 

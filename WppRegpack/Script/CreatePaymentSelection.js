@@ -28,41 +28,63 @@ var amount ="";
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
-Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
-Log.Message(Paymentagent)
-if((Paymentagent==null)||(Paymentagent=="")){ 
-ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
+//Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
+//Log.Message(Paymentagent)
+//if((Paymentagent==null)||(Paymentagent=="")){ 
+//ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
+//}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymodemode = ReadExcelSheet("Vendor Invoice Payment Mode",EnvParams.Opco,"Data Management");
+if((Paymodemode=="")||(Paymodemode==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco) 
 }
-Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
 Log.Message(Paymodemode)
 if((Paymodemode==null)||(Paymodemode=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
-PrintLayout = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
-Log.Message(PrintLayout)
-if((PrintLayout==null)||(PrintLayout=="")){ 
-ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
-}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Duedate = ReadExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management");
+if((Duedate=="")||(Duedate==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+}
 Log.Message(Duedate)
 if((Duedate==null)||(Duedate=="")){ 
 ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+amount = ReadExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management");
+if((amount=="")||(amount==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+}
 Log.Message(amount)
 if((amount==null)||(amount=="")){ 
 ValidationUtils.verify(false,true,"Amount is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
 layoutTypes = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
 Log.Message(layoutTypes)
 if((layoutTypes==null)||(layoutTypes=="")){ 
 ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Invoicenumber = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((Invoicenumber=="")||(Invoicenumber==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+}
 Log.Message(Invoicenumber)
 if((Invoicenumber==null)||(Invoicenumber=="")){ 
 ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
 }
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
 Log.Message(VendorNo)
@@ -133,6 +155,10 @@ function goToAp(){
 
 function CreatePaymentSeletion() {
 ReportUtils.logStep("INFO", "Enter Bank Details");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
  var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(banking);
   WorkspaceUtils.waitForObj(banking);
@@ -161,6 +187,9 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   }
   
   
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var company = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
     waitForObj(company);
   Sys.HighlightObject(company)
@@ -174,13 +203,13 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   WorkspaceUtils.SearchByValue(company1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
   
-  var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
-   if(Paymentagent!=""){
-  paymentAgent.Click();
-  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
-}else{ 
-  ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
-}
+//  var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
+//   if(Paymentagent!=""){
+//  paymentAgent.Click();
+//  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
+//}else{ 
+//  ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
+//}
   
   Log.Message(Paymodemode)
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget;
@@ -191,10 +220,14 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
   }
 
- 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var createselection = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPlainCheckboxView.Button;
     createselection.Click();
-    
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   Log.Message(Duedate)
    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite2.McDatePickerWidget;
    Sys.HighlightObject(duedate);
@@ -211,10 +244,16 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
       ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment Selection");
     } 
   ReportUtils.logStep_Screenshot();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
   scroll.MouseWheel(-200);
   aqUtils.Delay(1000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
+
 //   if(ExchangeDate!=""){
 //   var exchange = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.McDatePickerWidget;
 //   Sys.HighlightObject(exchange);
@@ -234,20 +273,32 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   Log.Message(layoutTypes)
   layout.Keys(layoutTypes);
   Delay(5000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   waitForObj(save)
   Sys.HighlightObject(save)
   save.Click();
   ReportUtils.logStep_Screenshot();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var print = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   waitForObj(print)
   print.Click();
-
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//  
+//}
+Delay(5000)
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//  
+//}
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "PaymentSelection"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "PaymentSelection"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("PaymentSelection")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(5000, Indicator.Text);
 
 Sys.HighlightObject(pdf)
 Sys.Desktop.KeyDown(0x12); //Alt
@@ -293,8 +344,16 @@ Log.Error("Could not create the folder " + sFolder);
 save.Keys(sFolder+SaveTitle+".pdf");
 
 var filepathforMplValidation =sFolder+SaveTitle+".pdf";
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)

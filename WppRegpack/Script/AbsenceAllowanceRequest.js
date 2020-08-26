@@ -130,7 +130,15 @@ aqUtils.Delay(9000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var newallowancerequestBtn = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl;
+
+var newallowancerequestBtn;
+  if(Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.isVisible())
+  newallowancerequestBtn = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl;
+ else
+  newallowancerequestBtn = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3);
+
+   
+//var newallowancerequestBtn = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl;
                                 
 WorkspaceUtils.waitForObj(newallowancerequestBtn);
 newallowancerequestBtn.HoverMouse();
@@ -249,7 +257,13 @@ aqUtils.Delay(4000, "Checking Labels");
   }
  ValidationUtils.verify(flag,true,"Created Allowance Request is available in system");
  
-var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
+var submit;
+  if(Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.isVisible())
+  submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
+ else
+  submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);
+
+//var submit = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(submit);
 submit.HoverMouse();
 ReportUtils.logStep_Screenshot("");

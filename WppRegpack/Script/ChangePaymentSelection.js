@@ -16,7 +16,7 @@ var Arrays = [];
 var count = true;
 var checkmark = false;
 var STIME = "";
-var DueDate="";
+var Duedate="";
 var VendorNo="";
 var Paymentagent="";
 var Paymodemode="";
@@ -28,31 +28,62 @@ var InvoiceNo=""
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
-Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
-Log.Message(Paymentagent)
-if((Paymentagent==null)||(Paymentagent=="")){ 
-ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
+//Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
+//Log.Message(Paymentagent)
+//if((Paymentagent==null)||(Paymentagent=="")){ 
+//ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
+//}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymodemode = ReadExcelSheet("Vendor Invoice Payment Mode",EnvParams.Opco,"Data Management");
+if((Paymodemode=="")||(Paymodemode==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco) 
 }
-Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
 Log.Message(Paymodemode)
 if((Paymodemode==null)||(Paymodemode=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
-DueDate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
-Log.Message(DueDate)
-if((DueDate==null)||(DueDate=="")){ 
+
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//Duedate = ReadExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management");
+//if((Duedate=="")||(Duedate==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+//}
+Log.Message(Duedate)
+if((Duedate==null)||(Duedate=="")){ 
 ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
 }
-InvoiceNo = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
-Log.Message(InvoiceNo)
-if((InvoiceNo==null)||(InvoiceNo=="")){ 
-ValidationUtils.verify(false,true,"InvoiceNo  is Needed to Create a Payment Selection");
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+amount = ReadExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management");
+if((amount=="")||(amount==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
 }
+Log.Message(amount)
+if((amount==null)||(amount=="")){ 
+ValidationUtils.verify(false,true,"Amount is Needed to Create a Payment Selection");
+}
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
 layout = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
 Log.Message(layout)
 if((layout==null)||(layout=="")){ 
 ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+InvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((InvoiceNo=="")||(InvoiceNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+InvoiceNo = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+}
+Log.Message(InvoiceNo)
+if((InvoiceNo==null)||(InvoiceNo=="")){ 
+ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
+}
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
 Log.Message(VendorNo)
@@ -64,6 +95,7 @@ Log.Message(VendorNo)
 if((VendorNo==null)||(VendorNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment Selection");
 }
+
 }
 
 
@@ -106,6 +138,9 @@ function goToAp(){
 
 function CreatePaymentSeletion() {
 ReportUtils.logStep("INFO", "Enter Bank Details");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 // Sys.HighlightObject(banking);
 //  WorkspaceUtils.waitForObj(banking);
@@ -114,6 +149,9 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
  create.Click();
 
   ReportUtils.logStep_Screenshot("");
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var vendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   Sys.HighlightObject(vendor);
   if(VendorNo!=""){
@@ -149,13 +187,13 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   WorkspaceUtils.SearchByValue(company1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
   
-  var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
-   if(Paymentagent!=""){
-  paymentAgent.Click();
-  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
-}else{ 
-  ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
-}
+//  var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
+//   if(Paymentagent!=""){
+//  paymentAgent.Click();
+//  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
+//}else{ 
+//  ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment Selection");
+//}
   
   Log.Message(Paymodemode)
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McValuePickerWidget;
@@ -170,26 +208,32 @@ ReportUtils.logStep("INFO", "Enter Bank Details");
   var createselection = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPlainCheckboxView.Button;
     createselection.Click();
     
-  Log.Message(DueDate)
+  Log.Message(Duedate)
    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite2.McDatePickerWidget;
    Sys.HighlightObject(duedate);
    
-   if(duedate.getText()!=DueDate){
-      if(DueDate!=""){
+//   if(duedate.getText()!=DueDate){
+//      if(DueDate!=""){
        aqUtils.Delay(1000, Indicator.Text);
-       duedate.setText(DueDate);
+       duedate.setText(Duedate);
 //          WorkspaceUtils.CalenderDateSelection(duedate,DueDate)
           ValidationUtils.verify(true,true,"Due Date is selected in Maconomy"); 
-        }
-    }
-    else{ 
-      ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment Selection");
-    } 
+//        }
+//    }
+//    else{ 
+//      ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment Selection");
+//    } 
 ReportUtils.logStep_Screenshot();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
  var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
   scroll.MouseWheel(-200);
   aqUtils.Delay(1000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
+
 //   if(ExchangeDate!=""){
 //   var exchange = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.McDatePickerWidget;
 //   Sys.HighlightObject(exchange);
@@ -209,14 +253,20 @@ ReportUtils.logStep_Screenshot();
   layoutOPtion.Keys(layout);
 //layout.Keys("Standard");
   aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   Sys.HighlightObject(save)
   save.Click();
 ReportUtils.logStep_Screenshot();
 aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var print = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   print.Click();
-
+aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "PaymentSelection"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
@@ -265,8 +315,17 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 var filepathforMplValidation =sFolder+SaveTitle+".pdf";
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
@@ -425,11 +484,18 @@ TextUtils.writeLog("Entering into Banking Transactions from Jobs Menu");
 function changePaymentSelection()
 {
   
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+  
 var ApprveTab =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.ApproveTab;
 waitForObj(ApprveTab);
 
 ApprveTab.Click();
 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
 var PayToVendorFrom =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.PaytoVendorFromDate;
   Sys.HighlightObject(PayToVendorFrom);
@@ -471,6 +537,21 @@ var PayToVendorToValue  =Aliases.Maconomy.ChangePaymentSelection.Composite.Compo
   company1.Click();
   WorkspaceUtils.SearchByValue(company1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
+    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McDatePickerWidget;
+  duedate.Click();
+ duedate.setText(" ");
+    
+     var duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;  
+     duedate1.Click();
+     duedate1.setText(" ");
+     
+   var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;   
+  paymentAgent.Click();
+  paymentAgent.setText(" ");
+  
+    var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;   
+  paymentMode.Click();
+  paymentMode.setText(" ");
   
  // var latestDueDate =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.LatestDueDate;
   
@@ -480,13 +561,18 @@ var PayToVendorToValue  =Aliases.Maconomy.ChangePaymentSelection.Composite.Compo
   
   aqUtils.Delay(1000, Indicator.Text);
 //  var scroll =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
+var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10
+  scroll.MouseWheel(-1);
 //  scroll.MouseWheel(-200);
-//  scroll.MouseWheel(-200);
-//  aqUtils.Delay(1000, Indicator.Text);
+  aqUtils.Delay(3000, Indicator.Text);
 //  
 
 if(ImageRepository.ImageSet_Banking.EntriesDown.Exists()){
  ImageRepository.ImageSet_Banking.EntriesDown.Click();// GL
+}
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
 }
   
   var showEntriesCheckBox =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McPlainCheckboxView.ShowEntriesCheckBox;
@@ -500,11 +586,15 @@ ReportUtils.logStep_Screenshot("");
     checkmark = true;
   }
   
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+} 
   var EntriesUp =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.EntriesUpButton;
   aqUtils.Delay(1000, Indicator.Text);
   EntriesUp.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
   var EntriesTable = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable;
 waitForObj(EntriesTable);
        Sys.HighlightObject(EntriesTable);       
@@ -521,6 +611,10 @@ waitForObj(EntriesTable);
              flag = true
             Log.Message(EntriesTable.getItem(i).getText(2).OleValue.toString().trim())
             ValidationUtils.verify(true,true,"Invoice Number is available in the table");
+            EntriesTable.Keys("[Tab][Tab][Tab]");
+              if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+              }
             break;
           }
           else{
@@ -528,7 +622,7 @@ waitForObj(EntriesTable);
           }
         }       
              
-       EntriesTable.Keys("[Tab][Tab][Tab]");
+       
        
     aqUtils.Delay(1000, Indicator.Text);
        
@@ -537,15 +631,28 @@ waitForObj(EntriesTable);
   ValidationUtils.verify(flag,true,"Invoice No is Present in Table");
   TextUtils.writeLog("Invoice No is Present in Table");
   aqUtils.Delay(1000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 //     var DueDateTable = Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.EntriesTable.DueDateTableField
-      EntriesTable.Keys(DueDate); 
+var Date = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McDatePickerWidget;
+Date.Click();
+      Date.setText(Duedate); 
 //       DueDateTable.setText(DueDate);
        
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
        var savebutton =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
        
        savebutton.Click();
        
         aqUtils.Delay(1000, Indicator.Text);
+          if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+          }
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management",Duedate)
        
 }
 

@@ -237,7 +237,9 @@ ReportUtils.logStep_Screenshot();
   ReportUtils.logStep_Screenshot("");
   waitForObj(Approve)
   Approve.Click();
-  TextUtils.writeLog("Approve Absence Request is Approved by:"+login);  
+  TextUtils.writeLog("Approve Absence Request is Approved by:"+login);
+  
+/*  
 aqUtils.Delay(10000,"waiting for window");
 
  var p = Sys.Process("Maconomy");
@@ -253,6 +255,7 @@ aqUtils.Delay(10000,"waiting for window");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+*/
 
 }
 

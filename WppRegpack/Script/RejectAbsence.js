@@ -326,7 +326,13 @@ aqUtils.Delay(1000,"waiting for window");
           }
         } 
  
-       var Undo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
+ var Undo;
+  if(Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.isVisible())
+  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SWTObject("SingleToolItemControl", "", 5);
+ else
+  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 5);
+
+//       var Undo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
        Sys.HighlightObject(Undo);
        ReportUtils.logStep_Screenshot();
        waitForObj(Undo);
@@ -338,7 +344,14 @@ aqUtils.Delay(1000,"waiting for window");
  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
 
 }
-       var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
+
+ var submit;
+  if(Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.isVisible())
+  submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
+ else
+  submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);
+
+//       var submit = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl4;
        Sys.HighlightObject(submit);
        ReportUtils.logStep_Screenshot();
        waitForObj(submit);
