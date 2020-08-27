@@ -240,9 +240,12 @@ ImageRepository.ImageSet.Forward.Click();
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-sheetName = "ApprovePurchaseOrder";
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//sheetName = "ApprovePurchaseOrder";
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
+    
 if(OpCo2[2]==Project_manager){
 level = 1;
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
@@ -552,6 +555,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
 WorkspaceUtils.waitForObj(approvertable)
 ReportUtils.logStep_Screenshot();
+
+for(var i=0;i<approvertable.getItemCount();i++){   
+var approvers="";
+if(approvertable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+ValidationUtils.verify(true,false,"Created PO is not Approved")
+}
+}
+
 }
 }
 ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)

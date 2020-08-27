@@ -228,8 +228,11 @@ ImageRepository.ImageSet.Show_Filter.Click();
 TextUtils.writeLog("Finding approvers for Created Purchase Order");
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
 sheetName = "RejectPurchaseOrder";
 if(OpCo2[2]==Project_manager){
 level = 1;

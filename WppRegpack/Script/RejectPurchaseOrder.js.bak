@@ -207,7 +207,19 @@ ImageRepository.ImageSet.Show_Filter.Click();
   for(var i=0;i<ApproverTable.getItemCount();i++){   
      var approvers="";
       if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        var mainApprover = ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
+        var substitur = ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        var temp = "";
+        if(mainApprover .indexOf(Project_manager)==-1){ 
+          temp = temp+mainApprover+"*";
+        }else{ 
+          temp = temp+"SelfApprove"+"*";
+        }
+        if(substitur .indexOf(Project_manager)==-1){ 
+          temp = temp+substitur;
+        }
+      approvers = EnvParams.Opco+"*"+POnumber+"*"+ temp;
+//      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
       Log.Message("Approver level :" +i+ ": " +approvers);
       Approve_Level[y] = approvers;
       y++;

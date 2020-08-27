@@ -241,6 +241,8 @@ var OpCo2 = ApproveInfo[0].split("*");
 //ExcelUtils.setExcelName(workBook, "Server Details", true);
 //var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //sheetName = "ApprovePurchaseOrder";
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
 if(OpCo2[2]==Project_manager){
 level = 1;
 var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
