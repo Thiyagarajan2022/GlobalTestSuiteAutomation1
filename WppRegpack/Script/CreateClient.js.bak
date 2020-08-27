@@ -29,9 +29,11 @@ TextUtils.writeLog("Global Client Creation Started");
 
 //Setting Language in WorkspaceUtils
 Language = "";
+Log.Message("EnvParams.Language :"+EnvParams.Language)
 Language = EnvParams.Language;
 Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
+Log.Message("Language :"+Language)
 
 //Checking Login for Client Creation
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -82,6 +84,10 @@ attachDocument();
 Information();
 ApprvalInformation();
 //CredentialLogin();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
 for(var i=level;i<ApproveInfo.length;i++){
 level=i;
 WorkspaceUtils.closeMaconomy();
@@ -674,8 +680,13 @@ Sys.HighlightObject(screen);
   screen.MouseWheel(-200);
 
 var DueDiligence = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite14.Confirm_Due_Diligence;
-DueDiligence.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
-
+Sys.HighlightObject(DueDiligence)
+Log.Message(Language)
+Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
+//DueDiligence.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  DueDiligence.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",DueDiligence)
+  
 var next = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim());
 waitForObj(next);
 next.Click();
@@ -690,9 +701,11 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
   Sys.HighlightObject(client_identification);
   Sys.HighlightObject(client_identification);
    var cancel = Sys.Process("Maconomy").SWTObject("Shell", "*").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim())
- waitForObj(cancel)
-
-  client_identification.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  waitForObj(cancel)
+  Sys.HighlightObject(client_identification);
+  client_identification.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",client_identification)
+//  client_identification.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
  
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.Street1_textbox;
  checks_did_you_perform.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
@@ -703,14 +716,20 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
 
   
  var company_owner = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.Dropdown;
-  company_owner.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+//  company_owner.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  Sys.HighlightObject(company_owner);
+  company_owner.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",company_owner)
 
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.Textbox;
  Sys.HighlightObject(checks_did_you_perform);
  checks_did_you_perform.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
 
  var foreign_jurisdictions = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.Dropdown;
-  foreign_jurisdictions.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+//  foreign_jurisdictions.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  Sys.HighlightObject(foreign_jurisdictions);
+  foreign_jurisdictions.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",foreign_jurisdictions)
 
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.TextBox;
  Sys.HighlightObject(checks_did_you_perform);
@@ -719,7 +738,10 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
   
  var sanction_lists = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.ControlAccount;
  Sys.HighlightObject(sanction_lists);
- sanction_lists.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+// sanction_lists.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  Sys.HighlightObject(sanction_lists);
+  sanction_lists.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",sanction_lists)
   
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.TextBox;
  Sys.HighlightObject(checks_did_you_perform); 
@@ -727,7 +749,10 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
 
   
  var potential_client_conflicts = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite15.DropDown;
-  potential_client_conflicts.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+//  potential_client_conflicts.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  Sys.HighlightObject(potential_client_conflicts);
+  potential_client_conflicts.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",potential_client_conflicts)
 
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite16.TextBox;
  Sys.HighlightObject(checks_did_you_perform); 
@@ -735,7 +760,10 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
 
   
  var new_client_can_pay = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite17.DropDown;
-  new_client_can_pay.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+//  new_client_can_pay.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
+  Sys.HighlightObject(new_client_can_pay);
+  new_client_can_pay.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",new_client_can_pay)
 
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite18.TextBox;
  Sys.HighlightObject(checks_did_you_perform);  
@@ -900,9 +928,8 @@ save.Click();
 function attachDocument(){ 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   } 
+  aqUtils.Delay(4000, "Finding Document");;
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
   }else if(EnvParams.Country.toUpperCase()=="SPAIN"){ 
@@ -1378,6 +1405,8 @@ aqUtils.Delay(8000, Indicator.Text); ;
   ExcelUtils.WriteExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management",brand)
   ExcelUtils.WriteExcelSheet("Global Product Number",EnvParams.Opco,"Data Management",ClientNum+"001001")
   ExcelUtils.WriteExcelSheet("Global Product Name",EnvParams.Opco,"Data Management",product)
+  ExcelUtils.WriteExcelSheet("Global Client Currency",EnvParams.Opco,"Data Management",currency)
+  
   TextUtils.writeLog("Global Client Number :"+ClientNum); 
   TextUtils.writeLog("Global Client Name :"+clientName);
   TextUtils.writeLog("Global Brand Number :"+ClientNum+"001");

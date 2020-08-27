@@ -24,6 +24,7 @@ var clientEstimate = [];
 var RevisionNo = "";
 var Language = "";
 var C_Currency = "";
+var Project_manager = "";
 var QuoteDetails = [];
 function CreateQuote(){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
@@ -1681,13 +1682,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   i++;
   ApvPerson.Refresh();
 }
-if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Client Approved Estimate is Approved by :"+loginPer)
   TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 }
 }
 
@@ -1950,13 +1951,13 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
   i++;
   ApvPerson.Refresh();
 }
-if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+//if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Client Approved Estimate is Approved by :"+loginPer)
   TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
-  }
+//  }else{ 
+//  TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected"); 
+//  ValidationUtils.verify(true,false,"Client Approved Estimate is Approved by :"+loginPer+ "But its Not Reflected")
+//  }
 
 }
 else{ 
