@@ -207,6 +207,9 @@ ImageRepository.ImageSet.Show_Filter.Click();
   var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
   WorkspaceUtils.waitForObj(purchaseApproval);
   purchaseApproval.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(ApproverTable);
   var y=0;
@@ -455,6 +458,10 @@ WorkspaceUtils.waitForObj(firstCell);
 firstCell.setText(PONum);
 var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
 WorkspaceUtils.waitForObj(table);
+aqUtils.Delay(3000, "Reading Data from table");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 aqUtils.Delay(3000, "Reading Data from table");;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
