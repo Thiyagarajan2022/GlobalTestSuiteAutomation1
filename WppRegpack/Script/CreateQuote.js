@@ -524,7 +524,7 @@ printdraft.Click();
 TextUtils.writeLog("Print Draft Quote is Clicked and saved"); 
 aqUtils.Delay(5000, Indicator.Text);
  
-/*
+
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
@@ -600,7 +600,7 @@ ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved"
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
-*/
+
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -676,7 +676,7 @@ ReportUtils.logStep_Screenshot("");
 printQuote.Click();
 TextUtils.writeLog("Print Quote is Clicked and saved"); 
 
-/*
+
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
@@ -751,7 +751,7 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Quote",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
-*/
+
  
 }
 
@@ -889,7 +889,7 @@ PrintOrderConfirm.HoverMouse();
 ReportUtils.logStep_Screenshot(""); 
 PrintOrderConfirm.Click();
 TextUtils.writeLog("Print Order Confirmation is Clicked");
-/*
+
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Order Confirmation"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
@@ -966,7 +966,7 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
 aqUtils.Delay(4000, Indicator.Text);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Print Order Confirmation",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
-*/
+
 
 
 
