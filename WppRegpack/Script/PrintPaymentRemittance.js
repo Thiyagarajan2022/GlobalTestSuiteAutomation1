@@ -26,34 +26,65 @@ var Invoicenumber="";
 var PaymentDate="";
 var PaymentNo="";
 var filepathforMplValidation ="";
-
+var amount = ""
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Log.Message(sheetName)
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymentagent = ReadExcelSheet("Payment Agent",EnvParams.Opco,"Data Management");
+if((Paymentagent=="")||(Paymentagent==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
+}
 Log.Message(Paymentagent)
 if((Paymentagent==null)||(Paymentagent=="")){ 
 ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
 }
-Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
+
+//Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
+//Log.Message(Paymodemode)
+//if((Paymodemode==null)||(Paymodemode=="")){ 
+//ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
+//}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymodemode = ReadExcelSheet("Vendor Invoice Payment Mode",EnvParams.Opco,"Data Management");
+if((Paymodemode=="")||(Paymodemode==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco) 
+}
 Log.Message(Paymodemode)
 if((Paymodemode==null)||(Paymodemode=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
 
+//PaymentDate = ExcelUtils.getRowDatas("Payment Date",EnvParams.Opco)
+//Log.Message(PaymentDate)
+//if((PaymentDate==null)||(PaymentDate=="")){ 
+//ValidationUtils.verify(false,true,"PaymentDate is Needed to Create a Payment Selection");
+//}
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+PaymentDate = ReadExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management");
+if((PaymentDate=="")||(PaymentDate==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 PaymentDate = ExcelUtils.getRowDatas("Payment Date",EnvParams.Opco)
+}
 Log.Message(PaymentDate)
 if((PaymentDate==null)||(PaymentDate=="")){ 
-ValidationUtils.verify(false,true,"PaymentDate is Needed to Create a Payment Selection");
+ValidationUtils.verify(false,true,"Payment Date is Needed to Create a Payment Selection");
 }
 
-PaymentNo = ExcelUtils.getRowDatas("Payment_Number",EnvParams.Opco)
-Log.Message(PaymentNo)
-if((PaymentNo==null)||(PaymentNo=="")){ 
-ValidationUtils.verify(false,true,"PaymentNumber is Needed to Create a Payment Selection");
-}
 
+//PaymentNo = ExcelUtils.getRowDatas("Payment_Number",EnvParams.Opco)
+//Log.Message(PaymentNo)
+//if((PaymentNo==null)||(PaymentNo=="")){ 
+//ValidationUtils.verify(false,true,"PaymentNumber is Needed to Create a Payment Selection");
+//}
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
 PrintLayout = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
 Log.Message(PrintLayout)
 if((PrintLayout==null)||(PrintLayout=="")){ 
@@ -73,11 +104,19 @@ ValidationUtils.verify(false,true,"PrintLayout is Needed to Create a Payment Sel
 //if((layoutTypes==null)||(layoutTypes=="")){ 
 //ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
 //}
+
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Invoicenumber = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((Invoicenumber=="")||(Invoicenumber==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
 Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+}
 Log.Message(Invoicenumber)
 if((Invoicenumber==null)||(Invoicenumber=="")){ 
 ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
 }
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
 Log.Message(VendorNo)
@@ -88,12 +127,29 @@ VendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
 if((VendorNo==null)||(VendorNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment Selection");
 }
+
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+amount = ReadExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management");
+if((amount=="")||(amount==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+}
+Log.Message(amount)
+if((amount==null)||(amount=="")){ 
+ValidationUtils.verify(false,true,"Amount is Needed to Create a Payment Selection");
+}
+
+
 }
 
 
 function printPaymentRemittance()
 {
   
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var lookups =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.LookUps;
 waitForObj(lookups);
 lookups.Click();
@@ -131,26 +187,26 @@ var vendorNoTo = Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.
     ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment Selection");
   }
   
-var paymentNoFrom =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.PaymentNoFrom;
-
- if(PaymentNo!=""){
-  paymentNoFrom.Click();
-  WorkspaceUtils.SearchByValue(paymentNoFrom,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Exported Files").OleValue.toString().trim(),PaymentNo,"Output Data Number");
-    }
- else{ 
-    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
-  }
-  
-var PaymentNoTo =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.PaymentNoTo;
-
- if(PaymentNo!=""){
-  PaymentNoTo.Click();
-  WorkspaceUtils.SearchByValue(PaymentNoTo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Exported Files").OleValue.toString().trim(),PaymentNo,"Output Data Number");
-    }
- else{ 
-    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
-  }
-  
+//var paymentNoFrom =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.PaymentNoFrom;
+//
+// if(PaymentNo!=""){
+//  paymentNoFrom.Click();
+//  WorkspaceUtils.SearchByValue(paymentNoFrom,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Exported Files").OleValue.toString().trim(),PaymentNo,"Output Data Number");
+//    }
+// else{ 
+//    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+//  }
+//  
+//var PaymentNoTo =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.PaymentNoTo;
+//
+// if(PaymentNo!=""){
+//  PaymentNoTo.Click();
+//  WorkspaceUtils.SearchByValue(PaymentNoTo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Exported Files").OleValue.toString().trim(),PaymentNo,"Output Data Number");
+//    }
+// else{ 
+//    ValidationUtils.verify(false,true,"PaymentNo is Needed to Create a Payment Selection");
+//  }
+//  
   
 var showpaid =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.McPlainCheckboxView.ShowPaidCheckBox;
 var showNonClosed =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite2.McPlainCheckboxView.ShowNonClosed;
@@ -201,6 +257,31 @@ ReportUtils.logStep_Screenshot("");
 aqUtils.Delay(1000);
 saveButton.Click();
 
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+
+}
+
+
+var table  = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  var flag=false;
+  for(var v=0;v<table.getItemCount();v++){ 
+  if((table.getItem(v).getText_2(0).OleValue.toString().trim()==PaymentDate) && 
+  (table.getItem(v).getText_2(5).OleValue.toString().trim()==amount) && 
+  (table.getItem(v).getText_2(10).OleValue.toString().trim()==Paymodemode)){ 
+  PaymentNo =   table.getItem(v).getText_2(4).OleValue.toString().trim()
+  
+  flag=true;    
+  break;
+  }
+  else{ 
+  table.Keys("[Down]");
+  }
+  }
+
+
+
 var print = Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.PrintPaymentRemittance
 aqUtils.Delay(1000);
 print.Click();
@@ -220,7 +301,7 @@ print.Click();
 var PrintPopup =Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Payment Order").OleValue.toString().trim());
 
 waitForObj(PrintPopup);
-aqUtils.Delay(1000);
+aqUtils.Delay(5000);
 
 
 var paymentDateFrom =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;
@@ -844,7 +925,7 @@ Arrays = [];
 count = true;
 checkmark = false;
 STIME = "";
-VendorNo,Paymentagent,Paymodemode,ExchangeDate,layoutTypes,Invoicenumber,PaymentDate,PaymentNo,filepathforMplValidation ="";
+VendorNo,Paymentagent,Paymodemode,ExchangeDate,layoutTypes,Invoicenumber,PaymentDate,PaymentNo,filepathforMplValidation,amount ="";
 
 Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();

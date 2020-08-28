@@ -212,9 +212,18 @@ Sys.Desktop.KeyUp(0x58);
 ValidationUtils.verify(true,true,"Print Draft Quote is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+ var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Transactions - Vendor Invoice Journal").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Transactions - Vendor Invoice Journal").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
 var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 OKay.Click();
+}
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }

@@ -281,8 +281,9 @@ function PaymentFile() {
     }
   Log.Message(flag)
   if(flag){
-    
-  if(Paymentmode.indexOf("manual")!=-1){
+    ExcelUtils.setExcelName(workBook,"Data Management", true);
+    ExcelUtils.WriteExcelSheet("Payment Agent",EnvParams.Opco,"Data Management",Paymentagent)
+  if(Paymentmode.indexOf("Manual")!=-1){
   
 //  var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl2;
   var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
@@ -291,8 +292,16 @@ function PaymentFile() {
   ApproveConPayment.Click();
   ValidationUtils.verify(flag,true,"Create Payment File is Generated");
   TextUtils.writeLog("Create Payment File is Generated");
+          if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+          }
+  
   }else{ 
     //Electronic payment
+    var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
+goToJobMenuItem(); 
     ElectronicPaymentFile();
   }
   
@@ -309,6 +318,9 @@ function PaymentFile() {
 
 
 function ElectronicPaymentFile() {
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   ReportUtils.logStep("INFO", "Enter Payment File Details");
  var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(banking);
