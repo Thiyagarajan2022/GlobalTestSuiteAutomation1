@@ -63,6 +63,9 @@ invoiceAllocation();
 //}catch(err){ 
 //  Log.Message(err);
 //}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -249,7 +252,9 @@ TextUtils.writeLog("Company Number,Purchase Order Number,Entry Date,Description,
 //Okay.Click();
 //}
 Delay(5000)
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   p = Sys.Process("Maconomy");
   Sys.HighlightObject(p);
   Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Transactions - Invoice Allocation").OleValue.toString().trim())
@@ -402,13 +407,12 @@ aqUtils.Delay(2000, "Waiting for Action");
 action.Click();
 //aqUtils.Delay(2000, "Waiting for Action");
 //aqUtils.Delay(3000, Indicator.Text);
-action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attach Document").OleValue.toString().trim());
+action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attach Vendor Document").OleValue.toString().trim());
 
   TextUtils.writeLog("Document is Attached for Invoice");
-  var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-  WorkspaceUtils.waitForObj(dicratory);
+  var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
-  var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
+  var opendoc = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -428,7 +432,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(EnvParams.Country.toUpperCase()=="INDIA")
   Runner.CallMethod("IND_VendorInvoice.InvoiceSubmit",action);
   else{
-  action.PopupMenu.Click("Submit for Approval");
+    
+  action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit for Approval").OleValue.toString().trim());
   }
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, "Submitted for Approval");;
