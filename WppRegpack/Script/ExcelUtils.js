@@ -39,9 +39,9 @@ opco = EnvParams.Opco
 
   excel_App = Sys.OleObject("Excel.Application");
   workbook = excel_App.Workbooks.Open(filePath);
-  excel_App.Visible = "false";
-  columnCount = workbook.ActiveSheet.UsedRange.Columns.Count;
-  rowCount = workbook.ActiveSheet.UsedRange.Rows.Count+1;
+  sheet = workbook.Sheets.Item("Sheet1");
+  columnCount = sheet.UsedRange.Columns.Count;
+  rowCount = sheet.UsedRange.Rows.Count+1;
   
   var columnNo;
   var opcoHeadline = false;
