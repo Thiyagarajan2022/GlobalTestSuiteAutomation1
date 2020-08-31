@@ -263,10 +263,12 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
+  aqUtils.Delay(6000, Indicator.Text);
   
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var BudgetGrid = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 //  var BudgetGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(BudgetGrid);
@@ -315,15 +317,13 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   }
   var invoiceAllocation = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel;
   for(var i=0;i<invoiceAllocation.ChildCount;i++){ 
-  if((invoiceAllocation.Child(i).isVisible())&&(invoiceAllocation.Child(i).text=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Invoice Allocation").OleValue.toString().trim())){
+  if((invoiceAllocation.Child(i).isVisible()) &&(invoiceAllocation.Child(i).JavaClassName=="TabControl") &&(invoiceAllocation.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Invoice Allocation").OleValue.toString().trim())){
     invoiceAllocation = invoiceAllocation.Child(i);
     if(invoiceAllocation.JavaClassName=="TabControl"){ 
     Log.Message(invoiceAllocation.FullName);
     invoiceAllocation.Click();
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-    }else{ 
-    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
     }
     
     }
@@ -1137,6 +1137,7 @@ var TableDes = "";
                 }else{ 
                 ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
+                
                 var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
                 WorkspaceUtils.waitForObj(allocate)
                 allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
@@ -1577,6 +1578,10 @@ if(check_Bal.getText()=="0.00"){
 }else{ 
   ValidationUtils.verify(true,false,"Amount for Allocation is not Balanced")
 }
+
+   
+ var Action = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.GroupToolItemControl;
+  if(Action.isVisible()) {
   var Action = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.GroupToolItemControl;
   Sys.HighlightObject(Action);
   Action.Click();
@@ -1586,8 +1591,6 @@ if(check_Bal.getText()=="0.00"){
   aqUtils.Delay(100, "Submit is Clicked");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   var Action = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.GroupToolItemControl;
   Sys.HighlightObject(Action);
@@ -1599,10 +1602,37 @@ if(check_Bal.getText()=="0.00"){
   aqUtils.Delay(100, "Approve is Clicked");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
+  }else{ 
+    var TabFolders = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2;
+  for(var i=0;i<TabFolders.ChildCount;i++){ 
+  if((TabFolders.Child(i).isVisible())  &&(TabFolders.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit").OleValue.toString().trim())){
+   var Submit = TabFolders.Child(i);
+    Log.Message(Submit.FullName);
+    Submit.Click();
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+    }   
+        }
+     }
+        
+     aqUtils.Delay(6000, "Allocation is Submitted");
+     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+    } 
+      for(var i=0;i<TabFolders.ChildCount;i++){ 
+  if((TabFolders.Child(i).isVisible())  &&(TabFolders.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
+    var Approve = TabFolders.Child(i);
+    Log.Message(Approve.FullName);
+    Approve.Click();
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+    }
+        }
+        }
+
+  }
   ImageRepository.ImageSet.Close_Down.Click();
   
   LatestTran = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.Composite.McTextWidget;
@@ -1840,8 +1870,16 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
 aqUtils.Delay(2000, Indicator.Text);
 
 Sys.HighlightObject(pdf);

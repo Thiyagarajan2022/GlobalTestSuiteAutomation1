@@ -19,6 +19,8 @@ var jobNumber,EmpNo = "";
 var Language = "";
 var IBudget_ID = "";
 var IBudgetUnit = "";
+var   Descp = [];
+var Estimatelines = [];;
 
 //Main Function
 function InvoicingFromBudget(){ 
@@ -201,9 +203,9 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
-    if(POSheet!=""){ 
-//      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice from Budget")
-//    }
+    if(POSheet==""){ 
+      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice from Budget")
+    }
     ExcelUtils.setExcelName(workBook, POSheet, true);
     var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
     if(JobSO==""){ 
@@ -241,14 +243,12 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    }
-    
   //Approving PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
-    if(APSheet!=""){ 
-//      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice from Budget")
-//    }
+    if(APSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice from Budget")
+    }
     ExcelUtils.setExcelName(workBook, APSheet, true);
     var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -283,14 +283,13 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
    }
-}
 
    //Creation of Vendor Invoice
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var VISheet = ExcelUtils.getColumnDatas("Vendor Invoice Sheet",EnvParams.Opco)
-    if(VISheet!=""){ 
-//      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice from Budget")
-//    }
+    if(VISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Vendor Invocie for Job to Create Invoice from Budget")
+    }
     ExcelUtils.setExcelName(workBook, VISheet, true);
     var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
     if(PO_SO==""){ 
@@ -332,13 +331,13 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     ReportUtils.DStat = false;
     
     }
- }
+ 
     //Approve Vendor Invocie
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var AISheet = ExcelUtils.getColumnDatas("Approve Vendor Invocie sheet",EnvParams.Opco)
-    if(AISheet!=""){ 
-//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
-//    }
+    if(AISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
+    }
     ExcelUtils.setExcelName(workBook, AISheet, true);
     var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
@@ -373,14 +372,13 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    }
+    
     //Post Vendor Journal
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var PVISheet = ExcelUtils.getColumnDatas("Post Vendor Invoice sheet",EnvParams.Opco)
-    if(PVISheet!=""){ 
-//      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
-//    }
-    
+    if(PVISheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve VI Sheet for Job to Create Invoice from Budget")
+    }
 //    ExcelUtils.setExcelName(workBook, PVISheet, true);
 //    var serialOder = ExcelUtils.getRowDatas("Vendor Invoice Serial Order",EnvParams.Opco)
 //    if(serialOder==""){ 
@@ -414,7 +412,6 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     ReportUtils.Dreport.flush();
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
-    }
     }
 TestRunner.testCaseId = IBudget_ID;
 TestRunner.unitName = IBudgetUnit;
@@ -619,14 +616,112 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   var billingPrice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
   var netInvoiceOnAcc = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
   
+  var Budgeting = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
+  WorkspaceUtils.waitForObj(Budgeting);
+  Budgeting.Click();
+  
+  aqUtils.Delay(100, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+  aqUtils.Delay(5000, Indicator.Text);
+  var Estimate = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+  Estimate.Keys("Client Approved Estimate");
+  aqUtils.Delay(100, Indicator.Text);
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+  
+  var FullBudget = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+  WorkspaceUtils.waitForObj(FullBudget);
+  FullBudget.Click();
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }else{ 
+   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }
+  
+  var BudgetGrid = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  WorkspaceUtils.waitForObj(BudgetGrid);
+  var ii=0;
+Estimatelines = [];  
+  for(var i=0;i<BudgetGrid.getItemCount();i++){ 
+    if((BudgetGrid.getItem(i).getText_2(0).OleValue.toString().trim()!="")||(BudgetGrid.getItem(i).getText_2(0).OleValue.toString().trim()!="")){ 
+         if(EnvParams.Country.toUpperCase()=="INDIA")
+         Estimatelines[ii] = BudgetGrid.getItem(i).getText_2(0).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(3).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(9).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(10).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(12).OleValue.toString().trim();
+         else
+         Estimatelines[ii] = BudgetGrid.getItem(i).getText_2(0).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(3).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(9).OleValue.toString().trim()+"*"+BudgetGrid.getItem(i).getText_2(10).OleValue.toString().trim();
+         Log.Message(Estimatelines[ii]);
+         ii++;
+    }
+  }
 
-  var Invoicing = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+//var info = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.TabFolderPanel.TabControl2;
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//}
+//info.Click();
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//}
+//var workCodeAdd = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 7)
+//WorkspaceUtils.waitForObj(workCodeAdd);
+//workCodeAdd.Click();
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//}
+//
+//workCodeList = [];
+//workActivity = [];
+//for(var i=0;i<Estimatelines.length;i++){
+//
+//var temp = Estimatelines[i].split("*");
+//if(temp[0]!=""){
+//workCodeList[i] = temp[0];
+//Log.Message(workCodeList[i])
+//}
+//}
+//
+//
+//var i=0
+//var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+//for(var v=0;v<WorkCodeGrid.getItemCount();v++){ 
+//  for(var y=0;y<workCodeList.length;y++){ 
+//  if(WorkCodeGrid.getItem(v).getText(0).OleValue.toString().trim()==workCodeList[y]){ 
+//    workActivity[i] = WorkCodeGrid.getItem(v).getText(0).OleValue.toString().trim()+"*"+WorkCodeGrid.getItem(v).getChecked(14)
+//    Log.Message(workActivity[i]);
+//    i++;
+//  }
+//  
+//  }
+//}
+
+//  var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+//  WorkspaceUtils.waitForObj(Invoicing);
+//  Invoicing.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+
+
+  var Invoicing = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.TabFolderPanel.TabControl
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();
+
+//  var Invoicing = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+//  WorkspaceUtils.waitForObj(Invoicing);
+//  Invoicing.Click();
   
 
-//  Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 7)
-//                   Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite3.PTabFolder.TabFolderPanel.TabControl             
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
   var iselection = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
   Log.Message(iselection.FullName)
   WorkspaceUtils.waitForObj(iselection);
@@ -687,7 +782,7 @@ var SaveStat = true;
       Log.Message(Save.FullName)
       WorkspaceUtils.waitForObj(Save);
       for(var i=0;i<Save.ChildCount;i++){
-        if((Save.Child(i).isVisible())&&(Save.Child(i).toolTipText.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save Invoice Selection Line").OleValue.toString().trim())!=-1)){
+        if((Save.Child(i).isVisible())&&(Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save Invoice Selection Line").OleValue.toString().trim())){
           Save = Save.Child(i);
           WorkspaceUtils.waitForObj(Save);
           ReportUtils.logStep_Screenshot("");
@@ -779,7 +874,40 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }else{ 
 ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
-aqUtils.Delay(100, "Billing Price");
+
+var SelectionBilling = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+aqUtils.Delay(1000, "Billing Price");
+  Descp = [];
+  var Ds = 0;
+  for(var t=0;t<SelectionBilling.getItemCount();t++){ 
+      for(var g = 0;g<Estimatelines.length;g++){
+        var temp = Estimatelines[g].split("*");
+        
+        
+         if(EnvParams.Country.toUpperCase()=="INDIA"){ 
+           if(SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim().indexOf(temp[0])==0){
+//             var S_temp = SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim().split(" - ");
+//             Descp[Ds] = S_temp[1]+"*"+temp[1];
+             var S_temp = SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim();
+             S_temp = S_temp.substring(S_temp.indexOf(" - ")+3)
+             Descp[Ds] = S_temp+"*"+temp[1];
+             Log.Message(Descp[Ds])
+             Ds++;
+             }
+         }else{ 
+         if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf(temp[0])==0){
+             var S_temp = SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim();
+             S_temp = S_temp.substring(S_temp.indexOf(" - ")+3)
+             Descp[Ds] = S_temp+"*"+temp[1];
+             Log.Message(Descp[Ds])
+             Ds++;
+             }
+         }
+        
+        
+      }
+      }
+      
 var BudgetAmount = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
 BudgetAmount = BudgetAmount.getText();
 var Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.SingleToolItemControl;
@@ -836,6 +964,60 @@ aqUtils.Delay(1000, Indicator.Text);
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
 
+  
+
+  var DraftEditing = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  DraftEditing.Click();
+  var grid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  var Save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+//  grid.Keys("[Tab]");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  for(var i=0;i<grid.getItemCount()-1;i++){ 
+//    Log.Message(grid.getItem(i).getText_2(1).OleValue.toString().trim())
+    for(var j=0;j<Descp.length;j++){ 
+      var temp = Descp[j].split("*")
+//      Log.Message(grid.getItem(i).getText_2(1).OleValue.toString().trim())
+//      Log.Message(temp[0])
+      if(grid.getItem(i).getText_2(1).OleValue.toString().trim()==temp[0]){ 
+        if(grid.getItem(i).getText_2(1).OleValue.toString().trim()!=temp[1]){
+          grid.Keys("[Tab]");
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+              }
+          var Des = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget3;
+          Des.Click();
+          Des.setText(temp[1]);
+          aqUtils.Delay(1000, Indicator.Text);
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+            }
+          Save.Click();
+          aqUtils.Delay(1000, Indicator.Text);
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+              }
+          Sys.Desktop.KeyDown(0x10);
+          Sys.Desktop.KeyDown(0x09);
+          aqUtils.Delay(1000, Indicator.Text);
+          Sys.Desktop.KeyUp(0x10);
+          Sys.Desktop.KeyUp(0x09);
+          aqUtils.Delay(1000, Indicator.Text);
+          break;
+          }
+      }
+    }
+  var grid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  Sys.HighlightObject(grid)
+  Log.Message(i)
+  Log.Message(grid.getItemCount()-2)
+  Log.Message(i<grid.getItemCount()-2)
+  if(i<grid.getItemCount()-2){
+  grid.Keys("[Down]");
+  }
+  }    
+  
 //var SubmitDraft = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
 var SubmitDraft;
   if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
@@ -860,7 +1042,10 @@ var SubmitDraft;
    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
-   
+  aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }   
   
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 //var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
@@ -990,8 +1175,16 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 
 Sys.HighlightObject(pdf);
@@ -1695,8 +1888,16 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)

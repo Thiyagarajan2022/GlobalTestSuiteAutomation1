@@ -233,7 +233,7 @@ aqUtils.Delay(3000, "Checking Labels");
 var cancelJob = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim())
 WorkspaceUtils.waitForObj(cancelJob)
 
-  JobAddress();
+//  JobAddress();
   
 //----------Entering Company Number-------------
 ReportUtils.logStep_Screenshot("");
@@ -847,7 +847,10 @@ aqUtils.Delay(4000, "Changing Invoice Currency as "+JobCurrency);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.SWTObject("Composite", "", 2).isVisible())
   var Save = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 4)
+  else
+  var Save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.RemarksSave
 //  var Save = Aliases.Maconomy.Screen3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "", 4);
 WorkspaceUtils.waitForObj(Save);
   Save.Click();
