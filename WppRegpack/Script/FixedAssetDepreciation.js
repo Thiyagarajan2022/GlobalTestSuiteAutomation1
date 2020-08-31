@@ -256,6 +256,9 @@ function goToregistration(){
     ReportUtils.logStep("ERROR","Asset Adjustment is not Created");
   } 
   aqUtils.Delay(4000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   
   //closefilter
           Sys.Desktop.KeyDown(0x11);
@@ -266,7 +269,9 @@ function goToregistration(){
 } 
 
 function goToAsset(){
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
   var entries = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;
   Sys.HighlightObject(entries)
   var addbutton = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.addbutton;
@@ -302,7 +307,7 @@ function goToAsset(){
     aqUtils.Delay(10000,Indicator.Text);
     assettype.Click();
     aqUtils.Delay(1000, Indicator.Text);
-       WorkspaceUtils.DropDownList(Transactiontype,"Asset Transaction Type");
+       WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, Transactiontype).OleValue.toString().trim() ,"Asset Transaction Type");
        aqUtils.Delay(1000, Indicator.Text); 
     } 
     else{

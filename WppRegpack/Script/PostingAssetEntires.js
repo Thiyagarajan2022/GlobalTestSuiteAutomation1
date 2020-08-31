@@ -25,6 +25,8 @@ Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
       Log.Message(Language)
   aqUtils.Delay(3000, Indicator.Text);
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
 var Project_manager = ExcelUtils.getRowDatas("SSC - Junior Accountant","Username")
 Log.Message(Project_manager);
@@ -45,6 +47,12 @@ fixedassetvaladdr();
 getDetails();  
 fixedassetdrevlinfo();
 goToasset();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
 } 
 
 
@@ -178,14 +186,14 @@ Sys.Process("Maconomy").Refresh();
 var company1= Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText();
 Sys.HighlightObject(company1);
 
-if(company1!="Company")
+if(company1!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim())
 ValidationUtils.verify(false,true,"Company field is missing in Maconomy");
 else
 ValidationUtils.verify(true,true,"Company field is available in Maconomy");
 
 var transactiontype1= Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget.getText();
 Sys.HighlightObject(transactiontype1);
-if(transactiontype1!="Transaction Type")
+if(transactiontype1!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim())
 ValidationUtils.verify(false,true,"Transaction Type field is missing in Maconomy");
 else
 ValidationUtils.verify(true,true,"Transaction Type field is available in Maconomy");
@@ -199,7 +207,7 @@ function fixedassetdrevlinfo()
  var companyaddr = Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget2;
    if(company!=""){
         companyaddr.Click();                
-        WorkspaceUtils.SearchByValueTableComp(companyaddr,"Company",company,"Company");
+        WorkspaceUtils.SearchByValueTableComp(companyaddr,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),company,"Company");
       }
    else{
         ValidationUtils.verify(true,true,"Company Number is Needed to Create Asset Adjustment");
@@ -209,14 +217,14 @@ function fixedassetdrevlinfo()
    //Sys.HighlightObject(transaction);   
    if(transactiontype!=""){
      transactionaddr.Click();  
-        WorkspaceUtils.SearchByValueasset(transactionaddr,"Transaction Type",transactiontype,"Transactiontype");
+        WorkspaceUtils.SearchByValueasset(transactionaddr,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim(),transactiontype,"Transactiontype");
      }
      else{ 
         ValidationUtils.verify(false,true,"Transaction Type is Needed to Create a Asset Adjustment");
     }   
       
     
-    var createbtn = Aliases.Maconomy.Screen6.Composite.Composite.Composite2.Composite.Button;
+    var createbtn = Aliases.Maconomy.Screen6.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim())
  
  Sys.HighlightObject(createbtn);
   if(createbtn.isEnabled()){   
@@ -226,7 +234,7 @@ function fixedassetdrevlinfo()
     ValidationUtils.verify(true,true,"Asset Adjustment is CREATED");   
   } 
   else{
-    var cancelbtn = Aliases.Maconomy.Screen4.Composite.Composite.Composite2.Composite.cancel;
+    var cancelbtn = Aliases.Maconomy.Screen6.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim())
     Sys.HighlightObject(cancelbtn)    
     cancelbtn.HoverMouse();
     ReportUtils.logStep_Screenshot("");
@@ -235,6 +243,10 @@ function fixedassetdrevlinfo()
     ReportUtils.logStep("ERROR","Asset Adjustment is not Created");
   } 
   aqUtils.Delay(8000, Indicator.Text);
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   //closefilter
 Sys.Desktop.KeyDown(0x11);
 Sys.Desktop.KeyDown(0x46);
@@ -246,20 +258,29 @@ Sys.Desktop.KeyUp(0x46);
 
 function goToasset()
 {
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var entries = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 Sys.HighlightObject(entries);
 var addbutton = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   addbutton.Click(); 
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   var firstcell = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McDatePickerWidget;
   firstcell.Click();
   firstcell.Keys("[Tab][Tab][Tab]");
   aqUtils.Delay(1000,Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 Sys.Process("Maconomy").Refresh()  
   var assetno = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
   if(AssetNo!=""){  
     assetno.Click();
-    WorkspaceUtils.SearchByValueTableComp(assetno,"Asset",AssetNo,"AssetNo");    
+    WorkspaceUtils.SearchByValueTableComp(assetno,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Asset").OleValue.toString().trim(),AssetNo,"AssetNo");    
   }
   else{
         ValidationUtils.verify(true,true,"Company Number is Needed to Create Asset Adjustment");
@@ -277,7 +298,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
         aqUtils.Delay(10000, Indicator.Text);
     assettype.Click();
 
-       WorkspaceUtils.DropDownList(Transactiontypeaddr,"Asset Transaction Type");
+       WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, Transactiontypeaddr).OleValue.toString().trim() ,"Asset Transaction Type");
        aqUtils.Delay(1000, Indicator.Text); 
     } 
     else{
@@ -307,7 +328,10 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
     
-    var home = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+//    var home = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+//    home.Click();
+//    aqUtils.Delay(5000, Indicator.Text);
+    var home = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite10.Composite.PTabFolder.TabFolderPanel.home;
     home.Click();
     aqUtils.Delay(5000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
