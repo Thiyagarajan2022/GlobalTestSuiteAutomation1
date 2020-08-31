@@ -24,6 +24,7 @@ var TP ="";
 var STIME = "";
 var Clientbalance ="";
 var JournalNo = "";
+var Amount = "";
 function ForeignPayment() {
   
 TextUtils.writeLog("Create Payment Selection Started"); 
@@ -49,8 +50,20 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Arrays = [];
 count = true;
 checkmark = false;
+Amount = "";
 STIME = "";
 JournalNo = "";
+ Jobno ="";
+ companyno ="";
+ InvoiceNumber ="";
+ Descip="";
+ currency ="";
+ clientnum = "";
+ TP ="";
+ STIME = "";
+ Clientbalance ="";
+
+
 Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
@@ -134,11 +147,11 @@ Log.Message(currency)
 if((currency==null)||(currency=="")){ 
 ValidationUtils.verify(false,true,"Currency is needed to Create Single Invoice"); 
 }   
-//        TP = ExcelUtils.getRowDatas("TP",EnvParams.Opco)
-//        Log.Message(TP)
-//        if((TP==null)||(TP=="")){ 
-//        ValidationUtils.verify(false,true,"TP is needed to Create Single Invoice"); 
-//        }  
+        TP = ExcelUtils.getRowDatas("PaymentType",EnvParams.Opco)
+        Log.Message(TP)
+        if((TP==null)||(TP=="")){ 
+        ValidationUtils.verify(false,true,"TP is needed to Create Single Invoice"); 
+        }  
 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 
@@ -212,7 +225,11 @@ ValidationUtils.verify(false,true,"Client Number is needed to Create Single Invo
 //}  
 //if((InvoiceNumber=="")||(InvoiceNumber==null))
 //ValidationUtils.verify(false,true,"Invoice Number is needed to Create Single Invoice");
-          
+    
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+Log.Message(Amount)      
 }   
   
 function goToJobMenuItem(){
@@ -340,8 +357,24 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
        var row = invoicetable.getItemCount();
        var column = invoicetable.getColumnCount();
     var checkStatus = false;   
+    Log.Message("InvoiceNumber :"+InvoiceNumber)
          for(var i=0;i<invoicetable.getItemCount();i++){   
-          if((invoicetable.getItem(i).getText(0).OleValue.toString().trim()==InvoiceNumber)&&((invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Not Due").OleValue.toString().trim())!=-1)||(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due").OleValue.toString().trim())!=-1))){   
+           Log.Message(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Not Due").OleValue.toString().trim())!=-1)
+           Log.Message(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due").OleValue.toString().trim())!=-1)
+           Log.Message((invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Not Due").OleValue.toString().trim())!=-1)||(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due").OleValue.toString().trim())!=-1))
+           
+          if((invoicetable.getItem(i).getText(0).OleValue.toString().trim()==InvoiceNumber)&&((invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Not Due").OleValue.toString().trim())!=-1)||(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due").OleValue.toString().trim())!=-1)
+          ||(invoicetable.getItem(i).getText(8).OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially Reconciled").OleValue.toString().trim())!=-1))){   
+          if((Amount=="")&&(TP=="Partially")){ 
+             Amount = invoicetable.getItem(i).getText(9).OleValue.toString().trim();
+             Log.Message(Amount)
+             Amount = Amount.replace(/,/g, '');
+            Amount = parseFloat(Amount).toFixed(0);
+            Log.Message(Amount)
+            Amount = Amount/2;
+            Log.Message(Amount)
+             
+            }
             checkStatus = true;
               break;
             }
@@ -584,16 +617,63 @@ else{
 artable.Keys("[Down]");
 }
 }       
-             
-artable.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
-      
-    
-var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
-//tp.Click();
-aqUtils.Delay(2000, Indicator.Text);
-tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Totally").OleValue.toString().trim())
-//WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Totally").OleValue.toString().trim(),"Totally");
 
+Log.Message(TP)
+Log.Message(TP =="Partially")           
+
+ if(TP =="Partially"){ 
+artable.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+var reconsile = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.amount;
+WorkspaceUtils.waitForObj(reconsile);
+reconsile.setText(Amount);
+Sys.HighlightObject(reconsile);
+reconsile.Keys("[Tab]");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;    
+var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
+WorkspaceUtils.waitForObj(tp);
+//tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim())
+tp.Click();
+aqUtils.Delay(4000, Indicator.Text);
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim(),"Totally/Partially",tp)
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
+}else{
+artable.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
+tp.Click();
+aqUtils.Delay(4000, Indicator.Text);
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim(),"Totally/Partially",tp)
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+//tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Totally").OleValue.toString().trim())
+//WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Totally").OleValue.toString().trim(),"Totally");
+}
 //if(TP!=""){
 //tp.Click();
 //aqUtils.Delay(2000, Indicator.Text);
@@ -814,8 +894,17 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
@@ -953,7 +1042,19 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
        var row = invoicetable.getItemCount();
        var column = invoicetable.getColumnCount();
     var checkStatus = false;   
-         for(var i=0;i<invoicetable.getItemCount();i++){   
+         for(var i=0;i<invoicetable.getItemCount();i++){  
+Log.Message(TP)
+Log.Message(TP =="Partially")           
+
+ if(TP =="Partially"){ 
+            if((invoicetable.getItem(i).getText(0).OleValue.toString().trim()==InvoiceNumber)&&(invoicetable.getItem(i).getText(8).OleValue.toString().trim()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially Reconciled").OleValue.toString().trim())){  
+            checkStatus = true;
+              break;
+            }
+           else{
+                 invoicetable.Keys("[Down]");
+           }  
+ }else{
           if((invoicetable.getItem(i).getText(0).OleValue.toString().trim()==InvoiceNumber)&&(invoicetable.getItem(i).getText(8).OleValue.toString().trim()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reconciled").OleValue.toString().trim())){  
             checkStatus = true;
               break;
@@ -961,6 +1062,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
            else{
                  invoicetable.Keys("[Down]");
            } 
+  }
          }
       ValidationUtils.verify(true,checkStatus,"Invoice is Reconciled")
       

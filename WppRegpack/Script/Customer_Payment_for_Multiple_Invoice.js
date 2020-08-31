@@ -603,17 +603,38 @@ artable.Keys("[Down]");
 }       
              
 artable.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var reconsile = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.amount;
 WorkspaceUtils.waitForObj(reconsile);
 reconsile.setText(Amount);
 Sys.HighlightObject(reconsile);
 reconsile.Keys("[Tab]");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;    
 var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
 WorkspaceUtils.waitForObj(tp);
-tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim())
-//tp.Click();
+//tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim())
+tp.Click();
+aqUtils.Delay(4000, Indicator.Text);
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim(),"Totally/Partially",tp)
 aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 //WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim(),"Totally");
 
 //if(TP!=""){
@@ -836,8 +857,17 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
