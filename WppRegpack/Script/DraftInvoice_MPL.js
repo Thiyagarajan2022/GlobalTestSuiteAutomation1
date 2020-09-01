@@ -7,11 +7,14 @@
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-
+var Language = "";
 function DraftInvoice()
 {
 //  var fileName = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegPack\\MPLReports\\Critical_Regression\\India\\1707\\PDF\\Print Job Quote-23.pdf";
   var fileName = "";
+    Language = "";
+  Language = EnvParams.LanChange(EnvParams.Language);
+  WorkspaceUtils.Language = Language;  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   fileName = ExcelUtils.getRowDatas("PDF Draft Invoice",EnvParams.Opco)
   if((fileName==null)||(fileName=="")){ 
@@ -61,11 +64,11 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 
    if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
    var index = pdflineSplit.indexOf("TAX INVOICE");
-   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
+   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
 //   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
 //   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
-   
+   Log.Message(index)
        if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")
@@ -141,7 +144,7 @@ var pName = false;
  Log.Message(pdflineSplit.length)
   for (j=0; j<pdflineSplit.length; j++)
   {
-//    Log.Message(pdflineSplit[j])
+    Log.Message(pdflineSplit[j])
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attn.").OleValue.toString().trim()))
     {
       x= pdflineSplit[j].split(".");
@@ -157,6 +160,16 @@ var pName = false;
 
         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No").OleValue.toString().trim()))
     {
+    
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+      var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No").OleValue.toString().trim();
+      Log.Message("atSize :"+atSize)
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      Log.Message("x[1] :"+x[1])
+      }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if("xxxxxx"!=pdfJobNum)
@@ -170,7 +183,19 @@ var pName = false;
     
         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()))
     {
+      
+    Log.Message("Invocice Date :"+pdflineSplit[j])
+    
+    
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice Date").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
+      Log.Message("x[1] :"+x[1])
       pdfJobNum = x[1].trim();
        if("xxxxxx"!=pdfJobNum)
         ValidationUtils.verify(false,true,"Invoice Date is not same in Draft Invoice");
@@ -183,6 +208,14 @@ var pName = false;
     
         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due Date").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Due Date").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if("xxxxxx"!=pdfJobNum)
@@ -196,6 +229,14 @@ var pName = false;
     
         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Terms").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Payment Terms").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       Log.Message(pdflineSplit[j])
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
@@ -212,6 +253,14 @@ var pName = false;
     
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job No").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if(jobNumber!=pdfJobNum)
@@ -281,8 +330,54 @@ var pName = false;
 //    }
 
 
+var TaxVariable = "";
+   if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="CHINA")){
+     Log.Message(pdflineSplit)
+     Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim())
+   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
+        Log.Message(TaxVariable)
+   }
+   else if(EnvParams.Country.toUpperCase()=="SINGAPORE"){
+   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
+   }
+//   Log.Message(TaxVariable)
+    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
+    {
+      
+    
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Tax No").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
+      x= pdflineSplit[j].split(":");
+      pdfJobName = x[1].trim();
+      Log.Message(pdflineSplit[j])
+      Log.Message(TaxNo)
+      Log.Message(pdflineSplit[j].includes(TaxNo))
+        if(pdflineSplit[j].includes(TaxNo))
+         {
+          ReportUtils.logStep("INFO","Tax No is matching with Pdf")
+          ValidationUtils.verify(true,true,TaxNo+" Tax No is matching with Pdf")
+          TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
+          }
+          else{
+          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
+        }
+    }
+
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Client No").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfJobName = x[1].trim();
         if(pdflineSplit[j].includes(clientNumber))
@@ -301,26 +396,7 @@ var pName = false;
     }
 
     
-var TaxVariable = "";
-   if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
-   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
-   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
-   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
-   Log.Message(TaxVariable)
-    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
-    {
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
-        if(pdflineSplit[j].includes(TaxNo))
-         {
-          ReportUtils.logStep("INFO","Tax No is matching with Pdf")
-          ValidationUtils.verify(true,true,TaxNo+" Tax No is matching with Pdf")
-          TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
-          }
-          else{
-          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
-        }
-    }
+
 //    if(!pName){
 ////      Log.Message(pName)
 //         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Product:").OleValue.toString().trim()))
@@ -444,7 +520,7 @@ var TaxVariable = "";
   var Q_Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco);
   Log.Message(Q_Desp)
   if(Q_Desp!=""){
-  Q_Desp = Q_Desp.replace(/(?![\x00-\x7F])./g, '');
+//  Q_Desp = Q_Desp.replace(/(?![\x00-\x7F])./g, '');
   temp = temp + Q_Desp+" ";
   
   var Q_Qty = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco);
