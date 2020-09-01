@@ -66,6 +66,8 @@ function timeDifference(stime, etime)
   var seconds = (etime.getTime() - stime.getTime()) / 1000;
   var minutes = Math.floor(seconds / 60);
   var remainingSeconds = Math.floor(seconds%60);
+  if(remainingSeconds<9)
+    remainingSeconds = "0"+ remainingSeconds
   return minutes+"."+remainingSeconds;
 }
 
