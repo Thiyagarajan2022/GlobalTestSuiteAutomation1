@@ -37,8 +37,8 @@ WorkspaceUtils.Language = Language;
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
 
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
-//Project_manager = ExcelUtils.getRowDatas("Agency - Biller",EnvParams.Opco);
-Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+Project_manager = ExcelUtils.getRowDatas("Agency - Biller",EnvParams.Opco);
+//Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -242,21 +242,38 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
       var ChildCount = 0;
     var Add = [];
-   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
    Sys.Process("Maconomy").Refresh();
          for(var i=0;i<Parent.ChildCount;i++){ 
      var PChild = Parent.Child(i);
             if((PChild.isVisible()) && (PChild.ChildCount==1)){
-//         Log.Message(PChild.FullName)
-//         Log.Message(PChild.Child(j).FullName)
          Add[ChildCount] = PChild;
-//         Log.Message(Add[ChildCount].FullName)
          ChildCount++;
-
-     }
+       }
      }      
-     
-      Parent = "";
+     Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height<pos){ 
+       pos = Add[i].Height;
+       Log.Message(pos)
+       Parent = Add[i];
+     }     
+     }
+     Log.Message(Parent.FullName); 
+   Parent = Parent.SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   Log.Message(Parent.FullName);
+    Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+      for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+            if((PChild.isVisible()) && (PChild.ChildCount==1)){
+         Add[ChildCount] = PChild;
+         ChildCount++;
+       }
+     }      
+     Parent = "";
      var pos = 1000;
      for(var i=0;i<Add.length;i++){ 
      if(Add[i].Height<pos){ 
