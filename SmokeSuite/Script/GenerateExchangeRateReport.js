@@ -26,8 +26,6 @@ if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.
 WorkspaceUtils.closeMaconomy();
 }
 
-//Initializing Variables
-
 try{
 //Entering Report Management
 WorkspaceUtils.closeAllWorkspaces();
