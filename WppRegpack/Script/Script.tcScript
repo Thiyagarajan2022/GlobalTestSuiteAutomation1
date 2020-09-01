@@ -130,7 +130,7 @@
 				<child name="ModifyBudget_New" key="{45F77959-87DA-4FC7-A391-9CBC43929F79}" path="ModifyBudget_New.js" />
 				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
 				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
-				<child name="Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="Invoice.js" />
+				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
