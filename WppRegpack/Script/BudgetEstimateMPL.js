@@ -40,16 +40,16 @@ jobNumber = "";
 comapany = EnvParams.Opco;
 sheetName ="JobEstimateMPL";
 
-try{
-//getDetails();
+//try{
+getDetails();
 //goToJobMenuItem();
 //goToBudget();
 //validatingWorkEstimate();
 //PrintJobBudgetMpl();
 validateJobBudgetPdf();
-}catch(err){ 
-  Log.Message(err);
-}
+//}catch(err){ 
+//  Log.Message(err);
+//}
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -324,6 +324,7 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
 
   }
   }
+  q++;
 Log.Message(q)
 for(var i=q;i<11;i++){ 
   ExcelUtils.setExcelName(workBook,QuoteMPL, true);
@@ -344,7 +345,12 @@ ExcelUtils.WriteExcelSheet(EnvParams.Opco,"GrandTotal",QuoteMPL,total);
 }
 
 function PrintJobBudgetMpl(){ 
+  
+if(Aliases.Maconomy.JobBudgetMPL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.isVisible())
   var print = Aliases.Maconomy.JobBudgetMPL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.SingleToolItemControl;
+  else
+  var print = Aliases.Maconomy.JobBudgetMPL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 4);
+  
   WorkspaceUtils.waitForObj(print);
   print.Click();
   TextUtils.writeLog("Print Job Budget is Clicked and saved"); 
@@ -398,8 +404,16 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
@@ -496,7 +510,13 @@ if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
 
+   if((EnvParams.Country.toUpperCase()=="INDIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
+   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
+   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
+//   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
        if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")
@@ -581,7 +601,17 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
   {
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attention").OleValue.toString().trim()))
     {
+      Log.Message(pdflineSplit[j])
+      if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Attention").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else{
       x= pdflineSplit[j].split(":");
+      }
+
       pdfAttn = x[1].trim();
        if(Attn!=pdfAttn)
         ValidationUtils.verify(false,true,"Attention is not same in pdf");
@@ -606,7 +636,15 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
+            if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job No").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
+      
       pdfJobNum = x[1].trim();
        if(jobNumber!=pdfJobNum)
         ValidationUtils.verify(false,true,"Job Number is not same in pdf");
@@ -618,6 +656,14 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Name").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job Name").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfJobName = x[1].trim();
       if(pdfJobName.includes(jobName)){
@@ -657,6 +703,14 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
    if(pdflineSplit[j].includes("Product Name"))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Product Name").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfproductName = x[1].trim();
         if(productName.includes(pdfproductName))
@@ -671,6 +725,14 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
     {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Client No").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
       pdfclientNumber = x[1].trim();
         if(pdfclientNumber.includes(clientNumber))
