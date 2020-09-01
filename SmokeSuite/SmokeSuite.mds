@@ -11,9 +11,9 @@
 			<child name="TC_RunManager.xlsx" key="{F21CC1B4-C2BA-4636-9B96-5DD3FB064A34}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\TC_RunManager.xlsx" />
 		</folder>
 		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
-		<child name="NameMapping" key="{63138B44-92CD-4787-BFE7-D450728F7290}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
 		<child name="ImageRepository" key="{22746466-E4D7-4FA2-9F43-ED370A5B696A}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
 		<child name="TestedApps" key="{A208EC67-6D6A-445D-B10D-B760A0BCE18B}" type="Tested Applications" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" pluginName="" path="TestedApps\TestedApps.tcTAs" />
+		<child name="NameMapping" key="{D7FB333C-3D94-4C73-B779-38E953C7CEF0}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
 	</children>
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
@@ -132,7 +132,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="15" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="16" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -153,9 +153,10 @@
 				<row val0="com.cts.ZephyrApiUsecases.UpdateExecutionStatus" />
 				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
 				<row val0="com.ImageComparison.ImageCompMain" />
+				<row val0="org.excelwrite.companyinfo" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="0" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="14" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -174,6 +175,7 @@
 				<row val0=".\ProjectLibraries\extentreports-3.1.5.jar" />
 				<row val0=".\ProjectLibraries\extentreports-2.41.2.jar" />
 				<row val0=".\ProjectLibraries\bson-3.0.4.jar" />
+				<row val0=".\ProjectLibraries\ExcelFunction.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />
