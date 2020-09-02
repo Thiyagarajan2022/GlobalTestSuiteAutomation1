@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{FE240510-BA5C-43A8-A835-A18E95C1986B}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+	<config nodeName="Browser_Reporting" />
+	<testData />
+	<data>
+		<item caption="TrailBalance_Logo" moniker="{1BB2EF9E-4FC0-404B-A1CA-BF5A17EC9BA8}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C43792064F40E.png" initialHash="C19B8DAB" selectionLeft="48" selectionTop="189" selectionWidth="125" selectionHeight="35" initialLeft="48" initialTop="189" initialWidth="125" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="GLTransactions_Logo" moniker="{A29FECBF-6629-4314-B31F-4590E7A6E33E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C43792C9F0C67.png" initialHash="7ED576B2" selectionLeft="46" selectionTop="189" selectionWidth="151" selectionHeight="33" initialLeft="46" initialTop="189" initialWidth="151" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_DataProtection_OK_Button" moniker="{0B0B28CE-1A38-4DC0-878B-559C9A0E58A3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C437958DD0C85.png" initialHash="DA4F4F47" selectionLeft="946" selectionTop="468" selectionWidth="21" selectionHeight="17" initialLeft="946" initialTop="468" initialWidth="21" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt" moniker="{9715546F-C2D0-415F-8794-88CDA38F0269}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C437958EA50CD.png" initialHash="CCA69378" selectionLeft="291" selectionTop="225" selectionWidth="56" selectionHeight="14" initialLeft="291" initialTop="225" initialWidth="56" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{F82834A3-E527-4B0A-BBC2-29C176EE7488}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C437958F84FAD.png" initialHash="D662A3F4" selectionLeft="1011" selectionTop="598" selectionWidth="53" selectionHeight="17" initialLeft="1011" initialTop="598" initialWidth="53" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TrailBalanceDetail_logo" moniker="{B3481C24-1795-4DB5-BB6A-8B9BA66CDDA3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TrailBalanceDetail_logo.png" initialHash="8CA8C5F3" selectionLeft="48" selectionTop="189" selectionWidth="164" selectionHeight="32" initialLeft="48" initialTop="189" initialWidth="164" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_DataProtection_Dialog" moniker="{A9725684-EAED-4D66-8F29-3C75B24329F2}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris19C437AAEB0B854.png" initialHash="CF448924" selectionLeft="388" selectionTop="341" selectionWidth="99" selectionHeight="18" initialLeft="388" initialTop="341" initialWidth="99" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ProfitAndLoss_logo" moniker="{20BB3432-FC68-47E7-84D7-46E557D62303}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ProfitAndLoss_logo.png" initialHash="A5C949A5" selectionLeft="48" selectionTop="189" selectionWidth="139" selectionHeight="32" initialLeft="48" initialTop="189" initialWidth="139" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BalanceSheet_Logo" moniker="{FE1CB42C-8146-409D-88D2-533E7D3106FC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BalanceSheet_Logo.png" initialHash="232DD660" selectionLeft="46" selectionTop="191" selectionWidth="142" selectionHeight="30" initialLeft="46" initialTop="191" initialWidth="142" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BillingAndIncome_Logo" moniker="{CB30A57B-0A77-4863-8304-7A2B452A1197}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BillingAndIncome_Logo.png" initialHash="F7EDD6A7" selectionLeft="51" selectionTop="191" selectionWidth="167" selectionHeight="31" initialLeft="51" initialTop="191" initialWidth="167" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BFC_Extract_Logo" moniker="{24BCCA7E-862B-46B5-BB96-D2892A2BC027}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BFC_Extract_Logo.png" initialHash="2A28F3AB" selectionLeft="46" selectionTop="188" selectionWidth="134" selectionHeight="34" initialLeft="46" initialTop="188" initialWidth="134" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BFC_Mada_Moda_MWIP_Logo" moniker="{01015911-D214-40C8-A29D-5A14D52A3176}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BFC_Mada_Moda_MWIP_Logo.png" initialHash="19AC55E5" selectionLeft="50" selectionTop="190" selectionWidth="183" selectionHeight="31" initialLeft="50" initialTop="190" initialWidth="183" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ICS_ClientVendor_Logo" moniker="{5F4F4C33-737B-4980-94C3-B16EC25E8ED4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ICS_ClientVenodr_Logo.png" initialHash="74F04A27" selectionLeft="49" selectionTop="189" selectionWidth="160" selectionHeight="32" initialLeft="49" initialTop="189" initialWidth="160" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Bravo_Logo" moniker="{AF99F50B-321C-4F4B-A4F3-DD1A537DF5A6}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Bravo_Logo.png" initialHash="6D2BB9EE" selectionLeft="48" selectionTop="191" selectionWidth="96" selectionHeight="32" initialLeft="48" initialTop="191" initialWidth="96" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="FixedAssets_Logo" moniker="{33EB5BBB-BAEA-4D5C-A50B-2C93C304D4E1}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\FixedAssets_Logo.png" initialHash="D6453790" selectionLeft="51" selectionTop="188" selectionWidth="122" selectionHeight="34" initialLeft="51" initialTop="188" initialWidth="122" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="FixedAssetsDep_Logo" moniker="{DAED994A-773D-4FC1-B72D-1F5BF35549F3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\FixedAssetsDep_Logo.png" initialHash="3745CB67" selectionLeft="50" selectionTop="189" selectionWidth="186" selectionHeight="34" initialLeft="50" initialTop="189" initialWidth="186" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BankReconciliations_Logo" moniker="{6A19B5A1-02DA-414C-860F-E80EB1ED780E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BankReconciliations_Logo.png" initialHash="9F12C7D6" selectionLeft="45" selectionTop="189" selectionWidth="172" selectionHeight="32" initialLeft="45" initialTop="189" initialWidth="172" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="APTransactionList_Logo" moniker="{0F01191E-D98C-44BB-8354-8C5D0C302D60}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\APTransactionList_Logo.png" initialHash="AB5124FE" selectionLeft="45" selectionTop="188" selectionWidth="193" selectionHeight="35" initialLeft="45" initialTop="188" initialWidth="193" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AgedAPTransactions_Logo" moniker="{167AA2B0-5456-4CFD-B05D-F95084027AE8}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AgedAPTransactions_Logo.png" initialHash="8A2C2350" selectionLeft="49" selectionTop="189" selectionWidth="190" selectionHeight="35" initialLeft="49" initialTop="189" initialWidth="190" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="PurchaseOrder_Logo" moniker="{5AA28CFA-15D9-4041-B89F-FADC81E4E6B5}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\PurchaseOrder_Logo.png" initialHash="1FD3446F" selectionLeft="46" selectionTop="190" selectionWidth="154" selectionHeight="33" initialLeft="46" initialTop="190" initialWidth="154" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="APInvoiceStatus_Logo" moniker="{686A9BEF-E695-4CAA-8A87-698638067EA0}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\APInvoiceStatus_Logo.png" initialHash="985A32EB" selectionLeft="48" selectionTop="190" selectionWidth="160" selectionHeight="33" initialLeft="48" initialTop="190" initialWidth="160" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="VendorInvoiceQuery_Logo" moniker="{C6F0B82D-71E0-4FA6-9B32-330FFD883EAC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\VendorInvoiceQuery_Logo.png" initialHash="340DB6E3" selectionLeft="48" selectionTop="185" selectionWidth="182" selectionHeight="35" initialLeft="48" initialTop="185" initialWidth="182" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="EmployeeExpenseSheet_Logo" moniker="{E1E1DA5C-3429-4985-A984-BFA43A2CCC43}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\EmployeeExpenseSheet_Logo.png" initialHash="2838D41F" selectionLeft="46" selectionTop="190" selectionWidth="194" selectionHeight="30" initialLeft="46" initialTop="190" initialWidth="194" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="PaymentSelection_Logo" moniker="{FD36F4E4-163C-4003-9B29-AD05F3B2A6A9}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\PaymentSelection_Logo.png" initialHash="E8CEEC31" selectionLeft="49" selectionTop="192" selectionWidth="159" selectionHeight="29" initialLeft="49" initialTop="192" initialWidth="159" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ARTransactionList_Logo" moniker="{0CAF888F-68DE-44F4-AF54-0084C0BF3D1E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ARTransactionList_Logo.png" initialHash="95932FA9" selectionLeft="47" selectionTop="189" selectionWidth="182" selectionHeight="32" initialLeft="47" initialTop="189" initialWidth="182" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AgedARTransactions_Logo" moniker="{83598FDF-7952-4398-B6B5-5729DFE2B78C}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AgedARTransactions_Logo.png" initialHash="DDF59724" selectionLeft="49" selectionTop="187" selectionWidth="190" selectionHeight="36" initialLeft="49" initialTop="187" initialWidth="190" initialHeight="36" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AR_Receipt_Recon_Logo" moniker="{6739900A-5613-4D38-8507-B87193A1B769}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AR_Receipt_Recon_Logo.png" initialHash="AF91C9A3" selectionLeft="51" selectionTop="185" selectionWidth="148" selectionHeight="39" initialLeft="51" initialTop="185" initialWidth="148" initialHeight="39" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ClientProfitability_Logo" moniker="{DBBCEF9D-3539-4C82-BAB6-9608E9464A9E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ClientProfitability_Logo.png" initialHash="0BFAEE3C" selectionLeft="48" selectionTop="189" selectionWidth="172" selectionHeight="31" initialLeft="48" initialTop="189" initialWidth="172" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BAVEL_Logo" moniker="{81E10438-902F-41F8-B37F-5001DF8D65E8}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BAVEL_Logo.png" initialHash="0EB0ECC3" selectionLeft="50" selectionTop="190" selectionWidth="175" selectionHeight="30" initialLeft="50" initialTop="190" initialWidth="175" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="OB10_Logo" moniker="{F57A2FE7-ACCF-473F-84A6-6308812C14B3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\OB10_Logo.png" initialHash="2A1F9CF1" selectionLeft="50" selectionTop="188" selectionWidth="142" selectionHeight="35" initialLeft="50" initialTop="188" initialWidth="142" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="HK_Cube_Logo" moniker="{E80C6F1F-6CDC-41AA-A5B8-EAFDE1C12931}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\HK_Cube_Logo.png" initialHash="F920806F" selectionLeft="50" selectionTop="188" selectionWidth="148" selectionHeight="31" initialLeft="50" initialTop="188" initialWidth="148" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobBillingSummary_Logo" moniker="{26C40CAC-C87B-431C-A7C8-9B72AEF9F802}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobBillingSummary_Logo.png" initialHash="4BA6D326" selectionLeft="49" selectionTop="188" selectionWidth="171" selectionHeight="32" initialLeft="49" initialTop="188" initialWidth="171" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AgedWIP_Logo" moniker="{DB2942BA-F577-45E4-A41B-E2414F65D4F7}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AgedWIP_Logo.png" initialHash="F1E22186" selectionLeft="45" selectionTop="189" selectionWidth="128" selectionHeight="34" initialLeft="45" initialTop="189" initialWidth="128" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobSummary_Logo" moniker="{82DA19C3-16A9-4BBF-9564-898AA9323F30}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobSummary_Logo.png" initialHash="EA0475B8" selectionLeft="45" selectionTop="188" selectionWidth="138" selectionHeight="35" initialLeft="45" initialTop="188" initialWidth="138" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobDetail_Logo" moniker="{BA85B769-BB3E-4198-B793-B51331FB8F0D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobDetail_Logo.png" initialHash="989B5C1B" selectionLeft="46" selectionTop="191" selectionWidth="120" selectionHeight="30" initialLeft="46" initialTop="191" initialWidth="120" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BudgetInvoice_Logo" moniker="{DEE07DF3-999C-4DD7-8A05-A9AD26A3CE3A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BudgetInvoice_Logo.png" initialHash="DB1CF175" selectionLeft="50" selectionTop="190" selectionWidth="159" selectionHeight="33" initialLeft="50" initialTop="190" initialWidth="159" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TimeFinancialAnalysis_Logo" moniker="{DA0EC3AE-3A2F-4A71-9CA8-EB09ACDD7955}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TimeFinancialAnalysis_Logo.png" initialHash="B4629443" selectionLeft="46" selectionTop="190" selectionWidth="193" selectionHeight="33" initialLeft="46" initialTop="190" initialWidth="193" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TimeSheetStatus_Logo" moniker="{A98E48A3-C9B4-4283-B73C-A8636E9B8283}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TimeSheetStatus_Logo.png" initialHash="B92663B5" selectionLeft="49" selectionTop="189" selectionWidth="151" selectionHeight="31" initialLeft="49" initialTop="189" initialWidth="151" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TimeSheetDailyWeekly_Logo" moniker="{DC4841C9-3D7E-4EEA-8BB5-98BC2ED35E32}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TimeSheetDailyWeekly_Logo.png" initialHash="E306A01C" selectionLeft="48" selectionTop="185" selectionWidth="162" selectionHeight="40" initialLeft="48" initialTop="185" initialWidth="162" initialHeight="40" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TimeSheetMonthly_Logo" moniker="{38E9499E-A255-43D0-BC2B-1B4028F725F6}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TimeSheetMonthly_Logo.png" initialHash="95E794DC" selectionLeft="50" selectionTop="189" selectionWidth="166" selectionHeight="32" initialLeft="50" initialTop="189" initialWidth="166" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="EmployeeUtilisation_Logo" moniker="{596277CA-9D86-4513-A9F6-90A22E0BDC3D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\EmployeeUtilisation_Logo.png" initialHash="671ED91C" selectionLeft="51" selectionTop="189" selectionWidth="164" selectionHeight="32" initialLeft="51" initialTop="189" initialWidth="164" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ChangeLog_Logo" moniker="{22518C5D-CFB9-491D-8FD0-90DBC3ABA3D0}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ChangeLog_Logo.png" initialHash="866230CC" selectionLeft="50" selectionTop="189" selectionWidth="126" selectionHeight="34" initialLeft="50" initialTop="189" initialWidth="126" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ExchangeRate_Logo" moniker="{828AE821-76B7-4CD2-BCD6-FE2F55E3FD45}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ExchangeRate_Logo.png" initialHash="95D3946A" selectionLeft="49" selectionTop="189" selectionWidth="137" selectionHeight="33" initialLeft="49" initialTop="189" initialWidth="137" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ApprovalHierarchy_Logo" moniker="{D8C764D9-2C50-491F-9CDD-94772227F470}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ApprovalHierarchy_Logo.png" initialHash="523A97ED" selectionLeft="48" selectionTop="188" selectionWidth="167" selectionHeight="35" initialLeft="48" initialTop="188" initialWidth="167" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Approvals_Logo" moniker="{F6588AC8-BD6F-448C-B019-4BAF9BD78513}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Approvals_Logo.png" initialHash="73AFCE3C" selectionLeft="48" selectionTop="190" selectionWidth="108" selectionHeight="30" initialLeft="48" initialTop="190" initialWidth="108" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ReportStatistics_Logo" moniker="{37A77C5A-119E-47CF-87DB-912EF13239D3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ReportStatistics_Logo.png" initialHash="473128AC" selectionLeft="46" selectionTop="190" selectionWidth="152" selectionHeight="33" initialLeft="46" initialTop="190" initialWidth="152" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ReportPrompts_Logo" moniker="{D07D79B2-D6A1-41AC-A0EA-1C40046DE5D7}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ReportPrompts_Logo.png" initialHash="2E9C7965" selectionLeft="48" selectionTop="188" selectionWidth="147" selectionHeight="35" initialLeft="48" initialTop="188" initialWidth="147" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="EmployeeExport_Logo" moniker="{178A2502-A44B-46D3-9513-AD68A29F22AA}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\EmployeeExport_Logo.png" initialHash="2324170A" selectionLeft="49" selectionTop="191" selectionWidth="152" selectionHeight="32" initialLeft="49" initialTop="191" initialWidth="152" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="UserTypesAccessRights_Logo" moniker="{25E2B567-62D0-4416-BC30-8CD71DAD78E2}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\UserTypesAccessRights_Logo.png" initialHash="FA2DD757" selectionLeft="49" selectionTop="188" selectionWidth="164" selectionHeight="35" initialLeft="49" initialTop="188" initialWidth="164" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ClientBrandProductExport_Logo" moniker="{11F92536-9E78-447D-822D-584BE7D939DE}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ClientBrandProductExport_Logo.png" initialHash="55D762C7" selectionLeft="48" selectionTop="188" selectionWidth="169" selectionHeight="33" initialLeft="48" initialTop="188" initialWidth="169" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="VendorExport_Logo" moniker="{4D14F7C8-9840-491D-B1F2-CB38DC10C230}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\VendorExport_Logo.png" initialHash="59D4C909" selectionLeft="51" selectionTop="191" selectionWidth="128" selectionHeight="31" initialLeft="51" initialTop="191" initialWidth="128" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="HR_Absence_Logo" moniker="{7969D445-9D4F-43DB-8F9D-EE796D4582EE}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\HR_Absence_Logo.png" initialHash="6021169A" selectionLeft="48" selectionTop="186" selectionWidth="108" selectionHeight="35" initialLeft="48" initialTop="186" initialWidth="108" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="HR_EmployeeLinks_Logo" moniker="{405AA704-F37B-414E-9875-F4AB5E6115DC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\HR_EmployeeLinks_Logo.png" initialHash="B09338EB" selectionLeft="48" selectionTop="188" selectionWidth="148" selectionHeight="35" initialLeft="48" initialTop="188" initialWidth="148" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="EUTurnOver_Logo" moniker="{9A9C33E8-E343-487C-8E2E-33A852CDCB83}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\EUTurnOver_Logo.png" initialHash="2252CAD0" selectionLeft="48" selectionTop="192" selectionWidth="184" selectionHeight="29" initialLeft="48" initialTop="192" initialWidth="184" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TaxSettlement_Logo" moniker="{1C37596B-E27E-45D3-89B7-CA3418D0A7D2}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TaxSettlement_Logo.png" initialHash="7D80DB3A" selectionLeft="47" selectionTop="188" selectionWidth="154" selectionHeight="34" initialLeft="47" initialTop="188" initialWidth="154" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="MLY_GAFReport_Logo" moniker="{6934FAC6-9537-4719-94D6-2573DC7A0277}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\MLY_GAFReport_Logo.png" initialHash="049A1434" selectionLeft="51" selectionTop="189" selectionWidth="109" selectionHeight="34" initialLeft="51" initialTop="189" initialWidth="109" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TDSAPRegister_Logo" moniker="{0141859E-B319-4496-BF03-3212DF7CF6C7}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TDSAPRegister_Logo.png" initialHash="1497B8DF" selectionLeft="49" selectionTop="188" selectionWidth="142" selectionHeight="35" initialLeft="49" initialTop="188" initialWidth="142" initialHeight="35" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TDSARRegister_Logo" moniker="{9D715113-A5E5-42F7-9CA4-AF89E5FE7BA3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TDSARRegister_Logo.png" initialHash="F82161EE" selectionLeft="49" selectionTop="191" selectionWidth="144" selectionHeight="30" initialLeft="49" initialTop="191" initialWidth="144" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="GSTR_Logo" moniker="{F9DFC6B8-64F1-4F05-9E68-69FDF282C55E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\GSTR_Logo.png" initialHash="F42D35E4" selectionLeft="49" selectionTop="191" selectionWidth="87" selectionHeight="31" initialLeft="49" initialTop="191" initialWidth="87" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="RCMSelfInvoiceVoucher_Logo" moniker="{734C9991-B064-4D1C-9598-484CE89CE704}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\RCMSelfInvoiceVoucher_Logo.png" initialHash="82FD34AD" selectionLeft="49" selectionTop="183" selectionWidth="155" selectionHeight="37" initialLeft="49" initialTop="183" initialWidth="155" initialHeight="37" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="PaymentVoucher_Logo" moniker="{C032B34D-4FF5-4CD5-ADCD-99D1809EEC9A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\PaymentVoucher_Logo.png" initialHash="0993BFFE" selectionLeft="49" selectionTop="188" selectionWidth="151" selectionHeight="31" initialLeft="49" initialTop="188" initialWidth="151" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AdvanceRefundVoucher_Logo" moniker="{BAE3FC2F-2C8E-462A-B9DE-FEC92F964BAC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AdvanceRefundVoucher_Logo.png" initialHash="8318B67F" selectionLeft="49" selectionTop="191" selectionWidth="189" selectionHeight="29" initialLeft="49" initialTop="191" initialWidth="189" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AdvanceReceiptVoucher_Logo" moniker="{B9136749-4035-4D4A-8B5C-37B912BEACF7}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AdvanceReceiptVoucher_Logo.png" initialHash="602FF6A9" selectionLeft="47" selectionTop="185" selectionWidth="152" selectionHeight="34" initialLeft="47" initialTop="185" initialWidth="152" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="MSME_Logo" moniker="{45F09C60-11B7-41C4-9E91-478AAFA6F7EA}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\MSME_Logo.png" initialHash="F827A298" selectionLeft="48" selectionTop="191" selectionWidth="128" selectionHeight="31" initialLeft="48" initialTop="191" initialWidth="128" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_Reports_Prompt" moniker="{2205D9D1-2E3C-4B95-B38E-CC3B1E1F0F89}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_Reports_Prompt.png" initialHash="41737853" selectionLeft="289" selectionTop="224" selectionWidth="62" selectionHeight="16" initialLeft="289" initialTop="224" initialWidth="62" initialHeight="16" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_Reports_Prompt_Cancel" moniker="{A03C37E1-D62F-4576-BA4D-8278328CA484}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_Reports_Prompt_Cancel.png" initialHash="FD87929E" selectionLeft="1000" selectionTop="596" selectionWidth="73" selectionHeight="18" initialLeft="1000" initialTop="596" initialWidth="73" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Company_Search" moniker="{71110813-750A-4EB3-9714-D88FCA28A6A1}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Company_Search.png" initialHash="CF6C3ECE" selectionLeft="549" selectionTop="505" selectionWidth="240" selectionHeight="22" initialLeft="549" initialTop="505" initialWidth="240" initialHeight="22" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="FixedAssetsDep_1_Logo" moniker="{5694500A-F5A1-4B76-BE3C-59960D039048}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\FixedAssetsDep_1_Logo.png" initialHash="9CF80CC6" selectionLeft="46" selectionTop="188" selectionWidth="197" selectionHeight="33" initialLeft="46" initialTop="188" initialWidth="197" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AR_Receipt_Recon_1_Logo" moniker="{8C92689D-AB29-4FDB-9B0F-5F68210FD6CC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AR_Receipt_Recon_1_Logo.png" initialHash="BC564E8E" selectionLeft="48" selectionTop="187" selectionWidth="195" selectionHeight="34" initialLeft="48" initialTop="187" initialWidth="195" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TimeSheetDailyWeekly_1_Logo" moniker="{2929EEFB-764F-4BCB-BC72-9D9FB181C4B0}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TimeSheetDailyWeekly_1_Logo.png" initialHash="46F5CDE9" selectionLeft="46" selectionTop="191" selectionWidth="201" selectionHeight="31" initialLeft="46" initialTop="191" initialWidth="201" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="UserTypesAccessRights_1_Logo" moniker="{2904C8BD-E47A-4CBF-ABB0-A531EC67F6D4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\UserTypesAccessRights_1_Logo.png" initialHash="FDA17726" selectionLeft="47" selectionTop="191" selectionWidth="204" selectionHeight="30" initialLeft="47" initialTop="191" initialWidth="204" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ClientBrandProductExport_1_Logo" moniker="{B06B1824-2753-41C4-B836-BA5B0D72349A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ClientBrandProductExport_1_Logo.png" initialHash="00000000" selectionLeft="46" selectionTop="191" selectionWidth="207" selectionHeight="33" initialLeft="46" initialTop="191" initialWidth="207" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
+</Root>
