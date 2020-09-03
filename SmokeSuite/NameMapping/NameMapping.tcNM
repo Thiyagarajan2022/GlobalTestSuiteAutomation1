@@ -14322,7 +14322,7 @@
 										<Value PropertyType="0" Value="Page" Type="5" />
 									</Property>
 									<Property Name="URL">
-										<Value PropertyType="0" Value="https://wppbpm-trnapac.deltekenterprise.com:8443/BOE/OpenDocument/1901251930/OpenDocument/opendoc/openDocument.faces*" Type="5" />
+										<Value PropertyType="0" Value="https://wppbpm-*.deltekenterprise.com*" Type="5" />
 									</Property>
 								</Properties>
 								<Children>
@@ -15190,6 +15190,128 @@
 																											</Property>
 																											<Property Name="idStr">
 																												<Value PropertyType="0" Value="PromptList" Type="5" />
+																											</Property>
+																										</Properties>
+																									</Child>
+																								</Children>
+																							</Child>
+																						</Children>
+																					</Child>
+																				</Children>
+																			</Child>
+																		</Children>
+																	</Child>
+																</Children>
+															</Child>
+														</Children>
+													</Child>
+													<Child Name="tableCancelBtnPromptsdlg" Key="{050072A9-5504-4985-9DA1-107DC0533C59}" ExtendedFind="True" ParallelWalk="True">
+														<Image FileName="752033654" Left="1006" Top="603" Right="1080" Bottom="624" />
+														<TypeInfo Item0="{2776F1E8-7791-4A23-84BA-82D1F821C971}" />
+														<Properties>
+															<Property Name="ObjectType">
+																<Value PropertyType="0" Value="Table" Type="5" />
+															</Property>
+															<Property Name="idStr">
+																<Value PropertyType="0" Value="CANCEL_BTN_promptsDlg" Type="5" />
+															</Property>
+														</Properties>
+														<Children>
+															<Child Name="cellBtncimgCancelBtnPromptsdlg" Key="{DECA8E29-4A71-47FF-ACE5-DA1B3B5CA7E1}" ParallelWalk="True">
+																<Image FileName="752033654" Left="1011" Top="603" Right="1075" Bottom="624" />
+																<TypeInfo Item0="{043894B4-6141-4F85-BB12-76F4D954EA4B}" />
+																<Properties>
+																	<Property Name="ObjectType">
+																		<Value PropertyType="0" Value="Cell" Type="5" />
+																	</Property>
+																	<Property Name="idStr">
+																		<Value PropertyType="0" Value="BtnCImg_CANCEL_BTN_promptsDlg" Type="5" />
+																	</Property>
+																</Properties>
+															</Child>
+														</Children>
+													</Child>
+													<Child Name="frameIframeleftpanew" Key="{0C1586DA-DD3F-4EA8-B957-9030158EC73C}" ExtendedFind="True" ParallelWalk="True">
+														<Image FileName="879913002" Left="46" Top="165" Right="271" Bottom="708" />
+														<TypeInfo Item0="{710A2C81-8647-47E5-84F9-23C3D8AE5C74}" />
+														<Properties>
+															<Property Name="ObjectType">
+																<Value PropertyType="0" Value="Frame" Type="5" />
+															</Property>
+															<Property Name="idStr">
+																<Value PropertyType="0" Value="_iframeleftPaneW" Type="5" />
+															</Property>
+														</Properties>
+														<Children>
+															<Child Name="panelInfocontentSub" Key="{533AD527-8DEA-4EFA-9368-D24FEA07B0E4}" ExtendedFind="True" ParallelWalk="True">
+																<Image FileName="879913002" Left="46" Top="191" Right="254" Bottom="1681" />
+																<TypeInfo Item0="{710A2C81-8647-47E5-84F9-23C3D8AE5C74}" />
+																<Properties>
+																	<Property Name="ObjectType">
+																		<Value PropertyType="0" Value="Panel" Type="5" />
+																	</Property>
+																	<Property Name="idStr">
+																		<Value PropertyType="0" Value="infoContent_sub" Type="5" />
+																	</Property>
+																</Properties>
+																<Children>
+																	<Child Name="table" Key="{6246723A-95DF-4E36-91BF-9C3F589A46FE}" ParallelWalk="True">
+																		<Image FileName="879913002" Left="46" Top="191" Right="317" Bottom="1681" />
+																		<TypeInfo Item0="{2776F1E8-7791-4A23-84BA-82D1F821C971}" />
+																		<Properties>
+																			<Property Name="ObjectType">
+																				<Value PropertyType="0" Value="Table" Type="5" />
+																			</Property>
+																		</Properties>
+																		<Children>
+																			<Child Name="cell" Key="{389CD6B4-7A2C-4CA0-B367-1F3BB6670BE0}" ParallelWalk="True">
+																				<Image FileName="879913002" Left="46" Top="191" Right="317" Bottom="233" />
+																				<TypeInfo Item0="{043894B4-6141-4F85-BB12-76F4D954EA4B}" />
+																				<Properties>
+																					<Property Name="ObjectType">
+																						<Value PropertyType="0" Value="Cell" Type="5" />
+																					</Property>
+																					<Property Name="RowIndex">
+																						<Value PropertyType="0" Value="1" Type="0" />
+																					</Property>
+																					<Property Name="ColumnIndex">
+																						<Value PropertyType="0" Value="0" Type="0" />
+																					</Property>
+																				</Properties>
+																				<Children>
+																					<Child Name="table" Key="{B28FC1CC-70A5-494B-B4D2-899B6E3462A8}" ExtendedFind="True" ParallelWalk="True">
+																						<Image FileName="879913002" Left="46" Top="191" Right="246" Bottom="233" />
+																						<TypeInfo Item0="{2776F1E8-7791-4A23-84BA-82D1F821C971}" />
+																						<Properties>
+																							<Property Name="ObjectType">
+																								<Value PropertyType="0" Value="Table" Type="5" />
+																							</Property>
+																						</Properties>
+																						<Children>
+																							<Child Name="cell" Key="{CE4AB25D-135A-4FBB-9E46-F156A160C8B1}" ParallelWalk="True">
+																								<Image FileName="879913002" Left="98" Top="196" Right="241" Bottom="228" />
+																								<TypeInfo Item0="{043894B4-6141-4F85-BB12-76F4D954EA4B}" />
+																								<Properties>
+																									<Property Name="ObjectType">
+																										<Value PropertyType="0" Value="Cell" Type="5" />
+																									</Property>
+																									<Property Name="RowIndex">
+																										<Value PropertyType="0" Value="0" Type="0" />
+																									</Property>
+																									<Property Name="ColumnIndex">
+																										<Value PropertyType="0" Value="1" Type="0" />
+																									</Property>
+																								</Properties>
+																								<Children>
+																									<Child Name="panelDivdocname" Key="{142DB2FA-C990-4F1E-A6E5-8ABA1108713A}" ExtendedFind="True" ParallelWalk="True">
+																										<Image FileName="-1516593415" Left="102" Top="205" Right="241" Bottom="218" />
+																										<TypeInfo Item0="{710A2C81-8647-47E5-84F9-23C3D8AE5C74}" />
+																										<Properties>
+																											<Property Name="ObjectType">
+																												<Value PropertyType="0" Value="Panel" Type="5" />
+																											</Property>
+																											<Property Name="idStr">
+																												<Value PropertyType="0" Value="divDocName" Type="5" />
 																											</Property>
 																										</Properties>
 																									</Child>
@@ -16980,6 +17102,12 @@
 							<Child Name="cell3" Owner="{8CFF3823-DEE8-4343-B011-89A89BC105B3}" />
 						</Child>
 						<Child Name="panel" Owner="{9905A355-57E3-414E-AE38-62341884B56C}" />
+						<Child Name="cellBtncimgCancelBtnPromptsdlg" Owner="{DECA8E29-4A71-47FF-ACE5-DA1B3B5CA7E1}" />
+						<Child Name="frameIframeleftpanew" Owner="{0C1586DA-DD3F-4EA8-B957-9030158EC73C}">
+							<Child Name="cell" Owner="{CE4AB25D-135A-4FBB-9E46-F156A160C8B1}">
+								<Child Name="panelDivdocname" Owner="{142DB2FA-C990-4F1E-A6E5-8ABA1108713A}" />
+							</Child>
+						</Child>
 					</Child>
 				</Child>
 			</Child>

@@ -108,15 +108,25 @@ Log.Message("Clicked GL Transaction List Link");
 function verifyGLTransactionScreen()
 {
 aqUtils.Delay(5000, "Navigating to Browser");
-  if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
-    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
-     
-aqUtils.Delay(1000, "Waiting for Prompt Window");       
-  if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
-    ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
+//  if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
+//    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
+//     
+//aqUtils.Delay(1000, "Waiting for Prompt Window");       
+//  if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
+//    ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+//  
+
+var cancelButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgCancelBtnPromptsdlg;
+    waitForObj(cancelButton);
+    cancelButton.Click();
+
 aqUtils.Delay(2000, "Loading GL Transactions Screen");
-  if(ImageRepository.Browser_Reporting.GLTransactions_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "GL Transactions")
+//  Log.Message("GL Transactions Screen displayed");
+//  if(ImageRepository.Browser_Reporting.GLTransactions_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GL Transactions Screen displayed sucessfully");
