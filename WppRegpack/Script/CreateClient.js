@@ -1025,13 +1025,18 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
 }
   
 function ApprvalInformation(){ 
- var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.ClientApproval;
- Sys.HighlightObject(ClientApproval);
- ClientApproval.HoverMouse();
- ClientApproval.Click();
+ 
  if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
 }
+else{
+  var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.ClientApproval;
+ Sys.HighlightObject(ClientApproval);
+ ClientApproval.HoverMouse();
+ ClientApproval.Click();
+ ImageRepository.ImageSet.Maximize.Click();
+}
+
  var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.ClientApproval_Tab;
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
@@ -1413,14 +1418,18 @@ aqUtils.Delay(8000, Indicator.Text); ;
   TextUtils.writeLog("Global Brand Name :"+brand);
   TextUtils.writeLog("Global Product Number :"+ClientNum+"001001");
   TextUtils.writeLog("Global Product Name :"+product);
+
   
+ if(ImageRepository.ImageSet.Maximize.Exists()){
+ImageRepository.ImageSet.Maximize.Click();
+}  
+else {    
 var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
- if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
-}
+} 
  var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
@@ -1797,14 +1806,17 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   TextUtils.writeLog("Email Id is saved");
   }
 
+if(ImageRepository.ImageSet.Maximize.Exists()){
+ImageRepository.ImageSet.Maximize.Click();  
+}
+else{  
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
-
 ImageRepository.ImageSet.Maximize.Click();
+}
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
 }
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
       ClientApproval.Click();
@@ -1941,12 +1953,16 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   TextUtils.writeLog("Email Id is saved");
   }
 
+ if(ImageRepository.ImageSet.Maximize.Exists())
+ImageRepository.ImageSet.Maximize.Click();
+else
+{  
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
-
 ImageRepository.ImageSet.Maximize.Click();
+}
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
       ClientApproval.Click();
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -2085,15 +2101,17 @@ function companyProduct(){
   TextUtils.writeLog("Email Id is saved");
   }
 
+  
+   if(ImageRepository.ImageSet.Maximize.Exists()){
+ImageRepository.ImageSet.Maximize.Click();
+}
+else {
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl
-
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
-
- if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
-}
+} 
      
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl
       ClientApproval.Click();
@@ -2235,14 +2253,18 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   TextUtils.writeLog("Email Id is saved");
   }
 
- var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl
- Sys.HighlightObject(ClientApproval);
- ClientApproval.HoverMouse();
- ClientApproval.Click();
+  
 
  if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
 }
+else {  
+ var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl
+ Sys.HighlightObject(ClientApproval);
+ ClientApproval.HoverMouse();
+ ClientApproval.Click();
+ImageRepository.ImageSet.Maximize.Click();
+ }
 
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl
       ClientApproval.Click();
@@ -2371,13 +2393,17 @@ function CompanyClient(){
   TextUtils.writeLog("Email Id is saved");
   }
 
+  
+ if(ImageRepository.ImageSet.Maximize.Exists()){
+ImageRepository.ImageSet.Maximize.Click();
+}
+else { 
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
- if(ImageRepository.ImageSet.Maximize.Exists()){
-ImageRepository.ImageSet.Maximize.Click();
-}
+ImageRepository.ImageSet.Maximize.Click(); 
+ }
 
       var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl
       ClientApproval.Click();
