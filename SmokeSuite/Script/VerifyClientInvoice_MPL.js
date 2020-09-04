@@ -156,12 +156,11 @@ var printInvoiceBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.Comp
 WorkspaceUtils.waitForObj(printInvoiceBtn);  
 Sys.HighlightObject(printInvoiceBtn);
 ReportUtils.logStep_Screenshot("");
+printInvoiceBtn.Click();
 
-
-var printDraftBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.SingleToolItemControl;
-WorkspaceUtils.waitForObj(printDraftBtn);  
-printDraftBtn.Click();
-
+//var printDraftBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.SingleToolItemControl;
+//WorkspaceUtils.waitForObj(printDraftBtn);  
+//printDraftBtn.Click();
 
 
 TextUtils.writeLog("Print Invoice is Clicked and saved"); 
@@ -251,18 +250,16 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
   for (j=0; j<pdflineSplit.length; j++)
   {
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No").OleValue.toString().trim()))
-    {
-       if(pdflineSplit[j].includes("xxxxxx"))
-       {
+    { 
         Log.Message("Invoice Number is available in Pdf")
         ReportUtils.logStep_Screenshot("");
         ValidationUtils.verify(true,true,"Invoice Number is available in Pdf");
-        }
+       }
         else
         {
         ValidationUtils.verify(false,true,"Invoice Number is not available in Pdf");
         }
-    }
+
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
        if(pdflineSplit[j].includes(jobNumber)){

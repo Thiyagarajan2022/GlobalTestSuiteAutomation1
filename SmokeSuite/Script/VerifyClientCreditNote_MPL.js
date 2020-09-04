@@ -157,10 +157,11 @@ var printCreditMemoBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.C
 WorkspaceUtils.waitForObj(printCreditMemoBtn);  
 Sys.HighlightObject(printCreditMemoBtn);
 ReportUtils.logStep_Screenshot("");
+printCreditMemoBtn.Click();
 
-var printDraftBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.SingleToolItemControl;
-WorkspaceUtils.waitForObj(printDraftBtn);  
-printDraftBtn.Click();
+//var printDraftBtn = Aliases.Maconomy.Jobs_Invoice_MPL.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.SingleToolItemControl;
+//WorkspaceUtils.waitForObj(printDraftBtn);  
+//printDraftBtn.Click();
 TextUtils.writeLog("Print Client Credit Note is Clicked and saved"); 
 if(ImageRepository.ImageSet.LoadedBox.Exists()){}
 aqUtils.Delay(5000, Indicator.Text);
@@ -248,18 +249,16 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
   for (j=0; j<pdflineSplit.length; j++)
   {
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note No").OleValue.toString().trim()))
-    {
-       if(pdflineSplit[j].includes("xxxxxx"))
-       {
+    {   
         Log.Message("Credit Note Number is available in Pdf")
         ReportUtils.logStep_Screenshot("");
         ValidationUtils.verify(true,true,"Credit Note Number is available in Pdf");
-        }
-        else
-        {
+     }
+      else
+      {
         ValidationUtils.verify(false,true,"Credit Note Number is not available in Pdf");
-        }
-    }
+       }
+    
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
        if(pdflineSplit[j].includes(jobNumber)){
