@@ -157,7 +157,7 @@
 				<row val0="org.excelwrite.companyinfo" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="14" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="11" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
