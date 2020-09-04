@@ -199,7 +199,7 @@
 			<image imageFileName="Data\Browser_Reports_Prompt.png" initialHash="41737853" selectionLeft="289" selectionTop="224" selectionWidth="62" selectionHeight="16" initialLeft="289" initialTop="224" initialWidth="62" initialHeight="16" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Browser_Reports_Prompt_Cancel" moniker="{A03C37E1-D62F-4576-BA4D-8278328CA484}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Browser_Reports_Prompt_Cancel.png" initialHash="FD87929E" selectionLeft="1000" selectionTop="596" selectionWidth="73" selectionHeight="18" initialLeft="1000" initialTop="596" initialWidth="73" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Browser_Reports_Prompt_Cancel.png" initialHash="CFB66DBD" selectionLeft="1000" selectionTop="599" selectionWidth="69" selectionHeight="14" initialLeft="1000" initialTop="599" initialWidth="69" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Company_Search" moniker="{71110813-750A-4EB3-9714-D88FCA28A6A1}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Company_Search.png" initialHash="CF6C3ECE" selectionLeft="549" selectionTop="505" selectionWidth="240" selectionHeight="22" initialLeft="549" initialTop="505" initialWidth="240" initialHeight="22" pixelTolerance="0" colorTolerance="0" deviceName="" />
@@ -217,7 +217,10 @@
 			<image imageFileName="Data\UserTypesAccessRights_1_Logo.png" initialHash="FDA17726" selectionLeft="47" selectionTop="191" selectionWidth="204" selectionHeight="30" initialLeft="47" initialTop="191" initialWidth="204" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="ClientBrandProductExport_1_Logo" moniker="{B06B1824-2753-41C4-B836-BA5B0D72349A}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\ClientBrandProductExport_1_Logo.png" initialHash="00000000" selectionLeft="46" selectionTop="191" selectionWidth="207" selectionHeight="33" initialLeft="46" initialTop="191" initialWidth="207" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\ClientBrandProductExport_1_Logo.png" initialHash="226072B3" selectionLeft="46" selectionTop="191" selectionWidth="207" selectionHeight="33" initialLeft="46" initialTop="191" initialWidth="207" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_Reports_Prompt_1" moniker="{5DEA1257-E9DA-49E4-B031-EB88C701897A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_Reports_Prompt_1.png" initialHash="00000000" selectionLeft="336" selectionTop="199" selectionWidth="60" selectionHeight="19" initialLeft="336" initialTop="199" initialWidth="60" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Root signature="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" version="1400" key="{A6059465-0037-4199-A72A-2A7D9AD93FAB}" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}">
+<Root signature="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" version="1400" key="{22746466-E4D7-4FA2-9F43-ED370A5B696A}" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}">
 	<config nodeName="ImageRepository" />
 	<testData />
 	<data />

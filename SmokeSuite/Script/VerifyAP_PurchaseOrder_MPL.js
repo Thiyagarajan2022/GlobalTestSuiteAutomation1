@@ -113,6 +113,16 @@ openAndApprovedPO_Radio.Click();
 if(ImageRepository.ImageSet.LoadedBox.Exists())
 {
 }
+var table = Aliases.Maconomy.AccountsPayable.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid
+WorkspaceUtils.waitForObj(table);
+Sys.HighlightObject(table);
+
+var firstCell = Aliases.Maconomy.AccountsPayable.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
+WorkspaceUtils.waitForObj(firstCell);
+firstCell.Click();
+firstCell.setText(EnvParams.Opco);
+if(ImageRepository.ImageSet.LoadedBox.Exists()){}
+
 
 var closeFilters = Aliases.Maconomy.AP_PurchaseOrder_MPL.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "");
 closeFilters.Click();
