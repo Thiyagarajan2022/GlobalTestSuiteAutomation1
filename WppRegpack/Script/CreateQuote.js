@@ -242,7 +242,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
       var ChildCount = 0;
     var Add = [];
-   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
    Sys.Process("Maconomy").Refresh();
          for(var i=0;i<Parent.ChildCount;i++){ 
      var PChild = Parent.Child(i);
@@ -261,27 +261,6 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
      }     
      }
      Log.Message(Parent.FullName); 
-   Parent = Parent.SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
-   Log.Message(Parent.FullName);
-    Sys.HighlightObject(Parent);
-    ChildCount = 0;
-    Add = [];
-      for(var i=0;i<Parent.ChildCount;i++){ 
-     var PChild = Parent.Child(i);
-            if((PChild.isVisible()) && (PChild.ChildCount==1)){
-         Add[ChildCount] = PChild;
-         ChildCount++;
-       }
-     }      
-     Parent = "";
-     var pos = 1000;
-     for(var i=0;i<Add.length;i++){ 
-     if(Add[i].Height<pos){ 
-       pos = Add[i].Height;
-       Log.Message(pos)
-       Parent = Add[i];
-     }     
-     } 
    Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
    Log.Message(Parent.FullName);
    Sys.HighlightObject(Parent);
