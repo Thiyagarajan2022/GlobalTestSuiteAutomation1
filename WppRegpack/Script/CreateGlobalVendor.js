@@ -173,6 +173,8 @@ function getDetails(){
       }      
       languagee = ExcelUtils.getRowDatas("language",EnvParams.Opco)
       Log.Message(languagee)
+      if((languagee==null)||(languagee==""))
+       languagee = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
       if((languagee==null)||(languagee=="")){ 
       ValidationUtils.verify(false,true,"Language is Needed to Create Global Vendor");
       }
@@ -376,6 +378,7 @@ function NewglobalVendor(){
   var Country = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
   if(country!=""){
   Country.Click();
+  aqUtils.Delay(1000,"Loading dropdown values");
   WorkspaceUtils.DropDownList(country,"Country")
   }
 
@@ -745,16 +748,19 @@ function ApprvalInformation(){
         ExcelUtils.setExcelName(workBook,"Data Management", true);
         ExcelUtils.WriteExcelSheet("Vendor Number",EnvParams.Opco,"Data Management",VendorNumber)
 
+      if(ImageRepository.ImageSet0.Maximize.Exists()){
+        ImageRepository.ImageSet0.Maximize.Click();
+        }  
+       else{ 
        var VendorApprovalpane = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;       
         Sys.HighlightObject(VendorApprovalpane);
         VendorApprovalpane.HoverMouse();
         VendorApprovalpane.Click();
-          if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-         }
-        if(ImageRepository.ImageSet0.Maximize.Exists()){
-        ImageRepository.ImageSet0.Maximize.Click();
+          if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+          ImageRepository.ImageSet0.Maximize.Click();
         }
+        
+        
         var VendorApproval =  Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
         //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3;
         Sys.HighlightObject(VendorApproval);
