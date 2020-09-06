@@ -273,6 +273,7 @@ Sys.HighlightObject(sheetno)
     Sys.HighlightObject(desp)
     Log.Message(desp.FullName)
     WorkspaceUtils.waitForObj(desp);
+    desp.Click()
     desp = desp.getText().OleValue.toString().trim()
     
 //    if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Index==4)

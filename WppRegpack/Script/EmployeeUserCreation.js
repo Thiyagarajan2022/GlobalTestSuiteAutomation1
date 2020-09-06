@@ -62,7 +62,10 @@ ImageRepository.ImageSet4.Emp_Spanish_3.Click();
 }
 
   }else{
-if(ImageRepository.ImageSet.HR2.Exists()){
+if(ImageRepository.ImageSet.Human_Resource_1.Exists()){
+ImageRepository.ImageSet.Human_Resource_1.Click();
+}
+else if(ImageRepository.ImageSet.HR2.Exists()){
 ImageRepository.ImageSet.HR2.Click();
 }
 else if(ImageRepository.ImageSet.HR1.Exists()){
@@ -1040,8 +1043,8 @@ ValidationUtils.verify(true,true,"Created Employee is Approved by :"+Project_man
 TextUtils.writeLog("Created Employee is Approved by :"+Project_manager);
 }
 else{ 
-  ValidationUtils.verify(true,true,"Created Employee and User is Approved by :"+loginPer)
-  TextUtils.writeLog("Created Employee and User is Approved by :"+loginPer); 
+//  ValidationUtils.verify(true,true,"Created Employee and User is Approved by :"+loginPer)
+//  TextUtils.writeLog("Created Employee and User is Approved by :"+loginPer); 
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     

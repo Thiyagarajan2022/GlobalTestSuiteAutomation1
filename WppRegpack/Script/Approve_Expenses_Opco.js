@@ -267,6 +267,7 @@ Sys.HighlightObject(sheetno)
     Sys.HighlightObject(desp)
     Log.Message(desp.FullName) 
     WorkspaceUtils.waitForObj(desp);
+    desp.Click();
     desp = desp.getText().OleValue.toString().trim()
     
   var Lcount = "";   

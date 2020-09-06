@@ -543,6 +543,7 @@ function newGlobalClient(){
  var C_Currency = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.Currency;
   if(currency!=""){
   C_Currency.Click();
+  aqUtils.Delay(1000,"Loading currencies")
   WorkspaceUtils.DropDownList(currency,"Currency")
   }
  
