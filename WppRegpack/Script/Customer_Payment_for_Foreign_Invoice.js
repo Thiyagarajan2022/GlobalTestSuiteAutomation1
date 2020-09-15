@@ -648,7 +648,7 @@ WorkspaceUtils.waitForObj(tp);
 //tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim())
 tp.Click();
 aqUtils.Delay(4000, Indicator.Text);
-WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim(),"Totally/Partially",tp)
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Partially").OleValue.toString().trim(),"Totally/Partially",tp)
 aqUtils.Delay(2000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
