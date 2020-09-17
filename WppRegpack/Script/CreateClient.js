@@ -63,7 +63,7 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Client Creation started::"+STIME);
 TextUtils.writeLog("Execution Started :"+STIME);
 
-try{
+//try{
 //Fetching Variables in Excel
 getDetails();
 //Entering Client Management
@@ -149,10 +149,10 @@ companyProduct();
 WorkspaceUtils.closeAllWorkspaces();
 Log.PopLogFolder();
 TextUtils.writeLog("     ");
-}
-  catch(err){
-    Log.Message(err);
-  }
+//}
+//  catch(err){
+//    Log.Message(err);
+//  }
 }
 
 
@@ -852,7 +852,14 @@ function globalClientTable(){
   ValidationUtils.verify(true,true,"Created Global Client Name is available in Maconomy");
   }
   
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(5000, "Opening Created Client");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  
 }
 
 
@@ -931,6 +938,9 @@ function attachDocument(){
     
   } 
   aqUtils.Delay(4000, "Finding Document");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
  if(EnvParams.Country.toUpperCase()=="INDIA"){
   var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
   }else if(EnvParams.Country.toUpperCase()=="SPAIN"){ 
@@ -943,6 +953,10 @@ function attachDocument(){
     
   }
   Sys.HighlightObject(doc);
+  aqUtils.Delay(4000, "Finding Document");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
   doc.HoverMouse();
   doc.HoverMouse();
   doc.HoverMouse();
@@ -950,7 +964,7 @@ function attachDocument(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+
 } 
   var attchDocument = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.TabFolderPanel.Composite.AttachDocument;
   attchDocument.HoverMouse();
@@ -987,9 +1001,7 @@ function Information(){
   aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-} 
+}
   var submit = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.Submit;
   Sys.HighlightObject(submit);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -1301,6 +1313,10 @@ closefilter.HoverMouse();
 closefilter.HoverMouse(); 
 closefilter.HoverMouse();
 closefilter.HoverMouse(); 
+aqUtils.Delay(3000, "Reading Data in table");;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(0).OleValue.toString().trim()==ClientNum){ 
@@ -1695,14 +1711,28 @@ function goToglobalClient(){
 }
 
 function globalBrand(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){
+    
+  }
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
   Sys.HighlightObject(home); 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     
   }
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   home.HoverMouse();
   home.HoverMouse();
   home.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+  }
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
   Sys.HighlightObject(sublevels); 
   sublevels.HoverMouse();
@@ -1843,6 +1873,11 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 
 function globalProduct(){ 
+  
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var home = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
   Sys.HighlightObject(home); 
   home.HoverMouse();
@@ -1850,7 +1885,18 @@ function globalProduct(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
   }
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   home.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+  }
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
   Sys.HighlightObject(sublevels); 
   sublevels.HoverMouse();
@@ -2001,6 +2047,13 @@ function companyProduct(){
   
   }
   home.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+  }
+    aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
   Sys.HighlightObject(sublevels); 
   sublevels.HoverMouse();
@@ -2146,11 +2199,22 @@ function companyBrand(){
   home.HoverMouse();
   home.HoverMouse();
   home.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(3000, "Findind SubLevels");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var sublevels = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl2;
   Sys.HighlightObject(sublevels); 
   sublevels.HoverMouse();
   sublevels.HoverMouse();
   sublevels.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(3000, "Findind SubLevels");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -2363,7 +2427,10 @@ function CompanyClient(){
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-
+  aqUtils.Delay(3000, "Findind information");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var information = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab
   Sys.HighlightObject(information); 
   information.HoverMouse();

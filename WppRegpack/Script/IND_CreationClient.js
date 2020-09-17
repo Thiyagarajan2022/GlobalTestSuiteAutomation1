@@ -79,7 +79,13 @@ var save = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite
 Sys.HighlightObject(save);
 save.HoverMouse();
 save.Click();
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
+  aqUtils.Delay(4000, "Finding Document");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
 }
 
 function DropDownList(value,feild){ 
