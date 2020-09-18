@@ -1265,12 +1265,12 @@ var listPass = true;
 
   
 function FinalApproveClient(ClientNum,Apvr,lvl){ 
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var table = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
 waitForObj(table);
 Sys.HighlightObject(table);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
 if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
 
 }else{ 

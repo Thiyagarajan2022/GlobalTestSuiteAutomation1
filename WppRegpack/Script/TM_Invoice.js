@@ -60,9 +60,9 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   Log.Message(jobNumber);
   }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)(invoiceAccount==jobNumber)){
-    jobNumber = "";
-  }
+  //if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)(invoiceAccount==jobNumber)){
+    //jobNumber = "";
+  //}
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
     

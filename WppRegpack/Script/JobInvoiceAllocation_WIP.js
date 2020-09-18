@@ -54,7 +54,7 @@ jobNumber,EmpNo,LatestTran = "";
 Estimatelines = [];
 
 STIME = WorkspaceUtils.StartTime();
-ReportUtils.logStep("INFO", "Job Invoice Allocation (Without WIP) started::"+STIME);
+ReportUtils.logStep("INFO", "Job Invoice Allocation WIP) started::"+STIME);
 getDetails();
 gotoMenu();
 gotoAllocation();
@@ -84,7 +84,7 @@ sheetName ="JobInvoiceAllocation_WIP";
   jobNumber = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed for Job Invoice Allocation (Without WIP)");
+  ValidationUtils.verify(false,true,"Job Number is needed for Job Invoice Allocation WIP");
   Log.Message(jobNumber)
 //  EmpNo = ReadExcelSheet("Timesheet Employee No",EnvParams.Opco,"Data Management");
 //  if((EmpNo=="")||(EmpNo==null)){
@@ -92,7 +92,7 @@ sheetName ="JobInvoiceAllocation_WIP";
   EmpNo = ExcelUtils.getRowDatas("Employee Number",EnvParams.Opco)
 //  }
   if((EmpNo=="")||(EmpNo==null))
-  ValidationUtils.verify(false,true,"Employee Number is needed for Job Invoice Allocation (Without WIP)");
+  ValidationUtils.verify(false,true,"Employee Number is needed for Job Invoice Allocation WIP");
   
 }
 
