@@ -3215,7 +3215,14 @@ return dif2;
 //  return TodayValue;
 //}
 
+function waitUntilInvisibleOfObj(ObjAdd)
+{
+  if (ObjAdd.WaitProperty("VisibleOnScreen", false,400000)){ 
+}
+else
+Log.Error("Object is Visible/Enabled")
 
+}
 function waitForObj(ObjAdd){  
   
 if (ObjAdd.WaitProperty("Enabled", true, 20000)){ 

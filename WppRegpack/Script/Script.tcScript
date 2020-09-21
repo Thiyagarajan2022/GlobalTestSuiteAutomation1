@@ -131,7 +131,6 @@
 				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
 				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
-				<child name="CreateCompanyProduct" key="{0F25798A-1080-4FE1-B918-20D7F2664298}" path="CreateCompanyProduct.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
@@ -153,7 +152,6 @@
 					<child name="IND_ExpenseCreation" key="{3DF6CFF9-6D28-4AF2-929A-7173A0FA8532}" path="IND_ExpenseCreation.js" />
 					<child name="IND_InvoiceAllocation" key="{68F9D252-D556-420E-A28E-D870A62A1C5B}" path="IND_InvoiceAllocation.js" />
 					<child name="IND_PartialInvoicing_CarryForward" key="{35661A2B-B8C8-44DE-9960-418111C4B8A4}" path="IND_PartialInvoicing_CarryForward.js" />
-					<child name="IND_CreateGlobalBrand" key="{3556BB13-912F-42CD-BFB7-0D03B8D67C51}" path="IND_CreateGlobalBrand.js" />
 				</folder>
 			</folder>
 			<folder name="UK">
@@ -163,8 +161,6 @@
 			<folder name="Spain">
 				<child name="SPA_CreateClient" key="{525F44A3-7652-48E7-9CFB-5FDB91CBCB36}" path="SPA_CreateClient.js" />
 				<child name="SPA_CreateGlobalVendor" key="{C3B68A65-D993-4AC4-9835-514AD65C8EC7}" path="SPA_CreateGlobalVendor.js" />
-				<child name="SPA_CompanyClient" key="{569F85D4-BC79-4DA5-B881-070D1C0FE4BC}" path="SPA_CompanyClient.js" />
-				<child name="SPA_GlobalBrand" key="{D2A3939E-DE53-402C-9C21-E97C63980A23}" path="SPA_GlobalBrand.js" />
 			</folder>
 			<folder name="Dependency TestCases">
 				<child name="Approve_VI" key="{387C1CFD-5A83-4864-9541-127F9CE3C1D1}" path="Approve_VI.js" />
@@ -185,6 +181,7 @@
 				<child name="PostingJournal_MPL" key="{A39A50C0-E384-4182-A197-F3EDC1F073F9}" path="PostingJournal_MPL.js" />
 				<child name="PaymentSelection_MPL" key="{13F93619-589E-419D-9CD8-84F131177053}" path="PaymentSelection_MPL.js" />
 				<child name="PaymentOrder_MPL" key="{756D9DD0-91F6-4445-87A7-496DF38983CA}" path="PaymentOrder_MPL.js" />
+				<child name="PrintPaymentRemittance_MPL" key="{636CEB43-855E-4982-A287-4A0F1756F2C6}" path="PrintPaymentRemittance_MPL.js" />
 			</folder>
 		</folder>
 		<folder name="EnvConfig">

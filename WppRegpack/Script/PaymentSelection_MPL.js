@@ -24,48 +24,91 @@ var ExchangeDate="";
 var layoutTypes="";
 var Invoicenumber="";
 var amount ="";
+var fileName = "";
 
 //getting data from datasheet
 function getDetails(){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
+  
+
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  fileName = ExcelUtils.getRowDatas("PaymentSelectionMpl",EnvParams.Opco)
+  if((fileName==null)||(fileName=="")){ 
+  ValidationUtils.verify(false,true,"PaymentSelectionMpl is needed to validate");
+  }
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymentagent = ExcelUtils.getRowDatas("Payment Agent",EnvParams.Opco)
+  if((Paymentagent==null)||(Paymentagent=="")){ 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    Paymentagent = ExcelUtils.getRowDatas("Payment_Agent",EnvParams.Opco)
+ }
 Log.Message(Paymentagent)
 if((Paymentagent==null)||(Paymentagent=="")){ 
 ValidationUtils.verify(false,true,"Payment Agent is Needed to Create a Payment Selection");
 }
-Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Paymodemode = ExcelUtils.getRowDatas("Vendor Invoice Payment Mode",EnvParams.Opco)
+  if((Paymodemode==null)||(Paymodemode==""))  { 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    Paymodemode = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
+   }
 Log.Message(Paymodemode)
 if((Paymodemode==null)||(Paymodemode=="")){ 
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
-PrintLayout = ExcelUtils.getRowDatas("Paymode_Mode",EnvParams.Opco)
-Log.Message(PrintLayout)
-if((PrintLayout==null)||(PrintLayout=="")){ 
-ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
-}
-Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Duedate = ExcelUtils.getRowDatas("Vendor Invoice Due Date",EnvParams.Opco)
+  if((Duedate==null)||(Duedate==""))  { 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+  }
 Log.Message(Duedate)
 if((Duedate==null)||(Duedate=="")){ 
 ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
 }
-amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+amount = ExcelUtils.getRowDatas("VendorInvoice Amount",EnvParams.Opco)
+  if((amount==null)||(amount==""))  { 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+    }
 Log.Message(amount)
 if((amount==null)||(amount=="")){ 
 ValidationUtils.verify(false,true,"Amount is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
 layoutTypes = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
 Log.Message(layoutTypes)
 if((layoutTypes==null)||(layoutTypes=="")){ 
 ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
 }
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
+exchangeDate = ExcelUtils.getRowDatas("Exchange_Date",EnvParams.Opco)
+Log.Message(exchangeDate)
+if((exchangeDate==null)||(exchangeDate=="")){ 
+ValidationUtils.verify(false,true,"exchangeDate is Needed to validate a Payment Selection");
+}
+
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
 Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+  if((Invoicenumber==null)||(Invoicenumber==""))  { 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    Invoicenumber = ExcelUtils.getRowDatas("Vendor Invoice NO",EnvParams.Opco)
+    }
 Log.Message(Invoicenumber)
 if((Invoicenumber==null)||(Invoicenumber=="")){ 
-ValidationUtils.verify(false,true,"Vendor Invoice Nunber is Needed to Create a Payment Selection");
+ValidationUtils.verify(false,true,"Vendor Invoice Number is Needed to Create a Payment Selection");
 }
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
-VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-Log.Message(VendorNo)
+VendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
 if((VendorNo=="")||(VendorNo==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 VendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
@@ -77,20 +120,9 @@ ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment S
 }
 
 
-
-
-
-function validateCreateChangePaymentSelection_standardLayout(workBook,sheetName)
+function validateCreateChangePaymentSelection_standardLayout()
 {
   
-  var fileName = "";
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  fileName = ExcelUtils.getRowDatas("PaymentSelectionMpl",EnvParams.Opco)
-  if((fileName==null)||(fileName=="")){ 
-  ValidationUtils.verify(false,true,"PaymentSelectionMpl is needed to validate");
-  }
-  
- // var fileName = filepathforMplValidation;
   var docObj;
 
   try{
@@ -104,35 +136,22 @@ function validateCreateChangePaymentSelection_standardLayout(workBook,sheetName)
   var pdflineSplit = docObj.split("\r\n");
  
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  var vendorNumber = ReadExcelSheet("Vendor Number",EnvParams.Opco,sheetName);
-  var paymentAgent  = ReadExcelSheet("Payment_Agent",EnvParams.Opco,sheetName);
-  var paymodeMode = ReadExcelSheet("Paymode_Mode",EnvParams.Opco,sheetName);
-  var exchangeDate = ReadExcelSheet("ExchangeRateDate",EnvParams.Opco,sheetName);
-  var dueDate = ReadExcelSheet("Latest Due Date",EnvParams.Opco,sheetName);
-  var amount= ReadExcelSheet("Amount",EnvParams.Opco,sheetName);
                     
-  verifyVendorNumber(vendorNumber, pdflineSplit);     
-  verifyPaymentAgent(paymentAgent, pdflineSplit);    
-  verifyPaymodeMode(paymodeMode,pdflineSplit);          
+  verifyVendorNumber(VendorNo, pdflineSplit);     
+  //verifyPaymentAgent(Paymentagent, pdflineSplit);    
+  verifyPaymodeMode(Paymodemode,pdflineSplit);          
   verifyExchangeDate(exchangeDate,pdflineSplit);
-  verifyDueDate(dueDate,pdflineSplit);     
+  verifyDueDate(Duedate,pdflineSplit);     
   verifyAmount(amount,pdflineSplit);
  }
 
 
-function validateCreateChangePaymentSelection_wppLayout(workBook,sheetName)
+function validateCreateChangePaymentSelection_wppLayout()
 {
-    var fileName = "";
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  fileName = ExcelUtils.getRowDatas("PaymentSelectionMpl",EnvParams.Opco)
-  if((fileName==null)||(fileName=="")){ 
-  ValidationUtils.verify(false,true,"PaymentSelectionMpl is needed to validate");
-  }
   
-  
- // var fileName = filepathforMplValidation;
-  var docObj;
 
+  var docObj;
+  
   // Load the PDF file to the PDDocument object
   try{
   Log.Message(fileName)
@@ -141,51 +160,27 @@ function validateCreateChangePaymentSelection_wppLayout(workBook,sheetName)
   }catch(objEx){
     Log.Error("Exception while reading document::"+objEx);
   }
- // var workBook = "C:\\GlobalTestSuiteAutomation_Bank\\WppRegpack\\TestResource\\Regression\\DS_SPN_REGRESSION.xlsx";
- //  var country = "Spain";
-  //EnvParams.Opco = "1006";
  
   var pdflineSplit = docObj.split("\r\n");
- 
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  var vendorNumber = ReadExcelSheet("Vendor Number",EnvParams.Opco,sheetName);
-  var vendorInvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,sheetName);
-  var amount= ReadExcelSheet("Amount",EnvParams.Opco,sheetName);
-  var exchangeDate = ReadExcelSheet("ExchangeDate",EnvParams.Opco,sheetName);
-  var dueDate = ReadExcelSheet("Due Date",EnvParams.Opco,sheetName);
-  var paymodeMode = ReadExcelSheet("Paymode_Mode",EnvParams.Opco,sheetName);
                
-  verifyVendorNumber(vendorNumber, pdflineSplit);
-  verifyInvoiceNumber(vendorInvoiceNo,pdflineSplit);          
+  verifyVendorNumber(VendorNo, pdflineSplit);
+  verifyInvoiceNumber(Invoicenumber,pdflineSplit);          
   verifyAmount(amount,pdflineSplit);
   verifyExchangeDate(exchangeDate,pdflineSplit);
-  verifyDueDate(dueDate,pdflineSplit);     
-  verifyPaymodeMode(paymodeMode,pdflineSplit);  
+  verifyDueDate(Duedate,pdflineSplit);     
+  verifyPaymodeMode(Paymodemode,pdflineSplit);  
           
 }
 
 
 
-
-
 //Main Function
-function CreatePayment() {
+function validatePaymentSelectionMPL() {
 TextUtils.writeLog("Create Payment Selection Started"); 
-Indicator.PushText("waiting for window to open");
+
 Language = "";
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
-
-excelName = EnvParams.path;
-workBook = Project.Path+excelName;
-sheetName = "CreatePaymentSelection";
-
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Arrays = [];
-count = true;
-checkmark = false;
-STIME = "";
-VendorNo,Paymentagent,Paymodemode ="";
 
 Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();
@@ -193,15 +188,15 @@ TextUtils.writeLog("Execution Start Time :"+STIME);
 ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
 try{
-var  layoutType = layoutTypes;
-
-if(layoutType=="WPP Payment")
+  
+getDetails();
+if(layoutTypes=="WPP Payment")
 {
-validateCreateChangePaymentSelection_wppLayout(filepathforMplValidation,workBook,sheetName)
+validateCreateChangePaymentSelection_wppLayout();
 }
-else if(layoutType=="Standard")
+else if(layoutTypes=="Standard")
 {
-  validateCreateChangePaymentSelection_standardLayout(filepathforMplValidation,workBook,sheetName)
+  validateCreateChangePaymentSelection_standardLayout();
 }
  
 }
@@ -225,7 +220,7 @@ function verifyVendorNumber(vendorNumber,pdflineSplit)
              break;
              }
          if(j==pdflineSplit.length-1 && !vendorNoFound)
-          ValidationUtils.verify(false,true,"VendorNumber is not same in Create Payment Selection");
+          ValidationUtils.verify(false,true,"VendorNumber is not same in CreatePaymentSelection");
   }  
 }
 
@@ -236,13 +231,14 @@ function verifyInvoiceNumber(vendorInvoiceNo,pdflineSplit)
   {
           if(vendorInvoiceNo.includes(pdflineSplit[j]))             {
              Log.Message(vendorInvoiceNo+" vendorInvoiceNo is matching with Pdf");
+             ValidationUtils.verify(true,true,"Vendor Invoice No is matched with Pdf");
              vendorInvoiceNoFound = true;
              break;
              }
          else
          continue;
          if(j==pdflineSplit.length-1 && !vendorInvoiceNoFound)
-          ValidationUtils.verify(false,true,"vendorInvoiceNo is not same in CreatePaymentFile");
+          ValidationUtils.verify(false,true,"vendorInvoiceNo is not same in CreatePaymentSelection");
     
   }       
 }
@@ -255,11 +251,12 @@ function verifyAmount(amount,pdflineSplit)
          if(pdflineSplit[j].includes(amount))
              {
              Log.Message(amount+" amount is matching with Pdf");
+             ValidationUtils.verify(true,true,"Amount is matched with Pdf");
              amountFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !amountFound)
-          ValidationUtils.verify(false,true,"amount is not same in CreatePaymentFile");
+          ValidationUtils.verify(false,true,"amount is not same in CreatePaymentSelection");
     
     }
 }
@@ -272,11 +269,12 @@ function verifyExchangeDate(exchangeDate,pdflineSplit)
          if(pdflineSplit[j].includes(exchangeDate))
              {
              Log.Message(exchangeDate+" exchangeDate is matching with Pdf");
+             ValidationUtils.verify(true,true,"Exchange Date is matched with Pdf");
              exchangeDateFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !exchangeDateFound)
-          ValidationUtils.verify(false,true,"exchangeDate is not same in CreatePaymentFile");
+          ValidationUtils.verify(false,true,"exchangeDate is not same in CreatePaymentSelection");
     
     } 
 }
@@ -289,28 +287,14 @@ function verifyDueDate(dueDate,pdflineSplit)
          if(pdflineSplit[j].includes(dueDate))
              {
              Log.Message(dueDate+" DueDate is matching with Pdf");
+             ValidationUtils.verify(true,true,"Due Date is matched with Pdf");
              dueDateFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !dueDateFound)
-          ValidationUtils.verify(false,true,"DueDate is not same in CreatePaymentFile");
+          ValidationUtils.verify(false,true,"DueDate is not same in CreatePaymentSelection");
     
     }    
-}
-function verifyPaymentNumber(paymentNumber,pdflineSplit)
-{
-   var paymentNumberFound = false;
-    for (var j=0; j<pdflineSplit.length; j++)
-    {
-         if(pdflineSplit[j].includes(paymentNumber))
-             {
-             Log.Message(paymentNumber+" PaymentNumber is matching with Pdf");
-             paymentNumberFound = true;
-             break;
-             }
-         if(j==pdflineSplit.length-1 && !paymentNumberFound)
-          ValidationUtils.verify(false,true,"PaymentNumber is not same in PrintReimmittance");    
-    }   
 }
 
 function verifyPaymodeMode(paymodeMode, pdflineSplit)
@@ -321,11 +305,12 @@ function verifyPaymodeMode(paymodeMode, pdflineSplit)
          if(pdflineSplit[j].includes(paymodeMode))
              {
              Log.Message(paymodeMode+" paymodeMode is matching with Pdf");
+             ValidationUtils.verify(true,true,"Payment Mode is matched with Pdf");
              paymodeModeFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !paymodeModeFound)
-          ValidationUtils.verify(false,true,"paymodeMode is not same in CreatePaymentSelection/ChangePaymentSelection");    
+          ValidationUtils.verify(false,true,"paymodeMode is not same in CreatePaymentSelection");    
     }
 }
 function verifyPaymentAgent(paymentAgent,pdflineSplit)
@@ -336,11 +321,12 @@ function verifyPaymentAgent(paymentAgent,pdflineSplit)
          if(pdflineSplit[j].includes(paymentAgent))
              {
              Log.Message(paymentAgent+" paymentAgent is matching with Pdf");
+             ValidationUtils.verify(true,true,"Payment Agent is matched with Pdf");
              paymentAgentFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !paymentAgentFound)
-          ValidationUtils.verify(false,true,"paymentAgent is not same in CreatePaymentSelection/ChangePaymentSelection");    
+          ValidationUtils.verify(false,true,"paymentAgent is not same in CreatePaymentSelection");    
     }
 }
 

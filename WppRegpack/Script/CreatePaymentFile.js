@@ -169,16 +169,7 @@ function PaymentFile() {
       ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment File");
     } 
   
-//  var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;   
-//  if(Paymentagent!=""){
-//  paymentAgent.Click();
-//  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
-//  TextUtils.writeLog("Payment Agent is available in macanomy:" +Paymentagent);
-//  }
-//  else{ 
-//    ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
-//  }
-  
+
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;   
   if(Paymentmode!=""){
   paymentMode.Click();
@@ -284,17 +275,23 @@ function PaymentFile() {
     ExcelUtils.setExcelName(workBook,"Data Management", true);
     ExcelUtils.WriteExcelSheet("Payment Agent",EnvParams.Opco,"Data Management",Paymentagent)
   if(Paymentmode.indexOf("Manual")!=-1){
+
+  var paymentAgentObj = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
+  waitForObj(paymentAgentObj);
+  paymentAgentObj.Click();
+  SearchByValue(paymentAgentObj,"Payment Agent",Paymentagent,"Payment Agent")
   
 //  var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl2;
   var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   Sys.HighlightObject(ApproveConPayment);
   waitForObj(ApproveConPayment)
   ApproveConPayment.Click();
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+      aqUtils.Delay(1000,"Waiting to complete Approval")
+  }
   ValidationUtils.verify(flag,true,"Create Payment File is Generated");
   TextUtils.writeLog("Create Payment File is Generated");
-          if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-          }
   
   }else{ 
     //Electronic payment
