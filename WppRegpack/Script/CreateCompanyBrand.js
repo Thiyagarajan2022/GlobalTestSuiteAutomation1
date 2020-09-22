@@ -22,7 +22,7 @@ var STIME = "";
 //var clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product ="";
 var ClientNo = "";
 var Language = "";
-var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,ClientNumber,brandName,brandNumber,Currency,Ph_No,Email,C_BFC,SII_Tax="";
+var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,ClientNumber,brandName,brandNumber,Currency,Ph_No,Email,C_BFC,State,GST,PAN,TAN,SII_Tax,TIN ="";
 
 function CompanyBrandCreation(){
   
@@ -72,7 +72,7 @@ count = true;
 checkmark = false;
 STIME = "";
 //clientName,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product ="";
-brandNumber,brandName,settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,Ph_No,Email,C_BFC,SII_Tax="";
+brandNumber,brandName,settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,Ph_No,Email,C_BFC,State,GST,PAN,TAN,SII_Tax,TIN ="";
 
 ClientNumber = "";
 Approve_Level = [];
@@ -95,7 +95,7 @@ gotoClientSearch();
 NewCompanyBrand();
 //CompanyBrandTable();
 if(EnvParams.Country.toUpperCase()=="INDIA"){
-Runner.CallMethod("IND_CreateGlobalBrand.indiaSpecific",State,GST,PAN,TAN,TIN);
+Runner.CallMethod("IND_CreateCompnayClient.indiaSpecific",State,GST,PAN,TAN,TIN);
 }
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 Runner.CallMethod("SPA_CompanyClient.spainSpecific",SII_Tax);
@@ -631,6 +631,35 @@ Ph_No = ExcelUtils.getRowDatas("Phone No",EnvParams.Opco)
 Email = ExcelUtils.getRowDatas("Email",EnvParams.Opco)
 
 C_BFC = ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
+
+
+if(EnvParams.Country.toUpperCase()=="INDIA"){
+State = ExcelUtils.getRowDatas("State Code",EnvParams.Opco)
+if((State==null)||(State=="")){ 
+ValidationUtils.verify(false,true,"State Code is Needed to Create a Client");
+}
+Log.Message(State)
+GST = ExcelUtils.getRowDatas("GST Debtor Type",EnvParams.Opco)
+if((GST==null)||(GST=="")){ 
+ValidationUtils.verify(false,true,"GST Debtor Type is Needed to Create a Client");
+}
+Log.Message(GST)
+PAN = ExcelUtils.getRowDatas("PAN",EnvParams.Opco)
+//if((PAN==null)||(PAN=="")){ 
+//ValidationUtils.verify(false,true,"PAN is Needed to Create a Client");
+//}
+Log.Message(PAN)
+TAN = ExcelUtils.getRowDatas("TAN",EnvParams.Opco)
+//if((TAN==null)||(TAN=="")){ 
+//ValidationUtils.verify(false,true,"TAN is Needed to Create a Client");
+//}
+Log.Message(TAN)
+TIN = ExcelUtils.getRowDatas("TIN",EnvParams.Opco)
+//if((TAN==null)||(TAN=="")){ 
+//ValidationUtils.verify(false,true,"TAN is Needed to Create a Client");
+//}
+Log.Message(TIN)
+}
 
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 SII_Tax = ExcelUtils.getRowDatas("SII Tax Group",EnvParams.Opco)
