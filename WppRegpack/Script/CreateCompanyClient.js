@@ -609,7 +609,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     var settlingCompany = Aliases.SettlingCompany;
     if(settlingcompanyvalue!=""){
    settlingCompany.Click();
-  WorkspaceUtils.SearchByValue(settlingCompany,"Company",settlingcompanyvalue,"Company Number");
+  WorkspaceUtils.SearchByValue(settlingCompany,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),settlingcompanyvalue,"Company Number");
   }
   
   var LangaugeDropdown = Aliases.LnaguageSelector;
@@ -632,7 +632,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   var AccountDirectorNo =  Aliases.AssociateDir;   
   if(accountDirectorNoValue!=""){
   AccountDirectorNo.Click();
-  WorkspaceUtils.SearchByValue(AccountDirectorNo,"Employee",accountDirectorNoValue,"Employee Number");
+  WorkspaceUtils.SearchByValue(AccountDirectorNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),accountDirectorNoValue,"Employee Number");
   }
    
    var controlAccount =Aliases.ControlAccount;  
@@ -657,38 +657,57 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(jobPricelListSalesValue!=""){
    JobPricelListSales.Click();
   
-    WorkspaceUtils.SearchByValue(JobPricelListSales,"Job Price List",jobPricelListSalesValue,"Job Price List Sales");
+
+    WorkspaceUtils.SearchByValue(JobPricelListSales,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Price List").OleValue.toString().trim(),jobPricelListSalesValue,"Job Price List Sales");
  // WorkspaceUtils.DropDownList(jobPricelListSalesValue,"Job Price List, Sales")
   }
   
-  var NextButton = Aliases.NextButton;
+//  var NextButton = Aliases.NextButton;
+//  NextButton.Click();
+  var NextButton = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim())
   NextButton.Click();
   
+ aqUtils.Delay(8000, Indicator.Text); 
+
   
+
   var ClientDueDeligencePolicyDropdown = Aliases.DeligencePolicy;
-  var dueDeligenceYes = "Yes"
-    if(dueDeligenceYes!=""){
-  ClientDueDeligencePolicyDropdown.Click();
-  WorkspaceUtils.DropDownList(dueDeligenceYes,"By choosing 'Yes', I confirm that I have read and understood the above “Due Diligence” policy and have complied with the above terms in this request.")
-  }
+//  var dueDeligenceYes = "Yes"
+//    if(dueDeligenceYes!=""){
+//  ClientDueDeligencePolicyDropdown.Click();
+//  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"By choosing 'Yes', I confirm that I have read and understood the above “Due Diligence” policy and have complied with the above terms in this request.")
+//  }
+//  
   
   
+//  //Expand Window
+//   Sys.Desktop.KeyDown(0x12);
+//  Sys.Desktop.KeyDown(0x20);
+//  Sys.Desktop.KeyUp(0x12);
+//  Sys.Desktop.KeyUp(0x20);
+//  Sys.Desktop.KeyDown(0x58);
+//  Sys.Desktop.KeyUp(0x58);
   
-  //Expand Window
+  
+   var ClientDueDeligencePolicyDropdown = Aliases.DeligencePolicy;
+     ClientDueDeligencePolicyDropdown.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",ClientDueDeligencePolicyDropdown)
+// ClientDueDeligencePolicyDropdown.Keys("Yes")
+ aqUtils.Delay(5000, Indicator.Text); 
+     //Expand Window
    Sys.Desktop.KeyDown(0x12);
   Sys.Desktop.KeyDown(0x20);
   Sys.Desktop.KeyUp(0x12);
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);
+  aqUtils.Delay(4000, Indicator.Text); 
+   var NextButton = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim())
+  NextButton.Click();
+//  var NextButtonDeligencepolicy = Aliases.NextButton;
+//  NextButtonDeligencepolicy.Click();
   
-  
-   var ClientDueDeligencePolicyDropdown = Aliases.DeligencePolicy;
- ClientDueDeligencePolicyDropdown.Keys("Yes")
- 
-  var NextButtonDeligencepolicy = Aliases.NextButton;
-  NextButtonDeligencepolicy.Click();
-  
+aqUtils.Delay(4000, Indicator.Text);  
   
     //Expand Window
    Sys.Desktop.KeyDown(0x12);
@@ -698,10 +717,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);
   
+  aqUtils.Delay(8000, Indicator.Text); 
+
   
   
-      var newClientIdentificationInfo = Aliases.NewClientIdInfo;
-      newClientIdentificationInfo.Keys("Yes")
+var newClientIdentificationInfo = Aliases.NewClientIdInfo;
+        newClientIdentificationInfo.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",newClientIdentificationInfo)
+//      newClientIdentificationInfo.Keys("Yes")
  aqUtils.Delay(500, Indicator.Text);  
       var checks = Aliases.CheckPerformed;
       checks.setText("YES");
@@ -712,7 +735,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   aqUtils.Delay(500, Indicator.Text); 
    
       var verifyCompanyOwners =Aliases.LnaguageSelector;
-      verifyCompanyOwners.Keys("Yes")
+        verifyCompanyOwners.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",verifyCompanyOwners)
+//      verifyCompanyOwners.Keys("Yes")
   aqUtils.Delay(500, Indicator.Text); 
   
       var checksverifyCompanyOwners= Aliases.McTextWidget
@@ -720,7 +745,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   aqUtils.Delay(500, Indicator.Text);     
   
       var foriegnJurisdiction =Aliases.ForiegnJurisdiction
-      foriegnJurisdiction.Keys("Yes")
+        foriegnJurisdiction.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",foriegnJurisdiction)
+//      foriegnJurisdiction.Keys("Yes")
  aqUtils.Delay(500, Indicator.Text);      
 
       var ForeignJurisdictionChecks = Aliases.foreignJurisdictionChecks
@@ -728,7 +755,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
    aqUtils.Delay(500, Indicator.Text); 
    
       var reputationalIssues = Aliases.CompanyTaxCode;
-      reputationalIssues.Keys("Yes")
+        reputationalIssues.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",reputationalIssues)
+//      reputationalIssues.Keys("Yes")
    aqUtils.Delay(500, Indicator.Text); 
    
       var reputationalChecks = Aliases.ReputationalChecks;
@@ -736,14 +765,18 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     aqUtils.Delay(500, Indicator.Text);      
      
       var ConfilictOfinterest =   Aliases.potentialInterest;
-      ConfilictOfinterest.Keys("Yes")
+        ConfilictOfinterest.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",ConfilictOfinterest)
+//      ConfilictOfinterest.Keys("Yes")
     aqUtils.Delay(500, Indicator.Text);    
              
       var ConfilictOfinterestChecks =Aliases.Composite16.cONFLICTcHECKS
       ConfilictOfinterestChecks.setText("YES");
     aqUtils.Delay(500, Indicator.Text);        
       var payForServicesRequested =Aliases.PayForservicesRequested;
-      payForServicesRequested.Keys("Yes")
+        payForServicesRequested.Click();
+  WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",payForServicesRequested)
+//      payForServicesRequested.Keys("Yes")
     aqUtils.Delay(500, Indicator.Text);   
       var payForServicesRequestedChecks =Aliases.PayForServiceChecks
       payForServicesRequestedChecks.setText("YES");
@@ -751,12 +784,16 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
       var documentServices =Aliases.DocumentServices;
       documentServices.setText("YES");
     aqUtils.Delay(10000, Indicator.Text); 
-      var CreateClient =Aliases.CreateClient;
-      waitForObj(CreateClient);
-      CreateClient.Click();
+      var Create = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim());
+  waitForObj(Create);
+  Create.Click();
+//      var CreateClient =Aliases.CreateClient;
+//      waitForObj(CreateClient);
+//      CreateClient.Click();
        aqUtils.Delay(4000, Indicator.Text); 
 
   aqUtils.Delay(10000, Indicator.Text); 
+
 //      if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management - Due Diligence Checklist").OleValue.toString().trim())    
 //    {
 //    var button = Aliases.CompanyRegistrationAlreadyUsED
@@ -787,8 +824,8 @@ OK.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-      var blockedCompanyTab =Aliases.CreateCompanyClient.Composite.CompanyBlockedRadio
-      blockedCompanyTab.Click();  
+//      var blockedCompanyTab =Aliases.CreateCompanyClient.Composite.CompanyBlockedRadio
+//      blockedCompanyTab.Click();  
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -850,7 +887,7 @@ if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer by Type (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -862,7 +899,7 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer by Type (Substitute) (")!=-1)&&(temp1.length==3)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer by Type (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -875,7 +912,7 @@ if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -887,7 +924,7 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer (Substitute) (")!=-1)&&(temp1.length==3)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -896,6 +933,7 @@ var listPass = true;
   }
 } 
   }
+
 
 }
   
@@ -980,11 +1018,11 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var docTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 Sys.HighlightObject(docTable)
 if(docTable.getItemCount()==0){
-  attchDocument.Click();
+attchDocument.Click();
   aqUtils.Delay(5000, "Waiting to Open file");;
-  var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+  var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
-  var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
+  var opendoc = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
