@@ -27,8 +27,7 @@ function closeAllWorkspaces(){
 function closeMaconomy(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
-var Language = "Chinese";
-//  Log.Message("Maconomy is Already in Running")
+
 if((Language == "English") || (Language == "Chinese")){
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F

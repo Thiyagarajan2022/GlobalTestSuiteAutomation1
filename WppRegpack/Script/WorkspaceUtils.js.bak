@@ -27,8 +27,9 @@ function closeAllWorkspaces(){
 function closeMaconomy(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
+
 //  Log.Message("Maconomy is Already in Running")
-if(Language == "English"){
+if((Language == "English") || (Language == "Chinese")){
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
@@ -66,6 +67,8 @@ function timeDifference(stime, etime)
   var seconds = (etime.getTime() - stime.getTime()) / 1000;
   var minutes = Math.floor(seconds / 60);
   var remainingSeconds = Math.floor(seconds%60);
+  if(remainingSeconds<9)
+    remainingSeconds = "0"+ remainingSeconds
   return minutes+"."+remainingSeconds;
 }
 
@@ -3212,7 +3215,14 @@ return dif2;
 //  return TodayValue;
 //}
 
+function waitUntilInvisibleOfObj(ObjAdd)
+{
+  if (ObjAdd.WaitProperty("VisibleOnScreen", false,400000)){ 
+}
+else
+Log.Error("Object is Visible/Enabled")
 
+}
 function waitForObj(ObjAdd){  
   
 if (ObjAdd.WaitProperty("Enabled", true, 20000)){ 
