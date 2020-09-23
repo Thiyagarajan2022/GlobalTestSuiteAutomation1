@@ -131,7 +131,6 @@
 				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
 				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
-				<child name="CreateCompanyProduct" key="{E1E328E9-9134-43CC-BF6A-17258FF59C2E}" path="CreateCompanyProduct.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
@@ -153,7 +152,6 @@
 					<child name="IND_ExpenseCreation" key="{3DF6CFF9-6D28-4AF2-929A-7173A0FA8532}" path="IND_ExpenseCreation.js" />
 					<child name="IND_InvoiceAllocation" key="{68F9D252-D556-420E-A28E-D870A62A1C5B}" path="IND_InvoiceAllocation.js" />
 					<child name="IND_PartialInvoicing_CarryForward" key="{35661A2B-B8C8-44DE-9960-418111C4B8A4}" path="IND_PartialInvoicing_CarryForward.js" />
-					<child name="IND_CreateCompnayClient" key="{5D66C278-AD6E-4EA9-941B-5FAA492EF468}" path="IND_CreateCompnayClient.js" />
 				</folder>
 			</folder>
 			<folder name="UK">
