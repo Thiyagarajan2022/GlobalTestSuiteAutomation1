@@ -26,12 +26,6 @@ var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoVal
 
 function CompanyClientCreation(){
   
-//Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-//if((Currency==null)||(Currency=="")){ 
-//ValidationUtils.verify(false,true,"Currency is Needed to Block Global Client");
-//
-//}
-
 
 TextUtils.writeLog("Company Client Creation Started"); 
 Indicator.PushText("waiting for window to open");

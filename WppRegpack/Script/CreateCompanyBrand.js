@@ -26,24 +26,6 @@ var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoVal
 
 function CompanyBrandCreation(){
   
-//ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-//  if((ClientNo=="")||(ClientNo==null)){
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
-//  ClientNumber=ClientNo;
-//  Log.Message("ClientNumber"+ClientNumber)
-//  }
-//if((ClientNo==null)||(ClientNo=="")){ 
-//ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
-//}
-
-//Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-//if((Currency==null)||(Currency=="")){ 
-//ValidationUtils.verify(false,true,"Currency is Needed to create Company Brand");
-//
-//}
-
-
 TextUtils.writeLog("Company Client Creation Started"); 
 Indicator.PushText("waiting for window to open");
 Language = EnvParams.Language;

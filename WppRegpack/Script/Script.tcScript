@@ -163,6 +163,8 @@
 			<folder name="Spain">
 				<child name="SPA_CreateClient" key="{525F44A3-7652-48E7-9CFB-5FDB91CBCB36}" path="SPA_CreateClient.js" />
 				<child name="SPA_CreateGlobalVendor" key="{C3B68A65-D993-4AC4-9835-514AD65C8EC7}" path="SPA_CreateGlobalVendor.js" />
+				<child name="SPA_GlobalBrand" key="{10981914-2C8D-4D9A-913F-0F22391CAFA1}" path="SPA_GlobalBrand.js" />
+				<child name="SPA_CompanyClient" key="{E9DC571F-FC7E-4E09-930D-3C24CF3AC369}" path="SPA_CompanyClient.js" />
 			</folder>
 			<folder name="Dependency TestCases">
 				<child name="Approve_VI" key="{387C1CFD-5A83-4864-9541-127F9CE3C1D1}" path="Approve_VI.js" />

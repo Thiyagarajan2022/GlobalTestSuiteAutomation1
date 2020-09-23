@@ -24,6 +24,7 @@ var ClientNo = "";
 var Language = "";
 var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue,clientName,ClientNumber,brandName,brandNumber,Currency,Ph_No,Email,C_BFC,State,GST,PAN,TAN,SII_Tax,TIN ="";
 
+// New Compnay Product
 function CompanyProductCreation(){
   
 //ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
@@ -1471,6 +1472,8 @@ attchDocument.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+}
+
 }
 
 

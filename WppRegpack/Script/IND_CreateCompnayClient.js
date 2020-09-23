@@ -2,7 +2,6 @@
 //USEUNIT ValidationUtils
 //USEUNIT CreateClient
 function indiaSpecific(State,GST,PAN,TAN,TIN){ 
-//Strating Of TestCase
 var indiaspec = "";
 var SaveStat = false;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
