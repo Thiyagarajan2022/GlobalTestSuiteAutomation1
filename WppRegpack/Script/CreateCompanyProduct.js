@@ -27,24 +27,6 @@ var settlingcompanyvalue,languageValue,attnValue,emailValue,accountDirectorNoVal
 // New Compnay Product
 function CompanyProductCreation(){
   
-//ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-//  if((ClientNo=="")||(ClientNo==null)){
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  ClientNo = ReadExcelSheet("Client Number",EnvParams.Opco,"Data Management");
-//  ClientNumber=ClientNo;
-//  Log.Message("ClientNumber"+ClientNumber)
-//  }
-//if((ClientNo==null)||(ClientNo=="")){ 
-//ValidationUtils.verify(false,true,"Client Number is Needed to Block Global Client");
-//}
-
-//Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-//if((Currency==null)||(Currency=="")){ 
-//ValidationUtils.verify(false,true,"Currency is Needed to create Company Brand");
-//
-//}
-
-
 TextUtils.writeLog("Company Client Creation Started"); 
 Indicator.PushText("waiting for window to open");
 Language = EnvParams.Language;
@@ -129,12 +111,6 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function FinalApproveClient(ClientNum,Apvr,lvl){ 
-//aqUtils.Delay(5000, Indicator.Text);
-//if(ImageRepository.ImageSet.Show_Filter.Exists()){
-//aqUtils.Delay(2000, Indicator.Text);
-//ImageRepository.ImageSet.Show_Filter.Click();
-//}
-
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
@@ -229,32 +205,9 @@ ValidationUtils.verify(true,true,"company product is Approved by "+Apvr)
 aqUtils.Delay(8000, Indicator.Text);;
 TextUtils.writeLog("company product is Approved by "+Apvr);
 if(Approve_Level.length==lvl+1){
-  //***
-//var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Label", "*");
-//Log.Message(label.getText());
-//var lab = label.getText().OleValue.toString().trim();
-//var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-//Ok.HoverMouse(); 
-//ReportUtils.logStep_Screenshot();
-//Ok.Click(); 
-//***
+
 aqUtils.Delay(8000, Indicator.Text); 
 
-// for(var j=0;j<12;j++){ 
-//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Approve Company Customer by Type"){ 
-//var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Label", "*");
-//Log.Message(label.getText());
-//var lab = label.getText().OleValue.toString().trim();
-//var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-//Ok.HoverMouse(); 
-//ReportUtils.logStep_Screenshot();
-//Ok.Click(); 
-//aqUtils.Delay(8000, Indicator.Text); ;  
-//}
-// }
- 
-//  ExcelUtils.setExcelName(workBook,"Data Management", true);
-//  ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
   TextUtils.writeLog("company product Number :"+ClientNum); 
   
 // if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
@@ -315,149 +268,6 @@ ExcelUtils.WriteExcelSheet("Company Product Name",EnvParams.Opco,"Data Managemen
 }
 
 } 
-
-
-
-//function FinalApproveClient(ClientNum,Apvr,lvl){ 
-////aqUtils.Delay(5000, Indicator.Text);
-////if(ImageRepository.ImageSet.Show_Filter.Exists()){
-////aqUtils.Delay(2000, Indicator.Text);
-////ImageRepository.ImageSet.Show_Filter.Click();
-////}
-//var table =Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder;
-//// Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
-//waitForObj(table);
-//Sys.HighlightObject(table);
-//
-//if(Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Visible){
-//
-//}else{ 
-//var showFilter = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.ShowFilter;
-////Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.ShowFilterList;
-//waitForObj(table);
-//Sys.HighlightObject(showFilter);
-//showFilter.HoverMouse();
-//showFilter.HoverMouse();
-//showFilter.HoverMouse();
-//showFilter.Click();
-//}
-//
-//var table = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
-//var firstCell = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
-////Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.ClientTable.ClientSearch;
-//waitForObj(firstCell);
-//Sys.HighlightObject(firstCell);
-//firstCell.HoverMouse();
-//firstCell.HoverMouse();
-//firstCell.setText(brandNumber);
-//aqUtils.Delay(3000, "Reading Data in table");;
-//var closefilter = Aliases.CreateCompanyClient.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.CloseFilter
-////Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite2.CloseFilterList;
-//waitForObj(closefilter);
-//Sys.HighlightObject(closefilter);
-//closefilter.HoverMouse();
-//closefilter.HoverMouse(); 
-//closefilter.HoverMouse();
-//closefilter.HoverMouse(); 
-////aqUtils.Delay(6000, Indicator.Text);;
-//var flag=false;
-//for(var v=0;v<table.getItemCount();v++){ 
-//  if(table.getItem(v).getText_2(0).OleValue.toString().trim()==brandNumber){ 
-//    flag=true;    
-//    break;
-//  }
-//  else{ 
-//    table.Keys("[Down]");
-//  }
-//}
-//
-//ValidationUtils.verify(flag,true,"Created Company Brand is available in Approval List");
-//TextUtils.writeLog("Created Company Brand is available in Approval List");
-//if(flag){ 
-//closefilter.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-//closefilter.Click();
-//aqUtils.Delay(5000, Indicator.Text);;
-//
-//var Approve = Aliases.CreateCompanyClient.Composite.SingleToolItemControl;
-////Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.Approve;
-//Sys.HighlightObject(Approve)
-//if(Approve.isEnabled()){ 
-//Approve.HoverMouse();
-//ReportUtils.logStep_Screenshot();
-//Approve.Click();
-//aqUtils.Delay(8000, "Waiting To Approve");;
-//ValidationUtils.verify(true,true,"create Company Brand is Approved by "+Apvr)
-//aqUtils.Delay(8000, Indicator.Text);;
-//TextUtils.writeLog("create Company Brand is Approved by "+Apvr);
-//if(Approve_Level.length==lvl+1){
-//  //***
-////var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Label", "*");
-////Log.Message(label.getText());
-////var lab = label.getText().OleValue.toString().trim();
-////var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-////Ok.HoverMouse(); 
-////ReportUtils.logStep_Screenshot();
-////Ok.Click(); 
-////***
-//aqUtils.Delay(8000, Indicator.Text); 
-//
-//// for(var j=0;j<12;j++){ 
-////if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption=="Approve Company Customer by Type"){ 
-////var label = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Label", "*");
-////Log.Message(label.getText());
-////var lab = label.getText().OleValue.toString().trim();
-////var Ok = Sys.Process("Maconomy").SWTObject("Shell", "Approve Company Customer by Type").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
-////Ok.HoverMouse(); 
-////ReportUtils.logStep_Screenshot();
-////Ok.Click(); 
-////aqUtils.Delay(8000, Indicator.Text); ;  
-////}
-//// }
-// 
-////  ExcelUtils.setExcelName(workBook,"Data Management", true);
-////  ExcelUtils.WriteExcelSheet("Global Client",EnvParams.Opco,"Data Management",ClientNum)
-//  TextUtils.writeLog("Global Client Number :"+ClientNum); 
-//  
-//// if(Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.Visible){
-//// var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel.ClientApproval;
-// var ClientApproval = Aliases.CreateCompanyClient.Composite.PTabItemPanel.CompanyClientApproverTab;
-// //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
-// Sys.HighlightObject(ClientApproval);
-// ClientApproval.HoverMouse();
-// ClientApproval.Click();
-//// }
-// if(ImageRepository.ImageSet.Maximize.Exists()){
-//ImageRepository.ImageSet.Maximize.Click();
-//}
-// //var ClientApproval =Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl
-// // Aliases.CreateCompanyClient.Composite.ComapnyClientApprovalTab
-// //Aliases.CreateCompanyClient.Composite.PTabItemPanel.CompanyClientApproverTab;
-// //Aliases.Maconomy.CreateClient.Composite.Composite.Cbomposite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
-//// Sys.HighlightObject(ClientApproval);
-//// ClientApproval.HoverMouse();
-//// ClientApproval.Click();
-//   var ApproverTable = Aliases.CreateCompanyClient.Composite.McTableWidget.CompanyClientApproverTable;
-//   //Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-//  Sys.HighlightObject(ApproverTable);
-//  ReportUtils.logStep_Screenshot();
-//  var closeApproval = Aliases.CreateCompanyClient.Composite.PTabItemPanel2.CloseApproverTable;
-//  //Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
-//  Sys.HighlightObject(closeApproval);
-// closeApproval.HoverMouse();
-// closeApproval.Click();
-// ImageRepository.ImageSet.Forward.Click();
-// var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-//  menuBar.Click();
-//}
-//  ValidationUtils.verify(true,true,"Company Brand is Approved by "+Apvr)
-//
-//  
-//}
-//}
-//
-//} 
-
 
 
 function gotoMenu(){ 
@@ -526,20 +336,6 @@ function getDetails(){
 
   
   
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  clientName = ReadExcelSheet("Global Client Name",EnvParams.Opco,"Data Management");
-//  if((clientName=="")||(clientName==null)){
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
-//  }
-//if((clientName==null)||(clientName=="")){ 
-//ValidationUtils.verify(false,true,"Client Name is Needed to Create Company Brand");
-//}
-
-
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  brandName = ReadExcelSheet("Global Brand Name",EnvParams.Opco,"Data Management");
-//  if((brandName=="")||(brandName==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandName = ExcelUtils.getRowDatas("Product Name",EnvParams.Opco)
 //  }
@@ -548,19 +344,10 @@ ValidationUtils.verify(false,true,"Product Name is Needed to Create company prod
 }
 
 
-//brandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
-//if((brandName==null)||(brandName=="")){ 
-//ValidationUtils.verify(false,true,"BrandName is Needed to Create a company product");
-//}
-//Log.Message("brandName"+brandName)
 
-
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  brandNumber = ReadExcelSheet("Global Brand Number",EnvParams.Opco,"Data Management");
-//  if((brandNumber=="")||(brandNumber==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 brandNumber = ExcelUtils.getRowDatas("Product Number",EnvParams.Opco)
-//  }
+
 if((brandNumber==null)||(brandNumber=="")){ 
 ValidationUtils.verify(false,true,"Product Number is Needed to Create company product");
 }
@@ -642,215 +429,8 @@ ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Global Br
 }
 
 
-//clientgrp = ExcelUtils.getRowDatas("Client Group",EnvParams.Opco)
-//if((clientgrp==null)||(clientgrp=="")){ 
-//ValidationUtils.verify(false,true,"Client Group is Needed to Create a Client");
-//}
-
-//controlAct = ExcelUtils.getRowDatas("Control Account",EnvParams.Opco)
-//if((controlAct==null)||(controlAct=="")){ 
-//ValidationUtils.verify(false,true,"Control Account is Needed to Create a Client");
-//}
-
-//bfc = ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
-//if((bfc==null)||(bfc=="")){ 
-//ValidationUtils.verify(false,true,"Counter Party BFC is Needed to Create a Client");
-//}
-//
-//attn = ExcelUtils.getRowDatas("Attn.",EnvParams.Opco)
-//if((attn==null)||(attn=="")){ 
-//ValidationUtils.verify(false,true,"Attn. is Needed to Create a Client");
-//}
-//mail = ExcelUtils.getRowDatas("E-mail",EnvParams.Opco)
-//if((mail==null)||(mail=="")){ 
-//ValidationUtils.verify(false,true,"E-mail is Needed to Create a Client");
-//}
-//phone = ExcelUtils.getRowDatas("Phone",EnvParams.Opco)
-//if((phone==null)||(phone=="")){ 
-//ValidationUtils.verify(false,true,"Phone is Needed to Create a Client");
-//}
-//AccDir = ExcelUtils.getRowDatas("Acct. Director No.",EnvParams.Opco)
-//if((AccDir==null)||(AccDir=="")){ 
-//ValidationUtils.verify(false,true,"Acct. Director No. is Needed to Create a Client");
-//}
-//
-//payterm = ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
-//if((payterm==null)||(payterm=="")){ 
-//ValidationUtils.verify(false,true,"Payment Terms is Needed to Create a Client");
-//}
-//Comtaxcode = ExcelUtils.getRowDatas("Company Tax Code",EnvParams.Opco)
-//if((Comtaxcode==null)||(Comtaxcode=="")){ 
-//ValidationUtils.verify(false,true,"Company Tax Code is Needed to Create a Client");
-//}
-//
-//sales = ExcelUtils.getRowDatas("Job Price List, Sales",EnvParams.Opco)
-//if((sales==null)||(sales=="")){ 
-//ValidationUtils.verify(false,true,"Job Price List, Sales is Needed to Create a Client");
-//}
-//
-//
-//
-//
-//brand = ExcelUtils.getRowDatas("Default Brand",EnvParams.Opco)
-//if((brand==null)||(brand=="")){ 
-//ValidationUtils.verify(false,true,"Default Brand is Needed to Create a Client");
-//}
-//product = ExcelUtils.getRowDatas("Default Product",EnvParams.Opco)
-//if((product==null)||(product=="")){ 
-//ValidationUtils.verify(false,true,"Default Product is Needed to Create a Client");
-//}
-
 }
 
-
-function getDetails_old(){ 
-  
-
-    ExcelUtils.setExcelName(workBook, sheetName, true);
- ClientNo = ExcelUtils.getRowDatas("Client Number",EnvParams.Opco)
-  ClientNumber=ExcelUtils.getRowDatas("Client Number",EnvParams.Opco);
-  if((ClientNo=="")||(ClientNo==null)){
- ValidationUtils.verify(false,true,"ClientNo is Needed to Create a company product");
-  
-  }
-  
-  
-  Log.Message("ClientNumber"+ClientNumber)
-  Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-if((Currency==null)||(Currency=="")){ 
-ValidationUtils.verify(false,true,"Currency is Needed to Create a company product");
-
-}
-Log.Message("Currency"+Currency)
-  
-//settlingcompanyvalue,language,attnValue,emailValue,accountDirectorNoValue,controlAccountNoValue,paymentTermsValue,companyTaxCodeValue,jobPricelListSalesValue
-  
- // ExcelUtils.setExcelName(workBook, sheetName, true);
-settlingcompanyvalue = ExcelUtils.getRowDatas("Settling company",EnvParams.Opco)
-if((settlingcompanyvalue==null)||(settlingcompanyvalue=="")){ 
-ValidationUtils.verify(false,true,"settlingcompanyvalue is Needed to Create a company product");
-}
-
-languageValue = ExcelUtils.getRowDatas("Language",EnvParams.Opco)
-if((languageValue==null)||(languageValue=="")){ 
-ValidationUtils.verify(false,true,"language is Needed to Create a company product");
-}
-
-attnValue = ExcelUtils.getRowDatas("Attn",EnvParams.Opco)
-if((attnValue==null)||(attnValue=="")){ 
-ValidationUtils.verify(false,true,"attnValue is Needed to Create a company product");
-}
-
-clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)
-if((clientName==null)||(clientName=="")){ 
-ValidationUtils.verify(false,true,"clientName is Needed to Create a company product");
-}
-
-brandName = ExcelUtils.getRowDatas("Brand Name",EnvParams.Opco)
-if((brandName==null)||(brandName=="")){ 
-ValidationUtils.verify(false,true,"BrandName is Needed to Create a company product");
-}
-Log.Message("brandName"+brandName)
-
-brandNumber = ExcelUtils.getRowDatas("Brand Number",EnvParams.Opco)
-if((brandNumber==null)||(brandNumber=="")){ 
-ValidationUtils.verify(false,true,"BrandNumber is Needed to Create a company product");
-}
-Log.Message("brandNumber"+brandNumber)
-//
-emailValue = ExcelUtils.getRowDatas("Email",EnvParams.Opco)
-if((emailValue==null)||(emailValue=="")){ 
-ValidationUtils.verify(false,true,"emailValue is Needed to Create a company product");
-}
-Log.Message(emailValue);
-
-accountDirectorNoValue = ExcelUtils.getRowDatas("AccountDirectorNo",EnvParams.Opco)
-if((accountDirectorNoValue==null)||(accountDirectorNoValue=="")){ 
-ValidationUtils.verify(false,true,"accountDirectorNoValue is Needed to Create a company product");
-}
-
-controlAccountNoValue = ExcelUtils.getRowDatas("ControlAccountNo",EnvParams.Opco)
-if((controlAccountNoValue==null)||(controlAccountNoValue=="")){ 
-ValidationUtils.verify(false,true,"controlAccountNoValue is Needed to Create a company product");
-}
-
-paymentTermsValue = ExcelUtils.getRowDatas("PaymentTerms",EnvParams.Opco)
-if((paymentTermsValue==null)||(paymentTermsValue=="")){ 
-ValidationUtils.verify(false,true,"paymentTermsValue is Needed to Create a company product");
-}
-
-
-jobPricelListSalesValue = ExcelUtils.getRowDatas("JobPricelListSales",EnvParams.Opco)
-if((jobPricelListSalesValue==null)||(jobPricelListSalesValue=="")){ 
-ValidationUtils.verify(false,true,"jobPricelListSalesValue No. is Needed to Create a company product");
-}
-
-Log.Message(jobPricelListSalesValue);
-
-companyTaxCodeValue = ExcelUtils.getRowDatas("CompanyTaxCode",EnvParams.Opco)
-if((companyTaxCodeValue==null)||(companyTaxCodeValue=="")){ 
-ValidationUtils.verify(false,true,"companyTaxCodeValue is Needed to Create a company product");
-}
-
-//clientgrp = ExcelUtils.getRowDatas("Client Group",EnvParams.Opco)
-//if((clientgrp==null)||(clientgrp=="")){ 
-//ValidationUtils.verify(false,true,"Client Group is Needed to Create a Client");
-//}
-
-//controlAct = ExcelUtils.getRowDatas("Control Account",EnvParams.Opco)
-//if((controlAct==null)||(controlAct=="")){ 
-//ValidationUtils.verify(false,true,"Control Account is Needed to Create a Client");
-//}
-
-//bfc = ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
-//if((bfc==null)||(bfc=="")){ 
-//ValidationUtils.verify(false,true,"Counter Party BFC is Needed to Create a Client");
-//}
-//
-//attn = ExcelUtils.getRowDatas("Attn.",EnvParams.Opco)
-//if((attn==null)||(attn=="")){ 
-//ValidationUtils.verify(false,true,"Attn. is Needed to Create a Client");
-//}
-//mail = ExcelUtils.getRowDatas("E-mail",EnvParams.Opco)
-//if((mail==null)||(mail=="")){ 
-//ValidationUtils.verify(false,true,"E-mail is Needed to Create a Client");
-//}
-//phone = ExcelUtils.getRowDatas("Phone",EnvParams.Opco)
-//if((phone==null)||(phone=="")){ 
-//ValidationUtils.verify(false,true,"Phone is Needed to Create a Client");
-//}
-//AccDir = ExcelUtils.getRowDatas("Acct. Director No.",EnvParams.Opco)
-//if((AccDir==null)||(AccDir=="")){ 
-//ValidationUtils.verify(false,true,"Acct. Director No. is Needed to Create a Client");
-//}
-//
-//payterm = ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
-//if((payterm==null)||(payterm=="")){ 
-//ValidationUtils.verify(false,true,"Payment Terms is Needed to Create a Client");
-//}
-//Comtaxcode = ExcelUtils.getRowDatas("Company Tax Code",EnvParams.Opco)
-//if((Comtaxcode==null)||(Comtaxcode=="")){ 
-//ValidationUtils.verify(false,true,"Company Tax Code is Needed to Create a Client");
-//}
-//
-//sales = ExcelUtils.getRowDatas("Job Price List, Sales",EnvParams.Opco)
-//if((sales==null)||(sales=="")){ 
-//ValidationUtils.verify(false,true,"Job Price List, Sales is Needed to Create a Client");
-//}
-//
-//
-//
-//
-//brand = ExcelUtils.getRowDatas("Default Brand",EnvParams.Opco)
-//if((brand==null)||(brand=="")){ 
-//ValidationUtils.verify(false,true,"Default Brand is Needed to Create a Client");
-//}
-//product = ExcelUtils.getRowDatas("Default Product",EnvParams.Opco)
-//if((product==null)||(product=="")){ 
-//ValidationUtils.verify(false,true,"Default Product is Needed to Create a Client");
-//}
-
-}
 
 function getExcelData_Company(rowidentifier,column) { 
 excelData =[];  
@@ -920,7 +500,7 @@ function gotoClientSearch(){
  var ClientNumber = Aliases.CreateCompanyClient.Composite.ClientNoSearch;
   if(ClientNo!=""){
   ClientNumber.Click();
-  WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
+  WorkspaceUtils.VPWSearchByValue(ClientNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),ClientNo,"Client Number");
     }
     
  var ClientName =Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.ClientName;
@@ -939,10 +519,9 @@ function gotoClientSearch(){
 
 
 
-
 function NewCompanyBrand(){ 
   
- var active = Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.ActiveRadio
+ var active = Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());
 
   active.Click();
   aqUtils.Delay(2000, Indicator.Text);
@@ -1055,7 +634,7 @@ aqUtils.Delay(8000, Indicator.Text);
     var settlingCompany = Aliases.CreateCompanyBrand_1.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.SettlingCompany;
     if(settlingcompanyvalue!=""){
    settlingCompany.Click();
-  WorkspaceUtils.SearchByValue(settlingCompany,"Company",settlingcompanyvalue,"Company Number");
+  WorkspaceUtils.SearchByValue(settlingCompany,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),settlingcompanyvalue,"Company Number");
   }
   
   var LangaugeDropdown = Aliases.CreateCompanyBrand_1.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.LanguageDropdown;
@@ -1078,7 +657,7 @@ aqUtils.Delay(8000, Indicator.Text);
   var AccountDirectorNo =  Aliases.CreateCompanyBrand_1.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.AcDirector;
   if(accountDirectorNoValue!=""){
   AccountDirectorNo.Click();
-  WorkspaceUtils.SearchByValue(AccountDirectorNo,"Employee",accountDirectorNoValue,"Employee Number");
+  WorkspaceUtils.SearchByValue(AccountDirectorNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),accountDirectorNoValue,"Employee Number");
   }
    
    var controlAccount =Aliases.CreateCompanyBrand_1.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.ControlAccount;
@@ -1103,10 +682,10 @@ aqUtils.Delay(8000, Indicator.Text);
   if(jobPricelListSalesValue!=""){
    JobPricelListSales.Click();
   
-    WorkspaceUtils.SearchByValue(JobPricelListSales,"Job Price List",jobPricelListSalesValue,"Job Price List Sales");
+    WorkspaceUtils.SearchByValue(JobPricelListSales,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Price List").OleValue.toString().trim(),jobPricelListSalesValue,"Job Price List Sales");
   }
   
-  var CreateBrandButton = Aliases.CreateCompanyBrand_1.Composite.Composite.Composite2.Composite.CreateBrandButton;
+  var CreateBrandButton = Aliases.CreateCompanyBrand_1.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim());
   Sys.HighlightObject(CreateBrandButton);
   CreateBrandButton.Click();
   
@@ -1142,28 +721,13 @@ var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingual
 OK.Click();
 }
 
-//var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client - Company Specific Client Information Card").OleValue.toString().trim()).SWTObject("Label", "*").getText();
-//ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
-//var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client - Company Specific Client Information Card").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-//OK.Click();
-//
-//aqUtils.Delay(3000, "Client is Created");
-//    aqUtils.Delay(10000, Indicator.Text); 
-//  p = Sys.Process("Maconomy");
-//  w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client - Company Specific Client Information Card").OleValue.toString().trim(), 2000);
-//  if (w.Exists)
-//{
-//var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client - Company Specific Client Information Card").OleValue.toString().trim()).SWTObject("Label", "*").getText();
-//ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
-//var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client - Company Specific Client Information Card").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-//OK.Click();
-//}
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
   var compClientTab =Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.CompanySubLevels;
   compClientTab.Click();
-  var blockedCompanyTab =Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.Active.Button
+  var blockedCompanyTab =Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.Active.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Blocked").OleValue.toString().trim())
   blockedCompanyTab.Click();  
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -1255,14 +819,6 @@ Log.Message("true")
 refresh.Click();
 aqUtils.Delay(25000, Indicator.Text);
 
-//if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-//var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
-//}
-//if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-//var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
-//}
-
-//Aliases.CreateCompanyClient.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree
 
 if(Aliases.CreateCompanyClient.Composite.Composite3.Composite.Composite.Visible){
 Client_Managt = Aliases.CreateCompanyClient.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
@@ -1279,18 +835,12 @@ Log.Message("true")
 
 
 
-//if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-//Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
-//}
-//if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-//Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
-//}
 var listPass = true;
 if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer by Type (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -1302,7 +852,7 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer by Type (Substitute) (")!=-1)&&(temp1.length==3)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer by Type (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -1315,7 +865,7 @@ if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -1327,7 +877,7 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf("Approve Company Customer (Substitute) (")!=-1)&&(temp1.length==3)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Company Customer (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -1336,22 +886,9 @@ var listPass = true;
   }
 } 
   }
-//if(lvl==3){
-//Client_Managt.ClickItem("|Approve Purchase Order (Substitute) (*)");
-//ReportUtils.logStep_Screenshot(); 
-//Client_Managt.DblClickItem("|Approve Purchase Order (Substitute) (*)");
-//TextUtils.writeLog("Entering into Approve Purchase Order (Substitute) from To-Dos List");
-//}
-//if(lvl==2){
-//Client_Managt.ClickItem("|Approve Purchase Order (*)");
-//ReportUtils.logStep_Screenshot(); 
-//Client_Managt.DblClickItem("|Approve Purchase Order (*)");
-//TextUtils.writeLog("Entering into Approve Purchase Order from To-Dos List");
-//}
 
 
 }
-  
   
 function CompanyBrandTable()
 {
@@ -1435,21 +972,23 @@ function attachDocument(){
   attchDocument.HoverMouse();
   attchDocument.HoverMouse();
 //  ReportUtils.logStep_Screenshot();
+var docTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+Sys.HighlightObject(docTable)
+if(docTable.getItemCount()==0){
   attchDocument.Click();
   aqUtils.Delay(4000, "Waiting to Open file");;
-  var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+  var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
-  var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
+  var opendoc = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
-//  ReportUtils.logStep_Screenshot();
+  ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Document Attached");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-}
-
+  }
 }
 
 
