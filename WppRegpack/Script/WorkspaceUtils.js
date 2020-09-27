@@ -6,7 +6,7 @@
 var Language = "";
 
 function closeAllWorkspaces(){
-  if(Language == "English"){
+ if((Language == "English") || (Language == "Chinese (Simplified)")){
   Sys.Desktop.KeyDown(0x12); //Alt
   Sys.Desktop.KeyDown(0x57); //W
   Sys.Desktop.KeyDown(0x0D); //Enter
@@ -28,7 +28,7 @@ function closeMaconomy(){
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();
 
-if((Language == "English") || (Language == "Chinese")){
+ if((Language == "English") || (Language == "Chinese (Simplified)")){
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 

@@ -41,10 +41,6 @@ loginuser = user;
 Sys.Refresh();
 var sysCount = Sys.ChildCount;
 var process = false;
-for(var cc=0;cc<sysCount;cc++){
-if(Sys.Child(cc).ProcessName=="Maconomy")
-process = true
-}
   
 
 if(process){
