@@ -844,26 +844,76 @@ var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
 //workBook = Project.Path+excelName;
 //ExcelUtils.setExcelName(workBook, sheetName, true);
 //OpCo2 = ExcelUtils.AgencyLogin(OpCo2,EnvParams.Opco);
+Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
 sheetName = "CreateGlobalProduct";
 if(OpCo2[2]==Project_manager){
 level = 1;
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")){
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2
-}else{
-//var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl
-var Approve = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite;
-}
+
+//if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")){
+//var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2
+//}else{
+////var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl
+//var Approve = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite;
+//}
+//
+//
+// for(var i=0;i<Approve.ChildCount;i++){ 
+//  if((Approve.Child(i).isVisible())&&(Approve.Child(i).Name.indexOf("SingleToolItemControl")!=-1)&&(Approve.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
+//    Approve = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.Approve;;
+//    Sys.HighlightObject(Approve)
+//    Log.Message(Approve.FullName)
+//    break;
+//  }
+//}
 
 
+    var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+                
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==1)){
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 1000;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height<pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+     Sys.HighlightObject(Approve)
+     Log.Message(Approve.FullName)
+     Approved = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     if(Approved.Visible){ 
+     Approve =  Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     }
+     else{ 
+     Approve = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);  
+     }
+     Sys.HighlightObject(Approve)
+
+ 
+Log.Message(Approve.FullName)
+Sys.HighlightObject(Approve);
  for(var i=0;i<Approve.ChildCount;i++){ 
   if((Approve.Child(i).isVisible())&&(Approve.Child(i).Name.indexOf("SingleToolItemControl")!=-1)&&(Approve.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
-    Approve = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.Approve;;
+    Approve = Approve.Child(i);
     Sys.HighlightObject(Approve)
     Log.Message(Approve.FullName)
     break;
   }
 }
 
+Sys.HighlightObject(Approve)
 Sys.HighlightObject(Approve);
 if(Approve.isEnabled()){ 
 Approve.HoverMouse();
