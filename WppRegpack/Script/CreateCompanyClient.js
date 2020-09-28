@@ -824,6 +824,10 @@ aqUtils.Delay(25000, Indicator.Text);
 if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
   
 }
+aqUtils.Delay(25000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
+  
+}
 if(Aliases.CreateCompanyClient.Composite.Composite3.Composite.Composite.Visible){
 Client_Managt = Aliases.CreateCompanyClient.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
 Log.Message("true")

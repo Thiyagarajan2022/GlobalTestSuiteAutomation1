@@ -321,11 +321,61 @@ function client(){
     if(changes){ 
       var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
       save.Click();
-//      aqUtils.Delay(5000, "Saving changes");
+      aqUtils.Delay(5000, "Saving changes");
       TextUtils.writeLog("Changes has Saved");
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
       }
+      
+  p = Sys.Process("Maconomy");
+  w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*", 2000);
+  if (w.Exists)
+{
+var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
+ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
+var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OK.Click();
+}
+aqUtils.Delay(8000, "Saving changes");
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+      }
+  p = Sys.Process("Maconomy");
+  w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*", 2000);
+  if (w.Exists)
+{
+var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
+ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
+var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OK.Click();
+}
+aqUtils.Delay(8000, "Saving changes");
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+      }
+  p = Sys.Process("Maconomy");
+  w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*", 2000);
+  if (w.Exists)
+{
+var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
+ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
+var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OK.Click();
+}
+aqUtils.Delay(8000, "Saving changes");
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+      }
+  p = Sys.Process("Maconomy");
+  w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*", 2000);
+  if (w.Exists)
+{
+var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
+ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
+var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Global Client").OleValue.toString().trim()+"*").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+OK.Click();
+}
+      
       var Submit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2.SingleToolItemControl;
       Submit.Click();
 //      aqUtils.Delay(3000, "Submitting changes");
@@ -423,14 +473,7 @@ ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Clien
 }
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
-//if((Currency==null)||(Currency=="")){ 
-//ValidationUtils.verify(false,true,"Currency is Needed to Amend Global Client");
-//}
 
-Language = EnvParams.Language;
-//if((Language==null)||(Language=="")){
-//ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-//}
 Add1 = ExcelUtils.getRowDatas("Address_1",EnvParams.Opco)
 Add2 = ExcelUtils.getRowDatas("Address_2",EnvParams.Opco)
 Add3 = ExcelUtils.getRowDatas("Address_3",EnvParams.Opco)
@@ -736,6 +779,68 @@ TextUtils.writeLog("Amended Client is Approved by "+Apvr);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+
+ for(var j=0;j<12;j++){ 
+    var p = Sys.Process("Maconomy");
+    var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type").OleValue.toString().trim()){ 
+var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type").OleValue.toString().trim()).SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse(); 
+ReportUtils.logStep_Screenshot();
+Ok.Click(); 
+aqUtils.Delay(20000, Indicator.Text); ;  
+}
+ 
+    var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type (Substitute)").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type (Substitute)").OleValue.toString().trim()){ 
+var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type (Substitute)").OleValue.toString().trim()).SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer by Type (Substitute)").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse(); 
+ReportUtils.logStep_Screenshot();
+Ok.Click(); 
+aqUtils.Delay(20000, Indicator.Text); ;  
+}
+
+    var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer").OleValue.toString().trim()){ 
+var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer").OleValue.toString().trim()).SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse(); 
+ReportUtils.logStep_Screenshot();
+Ok.Click(); 
+aqUtils.Delay(20000, Indicator.Text); ;  
+}
+
+    var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer (Substitute)").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+//if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer (Substitute)").OleValue.toString().trim()){ 
+var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer (Substitute)").OleValue.toString().trim()).SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Customer (Substitute)").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse(); 
+ReportUtils.logStep_Screenshot();
+Ok.Click(); 
+aqUtils.Delay(20000, Indicator.Text); ;  
+}
+
+
+ }
+ 
 }
 }
 }

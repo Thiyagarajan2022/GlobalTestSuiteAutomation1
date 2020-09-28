@@ -62,8 +62,6 @@ function getDetails(){
   if((ClientNo==null)||(ClientNo=="")){ 
   ValidationUtils.verify(false,true,"Client Number is Needed to Amend Global Client");
   }
- //   Log.Message("ClientNumber"+ClientNumber)
-
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
@@ -97,9 +95,6 @@ ValidationUtils.verify(false,true,"Brand Name is Needed to Amend Global Brand");
 
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
-//Add1 = ExcelUtils.getRowDatas("Address_1",EnvParams.Opco)
-//Add2 = ExcelUtils.getRowDatas("Address_2",EnvParams.Opco)
-//Add3 = ExcelUtils.getRowDatas("Address_3",EnvParams.Opco)
 Phone = ExcelUtils.getRowDatas("Phone",EnvParams.Opco)
 Email = ExcelUtils.getRowDatas("E-mail",EnvParams.Opco)
 if(((Phone==null)||(Phone==""))&&((Email==null)||(Email==""))){ 
@@ -166,13 +161,11 @@ function gotoClientSearch(){
     
   }
 var CompanyNumber =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
- //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   CompanyNumber.Click();
- // WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
   WorkspaceUtils.SearchByValue(CompanyNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
  var curr = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.Currency;
- //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
+
  curr.Keys(" ");
  aqUtils.Delay(5000, Indicator.Text);
  if(Currency!=""){
@@ -182,18 +175,13 @@ var CompanyNumber =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Compo
   aqUtils.Delay(5000, Indicator.Text);
   
  var ClientNumber = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.ClientNoFiled;
- //Aliases.ObjectGroup.ClientNoField;
- //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
   if(ClientNo!=""){
   ClientNumber.Click();
- // WorkspaceUtils.VPWSearchByValue(ClientNumber,"Client",ClientNo,"Client Number");
   WorkspaceUtils.VPWSearchByValue(ClientNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client").OleValue.toString().trim(),ClientNo,"Client Number");
     }
     
  var ClientName = Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.ClientName
  
-  //Aliases.ObjectGroup.ClientName;
- //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
  ClientName.setText("*");
  aqUtils.Delay(5000, Indicator.Text);
  

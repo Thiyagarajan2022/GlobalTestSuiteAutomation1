@@ -1221,6 +1221,11 @@ if(ImageRepository.ImageSet.ToDos_Icon.Exists())
 { 
   
 }
+aqUtils.Delay(15000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists())
+{ 
+  
+}
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 }
@@ -1282,6 +1287,9 @@ var listPass = true;
 
   
 function FinalApproveClient(ClientNum,Apvr,lvl){ 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var table = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
 waitForObj(table);
 Sys.HighlightObject(table);
