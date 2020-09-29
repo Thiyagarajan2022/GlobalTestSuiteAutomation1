@@ -153,6 +153,8 @@
 					<child name="IND_ExpenseCreation" key="{3DF6CFF9-6D28-4AF2-929A-7173A0FA8532}" path="IND_ExpenseCreation.js" />
 					<child name="IND_InvoiceAllocation" key="{68F9D252-D556-420E-A28E-D870A62A1C5B}" path="IND_InvoiceAllocation.js" />
 					<child name="IND_PartialInvoicing_CarryForward" key="{35661A2B-B8C8-44DE-9960-418111C4B8A4}" path="IND_PartialInvoicing_CarryForward.js" />
+					<child name="IND_CreateCompnayClient" key="{393E1C56-FC7E-4D9A-8395-0CD6CE0EFA9D}" path="IND_CreateCompnayClient.js" />
+					<child name="IND_CreateGlobalBrand" key="{85C66DA3-AA75-4648-9EDF-5C279FF7C9CA}" path="IND_CreateGlobalBrand.js" />
 				</folder>
 			</folder>
 			<folder name="UK">
