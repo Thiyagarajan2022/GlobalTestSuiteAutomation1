@@ -2553,7 +2553,7 @@ for(var i=0;i<Approve_Level.length;i++){
   for(var j=2;j<4;j++){
   temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  if((Cred[j].indexOf("IND - ")!=-1)||(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
      var sheetName = "Agency Users";
      workBook = Project.Path+excelName;
