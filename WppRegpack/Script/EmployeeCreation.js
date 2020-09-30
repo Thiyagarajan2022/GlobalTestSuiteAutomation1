@@ -1538,7 +1538,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 ImageRepository.ImageSet.Forward.Click();  
-
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Employee No",EnvParams.Opco,"Data Management",empNumber);
+TextUtils.writeLog("Employee No: "+empNumber);
 }
 
 //}
