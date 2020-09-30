@@ -193,12 +193,17 @@ TextUtils.writeLog("New User is Clicked");
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
-name = ExcelUtils.getRowDatas("Name",EnvParams.Opco)
+name = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 if((name==null)||(name=="")){ 
 ValidationUtils.verify(false,true,"name is Needed to Create a User");
 }
 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
 employeeNo = ExcelUtils.getRowDatas("Employee No",EnvParams.Opco)
+if((employeeNo==null)||(employeeNo=="")){ 
+ExcelUtils.setExcelName(workBook, sheetName, true);
+employeeNo = ExcelUtils.getRowDatas("Employee No",EnvParams.Opco)
+}
 Log.Message(employeeNo)
 if((employeeNo==null)||(employeeNo=="")){ 
 ValidationUtils.verify(false,true,"Employee Number is Needed to Create a User");
@@ -720,6 +725,10 @@ for(var v=0;v<table.getItemCount();v++){
 ReportUtils.logStep_Screenshot();
 ValidationUtils.verify(flag,true,"Created User is activated and available in system");
 TextUtils.writeLog("Created User is activated and available in system"); 
+
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("UserCreation_UserName",EnvParams.Opco,"Data Management",name +" "+STIME);
+TextUtils.writeLog("UserCreation_UserName: "+name +" "+STIME);
 
 
 }
