@@ -209,6 +209,7 @@ if((employeeNo==null)||(employeeNo=="")){
 ValidationUtils.verify(false,true,"Employee Number is Needed to Create a User");
 }
 
+ExcelUtils.setExcelName(workBook, sheetName, true);
 company = ExcelUtils.getRowDatas("Company",EnvParams.Opco)
 Log.Message(company)
 if((company==null)||(company=="")){ 
@@ -238,6 +239,7 @@ ValidationUtils.verify(false,true,"Access Level is Needed to Create a User");
 
 function user_Information(){ 
 Log.Message("Entering User Details");
+aqUtils.Delay(2000,"Waiting for Create User window");
 var createUserWindow = Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Create User").OleValue.toString().trim())
 waitForObj(createUserWindow);
 Sys.HighlightObject(createUserWindow);
@@ -295,7 +297,7 @@ aqUtils.Delay(1000,"Waiting for Next Popup Window");
 }
 
 if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Label", "*").getText();
+var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
 Log.Message(label1);
 var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
 Ok.HoverMouse();
@@ -304,7 +306,7 @@ Ok.Click();
 aqUtils.Delay(1000,"Waiting for Next Popup Window");
 }
 if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Label", "*").getText();
+var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
 Log.Message(label1);
 var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
 Ok.HoverMouse();
@@ -313,7 +315,7 @@ Ok.Click();
 aqUtils.Delay(1000,"Waiting for Next Popup Window");
 }
 if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Label", "*").getText();
+var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
 Log.Message(label1);
 var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
 Ok.HoverMouse();
