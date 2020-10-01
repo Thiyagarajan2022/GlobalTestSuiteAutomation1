@@ -295,9 +295,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
    var assettype = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
   assettype.Keys(" ");
   if(Transactiontypeaddr!=""){
-        aqUtils.Delay(10000, Indicator.Text);
+        aqUtils.Delay(5000, Indicator.Text);
     assettype.Click();
-
+   aqUtils.Delay(1000, Indicator.Text); 
        WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, Transactiontypeaddr).OleValue.toString().trim() ,"Asset Transaction Type");
        aqUtils.Delay(1000, Indicator.Text); 
     } 
