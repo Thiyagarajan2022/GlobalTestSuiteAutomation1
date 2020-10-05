@@ -305,8 +305,6 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   }
   
   
-//  var Invoicing = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
-//  var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();
@@ -364,140 +362,56 @@ NetBal = NetBal.toFixed(2);
   Log.Message("Balance :"+NetBal)
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
+  
   var Total = [];
   if(NetBal.indexOf("-")!=-1){ 
     
 
   }
   else{ 
-    var j_Q_Stat = false;
-  for(var i=0;i<tableGrid.getItemCount();i++){
-    for(var j=0;j<B_Estimatelines.length;j++){
-      var split_text = B_Estimatelines[j].split("*");
-    if(EnvParams.Country.toUpperCase()=="INDIA"){
-          if(tableGrid.getItem(i).getText_2(1).OleValue.toString().trim().indexOf(split_text[0])!=-1){ 
-           
-             Estimatelines = B_Estimatelines;
-          j_Q_Stat = true;
-          break;
-          }
-    }else{ 
-      if(tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf(split_text[0])!=-1){ 
-        
-      Estimatelines = B_Estimatelines;
-      j_Q_Stat = true;
-      break;
-      }
-    }
-  
-    }
-    if(j_Q_Stat){ 
-      break;
-    }
-  }
-  
-  if(!j_Q_Stat){ 
-//   var Tcount = tableGrid.getItemCount();
-//   var bal = NetBal/Tcount ;
-   Estimatelines = [];
-   var WTemp = [];
-   if(tableGrid.getItem(0).getText_2(0).OleValue.toString().trim().indexOf("BT")==0){ 
-     for(var k=0;k<B_Estimatelines.length;k++){
-       if(B_Estimatelines[k].indexOf("T")==0){ 
-         WTemp = B_Estimatelines[k].split("*");
-       }
-     }
+                  Estimatelines = [];
+                  var WTemp = [];
+                  var w=0;
+                  if((tableGrid.getItem(0).getText_2(0).OleValue.toString().trim().indexOf("BT")==0)||(tableGrid.getItem(0).getText_2(0).OleValue.toString().trim().indexOf("T")==0)){ 
+                    
+                  for(var k=0;k<B_Estimatelines.length;k++){
+                  if(B_Estimatelines[k].indexOf("T")==0){ 
+                  var temp = B_Estimatelines[k].split("*");
+                  WTemp[w] = temp[0];
+                  w++;
+                  }
+                  }
+                  
+                  }else{ 
+                  for(var k=0;k<B_Estimatelines.length;k++){
+                  if(B_Estimatelines[k].indexOf("T")!=0){ 
+                  var temp = B_Estimatelines[k].split("*");
+                  WTemp[w] = temp[0];
+                  w++;
+                  }
+                  }
+                  }
+if(EnvParams.Country.toUpperCase()=="INDIA"){
+   var TableDes = tableGrid.getItem(0).getText_2(1).OleValue.toString().trim();
    }else{ 
-     for(var k=0;k<B_Estimatelines.length;k++){
-       if(B_Estimatelines[k].indexOf("T")==-1){ 
-         WTemp = B_Estimatelines[k].split("*");
-       }
-       }
+   var TableDes = tableGrid.getItem(0).getText_2(0).OleValue.toString().trim();
+   
    }
-   Estimatelines[0] = tableGrid.getItem(0).getText_2(0).OleValue.toString().trim()+"*"+tableGrid.getItem(0).getText_2(0).OleValue.toString().trim()+"*1*"+NetBal+"*"+NetBal;
-   Log.Message(Estimatelines[0])
-  }
-  
-  
-      for(var j=0;j<Estimatelines.length;j++){
-      var temp = 0;
-      var split_text = Estimatelines[j].split("*");
-      for(var i=0;i<tableGrid.getItemCount();i++){ 
-      if(EnvParams.Country.toUpperCase()=="INDIA"){
-      if(tableGrid.getItem(i).getText_2(1).OleValue.toString().trim().indexOf(split_text[0])!=-1){
-//      if(tableGrid.getItem(i).getText_2(1).OleValue.toString().trim().indexOf(split_text[1])!=-1){
-      var amt = parseFloat(tableGrid.getItem(i).getText_2(3).OleValue.toString().trim().replace(/,/g, ''));
-      amt = amt.toFixed(2);
-      temp= parseFloat(temp)+parseFloat(amt);
-      }
-      }else{ 
-      if(tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf(split_text[0])!=-1){ 
-//      if(tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf(split_text[1])!=-1){ 
-      var amt = parseFloat(tableGrid.getItem(i).getText_2(2).OleValue.toString().trim().replace(/,/g, ''));
-      amt = amt.toFixed(2);
-      temp= parseFloat(temp)+parseFloat(amt);
-      }
-      }
-      }
-      Total[j]= split_text[0]+"*"+temp;
-//      Total[j]= split_text[1]+"*"+temp;
-      }
-      
-      for(var j=0;j<Total.length;j++){
-      Log.Message(Total[j]);
-      }
-var TableDes = "";
-      for(var i=0;i<tableGrid.getItemCount();i++){
-      for(var j=0;j<Estimatelines.length;j++){
-      var temp = 0;
-      var split_text = Estimatelines[j].split("*");
-        if(EnvParams.Country.toUpperCase()=="INDIA"){
-          if((tableGrid.getItem(i).getText_2(1).OleValue.toString().trim().indexOf(split_text[0])!=-1) &&
-          (tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf("Default")==-1)){
-            
-//          if((tableGrid.getItem(i).getText_2(1).OleValue.toString().trim().indexOf(split_text[1])!=-1) &&
-//          (tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf("Default")==-1)){
-            TableDes = tableGrid.getItem(i).getText_2(1).OleValue.toString().trim();
-            Log.Message("TableDes :"+TableDes)
-          
-            // Add Entries
-            
-//            var Entries = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl
-//            WorkspaceUtils.waitForObj(Entries);
-//            Entries.Click();
-            for(var k=0;k<Total.length;k++){
-              var temp = Total[k].split("*");
-              var t1 = parseFloat(temp[1]);
-              t1 = parseFloat(t1.toFixed(2));  //Allocated Amount
-              split_text[4] = split_text[4].replace(/,/g, '');
-              var t2 = parseFloat(split_text[4]);
-              t2 = parseFloat(t2.toFixed(2));  //Estimate Amount
-              Log.Message(temp[0])
-              Log.Message(split_text[0])
-              Log.Message(t1)
-              Log.Message(t2)
-              Log.Message((temp[0]==split_text[0]));
-//              Log.Message((temp[0]==split_text[1]));
-              Log.Message(t1!=t2);
-            if((temp[0]==split_text[0])&&(t1!=t2)){ 
-//            if((temp[0]==split_text[1])&&(t1!=t2)){ 
             var Entries = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl
             WorkspaceUtils.waitForObj(Entries);
             Entries.Click();
             
             if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-            }else{ 
-            ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
             }
-            Log.Message(temp[1])
-              if(temp[1]=="0"){ 
+  
                 var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
                 WorkspaceUtils.waitForObj(add);
                 add.Click();
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+            }
                 var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
                 WorkspaceUtils.waitForObj(JobNo);
                 JobNo.Click();
@@ -510,16 +424,23 @@ var TableDes = "";
                 var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
                 WorkspaceUtils.waitForObj(desc);
                 desc.Click();
-                desc.setText(split_text[1])
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+            }
+            
+            if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
+                desc.setText("Client Billable Time");
+                }
+                else{ 
+                desc.setText("Expense Related Work")  
+                }
                 Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
                 Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
                 if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
                 var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
                 WorkspaceUtils.waitForObj(emp);
                 emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
                 if((EmpNo!="")&&(EmpNo!=null)){
                 emp.HoverMouse();
                 emp.Click();
@@ -532,301 +453,6 @@ var TableDes = "";
                 var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
                 WorkspaceUtils.waitForObj(qty);
                 qty.Click();
-                qty.setText(split_text[2])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-              ImageRepository.ImageSet.Close_Down.Click();
-              allocateMainTable(tableGrid);
-////mainTable
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-//                WorkspaceUtils.waitForObj(allocate)
-//                allocate.Keys("Allocate");
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//                WorkspaceUtils.waitForObj(save);
-//                save.Click();
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-////Save Main Table
-              }            
-              else{
-                Log.Message(Estimatelines[j]);
-                Log.Message(split_text[0])
-                Log.Message(split_text[1])
-                Log.Message(split_text[2])
-                Log.Message(split_text[3])
-                Log.Message(split_text[4])
-                split_text[4] = split_text[4].replace(/,/g, '');
-                split_text[3] = split_text[3].replace(/,/g, '');
-                var amt = parseFloat(split_text[4]);
-                amt = parseFloat(amt.toFixed(2));
-                Log.Message("amt :"+amt)
-                var tot = parseFloat(temp[1]);
-                tot = parseFloat(tot.toFixed(2));
-                Log.Message("tot :"+tot)
-                var unit = parseFloat(split_text[3]);
-                unit = parseFloat(unit.toFixed(3));
-                Log.Message("unit :"+unit)
-                // OverAll workCode Ammount " - " Po or Expernse Amount already in there in maconomy
-                var curentBal = amt - tot;
-                Log.Message("curentBal :"+curentBal)
-                var Quantity = curentBal / unit;
-                Log.Message("Quantity :"+Quantity)
-                if(Quantity.toString().indexOf(".")!=-1){
-                  
-                var BeforeQty = parseFloat(Quantity.toString().split(".")[0]);
-                var AfterQty = parseFloat(Quantity.toString().split(".")[1]);
-                var AfterAmount;
-                var start = true;
-// Amount Not 0 -> Adding Lines with Demical Quantity
-                if(BeforeQty>=2){ 
-                  BeforeQty = BeforeQty-1;
-                  var BeforeAmount = BeforeQty*unit;
-                  Log.Message("BeforeAmount :"+BeforeAmount);
-                  AfterAmount = curentBal - BeforeAmount;
-                }else{ 
-                  start = false;
-                  AfterAmount = curentBal;
-                }
-                if(start){
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-                qty.setText(BeforeQty)
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                
-                }
-//Second Line
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-//                qty.setText("0."+AfterQty)
                 qty.setText("1")
                 Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
@@ -834,290 +460,43 @@ var TableDes = "";
                 var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
                 WorkspaceUtils.waitForObj(unitprice);
                 unitprice.Click();
-//                unitprice.setText(split_text[3])
-                unitprice.setText(AfterAmount)
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
+                unitprice.setText(NetBal)
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
+                for(var tab=0;tab<34;tab++){
                 Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
                 Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
+                }
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
+                var workcode = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.SWTObject("McValuePickerWidget", "", 1);
+                workcode.Click();
+                if(workcode.getText()==""){ 
+                  Search_WorkCode(workcode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),WTemp,"WorkCode");
+                }
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                ImageRepository.ImageSet.Close_Down.Click();
-                allocateMainTable(tableGrid);
-                  }else{ 
-//Absolute
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-                qty.setText(Quantity)
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                ImageRepository.ImageSet.Close_Down.Click();
-                allocateMainTable(tableGrid);
-                  }
-              }
-              }
-                
-          }
-          }
-          }
-// for Other Country
-          else{ // for Other Country
-          if(tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf(split_text[0])!=-1){
-//          if(tableGrid.getItem(i).getText_2(0).OleValue.toString().trim().indexOf(split_text[1])!=-1){
-          TableDes = tableGrid.getItem(i).getText_2(0).OleValue.toString().trim();
-            // Add Entries
-            
-//            var Entries = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl
-//            WorkspaceUtils.waitForObj(Entries);
-//            Entries.Click();
-            for(var k=0;k<Total.length;k++){
-              var temp = Total[k].split("*");
-              var t1 = parseFloat(temp[1]);
-              t1 = parseFloat(t1.toFixed(2));  //Allocated Amount
-              split_text[4] = split_text[4].replace(/,/g, '');
-              var t2 = parseFloat(split_text[4]);
-              t2 = parseFloat(t2.toFixed(2));  //Estimate Amount
-              Log.Message(temp[0])
-              Log.Message(split_text[0])
-              Log.Message(t1)
-              Log.Message(t2)
-              Log.Message((temp[0]==split_text[0]));
-//              Log.Message((temp[0]==split_text[1]));
-              Log.Message(t1!=t2);
-            if((temp[0]==split_text[0])&&(t1!=t2)){ 
-//            if((temp[0]==split_text[1])&&(t1!=t2)){ 
-            var Entries = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl
-            WorkspaceUtils.waitForObj(Entries);
-            Entries.Click();
-            
-            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-            }else{ 
-            ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-            }
-            
-              if(temp[1]=="0"){ 
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-                qty.setText(split_text[2])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-
-
-                if(TableDes.indexOf("B")==0){
-                  for(var jk=0;jk<34;jk++){ 
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                  }
-                var WTemp = [];  
-                if(TableDes.indexOf("BT")==0){ 
-                for(var kl=0;kl<B_Estimatelines.length;kl++){
-                if(B_Estimatelines[kl].indexOf("T")==0){ 
-                WTemp = B_Estimatelines[kl].split("*");
-                }
-                }
-                }else{ 
-                for(var kl=0;kl<B_Estimatelines.length;kl++){
-                if(B_Estimatelines[kl].indexOf("T")==-1){ 
-                WTemp = B_Estimatelines[kl].split("*");
-                }
-                }
-                }
-                var WorkCode = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.SWTObject("McValuePickerWidget", "", 1);
-                WorkspaceUtils.waitForObj(WorkCode);
-                WorkCode.Click();
-                WorkspaceUtils.SearchByValue(WorkCode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),WTemp[0],"WorkCode");
-                aqUtils.Delay(5000, Indicator.Text);
-                for(var jk=0;jk<34;jk++){ 
+                for(var tab=0;tab<34;tab++){
                 Sys.Desktop.KeyDown(0x10);
                 Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
                 Sys.Desktop.KeyUp(0x09);
                 Sys.Desktop.KeyUp(0x10);
                 aqUtils.Delay(1000, Indicator.Text);
-                  }
                 }
-
-
-
-
+                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+                }
                 var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
                 WorkspaceUtils.waitForObj(save);
                 save.Click();
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
                 Sys.Desktop.KeyDown(0x09);
                 aqUtils.Delay(1000, Indicator.Text);
@@ -1134,436 +513,25 @@ var TableDes = "";
                 aqUtils.Delay(100, Indicator.Text);
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
-                
                 var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
                 WorkspaceUtils.waitForObj(allocate)
                 allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
                 aqUtils.Delay(100, Indicator.Text);
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
                 var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
                 WorkspaceUtils.waitForObj(save);
                 save.Click();
                 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
                 }
               ImageRepository.ImageSet.Close_Down.Click();
-              allocateMainTable(tableGrid);
-////mainTable
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-//                WorkspaceUtils.waitForObj(allocate)
-//                allocate.Keys("Allocate");
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//                WorkspaceUtils.waitForObj(save);
-//                save.Click();
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-////Save Main Table
-              }            
-              else{
-                Log.Message(Estimatelines[j]);
-                Log.Message(split_text[0])
-                Log.Message(split_text[1])
-                Log.Message(split_text[2])
-                Log.Message(split_text[3])
-                Log.Message(split_text[4])
-                split_text[4] = split_text[4].replace(/,/g, '');
-                split_text[3] = split_text[3].replace(/,/g, '');
-                var amt = parseFloat(split_text[4]);
-                amt = parseFloat(amt.toFixed(2));
-                Log.Message("amt :"+amt)
-                var tot = parseFloat(temp[1]);
-                tot = parseFloat(tot.toFixed(2));
-                Log.Message("tot :"+tot)
-                var unit = parseFloat(split_text[3]);
-                unit = parseFloat(unit.toFixed(3));
-                Log.Message("unit :"+unit)
-                // OverAll workCode Ammount " - " Po or Expernse Amount already in there in maconomy
-                var curentBal = amt - tot;
-                Log.Message("curentBal :"+curentBal)
-                var Quantity = curentBal / unit;
-                Log.Message("Quantity :"+Quantity)
-                if(Quantity.toString().indexOf(".")!=-1){
-                  
-                var BeforeQty = parseFloat(Quantity.toString().split(".")[0]);
-                var AfterQty = parseFloat(Quantity.toString().split(".")[1]);
-                var AfterAmount;
-                var start = true;
-// Amount Not 0 -> Adding Lines with Demical Quantity
-                if(BeforeQty>=2){ 
-                  BeforeQty = BeforeQty-1;
-                  var BeforeAmount = BeforeQty*unit;
-                  Log.Message("BeforeAmount :"+BeforeAmount);
-                  AfterAmount = curentBal - BeforeAmount;
-                }else{ 
-                  start = false;
-                  AfterAmount = curentBal;
-                }
-                if(start){
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-                qty.setText(BeforeQty)
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                
-                }
-//Second Line
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-//                qty.setText("0."+AfterQty)
-                qty.setText("1")
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-//                unitprice.setText(split_text[3])
-                unitprice.setText(AfterAmount)
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                ImageRepository.ImageSet.Close_Down.Click();
-                allocateMainTable(tableGrid);
-                  }else{ 
-//Absolute
-                var add = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                WorkspaceUtils.waitForObj(add);
-                add.Click();
-                var JobNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-                WorkspaceUtils.waitForObj(JobNo);
-                JobNo.Click();
-                Sys.Desktop.KeyDown(0x09); // Press Ctrl
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyUp(0x09);
-                var desc = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(desc);
-                desc.Click();
-                desc.setText(split_text[1])
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-//                if(split_text[0].indexOf("T")!=-1){
-                if((TableDes.indexOf("T")==0)||(TableDes.indexOf("BT")==0)){
-                var emp = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget
-                WorkspaceUtils.waitForObj(emp);
-                emp.Click();
-          //      if((Employee.getText()=="")||(Employee.getText()==null)){ 
-                if((EmpNo!="")&&(EmpNo!=null)){
-                emp.HoverMouse();
-                emp.Click();
-                WorkspaceUtils.SearchByValue(emp,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
-                }
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var qty = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(qty);
-                qty.Click();
-                qty.setText(Quantity)
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                var unitprice = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                WorkspaceUtils.waitForObj(unitprice);
-                unitprice.Click();
-                unitprice.setText(split_text[3])
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                Sys.Desktop.KeyDown(0x09);
-                aqUtils.Delay(1000, Indicator.Text);
-                Sys.Desktop.KeyUp(0x09);
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-                WorkspaceUtils.waitForObj(allocate)
-                allocate.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Allocate").OleValue.toString().trim());
-                aqUtils.Delay(100, Indicator.Text);
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-                WorkspaceUtils.waitForObj(save);
-                save.Click();
-                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-                }else{ 
-                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-                }
-                ImageRepository.ImageSet.Close_Down.Click();
-                allocateMainTable(tableGrid);
-                  }
-              }
-              }
-                
-          }
-          }
-//-------------------------------------------------------------------------          
-          }
-          
-          }
-          Sys.HighlightObject(tableGrid);
-          Sys.HighlightObject(tableGrid);
-          Sys.HighlightObject(tableGrid);
-          tableGrid.Keys("[Down]");
-          }
-      
+
+
+
+
       
         }
         var closeBar = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
@@ -1901,72 +869,187 @@ ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
   
 }
 
-function allocateMainTable(tableGrid){ 
-  //mainTable
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var allocate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McPopupPickerWidget;
-//                WorkspaceUtils.waitForObj(allocate)
-//                allocate.Keys("Allocate");
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//                var save = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//                WorkspaceUtils.waitForObj(save);
-//                save.Click();
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//              Sys.HighlightObject(tableGrid);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                Sys.Desktop.KeyDown(0x10);
-//                Sys.Desktop.KeyDown(0x09);
-//                aqUtils.Delay(1000, Indicator.Text);
-//                Sys.Desktop.KeyUp(0x10);
-//                Sys.Desktop.KeyUp(0x09);
-//                aqUtils.Delay(100, Indicator.Text);
-//                if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//                }else{ 
-//                ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-//                }
-//Save Main Table
 
+//function Search_WorkCode(ObjectAddrs,popupName,value,fieldName){ 
+//var checkmark = false;
+//  aqUtils.Delay(1000, popupName);;
+//    Sys.Desktop.KeyDown(0x11);
+//    Sys.Desktop.KeyDown(0x47);
+//    Sys.Desktop.KeyUp(0x11);
+//    Sys.Desktop.KeyUp(0x47);
+//
+//
+//    var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+//  waitForObj(code);
+//  code.Click();
+//
+//    code.setText(value);
+//
+//    var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
+//    waitForObj(serch);
+//
+//  serch.Click();
+//  var table = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
+//  var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+//
+//    waitForObj(OK);
+//    Sys.HighlightObject(table);
+//    var itemCount = table.getItemCount();
+//    if(itemCount>0){
+//    for(var i=0;i<itemCount;i++){
+//      if(table.getItem(i).getText_2(0).OleValue.toString().trim()==value){ 
+//       var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+//  waitForObj(OK);
+//  OK.Click();
+//
+//          checkmark = true;
+//          ValidationUtils.verify(true,true,fieldName+" is listed and  Selected in Maconomy");
+//          break;
+//          
+//      }
+//      else{ 
+//        Sys.Desktop.KeyDown(0x28);
+//        Sys.Desktop.KeyUp(0x28);
+//        if(i==itemCount-1){ 
+//          var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+//  waitForObj(cancel);
+//  cancel.Click();
+//
+//          Sys.HighlightObject(ObjectAddrs);
+//          ObjectAddrs.setText("");
+//          ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+//        }
+//      }
+//      
+//      }
+//    }
+//    else { 
+//      var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+//        waitForObj(cancel);
+//        cancel.Click();
+//
+//      Sys.HighlightObject(ObjectAddrs);
+//      ObjectAddrs.setText("");
+//      ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+//    }
+//    
+//    return checkmark;
+//}
+
+
+function Search_WorkCode(Obj_Address,wizName,ExcelData,fieldName){ 
+var temp = "";
+   if(value!=""){
+     Sys.HighlightObject(Obj_Address);
+  Obj_Address.Click();
+  aqUtils.Delay(4000, wizName);;
+  Sys.Desktop.KeyDown(0x11);
+  Sys.Desktop.KeyDown(0x47);
+  Sys.Desktop.KeyUp(0x11);
+  Sys.Desktop.KeyUp(0x47);
+  aqUtils.Delay(4000, wizName);;
+var tableList = [];
+var tl = 0;
+  var serch = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
+  waitForObj(serch);
+  serch.Click();
+  var table = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+  do{
+  Sys.HighlightObject(table);
+  waitForObj(OK);
+        
+          var itemCount = table.getItemCount();
+          if(itemCount>0){ 
+          for(var i=0;i<itemCount;i++){
+          tableList[tl] = table.getItem(i).getText_2(0).OleValue.toString().trim()+"-"+table.getItem(i).getText_2(1).OleValue.toString().trim();
+          tl++;
+                          }
+                }
+    var tab = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("ToolBar", "", 1);
+    var tabVisible = tab.wEnabled(1,true)
+    if(tabVisible){ 
+      tab.Click(-1,-1);
+    }
+    }while(tabVisible)
+    
+ var value = "";   
+    var stat = true;
+    for(var exl =0;exl<ExcelData.length;exl++){
+        var compStatus = false;
+    var bb1 = "";
+        for(var cnt = 0;cnt<tableList.length;cnt++){
+      if(ExcelData[exl].toLowerCase()==tableList[cnt].toLowerCase()){ 
+        value = tableList[cnt];
+       compStatus = true;
+       break;
+      }
+      }
+      if(!compStatus){ 
+        if(stat){
+        Log.Warning("Some Expected "+fieldName+" are missing in Maconomy :");
+        ReportUtils.logStep("WARNING","Some Expected "+fieldName+" are missing in Maconomy :")
+        stat = false;
+        }
+        var splits = []; 
+        splits[0] = ExcelData[exl].substring(0, ExcelData[exl].indexOf("-"));
+        splits[1] = ExcelData[exl].substring(ExcelData[exl].indexOf("-")+1);
+        if(splits[0]==value.toString().trim()){ 
+        ValidationUtils.verify(false,true,"Given "+fieldName+" in Datasheet is not available in Maconomy");
+        }else{
+        Log.Message(splits[0]+"  "+splits[1]);
+        ReportUtils.logStep("INFO",splits[0]+"  "+splits[1])
+        }
+      }else{ 
+        break;
+      }
+    }
+    
+    
+  //====================================
+  var code = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+  code.setText(value.toString().trim());
+  var serch = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
+ waitForObj(serch);
+ serch.Click();
+ var table = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
+  Sys.HighlightObject(table);
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+  waitForObj(OK);
+  var itemCount = table.getItemCount();
+  if(itemCount>0){ 
+  for(var i=0;i<itemCount;i++){
+    if(table.getItem(i).getText_2(0).OleValue.toString().trim()==value.toString().trim()){ 
+    temp = table.getItem(i).getText_2(1).OleValue.toString().trim();
+     var OK = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+     waitForObj(OK);
+     OK.Click();
+    ValidationUtils.verify(true,true,fieldName+" is listed and  Selected in Maconomy");  
+    break;
+    }
+    else{ 
+      Sys.Desktop.KeyDown(0x28);
+      Sys.Desktop.KeyUp(0x28);
+      if(i==itemCount-1){
+        var cancel = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+        waitForObj(cancel);
+        cancel.Click();
+        Sys.HighlightObject(Obj_Address);
+        Obj_Address.setText("");
+        ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+      }
+    }
+      
+    }
+  }
+  else { 
+    var cancel = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+    waitForObj(cancel);
+    cancel.Click();
+    ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+    Sys.HighlightObject(Obj_Address);
+    Obj_Address.setText("");
+  }
+        }
+return temp;
 }
