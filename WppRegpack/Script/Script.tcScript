@@ -132,7 +132,6 @@
 				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
 				<child name="CreateCompanyProduct" key="{B02F7F51-D171-4306-B51F-48FB26E8E530}" path="CreateCompanyProduct.js" />
-				<child name="JobInvoiceAllocation_With_WIP_OldScript" key="{9C431AA3-2FB6-405B-8E66-675E34232933}" path="JobInvoiceAllocation_With_WIP_OldScript.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
