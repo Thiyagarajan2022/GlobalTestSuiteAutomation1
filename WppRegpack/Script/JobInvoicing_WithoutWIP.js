@@ -1225,8 +1225,16 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
 aqUtils.Delay(2000, Indicator.Text);
 
 Sys.HighlightObject(pdf);

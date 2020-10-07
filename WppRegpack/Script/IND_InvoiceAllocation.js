@@ -6,8 +6,14 @@ function Employeenumber(SelectionBilling,EmpNo,B_Estimatelines){
   for(var t=0;t<SelectionBilling.getItemCount();t++){ 
       for(var g = 0;g<B_Estimatelines.length;g++){
         var temp = B_Estimatelines[g].split("*");
-        if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf(temp[0])==0){
-          if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf("T")==0){
+  var specTableData = "";      
+if(EnvParams.Country.toUpperCase()=="INDIA"){
+  specTableData = SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim();
+}else{ 
+  specTableData = SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim();
+}
+        if(specTableData.indexOf(temp[0])==0){
+          if(specTableData.indexOf("T")==0){
       aqUtils.Delay(100, Indicator.Text);
       SelectionBilling.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
       var Employee = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
