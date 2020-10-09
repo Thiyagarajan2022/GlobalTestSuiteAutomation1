@@ -564,3 +564,227 @@ ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
 }
 
 } 
+
+
+function exlApprove() {
+
+// Firstcell in Approve PO
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   Sys.Process("Maconomy").Refresh();
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 0;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height>pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+        Log.Message(Parent.FullName);
+   Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+         Add[ChildCount] = PChild;
+         ChildCount++;
+     }
+     }
+     
+     Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height<pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    Log.Message(Parent.FullName)
+    Sys.HighlightObject(Parent);
+    Parent = Parent.SWTObject("McClumpSashForm", "")
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==1)){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height<pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    var firstCell = Parent.SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+    Log.Message(firstCell.FullName)
+    Sys.HighlightObject(firstCell);
+
+}
+
+
+
+function CloseFilters() {
+
+// CloseFillter in Approve PO
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   Sys.Process("Maconomy").Refresh();
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 0;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height>pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+   Log.Message(Parent.FullName);
+   Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="TabFolderPanel")){
+         Parent = Parent.Child(i);
+         ChildCount++;
+     }
+     }
+     
+     
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+         ChildCount++;
+     }
+     }
+     
+     Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if((Add[i].Height<pos)&&(Add[i].ChildCount==1)){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    Log.Message(Parent.FullName)
+    Sys.HighlightObject(Parent);
+    var CloseFilter = Parent.SWTObject("SingleToolItemControl", "")
+    Log.Message(CloseFilter.FullName)
+    Sys.HighlightObject(CloseFilter);
+
+}
+
+
+function ApproveButton(){ 
+  var Language = "English";
+    var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+                
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==3)){
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height>pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+     Sys.HighlightObject(Approve)
+     Log.Message(Approve.FullName)
+     Approved = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     if(Approved.Visible){ 
+     Approve =  Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     }
+     else{ 
+     Approve = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);  
+     }
+     Sys.HighlightObject(Approve)
+
+ 
+Log.Message(Approve.FullName)
+Sys.HighlightObject(Approve);
+ for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).Name.indexOf("SingleToolItemControl")!=-1)&&(Approve.Child(i).text.OleValue.toString().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())!=-1)){
+    Approve = Approve.Child(i);
+    Sys.HighlightObject(Approve)
+    Log.Message(Approve.FullName)
+    break;
+  }
+}
+
+Sys.HighlightObject(Approve)
+Sys.HighlightObject(Approve);
+
+}
+
+function ApvBar(){ 
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+       var pos = 0;         
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==3) && (PChild.ScreenLeft>=pos)){
+        pos = PChild.ScreenLeft;
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 1000;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].ScreenTop<pos){ 
+       pos = Add[ip].ScreenTop;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+    var approvalBar = Approve.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+    Sys.HighlightObject(approvalBar)
+//    POapproval
+}
