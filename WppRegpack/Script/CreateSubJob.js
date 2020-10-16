@@ -81,7 +81,7 @@ Log.Message(TemplateNo);
 //Log.Message(Job_name);
 
 
-SubJobNameTemplate = ExcelUtils.getRowDatas("Job_name_Template",EnvParams.Opco)
+SubJobNameTemplate = ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
 if((SubJobNameTemplate==null)||(SubJobNameTemplate=="")){ 
 ValidationUtils.verify(false,true,"Job Name is Needed to Create a SubJob");
 }
@@ -652,7 +652,7 @@ Ok.Click();
   WorkspaceUtils.waitForObj(table);
   aqUtils.Delay(2000, "Reading Table Data in Job List");
 
-
+var flag = false;
 
  for(var v=0;v<table.getItemCount();v++){ 
       if(table.getItem(v).getText_2(3).OleValue.toString().trim()==(SubJobNameTemplate+" "+STIME)){ 

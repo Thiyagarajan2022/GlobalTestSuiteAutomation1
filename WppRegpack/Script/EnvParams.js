@@ -302,6 +302,11 @@ temp = "SPN"
 }
 break;
 
+case "UAE":{
+temp = "UAE"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -413,6 +418,11 @@ break;
 
 case "SPAIN":{
 temp = "SPN"
+}
+break;
+
+case "UAE":{
+temp = "UAE"
 }
 break;
 
