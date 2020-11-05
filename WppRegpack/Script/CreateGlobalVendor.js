@@ -747,6 +747,7 @@ function ApprvalInformation(){
         ValidationUtils.verify(true,true,"Vendor Number : "+VendorNumber);
         ExcelUtils.setExcelName(workBook,"Data Management", true);
         ExcelUtils.WriteExcelSheet("Vendor Number",EnvParams.Opco,"Data Management",VendorNumber)
+        ExcelUtils.WriteExcelSheet("Global Vendor Currency",EnvParams.Opco,"Data Management",Currency)
 
       if(ImageRepository.ImageSet0.Maximize.Exists()){
         ImageRepository.ImageSet0.Maximize.Click();

@@ -497,7 +497,10 @@ for(var v=0;v<table.getItemCount();v++){
     
 ReportUtils.logStep_Screenshot();
 ValidationUtils.verify(flag,true,"Created User is activated and available in system");
-TextUtils.writeLog("Created User is activated and available in system"); 
+TextUtils.writeLog("Created User is activated and available in system");
+
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("UserCreation_UserName",EnvParams.Opco,"Data Management",name +" "+STIME); 
 
 }
 }

@@ -745,7 +745,7 @@ next.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
+if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
 var Percentage = Aliases.Maconomy.PrepareInvoice.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.Composite.Percentage;
 WorkspaceUtils.waitForObj(Percentage);
 Percentage.Click();
@@ -771,7 +771,7 @@ Okay.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
+if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
 var invoiceTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 WorkspaceUtils.waitForObj(invoiceTable);
 for(var i=0;i<invoiceTable.getItemCount()-1;i++){ 
@@ -843,7 +843,7 @@ aqUtils.Delay(1000, "Billing Price");
 
 var BudgetAmount;
  
- if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
+ if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
  BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite2.NewTotal;
  }else{ 
  BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite3.McTextWidget;
