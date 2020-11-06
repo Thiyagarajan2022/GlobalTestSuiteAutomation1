@@ -12,6 +12,14 @@
  * @version : 1.0
  * Created Date :09/17/2020
  */
+ 
+/** 
+ * This script modified for pop-up issue
+ * @author  : Muthu Kumar M
+ * @version : 2.0
+ * Created Date :11/06/2020
+ */
+ 
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "UserCreation";
@@ -286,42 +294,129 @@ TextUtils.writeLog("Details is entered in screen and clicked Create");
 aqUtils.Delay(6000,"Waiting until all Popups loaded");
 
 
-if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1).WndCaption== JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim() )){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+ var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim())
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
-ReportUtils.logStep_Screenshot();
 Ok.Click();
-aqUtils.Delay(1000,"Waiting for Next Popup Window");
+Delay(8000);
+
+break;
 }
 
-if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
-Ok.HoverMouse();
-ReportUtils.logStep_Screenshot();
-Ok.Click();
-aqUtils.Delay(1000,"Waiting for Next Popup Window");
 }
-if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
-ReportUtils.logStep_Screenshot();
 Ok.Click();
-aqUtils.Delay(1000,"Waiting for Next Popup Window");
+Delay(8000);
+
+break;
 }
-if((Sys.Process("Maconomy").SWTObject("Shell", "*", 1))){
-var label1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim()).SWTObject("Label", "*").getText();
-Log.Message(label1);
-var Ok = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(),1).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+
+}
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
-ReportUtils.logStep_Screenshot();
 Ok.Click();
+Delay(8000);
+
+break;
 }
+
+}
+
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+Ok.Click();
+Delay(8000);
+
+break;
+}
+
+}
+
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+Ok.Click();
+Delay(8000);
+
+break;
+}
+
+}
+
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Users - Users").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+Ok.Click();
+Delay(8000);
+
+break;
+}
+
+}
+
+
 }
 
 function approverDetails()
