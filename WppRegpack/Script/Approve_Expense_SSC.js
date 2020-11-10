@@ -428,7 +428,7 @@ Sys.HighlightObject(sheetno)
 //              for(var z=0;z<Approval_table.getItemCount();z++){                 
 //                if(z<CCount){
                    approvers="";   
-                   if(Approval_table.getItem(CCount).getText_2(8)!="Approved"){      
+                   if(Approval_table.getItem(CCount).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){      
                      approvers = Approval_table.getItem(CCount).getText_2(3).OleValue.toString().trim()+"*"+Approval_table.getItem(CCount).getText_2(4).OleValue.toString().trim();
                      Approve_Level[y] = EnvParams.Opco+"*"+desp+"*"+approvers;
                      Log.Message(Approve_Level[y]);
