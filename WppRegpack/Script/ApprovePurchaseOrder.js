@@ -149,19 +149,22 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Comp
 ImageRepository.ImageSet.Show_Filter.Click();
 }
 
-  var allPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "My POs").OleValue.toString().trim())
+  var allPurchase = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "My POs").OleValue.toString().trim())
+//  var allPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "My POs").OleValue.toString().trim())
   WorkspaceUtils.waitForObj(allPurchase);
   allPurchase.Click();
-  var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo;
+  var companyNo = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget
+//  var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo;
   WorkspaceUtils.waitForObj(companyNo);
   companyNo.Click();
   companyNo.Keys("[Tab]");
-  var purchaseNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.PurchaseNumber;
+  var purchaseNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.TextBox
+//  var purchaseNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.PurchaseNumber;
   WorkspaceUtils.waitForObj(purchaseNo);
   purchaseNo.Click();
   purchaseNo.setText(POnumber);
-
-  var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid;
+var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid
+//  var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid;
   WorkspaceUtils.waitForObj(table);
   aqUtils.Delay(3000, "Reading Table Data");
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -182,7 +185,8 @@ ImageRepository.ImageSet.Show_Filter.Click();
   
   
  if(flag){
-  var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
+   var closefilter =Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter
+//  var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
   WorkspaceUtils.waitForObj(closefilter);
   closefilter.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -191,7 +195,8 @@ ImageRepository.ImageSet.Show_Filter.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals
+//  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
   WorkspaceUtils.waitForObj(purchaseOrderApproval);
   purchaseOrderApproval.Click();
   
@@ -203,14 +208,15 @@ ImageRepository.ImageSet.Show_Filter.Click();
   }
 
   ImageRepository.ImageSet.Maximize.Click();
-
-  var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
+var purchaseApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3
+//  var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
   WorkspaceUtils.waitForObj(purchaseApproval);
   purchaseApproval.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
+  var ApproverTable = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+//  var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(ApproverTable);
   var y=0;
   for(var i=0;i<ApproverTable.getItemCount();i++){   
@@ -235,7 +241,8 @@ ImageRepository.ImageSet.Show_Filter.Click();
       }
 }
 TextUtils.writeLog("Finding approvers for Created Purchase Order");
-var listPurchaseOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl;
+//var listPurchaseOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl;
+var listPurchaseOrder = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl
 listPurchaseOrder.Click();
 ImageRepository.ImageSet.Forward.Click();
 
@@ -452,11 +459,86 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Comp
 ImageRepository.ImageSet.Show_Filter.Click();
 }
 
-var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
-var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.TextBox;
+/*
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   Sys.Process("Maconomy").Refresh();
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 0;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height>pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+        Log.Message(Parent.FullName);
+   Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+         Add[ChildCount] = PChild;
+         ChildCount++;
+     }
+     }
+     
+     Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height<pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    Log.Message(Parent.FullName)
+    Sys.HighlightObject(Parent);
+    Parent = Parent.SWTObject("McClumpSashForm", "")
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==1)){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height<pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    var firstCell = Parent.SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+    Log.Message(firstCell.FullName)
+    Sys.HighlightObject(firstCell);
+
+    var table = Parent.SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2)
+    */
+//var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
+//var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.TextBox;
+
+
+var table = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget2.McGrid;
+var firstCell = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget2.McGrid.McTextWidget;
+
 WorkspaceUtils.waitForObj(firstCell);
 firstCell.setText(PONum);
-var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
+var closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 WorkspaceUtils.waitForObj(table);
 aqUtils.Delay(3000, "Reading Data from table");;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -480,20 +562,137 @@ for(var v=0;v<table.getItemCount();v++){
 ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
 TextUtils.writeLog("Created Purchase Order is available in Approval List");
 if(flag){ 
+  
+//CloseFilter
+/*
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+   Sys.Process("Maconomy").Refresh();
+         for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+      ChildCount++;
+
+     }
+     }      
+     
+      Parent = "";
+     var pos = 0;
+     for(var i=0;i<Add.length;i++){ 
+     if(Add[i].Height>pos){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+   Log.Message(Parent.FullName);
+   Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="TabFolderPanel")){
+         Parent = Parent.Child(i);
+         ChildCount++;
+     }
+     }
+     
+     
+   Log.Message(Parent.FullName);
+   Sys.HighlightObject(Parent);
+    ChildCount = 0;
+    Add = [];
+     for(var i=0;i<Parent.ChildCount;i++){ 
+     var PChild = Parent.Child(i);
+      if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+      Add[ChildCount] = PChild;
+         ChildCount++;
+     }
+     }
+     
+     Parent = "";
+     var pos = 1000;
+     for(var i=0;i<Add.length;i++){ 
+     if((Add[i].Height<pos)&&(Add[i].ChildCount==1)){ 
+       pos = Add[i].Height;
+       Parent = Add[i];
+     }     
+     } 
+    Log.Message(Parent.FullName)
+    Sys.HighlightObject(Parent);
+    var CloseFilter = Parent.SWTObject("SingleToolItemControl", "")
+    Log.Message(CloseFilter.FullName)
+    Sys.HighlightObject(CloseFilter);
+    */
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
+
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2;
+
+
+
+
+//Approve PO
+/*
+    var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+                
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==3)){
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height>pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+     Sys.HighlightObject(Approve)
+     Log.Message(Approve.FullName)
+     Approved = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     if(Approved.Visible){ 
+     Approve =  Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     }
+     else{ 
+     Approve = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);  
+     }
+     Sys.HighlightObject(Approve)
+
+ */
+ 
+ var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite;
+Log.Message(Approve.FullName)
 Sys.HighlightObject(Approve);
-for(var i=0;i<Approve.ChildCount;i++){ 
-  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
+ for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).Name.indexOf("SingleToolItemControl")!=-1)&&(Approve.Child(i).text.OleValue.toString().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())!=-1)){
     Approve = Approve.Child(i);
+    Sys.HighlightObject(Approve)
+    Log.Message(Approve.FullName)
     break;
   }
 }
+
+Sys.HighlightObject(Approve)
+Sys.HighlightObject(Approve);
+
+
+
+
 WorkspaceUtils.waitForObj(Approve);
 Sys.HighlightObject(Approve)
 if(Approve.isEnabled()){ 
@@ -542,7 +741,37 @@ while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(
 
 
 if(Approve_Level.length==lvl+1){
-var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
+  
+//Approve Bar
+/*
+      var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+       var pos = 0;         
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==3) && (PChild.ScreenLeft>=pos)){
+        pos = PChild.ScreenLeft;
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 1000;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].ScreenTop<pos){ 
+       pos = Add[ip].ScreenTop;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+    var approvalBar = Approve.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+    Sys.HighlightObject(approvalBar)
+*/
+
+var approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();
@@ -551,7 +780,7 @@ ImageRepository.ImageSet.Maximize.Click();
 if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN"))
    Runner.CallMethod("IND_ApprovePurchaseOrder.ApprovalStatus");
 else{
-var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
+var POapproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3
 WorkspaceUtils.waitForObj(POapproval)
 POapproval.HoverMouse();
 ReportUtils.logStep_Screenshot();
@@ -559,7 +788,7 @@ POapproval.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+var approvertable = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
 WorkspaceUtils.waitForObj(approvertable)
 ReportUtils.logStep_Screenshot();
 
