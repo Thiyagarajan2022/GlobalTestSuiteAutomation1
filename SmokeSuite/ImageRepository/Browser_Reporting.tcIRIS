@@ -9,19 +9,13 @@
 		<item caption="GLTransactions_Logo" moniker="{A29FECBF-6629-4314-B31F-4590E7A6E33E}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\iris19C43792C9F0C67.png" initialHash="7ED576B2" selectionLeft="46" selectionTop="189" selectionWidth="151" selectionHeight="33" initialLeft="46" initialTop="189" initialWidth="151" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
-		<item caption="Browser_DataProtection_OK_Button" moniker="{0B0B28CE-1A38-4DC0-878B-559C9A0E58A3}" isComposite="False" simpleMode="True" currentImageIndex="0">
+		<item caption="Browser_DataProtection_OK_Button_1" moniker="{0B0B28CE-1A38-4DC0-878B-559C9A0E58A3}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\iris19C437958DD0C85.png" initialHash="DA4F4F47" selectionLeft="946" selectionTop="468" selectionWidth="21" selectionHeight="17" initialLeft="946" initialTop="468" initialWidth="21" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
-		<item caption="Browser_GLTransaction_Prompt" moniker="{9715546F-C2D0-415F-8794-88CDA38F0269}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\iris19C437958EA50CD.png" initialHash="CCA69378" selectionLeft="291" selectionTop="225" selectionWidth="56" selectionHeight="14" initialLeft="291" initialTop="225" initialWidth="56" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
-		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{F82834A3-E527-4B0A-BBC2-29C176EE7488}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\iris19C437958F84FAD.png" initialHash="D662A3F4" selectionLeft="1011" selectionTop="598" selectionWidth="53" selectionHeight="17" initialLeft="1011" initialTop="598" initialWidth="53" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="TrailBalanceDetail_logo" moniker="{B3481C24-1795-4DB5-BB6A-8B9BA66CDDA3}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\TrailBalanceDetail_logo.png" initialHash="8CA8C5F3" selectionLeft="48" selectionTop="189" selectionWidth="164" selectionHeight="32" initialLeft="48" initialTop="189" initialWidth="164" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
-		<item caption="Browser_DataProtection_Dialog" moniker="{A9725684-EAED-4D66-8F29-3C75B24329F2}" isComposite="False" simpleMode="True" currentImageIndex="0">
+		<item caption="Browser_DataProtection_Dialog_1" moniker="{A9725684-EAED-4D66-8F29-3C75B24329F2}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\iris19C437AAEB0B854.png" initialHash="CF448924" selectionLeft="388" selectionTop="341" selectionWidth="99" selectionHeight="18" initialLeft="388" initialTop="341" initialWidth="99" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="ProfitAndLoss_logo" moniker="{20BB3432-FC68-47E7-84D7-46E557D62303}" isComposite="False" simpleMode="True" currentImageIndex="0">
@@ -220,7 +214,19 @@
 			<image imageFileName="Data\ClientBrandProductExport_1_Logo.png" initialHash="226072B3" selectionLeft="46" selectionTop="191" selectionWidth="207" selectionHeight="33" initialLeft="46" initialTop="191" initialWidth="207" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Browser_Reports_Prompt_1" moniker="{5DEA1257-E9DA-49E4-B031-EB88C701897A}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Browser_Reports_Prompt_1.png" initialHash="00000000" selectionLeft="336" selectionTop="199" selectionWidth="60" selectionHeight="19" initialLeft="336" initialTop="199" initialWidth="60" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Browser_Reports_Prompt_1.png" initialHash="0AC4BF9B" selectionLeft="336" selectionTop="199" selectionWidth="60" selectionHeight="19" initialLeft="336" initialTop="199" initialWidth="60" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_DataProtection_Dialog" moniker="{F815CE14-551B-4CA4-BF3E-11448300BB79}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_DataProtection_Dialog.png" initialHash="71DAA90A" selectionLeft="384" selectionTop="339" selectionWidth="104" selectionHeight="20" initialLeft="384" initialTop="339" initialWidth="104" initialHeight="20" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_DataProtection_OK_Button" moniker="{4767F90C-010A-4194-91C8-0BDEC351A2EE}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_DataProtection_OK_Button.png" initialHash="C77B73FF" selectionLeft="946" selectionTop="471" selectionWidth="21" selectionHeight="14" initialLeft="946" initialTop="471" initialWidth="21" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt" moniker="{B0B94256-8C83-43E8-BCA6-ACDDE6D1C485}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_GLTransaction_Prompt.png" initialHash="B37BF4F3" selectionLeft="292" selectionTop="221" selectionWidth="56" selectionHeight="19" initialLeft="292" initialTop="221" initialWidth="56" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{362644B4-5B3B-490D-88C1-52C4607DC260}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_GLTransaction_Prompt_Cancel.png" initialHash="00000000" selectionLeft="1010" selectionTop="598" selectionWidth="54" selectionHeight="15" initialLeft="1010" initialTop="598" initialWidth="54" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>

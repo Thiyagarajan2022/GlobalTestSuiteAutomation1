@@ -117,6 +117,9 @@ var company =  ExcelUtils.getRowDatas("Company",EnvParams.Opco);
 
 
 aqUtils.Delay(5000, "Navigating to Browser");
+
+if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
+    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
  
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     {
