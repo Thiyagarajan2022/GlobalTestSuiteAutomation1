@@ -55,6 +55,15 @@ STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 
   ExcelUtils.setExcelName(workBook, "Data Management", true);
+  JournalNo = ReadExcelSheet("Reverse CreditNote Invoice Journal NO",EnvParams.Opco,"Data Management");
+  if((JournalNo=="")||(JournalNo==null)){
+    
+  JournalNo = ReadExcelSheet("CreditNote Invoice Journal NO",EnvParams.Opco,"Data Management");
+  if((JournalNo=="")||(JournalNo==null)){
+    
+  JournalNo = ReadExcelSheet("Reverse Invoice Journal NO",EnvParams.Opco,"Data Management");
+  if((JournalNo=="")||(JournalNo==null)){
+    
   JournalNo = ReadExcelSheet("Invoice Journal NO",EnvParams.Opco,"Data Management");
   if((JournalNo=="")||(JournalNo==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -62,7 +71,25 @@ ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
   }
   if((JournalNo=="")||(JournalNo==null))
   ValidationUtils.verify(false,true,"journal No is required to create USER");
+  
+  else{ 
+  ValidationUtils.verify(true,true,"Posting Invoice Journal NO :"+JournalNo)
+}
 
+}
+else{ 
+  ValidationUtils.verify(true,true,"Posting Reverse Invoice Journal NO :"+JournalNo)
+}
+
+}
+else{ 
+  ValidationUtils.verify(true,true,"Posting CreditNote Invoice Journal NO :"+JournalNo)
+}
+
+}
+else{ 
+  ValidationUtils.verify(true,true,"Posting Reverse CreditNote Invoice Journal NO :"+JournalNo)
+}
 companyNo = EnvParams.Opco
 if((companyNo==null)||(companyNo=="")){ 
 ValidationUtils.verify(false,true,"CompanyNo is required to create USER");

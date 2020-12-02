@@ -16,7 +16,8 @@ Client_Managt.DblClickItem("|Approve Purchase Order by Type(*)");
 }
 
 function ApprovalStatus(){ 
-var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2;
+var POapproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
+//var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2;
 POapproval.HoverMouse();
 ReportUtils.logStep_Screenshot();
 POapproval.Click();
@@ -24,7 +25,7 @@ aqUtils.Delay(1000, Indicator.Text);;
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+//var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
 ReportUtils.logStep_Screenshot();
 }
 

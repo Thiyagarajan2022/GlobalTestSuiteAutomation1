@@ -16,9 +16,11 @@ function InvoiceSubmit(action){
 function TDS(TDSValue){ 
     var IndiaSpecific = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;
   IndiaSpecific.Click();
+  aqUtils.Delay(2000, "Moving to TDS");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(2000, "Miximizing screen");
   ImageRepository.ImageSet.Maximize.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     

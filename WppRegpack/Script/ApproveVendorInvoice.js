@@ -80,6 +80,16 @@ function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
+
+InvoiceNo = ReadExcelSheet("Reverse CreditNote Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((InvoiceNo=="")||(InvoiceNo==null)){
+  
+InvoiceNo = ReadExcelSheet("CreditNote Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((InvoiceNo=="")||(InvoiceNo==null)){
+  
+InvoiceNo = ReadExcelSheet("Reverse Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((InvoiceNo=="")||(InvoiceNo==null)){
+  
 InvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
 if((InvoiceNo=="")||(InvoiceNo==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -88,6 +98,24 @@ InvoiceNo = ExcelUtils.getRowDatas("Invoice NO",EnvParams.Opco)
 if((InvoiceNo==null)||(InvoiceNo=="")){ 
 ValidationUtils.verify(false,true,"Vendor Invoice NO is Needed to Approve Vendor Invoice");
 }
+else{ 
+  ValidationUtils.verify(true,true,"Approving Vendor Invoice NO :"+InvoiceNo)
+}
+
+}
+else{ 
+  ValidationUtils.verify(true,true,"Approving Reverse Vendor Invoice NO :"+InvoiceNo)
+}
+
+}
+else{ 
+  ValidationUtils.verify(true,true,"Approving CreditNote Vendor Invoice NO :"+InvoiceNo)
+}
+
+}else{ 
+  ValidationUtils.verify(true,true,"Approving Reverse CreditNote Vendor Invoice NO :"+InvoiceNo)
+}
+
 }
 
 function goToJobMenuItem(){ 

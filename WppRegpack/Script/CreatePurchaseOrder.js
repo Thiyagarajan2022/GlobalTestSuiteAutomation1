@@ -6,15 +6,11 @@
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
 //USEUNIT EventHandler
+//USEUNIT CreditNotePO
+//USEUNIT ReverseCreditNote
 
 
-/** 
- * This script Create Working Estimate for Job
- * @author  : Muthu Kumar M
- * @version : 2.0
- * Modified Date :11/18/2020
- */
- 
+
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -33,12 +29,9 @@ function CreatePurchaseOrder(){
 TextUtils.writeLog("Create Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
 
-//Getting Langauge from datasheet to execute script
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
 
-
-//Login maconomy in Senior Finance Login
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
@@ -48,8 +41,6 @@ WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
 }
 
-
-// Re-Initialize Variable
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "CreatePurchaseOrder";
@@ -76,7 +67,7 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
 WorkspaceUtils.closeAllWorkspaces();
 }
 
-// Close all Open Workspace in Maconomy
+
 function closeAllWorkspaces(){
   Sys.Desktop.KeyDown(0x12); //Ctrl
   Sys.Desktop.KeyDown(0x57); //W
@@ -87,7 +78,6 @@ function closeAllWorkspaces(){
 }  
 
 
-//Getting Details to Create Purchase Order
 function getDetails(){ 
   
 ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -115,7 +105,7 @@ NOL = ExcelUtils.getColumnDatas("Number of Lines To ADD",EnvParams.Opco)
 
 }
 
-// Navigating to Purchase Order from Account Payable
+
 function gotoMenu(){ 
   
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -175,9 +165,6 @@ closefilter.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  
-  
-//Click New Purchase Order
 var craetePurchase = 
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
 //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite;
@@ -230,9 +217,6 @@ WorkspaceUtils.waitForObj(screen);
   screen.MouseWheel(-40);
   aqUtils.Delay(5000, Indicator.Text);
   
-  
-//Getting Vendor Currency
-
 var ClientCurrency =  
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 4).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget;
@@ -396,7 +380,10 @@ var Unit_Price =
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3)
 //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
    if(UnitPrice!=""){
-   Unit_Price.setText(UnitPrice);
+        if(CreditNotePO.CreatePO)
+        Unit_Price.setText("-"+UnitPrice);
+        else
+        Unit_Price.setText(UnitPrice);
      }
      
 Log.Message("OHSN :"+OHSN);
@@ -629,9 +616,20 @@ SubmitPurchase.Click();
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText().OleValue.toString().trim();;
   ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
   ExcelUtils.setExcelName(workBook,"Data Management", true);
+  Log.Message(CreditNotePO.CreatePO)
+  Log.Message(ReverseCreditNote.CreatePO)
+  if(CreditNotePO.CreatePO){ 
+  ExcelUtils.WriteExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
+  TextUtils.writeLog("Created Credit PO Number :"+PurchaseNumber);
+  }
+  else if(ReverseCreditNote.CreatePO){ 
+  ExcelUtils.WriteExcelSheet("ReverseCredit PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
+  TextUtils.writeLog("Created ReverseCredit PO Number :"+PurchaseNumber);
+  }
+  else{
   ExcelUtils.WriteExcelSheet("PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
   TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
-  
+  }
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }

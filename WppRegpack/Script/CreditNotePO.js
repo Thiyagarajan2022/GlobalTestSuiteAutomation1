@@ -6,6 +6,7 @@
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
 //USEUNIT EventHandler
+//USEUNIT CreateVendorInvoice
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -22,7 +23,9 @@ var description="";
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
 var POnumber = "";
 var InvoiceNo,EDate,IDate,Description,TDSValue="";
-
+var Project_manager = "";
+var Approved_POnumber = "";
+var CreatePO = false;
 function CreateNotePO(){ 
 TextUtils.writeLog("Credit Note PO is Started"); 
 Indicator.PushText("waiting for window to open");
@@ -32,8 +35,8 @@ WorkspaceUtils.Language = Language;
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -49,35 +52,61 @@ mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 STIME = "";
 VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
-  
+Approved_POnumber = "";
+
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-try{
-getDetails();
+
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
-  gotoMenu();
-  goToCreatePurchase();
-  gettingApproval();
-  WorkspaceUtils.closeAllWorkspaces();
-    for(var i=level;i<ApproveInfo.length;i++){
-      level=i;
-    WorkspaceUtils.closeMaconomy();
-    aqUtils.Delay(10000, Indicator.Text);
-    var temp = ApproveInfo[i].split("*");
-    Restart.login(temp[2]);
-    aqUtils.Delay(5000, Indicator.Text);
-    todo(temp[3]);
-    FinalApprovePO(temp[1],temp[2],i,temp[3]);
-    }
+POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+if((POnumber==null)||(POnumber=="")){ 
+TextUtils.writeLog("Creating Negative Purchase Order for Credit Note");
+CreatePO = true;
+Runner.CallMethod("CreatePurchaseOrder.CreatePurchaseOrder");
+}
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+Log.Message(POnumber)
+CreatePO = false;
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Approved_POnumber = ReadExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management");
+if((Approved_POnumber==null)||(Approved_POnumber=="")){ 
+TextUtils.writeLog("Approving Negative Purchase Order for Credit Note");
+CreatePO = true;
+Runner.CallMethod("ApprovePurchaseOrder.ApprovePurchaseOrder");
+}
+
+CreatePO = false;
+
+
+//try{
+//getDetails();
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//  gotoMenu();
+//  goToCreatePurchase();
+//  gettingApproval();
+//  WorkspaceUtils.closeAllWorkspaces();
+//    for(var i=level;i<ApproveInfo.length;i++){
+//      level=i;
+//    WorkspaceUtils.closeMaconomy();
+//    aqUtils.Delay(10000, Indicator.Text);
+//    var temp = ApproveInfo[i].split("*");
+//    Restart.login(temp[2]);
+//    aqUtils.Delay(5000, Indicator.Text);
+//    todo(temp[3]);
+//    FinalApprovePO(temp[1],temp[2],i,temp[3]);
+//    }
+//POnumber = "1284100108";
    vendorinvoice();
    InvoiceCreation();
    goToAPMenuItem(); 
    invoiceAllocation();
-}
-  catch(err){
-    Log.Message(err);
-  }
+//}
+//  catch(err){
+//    Log.Message(err);
+//  }
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -118,21 +147,21 @@ if((UnitPrice==null)||(UnitPrice=="")){
 ValidationUtils.verify(false,true,"Cost is Needed to Create a Negative Purchase Order");
 }
 OHSN = ExcelUtils.getRowDatas("Outward HSN",EnvParams.Opco)
-Log.Message(OHSN)
-if((OHSN==null)||(OHSN=="")){ 
-ValidationUtils.verify(false,true,"Outward HSN is Needed to Create a Negative Purchase Order");
-}
+//Log.Message(OHSN)
+//if((OHSN==null)||(OHSN=="")){ 
+//ValidationUtils.verify(false,true,"Outward HSN is Needed to Create a Negative Purchase Order");
+//}
 IHSN = ExcelUtils.getRowDatas("Inward HSN",EnvParams.Opco)
-Log.Message(IHSN)
-if((IHSN==null)||(IHSN=="")){ 
-ValidationUtils.verify(false,true,"Inward HSN is Needed to Create a Negative Purchase Order");
-}
+//Log.Message(IHSN)
+//if((IHSN==null)||(IHSN=="")){ 
+//ValidationUtils.verify(false,true,"Inward HSN is Needed to Create a Negative Purchase Order");
+//}
 
 POS = ExcelUtils.getRowDatas("POS",EnvParams.Opco)
-Log.Message(POS)
-if((POS==null)||(POS=="")){ 
-ValidationUtils.verify(false,true,"POS is Needed to Create a Negative Purchase Order");
-}
+//Log.Message(POS)
+//if((POS==null)||(POS=="")){ 
+//ValidationUtils.verify(false,true,"POS is Needed to Create a Negative Purchase Order");
+//}
   
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
@@ -557,7 +586,20 @@ ImageRepository.ImageSet.Show_Filter.Click();
   for(var i=0;i<ApproverTable.getItemCount();i++){   
      var approvers="";
       if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        
+        var mainApprover = ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
+        var substitur = ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
+        var temp = "";
+        if(mainApprover .indexOf(Project_manager)==-1){ 
+          temp = temp+mainApprover+"*";
+        }else{ 
+          temp = temp+"SelfApprove"+"*";
+        }
+        if(substitur .indexOf(Project_manager)==-1){ 
+          temp = temp+substitur;
+        }
+      approvers = EnvParams.Opco+"*"+POnumber+"*"+ temp;  
+//      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
       Log.Message("Approver level :" +i+ ": " +approvers);
       Approve_Level[y] = approvers;
       y++;
@@ -572,8 +614,10 @@ ImageRepository.ImageSet.Forward.Click();
 CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
 sheetName = "CreditNoteWithPO";
 if(OpCo2[2]==Project_manager){
 level = 1;
@@ -737,7 +781,8 @@ POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
 var sheetName = "CreditNoteWithPO";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
-company = ExcelUtils.getColumnDatas("Opco",EnvParams.Opco)
+company = EnvParams.Opco;
+//company = ExcelUtils.getColumnDatas("Opco",EnvParams.Opco)
 if((company==null)||(company=="")){ 
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Vendor Invoice");
 }
@@ -761,6 +806,7 @@ if((description==null)||(description=="")){
 ValidationUtils.verify(false,true,"Description1 is Needed to Create a Vendor Invoice");
 }
 TDSValue = ExcelUtils.getRowDatas("TDS",EnvParams.Opco)
+
 }
 
 
@@ -820,7 +866,7 @@ WorkspaceUtils.SearchByValue(PONumber,JavaClasses.MLT.MultiLingualTranslator.Get
   }
 var InvoiceType = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.Composite6.McPopupPickerWidget;
 //InvoiceType.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice").OleValue.toString().trim());
-InvoiceType.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice").OleValue.toString().trim());
+InvoiceType.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Memo").OleValue.toString().trim());
 aqUtils.Delay(4000,"Playback")
 
 var EntryDate = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.Composite3.McDatePickerWidget;
@@ -902,6 +948,7 @@ ReportUtils.logStep_Screenshot();
   var dueDate = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.SWTObject("Composite", "", 5).SWTObject("McDatePickerWidget", "", 2);
   dueDate = dueDate.getText().OleValue.toString().trim();
   if(EnvParams.Country.toUpperCase()=="INDIA"){
+    CreateVendorInvoice.Language = Language;
   Runner.CallMethod("IND_VendorInvoice.TDS",TDSValue); 
   
   }
@@ -986,8 +1033,14 @@ action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Proje
   }
   if(EnvParams.Country.toUpperCase()=="INDIA")
   Runner.CallMethod("IND_VendorInvoice.InvoiceSubmit",action);
-  else
+  else{
+  action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
+  WorkspaceUtils.waitForObj(action);
+  action.Click();
+  aqUtils.Delay(8000, "Waiting for Action");
   action.PopupMenu.Click("Submit for Approval");
+  
+  }
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, "Submitted for Approval");;
   TextUtils.writeLog("Invoice is Submitted for Approval");
@@ -1114,4 +1167,226 @@ WorkspaceUtils.waitForObj(ObjectAddrs);
       ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
     }
     return checkmark;
+}
+
+
+
+function FinalApprovePO(PONum,Apvr,lvl){ 
+
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder;
+WorkspaceUtils.waitForObj(table);
+Sys.HighlightObject(table);
+
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Visible){
+
+}else{ 
+ImageRepository.ImageSet.Show_Filter.Click();
+}
+
+var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
+var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.TextBox;
+WorkspaceUtils.waitForObj(firstCell);
+firstCell.setText(PONum);
+var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
+WorkspaceUtils.waitForObj(table);
+aqUtils.Delay(3000, "Reading Data from table");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+var flag=false;
+for(var v=0;v<table.getItemCount();v++){ 
+  if(table.getItem(v).getText_2(1).OleValue.toString().trim()==PONum){ 
+    flag=true;    
+    break;
+  }
+  else{ 
+    table.Keys("[Down]");
+  }
+}
+
+ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
+TextUtils.writeLog("Created Purchase Order is available in Approval List");
+if(flag){ 
+closefilter.HoverMouse();
+ReportUtils.logStep_Screenshot();
+closefilter.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2;
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
+    Approve = Approve.Child(i);
+    break;
+  }
+}
+WorkspaceUtils.waitForObj(Approve);
+Sys.HighlightObject(Approve)
+if(Approve.isEnabled()){ 
+Approve.HoverMouse();
+ReportUtils.logStep_Screenshot();
+Approve.Click();
+//aqUtils.Delay(3000, Indicator.Text);
+//Approve.PopupMenu.Click("Approve Purchase Order");
+//ReportUtils.logStep_Screenshot();
+//aqUtils.Delay(8000, Indicator.Text);;
+ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
+TextUtils.writeLog("Purchase Order is Approved by "+Apvr);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
+//Uncommand
+/*
+//var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "");;
+var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
+WorkspaceUtils.waitForObj(screen);
+  screen.Click();
+  screen.MouseWheel(-5);
+//  aqUtils.Delay(5000, Indicator.Text);
+//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
+var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
+var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
+    var i=0;
+while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
+{
+  aqUtils.Delay(100);
+  i++;
+  ApvPerson.Refresh();
+}
+
+    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
+  ValidationUtils.verify(true,true,"Purchase Order is Approved by :"+loginPer)
+  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer); 
+  }else{ 
+  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer+ "But its Not Reflected"); 
+  ValidationUtils.verify(true,false,"Purchase Order is Approved by :"+loginPer+ "But its Not Reflected")
+  }
+  
+*/
+
+
+if(Approve_Level.length==lvl+1){
+var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
+approvalBar.HoverMouse();
+ReportUtils.logStep_Screenshot();
+approvalBar.Click();
+ImageRepository.ImageSet.Maximize.Click();
+
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN"))
+   Runner.CallMethod("IND_ApprovePurchaseOrder.ApprovalStatus");
+else{
+var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
+WorkspaceUtils.waitForObj(POapproval)
+POapproval.HoverMouse();
+ReportUtils.logStep_Screenshot();
+POapproval.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+WorkspaceUtils.waitForObj(approvertable)
+ReportUtils.logStep_Screenshot();
+}
+}
+ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
+}
+}
+
+} 
+
+
+function todo(lvl){ 
+  TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
+  var toDo = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.ToDos;
+  toDo.HoverMouse();
+  ReportUtils.logStep_Screenshot();
+  toDo.DBlClick();
+  TextUtils.writeLog("Entering into To-Dos List");
+  aqUtils.Delay(3000, Indicator.Text);
+  //To Maximaize the window
+  Sys.Desktop.KeyDown(0x12);
+  Sys.Desktop.KeyDown(0x20);
+  Sys.Desktop.KeyUp(0x12);
+  Sys.Desktop.KeyUp(0x20);
+  Sys.Desktop.KeyDown(0x58);
+  Sys.Desktop.KeyUp(0x58);  
+  aqUtils.Delay(1000, Indicator.Text);
+
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
+}
+refresh.Click();
+aqUtils.Delay(15000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
+  
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
+}
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
+Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
+}
+var listPass = true;
+if(lvl==2)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Purchase Order from To-Dos List"); 
+listPass = false; 
+  }
+}
+if(lvl==3)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);    
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Purchase Order (Substitute) from To-Dos List");  
+var listPass = false;   
+  }
+}  
+
+
+if(listPass){
+if(lvl==2)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
+Client_Managt.ClickItem("|"+temp);   
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp);  
+TextUtils.writeLog("Entering into Approve Purchase Order by Type from To-Dos List"); 
+listPass = false; 
+  }
+}
+if(lvl==3)
+for(var j=0;j<Client_Managt.getItemCount();j++){ 
+  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
+  var temp1 = temp.split("(");
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order by Type (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+Client_Managt.ClickItem("|"+temp);    
+ReportUtils.logStep_Screenshot(); 
+Client_Managt.DblClickItem("|"+temp); 
+TextUtils.writeLog("Entering into Approve Purchase Order by Type (Substitute) from To-Dos List"); 
+var listPass = false;   
+  }
+} 
+  }
+  
 }

@@ -463,7 +463,7 @@ var firstCell = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.
 
 WorkspaceUtils.waitForObj(firstCell);
 firstCell.setText(PONum);
-var closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+//var closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 WorkspaceUtils.waitForObj(table);
 aqUtils.Delay(3000, "Reading Data from table");;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -483,11 +483,58 @@ for(var v=0;v<table.getItemCount();v++){
 ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
 TextUtils.writeLog("Created Purchase Order is available in Approval List");
 if(flag){ 
+  
+var closefilter = "";
+var filterStat = false
+if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.Index==1){
+closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite;
+Log.Message(closefilter.FullName)
+}else{
+ closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.Composite
+Log.Message(closefilter.FullName)
+}
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
 
-var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+//Approve PO
+
+    var ChildCount = 0;
+    var Add = [];
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+                
+      for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+        if((PChild.isVisible()) && (PChild.ChildCount==3)){
+        Add[ChildCount] = PChild;
+        ChildCount++;
+     }
+     }
+     
+     var Approve = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height>pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       Approve = Add[ip];
+     }     
+     }
+     
+     Sys.HighlightObject(Approve)
+     Log.Message(Approve.FullName)
+     Approved = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     if(Approved.Visible){ 
+     Approve =  Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     }
+     else{ 
+     Approve = Approve.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);  
+     }
+     Sys.HighlightObject(Approve)
+
+
+//var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite;
 Sys.HighlightObject(Approve);
 for(var i=0;i<Approve.ChildCount;i++){ 
   if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
@@ -546,7 +593,16 @@ if(Approve_Level.length==lvl+1){
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Approved PO_"+POnum,EnvParams.Opco,"Data Management",POnumber);
 
-var approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
+
+
+var approvalBar = "";
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.isVisible()){
+approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl
+}else{
+approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
+}
+
+//var approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();

@@ -5,6 +5,8 @@
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
+//USEUNIT CreditNotePO
+//USEUNIT ReverseCreditNote
 
 Indicator.Show();
 var excelName = EnvParams.path;
@@ -52,7 +54,7 @@ POnumber = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Approving PO started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-try{
+//try{
 getDetails();
 gotoMenu();
 gettingApproval();
@@ -68,19 +70,53 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i,temp[3]);
 }
+
+if(CreditNotePO.CreatePO){ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management",POnumber)
+TextUtils.writeLog("Approved Credit PO Number :"+POnumber); 
+}
+
+else if(ReverseCreditNote.CreatePO){ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Approved ReverseCredit PO Number",EnvParams.Opco,"Data Management",POnumber)
+TextUtils.writeLog("Approved ReverseCredit PO Number :"+POnumber); 
+}
 TextUtils.writeLog("Purchase Orders("+POnumber+") is Approved");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }
 
-}
-  catch(err){
-    Log.Message(err);
-  }
+//}
+//  catch(err){
+//    Log.Message(err);
+//  }
 WorkspaceUtils.closeAllWorkspaces();
 }
 
 function getDetails(){ 
+  
+if(CreditNotePO.CreatePO){ 
+// Getting Negative PO Number to Approve
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+if((POnumber==null)||(POnumber=="")){ 
+ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
+}
+
+}
+else if(ReverseCreditNote.CreatePO){ 
+// Getting Negative PO Number to Approve
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+POnumber = ReadExcelSheet("ReverseCredit PO Number",EnvParams.Opco,"Data Management");
+if((POnumber==null)||(POnumber=="")){ 
+ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
+}
+
+}
+
+else{
+// Getting PO Number to Approve
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 POnumber = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
 if((POnumber=="")||(POnumber==null)){
@@ -91,6 +127,8 @@ if((POnumber==null)||(POnumber=="")){
 ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
 }
  
+}
+
 }
 
 function gotoMenu(){ 
@@ -537,9 +575,9 @@ var table = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Comp
 var firstCell = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget2.McGrid.McTextWidget;
 
 WorkspaceUtils.waitForObj(firstCell);
+firstCell.Click();
 firstCell.setText(PONum);
-var closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-WorkspaceUtils.waitForObj(table);
+//WorkspaceUtils.waitForObj(table);
 aqUtils.Delay(3000, "Reading Data from table");;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -563,6 +601,16 @@ ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approva
 TextUtils.writeLog("Created Purchase Order is available in Approval List");
 if(flag){ 
   
+var closefilter = "";
+var filterStat = false
+if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.Index==1){
+closefilter = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite;
+Log.Message(closefilter.FullName)
+}else{
+ closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.Composite
+Log.Message(closefilter.FullName)
+}
+ 
 //CloseFilter
 /*
       var ChildCount = 0;
@@ -627,7 +675,8 @@ if(flag){
     Log.Message(CloseFilter.FullName)
     Sys.HighlightObject(CloseFilter);
     */
-closefilter.HoverMouse();
+
+//closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
 
@@ -639,7 +688,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 
 //Approve PO
-/*
+
     var ChildCount = 0;
     var Add = [];
    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
@@ -673,9 +722,20 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
      }
      Sys.HighlightObject(Approve)
 
- */
  
- var Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite;
+
+// Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Refresh(); 
+ 
+//  var Approve = "";
+// if(Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Index==4){
+// Approve = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite;
+//Log.Message(Approve.FullName)
+//}else{
+// Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;
+//Log.Message(Approve.FullName)
+//}
+
+
 Log.Message(Approve.FullName)
 Sys.HighlightObject(Approve);
  for(var i=0;i<Approve.ChildCount;i++){ 
@@ -771,7 +831,12 @@ if(Approve_Level.length==lvl+1){
     Sys.HighlightObject(approvalBar)
 */
 
-var approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
+var approvalBar = "";
+if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.isVisible()){
+approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl
+}else{
+approvalBar = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
+}
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();
