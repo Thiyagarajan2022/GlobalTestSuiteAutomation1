@@ -251,7 +251,21 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   Sys.HighlightObject(reject);
   reject.Click();
   TextUtils.writeLog("Reject Absence Request is Rejected by:"+login); 
+  aqUtils.Delay(1000,"Waiting for window");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
+}
+  var Status_Check = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite3.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+  Status_Check = Status_Check.getText();
+
+if(Status_Check=="Reject")
+ValidationUtils.verify(true, true,"Absence Request is Rejected by:"+login); 
+else
+ValidationUtils.verify(true, false,"Absence Request is NOT Rejected by:"+login);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 }
 
 
@@ -328,9 +342,9 @@ aqUtils.Delay(1000,"waiting for window");
  
  var Undo;
   if(Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.isVisible())
-  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SWTObject("SingleToolItemControl", "", 5);
+  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SWTObject("SingleToolItemControl", "", 7);
  else
-  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 5);
+  Undo = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 7);
 
 //       var Undo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
        Sys.HighlightObject(Undo);

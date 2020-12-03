@@ -285,6 +285,18 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
+var Status = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite2.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
+Status = Status.getText();
+
+if(Status=="Rejected")
+ValidationUtils.verify(true, true,"Absence Allowance Request is Rejected by:"+login); 
+else
+ValidationUtils.verify(true, false,"Absence Allowance Request is NOT Rejected by:"+login);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
 }
 
 
@@ -372,9 +384,9 @@ aqUtils.Delay(1000,"waiting for window");
 //var ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
 var ReOpen;
   if(Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.isVisible())
-  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 5);
+  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 7);
  else
-  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 5);
+  ReOpen = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 7);
 
 WorkspaceUtils.waitForObj(ReOpen);
 ReOpen.HoverMouse();

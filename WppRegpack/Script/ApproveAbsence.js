@@ -237,7 +237,27 @@ ReportUtils.logStep_Screenshot();
   ReportUtils.logStep_Screenshot("");
   waitForObj(Approve)
   Approve.Click();
-  TextUtils.writeLog("Approve Absence Request is Approved by:"+login);
+//  TextUtils.writeLog("Approve Absence Request is Approved by:"+login);
+  aqUtils.Delay(10000,"waiting for window");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+  }
+  var Status = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+Status.Click();
+Delay(2000)
+Status = Status.getText().OleValue.toString().trim();
+var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
+    Log.Message(Status)
+    Log.Message(loginPer)
+if(Status.indexOf(loginPer)!=-1)
+ValidationUtils.verify(true, true,"Absence Request is Rejected by:"+loginPer); 
+else
+ValidationUtils.verify(true, false,"Absence Request is NOT Rejected by:"+loginPer);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
   
 /*  
 aqUtils.Delay(10000,"waiting for window");
@@ -431,7 +451,7 @@ STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
-try{
+//try{
 getDetails();
 goToJobMenuItem();   
 gotoAbsence(); 
@@ -443,10 +463,10 @@ WorkspaceUtils.closeMaconomy();
 Restart.login(login);
 goToAbsenceMenuItem();
 Approve();
-}
-catch(err){
-  Log.Message(err);
-}
+//}
+//catch(err){
+//  Log.Message(err);
+//}
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();

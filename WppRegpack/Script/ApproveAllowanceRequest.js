@@ -310,6 +310,20 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
+var Status = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2);
+Status.Click();
+Delay(2000)
+Status = Status.getText().OleValue.toString().trim();
+
+if(Status.indexOf(login)!=-1)
+ValidationUtils.verify(true, true,"Absence Allowance Request is Rejected by:"+login); 
+else
+ValidationUtils.verify(true, false,"Absence Allowance Request is NOT Rejected by:"+login);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
 }
 
 //Go To Job from Menu
