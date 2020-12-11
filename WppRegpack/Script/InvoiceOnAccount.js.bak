@@ -201,7 +201,7 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
-    
+/*    
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
@@ -415,6 +415,8 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    */
+    
 TestRunner.testCaseId = IAcc_ID;
 TestRunner.unitName = IAccUnit;
 //}
@@ -850,7 +852,7 @@ var SelectionBilling = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Com
   Descp = [];
   var Ds = 0;
   for(var t=0;t<SelectionBilling.getItemCount();t++){ 
-   Descp[Ds] = SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim()+"*"+SelectionBilling.getItem(t).getText_2(10).OleValue.toString().trim();
+   Descp[Ds] = SelectionBilling.getItem(t).getText_2(10).OleValue.toString().trim()+"*"+SelectionBilling.getItem(t).getText_2(1).OleValue.toString().trim();
    Log.Message(Descp[Ds])
    Ds++; 
   }
@@ -1140,7 +1142,39 @@ ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",
     aqUtils.Delay(4000, Indicator.Text);
    
 
-var appvBar = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+//var appvBar = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+    var ChildCount = 0;
+    var Add = [];
+    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+    Sys.Process("Maconomy").Refresh();  
+    for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==3)){
+       Log.Message(PChild.Name)
+//       for(var jp=0;jp<PChild.ChildCount;jp++){ 
+//         var CChild = PChild.Child(jp);
+//            if((CChild.isVisible()) && (CChild.JavaClassName=="Composite") && (CChild.Index==2)){
+            Add[ChildCount] = PChild;
+            ChildCount++;
+//            }
+//     }
+     }
+     }
+
+     var appvBar = "";
+     var pos = 1000;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height<pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       appvBar = Add[ip];
+     }     
+     }
+     
+     Log.Message(appvBar.FullName);
+     Sys.HighlightObject(appvBar)
+     appvBar = appvBar.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+     Sys.HighlightObject(appvBar)
 WorkspaceUtils.waitForObj(appvBar);
 appvBar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -1762,12 +1796,47 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
 //  printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite2;
   
   
-var printInvoice = "";
-  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
-  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
- else
-  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
-          
+//var printInvoice = "";
+//  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
+//  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
+// else
+//  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+   
+    var ChildCount = 0;
+    var Add = [];
+    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+    Sys.Process("Maconomy").Refresh();  
+    for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==3)){
+       Log.Message(PChild.Name)
+//       for(var jp=0;jp<PChild.ChildCount;jp++){ 
+//         var CChild = PChild.Child(jp);
+//            if((CChild.isVisible()) && (CChild.JavaClassName=="Composite") && (CChild.Index==2)){
+            Add[ChildCount] = PChild;
+            ChildCount++;
+//            }
+//     }
+     }
+     }
+
+     var printInvoice = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height>pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       printInvoice = Add[ip];
+     }     
+     }
+     
+     Log.Message(printInvoice.FullName);
+     Sys.HighlightObject(printInvoice)
+     if(printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).isVisible())
+     printInvoice = printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     else
+     printInvoice = printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
+     Sys.HighlightObject(printInvoice)       
   WorkspaceUtils.waitForObj(printInvoice);
   for(var i=0;i<printInvoice.ChildCount;i++){ 
     if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Invoice").OleValue.toString().trim())){
@@ -1858,10 +1927,12 @@ var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+Sav
 var textobj;
   try{
   var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
-  textobj = obj.getText_2(docObj).OleValue.toString();
-  textobj = textobj.substring(textobj.indexOf("Invoice No: ")+12);
-  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf("Invoice Date")))
-  textobj = textobj.substring(0,textobj.indexOf("Invoice Date"));
+  var invoiceName = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No:").OleValue.toString().trim();
+  invoiceName = invoiceName.length;
+  Log.Message(invoiceName)
+  textobj = textobj.substring(textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No:").OleValue.toString().trim()+" ")+invoiceName+1);
+  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim())))
+  textobj = textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()));
   }catch(objEx){
     Log.Error("Exception while getting text from document::"+objEx);
   }

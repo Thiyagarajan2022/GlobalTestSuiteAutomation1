@@ -222,11 +222,5 @@
 		<item caption="Browser_DataProtection_OK_Button" moniker="{4767F90C-010A-4194-91C8-0BDEC351A2EE}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Browser_DataProtection_OK_Button.png" initialHash="C77B73FF" selectionLeft="946" selectionTop="471" selectionWidth="21" selectionHeight="14" initialLeft="946" initialTop="471" initialWidth="21" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
-		<item caption="Browser_GLTransaction_Prompt" moniker="{B0B94256-8C83-43E8-BCA6-ACDDE6D1C485}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Browser_GLTransaction_Prompt.png" initialHash="B37BF4F3" selectionLeft="292" selectionTop="221" selectionWidth="56" selectionHeight="19" initialLeft="292" initialTop="221" initialWidth="56" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
-		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{362644B4-5B3B-490D-88C1-52C4607DC260}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Browser_GLTransaction_Prompt_Cancel.png" initialHash="00000000" selectionLeft="1010" selectionTop="598" selectionWidth="54" selectionHeight="15" initialLeft="1010" initialTop="598" initialWidth="54" initialHeight="15" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
 	</data>
 </Root>

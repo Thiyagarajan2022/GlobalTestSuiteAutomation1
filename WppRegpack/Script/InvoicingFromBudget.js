@@ -858,7 +858,18 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }else{ 
 ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
-var Action = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.GroupToolItemControl;
+//var Action = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.GroupToolItemControl;
+
+var ParentAdd = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite;
+var Action = "";
+
+  for(var j=0;j<ParentAdd.ChildCount;j++){ 
+    if((ParentAdd.Child(j).Name.indexOf("GroupToolItemControl")!=-1) && (ParentAdd.Child(j).Visible)){
+      Action = ParentAdd.Child(j);
+      break;
+    }
+  }
+  
 WorkspaceUtils.waitForObj(Action);
 ReportUtils.logStep_Screenshot("");
 Action.Click();
@@ -920,8 +931,26 @@ TextUtils.writeLog("Approve is clicked");
 aqUtils.Delay(1000, "Approve is Clicked");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+
+Log.Message("Language :"+Language);
+ var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Invoice Selection").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+  
+var label = w.SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+ReportUtils.logStep("INFO",lab)
+TextUtils.writeLog(lab);
+var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Ok.Click();
+
 }
 
 var DraftInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -1052,7 +1081,28 @@ var SubmitDraft;
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 //var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
 var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.descrip
-var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
+//var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
+
+
+//Finding Payment Terms
+var break_MainLoop = false;
+var ParentAdd = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget
+var Payment_Terms = "";
+for(var i=0;i<ParentAdd.ChildCount;i++){ 
+  var temp = ParentAdd.Child(i);
+  for(var j=0;j<temp.ChildCount;j++){ 
+    if(temp.Child(j).Name.indexOf("McPopupPickerWidget")!=-1){
+      Payment_Terms = temp.Child(j);
+      break_MainLoop = true;
+      break;
+    }
+  }
+  
+  if(break_MainLoop){ 
+    break;
+  }
+}
+
 Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
 grandTotal = grandTotal.getText().OleValue.toString().trim();
 Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();

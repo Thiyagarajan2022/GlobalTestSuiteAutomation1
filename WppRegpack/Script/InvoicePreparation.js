@@ -745,7 +745,7 @@ next.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
+if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
 var Percentage = Aliases.Maconomy.PrepareInvoice.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.Composite.Percentage;
 WorkspaceUtils.waitForObj(Percentage);
 Percentage.Click();
@@ -771,7 +771,7 @@ Okay.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
+if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")){
 var invoiceTable = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 WorkspaceUtils.waitForObj(invoiceTable);
 for(var i=0;i<invoiceTable.getItemCount()-1;i++){ 
@@ -781,7 +781,7 @@ for(var i=0;i<invoiceTable.getItemCount()-1;i++){
 //  
 //  if(Esplit[0]==invoiceTable.getItem(i).getText_2(0).OleValue.toString().trim()){
     
-  var temp = invoiceTable.getItem(i).getText_2(1).OleValue.toString().trim();
+  var temp = invoiceTable.getItem(i).getText_2(2).OleValue.toString().trim();
   temp = parseFloat(temp).toFixed(2);;
 //  if(percentage.indexOf(".")!=-1){ 
     percentage = parseFloat(percentage.toString()).toFixed(2);
@@ -843,12 +843,14 @@ aqUtils.Delay(1000, "Billing Price");
 
 var BudgetAmount;
  
- if((EnvParams.Country.toUpperCase()!="UAE")&&(EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
+ if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
  BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite2.NewTotal;
  }else{ 
  BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite3.McTextWidget;
  }
 BudgetAmount = BudgetAmount.getText();
+// BudgetAmount = "74,750.00";
+
 Log.Message(BudgetAmount);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -1002,7 +1004,30 @@ var SubmitDraft;
 
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
-var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
+//var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
+//var Payment_Terms = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2)
+
+
+//Finding Payment Terms
+var break_MainLoop = false;
+var ParentAdd = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget
+var Payment_Terms = "";
+for(var i=0;i<ParentAdd.ChildCount;i++){ 
+  var temp = ParentAdd.Child(i);
+  for(var j=0;j<temp.ChildCount;j++){ 
+    if(temp.Child(j).Name.indexOf("McPopupPickerWidget")!=-1){
+      Payment_Terms = temp.Child(j);
+      break_MainLoop = true;
+      break;
+    }
+  }
+  
+  if(break_MainLoop){ 
+    break;
+  }
+}
+
+
 Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
 grandTotal = grandTotal.getText().OleValue.toString().trim();
 Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();
@@ -1151,13 +1176,16 @@ ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",
 var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 WorkspaceUtils.waitForObj(appvBar);
 appvBar.Click();
+aqUtils.Delay(4000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
   
 ImageRepository.ImageSet.Maximize.Click();
+aqUtils.Delay(4000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
 var DraftApproval = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl
 WorkspaceUtils.waitForObj(DraftApproval);
 DraftApproval.Click();

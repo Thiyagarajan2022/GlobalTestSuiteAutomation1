@@ -200,6 +200,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     ReportUtils.DStat = false;
     }
     
+/*
     //Creation of PO
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
@@ -413,6 +414,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    */
 TestRunner.testCaseId = IBudget_ID;
 TestRunner.unitName = IBudgetUnit;
 //}
@@ -1824,13 +1826,49 @@ var printStat = false;
 //  if(!printStat) 
 //  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite2;
 
-var printInvoice = "";
-  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
-  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
- else
-  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+//var printInvoice = "";
+//  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
+//  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
+// else
+//  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
             
-    
+ 
+    var ChildCount = 0;
+    var Add = [];
+    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+    Sys.Process("Maconomy").Refresh();  
+    for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==3)){
+       Log.Message(PChild.Name)
+//       for(var jp=0;jp<PChild.ChildCount;jp++){ 
+//         var CChild = PChild.Child(jp);
+//            if((CChild.isVisible()) && (CChild.JavaClassName=="Composite") && (CChild.Index==2)){
+            Add[ChildCount] = PChild;
+            ChildCount++;
+//            }
+//     }
+     }
+     }
+
+     var printInvoice = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].Height>pos){ 
+       pos = Add[ip].Height;
+       Log.Message(pos)
+       printInvoice = Add[ip];
+     }     
+     }
+     
+     Log.Message(printInvoice.FullName);
+     Sys.HighlightObject(printInvoice)
+     if(printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 2).isVisible())
+     printInvoice = printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 2);
+     else
+     printInvoice = printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
+     Sys.HighlightObject(printInvoice)
+        
   WorkspaceUtils.waitForObj(printInvoice);
   for(var i=0;i<printInvoice.ChildCount;i++){ 
     if((printInvoice.Child(i).isVisible())&&(printInvoice.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Invoice").OleValue.toString().trim())){
