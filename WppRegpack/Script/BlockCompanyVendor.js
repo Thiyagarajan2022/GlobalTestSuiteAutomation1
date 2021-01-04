@@ -11,50 +11,51 @@ var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "BlockCompanyVendor";
 var CmpyVendorNo,Currency,CmpyVendorName ="";
-
+var Language = "";
 function BlockCompanyVendor(){ 
-  TextUtils.writeLog("Block Company Vendor Started"); 
+TextUtils.writeLog("Block Company Vendor Started"); 
 Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
+
+Language = EnvParams.Language;
+Language = EnvParams.LanChange(Language);
+WorkspaceUtils.Language = Language;
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+var Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
-Restart.login(Project_manager);  
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
 }
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "BlockCompanyVendor";
 CmpyVendorNo,Currency,CmpyVendorName ="";
+
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Currency = ExcelUtils.getRowDatas("Currency",EnvParams.Opco)
 if((Currency==null)||(Currency=="")){ 
 ValidationUtils.verify(false,true,"Currency is Needed to Block Global Vendor");
 }
-CmpyVendorNo = ExcelUtils.getRowDatas("Vendor Number",EnvParams.Opco)
-  if((CmpyVendorNo=="")||(CmpyVendorNo==null)){
-  ExcelUtils.setExcelName(workBook, "Data Management", true);
-  CmpyVendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-  }
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+CmpyVendorNo = ReadExcelSheet("Company Vendor Number",EnvParams.Opco,"Data Management");
+if((CmpyVendorNo=="")||(CmpyVendorNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+CmpyVendorNo = ExcelUtils.getRowDatas("CompanyVendor Number",EnvParams.Opco)
+}
 if((CmpyVendorNo==null)||(CmpyVendorNo=="")){ 
-ValidationUtils.verify(false,true,"Vendor Number is Needed to Block Global Vendor");
+ValidationUtils.verify(false,true,"Vendor Number is Needed to Block Company Vendor");
 }
 
+//Language = EnvParams.Language;
+//if((Language==null)||(Language=="")){
+//ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
+//}
 
-Language = EnvParams.Language;
-if((Language==null)||(Language=="")){
-ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
-}
-Language = EnvParams.LanChange(Language);
-WorkspaceUtils.Language = Language;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Block Company Vendor started::"+STIME);
 gotoMenu();
@@ -98,9 +99,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|Vendor Management");
+Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|Vendor Management");
+Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor Management").OleValue.toString().trim());
 }
 } 
 aqUtils.Delay(5000, Indicator.Text);
@@ -108,11 +109,18 @@ ReportUtils.logStep("INFO", "Moved to Vendor Management from Accounts Payable Me
 }
 
 function gotoVendorSearch(){ 
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
+
  var CompanyNumber = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget; 
   waitForObj(CompanyNumber);
   Sys.HighlightObject(CompanyNumber)
   CompanyNumber.Click();
-  WorkspaceUtils.SearchByValue(CompanyNumber,"Company",EnvParams.Opco,"Company Number");
+  WorkspaceUtils.SearchByValue(CompanyNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
  var curr = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
  curr.Keys(" ");
@@ -127,7 +135,7 @@ function gotoVendorSearch(){
  var VendorNumber = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
   if(CmpyVendorNo!=""){
   VendorNumber.Click();
-  WorkspaceUtils.VPWSearchByValue(VendorNumber,"Vendor",CmpyVendorNo,"Vendor Number");
+  WorkspaceUtils.VPWSearchByValue(VendorNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),CmpyVendorNo,"Vendor Number");
     }
     
  var VendorName = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McTextWidget;
@@ -140,14 +148,22 @@ function gotoVendorSearch(){
  save.Click();
 // aqUtils.Delay(5000, Indicator.Text);
  TextUtils.writeLog("Company Number, Company Vendor Number, Currency has entered and Saved in Vendor Search screen");
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
+
 }
 
 function CompanyVendor(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
+
   var CmpyClient = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
   waitForObj(CmpyClient);
   CmpyClient.HoverMouse();
   CmpyClient.Click();
-  var active = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.Button;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
+  var active = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Active").OleValue.toString().trim());;
   waitForObj(active);
   active.HoverMouse();
   Sys.HighlightObject(active);
@@ -159,9 +175,9 @@ function CompanyVendor(){
   var table = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;  
 
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==CmpyVendorNo){
-  table.HoverMouse(51, 60);
+  table.HoverMouse(49, 52);
   ReportUtils.logStep_Screenshot();
-  table.Click(51, 60);
+  table.Click(49, 52);
   ValidationUtils.verify(true,true,"Company Vendor is available in maconomy to block Company Vendor");
   }
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==CmpyVendorNo){
@@ -184,9 +200,13 @@ function CompanyVendor(){
   }    
   aqUtils.Delay(5000, "Playback");
     TextUtils.writeLog("Company Vendor is available in maconomy to block Company Vendor");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
 }
 
 function goToCompanyVendor(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
   var home = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;  
   waitForObj(home);
   Sys.HighlightObject(home);
@@ -200,13 +220,17 @@ function goToCompanyVendor(){
   information.HoverMouse(); 
   information.Click();
   ReportUtils.logStep_Screenshot();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
+aqUtils.Delay(10000, Indicator.Text);
 
   var blockVendor = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget2.Composite.McPopupPickerWidget;
-  if(blockVendor.getText()=="Yes")
+  if(blockVendor.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
   ValidationUtils.verify(false,true,"Company Vendor is already blocked");
   else{ 
   blockVendor.Click();
-  DropDownList("Yes")
+  DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
+  aqUtils.Delay(10000, Indicator.Text);
+  
   var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
   waitForObj(save);
   Sys.HighlightObject(save);
@@ -214,10 +238,11 @@ function goToCompanyVendor(){
   save.Click();
   ReportUtils.logStep_Screenshot();
   ValidationUtils.verify(true,true,"Company Vendor is Blocked");
+  aqUtils.Delay(10000, Indicator.Text);
   
-  var popup = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information");  
+  var popup = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company Vendors - Information").OleValue.toString().trim());  
   Sys.HighlightObject(popup);
-  var OK = Sys.Process("Maconomy").SWTObject("Shell", "Company Vendors - Information").SWTObject("Composite", "", 2).SWTObject("Button", "OK");
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company Vendors - Information").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
   Sys.HighlightObject(OK);
   Sys.HighlightObject(OK);
   OK.HoverMouse();
@@ -232,25 +257,25 @@ function goToCompanyVendor(){
 //  }
   TextUtils.writeLog("Company Vendor is Blocked");
   var Allow_Registrations = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.McPopupPickerWidget;
-  if(Allow_Registrations.getText()=="No")  
+  if(Allow_Registrations.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "No").OleValue.toString().trim())
   ValidationUtils.verify(true,true,"Allow Registrations has Changed to NO");
   else
   ValidationUtils.verify(true,true,"Allow Registrations has NOT Changed to NO");
   
   var Allow_Purchase_Orders = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite2.McPopupPickerWidget;
-  if(Allow_Purchase_Orders.getText()=="No")  
+  if(Allow_Purchase_Orders.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "No").OleValue.toString().trim())
   ValidationUtils.verify(true,true,"Allow Purchase Orders has Changed to NO");
   else
   ValidationUtils.verify(true,true,"Allow Purchase Orders has NOT Changed to NO");
   
   var Allow_Vendor_Invoices = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite3.McPopupPickerWidget;
-  if(Allow_Vendor_Invoices.getText()=="No")  
+  if(Allow_Vendor_Invoices.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "No").OleValue.toString().trim())
   ValidationUtils.verify(true,true,"Allow Vendor Invoices has Changed to NO");
   else
   ValidationUtils.verify(true,true,"Allow Vendor Invoices has NOT Changed to NO");
   
   var Allow_Payments = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite4.McPopupPickerWidget;
-  if(Allow_Payments.getText()=="No")  
+  if(Allow_Payments.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "No").OleValue.toString().trim())
   ValidationUtils.verify(true,true,"Allow Payments has Changed to NO");
   else
   ValidationUtils.verify(true,true,"Allow Payments has NOT Changed to NO");    

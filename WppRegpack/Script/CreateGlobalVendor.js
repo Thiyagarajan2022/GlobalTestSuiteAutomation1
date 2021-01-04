@@ -600,7 +600,7 @@ function Policy(){
 //        ValidationUtils.verify(false,true,"Vendor is Not CREATED");
 //      }   
       
-      aqUtils.Delay(3000, Indicator.Text);
+    aqUtils.Delay(12000, Indicator.Text);
       
     var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor Management - Vendor Information Card").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
     ReportUtils.logStep("INFO","Label");
@@ -610,6 +610,7 @@ function Policy(){
   
   
   function globalVendorTable(){ 
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
         var blocked = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Blocked").OleValue.toString().trim());
         Sys.HighlightObject(blocked);
         blocked.HoverMouse();
@@ -618,10 +619,11 @@ function Policy(){
         blocked.HoverMouse();
         blocked.HoverMouse();
         blocked.HoverMouse();
-         
+         if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
       var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
       Sys.HighlightObject(table);
       aqUtils.Delay(8000, Indicator.Text);
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
       var vendorname = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
       vendorname.Click();
       vendorname.setText(VendorName)
@@ -629,6 +631,8 @@ function Policy(){
       vendorname.HoverMouse();
       vendorname.HoverMouse();
        aqUtils.Delay(3000, "Reading Table Data");
+       
+       if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
        
       if(table.getItem(0).getText_2(1).OleValue.toString().trim()==VendorName){
       VendorNumber = table.getItem(0).getText_2(0).OleValue.toString().trim();
@@ -674,6 +678,14 @@ function AttachDocument(){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(10000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(10000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 //   var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl2;
    var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel;
    var docCount = doc.ChildCount;
@@ -689,6 +701,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   doc.HoverMouse();
   doc.HoverMouse();
   doc.Click();
+  aqUtils.Delay(5000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -712,9 +725,17 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 }
 
 function Information(){ 
+    aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var info = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
   info.HoverMouse();
   info.HoverMouse();
@@ -723,7 +744,7 @@ function Information(){
   info.HoverMouse();
   info.HoverMouse();
   info.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(5000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -732,7 +753,7 @@ function Information(){
   submit.HoverMouse();
   submit.HoverMouse();
   submit.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(5000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -740,14 +761,16 @@ function Information(){
 
 
 function ApprvalInformation(){ 
-        
+          aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
         VendorNumber = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget.getText().OleValue.toString().trim();
         Log.Message("Vendor Number :" + VendorNumber);
         aqUtils.Delay(3000, Indicator.Text);
         ValidationUtils.verify(true,true,"Vendor Number : "+VendorNumber);
         ExcelUtils.setExcelName(workBook,"Data Management", true);
         ExcelUtils.WriteExcelSheet("Vendor Number",EnvParams.Opco,"Data Management",VendorNumber)
-        ExcelUtils.WriteExcelSheet("Global Vendor Currency",EnvParams.Opco,"Data Management",Currency)
 
       if(ImageRepository.ImageSet0.Maximize.Exists()){
         ImageRepository.ImageSet0.Maximize.Click();
@@ -918,9 +941,11 @@ function todo(lvl){
 
   refresh.Click();
   aqUtils.Delay(15000, Indicator.Text);  
+  
 if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
   
 }
+aqUtils.Delay(5000, Indicator.Text); 
     var linestatus = false;
     if(!linestatus) 
     if((Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite2).isVisible())
@@ -947,24 +972,29 @@ if(ImageRepository.ImageSet.ToDos_Icon.Exists()){
         for(var j=0;j<Client_Managt.getItemCount();j++){
           var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
           var temp1 = temp.split("(");
-          if((temp.indexOf((JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor by Type").OleValue.toString().trim()+" (")!=-1)!=-1)&&(temp1.length==2)){ 
+          Log.Message(Client_Managt.getItem(j).getText().OleValue.toString().trim())
+          Log.Message(temp +" : "+temp.indexOf((JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2))
+          if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
             Client_Managt.ClickItem("|"+temp);   
             ReportUtils.logStep_Screenshot(); 
             Client_Managt.DblClickItem("|"+temp);  
             TextUtils.writeLog("Entering into Approve Vendor by Type from To-Dos List");
             listPass = false; 
+            break;
           }
       }
       if(lvl==3)
       for(var j=0;j<Client_Managt.getItemCount();j++){ 
           var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
           var temp1 = temp.split("(");
+          Log.Message(temp+" : "+temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor by Type (Substitute)").OleValue.toString().trim()+" (")!=-1)
         if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor by Type (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
             Client_Managt.ClickItem("|"+temp);    
             ReportUtils.logStep_Screenshot(); 
             Client_Managt.DblClickItem("|"+temp); 
             TextUtils.writeLog("Entering into Approve Vendor by Type (Substitute) from To-Dos List");
             var listPass = false;   
+            break;
          }
       }  
   if(listPass){
@@ -972,24 +1002,28 @@ if(ImageRepository.ImageSet.ToDos_Icon.Exists()){
           for(var j=0;j<Client_Managt.getItemCount();j++){ 
             var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
             var temp1 = temp.split("(");
+            Log.Message(temp+" : "+(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2))
               if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
                   Client_Managt.ClickItem("|"+temp);   
                   ReportUtils.logStep_Screenshot(); 
                   Client_Managt.DblClickItem("|"+temp);  
                   TextUtils.writeLog("Entering into Approve Vendor from To-Dos List");
                   listPass = false; 
+                  break;
                 }
            }
     if(lvl==3)
         for(var j=0;j<Client_Managt.getItemCount();j++){ 
             var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
             var temp1 = temp.split("(");
+            Log.Message(temp+" : "+temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor (Substitute)").OleValue.toString().trim()+" (")!=-1)
           if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Vendor (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
               Client_Managt.ClickItem("|"+temp);    
               ReportUtils.logStep_Screenshot(); 
               Client_Managt.DblClickItem("|"+temp); 
               TextUtils.writeLog("Entering into Approve Vendor (Substitute) from To-Dos List");
               var listPass = true;   
+              break;
             }
         } 
   }
@@ -1001,6 +1035,16 @@ function FinalApproveClient(VendorNum,Apvr,lvl){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+aqUtils.Delay(10000, "Reading Data in table");;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(10000, "Reading Data in table");;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(10000, "Reading Data in table");;
+var Ven_Name = "";
 
     var table = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder;
     waitForObj(table);
@@ -1049,6 +1093,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
       var flag=false;
       for(var v=0;v<table.getItemCount();v++){ 
         if(table.getItem(v).getText_2(0).OleValue.toString().trim()==VendorNum){ 
+          Ven_Name = table.getItem(v).getText_2(1).OleValue.toString().trim()
           flag=true;    
           break;
         }
@@ -1110,10 +1155,20 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
        if(ImageRepository.ImageSet.Maximize.Exists()){
       ImageRepository.ImageSet.Maximize.Click();
       }
+      
+      aqUtils.Delay(8000, Indicator.Text); 
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+       }
        var ClientApproval = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
        Sys.HighlightObject(ClientApproval);
        ClientApproval.HoverMouse();
        ClientApproval.Click();
+       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+       }
+       
+       aqUtils.Delay(8000, Indicator.Text); 
        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
        }
@@ -1145,6 +1200,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
         
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Vendor Number",EnvParams.Opco,"Data Management",VendorNum)
+  ExcelUtils.WriteExcelSheet("Global Vendor Name",EnvParams.Opco,"Data Management",Ven_Name)
   ExcelUtils.WriteExcelSheet("Global Vendor Currency",EnvParams.Opco,"Data Management",Currency)
       }
         ValidationUtils.verify(true,true,"Global Vendor is Approved by "+Apvr)  
