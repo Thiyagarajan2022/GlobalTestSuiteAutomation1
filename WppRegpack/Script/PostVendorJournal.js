@@ -233,10 +233,10 @@ if (saveAs.Exists)
 saveAs.Click();
 }
 aqUtils.Delay(2000, Indicator.Text);
-//if(ImageRepository.ImageSet.SaveAs.Exists()){
-//var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-//conSaveAs.Click();
-//}
+if(ImageRepository.ImageSet.SaveAs.Exists()){
+var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
+conSaveAs.Click();
+}
 Sys.HighlightObject(pdf);
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F

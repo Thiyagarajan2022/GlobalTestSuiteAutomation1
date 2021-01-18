@@ -19,15 +19,60 @@ var STIME = "";
 var VendorNo,PaymentNo,Paymentdate="";
 
 
+//Main Function
+function RemittanceEmail() {
+TextUtils.writeLog("Create Remittance Email Started"); 
+Indicator.PushText("waiting for window to open");
+Language = "";
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
+
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
+  
+}
+
+excelName = EnvParams.path;
+workBook = Project.Path+excelName;
+sheetName = "EmailRemittance";
+
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Arrays = [];
+count = true;
+checkmark = false;
+STIME = "";
+VendorNo,PaymentNo,Paymentdate="";
+
+try{
+getDetails();
+goToJobMenuItem();   
+Remittance();   
+}
+  catch(err){
+    Log.Message(err);
+  }
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
+}
+
+
+
+
 //getting data from datasheet
 function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
-Paymentdate = ExcelUtils.getRowDatas("PaymentDate",EnvParams.Opco)
-Log.Message(Paymentdate)
-if((Paymentdate==null)||(Paymentdate=="")){ 
-ValidationUtils.verify(false,true,"Payment Date is Needed to Create a Remittance Email");
-}
+//Paymentdate = ExcelUtils.getRowDatas("PaymentDate",EnvParams.Opco)
+//Log.Message(Paymentdate)
+//if((Paymentdate==null)||(Paymentdate=="")){ 
+//ValidationUtils.verify(false,true,"Payment Date is Needed to Create a Remittance Email");
+//}
 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 VendorNo = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
@@ -41,7 +86,8 @@ if((VendorNo==null)||(VendorNo=="")){
 ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Remittance Email");
 }
 
-PaymentNo = ReadExcelSheet("PaymentNumber",EnvParams.Opco,"Data Management");
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+PaymentNo = ReadExcelSheet("Payment Number",EnvParams.Opco,"Data Management");
 Log.Message(PaymentNo)
 if((PaymentNo=="")||(PaymentNo==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -76,28 +122,28 @@ function Remittance() {
     ValidationUtils.verify(false,true,"Payment Number is Needed for Remittance Email");
   }
   
-  var paymentdate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget;
-  Sys.HighlightObject(paymentdate1);
-      if((Paymentdate!="")&&(Paymentdate!=null)){
-       aqUtils.Delay(1000, Indicator.Text);
-          WorkspaceUtils.CalenderDateSelection(paymentdate1,Paymentdate)
-          ValidationUtils.verify(true,true,"Payment Date is selected in Maconomy"); 
-        }
-    else{ 
-      ValidationUtils.verify(false,true,"Payment Date is Needed  for Remittance Email");
-    } 
+//  var paymentdate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget;
+//  Sys.HighlightObject(paymentdate1);
+//      if((Paymentdate!="")&&(Paymentdate!=null)){
+//       aqUtils.Delay(1000, Indicator.Text);
+//          WorkspaceUtils.CalenderDateSelection(paymentdate1,Paymentdate)
+//          ValidationUtils.verify(true,true,"Payment Date is selected in Maconomy"); 
+//        }
+//    else{ 
+//      ValidationUtils.verify(false,true,"Payment Date is Needed  for Remittance Email");
+//    } 
   
-  var paymentdate2 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget2;
-  Sys.HighlightObject(paymentdate2);
-      if((Paymentdate!="")&&(Paymentdate!=null)){
-       aqUtils.Delay(1000, Indicator.Text);
-          WorkspaceUtils.CalenderDateSelection(paymentdate2,Paymentdate)
-          ValidationUtils.verify(true,true,"Payment Date is selected in Maconomy"); 
-        }
-    else{ 
-      ValidationUtils.verify(false,true,"Payment Date is Needed for Remittance Email");
-    } 
-  
+//  var paymentdate2 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget2;
+//  Sys.HighlightObject(paymentdate2);
+//      if((Paymentdate!="")&&(Paymentdate!=null)){
+//       aqUtils.Delay(1000, Indicator.Text);
+//          WorkspaceUtils.CalenderDateSelection(paymentdate2,Paymentdate)
+//          ValidationUtils.verify(true,true,"Payment Date is selected in Maconomy"); 
+//        }
+//    else{ 
+//      ValidationUtils.verify(false,true,"Payment Date is Needed for Remittance Email");
+//    } 
+//  
   var vendor1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
     Sys.HighlightObject(vendor1);
     if((VendorNo!="")&&(VendorNo!=null)){
@@ -120,21 +166,63 @@ function Remittance() {
   }
   
   aqUtils.Delay(2000, Indicator.Text);
+  var Do_Not_Show_Sent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 4).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
+  if(!Do_Not_Show_Sent.getSelection()){ 
+  Do_Not_Show_Sent.HoverMouse();
+  ReportUtils.logStep_Screenshot("");
+  Do_Not_Show_Sent.Click();
+  ReportUtils.logStep("INFO", "Do Not Show Sent is Checked");
+  Log.Message("Do Not Show Sent is Checked")
+  }
+  
+    aqUtils.Delay(2000, Indicator.Text); 
   var save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   waitForObj(save)  
   Sys.HighlightObject(save);
     save.Click();
     TextUtils.writeLog("Details are Saved"); 
+   aqUtils.Delay(2000, Indicator.Text);
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+   
+   var paymentOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
+   paymentOrder.Click();
+   aqUtils.Delay(2000, Indicator.Text);
+   var flag= false;
+   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+   
+     for(var v=0;v<table.getItemCount();v++){ 
+       Log.Message(table.getItem(v).getText_2(1).OleValue.toString().trim()== EnvParams.Opco);
+       Log.Message(table.getItem(v).getText_2(2).OleValue.toString().trim()==VendorNo);
+       Log.Message((table.getItem(v).getText_2(7).OleValue.toString().trim()!="") || (table.getItem(v).getText_2(7).OleValue.toString().trim()!=null))
+   if((table.getItem(v).getText_2(1).OleValue.toString().trim()== EnvParams.Opco) && 
+  (table.getItem(v).getText_2(2).OleValue.toString().trim()==VendorNo) &&((table.getItem(v).getText_2(7).OleValue.toString().trim()!="") || (table.getItem(v).getText_2(7).OleValue.toString().trim()!=null))){  
+  var CheckBox = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.SWTObject("McPlainCheckboxView", "").SWTObject("Button", "");
+    if(!CheckBox.getSelection()){ 
+  CheckBox.HoverMouse();
+  ReportUtils.logStep_Screenshot("");
+  CheckBox.Click();
+  ReportUtils.logStep("INFO", "Payment Order is Selected");
+  Log.Message("Payment Order is Selected")
+  }
+  flag=true;    
+  break;
+  }
+  else{ 
+  table.Keys("[Down]");
+  }
+}
   
-  
+if(flag){
   var email = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
     Sys.HighlightObject(email);
     waitForObj(email);
   email.HoverMouse();
   ReportUtils.logStep_Screenshot("");
-    email.Click();
+//    email.Click();
   TextUtils.writeLog("Details are send to the Email"); 
-  
+   aqUtils.Delay(15000, Indicator.Text);
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  }
   
 }
 
@@ -189,48 +277,5 @@ TextUtils.writeLog("Entering into Banking Transactions from Jobs Menu");
 
 
 
-
-
-//Main Function
-function RemittanceEmail() {
-TextUtils.writeLog("Create Remittance Email Started"); 
-Indicator.PushText("waiting for window to open");
-Language = "";
-Language = EnvParams.LanChange(EnvParams.Language);
-WorkspaceUtils.Language = Language;
-
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.Click();
-ExcelUtils.setExcelName(workBook, "SSC Users", true);
-var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
-if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
-WorkspaceUtils.closeMaconomy();
-Restart.login(Project_manager);
-  
-}
-
-excelName = EnvParams.path;
-workBook = Project.Path+excelName;
-sheetName = "EmailRemittance";
-
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Arrays = [];
-count = true;
-checkmark = false;
-STIME = "";
-VendorNo,PaymentNo,Paymentdate="";
-
-try{
-getDetails();
-goToJobMenuItem();   
-Remittance();   
-}
-  catch(err){
-    Log.Message(err);
-  }
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.Click();
-WorkspaceUtils.closeAllWorkspaces();
-}
 
 

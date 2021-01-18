@@ -242,7 +242,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
       var ChildCount = 0;
     var Add = [];
-   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
+   var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
    Sys.Process("Maconomy").Refresh();
          for(var i=0;i<Parent.ChildCount;i++){ 
      var PChild = Parent.Child(i);
@@ -261,27 +261,6 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
      }     
      }
      Log.Message(Parent.FullName); 
-   Parent = Parent.SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
-   Log.Message(Parent.FullName);
-    Sys.HighlightObject(Parent);
-    ChildCount = 0;
-    Add = [];
-      for(var i=0;i<Parent.ChildCount;i++){ 
-     var PChild = Parent.Child(i);
-            if((PChild.isVisible()) && (PChild.ChildCount==1)){
-         Add[ChildCount] = PChild;
-         ChildCount++;
-       }
-     }      
-     Parent = "";
-     var pos = 1000;
-     for(var i=0;i<Add.length;i++){ 
-     if(Add[i].Height<pos){ 
-       pos = Add[i].Height;
-       Log.Message(pos)
-       Parent = Add[i];
-     }     
-     } 
    Parent = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "");
    Log.Message(Parent.FullName);
    Sys.HighlightObject(Parent);
@@ -546,7 +525,7 @@ var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Quote"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Quote")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
+    aqUtils.Delay(7000, Indicator.Text);
 WorkspaceUtils.waitForObj(pdf);
 Sys.HighlightObject(pdf)
 Sys.Desktop.KeyDown(0x12); //Alt
@@ -2395,16 +2374,16 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 
 
-var ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2)
+//var ApvPerson = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2)
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-    var i=0;
-while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
-{
-  aqUtils.Delay(100);
-  i++;
-  ApvPerson.Refresh();
-}
+//    var i=0;
+//while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
+//{
+//  aqUtils.Delay(100);
+//  i++;
+//  ApvPerson.Refresh();
+//}
 //if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
   ValidationUtils.verify(true,true,"Client Approved Estimate is Approved by :"+loginPer)
   TextUtils.writeLog("Client Approved Estimate is Approved by :"+loginPer); 

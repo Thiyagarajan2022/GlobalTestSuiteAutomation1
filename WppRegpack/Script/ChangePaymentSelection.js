@@ -23,7 +23,7 @@ var Paymodemode="";
 var ExchangeDate="";
 var layout="";
 var InvoiceNo=""
-
+var OldDuedate = ""
 
 //getting data from datasheet
 function getDetails(){
@@ -45,16 +45,28 @@ if((Paymodemode==null)||(Paymodemode=="")){
 ValidationUtils.verify(false,true,"Paymode Mode Number is Needed to Create a Payment Selection");
 }
 
-//ExcelUtils.setExcelName(workBook, "Data Management", true);
-//Duedate = ReadExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management");
-//if((Duedate=="")||(Duedate==null)){
+
+
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Duedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
-//}
 Log.Message(Duedate)
 if((Duedate==null)||(Duedate=="")){ 
 ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
 }
+
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+OldDuedate = ReadExcelSheet("Vendor Invoice Due Date",EnvParams.Opco,"Data Management");
+if((OldDuedate=="")||(OldDuedate==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+OldDuedate = ExcelUtils.getRowDatas("DueDate",EnvParams.Opco)
+}
+Log.Message(OldDuedate)
+if((OldDuedate==null)||(OldDuedate=="")){ 
+ValidationUtils.verify(false,true,"Due Date Number is Needed to Change a Payment Selection");
+}
+
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 amount = ReadExcelSheet("VendorInvoice Amount",EnvParams.Opco,"Data Management");
 if((amount=="")||(amount==null)){
@@ -537,27 +549,30 @@ var PayToVendorToValue  =Aliases.Maconomy.ChangePaymentSelection.Composite.Compo
   company1.Click();
   WorkspaceUtils.SearchByValue(company1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
 
-    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McDatePickerWidget;
-  duedate.Click();
- duedate.setText(" ");
-    
-     var duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;  
-     duedate1.Click();
-     duedate1.setText(" ");
-     
+//    var duedate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McDatePickerWidget;
+//  duedate.Click();
+// duedate.setText(" ");
+//    
+//     var duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;  
+//     duedate1.Click();
+//     duedate1.setText(" ");
+//     
    var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;   
   paymentAgent.Click();
   paymentAgent.setText(" ");
-  
-    var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;   
-  paymentMode.Click();
-  paymentMode.setText(" ");
+//  
+  var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;   
+  paymentMode.Click(); 
+  WorkspaceUtils.SearchByValue(paymentMode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Mode").OleValue.toString().trim(),Paymodemode,"Payment Mode")
+//  paymentMode.setText(" ");
   
  // var latestDueDate =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.LatestDueDate;
   
- // var DueDateFrom =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.DueDateFrom;
+  var DueDateFrom =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.DueDateFrom;
+  DueDateFrom.setText(OldDuedate)
+  var DueDateTo =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.DueDateTo;
+  DueDateTo.setText(OldDuedate)
   
- // var DueDateTo =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.DueDateTo;
   
   aqUtils.Delay(1000, Indicator.Text);
 //  var scroll =Aliases.Maconomy.ChangePaymentSelection.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -607,6 +622,7 @@ waitForObj(EntriesTable);
         var flag = false;
        Log.Message(InvoiceNo)
         for(var i=0;i<row;i++){
+          Log.Message(EntriesTable.getItem(i).getText(2).OleValue.toString().trim())
           if(EntriesTable.getItem(i).getText(2).OleValue.toString().trim()==InvoiceNo){
              flag = true
             Log.Message(EntriesTable.getItem(i).getText(2).OleValue.toString().trim())
@@ -647,7 +663,7 @@ Date.Click();
        
        savebutton.Click();
        
-        aqUtils.Delay(1000, Indicator.Text);
+        aqUtils.Delay(5000, Indicator.Text);
           if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
           }
@@ -746,6 +762,7 @@ count = true;
 checkmark = false;
 STIME = "";
 VendorNo,Paymentagent,Paymodemode,InvoiceNo,layout,DueDate ="";
+OldDuedate = "";
 
 Log.Message(Language)
 STIME = WorkspaceUtils.StartTime();

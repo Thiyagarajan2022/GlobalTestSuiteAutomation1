@@ -614,6 +614,7 @@ aqUtils.Delay(5000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 } 
+
 ValidationUtils.verify(true,true,"Quote has Submitted");
 TextUtils.writeLog("Quote has Submitted"); 
 var scroll = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -629,6 +630,16 @@ aqUtils.Delay(2000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 } 
+if(EnvParams.Country.toUpperCase()=="SPAIN"){
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.Spanish.Close_Workspace.Exists()){ 
+ImageRepository.Spanish.Close_Workspace.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
+}
+
+
+
 var approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SingleToolItemControl2;
 WorkspaceUtils.waitForObj(approve);
 ReportUtils.logStep_Screenshot("");
@@ -643,6 +654,17 @@ aqUtils.Delay(5000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 } 
+
+
+if(EnvParams.Country.toUpperCase()=="SPAIN"){
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.Spanish.Open_Workspace.Exists()){ 
+ImageRepository.Spanish.Open_Workspace.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
+}
+
+
 ValidationUtils.verify(true,true,"Quote has Approved");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     

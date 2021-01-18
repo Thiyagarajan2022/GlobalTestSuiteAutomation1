@@ -179,7 +179,9 @@ function PaymentFile() {
   else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
   }
-
+   var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 9).SWTObject("McValuePickerWidget", "", 2);
+  paymentAgent.Click();
+  paymentAgent.setText(" ");
  
 //  var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10;
   var scroll = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -279,7 +281,7 @@ function PaymentFile() {
   var paymentAgentObj = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
   waitForObj(paymentAgentObj);
   paymentAgentObj.Click();
-  SearchByValue(paymentAgentObj,"Payment Agent",Paymentagent,"Payment Agent")
+  SearchByValue(paymentAgentObj,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
   
 //  var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite4.SingleToolItemControl2;
   var ApproveConPayment = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
@@ -362,7 +364,7 @@ function ElectronicPaymentFile() {
    var paymentAgent = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.McValuePickerWidget;
    if(Paymentagent!=""){
   paymentAgent.Click();
-  WorkspaceUtils.SearchByValue(paymentAgent,"Payment Agent",Paymentagent,"Payment Agent")
+  WorkspaceUtils.SearchByValue(paymentAgent,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Agent").OleValue.toString().trim(),Paymentagent,"Payment Agent")
   }
   else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
@@ -371,7 +373,7 @@ function ElectronicPaymentFile() {
   var paymentMode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite2.McValuePickerWidget; 
     if(Paymentmode!=""){
   paymentMode.Click();
-  WorkspaceUtils.SearchByValue(paymentMode,"Payment Mode",Paymentmode,"Payment Mode")
+  WorkspaceUtils.SearchByValue(paymentMode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Mode").OleValue.toString().trim(),Paymentmode,"Payment Mode")
   }
   else{ 
     ValidationUtils.verify(false,true,"Payment Agent is Needed to Create Payment File");
@@ -410,10 +412,33 @@ function ElectronicPaymentFile() {
     company1.Click();
   WorkspaceUtils.SearchByValue(company1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
   
-     
+  var Save = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SWTObject("SingleToolItemControl", "", 3);
+  Sys.HighlightObject(Save)
+  Save.Click();
+  aqUtils.Delay(5000, Indicator.Text);
+  
   var CreatepaymentFile = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   Sys.HighlightObject(CreatepaymentFile);
   CreatepaymentFile.Click();
+  aqUtils.Delay(10000, Indicator.Text);
+   var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions - Payment File").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions - Payment File").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+  
+var label = w.SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+ReportUtils.logStep("INFO",lab)
+TextUtils.writeLog(lab);
+var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Ok.Click();
+}
+
 }
 
 

@@ -388,7 +388,7 @@ Delay(4000);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-paymentMode = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McValuePickerWidget", "", 2);
+paymentMode = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McValuePickerWidget", "", 2);
 Sys.HighlightObject(paymentMode)
 paymentMode = paymentMode.getText().OleValue.toString();
 Log.Message("paymentMode :"+paymentMode);

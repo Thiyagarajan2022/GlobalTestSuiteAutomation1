@@ -264,11 +264,21 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
 
 
+PaymentDate = formatDate(PaymentDate);
+
 var table  = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
+    
+  Log.Message(PaymentDate)
+  Log.Message(table.getItem(v).getText_2(0).OleValue.toString().trim()==PaymentDate) 
+  Log.Message(amount)
+  Log.Message(table.getItem(v).getText_2(5).OleValue.toString().trim()==amount)
+  Log.Message(Paymodemode)
+  Log.Message(table.getItem(v).getText_2(10).OleValue.toString().trim()==Paymodemode)
+  
   if((table.getItem(v).getText_2(0).OleValue.toString().trim()==PaymentDate) && 
-  (table.getItem(v).getText_2(5).OleValue.toString().trim()==amount) && 
+  (table.getItem(v).getText_2(1).OleValue.toString().trim()==VendorNo) && 
   (table.getItem(v).getText_2(10).OleValue.toString().trim()==Paymodemode)){ 
   PaymentNo = table.getItem(v).getText_2(4).OleValue.toString().trim()  
   flag=true;    
@@ -305,7 +315,7 @@ print.Click();
 var PrintPopup =Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Payment Order").OleValue.toString().trim());
 
 waitForObj(PrintPopup);
-aqUtils.Delay(5000);
+aqUtils.Delay(15000);
 
 
 var paymentDateFrom =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;
@@ -315,9 +325,11 @@ var PayemntDateTo =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Com
 PayemntDateTo.setText(PaymentDate);
 
 var PaymentNoFrom =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.PaymentNoFrom
+PaymentNoFrom.Click();
 PaymentNoFrom.setText(PaymentNo);
 
 var PaymentNoTo =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.PaymentNoTo;
+PaymentNoTo.Click();
 PaymentNoTo.setText(PaymentNo);
 
 var scroll1 =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10;
@@ -864,5 +876,16 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 
-
+function formatDate(d){ 
+  var parts = d.split("/");
+  if(parts[0].indexOf("0")==0){
+   parts[0] = parts[0].replace("0", "");
+  }
+  if(parts[1].indexOf("0")==0){
+    parts[1] = parts[1].replace("0", "");
+  }
+  var dd = parts[0]+"/"+parts[1]+"/"+parts[2];
+  Log.Message(dd)
+  return dd;
+}
 
