@@ -203,6 +203,9 @@ Sys.HighlightObject(sheetno)
    for(var j=0;j<PChild.ChildCount;j++){
      if((PChild.Child(j).isVisible())&&(PChild.Child(j).Index==2)){ 
        var C_Child = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4);
+       Log.Message(C_Child.FullName)
+       Log.Message(C_Child.text)
+       Log.Message(" ")
        if(C_Child.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Expense Sheet").OleValue.toString().trim()){ 
          desp = PChild.Child(j).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2)
          Add_Stat = true;
@@ -219,6 +222,7 @@ Sys.HighlightObject(sheetno)
     
     Sys.HighlightObject(desp)
     Log.Message(desp.FullName)   
+    desp.Click();
     WorkspaceUtils.waitForObj(desp);
     desp = desp.getText().OleValue.toString().trim()
     
