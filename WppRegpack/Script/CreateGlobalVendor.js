@@ -799,8 +799,8 @@ function ApprvalInformation(){
            var y=0;
               for(var i=0;i<ApproverTable.getItemCount();i++){   
                  var approvers="";
-                  if(ApproverTable.getItem(i).getText_2(3)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(4).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim();
+                  if(ApproverTable.getItem(i).getText_2(4)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim();
                   Log.Message("Approver level :" +i+ ": " +approvers);
                   Approve_Level[y] = approvers;
                   Log.Message(Approve_Level[y])
@@ -1180,7 +1180,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
         ReportUtils.logStep_Screenshot();
             for(var i=0;i<ApproverTable.getItemCount();i++){   
         var approvers="";
-        if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+        if(ApproverTable.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
         ValidationUtils.verify(true,false,"Created Vendor is not Approved")
         }
 }
