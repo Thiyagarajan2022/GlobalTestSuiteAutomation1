@@ -113,12 +113,16 @@ function verifyPaymentSelectionScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.PaymentSelection_Logo.Exists())
+    
+   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+  if(pageName.trim()== "Payment Selection" || ImageRepository.Browser_Reporting.PaymentSelection_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Payment Selection Screen displayed sucessfully");
      Log.Message("Payment Selection Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Payment Selection Screen not displayed");            
+     ReportUtils.logStep("Fail", "Payment Selection Screen not displayed");  
+     Sys.Browser("chrome").Close()          
 }

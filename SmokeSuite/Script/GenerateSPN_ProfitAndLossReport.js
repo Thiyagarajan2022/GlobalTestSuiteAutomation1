@@ -187,7 +187,10 @@ aqUtils.Delay(5000, "Navigating to Browser");
   else
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
   
-  if(ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+   
+   
+  if(pageName.trim()== "Profit and Loss" || ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Profit And Loss Screen displayed sucessfully");

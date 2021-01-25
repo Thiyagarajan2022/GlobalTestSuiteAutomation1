@@ -116,12 +116,17 @@ function verifyReportStasticsScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.ReportStatistics_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+    
+  if(pageName.trim()== "Report Statistics" ||ImageRepository.Browser_Reporting.ReportStatistics_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Report Stastics Screen displayed sucessfully");
      Log.Message("Report Stastics Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Report Stastics Screen not displayed");            
+     ReportUtils.logStep("Fail", "Report Stastics Screen not displayed");      
+     
+     Sys.Browser("chrome").Close();      
 }

@@ -106,13 +106,17 @@ function verifyGAFReportScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
   
-  if(ImageRepository.Browser_Reporting.MLY_GAFReport_Logo.Exists())
+  
+  if(pageName.trim() == "GAF report" || ImageRepository.Browser_Reporting.MLY_GAFReport_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GAF Report Screen displayed sucessfully");
      Log.Message("GAF ReportScreen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "GAF Report Screen not displayed");            
+     ReportUtils.logStep("Fail", "GAF Report Screen not displayed");    
+     Sys.Browser("chrome").Close()        
 }

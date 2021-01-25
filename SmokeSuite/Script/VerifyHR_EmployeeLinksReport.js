@@ -117,12 +117,16 @@ function verifyEmployeeLinksScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.HR_EmployeeLinks_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+    
+    
+  if(pageName.trim() == "Employee Links" ||ImageRepository.Browser_Reporting.HR_EmployeeLinks_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Employee Links Screen displayed sucessfully");
      Log.Message("Employee Links Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Employee Links Screen not displayed");            
+     ReportUtils.logStep("Fail", "Employee Links Screen not displayed");         
+     Sys.Browser("chrome").Close();   
 }

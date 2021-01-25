@@ -267,7 +267,8 @@ var absenceInfo = Aliases.Maconomy.TimeExpense.Composite.Composite.Composite.Com
      Log.Message("Absence workspace is loaded successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Absence workspace is not loaded");             
+     ReportUtils.logStep("Fail", "Absence workspace is not loaded");  
+                
 }
 
 

@@ -114,12 +114,17 @@ function verifyTimeSheetStatusScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.TimeSheetStatus_Logo.Exists())
+    var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+   
+    
+  if(pageName.trim()== "Timesheet Status" || ImageRepository.Browser_Reporting.TimeSheetStatus_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Time Sheet Status Screen displayed sucessfully");
      Log.Message("Time Sheet Status Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Time Sheet Status Screen not displayed");            
+     ReportUtils.logStep("Fail", "Time Sheet Status Screen not displayed");    
+     
+     Sys.Browser("chrome").Close();        
 }

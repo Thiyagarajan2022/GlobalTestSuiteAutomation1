@@ -167,8 +167,11 @@ aqUtils.Delay(5000, "Navigating to Browser");
     }
   else
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed"); 
+   
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
   
-  if(ImageRepository.Browser_Reporting.EmployeeExport_Logo.Exists())
+  
+  if(pageName.trim()=="Employee Export" ||ImageRepository.Browser_Reporting.EmployeeExport_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Employee Export Screen displayed sucessfully");

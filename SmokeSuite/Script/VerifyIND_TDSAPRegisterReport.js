@@ -107,12 +107,16 @@ if (ImageRepository.Browser_Reporting.Browser_Reports_Prompt.Exists())
     else if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.TDSAPRegister_Logo.Exists())
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+     
+    
+  if(pageName.trim() == "TDS AP Register" || ImageRepository.Browser_Reporting.TDSAPRegister_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "TDS AP Register Screen displayed sucessfully");
      Log.Message("TDS AP Register Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "TDS AP Register Screen not displayed");            
+     ReportUtils.logStep("Fail", "TDS AP Register Screen not displayed");   
+     Sys.Browser("chrome").Close()         
 }

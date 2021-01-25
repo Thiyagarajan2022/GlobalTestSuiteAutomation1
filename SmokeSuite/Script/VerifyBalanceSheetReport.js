@@ -114,8 +114,11 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.BalanceSheet_Logo.Exists())
+aqUtils.Delay(2000, "Loading Balance Sheet Screen");
+
+   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+  if(pageName.trim()== "Balance Sheet" || ImageRepository.Browser_Reporting.BalanceSheet_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Balance Sheet Screen displayed sucessfully");

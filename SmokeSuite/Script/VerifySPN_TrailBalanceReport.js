@@ -105,13 +105,18 @@ function verifyTrailBalanceScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
   
-  if(ImageRepository.Browser_Reporting.TrailBalance_Logo.Exists())
+  if(pageName.trim()== "Trial Balance" ||ImageRepository.Browser_Reporting.TrailBalance_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Trail Balance Screen displayed sucessfully");
      Log.Message("Trail Balance Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Trail Balance Screen not displayed");            
+     ReportUtils.logStep("Fail", "Trail Balance Screen not displayed");       
+     
+     Sys.Browser("chrome").Close()     
 }

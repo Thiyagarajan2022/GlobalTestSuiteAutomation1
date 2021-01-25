@@ -114,14 +114,18 @@ aqUtils.Delay(1000, "Navigating to Browser and waiting for Data Protection windo
 aqUtils.Delay(2000, "Waiting for Prompt window in Browser");       
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
-aqUtils.Delay(8000, "Loading Trail Balance Screen");
-  if(ImageRepository.Browser_Reporting.TrailBalance_Logo.Exists())
+    
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+   
+aqUtils.Delay(5000, "Loading Trail Balance Screen");
+  if(pageName.trim() == "Trial Balance"  || ImageRepository.Browser_Reporting.TrailBalance_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Trail Balance Screen displayed sucessfully");
      Log.Message("Trail Balance Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Trail Balance Screen not displayed");            
+     ReportUtils.logStep("Fail", "Trail Balance Screen not displayed");   
+     
+     Sys.Browser("chrome").Close()         
 }

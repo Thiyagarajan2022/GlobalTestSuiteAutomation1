@@ -115,13 +115,17 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
+aqUtils.Delay(2000, "Loading Profit and Loss Report Screen")
+
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+  if(pageName.trim() == "Profit and Loss" || ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Profit And Loss Screen displayed sucessfully");
      Log.Message("Profit And Loss Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");            
+     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");    
+     Sys.Browser("chrome").Close()        
 }

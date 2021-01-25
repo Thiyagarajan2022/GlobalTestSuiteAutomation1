@@ -109,13 +109,15 @@ function verifyRCMSelfInvoiceVoucherScreen()
     else if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
     
-    
-  if(ImageRepository.Browser_Reporting.RCMSelfInvoiceVoucher_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+  if(pageName.trim()== "RCM Self Invoice Voucher" || ImageRepository.Browser_Reporting.RCMSelfInvoiceVoucher_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "RCM Self Invoice Voucher Screen displayed sucessfully");
      Log.Message("RCM Self Invoice Voucher screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "RCM Self Invoice Voucher Screen not displayed");            
+     ReportUtils.logStep("Fail", "RCM Self Invoice Voucher Screen not displayed");      
+     Sys.Browser("chrome").Close()      
 }

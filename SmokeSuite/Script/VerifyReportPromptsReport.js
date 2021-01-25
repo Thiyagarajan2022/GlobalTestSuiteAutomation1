@@ -115,13 +115,18 @@ function verifyReportPromptsScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+    var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
   
-  if(ImageRepository.Browser_Reporting.ReportPrompts_Logo.Exists())
+  if(pageName.trim() == "Report Prompts" || ImageRepository.Browser_Reporting.ReportPrompts_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Report Prompts Screen displayed sucessfully");
      Log.Message("Report Prompts Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Report Prompts Screen not displayed");            
+     ReportUtils.logStep("Fail", "Report Prompts Screen not displayed");    
+     Sys.Browser("chrome").Close()
+             
 }

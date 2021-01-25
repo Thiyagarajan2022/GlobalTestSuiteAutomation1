@@ -115,7 +115,10 @@ function verifyJobDetailScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.JobDetail_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+   
+    
+  if(pageName.trim()== "Job Detail" || ImageRepository.Browser_Reporting.JobDetail_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Job Detail Screen displayed sucessfully");
@@ -123,4 +126,5 @@ function verifyJobDetailScreen()
      } 
   else
      ReportUtils.logStep("Fail", "Job Detail Screen not displayed");            
+     Sys.Browser("chrome").Close()
 }

@@ -115,18 +115,17 @@ function verifyUserTypesAccessRightsScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.UserTypesAccessRights_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+    
+  if(pageName.trim()== "User Types & Access Rights" ||ImageRepository.Browser_Reporting.UserTypesAccessRights_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "User Types & Access Rights Screen displayed sucessfully");
      Log.Message("User Types & Access Rights Screen displayed sucessfully");
-     }
-  else if(ImageRepository.Browser_Reporting.UserTypesAccessRights_1_Logo.Exists())
-  {
-     ReportUtils.logStep_Screenshot();
-     ReportUtils.logStep("Pass", "User Types & Access Rights Screen displayed sucessfully");
-     Log.Message("User Types & Access Rights Screen displayed sucessfully");
-     }     
+     }  
   else
-     ReportUtils.logStep("Fail", "User Types & AccessRights Screen not displayed");            
+     ReportUtils.logStep("Fail", "User Types & AccessRights Screen not displayed");         
+     
+     Sys.Browser("chrome").Close()   
 }

@@ -118,8 +118,10 @@ function verifyOB10Screen()
     aqUtils.Delay(3000, "Waiting to Load");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
   
-  if(ImageRepository.Browser_Reporting.OB10_Logo.Exists())
+  if(pageName.trim() == "OB10 Standard" || ImageRepository.Browser_Reporting.OB10_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "OB10 Screen displayed sucessfully");
@@ -127,4 +129,5 @@ function verifyOB10Screen()
      } 
   else
      ReportUtils.logStep("Fail", "OB10 Screen not displayed");            
+     Sys.Browser("chrome").Close()
 }

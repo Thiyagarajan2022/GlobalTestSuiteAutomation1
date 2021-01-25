@@ -116,12 +116,17 @@ function verifyVendorExportScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.VendorExport_Logo.Exists())
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+ 
+    
+  if(pageName.trim() == "Vendor Export" || ImageRepository.Browser_Reporting.VendorExport_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Vendor Export Screen displayed sucessfully");
      Log.Message("Vendor Export Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Vendor Export Screen not displayed");            
+     ReportUtils.logStep("Fail", "Vendor Export Screen not displayed");    
+     
+     Sys.Browser("chrome").Close()        
 }

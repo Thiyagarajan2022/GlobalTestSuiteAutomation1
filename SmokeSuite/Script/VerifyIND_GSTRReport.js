@@ -107,12 +107,15 @@ function verifyGSTRScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.GSTR_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+  if(pageName.trim() == "GSTR" || ImageRepository.Browser_Reporting.GSTR_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GSTR Screen displayed sucessfully");
      Log.Message("GSTR Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "GSTR Screen not displayed");            
+     ReportUtils.logStep("Fail", "GSTR Screen not displayed");     
+     Sys.Browser("chrome").Close()       
 }

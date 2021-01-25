@@ -207,9 +207,6 @@
 		<item caption="TimeSheetDailyWeekly_1_Logo" moniker="{2929EEFB-764F-4BCB-BC72-9D9FB181C4B0}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\TimeSheetDailyWeekly_1_Logo.png" initialHash="46F5CDE9" selectionLeft="46" selectionTop="191" selectionWidth="201" selectionHeight="31" initialLeft="46" initialTop="191" initialWidth="201" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
-		<item caption="UserTypesAccessRights_1_Logo" moniker="{2904C8BD-E47A-4CBF-ABB0-A531EC67F6D4}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\UserTypesAccessRights_1_Logo.png" initialHash="FDA17726" selectionLeft="47" selectionTop="191" selectionWidth="204" selectionHeight="30" initialLeft="47" initialTop="191" initialWidth="204" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
 		<item caption="ClientBrandProductExport_1_Logo" moniker="{B06B1824-2753-41C4-B836-BA5B0D72349A}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\ClientBrandProductExport_1_Logo.png" initialHash="226072B3" selectionLeft="46" selectionTop="191" selectionWidth="207" selectionHeight="33" initialLeft="46" initialTop="191" initialWidth="207" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
@@ -221,6 +218,12 @@
 		</item>
 		<item caption="Browser_DataProtection_OK_Button" moniker="{4767F90C-010A-4194-91C8-0BDEC351A2EE}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Browser_DataProtection_OK_Button.png" initialHash="C77B73FF" selectionLeft="946" selectionTop="471" selectionWidth="21" selectionHeight="14" initialLeft="946" initialTop="471" initialWidth="21" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt" moniker="{AE9554EF-9263-4137-8D09-0048072FD962}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_GLTransaction_Prompt_1.png" initialHash="DD72EA7C" selectionLeft="290" selectionTop="222" selectionWidth="62" selectionHeight="18" initialLeft="290" initialTop="222" initialWidth="62" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{C8872F6B-96E7-472E-8343-FC78B82F305D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Browser_GLTransaction_Prompt_Cancel_1.png" initialHash="E630ECC7" selectionLeft="1014" selectionTop="598" selectionWidth="44" selectionHeight="14" initialLeft="1014" initialTop="598" initialWidth="44" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>

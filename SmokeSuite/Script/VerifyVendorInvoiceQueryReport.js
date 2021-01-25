@@ -114,12 +114,17 @@ function verifyVendorInvoiceQueryScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.VendorInvoiceQuery_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+    
+  if(pageName.trim() =="Vendor Invoice Query" || ImageRepository.Browser_Reporting.VendorInvoiceQuery_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Vendor Invoice Query Screen displayed sucessfully");
      Log.Message("Vendor Invoice Query Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Vendor Invoice Query Screen not displayed");            
+     ReportUtils.logStep("Fail", "Vendor Invoice Query Screen not displayed");    
+     
+     Sys.Browser("chrome").Close()        
 }

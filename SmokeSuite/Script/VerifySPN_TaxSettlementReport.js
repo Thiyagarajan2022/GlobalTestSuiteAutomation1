@@ -105,13 +105,17 @@ function verifyTaxSettlementStatutoryScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
   
-  if(ImageRepository.Browser_Reporting.TaxSettlement_Logo.Exists())
+  if(pageName.trim()== "Tax Settlement - Statutory" ||ImageRepository.Browser_Reporting.TaxSettlement_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Tax Settlement Statutory Screen displayed sucessfully");
      Log.Message("Tax Settlement Statutory Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Tax Settlement Statutory Screen not displayed");            
+     ReportUtils.logStep("Fail", "Tax Settlement Statutory Screen not displayed");   
+     Sys.Browser("chrome").Close();         
 }

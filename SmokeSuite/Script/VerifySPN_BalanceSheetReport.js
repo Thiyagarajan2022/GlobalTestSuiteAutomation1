@@ -121,13 +121,18 @@ function verifyBalanceSheetScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
   
-  if(ImageRepository.Browser_Reporting.BalanceSheet_Logo.Exists())
+  if(pageName.trim() == "Balance Sheet" || ImageRepository.Browser_Reporting.BalanceSheet_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Balance Sheet Screen displayed sucessfully");
      Log.Message("Balance Sheet Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed");            
+     ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed"); 
+     
+     Sys.Browser("chrome").Close()           
 }

@@ -115,12 +115,16 @@ function verifyJobSummaryScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.JobSummary_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+   
+    
+  if(pageName.trim() == "Job Summary" || ImageRepository.Browser_Reporting.JobSummary_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Job Summary Screen displayed sucessfully");
      Log.Message("Job Summary Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Job Summary Screen not displayed");            
+     ReportUtils.logStep("Fail", "Job Summary Screen not displayed");         
+     Sys.Browser("chrome").Close()   
 }

@@ -116,7 +116,10 @@ function verifyAbsenceScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.HR_Absence_Logo.Exists())
+    var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+     
+    
+  if(pageName.trim() == "Absence" || ImageRepository.Browser_Reporting.HR_Absence_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Absence Screen displayed sucessfully");

@@ -105,13 +105,17 @@ function verifyProfitAndLossScreen()
     aqUtils.Delay(3000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
   
-  if(ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
+  if(pageName.trim() == "Profit and Loss" || ImageRepository.Browser_Reporting.ProfitAndLoss_logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Profit And Loss Screen displayed sucessfully");
      Log.Message("ProfitAnd Loss Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");            
+     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");      
+     Sys.Browser("chrome").Close()      
 }

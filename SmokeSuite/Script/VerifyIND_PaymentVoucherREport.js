@@ -108,7 +108,10 @@ function verifyPaymentVoucherScreen()
     else if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
     
-  if(ImageRepository.Browser_Reporting.PaymentVoucher_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+    
+  if(pageName.trim() == "Payment Voucher" || ImageRepository.Browser_Reporting.PaymentVoucher_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Payment Voucher Screen displayed sucessfully");
@@ -116,4 +119,5 @@ function verifyPaymentVoucherScreen()
      } 
   else
      ReportUtils.logStep("Fail", "Payment Voucher Screen not displayed");            
+     Sys.Browser("chrome").Close()
 }

@@ -113,12 +113,15 @@ function verifyPurchaseOrderScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.PurchaseOrder_Logo.Exists())
+   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
+    
+  if(pageName.trim() == "Purchase Order" || ImageRepository.Browser_Reporting.PurchaseOrder_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Purchase Order Screen displayed sucessfully");
      Log.Message("Purchase Order Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Purchase Order Screen not displayed");            
+     ReportUtils.logStep("Fail", "Purchase Order Screen not displayed");      
+     Sys.Browser("chrome").Close()      
 }

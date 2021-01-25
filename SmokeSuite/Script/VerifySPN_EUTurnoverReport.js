@@ -122,12 +122,16 @@ function verifyEUTurnOverStatutoryScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.EUTurnOver_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+    
+  if(pageName.trim() == "EU Turnover - Statutory" || ImageRepository.Browser_Reporting.EUTurnOver_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "EU TurnOver Statutory Screen displayed sucessfully");
      Log.Message("EU TurnOver Statutory Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "EU TurnOver Statutory Screen not displayed");            
+     ReportUtils.logStep("Fail", "EU TurnOver Statutory Screen not displayed");   
+     Sys.Browser("chrome").Close()         
 }

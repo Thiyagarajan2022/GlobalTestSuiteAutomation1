@@ -114,12 +114,17 @@ function verifyTimeFinancialAnalysisScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.TimeFinancialAnalysis_Logo.Exists())
+    
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+  if(pageName.trim()== "Time Financial Analysis" || ImageRepository.Browser_Reporting.TimeFinancialAnalysis_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Time Financial Analysis Screen displayed sucessfully");
      Log.Message("Time Financial Analysis Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Time Financial Analysis Screen not displayed");            
+     ReportUtils.logStep("Fail", "Time Financial Analysis Screen not displayed");     
+     
+     Sys.Browser("chrome").Close()       
 }

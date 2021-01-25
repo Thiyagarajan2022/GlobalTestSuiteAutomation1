@@ -134,5 +134,7 @@ if(pageName.trim() == "GL Transactions")
      } 
   else
      ReportUtils.logStep("Fail", "GL Transactions Screen not displayed");  
-                   
+      
+ Sys.Browser("chrome").Close();    
+                  
 }

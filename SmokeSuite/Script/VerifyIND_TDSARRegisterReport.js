@@ -108,12 +108,15 @@ if (ImageRepository.Browser_Reporting.Browser_Reports_Prompt.Exists())
     else if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.TDSARRegister_Logo.Exists())
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  
+  if(pageName.trim() == "TDS AR Register" || ImageRepository.Browser_Reporting.TDSARRegister_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "TDS AR Register Screen displayed sucessfully");
      Log.Message("TDS AR Register Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "TDS AR Register Screen not displayed");            
+     ReportUtils.logStep("Fail", "TDS AR Register Screen not displayed");  
+     Sys.Browser("chrome").Close()          
 }

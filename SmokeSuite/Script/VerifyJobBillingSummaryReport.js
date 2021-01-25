@@ -113,13 +113,17 @@ function verifyJobBillingSummaryScreen()
 
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
+    
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
   
-  if(ImageRepository.Browser_Reporting.JobBillingSummary_Logo.Exists())
+  
+  if(pageName.trim() == "Job Billing Summary" ||ImageRepository.Browser_Reporting.JobBillingSummary_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Job Billing Summary Screen displayed sucessfully");
      Log.Message("Job Billing Summary Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Job Billing Summary Screen not displayed");            
+     ReportUtils.logStep("Fail", "Job Billing Summary Screen not displayed");    
+     Sys.Browser("chrome").Close()        
 }
