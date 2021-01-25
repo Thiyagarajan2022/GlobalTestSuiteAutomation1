@@ -7,7 +7,6 @@
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
 
-
 var excelName = EnvParams.getEnvironment();
 var workBook = Project.Path+excelName;
 var sheetName = "Create Fixed Asset";
