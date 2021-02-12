@@ -9,8 +9,15 @@
 //USEUNIT CreditNotePO
 //USEUNIT ReverseCreditNote
 
+/**
+ * This script create PO for Job
+ * @author  : Muthu Kumar M
+ * @version : 2.0
+ * Created Date :02/12/2021
+*/
 
 
+//Global Varibales
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -25,13 +32,18 @@ var VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
 var Language = "";
 var Project_manager = "";
 
+
+//Main Function
 function CreatePurchaseOrder(){ 
 TextUtils.writeLog("Create Purchase Order Started"); 
 Indicator.PushText("waiting for window to open");
 
+//Getting Language from EnvParamaters.xlsx
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
 
+
+//Checking Login to execute Job Creation script
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
@@ -78,6 +90,8 @@ function closeAllWorkspaces(){
 }  
 
 
+
+//Getting Details from Datasheet
 function getDetails(){ 
   
 ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -105,7 +119,7 @@ NOL = ExcelUtils.getColumnDatas("Number of Lines To ADD",EnvParams.Opco)
 
 }
 
-
+//Moving to Purchase Order
 function gotoMenu(){ 
   
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
@@ -149,6 +163,8 @@ ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu
 TextUtils.writeLog("Entering into Purchase Orders from Accounts Payable Menu");
 }
 
+
+//Create and Submit PO
 function goToCreatePurchase(){ 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
