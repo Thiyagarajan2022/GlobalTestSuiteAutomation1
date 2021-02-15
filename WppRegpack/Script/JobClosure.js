@@ -131,8 +131,8 @@ function GoToJob() {
   Sys.Desktop.KeyDown(0x09);
   aqUtils.Delay(1000, Indicator.Text);
 //  Delay(1000);
-  Sys.Desktop.KeyDown(0x09);
-  Sys.Desktop.KeyUp(0x09);
+//  Sys.Desktop.KeyDown(0x09);
+//  Sys.Desktop.KeyUp(0x09);
   Sys.Desktop.KeyUp(0x09);
   Sys.Desktop.KeyUp(0x09);
   var job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3);
@@ -143,7 +143,7 @@ function GoToJob() {
 //  Delay(7000);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
-    if(table.getItem(v).getText_2(3).OleValue.toString().trim()==(Job_name)){ 
+    if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(Job_name)){ 
 //  var ExlArray = getExcelData("Validate_Company",EnvParams.Opco)  
 //   var name =  LogReport_name(ExlArray,comapany,Job_group);
 //      var notepadPath = Project.Path+"RegressionLogs\\"+EnvParams.instanceData+"\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+name+".txt";
@@ -292,7 +292,7 @@ jobClosingTab.Click();
 //  Delay(5000);
 //var pendingActionsTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
   aqUtils.Delay(5000, Indicator.Text);
-var closeJobButton = NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.JobCloseButton;
+var closeJobButton = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 
  if(closeJobButton.isEnabled()){     
 
@@ -323,12 +323,9 @@ var closeJobButton = NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Co
    aqUtils.Delay(5000, Indicator.Text);
 
   ReportUtils.logStep("INFO", "Job is Closed");
-  var filter =
-  NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.JobClosureCloseFilter;
- // Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("SingleToolItemControl", "", 2) 
-  
-  //Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("SingleToolItemControl", "", 2);
-  filter.Click();
+//  var filter =
+//  NameMapping.Sys.Maconomy.ObjectGroup.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.JobClosureCloseFilter;
+//  filter.Click();
 
 }
 function getExcel(rowidentifier,column) { 
