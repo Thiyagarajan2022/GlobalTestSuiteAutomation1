@@ -8,7 +8,7 @@
 
 
 /**
- * This script create job for Global Product
+ * This script Create Combined Invoice for Job
  * @author  : Muthu Kumar M
  * @version : 1.0
  * Created Date :02/12/2021
@@ -31,7 +31,7 @@ var CombinedInvoice_JIRA_ID = "";
 var CombinedInvoice_UnitName_JIRA = "";
 var Estimatelines = []; 
 
-//Main Function to trigger Combined Invocie
+//Main Function
 function Create_Combined_Invoice() {
   
 TextUtils.writeLog("Combined Invoice Creation Started"); 
@@ -79,6 +79,22 @@ ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
 
 getDetails();
+
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
+//Checking Login to execute Combined Invoice script
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco);
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
+  
+}
+
+aqUtils.Delay(5000, Indicator.Text);
 goToJobMenuItem();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 gotoInvoicing()
@@ -149,7 +165,7 @@ function getDetails(){
     //Creation of Job
     CombinedInvoice_JIRA_ID = TestRunner.testCaseId;
     CombinedInvoice_UnitName_JIRA = TestRunner.unitName; 
-    TestRunner.TempUnit = IpreparationUnit;
+    TestRunner.TempUnit = CombinedInvoice_UnitName_JIRA;
     TestRunner.JiraStat = true;
     TestRunner.JiraUpdate = true;
     
@@ -157,14 +173,14 @@ function getDetails(){
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
     if(jobSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Job to Create Invoice preparation")
+      ValidationUtils.verify(true,false,"Need Job to Create Invoice")
     }
     
     //Job Serial Order
     ExcelUtils.setExcelName(workBook, jobSheet, true);
     var serialOder = ExcelUtils.getRowDatas("Job Serial Order",EnvParams.Opco)
     if(serialOder==""){ 
-      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Invoice preparation")
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Invoice")
     }
     
     //Job Number in Serial Order
@@ -210,7 +226,7 @@ function getDetails(){
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
     if(budgetSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Working Estimate for Job to Create Invoice preparation")
+      ValidationUtils.verify(true,false,"Need Working Estimate for Job to Create Invoice")
     }
     
     //Getting Serial Order for Create Budget
@@ -264,7 +280,7 @@ function getDetails(){
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var quoteSheet = ExcelUtils.getColumnDatas("Quote Sheet",EnvParams.Opco)
     if(quoteSheet==""){ 
-      ValidationUtils.verify(true,false,"Need Client Approved Estimate for Job to Create Invoice preparation")
+      ValidationUtils.verify(true,false,"Need Client Approved Estimate for Job to Create Invoice")
     }
     
     //Getting Serial Order for Quote
@@ -416,9 +432,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   }
   
   if(flag){
-  ReportUtils.logStep("INFO", "Job is listed in table to for Invoice Preparation");
+  ReportUtils.logStep("INFO", "Job is listed in table to for Invoice");
   ReportUtils.logStep_Screenshot("");
-  TextUtils.writeLog("Job("+jobNumber+") is available in maconommy for Invoice Preparation"); 
+  TextUtils.writeLog("Job("+jobNumber+") is available in maconommy for Invoice"); 
   closeFilter.Click();
   aqUtils.Delay(4000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -506,6 +522,7 @@ function OnAccount(){
   InvoiceOnAccount.Click();
   aqUtils.Delay(3000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  TextUtils.writeLog("Moving to Invoice On Account");
      var addedlines = true;
      for(var ii=0;ii<1;ii++){
        var HSN,wCodeID,Desp,Qly,UnitPrice ="";
@@ -582,6 +599,7 @@ for(var i=0;i<Save.ChildCount;i++){
     WorkspaceUtils.waitForObj(Save);
     ReportUtils.logStep_Screenshot("");
     Save.Click();
+    TextUtils.writeLog("Line is Saved");
     break;
   }
 }
@@ -596,11 +614,13 @@ for(var i=0;i<Save.ChildCount;i++){
       CheckBox_Combinedinvoice.Click();
       aqUtils.Delay(5000, "Combined Invoice Selected");
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+      TextUtils.writeLog("Combined Invoice Selection is Checked");
       var Save = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite2.SingleToolItemControl;
       Sys.HighlightObject(Save);
       Save.Click();
       aqUtils.Delay(5000, "Combined Invoice Selected");
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+      TextUtils.writeLog("Invoice is Saved");
     }
     
     
@@ -615,6 +635,7 @@ var Selection = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.
 Selection.Click();
 aqUtils.Delay(5000, "Invoice Selection is Clicked");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+TextUtils.writeLog("Moving to Invoice Selection");
 
   var SelectionBilling = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(SelectionBilling);
@@ -813,6 +834,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
       }
+      TextUtils.writeLog("New Line is saved in Entries")
       aqUtils.Delay(4000, Indicator.Text);
       Sys.Desktop.KeyDown(0x09);
       aqUtils.Delay(1000, Indicator.Text);
@@ -829,7 +851,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
       }
-
+      
       var save = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
       WorkspaceUtils.waitForObj(save);
       save.Click();
@@ -860,6 +882,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       var Approve = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SingleToolItemControl;
       Sys.HighlightObject(Approve);
       Approve.Click();
+      TextUtils.writeLog("Approved the Invoice Lines");
       
       aqUtils.Delay(1000, Indicator.Text);
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
@@ -872,7 +895,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       aqUtils.Delay(1000, Indicator.Text);
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       aqUtils.Delay(1000, Indicator.Text);
-      
+      TextUtils.writeLog("Moved to Draft Invoice");
       
       
       
@@ -1250,13 +1273,60 @@ var textobj;
     Log.Error("Exception while getting text from document::"+objEx);
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("Time & Material Invocing",EnvParams.Opco,"Data Management",textobj)
-  TextUtils.writeLog("Time & Material Invocing No: "+textobj);
+  ExcelUtils.WriteExcelSheet("Combined Invocing",EnvParams.Opco,"Data Management",textobj)
+  TextUtils.writeLog("Combined Invocing No: "+textobj);
 }
 }
 
 }
 
+
+
+
+//Finding UserName for Approvers in Datasheets
+function CredentialLogin(){ 
+  var AppvLevl = [];
+for(var i=0;i<Approve_Level.length;i++){
+  var UserN = true;
+  var temp="";
+  var temp1="";
+  var Cred = Approve_Level[i].split("*");
+  for(var j=2;j<4;j++){
+  temp="";
+  if((Cred[j]!="")&&(Cred[j]!=null))
+  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SPA")==-1)&&(Cred[j].indexOf("SGP")==-1)&&(Cred[j].indexOf("MYS")==-1)&&(Cred[j].indexOf("FP")==-1)&&(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  { 
+     var sheetName = "Agency Users";
+     workBook = Project.Path+excelName;
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
+  }
+  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SPA")!=-1)||(Cred[j].indexOf("SGP")!=-1)||(Cred[j].indexOf("MYS")!=-1)||(Cred[j].indexOf("FP")!=-1)||(Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  { 
+
+    var sheetName = "SSC Users";
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    temp = ExcelUtils.SSCLogin(Cred[j],"Username");
+  }
+
+  if(temp.length!=0){
+    temp1 = temp1+temp+"*"+j+"*";
+//  break;
+  }
+  }
+  if((temp1=="")||(temp1==null))
+  Log.Error("User Name is Not available for level :"+i);
+  Log.Message(temp1)
+  AppvLevl[i] = temp1;
+}
+  ApproveInfo = levelMatch(AppvLevl)
+  Log.Message("-----Approvers-------------")
+  for(var i=0;i<ApproveInfo.length;i++){
+    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
+    Log.Message(ApproveInfo[i]);
+    }
+
+}
 
 
 //Refreshing the To-Dos List
