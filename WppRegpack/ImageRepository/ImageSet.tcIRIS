@@ -279,5 +279,8 @@
 		<item caption="Human_Resource_1" moniker="{096B3F7E-E40D-4AA7-8C3B-ECED1B4141BD}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Human_Resource_1.png" initialHash="00000000" selectionLeft="35" selectionTop="478" selectionWidth="143" selectionHeight="29" initialLeft="35" initialTop="478" initialWidth="143" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
+		<item caption="Blanket_Maximize" moniker="{4FA45D85-0BFB-4F19-BDC3-E868052ED100}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Blanket_Maximize.png" initialHash="F4FDA0AE" selectionLeft="1337" selectionTop="445" selectionWidth="18" selectionHeight="17" initialLeft="1337" initialTop="445" initialWidth="18" initialHeight="17" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
 	</data>
 </Root>
