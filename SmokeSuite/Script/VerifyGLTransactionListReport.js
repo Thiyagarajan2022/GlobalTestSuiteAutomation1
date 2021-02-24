@@ -1,4 +1,4 @@
-﻿//USEUNIT EnvParams
+﻿  //USEUNIT EnvParams
 //USEUNIT ExcelUtils
 //USEUNIT ReportUtils
 //USEUNIT TestRunner
@@ -109,7 +109,12 @@ function verifyGLTransactionScreen()
 {
 aqUtils.Delay(5000, "Navigating to Browser");
   if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
-    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
+  {
+     var checkbox = Aliases.browser.pageOpendocument.checkboxDialogservice1Check; 
+     checkbox.Click();
+     Aliases.browser.pageOpendocument.buttonOk.Click(); 
+    // ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
+   } 
 //     
 aqUtils.Delay(1000, "Waiting for Prompt Window");       
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
@@ -125,8 +130,6 @@ aqUtils.Delay(2000, "Loading GL Transactions Screen");
 var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
 
 if(pageName.trim() == "GL Transactions")
-//  Log.Message("GL Transactions Screen displayed");
-//  if(ImageRepository.Browser_Reporting.GLTransactions_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GL Transactions Screen displayed sucessfully");

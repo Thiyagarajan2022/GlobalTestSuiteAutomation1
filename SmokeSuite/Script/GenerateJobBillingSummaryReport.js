@@ -168,13 +168,19 @@ aqUtils.Delay(5000, "Navigating to Browser");
     }
   else
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
-
-  if(ImageRepository.Browser_Reporting.JobBillingSummary_Logo.Exists())
+ 
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+ 
+  if(pageName.trim()=="Job Billing Summary" || ImageRepository.Browser_Reporting.JobBillingSummary_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Job Billing Summary Screen displayed sucessfully");
      Log.Message("Job Billing Summary Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Job Billing Summary Screen not displayed");            
+     ReportUtils.logStep("Fail", "Job Billing Summary Screen not displayed");      
+     
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+      okbutton.Click();       
 }

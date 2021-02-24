@@ -184,13 +184,20 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
   
 
-  if(ImageRepository.Browser_Reporting.GLTransactions_Logo.Exists())
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "GL Transactions")
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GL Transactions Screen displayed sucessfully");
      Log.Message("GL Transactions Screen displayed sucessfully");
      } 
+
   else
      ReportUtils.logStep("Fail", "GL Transactions Screen not displayed");  
+     
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+      okbutton.Click();  
                    
 }

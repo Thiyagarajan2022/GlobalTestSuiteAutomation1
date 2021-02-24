@@ -115,7 +115,9 @@ sheetName = "ExchangeRateReport";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
 aqUtils.Delay(5000, "Navigating to Browser");
-  
+  if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
+    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
+
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     {
          
@@ -171,12 +173,19 @@ aqUtils.Delay(5000, "Navigating to Browser");
   else
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
   
-  if(ImageRepository.Browser_Reporting.ExchangeRate_Logo.Exists())
+   
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+ 
+  if(pageName.trim()=="Exchange Rate" || ImageRepository.Browser_Reporting.ExchangeRate_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Exchange Rate Screen displayed sucessfully");
      Log.Message("Exchange Rate Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Exchange Rate Screen not displayed");            
+     ReportUtils.logStep("Fail", "Exchange Rate Screen not displayed");    
+     
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+      okbutton.Click();          
 }
