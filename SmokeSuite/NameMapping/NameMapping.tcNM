@@ -14535,6 +14535,29 @@
 											</Property>
 										</Properties>
 									</Child>
+									<Child Name="Confirm" Key="{A10D0E64-8C72-491A-8086-47E8E17BED11}">
+										<Image FileName="-74189239" Left="0" Top="0" Right="462" Bottom="144" />
+										<TypeInfo Item0="{327E7060-376E-414E-98A4-75C26D6B0118}" />
+										<Properties>
+											<Property Name="ObjectType">
+												<Value Value="Confirm" />
+											</Property>
+										</Properties>
+										<Children>
+											<Child Name="buttonOk" Key="{1D1B6D46-8D51-49B2-B7D2-0E03A2FA964B}">
+												<Image FileName="-74189239" Left="295" Top="87" Right="363" Bottom="119" />
+												<TypeInfo Item0="{739E9AEE-3A6C-4A6E-A256-567827F39BB3}" />
+												<Properties>
+													<Property Name="ObjectType">
+														<Value Value="Button" />
+													</Property>
+													<Property Name="ObjectIdentifier">
+														<Value Value="OK" />
+													</Property>
+												</Properties>
+											</Child>
+										</Children>
+									</Child>
 								</Children>
 							</Child>
 						</Children>
@@ -16342,6 +16365,9 @@
 				</Child>
 				<Child Name="checkboxDialogservice1Check" Owner="{3DA1A3CE-A4CE-4835-9045-C0E5A6A67A18}" />
 				<Child Name="buttonOk" Owner="{B62A1872-DC52-4B9F-B6DB-E3677FF8AAEB}" />
+				<Child Name="Confirm" Owner="{A10D0E64-8C72-491A-8086-47E8E17BED11}">
+					<Child Name="buttonOk" Owner="{1D1B6D46-8D51-49B2-B7D2-0E03A2FA964B}" />
+				</Child>
 			</Child>
 		</Child>
 	</LogicalNodes>

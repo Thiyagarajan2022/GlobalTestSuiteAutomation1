@@ -117,7 +117,7 @@ function verifyTimeSheetDailyAndWeeklyScreen()
   
     
  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
-   waitForObj(pageName);
+
     
   if(pageName.trim() == "Timesheet Daily & Weekly" ||ImageRepository.Browser_Reporting.TimeSheetDailyWeekly_Logo.Exists())
   {
