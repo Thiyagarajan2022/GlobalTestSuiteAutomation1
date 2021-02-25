@@ -117,12 +117,15 @@ function verifyClientProfitabilityScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.ClientProfitability_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Client Profitability" || ImageRepository.Browser_Reporting.ClientProfitability_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Client Profitability Screen displayed sucessfully");
      Log.Message("Client Profitability Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Client Profitability Screen not displayed");            
+     ReportUtils.logStep("Fail", "Client Profitability Screen not displayed");      
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");       
 }

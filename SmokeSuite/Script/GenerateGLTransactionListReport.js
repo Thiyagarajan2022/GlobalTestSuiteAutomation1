@@ -176,7 +176,7 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
+    aqUtils.Delay(10000, "Report download is in progress");
     ReportUtils.logStep("Pass", "GL Transactions Report exported successfully");
     Log.Message("GL Transactions Report exported successfully"); 
     }

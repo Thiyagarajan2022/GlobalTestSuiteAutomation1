@@ -114,13 +114,16 @@ function verifyAgedWIPScreen()
     aqUtils.Delay(4000,"Waiting for Prompt window");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
-  if(ImageRepository.Browser_Reporting.AgedWIP_Logo.Exists())
+ 
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Aged WIP"  || ImageRepository.Browser_Reporting.AgedWIP_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Aged WIP Screen displayed sucessfully");
      Log.Message("Aged WIP Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Aged WIP Screen not displayed");            
+     ReportUtils.logStep("Fail", "Aged WIP Screen not displayed");       
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");        
 }

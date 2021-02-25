@@ -114,12 +114,15 @@ function verifyEmployeeExpenseSheetScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.EmployeeExpenseSheet_Logo.Exists())
+   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Employee Expense Sheet" || ImageRepository.Browser_Reporting.EmployeeExpenseSheet_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Employee Expense Sheet Screen displayed sucessfully");
      Log.Message("Employee Expense Sheet Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Employee Expense Sheet Screen not displayed");            
+     ReportUtils.logStep("Fail", "Employee Expense Sheet Screen not displayed"); 
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");            
 }

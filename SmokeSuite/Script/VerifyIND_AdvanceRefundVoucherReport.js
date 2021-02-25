@@ -87,7 +87,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoAdvanceRefundVoucherLink()
 {
-var advanceRefundVoucherLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite3.McLinkLabelWidget.McTextWidget;
+var advanceRefundVoucherLink =Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.McLinkLabelWidget.McTextWidget
+// Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite3.McLinkLabelWidget.McTextWidget;
 waitForObj(advanceRefundVoucherLink);
 Sys.HighlightObject(advanceRefundVoucherLink);
 ReportUtils.logStep_Screenshot();
@@ -107,12 +108,15 @@ function verifyAdvanceRefundVoucherScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.AdvanceRefundVoucher_Logo.Exists())
+   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
+    
+  if(pageName.trim() == "Advance Refund Voucher" || ImageRepository.Browser_Reporting.AdvanceRefundVoucher_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Advance Refund Voucher Screen displayed sucessfully");
      Log.Message("Advance Refund Voucher Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Advance Refund Voucher Screen not displayed");            
+     ReportUtils.logStep("Fail", "Advance Refund Voucher Screen not displayed");  
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");             
 }

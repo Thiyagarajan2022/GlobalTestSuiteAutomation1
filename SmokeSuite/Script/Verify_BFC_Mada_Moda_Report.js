@@ -116,12 +116,18 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
 aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.BFC_Mada_Moda_MWIP_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "BFC Mada, Moda, MWIP" || ImageRepository.Browser_Reporting.BFC_Mada_Moda_MWIP_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "BFC Mada, Moda, MWIP Screen displayed sucessfully");
      Log.Message("BFC Mada, Moda, MWIP Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "BFC Mada, Moda, MWIP Screen not displayed");            
+     ReportUtils.logStep("Fail", "BFC Mada, Moda, MWIP Screen not displayed");  
+     
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+     
 }

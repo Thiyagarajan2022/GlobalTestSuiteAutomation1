@@ -118,18 +118,21 @@ function verifyARReceiptReconciliationScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.AR_Receipt_Recon_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "AR Receipt Reconciliation" ||ImageRepository.Browser_Reporting.AR_Receipt_Recon_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "AR Receipt Reconciliation Screen displayed sucessfully");
      Log.Message("AR Receipt Reconciliation Screen displayed sucessfully");
      }
- else if(ImageRepository.Browser_Reporting.AR_Receipt_Recon_1_Logo.Exists())
+ else if(pageName.trim() == "AR Receipt Reconciliation" ||ImageRepository.Browser_Reporting.AR_Receipt_Recon_1_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "AR Receipt Reconciliation Screen displayed sucessfully");
      Log.Message("AR Receipt Reconciliation Screen displayed sucessfully");
      }      
   else
-     ReportUtils.logStep("Fail", "AR Receipt Reconciliation Screen not displayed");            
+     ReportUtils.logStep("Fail", "AR Receipt Reconciliation Screen not displayed");   
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");                
 }

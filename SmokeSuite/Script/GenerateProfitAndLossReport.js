@@ -199,5 +199,10 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
      Log.Message("Profit And Loss Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");            
+     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");          
+     
+     Sys.Browser("chrome").Close();  
+     var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+     okbutton.Click(); 
+       
 }

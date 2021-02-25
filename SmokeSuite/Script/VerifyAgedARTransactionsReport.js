@@ -118,13 +118,17 @@ function verifyAgedARTransactionsScreen()
     aqUtils.Delay(3000, "Waiting to Load");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
-  if(ImageRepository.Browser_Reporting.AgedARTransactions_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Aged AR Transactions" || ImageRepository.Browser_Reporting.AgedARTransactions_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Aged AR Transactions Screen displayed sucessfully");
      Log.Message("Aged AR Transactions Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Aged AR Transactions Screen not displayed");            
+     ReportUtils.logStep("Fail", "Aged AR Transactions Screen not displayed");    
+   
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");           
 }

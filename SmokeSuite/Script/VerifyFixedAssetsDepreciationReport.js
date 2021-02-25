@@ -117,17 +117,17 @@ aqUtils.Delay(3000, "Navigating to Browser and waiting for Data Protection windo
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
 aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.FixedAssetsDep_Logo.Exists())
+
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Fixed Assets Depreciation Forecast" || ImageRepository.Browser_Reporting.FixedAssetsDep_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Fixed Assets Depreciation Forecast Screen displayed sucessfully");
      Log.Message("Fixed Assets Depreciation Forecast Screen displayed sucessfully");
      }  
-   else if(ImageRepository.Browser_Reporting.FixedAssetsDep_1_Logo.Exists()) {
-      ReportUtils.logStep_Screenshot();
-     ReportUtils.logStep("Pass", "Fixed Assets Depreciation Forecast Screen displayed sucessfully");
-     Log.Message("Fixed Assets Depreciation Forecast Screen displayed sucessfully");
-   }
   else
-     ReportUtils.logStep("Fail", "Fixed Assets Depreciation Forecast Screen not displayed");            
+     ReportUtils.logStep("Fail", "Fixed Assets Depreciation Forecast Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");              
 }

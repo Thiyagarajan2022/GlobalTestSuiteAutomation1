@@ -87,7 +87,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoRCMSelfInvoiceVoucherLink()
 {
-var rcmSelfLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite5.McLinkLabelWidget.McTextWidget;
+var rcmSelfLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McLinkLabelWidget.McTextWidget
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite5.McLinkLabelWidget.McTextWidget;
 waitForObj(rcmSelfLink);
 Sys.HighlightObject(rcmSelfLink);
 ReportUtils.logStep_Screenshot();

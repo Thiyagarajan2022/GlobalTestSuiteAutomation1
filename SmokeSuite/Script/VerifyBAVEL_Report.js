@@ -120,12 +120,16 @@ function verifyBAVELScreen()
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
     ReportUtils.logStep_Screenshot();  
-  if(ImageRepository.Browser_Reporting.BAVEL_Logo.Exists())
+    
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "BAVEL Web Billing" || ImageRepository.Browser_Reporting.BAVEL_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "BAVEL Screen displayed sucessfully");
      Log.Message("BAVEL Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "BAVEL Screen not displayed");            
+     ReportUtils.logStep("Fail", "BAVEL Screen not displayed");       
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");          
 }

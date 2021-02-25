@@ -182,7 +182,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
+    aqUtils.Delay(8000, "Report download is in progress");
     ReportUtils.logStep("Pass", "Profit And Loss Report exported successfully");
     Log.Message("Profit And Loss Report exported successfully"); 
     }
@@ -199,5 +199,10 @@ aqUtils.Delay(5000, "Navigating to Browser");
      Log.Message("ProfitAnd Loss Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");            
+     ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");    
+     
+     
+     Sys.Browser("chrome").Close();  
+     var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+     okbutton.Click();         
 }

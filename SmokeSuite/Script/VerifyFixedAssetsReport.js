@@ -116,12 +116,17 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
 aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.FixedAssets_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Fixed Assets"  || ImageRepository.Browser_Reporting.FixedAssets_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Fixed Assets Screen displayed sucessfully");
      Log.Message("Fixed Assets Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Fixed Assets Screen not displayed");            
+     ReportUtils.logStep("Fail", "Fixed Assets Screen not displayed");    
+      
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");           
 }

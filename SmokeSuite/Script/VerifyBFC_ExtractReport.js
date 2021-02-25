@@ -126,5 +126,5 @@ aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
      } 
   else
      ReportUtils.logStep("Fail", "BFC Extract Screen not displayed");   
-     Sys.Browser("chrome").Close()         
+        Sys.Browser("chrome").BrowserWindow(0).Keys("^w");         
 }

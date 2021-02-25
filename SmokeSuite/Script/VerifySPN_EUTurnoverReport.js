@@ -133,5 +133,5 @@ function verifyEUTurnOverStatutoryScreen()
      } 
   else
      ReportUtils.logStep("Fail", "EU TurnOver Statutory Screen not displayed");   
-     Sys.Browser("chrome").Close()         
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");         
 }

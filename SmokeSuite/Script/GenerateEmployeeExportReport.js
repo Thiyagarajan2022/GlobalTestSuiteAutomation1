@@ -164,8 +164,8 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
-    ReportUtils.logStep("Pass", "Job Billing Summary report exported successfully");
+    aqUtils.Delay(8000, "Report download is in progress");
+    ReportUtils.logStep("Pass", "Employee export report exported successfully");
     Log.Message("Job Billing Summary Report exported successfully"); 
     }
   else

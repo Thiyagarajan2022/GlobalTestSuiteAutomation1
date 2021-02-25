@@ -115,12 +115,15 @@ function verifyBudgetInvoiceScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.BudgetInvoice_Logo.Exists())
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Budget vs Invoices" ||ImageRepository.Browser_Reporting.BudgetInvoice_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Budged Vs Invoice Screen displayed successfully");
      Log.Message("Budged Vs Invoice Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Budged Vs Invoice Screen not displayed");            
+     ReportUtils.logStep("Fail", "Budged Vs Invoice Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");               
 }

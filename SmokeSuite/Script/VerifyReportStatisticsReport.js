@@ -126,7 +126,8 @@ function verifyReportStasticsScreen()
      Log.Message("Report Stastics Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Report Stastics Screen not displayed");      
+     ReportUtils.logStep("Fail", "Report Stastics Screen not displayed"); 
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");      
      
      Sys.Browser("chrome").Close();      
 }

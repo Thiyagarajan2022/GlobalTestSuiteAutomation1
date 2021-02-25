@@ -116,12 +116,15 @@ function verifyEmployeeUtilisationScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.EmployeeUtilisation_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Employee Utilisation" ||ImageRepository.Browser_Reporting.EmployeeUtilisation_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Employee Utilisation Screen displayed sucessfully");
      Log.Message("Employee Utilisation Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Employee Utilisation Screen not displayed");            
+     ReportUtils.logStep("Fail", "Employee Utilisation Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");            
 }

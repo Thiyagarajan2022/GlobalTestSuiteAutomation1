@@ -162,7 +162,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
+    aqUtils.Delay(8000, "Report download is in progress");
     ReportUtils.logStep("Pass", "Job Billing Summary report exported successfully");
     Log.Message("Job Billing Summary Report exported successfully"); 
     }

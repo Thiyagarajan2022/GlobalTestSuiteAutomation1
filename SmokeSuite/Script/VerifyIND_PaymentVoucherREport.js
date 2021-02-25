@@ -87,7 +87,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoPaymentVoucherLink()
 {
-var paymentVoucherLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite4.McLinkLabelWidget.McTextWidget;
+var paymentVoucherLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.McLinkLabelWidget.McTextWidget
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite4.McLinkLabelWidget.McTextWidget;
 waitForObj(paymentVoucherLink);
 Sys.HighlightObject(paymentVoucherLink);
 ReportUtils.logStep_Screenshot();
