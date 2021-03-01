@@ -135,6 +135,7 @@
 				<child name="ModifyBudget" key="{A46A33C5-C37C-40EF-8B78-E0452BD6FEAF}" path="ModifyBudget.js" />
 				<child name="Combined_Invoice" key="{DBB772FB-5728-4E6C-BC17-284D84FE65A0}" path="Combined_Invoice.js" />
 				<child name="Blanket_Invoice" key="{F9C06A21-247C-467D-AB5B-DAE661BB604D}" path="Blanket_Invoice.js" />
+				<child name="Job_Crediting" key="{15E4E728-F5B5-4DE1-8EB1-E5760E4C7AF2}" path="Job_Crediting.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
