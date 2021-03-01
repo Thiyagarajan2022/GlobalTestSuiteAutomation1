@@ -116,12 +116,15 @@ function verifyApprovalsScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.Approvals_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
+    
+  if(pageName.trim() == "Approvals" ||ImageRepository.Browser_Reporting.Approvals_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Approvals Screen displayed sucessfully");
      Log.Message("Approvals Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Approvals Screen not displayed");            
+     ReportUtils.logStep("Fail", "Approvals Screen not displayed"); 
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");            
 }

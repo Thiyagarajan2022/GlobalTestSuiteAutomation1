@@ -114,12 +114,15 @@ function verifyAPInvoiceStatusScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.APInvoiceStatus_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
+    
+  if(pageName.trim() == "AP Invoice Status" || ImageRepository.Browser_Reporting.APInvoiceStatus_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "AP Invoice Status Screen displayed sucessfully");
      Log.Message("AP Invoice Status Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "AP Invoice Status Screen not displayed");            
+     ReportUtils.logStep("Fail", "AP Invoice Status Screen not displayed");  
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");           
 }

@@ -117,12 +117,18 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
 aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.ICS_ClientVendor_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "ICS Client Vendor" || ImageRepository.Browser_Reporting.ICS_ClientVendor_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "ICS Client Vendor Screen displayed sucessfully");
      Log.Message("ICS Client Vendor Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "ICS Client Vendor Screen not displayed");            
+     ReportUtils.logStep("Fail", "ICS Client Vendor Screen not displayed");  
+    
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");       
+               
 }

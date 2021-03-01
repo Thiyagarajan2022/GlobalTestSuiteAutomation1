@@ -117,5 +117,5 @@ function verifyProfitAndLossScreen()
      } 
   else
      ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");      
-     Sys.Browser("chrome").Close()      
+    Sys.Browser("chrome").BrowserWindow(0).Keys("^w");     
 }

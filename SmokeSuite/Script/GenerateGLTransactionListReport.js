@@ -124,73 +124,80 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     {
       
-    var companySearch = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneSea;
-    waitForObj(companySearch);
-    companySearch.SetText(company);
-    
-    var searchIcon = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgIconmenuIconLovwidge;
-    waitForObj(searchIcon);
-    searchIcon.Click();
-    
-    var searchResult = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelMclm0;
-
-    Log.Message("Company is Listed in Search Result")
-    searchResult.Click();
-    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgLrzArrowaddPromptlovz;
-    waitForObj(moveRightArrow);
-    moveRightArrow.Click();
-    
-    var startDate = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell;
-    startDate.Click();
-    var sDate =  ExcelUtils.getRowDatas("StartDate",EnvParams.Opco);
-    var startDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxTextPromptlovzoneRightzon;
-    waitForObj(startDateField);
-    startDateField.setText(sDate);
-    
-    var endDate = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell2;
-    endDate.Click();
-    var eDate = ExcelUtils.getRowDatas("EndDate",EnvParams.Opco);
-    var endDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxTextPromptlovzoneRightzon;
-    waitForObj(endDateField);
-    endDateField.setText(eDate);
-
-    ReportUtils.logStep("INFO", "Selecting Criteria Values Entered Sucessfully");
-    
-    var okButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnPromptsdlg;
-    waitForObj(okButton);
-    okButton.Click();
-    
-    var retrievingDataWindow = NameMapping.Sys.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogWaitdlg;
-    waitForObj(retrievingDataWindow);
-    waitUntilInvisibleOfObj(retrievingDataWindow);
-    
-    var exportButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgDhtmllib296;
-    waitForObj(exportButton);
-    exportButton.Click();
-    
-    var ExportWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell4;
-    waitForObj(ExportWindow);
-    ReportUtils.logStep_Screenshot();
-        
-    var export_OKButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnIdexportdlg;
-    waitForObj(export_OKButton);
-    export_OKButton.Click();
-    
-    aqUtils.Delay(8000, "Waiting to Download Report");
-    ReportUtils.logStep("Pass", "GL Transactions Report exported successfully");
-    Log.Message("GL Transactions Report exported successfully"); 
+//    var companySearch = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneSea;
+//    waitForObj(companySearch);
+//    companySearch.SetText(company);
+//    
+//    var searchIcon = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgIconmenuIconLovwidge;
+//    waitForObj(searchIcon);
+//    searchIcon.Click();
+//    
+//    var searchResult = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelMclm0;
+//
+//    Log.Message("Company is Listed in Search Result")
+//    searchResult.Click();
+//    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgLrzArrowaddPromptlovz;
+//    waitForObj(moveRightArrow);
+//    moveRightArrow.Click();
+//    
+//    var startDate = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell;
+//    startDate.Click();
+//    var sDate =  ExcelUtils.getRowDatas("StartDate",EnvParams.Opco);
+//    var startDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxTextPromptlovzoneRightzon;
+//    waitForObj(startDateField);
+//    startDateField.setText(sDate);
+//    
+//    var endDate = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell2;
+//    endDate.Click();
+//    var eDate = ExcelUtils.getRowDatas("EndDate",EnvParams.Opco);
+//    var endDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxTextPromptlovzoneRightzon;
+//    waitForObj(endDateField);
+//    endDateField.setText(eDate);
+//
+//    ReportUtils.logStep("INFO", "Selecting Criteria Values Entered Sucessfully");
+//    
+//    var okButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnPromptsdlg;
+//    waitForObj(okButton);
+//    okButton.Click();
+//    
+//    var retrievingDataWindow = NameMapping.Sys.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogWaitdlg;
+//    waitForObj(retrievingDataWindow);
+//    waitUntilInvisibleOfObj(retrievingDataWindow);
+//    
+//    var exportButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgDhtmllib296;
+//    waitForObj(exportButton);
+//    exportButton.Click();
+//    
+//    var ExportWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell4;
+//    waitForObj(ExportWindow);
+//    ReportUtils.logStep_Screenshot();
+//        
+//    var export_OKButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnIdexportdlg;
+//    waitForObj(export_OKButton);
+//    export_OKButton.Click();
+//    
+//    aqUtils.Delay(10000, "Report download is in progress");
+//    ReportUtils.logStep("Pass", "GL Transactions Report exported successfully");
+//    Log.Message("GL Transactions Report exported successfully"); 
     }
   else
    ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
   
 
-  if(ImageRepository.Browser_Reporting.GLTransactions_Logo.Exists())
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "GL Transactions")
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "GL Transactions Screen displayed sucessfully");
      Log.Message("GL Transactions Screen displayed sucessfully");
      } 
+
   else
      ReportUtils.logStep("Fail", "GL Transactions Screen not displayed");  
+     
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+      Aliases.browser.pageOpendocument.Confirm.buttonOk.WaitProperty("Enabled", true, 15000);
+      Aliases.browser.pageOpendocument.Confirm.buttonOk.ClickButton();
                    
 }

@@ -126,5 +126,6 @@ function verifyAbsenceScreen()
      Log.Message("Absence Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Absence Screen not displayed");            
+     ReportUtils.logStep("Fail", "Absence Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");             
 }

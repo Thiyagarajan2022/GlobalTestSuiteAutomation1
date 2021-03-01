@@ -118,13 +118,17 @@ function verifyHKCubeAnalysisScreen()
     aqUtils.Delay(3000, "Waiting to Load");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
-  if(ImageRepository.Browser_Reporting.HK_Cube_Logo.Exists())
+    
+    var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Cube Analysis" || ImageRepository.Browser_Reporting.HK_Cube_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "H&K Cube Analysis Screen displayed sucessfully");
      Log.Message("H&K Cube Analysis Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "H&K Cube Analysis Screen not displayed");            
+     ReportUtils.logStep("Fail", "H&K Cube Analysis Screen not displayed");   
+     
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");         
 }

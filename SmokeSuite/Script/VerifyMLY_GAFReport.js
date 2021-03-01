@@ -87,8 +87,7 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoGAFReportLink()
 {
-var gafReportLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McLinkLabelWidget.McTextWidget;
-
+var gafReportLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McLinkLabelWidget.McTextWidget;
 waitForObj(gafReportLink);
 Sys.HighlightObject(gafReportLink);
 ReportUtils.logStep_Screenshot();

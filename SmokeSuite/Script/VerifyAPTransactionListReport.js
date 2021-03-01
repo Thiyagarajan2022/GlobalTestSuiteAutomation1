@@ -114,12 +114,15 @@ function verifyAPTransactionListScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.APTransactionList_Logo.Exists())
+ var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "AP Transaction List" ||ImageRepository.Browser_Reporting.APTransactionList_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "AP Transaction List Screen displayed sucessfully");
      Log.Message("AP Transaction List Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "AP Transaction List Screen not displayed");            
+     ReportUtils.logStep("Fail", "AP Transaction List Screen not displayed");   
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
 }

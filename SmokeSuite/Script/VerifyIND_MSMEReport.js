@@ -87,7 +87,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoMSMELink()
 {
-var msmeLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.McLinkLabelWidget.McTextWidget;
+var msmeLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite8.McLinkLabelWidget.McTextWidget
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.McLinkLabelWidget.McTextWidget;
 waitForObj(msmeLink);
 Sys.HighlightObject(msmeLink);
 ReportUtils.logStep_Screenshot();

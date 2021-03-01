@@ -126,5 +126,5 @@ function verifyTimeSheetStatusScreen()
   else
      ReportUtils.logStep("Fail", "Time Sheet Status Screen not displayed");    
      
-     Sys.Browser("chrome").Close();        
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");       
 }

@@ -118,5 +118,5 @@ function verifyTrailBalanceScreen()
   else
      ReportUtils.logStep("Fail", "Trail Balance Screen not displayed");       
      
-     Sys.Browser("chrome").Close()     
+    Sys.Browser("chrome").BrowserWindow(0).Keys("^w");   
 }

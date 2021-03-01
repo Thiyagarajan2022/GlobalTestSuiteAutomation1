@@ -115,13 +115,15 @@ function verifyClientBrandProductExportScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.ClientBrandProductExport_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Client Brand Product Export" ||ImageRepository.Browser_Reporting.ClientBrandProductExport_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Client Brand Product Export Screen displayed sucessfully");
      Log.Message("Client Brand Product Export Screen displayed sucessfully");
      }
-  else if(ImageRepository.Browser_Reporting.ClientBrandProductExport_1_Logo.Exists())
+  else if(pageName.trim() == "Client Brand Product Export" ||ImageRepository.Browser_Reporting.ClientBrandProductExport_1_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Client Brand Product Export Screen displayed sucessfully");
@@ -129,5 +131,6 @@ function verifyClientBrandProductExportScreen()
      }    
       
   else
-     ReportUtils.logStep("Fail", "Client Brand Product Export Screen not displayed");            
+     ReportUtils.logStep("Fail", "Client Brand Product Export Screen not displayed"); 
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");           
 }

@@ -134,5 +134,5 @@ function verifyBalanceSheetScreen()
   else
      ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed"); 
      
-     Sys.Browser("chrome").Close()           
+  Sys.Browser("chrome").BrowserWindow(0).Keys("^w");    
 }

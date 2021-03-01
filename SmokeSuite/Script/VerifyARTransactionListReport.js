@@ -115,13 +115,16 @@ function verifyARTransactionListScreen()
     aqUtils.Delay(4000, "Waiting to Load");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
-  
-  if(ImageRepository.Browser_Reporting.ARTransactionList_Logo.Exists())
+    
+    var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "AR Transaction List" ||ImageRepository.Browser_Reporting.ARTransactionList_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "AR Transaction List Screen displayed sucessfully");
      Log.Message("AR Transaction List Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "AR Transaction List Screen not displayed");            
+     ReportUtils.logStep("Fail", "AR Transaction List Screen not displayed"); 
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");                
 }

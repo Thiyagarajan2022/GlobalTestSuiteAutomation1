@@ -117,15 +117,15 @@ function verifyTimeSheetDailyAndWeeklyScreen()
   
     
  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
-   
+
     
-  if(pageName.trim() == "TimesheetDaily & Weekly" ||ImageRepository.Browser_Reporting.TimeSheetDailyWeekly_Logo.Exists())
+  if(pageName.trim() == "Timesheet Daily & Weekly" ||ImageRepository.Browser_Reporting.TimeSheetDailyWeekly_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "TimeSheet Daily And Weekly Screen displayed sucessfully");
      Log.Message("TimeSheet Daily And Weekly Screen displayed sucessfully");
      } 
- else if(ImageRepository.Browser_Reporting.TimeSheetDailyWeekly_1_Logo.Exists())
+ else if(pageName.trim() == "Timesheet Daily & Weekly" || ImageRepository.Browser_Reporting.TimeSheetDailyWeekly_1_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "TimeSheet Daily And Weekly Screen displayed sucessfully");
@@ -134,5 +134,5 @@ function verifyTimeSheetDailyAndWeeklyScreen()
   else
      ReportUtils.logStep("Fail", "TimeSheet Daily And Weekly Screen not displayed");    
      
-     Sys.Browser("chrome").Close()        
+    Sys.Browser("chrome").BrowserWindow(0).Keys("^w");      
 }

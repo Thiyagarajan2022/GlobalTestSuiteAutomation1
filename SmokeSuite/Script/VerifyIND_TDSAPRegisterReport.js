@@ -87,7 +87,9 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoTDSAPRegisterLink()
 {
-var tdsAPRegisterLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite8.McLinkLabelWidget.McTextWidget;
+var tdsAPRegisterLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McLinkLabelWidget.McTextWidget
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite8.McLinkLabelWidget.McTextWidget;
+
 waitForObj(tdsAPRegisterLink);
 Sys.HighlightObject(tdsAPRegisterLink);
 ReportUtils.logStep_Screenshot();

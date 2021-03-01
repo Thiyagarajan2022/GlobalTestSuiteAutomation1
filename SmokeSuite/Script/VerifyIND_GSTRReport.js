@@ -88,7 +88,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoGSTRLink()
 {
-var gstrLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite6.McLinkLabelWidget.McTextWidget;
+var gstrLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McLinkLabelWidget.McTextWidget 
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite6.McLinkLabelWidget.McTextWidget;
 waitForObj(gstrLink);
 Sys.HighlightObject(gstrLink);
 ReportUtils.logStep_Screenshot();

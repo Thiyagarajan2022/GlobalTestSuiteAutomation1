@@ -116,12 +116,16 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
 aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
-  if(ImageRepository.Browser_Reporting.BankReconciliations_Logo.Exists())
+
+var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+
+if(pageName.trim() == "Bank Reconciliations" || ImageRepository.Browser_Reporting.BankReconciliations_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
      ReportUtils.logStep("Pass", "Bank Reconciliations Screen displayed sucessfully");
      Log.Message("Bank Reconciliations Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Bank Reconciliations Screen not displayed");            
+     ReportUtils.logStep("Fail", "Bank Reconciliations Screen not displayed");    
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");        
 }

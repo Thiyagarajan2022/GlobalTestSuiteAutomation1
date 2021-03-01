@@ -125,5 +125,6 @@ aqUtils.Delay(2000, "Loading Balance Sheet Screen");
      Log.Message("Balance Sheet Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed");            
+     ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");               
 }

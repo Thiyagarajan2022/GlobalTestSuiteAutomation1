@@ -119,6 +119,9 @@ var company =  ExcelUtils.getRowDatas("Company",EnvParams.Opco);
 
 
 aqUtils.Delay(5000, "Navigating to Browser");
+if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
+    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
+
        
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     {
@@ -161,8 +164,8 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
-    ReportUtils.logStep("Pass", "Job Billing Summary report exported successfully");
+    aqUtils.Delay(8000, "Report download is in progress");
+    ReportUtils.logStep("Pass", "Employee export report exported successfully");
     Log.Message("Job Billing Summary Report exported successfully"); 
     }
   else
@@ -178,5 +181,9 @@ aqUtils.Delay(5000, "Navigating to Browser");
      Log.Message("Employee Export Screen displayed sucessfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Employee Export Screen not displayed");            
+     ReportUtils.logStep("Fail", "Employee Export Screen not displayed");       
+     
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
+      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+      okbutton.Click();       
 }

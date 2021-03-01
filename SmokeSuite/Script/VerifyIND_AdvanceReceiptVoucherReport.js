@@ -88,7 +88,8 @@ if(ImageRepository.ImageSet.LoadedBox.Exists())
 
 function gotoAdvanceReceiptVoucherLink()
 {
-var advanceReceiptVoucherLink = Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite2.McLinkLabelWidget.McTextWidget;
+var advanceReceiptVoucherLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.McLinkLabelWidget.McTextWidget
+//Aliases.Maconomy.Reports_StatutoryReports.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite2.McLinkLabelWidget.McTextWidget;
 waitForObj(advanceReceiptVoucherLink);
 Sys.HighlightObject(advanceReceiptVoucherLink);
 ReportUtils.logStep_Screenshot();
@@ -108,12 +109,15 @@ function verifyAdvanceReceiptVoucherScreen()
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-  if(ImageRepository.Browser_Reporting.AdvanceReceiptVoucher_Logo.Exists())
+  var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent; 
+    
+  if(pageName.trim() == "Advance Receipt Voucher" || ImageRepository.Browser_Reporting.AdvanceReceiptVoucher_Logo.Exists())
   {
      ReportUtils.logStep_Screenshot();
-     ReportUtils.logStep("Pass", "Advance Receipt Voucherr Screen displayed sucessfully");
+     ReportUtils.logStep("Pass", "Advance Receipt Voucher Screen displayed sucessfully");
      Log.Message("Advance Receipt Voucher Screen displayed successfully");
      } 
   else
-     ReportUtils.logStep("Fail", "Advance Receipt Voucher Screen not displayed");            
+     ReportUtils.logStep("Fail", "Advance Receipt Voucher Screen not displayed");  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");           
 }

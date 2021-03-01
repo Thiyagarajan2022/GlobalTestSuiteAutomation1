@@ -104,24 +104,24 @@ newGlobalVendorButton.Click();
 
 if(ImageRepository.ImageSet.LoadedBox.Exists()){}
 
-
-// Address has to be captured Again
-
-var globalVendorMasterDataLabel = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Label;
-
-if(globalVendorMasterDataLabel.isVisible())
-{
-     ReportUtils.logStep_Screenshot();
-     Sys.HighlightObject(globalVendorMasterDataLabel);
-     ReportUtils.logStep("Pass", "New Global Vendor Screen loaded successfully");
-     Log.Message("New Global Vendor Screen loaded successfully");
-     } 
-  else
-     ReportUtils.logStep("Fail", "New Global Vendor Screen not loaded");
+ReportUtils.logStep("Pass", "New Global Vendor Button clicked successfully");
 
 
-var globalVendorMasterCancelBttn = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Composite.Composite.Composite.Button;
-globalVendorMasterCancelBttn.Click();
+//var globalVendorMasterDataLabel = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Label;
+//
+//if(globalVendorMasterDataLabel.isVisible())
+//{
+//     ReportUtils.logStep_Screenshot();
+//     Sys.HighlightObject(globalVendorMasterDataLabel);
+//     ReportUtils.logStep("Pass", "New Global Vendor Screen loaded successfully");
+//     Log.Message("New Global Vendor Screen loaded successfully");
+//     } 
+//  else
+//     ReportUtils.logStep("Fail", "New Global Vendor Screen not loaded");
+//
+//
+//var globalVendorMasterCancelBttn = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Composite.Composite.Composite.Button;
+//globalVendorMasterCancelBttn.Click();
 
 if(ImageRepository.ImageSet.LoadedBox.Exists()){}
 
