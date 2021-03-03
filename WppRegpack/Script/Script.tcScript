@@ -86,11 +86,10 @@
 				<child name="AmendGlobalVendor" key="{D15AA8FA-0E33-4740-BC78-4A2A28D3BED5}" path="AmendGlobalVendor.js" />
 				<child name="CreateAGeneralJournal" key="{7862DAD5-E540-4272-B69E-B9783C7C281C}" path="CreateAGeneralJournal.js" />
 				<child name="ReverseAGeneralJournal" key="{5558565F-4231-4F39-B09E-6CC9C0C0A48C}" path="ReverseAGeneralJournal.js" />
-				<child name="ImportBudgetModel" key="{FBEA4060-8E3F-4F6C-BC5C-BD018A9BDF4C}" path="ImportBudgetModel.js" />
+				<child name="Import_Budget_Model" key="{FBEA4060-8E3F-4F6C-BC5C-BD018A9BDF4C}" path="Import_Budget_Model.js" />
 				<child name="CopyGL" key="{C0D458DF-3609-4424-B0F8-EF57414F40F4}" path="CopyGL.js" />
 				<child name="CurrencyGL" key="{D3B2FA90-C2BD-41EB-B802-70BC5D76D1F1}" path="CurrencyGL.js" />
 				<child name="CreateReverseGL" key="{0D3D2D9E-AF04-4121-A636-AAD2471F9E7A}" path="CreateReverseGL.js" />
-				<child name="Old_CreateBudget" key="{886BC509-75D7-448A-B9DA-0D8319F14999}" path="Old_CreateBudget.js" />
 				<child name="InvoicePreparation" key="{8702BF45-087C-4819-A366-E82806556EB2}" path="InvoicePreparation.js" />
 				<child name="JobClosure" key="{67FAD047-0D9A-4340-A157-B0B4F08646B1}" path="JobClosure.js" />
 				<child name="ReallocateJobEntries" key="{B837B349-4A94-4D2D-B009-75CED4096657}" path="ReallocateJobEntries.js" />
@@ -126,7 +125,6 @@
 				<child name="CreateAnAccrualJobByJob" key="{E85ABD8E-6444-46D9-8555-24249320C5F6}" path="CreateAnAccrualJobByJob.js" />
 				<child name="CopyBudget" key="{89EA977D-FF6A-4158-8984-64709965CC9E}" path="CopyBudget.js" />
 				<child name="ExpensesMPL" key="{CBB03673-53BF-4027-A8F5-383098DBA29F}" path="ExpensesMPL.js" />
-				<child name="ModifyBudget_New" key="{45F77959-87DA-4FC7-A391-9CBC43929F79}" path="ModifyBudget_New.js" />
 				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
 				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
@@ -136,6 +134,7 @@
 				<child name="Combined_Invoice" key="{DBB772FB-5728-4E6C-BC17-284D84FE65A0}" path="Combined_Invoice.js" />
 				<child name="Blanket_Invoice" key="{F9C06A21-247C-467D-AB5B-DAE661BB604D}" path="Blanket_Invoice.js" />
 				<child name="Job_Crediting" key="{15E4E728-F5B5-4DE1-8EB1-E5760E4C7AF2}" path="Job_Crediting.js" />
+				<child name="Update_Perodic_Balance" key="{86DBEF0F-37AE-44AB-9E5C-51D555BB32A5}" path="Update_Perodic_Balance.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
