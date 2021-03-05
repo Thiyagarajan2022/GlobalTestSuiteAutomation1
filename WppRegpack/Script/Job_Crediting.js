@@ -863,7 +863,7 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Draft Credit Memo",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf");
+ExcelUtils.WriteExcelSheet("PDF Draft Credit Note",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf");
 
 
 
@@ -1246,7 +1246,7 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Draft Credit Memo",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf");
+ExcelUtils.WriteExcelSheet("PDF Draft Credit Note",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf");
 
 
 

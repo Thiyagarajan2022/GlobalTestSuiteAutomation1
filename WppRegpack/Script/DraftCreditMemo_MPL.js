@@ -8,8 +8,7 @@ Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var Language = "";
-
-function Invoice()
+function DraftCreditMemo()
 {
 //  var fileName = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegPack\\MPLReports\\Critical_Regression\\India\\1707\\PDF\\Print Job Quote-23.pdf";
   var fileName = "";
@@ -17,9 +16,9 @@ function Invoice()
   Language = EnvParams.LanChange(EnvParams.Language);
   WorkspaceUtils.Language = Language;  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  fileName = ExcelUtils.getRowDatas("PDF Invoice",EnvParams.Opco)
+  fileName = ExcelUtils.getRowDatas("PDF Draft Credit Note",EnvParams.Opco)
   if((fileName==null)||(fileName=="")){ 
-  ValidationUtils.verify(false,true,"Draft Invoice PDF is needed to validate");
+  ValidationUtils.verify(false,true,"Draft CreditMemo PDF is needed to validate");
   }
   var docObj;
 
@@ -32,7 +31,7 @@ function Invoice()
     Log.Error("Exception while reading document::"+objEx);
   }
 //  var workBook = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegpack\\TestResource\\Regression\\DS_IND_REGRESSION.xlsx";
-  var sheetName = "InvoiceMPL";
+  var sheetName = "CreditMemo";
 //  EnvParams.Country = "India";
 //  EnvParams.Opco = "1707";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -46,7 +45,7 @@ function Invoice()
   var country = ReadExcelSheet("Country",EnvParams.Opco,"CreateClient");
   var Attn = ReadExcelSheet("Attn.",EnvParams.Opco,"CreateClient");
   var TaxNo = ReadExcelSheet("Tax No.",EnvParams.Opco,"CreateClient");
-  ExcelUtils.setExcelName(workBook, "InvoiceMPL", true);
+  ExcelUtils.setExcelName(workBook, "CreditMemo", true);
 //  var Revesion = ExcelUtils.getColumnDatas("Quote Revision",EnvParams.Opco)
   var GrandTotal = ExcelUtils.getColumnDatas("Invoice TOTAL",EnvParams.Opco)
   var PaymentTerm = ExcelUtils.getColumnDatas("Payment Terms",EnvParams.Opco)
@@ -66,10 +65,10 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
    if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
    var index = pdflineSplit.indexOf("TAX INVOICE");
    else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "CREDIT NOTE").OleValue.toString().trim());
 //   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
 //   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
-   
+   Log.Message(index)
        if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")
@@ -113,7 +112,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog(postCode+" "+postDistrict+" PostCode and Post District are matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"PostCode and Post District are not same in Invoice");
+          ValidationUtils.verify(false,true,"PostCode and Post District are not same in Draft CreditMemo");
    var index = pdflineSplit.indexOf(country);
     if(index>=0){
           ReportUtils.logStep("INFO",country+" Country is matching with Pdf")
@@ -121,7 +120,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog(country+" Country is matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Country is not same in Draft Invoice");
+          ValidationUtils.verify(false,true,"Country is not same in Draft CreditMemo");
    
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   if((jobNumber=="")||(jobNumber==null)){
@@ -129,7 +128,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Validate Draft Invoice");
+  ValidationUtils.verify(false,true,"Job Number is needed to Validate Draft CreditMemo");
    
   var j, x, pdfJobNum, pointer, pdfJobName;
   
@@ -145,13 +144,13 @@ var pName = false;
  Log.Message(pdflineSplit.length)
   for (j=0; j<pdflineSplit.length; j++)
   {
-//    Log.Message(pdflineSplit[j])
+    Log.Message(pdflineSplit[j])
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attn.").OleValue.toString().trim()))
     {
       x= pdflineSplit[j].split(".");
       pdfJobNum = x[1].trim();
        if(Attn!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Attention is not same in Draft Invoice");
+        ValidationUtils.verify(false,true,"Attention is not same in Draft CreditMemo");
         else{
           ReportUtils.logStep("INFO",Attn+" Attention is matching with Pdf");
         ValidationUtils.verify(true,true,Attn+" Attention is matching with Pdf");
@@ -159,11 +158,11 @@ var pName = false;
         }
     }
 
-        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No").OleValue.toString().trim()))
+        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note No").OleValue.toString().trim()))
     {
-      
+    
     if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-      var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No").OleValue.toString().trim();
+      var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Credit Note No").OleValue.toString().trim();
       Log.Message("atSize :"+atSize)
       pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
       x= pdflineSplit[j].split(" ");
@@ -173,53 +172,45 @@ var pName = false;
       }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
-       if(pdfJobNum.indexOf(EnvParams.Opco)==-1)
-        ValidationUtils.verify(false,true,"Invoice Number is not same in Draft Invoice");
+       if("xxxxxx"!=pdfJobNum)
+        ValidationUtils.verify(false,true,"Credit Note Number is not same in Draft CreditMemo");
         else{
-        ReportUtils.logStep("INFO","Invoice Number is availble in Pdf")
-        ValidationUtils.verify(true,true,"Invoice Number is availble in Pdf")
-        TextUtils.writeLog("Invoice Number is availble in Pdf")
+        ReportUtils.logStep("INFO","xxxxxx Credit Note Number is matching with Pdf")
+        ValidationUtils.verify(true,true,"xxxxxx Credit Note Number is matching with Pdf")
+        TextUtils.writeLog("xxxxxx Credit Note Number is matching with Pdf")
         }
     }
-/*    
-        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()))
+    
+        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note Date").OleValue.toString().trim()))
     {
+      
+    Log.Message("Invocice Date :"+pdflineSplit[j])
+    
+    
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Credit Note Date").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
       x= pdflineSplit[j].split(":");
+      Log.Message("x[1] :"+x[1])
       pdfJobNum = x[1].trim();
-      var dateType = /(\d{1,2})([\/-])(\d{1,2})\2(\d{4})/;
-      var isMatch = dateType.test(pdfJobNum);
-      if(isMatch)
-//       if("xxxxxx"==pdfJobNum)
-        ValidationUtils.verify(false,true,"Invoice Date is not available in Draft Invoice");
+       if("xxxxxx"!=pdfJobNum)
+        ValidationUtils.verify(false,true,"Invoice Date is not same in Draft Invoice");
         else{
-        ReportUtils.logStep("INFO","Invoice Date is available in Pdf")
-        ValidationUtils.verify(true,true,"Invoice Date is available in Pdf")
-        TextUtils.writeLog("Invoice Date is available in Pdf")
+        ReportUtils.logStep("INFO","xxxxxx Invoice Date is matching with Pdf")
+        ValidationUtils.verify(true,true,"xxxxxx Invoice Date is matching with Pdf")
+        TextUtils.writeLog("xxxxxx Invoice Date is matching with Pdf")
         }
     }
     
         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Due Date").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobNum = x[1].trim();
-      var dateType = /(\d{1,2})([\/-])(\d{1,2})\2(\d{4})/;
-      var isMatch = dateType.test(pdfJobNum);
-      if(isMatch)
-//       if("xxxxxx"!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Due Date is not available in Draft Invoice");
-        else{
-        ReportUtils.logStep("INFO","Due Date is available in Pdf")
-        ValidationUtils.verify(true,true,"Due Date is available in Pdf")
-        TextUtils.writeLog("Due Date is available in Pdf")
-        }
-    }
- */   
-        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Terms").OleValue.toString().trim()))
-    {
       
-    
     if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Payment Terms").OleValue.toString().trim();
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Due Date").OleValue.toString().trim();
       pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
       x= pdflineSplit[j].split(" ");
       x[0]= pdflineSplit[j];
@@ -227,10 +218,32 @@ var pName = false;
       }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
+       if("xxxxxx"!=pdfJobNum)
+        ValidationUtils.verify(false,true,"Due Date is not same in Draft CreditNote");
+        else{
+        ReportUtils.logStep("INFO","xxxxxx Due Date is matching with Pdf")
+        ValidationUtils.verify(true,true,"xxxxxx Due Date is matching with Pdf")
+        TextUtils.writeLog("xxxxxx Due Date is matching with Pdf")
+        }
+    }
+    
+        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Terms").OleValue.toString().trim()))
+    {
+      
+    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Payment Terms").OleValue.toString().trim();
+      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+      x= pdflineSplit[j].split(" ");
+      x[0]= pdflineSplit[j];
+      x[1]= pdflineSplit[j];
+      }else
+      Log.Message(pdflineSplit[j])
+      x= pdflineSplit[j].split(":");
+      pdfJobNum = x[1].trim();
       Log.Message(PaymentTerm)
       Log.Message(pdfJobNum)
        if(pdfJobNum.indexOf(PaymentTerm)==-1)
-        ValidationUtils.verify(false,true,"Payment Terms is not same in Draft Invoice");
+        ValidationUtils.verify(false,true,"Payment Terms is not same in Draft CreditNote");
         else{
         ReportUtils.logStep("INFO",PaymentTerm+" Payment Terms is matching with Pdf")
         ValidationUtils.verify(true,true,PaymentTerm+" Payment Terms is matching with Pdf")
@@ -241,7 +254,6 @@ var pName = false;
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
       
-    
     if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
         var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job No").OleValue.toString().trim();
       pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
@@ -252,7 +264,7 @@ var pName = false;
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if(jobNumber!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Job Number is not same in Invoice");
+        ValidationUtils.verify(false,true,"Job Number is not same in Draft CreditNote");
         else{
         ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
         ValidationUtils.verify(true,true,jobNumber+" Job Number is matching with Pdf")
@@ -318,7 +330,6 @@ var pName = false;
 //    }
 
 
-
 var TaxVariable = "";
    if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="CHINA")){
      Log.Message(pdflineSplit)
@@ -357,7 +368,6 @@ var TaxVariable = "";
         }
     }
 
-
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
     {
       
@@ -386,27 +396,6 @@ var TaxVariable = "";
     }
 
     
-//var TaxVariable = "";
-//   if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="CHINA"))
-//   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
-//   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
-//   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
-////   Log.Message(TaxVariable)
-//    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
-//    {
-//      x= pdflineSplit[j].split(":");
-//      pdfJobName = x[1].trim();
-//        if(pdflineSplit[j].includes(TaxNo))
-//         {
-//          ReportUtils.logStep("INFO","Tax No is matching with Pdf")
-//          ValidationUtils.verify(true,true,TaxNo+" Tax No is matching with Pdf")
-//          TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
-//          }
-//          else{
-//          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
-//        }
-//    }
-
 
 //    if(!pName){
 ////      Log.Message(pName)
@@ -519,7 +508,7 @@ var TaxVariable = "";
     }
    }
    else
-    ValidationUtils.verify(false,true,"Agency GST Details Section is not displayed in Invoice");
+    ValidationUtils.verify(false,true,"Agency GST Details Section is not displayed in Draft CreditNote");
   }
   
   
@@ -848,16 +837,3 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
     console.log(e)
   }
 };
-
-
-function hj(){ 
-var Date = "07/14/2020"
-//var Date = "2015/01/05";
-var dateType = /(\d{1,2})([\/-])(\d{1,2})\2(\d{4})/;
-var isMatch = dateType.test(Date);
-if(isMatch){
-  Log.Message("Success")
-}else{ 
-  Log.Message("Error")
-}
-}

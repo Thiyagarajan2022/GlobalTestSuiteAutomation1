@@ -9,7 +9,7 @@ var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var Language = "";
 
-function Invoice()
+function CreditMemo()
 {
 //  var fileName = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegPack\\MPLReports\\Critical_Regression\\India\\1707\\PDF\\Print Job Quote-23.pdf";
   var fileName = "";
@@ -17,9 +17,9 @@ function Invoice()
   Language = EnvParams.LanChange(EnvParams.Language);
   WorkspaceUtils.Language = Language;  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  fileName = ExcelUtils.getRowDatas("PDF Invoice",EnvParams.Opco)
+  fileName = ExcelUtils.getRowDatas("PDF Credit Note",EnvParams.Opco)
   if((fileName==null)||(fileName=="")){ 
-  ValidationUtils.verify(false,true,"Draft Invoice PDF is needed to validate");
+  ValidationUtils.verify(false,true,"Credit Note PDF is needed to validate");
   }
   var docObj;
 
@@ -32,7 +32,7 @@ function Invoice()
     Log.Error("Exception while reading document::"+objEx);
   }
 //  var workBook = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegpack\\TestResource\\Regression\\DS_IND_REGRESSION.xlsx";
-  var sheetName = "InvoiceMPL";
+  var sheetName = "CreditMemo";
 //  EnvParams.Country = "India";
 //  EnvParams.Opco = "1707";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
@@ -46,7 +46,7 @@ function Invoice()
   var country = ReadExcelSheet("Country",EnvParams.Opco,"CreateClient");
   var Attn = ReadExcelSheet("Attn.",EnvParams.Opco,"CreateClient");
   var TaxNo = ReadExcelSheet("Tax No.",EnvParams.Opco,"CreateClient");
-  ExcelUtils.setExcelName(workBook, "InvoiceMPL", true);
+  ExcelUtils.setExcelName(workBook, "CreditMemoMPL", true);
 //  var Revesion = ExcelUtils.getColumnDatas("Quote Revision",EnvParams.Opco)
   var GrandTotal = ExcelUtils.getColumnDatas("Invoice TOTAL",EnvParams.Opco)
   var PaymentTerm = ExcelUtils.getColumnDatas("Payment Terms",EnvParams.Opco)
@@ -66,7 +66,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
    if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
    var index = pdflineSplit.indexOf("TAX INVOICE");
    else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "CREDIT NOTE").OleValue.toString().trim());
 //   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
 //   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
    
@@ -103,7 +103,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog(street+" Street is matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Street is not same in Invoice");
+          ValidationUtils.verify(false,true,"Street is not same in Credit Memo");
    var index = pdflineSplit.indexOf(postCode+"  "+postDistrict);
     if (index == -1)
         index = pdflineSplit.indexOf(postCode+" "+postDistrict);
@@ -129,7 +129,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Validate Draft Invoice");
+  ValidationUtils.verify(false,true,"Job Number is needed to Validate Credit Memo");
    
   var j, x, pdfJobNum, pointer, pdfJobName;
   
@@ -159,11 +159,11 @@ var pName = false;
         }
     }
 
-        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No").OleValue.toString().trim()))
+        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note No").OleValue.toString().trim()))
     {
       
     if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-      var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No").OleValue.toString().trim();
+      var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Credit Note No").OleValue.toString().trim();
       Log.Message("atSize :"+atSize)
       pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
       x= pdflineSplit[j].split(" ");
@@ -174,15 +174,15 @@ var pName = false;
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if(pdfJobNum.indexOf(EnvParams.Opco)==-1)
-        ValidationUtils.verify(false,true,"Invoice Number is not same in Draft Invoice");
+        ValidationUtils.verify(false,true,"Credit Note No is not same in Credit Memo");
         else{
-        ReportUtils.logStep("INFO","Invoice Number is availble in Pdf")
-        ValidationUtils.verify(true,true,"Invoice Number is availble in Pdf")
-        TextUtils.writeLog("Invoice Number is availble in Pdf")
+        ReportUtils.logStep("INFO","Credit Note No is availble in Pdf")
+        ValidationUtils.verify(true,true,"Credit Note No is availble in Pdf")
+        TextUtils.writeLog("Credit Note No is availble in Pdf")
         }
     }
 /*    
-        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()))
+        if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note Date").OleValue.toString().trim()))
     {
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
@@ -353,7 +353,7 @@ var TaxVariable = "";
           TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
           }
           else{
-          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
+          ValidationUtils.verify(false,true,"Tax No is not same in Credit Memo");
         }
     }
 
@@ -379,7 +379,7 @@ var TaxVariable = "";
           break;
           }
           else{
-          ValidationUtils.verify(false,true,"Client Number is not same in Invoice");
+          ValidationUtils.verify(false,true,"Client Number is not same in CreditMemo");
           if(EnvParams.Country.toUpperCase()=="INDIA")
            break;
         }
@@ -443,7 +443,7 @@ var TaxVariable = "";
                 x= pdflineSplit[j].split(":");
                 pdfClientGST = x[1].trim();
                if(clientGST!=pdfClientGST)
-                ValidationUtils.verify(false,true,"clientGST is not same in Invoice");
+                ValidationUtils.verify(false,true,"clientGST is not same in CreditMemo");
                else
                {
                 ReportUtils.logStep("INFO",clientGST+" clientGST is matching with Pdf")
@@ -464,7 +464,7 @@ var TaxVariable = "";
                 }
                else
                {
-                ValidationUtils.verify(false,true,"POS is not same in Invoice");
+                ValidationUtils.verify(false,true,"POS is not same in CreditMemo");
                 break;
                }
             }
@@ -485,7 +485,7 @@ var TaxVariable = "";
         x= pdflineSplit[j].split(":");
         pdfPan = x[1].trim();
          if(pan!=pdfPan)
-          ValidationUtils.verify(false,true,"PAN is not same in Invoice");
+          ValidationUtils.verify(false,true,"PAN is not same in CreditMemo");
          else{
           ReportUtils.logStep("INFO",pan+" PAN is matching with Pdf")
           ValidationUtils.verify(true,true,pan+" PAN is matching with Pdf")
@@ -497,7 +497,7 @@ var TaxVariable = "";
         x= pdflineSplit[j].split(":");
         pdfGstin = x[1].trim();
         if(gstin!=pdfGstin)
-            ValidationUtils.verify(false,true,"GSTIN is not same in Invoice");
+            ValidationUtils.verify(false,true,"GSTIN is not same in CreditMemo");
         else{
             ReportUtils.logStep("INFO",gstin+" GSTIN is matching with Pdf")
           ValidationUtils.verify(true,true,gstin+" GSTIN is matching with Pdf")
@@ -509,7 +509,7 @@ var TaxVariable = "";
         x= pdflineSplit[j].split(":");
         pdfCin = x[1].trim();
         if(cin!=pdfCin)
-            ValidationUtils.verify(false,true,"CIN/UIN is not same in Invoice");
+            ValidationUtils.verify(false,true,"CIN/UIN is not same in CreditMemo");
         else{
             ReportUtils.logStep("INFO",cin+" CIN/UIN is matching with Pdf")
           ValidationUtils.verify(true,true,cin+" CIN/UIN is matching with Pdf")
@@ -519,7 +519,7 @@ var TaxVariable = "";
     }
    }
    else
-    ValidationUtils.verify(false,true,"Agency GST Details Section is not displayed in Invoice");
+    ValidationUtils.verify(false,true,"Agency GST Details Section is not displayed in CreditMemo");
   }
   
   
@@ -612,7 +612,7 @@ var TaxVariable = "";
           TextUtils.writeLog(GrandTotal+" Total is matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Total is not same in Draft Invoice");
+          ValidationUtils.verify(false,true,"Total is not same in CreditMemo");
 }
 
 
@@ -653,14 +653,14 @@ var TaxVariable = "";
 //             break;
 //             }
 //         if(j==pdflineSplit.length-1 && !clientFound)
-//          ValidationUtils.verify(false,true,"clientName is not found in Invoice");
+//          ValidationUtils.verify(false,true,"clientName is not found in CreditMemo");
 //    
 //  }          
 //   var index = pdflineSplit.indexOf(street);
 //    if(index>=0)
 //          Log.Message(street+" Street is matching with Pdf")
 //          else
-//          ValidationUtils.verify(false,true,"Street is not same in Invoice");
+//          ValidationUtils.verify(false,true,"Street is not same in CreditMemo");
 //   var index = pdflineSplit.indexOf(postCode+"  "+postDistrict);
 //    if (index == -1)
 //        index = pdflineSplit.indexOf(postCode+" "+postDistrict);
@@ -672,7 +672,7 @@ var TaxVariable = "";
 //    if(index>=0)
 //          Log.Message(clientCountry+" Country is matching with Pdf")
 //          else
-//          ValidationUtils.verify(false,true,"Country is not same in Invoice");
+//          ValidationUtils.verify(false,true,"Country is not same in CreditMemo");
 //   
 //  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
 //  if((jobNumber=="")||(jobNumber==null)){
@@ -680,7 +680,7 @@ var TaxVariable = "";
 //  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
 //  }
 //  if((jobNumber=="")||(jobNumber==null))
-//  ValidationUtils.verify(false,true,"Job Number is needed to Validate Invoice");
+//  ValidationUtils.verify(false,true,"Job Number is needed to Validate CreditMemo");
 //   
 //  var j, x, pdfJobNum, pointer, pdfJobName;
 //  
@@ -693,7 +693,7 @@ var TaxVariable = "";
 //      x= pdflineSplit[j].split(":");
 //      pdfJobNum = x[1].trim();
 //       if(jobNumber!=pdfJobNum)
-//        ValidationUtils.verify(false,true,"Job Number is not same in Invoice");
+//        ValidationUtils.verify(false,true,"Job Number is not same in CreditMemo");
 //        else
 //        Log.Message(jobNumber+" Job Number is matching with Pdf")
 //    }
@@ -704,7 +704,7 @@ var TaxVariable = "";
 //      if(pdfJobName.includes(jobName))
 //          Log.Message(jobName+" Job Name is matching with Pdf")
 //          else
-//          ValidationUtils.verify(false,true,"Job Name is not same in Invoice");
+//          ValidationUtils.verify(false,true,"Job Name is not same in CreditMemo");
 //      break;
 //    }
 //  }
@@ -724,7 +724,7 @@ var TaxVariable = "";
 //        x= pdflineSplit[j].split(":");
 //        pdfPan = x[1].trim();
 //         if(pan!=pdfPan)
-//          ValidationUtils.verify(false,true,"PAN is not same in Invoice");
+//          ValidationUtils.verify(false,true,"PAN is not same in CreditMemo");
 //         else
 //          Log.Message(pan+" PAN is matching with Pdf")
 //      }
@@ -733,7 +733,7 @@ var TaxVariable = "";
 //        x= pdflineSplit[j].split(":");
 //        pdfGstin = x[1].trim();
 //        if(gstin!=pdfGstin)
-//            ValidationUtils.verify(false,true,"GSTIN is not same in Invoice");
+//            ValidationUtils.verify(false,true,"GSTIN is not same in CreditMemo");
 //        else
 //            Log.Message(gstin+" GSTIN is matching with Pdf")
 //      }
@@ -742,7 +742,7 @@ var TaxVariable = "";
 //        x= pdflineSplit[j].split(":");
 //        pdfCin = x[1].trim();
 //        if(cin!=pdfCin)
-//            ValidationUtils.verify(false,true,"CIN/UIN is not same in Invoice");
+//            ValidationUtils.verify(false,true,"CIN/UIN is not same in CreditMemo");
 //        else
 //            Log.Message(cin+" CIN/UIN is matching with Pdf")
 //      }
@@ -850,14 +850,3 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
 };
 
 
-function hj(){ 
-var Date = "07/14/2020"
-//var Date = "2015/01/05";
-var dateType = /(\d{1,2})([\/-])(\d{1,2})\2(\d{4})/;
-var isMatch = dateType.test(Date);
-if(isMatch){
-  Log.Message("Success")
-}else{ 
-  Log.Message("Error")
-}
-}
