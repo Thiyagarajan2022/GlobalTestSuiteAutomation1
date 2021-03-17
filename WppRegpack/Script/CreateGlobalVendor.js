@@ -17,7 +17,7 @@ var ApproveInfo = [];
 STIME = WorkspaceUtils.StartTime();
 var VendorName,strt1,post,City,country,taxcode,companyReg,Currency,VendorGroup,controlAct,BankAccountName,bfc,Iban,Swift,
 BankActNo,Sortcode,company,attn,CpyTaxCode,Mail,phone,Taxderivation,Paymentmode,payterm,Annualsupplier,
-Supplier,Method,Section,TDSAplicable,GSTVendor,StateCode,Vendortype,SII_Tax ="";
+Supplier,Method,Section,TDSAplicable,GSTVendor,StateCode,Vendortype,licenceEndDate,licenceNumber,SII_Tax ="";
 var VendorNumber ="";
 var languagee="";
 var Language = "";
@@ -59,6 +59,10 @@ TextUtils.writeLog("Execution Start Time :"+STIME);
    if(EnvParams.Country.toUpperCase()=="SPAIN"){
   Runner.CallMethod("SPA_CreateGlobalVendor.spainSpecific",SII_Tax);
   }
+   if(EnvParams.Country.toUpperCase()=="UAE"){
+  Runner.CallMethod("UAE_CreateGlobalVendor.UAE_Specific",licenceEndDate,licenceNumber);
+  }
+  
   AttachDocument();
   Information();  
   ApprvalInformation();
@@ -255,10 +259,26 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
       SII_Tax = ExcelUtils.getRowDatas("SII Tax Group",EnvParams.Opco)
       Log.Message(SII_Tax)
       if((SII_Tax==null)||(SII_Tax=="")){ 
-      ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Client");
+      ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Global Vendor");
       }
-
       }
+      
+      if(EnvParams.Country.toUpperCase()=="UAE"){
+      licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+      Log.Message(licenceEndDate)
+      if((licenceEndDate==null)||(licenceEndDate=="")){ 
+      ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Global Vendor");
+      }
+      licenceNumber = ExcelUtils.getRowDatas("Licence No.",EnvParams.Opco)
+      Log.Message(licenceNumber)
+      if((licenceNumber==null)||(licenceNumber=="")){ 
+      ValidationUtils.verify(false,true,"Licence Number is Needed to Create a Global Vendor");
+      }
+      
+      
+      }
+      
+      
       Indicator.PushText("Playback");
 }
 
@@ -310,11 +330,16 @@ ReportUtils.logStep("INFO", "Moved to Vendor Management from Accounts Payable Me
 }
 
 function gotoVendorSearch(){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  aqUtils.Delay(100,"Vendor Management Workspace is Loading");
 }
 
+ aqUtils.Delay(4000,"Vendor Management Workspace is Loading");
  var CompanyNumber = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
+ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  aqUtils.Delay(100,"Vendor Management Workspace is Loading");
+}
+
   waitForObj(CompanyNumber);
   CompanyNumber.Click();
   var ExlArray = getExcelData_Company("Validate_Company",EnvParams.Opco)
@@ -357,9 +382,24 @@ function globalVendor(){
   
 ////=======================Vendor Creation=============////////
 function NewglobalVendor(){ 
+
+  //aqUtils.Delay(4000, Indicator.Text);
+   var Wizard_Name = Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption;
+   Log.Message(Wizard_Name)
+
+  var createVendorWizard = Sys.Process("Maconomy").SWTObject("Shell", Wizard_Name).SWTObject("Composite", "").SWTObject("Label", "*").WndCaption;
+  Log.Message(createVendorWizard);
+ if(createVendorWizard==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Country Vendor Master Data").OleValue.toString().trim())
+ ValidationUtils.verify(true,true,"Wizard title is matched with Create Vendor Wizard")
+ else
+ ValidationUtils.verify(false,true,"Wizard title is NOT matched with create vendor Wizard")
+ 
   
   var vendor_details1 = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite13.McTextWidget;  
   Sys.HighlightObject(vendor_details1);
+  while(!vendor_details1.isEnabled())
+      aqUtils.Delay(100,"Waiting until fields are enabled");
+      
   waitForObj(vendor_details1)
   vendor_details1.Click()
   vendor_details1.setText(VendorName+" "+STIME);
@@ -378,24 +418,25 @@ function NewglobalVendor(){
   var Country = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
   if(country!=""){
   Country.Click();
-  aqUtils.Delay(1000,"Loading dropdown values");
+  aqUtils.Delay(4000,"Loading dropdown values");
   WorkspaceUtils.DropDownList(country,"Country")
   }
 
   var tax = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget2;
-  tax.setText(taxcode); 
+  tax.setText(taxcode+Math.floor(Math.random() * 100)); 
   
   var regno = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget2;
-  regno.setText(companyReg);  
+  regno.setText(companyReg+Math.floor(Math.random() * 100));  
   
   var currency = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McPopupPickerWidget;
   waitForObj(currency); 
  if(Currency!=""){
   currency.Click();
-  Log.Message(Currency)
-  currency.Keys(Currency)
-  aqUtils.Delay(5000,"Plackback")
-//  WorkspaceUtils.DropDownList(Currency,"Currency")
+  //Log.Message(Currency)
+ // currency.Keys(Currency)
+ 
+  aqUtils.Delay(10000,"Loading Currency Values")
+   WorkspaceUtils.DropDownList(Currency,"Currency")
   }
   
   var vgroup = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.McPopupPickerWidget;
@@ -479,6 +520,7 @@ function VendorScreen(){
    var paymentTerms = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McPopupPickerWidget;
    if(payterm!=""){
     paymentTerms.Click();
+    aqUtils.Delay(3000,"Loading Dropdown Values");
     WorkspaceUtils.DropDownList(payterm,"Payment Terms")
     }
 
@@ -510,7 +552,7 @@ function Policy(){
       var scroll = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10;
       scroll.Click();
       scroll.MouseWheel(-200);
-      aqUtils.Delay(5000,"Plackback");
+      aqUtils.Delay(3000,"Loading Screen");
      var policy = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite19.McPopupPickerWidget;
      Sys.HighlightObject(policy)
      policy.Click();
@@ -570,12 +612,16 @@ function Policy(){
      var impactrequest = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite8.McTextWidget2;
     Sys.HighlightObject(impactrequest) 
     impactrequest.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
-      
-     var suppliercurrency = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McTextWidget2;
+  
+    var vendorCreation = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McPopupPickerWidget;
+      vendorCreation.Click();
+      WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",vendorCreation);
+        
+     var suppliercurrency = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite12.McTextWidget2;
     Sys.HighlightObject(suppliercurrency) ;
     suppliercurrency.setText(Supplier)
      
-     var annualsuppliercurrency = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.McTextWidget2;
+     var annualsuppliercurrency = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite17.McTextWidget;
       annualsuppliercurrency.setText(Annualsupplier)
      aqUtils.Delay(2000, Indicator.Text);
      var btnCreate = Aliases.Maconomy.Group8.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim());
@@ -799,8 +845,8 @@ function ApprvalInformation(){
            var y=0;
               for(var i=0;i<ApproverTable.getItemCount();i++){   
                  var approvers="";
-                  if(ApproverTable.getItem(i).getText_2(4)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim();
+                  if(ApproverTable.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
                   Log.Message("Approver level :" +i+ ": " +approvers);
                   Approve_Level[y] = approvers;
                   Log.Message(Approve_Level[y])

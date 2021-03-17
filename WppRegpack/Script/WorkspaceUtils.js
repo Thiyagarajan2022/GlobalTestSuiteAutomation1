@@ -63,12 +63,18 @@ function SpanishcloseAllWorkspaces(){
 // Calculate time difference between startTime and endTime
 function timeDifference(stime, etime)
 {
+  try{
   var seconds = (etime.getTime() - stime.getTime()) / 1000;
   var minutes = Math.floor(seconds / 60);
   var remainingSeconds = Math.floor(seconds%60);
   if(remainingSeconds<9)
     remainingSeconds = "0"+ remainingSeconds
   return minutes+"."+remainingSeconds;
+  }
+  catch(e)
+  {
+    Log.Message("");
+  }
 }
 
 
@@ -1311,6 +1317,7 @@ var checkMark = false;
 Sys.Process("Maconomy").Refresh();
 var list = "";
 try{
+  aqUtils.Delay(100,"Loading Dropdown Values");
   list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
   }
   catch(e){ 

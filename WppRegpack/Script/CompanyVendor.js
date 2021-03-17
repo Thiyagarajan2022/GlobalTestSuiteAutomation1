@@ -388,7 +388,7 @@ aqUtils.Delay(10000, Indicator.Text);
      WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",PreferredSupplier)
      aqUtils.Delay(1000, Indicator.Text);
      
-      var supplier =        Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite11.McTextWidget;
+      var supplier = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite11.McTextWidget;
       Sys.HighlightObject(supplier);
       aqUtils.Delay(10000, Indicator.Text);
      supplier.Click();
@@ -430,12 +430,17 @@ aqUtils.Delay(10000, Indicator.Text);
      var impactrequest = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite8.McTextWidget;
     Sys.HighlightObject(impactrequest) 
     impactrequest.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
-     
-    var suppliercurrency = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McTextWidget;
+
+     var vendorCreation = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McPopupPickerWidget
+     vendorCreation.Click();
+     WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",vendorCreation);
+
+    
+    var suppliercurrency = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite12.McTextWidget2;
     Sys.HighlightObject(suppliercurrency) ;
     suppliercurrency.setText(Supplier)
     
-     var annualsuppliercurrency = Aliases.Maconomy.CompanyVendor.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite13.McTextWidget;
+     var annualsuppliercurrency = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite17.McTextWidget;
       annualsuppliercurrency.setText(Annualsupplier)
      aqUtils.Delay(1000, Indicator.Text);     
      
