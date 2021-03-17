@@ -3474,6 +3474,90 @@ var list_D = [];
       } 
 
 }
+
+
+
+
+
+
+
+
+
+function VacationPeriod(ObjectAddrs,popupName,value,Vacation_Calander,fieldName){ 
+var checkmark = false;
+  aqUtils.Delay(1000, popupName);;
+    Sys.Desktop.KeyDown(0x11);
+    Sys.Desktop.KeyDown(0x47);
+    Sys.Desktop.KeyUp(0x11);
+    Sys.Desktop.KeyUp(0x47);
+
+aqUtils.Delay(5000, popupName);;
+    var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
+  waitForObj(code);
+  code.Click();
+
+    code.setText(Vacation_Calander);
+    aqUtils.Delay(3000, popupName);;
+    Sys.Desktop.KeyDown(0x09);
+    Sys.Desktop.KeyUp(0x09);
+    aqUtils.Delay(3000, popupName);;
+    
+    var period = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 2);
+    Sys.HighlightObject(period);
+    period.Click();
+    period.setText(value);
+    
+    var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
+    waitForObj(serch);
+
+  serch.Click();
+  var table = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2);
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+
+    waitForObj(OK);
+    Sys.HighlightObject(table);
+    var itemCount = table.getItemCount();
+    if(itemCount>0){
+    for(var i=0;i<itemCount;i++){
+      if((table.getItem(i).getText_2(0).OleValue.toString().trim()==Vacation_Calander) && (table.getItem(i).getText_2(1).OleValue.toString().trim()==value)){ 
+       var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+  waitForObj(OK);
+  OK.Click();
+
+          checkmark = true;
+          ValidationUtils.verify(true,true,fieldName+" is listed and  Selected in Maconomy");
+          break;
+          
+      }
+      else{ 
+        Sys.Desktop.KeyDown(0x28);
+        Sys.Desktop.KeyUp(0x28);
+        if(i==itemCount-1){ 
+          var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+  waitForObj(cancel);
+  cancel.Click();
+
+          Sys.HighlightObject(ObjectAddrs);
+          ObjectAddrs.setText("");
+          ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+        }
+      }
+      
+      }
+    }
+    else { 
+      var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+        waitForObj(cancel);
+        cancel.Click();
+
+      Sys.HighlightObject(ObjectAddrs);
+      ObjectAddrs.setText("");
+      ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+    }
+    
+    return checkmark;
+}
+
 //Strating Of TestCase
 
 //// Calculate time difference between startTime and endTime

@@ -3558,27 +3558,72 @@ aqUtils.Delay(5000, popupName);;
     return checkmark;
 }
 
-//Strating Of TestCase
 
-//// Calculate time difference between startTime and endTime
-//function timeDifference(stime, etime)
-//{
-//  var time1, time2;
-//  var start = stime.split(":");
-//  if(start[1]>0){ 
-//  time1 = Number(start[2]) + Number(start[1]*60);
-//  }
-//    if(start[0]>0){ 
-//    time1 = time1 + Number(start[0]*60*60);
-//  }
-//    
-//  var end = etime.split(":");
-//  if(end[1]>0){ 
-//  time2 = Number( end[2]) + Number(end[1]*60);
-//  }
-//  if(end[0]>0){ 
-//  time2 = time2 + Number(end[0]*60*60);
-//  }
-//  
-//  return time2-time1;
-//}
+
+function SearchByValue_Emp(ObjectAddrs,popupName,value,fieldName){ 
+var checkmark = false;
+  aqUtils.Delay(1000, popupName);;
+    Sys.Desktop.KeyDown(0x11);
+    Sys.Desktop.KeyDown(0x47);
+    Sys.Desktop.KeyUp(0x11);
+    Sys.Desktop.KeyUp(0x47);
+
+
+    var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+  waitForObj(code);
+  code.Click();
+
+    code.setText(value);
+
+    var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
+    waitForObj(serch);
+
+  serch.Click();
+  var table = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
+  var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+
+    waitForObj(OK);
+    Sys.HighlightObject(table);
+    var itemCount = table.getItemCount();
+    if(itemCount>0){
+    for(var i=0;i<itemCount;i++){
+      if(table.getItem(i).getText_2(0).OleValue.toString().trim()==value){ 
+       var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+  waitForObj(OK);
+  OK.Click();
+
+          checkmark = true;
+          ValidationUtils.verify(true,true,fieldName+" is listed and  Selected in Maconomy");
+          break;
+          
+      }
+      else{ 
+        Sys.Desktop.KeyDown(0x28);
+        Sys.Desktop.KeyUp(0x28);
+        if(i==itemCount-1){ 
+          var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+  waitForObj(cancel);
+  cancel.Click();
+
+          Sys.HighlightObject(ObjectAddrs);
+          ObjectAddrs.setText("");
+          ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+        }
+      }
+      
+      }
+    }
+    else { 
+      var cancel = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim());
+        waitForObj(cancel);
+        cancel.Click();
+
+      Sys.HighlightObject(ObjectAddrs);
+      ObjectAddrs.setText("");
+      ValidationUtils.verify(false,true,fieldName+" is not listed  in Maconomy");
+    }
+    
+    return checkmark;
+}
+
+
