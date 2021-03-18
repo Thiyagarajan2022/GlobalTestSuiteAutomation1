@@ -1470,6 +1470,7 @@ ReportUtils.logStep_Screenshot();
 Approve.Click();
 aqUtils.Delay(8000, "Waiting To Approve");;
 ValidationUtils.verify(true,true,"Global Client is Approved by "+Apvr)
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 TextUtils.writeLog("Global Client is Approved by "+Apvr);
 if(Approve_Level.length==lvl+1){
