@@ -15,7 +15,7 @@ var level =0;
 var Approve_Level = []; 
 var ApproveInfo = [];
 STIME = WorkspaceUtils.StartTime();
-var VendorName,Currency,attn,CpyTaxCode,Mail,phone,Taxderivation,Paymentmode,payterm,Annualsupplier,Supplier="";
+var VendorName,Currency,attn,CpyTaxCode,Mail,phone,Taxderivation,Paymentmode,payterm,Annualsupplier,licenceEndDate,licenceNumber,Supplier="";
 var VendorNumber ="";
 var languagee="";
 var Language = "";
@@ -52,6 +52,9 @@ try{
   NewglobalVendor();
   Policy();
   globalVendorTable();
+   if(EnvParams.Country.toUpperCase()=="UAE"){
+  Runner.CallMethod("UAE_CompanyVendor.UAE_Specific",licenceEndDate,licenceNumber);
+  }
   AttachDocument();
   Information();
   ApprvalInformation();
@@ -133,6 +136,19 @@ function getDetails(){
         }
       if((VendorName==null)||(VendorName=="")){ 
       ValidationUtils.verify(false,true,"Vendor Name is Needed to Create Company Vendor");
+      }
+      
+      if(EnvParams.Country.toUpperCase()=="UAE"){
+      licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+      Log.Message(licenceEndDate)
+      if((licenceEndDate==null)||(licenceEndDate=="")){ 
+      ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Company Vendor");
+      }
+      licenceNumber = ExcelUtils.getRowDatas("Licence No.",EnvParams.Opco)
+      Log.Message(licenceNumber)
+      if((licenceNumber==null)||(licenceNumber=="")){ 
+      ValidationUtils.verify(false,true,"Licence Number is Needed to Create a Company Vendor");
+      }
       }
       
       Indicator.PushText("Playback");
@@ -568,7 +584,8 @@ aqUtils.Delay(10000, Indicator.Text);
 function AttachDocument(){ 
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(10000, Indicator.Text);
-   var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl2;   
+   var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 10);
+   //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl2;   
   Sys.HighlightObject(doc);
   doc.HoverMouse();
   doc.HoverMouse();
@@ -603,8 +620,11 @@ aqUtils.Delay(10000, Indicator.Text);
   
   if(EnvParams.Country.toUpperCase()=="SPAIN")
   var info = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3
+  else if(EnvParams.Country.toUpperCase()=="UAE")
+  var info = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
   else
   var info = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
+  
   
   info.HoverMouse();
   info.HoverMouse();
@@ -616,7 +636,12 @@ aqUtils.Delay(10000, Indicator.Text);
   aqUtils.Delay(2000, "Playback");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(10000, Indicator.Text);
+  
+  if(EnvParams.Country.toUpperCase()=="UAE")
+  var submit = NameMapping.Sys.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3
+  else
   var submit = Aliases.Maconomy.GVendor.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;  
+  
   Sys.HighlightObject(submit);
   submit.HoverMouse();
   submit.HoverMouse();
@@ -658,8 +683,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
            var y=0;
               for(var i=0;i<ApproverTable.getItemCount();i++){   
                  var approvers="";
-                  if(ApproverTable.getItem(i).getText_2(3)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(4).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim();
+                  if(ApproverTable.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+                  approvers = EnvParams.Opco+"*"+VendorNumber+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
                   Log.Message("Approver level :" +i+ ": " +approvers);
                   Approve_Level[y] = approvers;
                   Log.Message(Approve_Level[y])

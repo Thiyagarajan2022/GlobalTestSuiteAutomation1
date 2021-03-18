@@ -612,8 +612,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     
 }
 aqUtils.Delay(5000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    aqUtils.Delay(500, "Job Quote is loading");
 } 
 
 ValidationUtils.verify(true,true,"Quote has Submitted");
@@ -633,9 +633,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 } 
 if(EnvParams.Language.toUpperCase()=="SPANISH"){
 aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.Spanish.Close_Workspace.Exists()){ 
-ImageRepository.Spanish.Close_Workspace.Click();
-}
+//if(ImageRepository.Spanish.Close_Workspace.Exists()){ 
+//ImageRepository.Spanish.Close_Workspace.Click();
+//}
 aqUtils.Delay(2000, Indicator.Text);
 }
 
@@ -658,10 +658,10 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 
 if(EnvParams.Language.toUpperCase()=="SPANISH"){
-aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.Spanish.Open_Workspace.Exists()){ 
-ImageRepository.Spanish.Open_Workspace.Click();
-}
+//aqUtils.Delay(2000, Indicator.Text);
+//if(ImageRepository.Spanish.Open_Workspace.Exists()){ 
+//ImageRepository.Spanish.Open_Workspace.Click();
+//}
 aqUtils.Delay(2000, Indicator.Text);
 }
 
