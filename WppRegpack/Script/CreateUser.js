@@ -55,7 +55,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 Language = EnvParams.LanChange(EnvParams.Language);
 WorkspaceUtils.Language = Language;
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
-Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco)
+Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -230,11 +230,15 @@ ValidationUtils.verify(false,true,"User Type is Needed to Create a User");
 }
 
 validityPeriodFrom= ExcelUtils.getRowDatas("Valid From",EnvParams.Opco)
+if(validityPeriodFrom = "AUTOFILL")
+validityPeriodFrom = getSpecificDate(0);
 if((validityPeriodFrom==null)||(validityPeriodFrom=="")){ 
 ValidationUtils.verify(false,true,"Valid Period From is Needed to Create a User");
 }
 
 validityPeriodTo= ExcelUtils.getRowDatas("Valid To",EnvParams.Opco)
+if(validityPeriodTo = "AUTOFILL")
+validityPeriodTo = getSpecificDate(30);
 if((validityPeriodTo==null)||(validityPeriodTo=="")){ 
 ValidationUtils.verify(false,true,"Valid Period To is Needed to Create a User");
 }
@@ -603,37 +607,49 @@ ExcelUtils.WriteExcelSheet("UserCreation_UserName",EnvParams.Opco,"Data Manageme
 
 
 function CredentialLogin(){ 
-
-for(var i=level;i<Approve_Level.length;i++){
+  var AppvLevl = [];
+for(var i=0;i<Approve_Level.length;i++){
   var UserN = true;
   var temp="";
+  var temp1="";
   var Cred = Approve_Level[i].split("*");
-  for(var j=1;j<3;j++){
+  for(var j=2;j<4;j++){
+  temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SPA")==-1)&&(Cred[j].indexOf("SGP")==-1)&&(Cred[j].indexOf("MYS")==-1)&&(Cred[j].indexOf("UAE")==-1)&&(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
      var sheetName = "Agency Users";
      workBook = Project.Path+excelName;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
   }
-  else if((Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SPA")!=-1)||(Cred[j].indexOf("SGP")!=-1)||(Cred[j].indexOf("MYS")!=-1)||(Cred[j].indexOf("UAE")!=-1)||(Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
   { 
+
     var sheetName = "SSC Users";
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.SSCLogin(Cred[j],"Username");
   }
+
   if(temp.length!=0){
-    temp = temp+"*"+j;
-    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+temp;
-  break;
+    temp1 = temp1+temp+"*"+j+"*";
+//  break;
   }
   }
-  if((temp=="")||(temp==null))
+  if((temp1=="")||(temp1==null))
   Log.Error("User Name is Not available for level :"+i);
+  Log.Message(temp1)
+  AppvLevl[i] = temp1;
 }
-WorkspaceUtils.closeAllWorkspaces();
+  ApproveInfo = levelMatch(AppvLevl)
+  Log.Message("-----Approvers-------------")
+  for(var i=0;i<ApproveInfo.length;i++){
+    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
+    Log.Message(ApproveInfo[i]);
+    }
+
 }
+
 
 
 

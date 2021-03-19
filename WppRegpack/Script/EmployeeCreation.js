@@ -135,7 +135,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
-Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
+//Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
 var Add_Visible0 = true;
 var New_Employee = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).WaitSWTObject("SingleToolItemControl", "", 3,60000);
 while(Add_Visible0){
@@ -173,6 +173,8 @@ if((comapany==null)||(comapany=="")){
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Employee");
 }
 DateEmployed = ExcelUtils.getRowDatas("DateEmployed",EnvParams.Opco)
+if(DateEmployed = "AUTOFILL")
+DateEmployed = getSpecificDate(0);
 if((DateEmployed==null)||(DateEmployed=="")){ 
 ValidationUtils.verify(false,true,"DateEmployed is Needed to Create a Employee");
 }
@@ -187,6 +189,8 @@ ValidationUtils.verify(false,true,"Email is Needed to Create a Employee");
 ApproverGroup = ExcelUtils.getRowDatas("ApproverGroup",EnvParams.Opco)
 
 EmploymentType= ExcelUtils.getRowDatas("EmploymentType",EnvParams.Opco)
+if(EmploymentType!="Freelancer")
+EmploymentType = "Freelancer";
 if((EmploymentType==null)||(EmploymentType=="")){ 
 ValidationUtils.verify(false,true,"EmploymentType is Needed to Create a Employee");
 }
@@ -579,8 +583,9 @@ if(WeekCalendarNo!=""){
 }
 
   
-
-var CreateUser_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "").OleValue.toString().trim());
+if(EmploymentType="Freelancer")
+{
+var CreateUser_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
 if(CreateUser_1.getSelection()){ 
   CreateUser_1.Click();
    ValidationUtils.verify(true,true,"Create user is Unselected");
@@ -588,7 +593,9 @@ if(CreateUser_1.getSelection()){
 else{ 
   ReportUtils.logStep("INFO","Create User Check Box is Already UnSelected");
 }
-    
+}    
+
+
     
 Delay(2000); 
 var submit = Aliases.Maconomy.Absence.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee Submit").OleValue.toString().trim());
@@ -996,8 +1003,8 @@ for(var v=0;v<table.getItemCount();v++){
     
 ReportUtils.logStep_Screenshot();
 
-ValidationUtils.verify(flag,true,"Created Employee Vendor is available in system");
-TextUtils.writeLog("Created Employee Vendor is available in system"); 
+//ValidationUtils.verify(flag,true,"Created Employee Vendor is available in system");
+//TextUtils.writeLog("Created Employee Vendor is available in system"); 
   
   
 if(flag){ 
@@ -1407,8 +1414,8 @@ for(var v=0;v<table.getItemCount();v++){
     
     
 
-ValidationUtils.verify(flag,true,"Created Employee Vendor is available in system");
-TextUtils.writeLog("Created Employee Vendor is available in system");  
+//ValidationUtils.verify(flag,true,"Created Employee Vendor is available in system");
+//TextUtils.writeLog("Created Employee Vendor is available in system");  
   
   
 if(flag){ 
@@ -1837,85 +1844,49 @@ var colsList = [];
 }
 
 
-
-
-
 function CredentialLogin(){ 
-// var Credentials = [];
-// Credentials[0] = "1307*1307200357*1307 Finance (13079505)*OpCo - Billers";
-// Credentials[1] = "1307*1307200357*Chinese Manager 2 (120110071)*Chinese Employee 1 (130710040)";
-// Credentials[2] = "1307*1307200357*Central Team - Client Management*Central Team - Vendor Management";
-// 
-// var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
-// var sheetName = "Agency Users";
-// var sheetName = "SSC Users";
-//Central Team - Vendor Management
-//"1307*1307200357*Central Team - Client Management*SSC - Expense Cashiers"
-
-for(var i=level;i<Approve_Level.length;i++){
+  var AppvLevl = [];
+for(var i=0;i<Approve_Level.length;i++){
   var UserN = true;
   var temp="";
+  var temp1="";
   var Cred = Approve_Level[i].split("*");
   for(var j=2;j<4;j++){
-//    Log.Message(Cred[j])
-//Log.Message(j)
+  temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SPA")==-1)&&(Cred[j].indexOf("SGP")==-1)&&(Cred[j].indexOf("MYS")==-1)&&(Cred[j].indexOf("UAE")==-1)&&(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
-//     var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
      var sheetName = "Agency Users";
      workBook = Project.Path+excelName;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
   }
-  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SPA")!=-1)||(Cred[j].indexOf("SGP")!=-1)||(Cred[j].indexOf("MYS")!=-1)||(Cred[j].indexOf("UAE")!=-1)||(Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
   { 
-//    var workBook = "H:\\WppRegression_v12.50\\WppRegression_v12.50\\WppRegPack\\Testing Type\\SysTest\\China\\DS_SYSTEST_EN.xls";
+
     var sheetName = "SSC Users";
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.SSCLogin(Cred[j],"Username");
   }
-//  else{ 
-//   var Eno =  Cred[j].substring(Cred[j].indexOf("(")+1,Cred[j].indexOf(")") )
-//    if(UserN){ 
-//      goToHR();
-//      UserN = false;
-//    }
-//    temp = searchNumber(Eno);
-//  }
-//  Log.Message(temp)
+
   if(temp.length!=0){
-    temp = temp+"*"+j;
-    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+temp;
-  break;
+    temp1 = temp1+temp+"*"+j+"*";
+//  break;
   }
   }
-  if((temp=="")||(temp==null))
+  if((temp1=="")||(temp1==null))
   Log.Error("User Name is Not available for level :"+i);
-//  Log.Message("Logins :"+temp);
+  Log.Message(temp1)
+  AppvLevl[i] = temp1;
 }
-WorkspaceUtils.closeAllWorkspaces();
-
-// ExcelUtils.setExcelName(workBook, sheetName, true);
-//
-// Cred[2] = ExcelUtils.SSCLogin(Cred[2],"Username");
-// Cred[3] = ExcelUtils.SSCLogin(Cred[3],"Username");
+  ApproveInfo = levelMatch(AppvLevl)
+  Log.Message("-----Approvers-------------")
+  for(var i=0;i<ApproveInfo.length;i++){
+    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
+    Log.Message(ApproveInfo[i]);
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function CreateEmployee(){ 
 TextUtils.writeLog("Create Employee and Employee vendor Started"); 

@@ -3237,28 +3237,28 @@ ObjAdd.HoverMouse();
 }
 else
 Log.Error("Object is not Visible/Enabled")
+}
 
-//var Start = StartwaitTime();
-//var waitTime = true;
-//var Difference = 0;
-//while(waitTime)
-//if(Difference<61){
-//if(ObjAdd.isEnabled()){
-//Sys.HighlightObject(ObjAdd);
-//ObjAdd.HoverMouse();
-////ObjAdd.Click();
-//waitTime = false;
-//}
-//else{
-//Sys.HighlightObject(ObjAdd);
-//var End = EndTime();
-//Difference = End - Start;
-//}
-//}
-//else{
-// ValidationUtils.verify(true,false,"Screen is not Responding more than a minute");
-//}
-
+/*
+ Get Date in MM/DD/YYYY format. 
+ Parameter daysFromToday:  0 returns todays date
+*/
+function getSpecificDate(daysFromToday)
+{
+  var date = new Date();
+  date.setDate(date.getDate() + daysFromToday);
+  var dd = date.getDate();
+  var mm = date.getMonth()+1; 
+  var yyyy = date.getFullYear();
+  if(dd<10) {
+      dd='0'+dd;
+  } 
+  if(mm<10) {
+      mm='0'+mm;
+  } 
+  date = mm+'/'+dd+'/'+yyyy;
+  Log.Message(date);
+  return date;
 }
 
 function levelMatch(Approve_Level){
