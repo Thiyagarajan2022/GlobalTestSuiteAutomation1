@@ -20,6 +20,7 @@ var count = true;
 var checkmark = false;
 var STIME = "";
 var clientName,brandname,defaultname,strt1,strt2,P_code,P_District,country,clientlan,taxcode,companyReg,currency,clientgrp,controlAct,bfc,Fax,parentClient,ISA,company,attn,mail,phone,AccDir,AccMan,Paymentmode,payterm,Comtaxcode,level1Tax,sales,intercomp,cost,standSales,brand,product,State,GST,PAN,TAN,SII_Tax,TIN ="";
+var Licence_No,Licence_EndDate = "";
 var ClientNumber = "";
 var client1="";
 var Language = "";
@@ -73,6 +74,10 @@ Runner.CallMethod("IND_CreateGlobalBrand.indiaSpecific",State,GST,PAN,TAN,TIN);
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 Runner.CallMethod("SPA_GlobalBrand.spainSpecific",SII_Tax);
 }
+if(EnvParams.Country.toUpperCase()=="UAE"){
+Runner.CallMethod("UAE_CreateClient.UAE_Specific",Licence_No,Licence_EndDate);
+}
+
 //attachDocument();
 Information();
 ApprvalInformation();
@@ -156,6 +161,9 @@ for(var i=1;i<=childCC;i++){
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
 if(Client_Managt.isVisible()){ 
 Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
+Log.Message(Language);
+Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim())
+
 Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim());
@@ -293,6 +301,21 @@ SII_Tax = ExcelUtils.getRowDatas("SII Tax Group",EnvParams.Opco)
 if((SII_Tax==null)||(SII_Tax=="")){ 
 ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Global Brand");
 }
+
+}
+
+Licence_No,Licence_EndDate = "";
+if(EnvParams.Country.toUpperCase()=="UAE"){
+Licence_EndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+if((Licence_EndDate==null)||(Licence_EndDate=="")){ 
+ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Client");
+}
+
+Licence_No = ExcelUtils.getRowDatas("Licence No.",EnvParams.Opco)
+if((Licence_No==null)||(Licence_No=="")){ 
+ValidationUtils.verify(false,true,"Licence No. is Needed to Create a Client");
+}
+
 
 }
 Indicator.PushText("Playback");
@@ -780,15 +803,26 @@ save.Click();
 function attachDocument(){ 
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
 //  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Document
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
+  aqUtils.Delay(4000, "Finding Document");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  } 
  if(EnvParams.Country.toUpperCase()=="INDIA"){
-  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
+//  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
+  var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
+  }else if( (EnvParams.Country.toUpperCase()=="SPAIN") ||(EnvParams.Country.toUpperCase()=="UAE") ) { 
+//    var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl
+    var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
   }
   else{ 
-  var doc =  Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document
+//  var doc =  Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
+  var doc =  Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.history;
   }
+  
+  Sys.HighlightObject(doc);
   Sys.HighlightObject(doc);
   doc.HoverMouse();
   doc.HoverMouse();
@@ -821,7 +855,7 @@ function Information(){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")){
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")||(EnvParams.Country.toUpperCase()=="UAE")){
   var info = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl
   }else{ 
   var info = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl2;
@@ -837,7 +871,7 @@ if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")){
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")||(EnvParams.Country.toUpperCase()=="UAE")){
   var submit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl2;
   }else{
   var submit = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
@@ -846,6 +880,7 @@ if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=
   submit.HoverMouse();
   submit.HoverMouse();
   submit.Click();
+  aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -855,7 +890,7 @@ function ApprvalInformation(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")){
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")||(EnvParams.Country.toUpperCase()=="UAE")){
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;;
  }else{
  var ClientApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl
@@ -863,12 +898,14 @@ if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
- if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+ aqUtils.Delay(2000, Indicator.Text);
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+ 
  if(ImageRepository.ImageSet.Maximize.Exists()){
 ImageRepository.ImageSet.Maximize.Click();
+aqUtils.Delay(2000, Indicator.Text);
 }
+
  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -878,6 +915,7 @@ ImageRepository.ImageSet.Maximize.Click();
  Sys.HighlightObject(ClientApproval);
  ClientApproval.HoverMouse();
  ClientApproval.Click();
+ aqUtils.Delay(2000, Indicator.Text);
  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -888,8 +926,8 @@ ImageRepository.ImageSet.Maximize.Click();
    var y=0;
   for(var i=0;i<ApproverTable.getItemCount();i++){   
      var approvers="";
-      if(ApproverTable.getItem(i).getText_2(3)!="Approved"){
-      approvers = EnvParams.Opco+"*"+BrdNum+"*"+ApproverTable.getItem(i).getText_2(4).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(5).OleValue.toString().trim();
+      if(ApproverTable.getItem(i).getText_2(5)!="Approved"){
+      approvers = EnvParams.Opco+"*"+BrdNum+"*"+ApproverTable.getItem(i).getText_2(6).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
       Log.Message("Approver level :" +i+ ": " +approvers);
 //      Approve_Level[y] = "1307*1307100030*1307 SeniorFinance (13079510)*1307 Management (13079507)*"
       Approve_Level[y] = approvers;
@@ -1179,6 +1217,10 @@ var GBName = "";
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 var table = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
 waitForObj(table);
 Sys.HighlightObject(table);
@@ -1391,14 +1433,16 @@ var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite
 
 //   var ApproverTable = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 var ApproverTable = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-  Sys.HighlightObject(ApproverTable);
-  ReportUtils.logStep_Screenshot();
+Sys.HighlightObject(ApproverTable);
+ReportUtils.logStep_Screenshot();
 for(var i=0;i<ApproverTable.getItemCount();i++){   
 var approvers="";
-if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+if(ApproverTable.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
 ValidationUtils.verify(true,false,"Created Global Client is not Approved")
 }
 }
+
+
 //  var closeApproval = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 var closeApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.PTabItemPanel2.TabControl;
   Sys.HighlightObject(closeApproval);
