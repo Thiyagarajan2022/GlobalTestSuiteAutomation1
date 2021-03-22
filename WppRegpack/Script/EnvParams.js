@@ -49,16 +49,16 @@ if((BuiltIn.ParamStr(i).indexOf("{")!=-1)&&(BuiltIn.ParamStr(i).indexOf("}")!=-1
 }else{ 
   if((BuiltIn.ParamStr(i).indexOf("{")!=-1)&&(BuiltIn.ParamStr(i).indexOf("}")==-1)){ 
     Stringtemp = Stringtemp + BuiltIn.ParamStr(i)+" "; 
-    Log.Message("Stringtemp :"+Stringtemp)
+    //Log.Message("Stringtemp :"+Stringtemp)
     stats = true  
     continue;
   }else if((BuiltIn.ParamStr(i).indexOf("{")==-1)&&(BuiltIn.ParamStr(i).indexOf("}")==-1)&&(stats)){ 
     Stringtemp = Stringtemp + BuiltIn.ParamStr(i)+" ";
-    Log.Message("Stringtemp :"+Stringtemp)
+    //Log.Message("Stringtemp :"+Stringtemp)
     continue;
   }else if((BuiltIn.ParamStr(i).indexOf("{")==-1)&&(BuiltIn.ParamStr(i).indexOf("}")!=-1)){ 
     Stringtemp = Stringtemp + BuiltIn.ParamStr(i);
-    Log.Message("Stringtemp :"+Stringtemp)
+    //Log.Message("Stringtemp :"+Stringtemp)
     Params = Stringtemp;
     Stringtemp = "";
     stats = false;

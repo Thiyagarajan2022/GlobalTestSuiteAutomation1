@@ -226,8 +226,8 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 function New_Job() {
 ReportUtils.logStep("INFO", "Enter Job Details");
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  aqUtils.Delay(100,"Job workspace is loading");
 }
 
 //To Maximaize the window

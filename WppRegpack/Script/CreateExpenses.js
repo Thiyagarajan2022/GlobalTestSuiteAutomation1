@@ -225,24 +225,24 @@ function CreateEmpxnse(){
 //  ReportUtils.logStep_Screenshot("");
 //  }else{
 
-var closeFilter = "";
-if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.isVisible()){
-closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-Sys.HighlightObject(closeFilter)
-}
-else{ 
-closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-Sys.HighlightObject(closeFilter)
-}
-//  var closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-  Log.Message(closeFilter.FullName)
-  waitForObj(closeFilter)
-  ReportUtils.logStep_Screenshot("");
-  closeFilter.Click();
+//var closeFilter = "";
+//if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.isVisible()){
+//closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
+//Sys.HighlightObject(closeFilter)
+//}
+//else{ 
+//closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+//Sys.HighlightObject(closeFilter)
+//}
+////  var closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
+//  Log.Message(closeFilter.FullName)
+//  waitForObj(closeFilter)
+//  ReportUtils.logStep_Screenshot("");
+//  closeFilter.Click();
+////  }
+//  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
 //  }
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
                   
 var expenses = "";
 if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.isVisible()){

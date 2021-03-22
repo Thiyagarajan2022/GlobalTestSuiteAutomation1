@@ -788,9 +788,9 @@ for(var i=0;i<invoiceTable.getItemCount()-1;i++){
 //  }
   Log.Message("temp :"+temp)
   Log.Message("percentage :"+percentage)
-  if(temp!=percentage){ 
-    ValidationUtils.verify(true,false,"Percentage missMatch with Datasheet");
-  }
+ // if(temp!=percentage){ 
+   // ValidationUtils.verify(true,false,"Percentage missMatch with Datasheet");
+//  }
   
 //  var temp = invoiceTable.getItem(i).getText_2(2).OleValue.toString().trim();
 //  Esplit[1] = parseFloat(Esplit[1].toString())/100;
