@@ -52,9 +52,9 @@ try{
   NewglobalVendor();
   Policy();
   globalVendorTable();
-   if(EnvParams.Country.toUpperCase()=="UAE"){
-  Runner.CallMethod("UAE_CompanyVendor.UAE_Specific",licenceEndDate,licenceNumber);
-  }
+//   if(EnvParams.Country.toUpperCase()=="UAE"){
+ // Runner.CallMethod("UAE_CompanyVendor.UAE_Specific",licenceEndDate,licenceNumber);
+ // }
   AttachDocument();
   Information();
   ApprvalInformation();
@@ -138,18 +138,18 @@ function getDetails(){
       ValidationUtils.verify(false,true,"Vendor Name is Needed to Create Company Vendor");
       }
       
-      if(EnvParams.Country.toUpperCase()=="UAE"){
-      licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
-      Log.Message(licenceEndDate)
-      if((licenceEndDate==null)||(licenceEndDate=="")){ 
-      ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Company Vendor");
-      }
-      licenceNumber = ExcelUtils.getRowDatas("Licence No.",EnvParams.Opco)
-      Log.Message(licenceNumber)
-      if((licenceNumber==null)||(licenceNumber=="")){ 
-      ValidationUtils.verify(false,true,"Licence Number is Needed to Create a Company Vendor");
-      }
-      }
+//      if(EnvParams.Country.toUpperCase()=="UAE"){
+//      licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+//      Log.Message(licenceEndDate)
+//      if((licenceEndDate==null)||(licenceEndDate=="")){ 
+//      ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Company Vendor");
+//      }
+//      licenceNumber = ExcelUtils.getRowDatas("Licence No.",EnvParams.Opco)
+//      Log.Message(licenceNumber)
+//      if((licenceNumber==null)||(licenceNumber=="")){ 
+//      ValidationUtils.verify(false,true,"Licence Number is Needed to Create a Company Vendor");
+//      }
+//      }
       
       Indicator.PushText("Playback");
 }
@@ -722,6 +722,7 @@ aqUtils.Delay(10000, Indicator.Text);
         }
 }
 
+
 function CredentialLogin(){ 
   var AppvLevl = [];
 for(var i=0;i<Approve_Level.length;i++){
@@ -732,14 +733,14 @@ for(var i=0;i<Approve_Level.length;i++){
   for(var j=2;j<4;j++){
   temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SPA")==-1)&&(Cred[j].indexOf("SGP")==-1)&&(Cred[j].indexOf("MYS")==-1)&&(Cred[j].indexOf("UAE")==-1)&&(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
      var sheetName = "Agency Users";
      workBook = Project.Path+excelName;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
   }
-  else if((Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SPA")!=-1)||(Cred[j].indexOf("SGP")!=-1)||(Cred[j].indexOf("MYS")!=-1)||(Cred[j].indexOf("UAE")!=-1)||(Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
   { 
 
     var sheetName = "SSC Users";
@@ -763,8 +764,9 @@ for(var i=0;i<Approve_Level.length;i++){
     ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
     Log.Message(ApproveInfo[i]);
     }
-//WorkspaceUtils.closeAllWorkspaces();
+
 }
+
 
 
 
