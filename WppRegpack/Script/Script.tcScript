@@ -195,6 +195,7 @@
 				<child name="UAE_CreateClient" key="{DDF699D8-0E53-4E78-ABE6-3DF33EE535A6}" path="UAE_CreateClient.js" />
 				<child name="UAE_CreateGlobalVendor" key="{B8FD2C14-113E-4C6F-B277-58F90A641B1A}" path="UAE_CreateGlobalVendor.js" />
 				<child name="UAE_CompanyVendor" key="{88C38FED-AFC0-4DD7-9863-1F35B273FE13}" path="UAE_CompanyVendor.js" />
+				<child name="UAE_CompanyClient" key="{B4BDC97A-837E-4362-835B-8B46F62BDD29}" path="UAE_CompanyClient.js" />
 			</folder>
 		</folder>
 		<folder name="EnvConfig">
