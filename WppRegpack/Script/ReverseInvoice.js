@@ -7,6 +7,14 @@
 //USEUNIT Restart
 //USEUNIT CreateVendorInvoice
 
+
+/** 
+ * This script reverse created vendor invoice
+ * @author  : Muthu Kumar M
+ * @version : 2.0
+ * Created Date :03/23/2021
+ */
+ 
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
 var sheetName = "Reverse Invoice";
@@ -63,6 +71,9 @@ invoiceAllocation();
 }catch(err){ 
   Log.Message(err);
 }
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -205,7 +216,127 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
 TextUtils.writeLog("New Invoice Button is Clicked");
 
-TextUtils.writeLog("New Invoice Button is Clicked");
+
+aqUtils.Delay(2000, "Waiting for Action");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(5000, "Waiting for Action");
+var Create_Method = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McPopupPickerWidget", "", 2);
+Create_Method.Keys(" ");
+aqUtils.Delay(5000, "Waiting for Action");
+Create_Method.Click();
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Copy Invoice").OleValue.toString().trim(),"Create Method");
+aqUtils.Delay(2000, "Waiting for Action");
+
+var Next = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim());
+Sys.HighlightObject(Next);
+Next.Click();
+aqUtils.Delay(5000, "Waiting for Action");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+//var Vendorno = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 4).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McValuePickerWidget", "", 2);
+
+
+var invoicenumber = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 2).SWTObject("McValuePickerWidget", "", 2);
+Sys.HighlightObject(invoicenumber)
+ if(InvoiceNo!=""){
+  invoicenumber.Click();
+//  VPWSearchByValue(invoicenumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor Invoice").OleValue.toString().trim(),InvoiceNo,"Invoice Number");
+  VPWSearchByValue(invoicenumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor Invoice").OleValue.toString().trim(),InvoiceNo,"Invoice Number");
+  TextUtils.writeLog("Vendor is selected from macanomy:"+InvoiceNo+"");  
+  }
+ else{ 
+    ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment File");
+  }
+  
+var ReverseCopying = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 5).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
+if(ReverseCopying.getSelection()){ 
+  ReverseCopying.HoverMouse();
+  ReportUtils.logStep_Screenshot("");
+  ReportUtils.logStep("INFO", "ReverseCopying");
+    Log.Message("ReverseCopying")
+    checkmark = true;
+  }
+  else{
+    ReverseCopying.Click();
+    TextUtils.writeLog("ReverseCopying is Clicked");
+  }
+  
+  
+var OriginalExchangeRate = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 6).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
+//if(OriginalExchangeRate.getSelection()){ 
+//  OriginalExchangeRate.HoverMouse();
+//  ReportUtils.logStep_Screenshot("");
+//  ReportUtils.logStep("INFO", "OriginalExchangeRate");
+//    Log.Message("OriginalExchangeRate")
+//    checkmark = true;
+//  }
+//  else{
+//    OriginalExchangeRate.Click();
+//    TextUtils.writeLog("OriginalExchangeRate is Clicked");
+//  }
+  
+var EntryDate = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("McDatePickerWidget", "", 2);
+if(EDate!=""){
+  EntryDate.Click();
+EntryDate.setText(EDate);
+  }
+  
+var invoiceDate = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 2).SWTObject("McDatePickerWidget", "", 2);
+if(IDate!=""){
+invoiceDate.setText(IDate);
+  }
+  
+var Descrip = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2);
+if(Description!=""){
+  Descrip.Click();
+Descrip.setText(Description);
+ValidationUtils.verify(true,true,"Description Entered in Invoice Allocation");
+   }
+   
+aqUtils.Delay(5000, "Waiting for Action");
+var InvoiceType = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 5).SWTObject("McPopupPickerWidget", "", 2);
+InvoiceType.Keys(" ");
+aqUtils.Delay(5000, "Waiting for Action");
+InvoiceType.Click();
+Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Memo").OleValue.toString().trim())
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Memo").OleValue.toString().trim(),"Create Method");
+aqUtils.Delay(2000, "Waiting for Action");
+
+//InvoiceType.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Memo").OleValue.toString().trim());
+aqUtils.Delay(5000, "Waiting for Action");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
+if(EnvParams.Country.toUpperCase()=="INDIA"){  
+
+var TransactionType =  Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 6).SWTObject("McValuePickerWidget", "", 2)
+//if((TransactionType.getText()=="")||(TransactionType.getText()==null)){
+TransactionType.Click();
+SearchByValue(TransactionType,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim(),"Transaction Type");
+//}  
+}
+
+var InvoiceNumber = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 7).SWTObject("McTextWidget", "", 2);
+if(InvoiceNo!=""){
+InvoiceNumber.setText(NewInvoiceNo);
+ValidationUtils.verify(true,true,"Invoice No Entered in Invoice Allocation");
+   }
+   
+   
+var companyNo = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 3);
+if(EnvParams.Opco!=""){
+companyNo.Click();
+WorkspaceUtils.SearchByValue(companyNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company Number");
+  }
+var Create = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim());
+Sys.HighlightObject(Create);
+Create.Click();
+
+  
+//TextUtils.writeLog("New Invoice Button is Clicked");
+/*
 var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
 if(EnvParams.Opco!=""){
 companyNo.Click();
@@ -298,6 +429,9 @@ var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
+
+*/
+
 TextUtils.writeLog("Company Number,Purchase Order Number,Entry Date,Description,Invoice Number is Entered and Saved");
 //if(ImageRepository.ImageSet.OK_Button.Exists()){ 
 //var Okay = Aliases.Maconomy.Shell7.Composite.Button;
@@ -465,13 +599,12 @@ aqUtils.Delay(2000, "Waiting for Action");
 action.Click();
 
 
-action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attach Document").OleValue.toString().trim());
+action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attach Vendor Document").OleValue.toString().trim());
 
   TextUtils.writeLog("Document is Attached for Invoice");
-  var dicratory = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-  WorkspaceUtils.waitForObj(dicratory);
+  var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
-  var opendoc = Sys.Process("Maconomy").Window("#32770", "Open file", 1).Window("Button", "&Open", 1);
+  var opendoc = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("Button", "&Open", 1);
   Sys.HighlightObject(opendoc);
   opendoc.HoverMouse();
   ReportUtils.logStep_Screenshot();
@@ -494,7 +627,7 @@ action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Proje
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  action.PopupMenu.Click("Submit for Approval");
+  action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit for Approval").OleValue.toString().trim());
   }
   ReportUtils.logStep_Screenshot();
   aqUtils.Delay(8000, "Submitted for Approval");;
@@ -530,7 +663,7 @@ var checkmark = false;
 //    Log.Message(value)
     var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
     WorkspaceUtils.waitForObj(code);
-    code.setText("Vendor Invoice");
+    code.setText("Vendor Credit Memo");
 //    aqUtils.Delay(3000, Indicator.Text);;
     code.Keys("[Tab]");
     var code = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
@@ -554,7 +687,7 @@ WorkspaceUtils.waitForObj(OK);
     var itemCount = table.getItemCount();
     if(itemCount>0){ 
     for(var i=0;i<itemCount;i++){
-      if((table.getItem(i).getText_2(0).OleValue.toString().trim()=="Vendor Invoice")&&(table.getItem(i).getText_2(1).OleValue.toString().trim()==EnvParams.Opco)){ 
+      if((table.getItem(i).getText_2(0).OleValue.toString().trim()=="Vendor Credit Memo")&&(table.getItem(i).getText_2(1).OleValue.toString().trim()==EnvParams.Opco)){ 
        var OK = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "OK").OleValue.toString().trim())
        WorkspaceUtils.waitForObj(OK);
 //  if(OK.isEnabled()){
