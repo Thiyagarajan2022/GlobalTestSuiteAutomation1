@@ -355,16 +355,18 @@ closeFilter.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-var Tabfolder = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine;
-WorkspaceUtils.waitForObj(Tabfolder);
-for(var i=0;i<Tabfolder.ChildCount;i++){ 
-  if((Tabfolder.Child(i).isVisible())&&(Tabfolder.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Journal (Ctrl+N)").OleValue.toString().trim())){
-    Tabfolder.Child(i).Click();
-    break;
-  }
-}
+//var Tabfolder = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine;
+//WorkspaceUtils.waitForObj(Tabfolder);
+//for(var i=0;i<Tabfolder.ChildCount;i++){ 
+//  if((Tabfolder.Child(i).isVisible())&&(Tabfolder.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Journal (Ctrl+N)").OleValue.toString().trim())){
+//    Tabfolder.Child(i).Click();
+//    break;
+//  }
+//}
 
 //var NewJournal = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.NewJournal;
+var NewJournal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.okbutton
+NewJournal.Click();
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
@@ -563,7 +565,8 @@ function GLMpl(){
     
   }
   aqUtils.Delay(2000, "Submitting General Ledger");
-  var CompanyName = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2);
+//  var CompanyName = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2);
+  var CompanyName = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.SWTObject("McTextWidget", "", 2)
   Sys.HighlightObject(CompanyName)
   Log.Message(CompanyName.FullName)
   CompanyName = CompanyName.getText().OleValue.toString().trim();
@@ -648,17 +651,26 @@ function attachDocument(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  var doc =  Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.AttachDocument;
-
-  Sys.HighlightObject(doc);
-  doc.HoverMouse();
-  doc.HoverMouse();
-  doc.HoverMouse();
-  doc.Click();
-//  var attchDocument = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.TabFolderPanel.Composite.AttachDocument;
-//  WorkspaceUtils.waitForObj(attchDocument)
-//  ReportUtils.logStep_Screenshot();
-//  attchDocument.Click();
+    var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  WorkspaceUtils.waitForObj(submit);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  submit.Click();
+//  var doc =  Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.AttachDocument;
+//
+//  Sys.HighlightObject(doc);
+//  doc.HoverMouse();
+//  doc.HoverMouse();
+//  doc.HoverMouse();
+//  doc.Click();
+////  var attchDocument = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.ReadPanel.PTabFolder.TabFolderPanel.Composite.AttachDocument;
+////  WorkspaceUtils.waitForObj(attchDocument)
+////  ReportUtils.logStep_Screenshot();
+////  attchDocument.Click();
   aqUtils.Delay(4000, "Waiting to Open file");;
   var dicratory = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Open file").OleValue.toString().trim(), 1).Window("ComboBoxEx32", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
   dicratory.Keys(workBook);
@@ -683,18 +695,25 @@ function submit(){
     
   }
     aqUtils.Delay(2000, "Submitting General Ledger");
-  var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  WorkspaceUtils.waitForObj(submit);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  submit.Click();
+//  var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
+//  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//  }
+//  WorkspaceUtils.waitForObj(submit);
+//  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//  }
+//  submit.Click();
   
-  var Okay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-  Okay.Click();
+  var doc =  Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.AttachDocument;
+
+  Sys.HighlightObject(doc);
+  doc.HoverMouse();
+  doc.HoverMouse();
+  doc.HoverMouse();
+  doc.Click();
+//  var Okay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+//  Okay.Click();
   
 
   ValidationUtils.verify(true,true,"Journal Number :"+jornalNumber);
@@ -854,8 +873,8 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
 
-var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-OKay.Click();
+//var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+//OKay.Click();
 
 
   
