@@ -402,7 +402,7 @@ var listPass = true;
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Journals Awaiting Approval").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
+if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve General Journal by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp);  
@@ -464,7 +464,15 @@ closefilter.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-var Post = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Post;
+  var Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.EditableBar.RemoveLatestDraft;
+  Sys.HighlightObject(Approve);
+  Approve.Click();
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  
+var Post = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 12);
+//var Post = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Post;
 WorkspaceUtils.waitForObj(Post);
 Post.Click();
 
@@ -528,8 +536,8 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
 
-var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-OKay.Click();
+//var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+//OKay.Click();
 
 
   
