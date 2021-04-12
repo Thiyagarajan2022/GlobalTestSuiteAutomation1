@@ -99,58 +99,6 @@ ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment S
 }
 
 
-function goToAp(){  
-  var ap = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.TabControl;
-  Sys.HighlightObject(ap);
-  WorkspaceUtils.waitForObj(ap);
-  var showvendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
-  Sys.HighlightObject(showvendor);
-  showvendor.Click();  
-  WorkspaceUtils.waitForObj(showvendor);
-  var table = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
-  Sys.HighlightObject(table);
-  var company = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
-  company.Click();
-  company.setText(EnvParams.Opco);
-  company.Keys("[Tab][Tab][Tab][Tab][Tab]");
-//  var vendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
-  var invoice = Aliases.Maconomy.AR.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite11.Composite2.PTabFolder.Composite3.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;  
-//Aliases.Maconomy.AR.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
-  Sys.HighlightObject(invoice)
-  invoice.setText(Invoicenumber);
- 
-        for(var i=0;i<table.getItemCount();i++){          
-          if(table.getItem(i).getText_2(5).OleValue.toString().trim()==Invoicenumber){
-            break;
-          }  
-          else{
-              table.Keys("[Down]");
-          } 
-        } 
-         
-        ReportUtils.logStep_Screenshot();    
-        
-  aqUtils.Delay(6000,Indicator.Text);
-  Sys.Desktop.KeyDown(0x11);
-  Sys.Desktop.KeyDown(0x46);
-  Sys.Desktop.KeyUp(0x11);
-  Sys.Desktop.KeyUp(0x46);  
-   
-  var Duedate1 = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget;
-  Sys.HighlightObject(Duedate1)  
-//  waitForObj(Duedate1);
-  var Duedatee = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
-  waitForObj(Duedatee)
-    aqUtils.Delay(2000,"Waiting for window");
-  Sys.HighlightObject(Duedatee)
-  DueDate = Duedatee.getText();
-  Log.Message(DueDate)
-  ReportUtils.logStep_Screenshot();
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("DueDate",EnvParams.Opco,"Data Management",Duedatee)
-  
-}
-
 
 
 function CreatePaymentSeletion() {
@@ -365,15 +313,15 @@ ExcelUtils.WriteExcelSheet("PaymentSelectionMpl",EnvParams.Opco,"Data Management
 
 
 
-//Go To Job from Menu
-function goToJobMenuItem(){
+//Go To Banking from Menu
+function goToBankingMenuItem(){
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 menuBar.DblClick();
 if(ImageRepository.ImageSet.Banking.Exists()){
- ImageRepository.ImageSet.Banking.Click();// GL
+ ImageRepository.ImageSet.Banking.Click();
 }
 else if(ImageRepository.ImageSet.Banking1.Exists()){
 ImageRepository.ImageSet.Banking1.Click();
@@ -410,53 +358,6 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 ReportUtils.logStep("INFO", "Moved to Banking Transactions from job Menu");
 TextUtils.writeLog("Entering into Banking Transactions from Jobs Menu");
 }
-
-
-function goToAPMenuItem(){
-
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.HoverMouse();
-ReportUtils.logStep_Screenshot("");
-menuBar.DblClick();
-if(ImageRepository.ImageSet.AccountPayable.Exists()){
- ImageRepository.ImageSet.AccountPayable.Click();// GL
-}
-else if(ImageRepository.ImageSet.AccountPayable1.Exists()){
-ImageRepository.ImageSet.AccountPayable1.Click();
-}
-else{
-ImageRepository.ImageSet.AccountPayable2.Click();
-}
-
-var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
-var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-//Delay(3000);
-var MainBrnch = "";
-for(var bi=0;bi<WrkspcCount;bi++){ 
-  if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
-    MainBrnch = Workspc.Child(bi);
-    break;
-  }
-}
-
-
-var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
-  var Client_Managt;
-for(var i=1;i<=childCC;i++){ 
-Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
-if(Client_Managt.isVisible()){ 
-Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|AP Lookups");
-//Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Lookups").OleValue.toString().trim());
-ReportUtils.logStep_Screenshot();
-//Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "AP Lookups").OleValue.toString().trim());
-Client_Managt.DblClickItem("|AP Lookups");
-}
-}
-ReportUtils.logStep("INFO", "Moved to Banking Transactions from job Menu");
-TextUtils.writeLog("Entering into Banking Transactions from Jobs Menu");
-}
-
 
 
 //Main Function
@@ -496,10 +397,7 @@ ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 
 try{
 getDetails();
-//goToAPMenuItem();
-//goToAp();
-//closeAllWorkspaces();
-goToJobMenuItem();   
+goToBankingMenuItem();   
 CreatePaymentSeletion(); 
 }
   catch(err){

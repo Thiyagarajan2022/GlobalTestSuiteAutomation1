@@ -604,8 +604,17 @@ for(var v=0;v<table.getItemCount();v++){
   }
 }
 
+if(flag)
+{
 ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
 TextUtils.writeLog("Created Purchase Order is available in Approval List");
+}
+else
+{
+ ValidationUtils.verify(flag,true,"Created Purchase Order is not available in Approval List");
+TextUtils.writeLog("Created Purchase Order is not available in Approval List");
+  
+}
 if(flag){ 
   
 var closefilter = "";
