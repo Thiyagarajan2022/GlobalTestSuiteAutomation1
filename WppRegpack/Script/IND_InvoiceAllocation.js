@@ -32,7 +32,7 @@ var SaveStat = true;
       for(var i=0;i<Save.ChildCount;i++){
         Log.Message(Save.Child(i).Name)
         Log.Message(Save.Child(i).toolTipText)
-        if((Save.Child(i).isVisible())&&(Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Save Invoice Selection Line").OleValue.toString().trim())){
+        if((Save.Child(i).isVisible())&&((Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Save Invoice Selection Line (Enter)").OleValue.toString().trim()) || (Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Save Invoice Selection Line").OleValue.toString().trim()))){
           Save = Save.Child(i);
           WorkspaceUtils.waitForObj(Save);
           ReportUtils.logStep_Screenshot("");

@@ -136,6 +136,7 @@
 				<child name="Job_Crediting" key="{15E4E728-F5B5-4DE1-8EB1-E5760E4C7AF2}" path="Job_Crediting.js" />
 				<child name="Update_Perodic_Balance" key="{86DBEF0F-37AE-44AB-9E5C-51D555BB32A5}" path="Update_Perodic_Balance.js" />
 				<child name="CreateDirectDebitFile" key="{0EB82664-0653-4AF5-A4F2-1743B96D26C7}" path="CreateDirectDebitFile.js" />
+				<child name="Banking_Reconciliation" key="{21993FAE-570D-4DDE-A52D-B0E44E11FE8F}" path="Banking_Reconciliation.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

@@ -270,6 +270,9 @@ function client(){
     
   }
   TextUtils.writeLog("Active Brand is selected");
+  var ClientType = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McPopupPickerWidget", "");
+ClientType.Keys("[Tab][Tab]");
+aqUtils.Delay(3000, Indicator.Text);
   var table = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyBrandTable
   table.Keys(brandName);
   aqUtils.Delay(4000, Indicator.Text);

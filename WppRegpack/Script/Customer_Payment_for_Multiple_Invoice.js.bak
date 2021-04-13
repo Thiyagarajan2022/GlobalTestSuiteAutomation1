@@ -204,7 +204,7 @@ ValidationUtils.verify(false,true,"Client Number is needed to Create Single Invo
 
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
-Amount = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
+Amount = ""; //ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
 Log.Message(Amount)
 
 

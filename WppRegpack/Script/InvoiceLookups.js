@@ -236,8 +236,15 @@ if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){
   }
   }
   save.Keys(sFolder+SaveTitle+".pdf");
-  var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-  saveAs.Click();
+//  var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//  saveAs.Click();
+  var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
+saveAs.Click();
+}
   aqUtils.Delay(2000, Indicator.Text);
   Sys.HighlightObject(pdf);
   Sys.Desktop.KeyDown(0x12); //Alt

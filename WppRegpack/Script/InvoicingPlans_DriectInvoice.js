@@ -52,7 +52,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   Log.Message(jobNumber);
   }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
     jobNumber = "";
   }
   if((jobNumber=="")||(jobNumber==null)){ 
@@ -224,6 +224,7 @@ ReportUtils.logStep("INFO", "InvoicingPlans-Invoice On Account started::"+STIME)
 getDetails();
 gotoMenu();
 gotoInvoicing();
+/*
 invoiceSelection();
 WorkspaceUtils.closeAllWorkspaces();
 for(var i=level;i<ApproveInfo.length;i++){
@@ -236,7 +237,7 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprove(temp[1],temp[2],i);
 }
-
+*/
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -245,7 +246,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function getDetails(){ 
 sheetName ="InvoicePlansDirectInvoice";  
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
 //  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
 //  if((jobNumber=="")||(jobNumber==null)){
 //  ExcelUtils.setExcelName(workBook, sheetName, true);

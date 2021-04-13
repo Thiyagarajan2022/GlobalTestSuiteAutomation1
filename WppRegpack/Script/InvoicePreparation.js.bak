@@ -788,9 +788,9 @@ for(var i=0;i<invoiceTable.getItemCount()-1;i++){
 //  }
   Log.Message("temp :"+temp)
   Log.Message("percentage :"+percentage)
-  if(temp!=percentage){ 
-    ValidationUtils.verify(true,false,"Percentage missMatch with Datasheet");
-  }
+ // if(temp!=percentage){ 
+   // ValidationUtils.verify(true,false,"Percentage missMatch with Datasheet");
+//  }
   
 //  var temp = invoiceTable.getItem(i).getText_2(2).OleValue.toString().trim();
 //  Esplit[1] = parseFloat(Esplit[1].toString())/100;
@@ -844,7 +844,7 @@ aqUtils.Delay(1000, "Billing Price");
 var BudgetAmount;
  
  if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")){
- BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite2.NewTotal;
+ BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.ForInvoicing;
  }else{ 
  BudgetAmount = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite3.McTextWidget;
  }
@@ -866,9 +866,39 @@ Log.Message(BudgetAmount);
     }
   }
   
+  
+  Delay(5000);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  
+  
+   var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Invoice Preparation").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Invoice Preparation").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+  
+var label = w.SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+ReportUtils.logStep("INFO",lab)
+TextUtils.writeLog(lab);
+var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Ok.Click();
+
+}
+
+
+  Delay(5000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  
+
 var removeLatestDrafft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.SingleToolItemControl;
 var i=0;
 while((!removeLatestDrafft.Visible)&&(removeLatestDrafft.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Remove Latest Draft").OleValue.toString().trim())&&(i!=60)){ 
@@ -1345,6 +1375,8 @@ ImageRepository.ImageSet.Forward.Click();
 }
 
 
+
+//Finding UserName for Approvers in Datasheets
 function CredentialLogin(){ 
   var AppvLevl = [];
 for(var i=0;i<Approve_Level.length;i++){
@@ -1355,15 +1387,14 @@ for(var i=0;i<Approve_Level.length;i++){
   for(var j=2;j<4;j++){
   temp="";
   if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
+  if((Cred[j].indexOf("IND")==-1)&&(Cred[j].indexOf("SPA")==-1)&&(Cred[j].indexOf("SGP")==-1)&&(Cred[j].indexOf("MYS")==-1)&&(Cred[j].indexOf("FP")==-1)&&(Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
   { 
      var sheetName = "Agency Users";
      workBook = Project.Path+excelName;
     ExcelUtils.setExcelName(workBook, sheetName, true);
     temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
-    Log.Message(temp);
   }
-  else if((Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
+  else if((Cred[j].indexOf("IND")!=-1)||(Cred[j].indexOf("SPA")!=-1)||(Cred[j].indexOf("SGP")!=-1)||(Cred[j].indexOf("MYS")!=-1)||(Cred[j].indexOf("FP")!=-1)||(Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
   { 
 
     var sheetName = "SSC Users";
@@ -1387,8 +1418,13 @@ for(var i=0;i<Approve_Level.length;i++){
     ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
     Log.Message(ApproveInfo[i]);
     }
-//WorkspaceUtils.closeAllWorkspaces();
+
 }
+
+
+
+
+
 
 function todo(lvl){ 
   TextUtils.writeLog("Loged into Level "+level+" Approver login"); 

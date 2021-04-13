@@ -757,8 +757,6 @@ TextUtils.writeLog("Line item "+line_i+" is adding in specification");
 line_i++;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
    
   var addLine = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite;
@@ -775,8 +773,6 @@ for(var i=0;i<addLine.ChildCount;i++){
 aqUtils.Delay(1000, "Next Column");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
                    
 var standardCode = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
@@ -813,11 +809,11 @@ for(var i=0;i<Save.ChildCount;i++){
     WorkspaceUtils.waitForObj(Save);
     ReportUtils.logStep_Screenshot("");
     Save.Click();
-    break;
+
   }
 }
 //Save Job Invoice On Account Entry (Enter)
-
+    break;
 }
 }
 }
@@ -1024,43 +1020,43 @@ var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composi
   var q = 0;
 QuoteDetails = [];
 var InvoiceMPl = "InvoiceMPL";
-for(var i=0;i<specification.getItemCount();i++){ 
-
-  var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
-  if(Q_Desp!=""){
-  var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
-  var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
-  var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
-  var Q_Tax1 = specification.getItem(i).getText_2(7).OleValue.toString().trim();
-  var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
-  var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
-  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
-//  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+//for(var i=0;i<specification.getItemCount();i++){ 
+//
+//  var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
+//  if(Q_Desp!=""){
+//  var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
+//  var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
+//  var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
+//  var Q_Tax1 = specification.getItem(i).getText_2(7).OleValue.toString().trim();
+//  var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
+//  var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
+//  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
+////  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+////  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+////  Log.Message(QuoteDetails[q]);
+//  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+//  Log.Message(Q_total);
 //  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
 //  Log.Message(QuoteDetails[q]);
-  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
-  Log.Message(Q_total);
-  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
-  Log.Message(QuoteDetails[q]);
-  q++;
-  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPl,Q_Desp);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPl,Q_Qty);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPl,Q_Billing);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPl,Q_BillingTotoal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPl,Q_Tax1);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPl,Q_Tax2);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPl,Q_Tax1currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPl,Q_Tax2currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPl,Q_total);
-
-  }
-  }
-
-  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPl,Excl_Tax);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPl,grandTotal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
+//  q++;
+//  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPl,Q_Desp);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPl,Q_Qty);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPl,Q_Billing);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPl,Q_BillingTotoal);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPl,Q_Tax1);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPl,Q_Tax2);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPl,Q_Tax1currency);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPl,Q_Tax2currency);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPl,Q_total);
+//
+//  }
+//  }
+//
+//  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPl,Excl_Tax);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPl,grandTotal);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
   
    
   
@@ -1253,9 +1249,31 @@ var Approve;
 //  else
 //  Approve = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
 
-  Sys.HighlightObject(Approve)
+//  Sys.HighlightObject(Approve)
+// var ApproveStat = false;
+//Approve = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite
+//Sys.HighlightObject(Approve);
+//for(var i=0;i<Approve.ChildCount;i++){ 
+//  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
+//    Approve = Approve.Child(i);
+//    ApproveStat =true;
+//    break;
+//  }
+//}
+//
+//if(!ApproveStat){ 
+//Approve = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+//Sys.HighlightObject(Approve);
+//for(var i=0;i<Approve.ChildCount;i++){ 
+//  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
+//    Approve = Approve.Child(i);
+//    break;
+//  }
+//} 
+//}
+
  var ApproveStat = false;
-Approve = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite
+Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
 Sys.HighlightObject(Approve);
 for(var i=0;i<Approve.ChildCount;i++){ 
   if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
@@ -1266,7 +1284,7 @@ for(var i=0;i<Approve.ChildCount;i++){
 }
 
 if(!ApproveStat){ 
-Approve = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
 Sys.HighlightObject(Approve);
 for(var i=0;i<Approve.ChildCount;i++){ 
   if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){

@@ -471,7 +471,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function getDetails(){ 
 sheetName ="InvoicingCarryForward";  
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
 //  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
 //  if((jobNumber=="")||(jobNumber==null)){
 //  ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -1350,10 +1350,10 @@ function ParticalWriteOff(writeOff_Line,SelectionBilling){
                 var EmpNo = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
                 WorkspaceUtils.waitForObj(EmpNo);
                 EmpNo.Click();
-                var EmployeeNum = Partial_invoicing_WriteOff.EmpNo;
+                var EmployeeNum = PartialInvoicing_CarryForward.EmpNo;
                 if(temp[0].indexOf("T")==0){
                 if((EmployeeNum!="")&&(EmployeeNum!=null)){ 
-                WorkspaceUtils.SearchByValue(EmpNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Partial_invoicing_WriteOff.Language, "Employee").OleValue.toString().trim(),EmployeeNum,"Employee Number :"+EmployeeNum);
+                WorkspaceUtils.SearchByValue(EmpNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,PartialInvoicing_CarryForward.Language, "Employee").OleValue.toString().trim(),EmployeeNum,"Employee Number :"+EmployeeNum);
                 }
                 }
                 

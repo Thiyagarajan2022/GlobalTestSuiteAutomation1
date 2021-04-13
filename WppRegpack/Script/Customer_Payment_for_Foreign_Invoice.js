@@ -157,13 +157,13 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
 
   var invoicePreparation = ExcelUtils.getRowDatas("Invoice preparation Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
-  var invoiceAccount = ExcelUtils.getRowDatas("Invoice On Account Job",EnvParams.Opco);
-  var TM = ExcelUtils.getRowDatas("Time and Material Invoice Job",EnvParams.Opco);
+  var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
+  var TM = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
   var iP = ExcelUtils.getRowDatas("Invoice preparation No",EnvParams.Opco);
   var iB = ExcelUtils.getRowDatas("Invoice from Budget No",EnvParams.Opco);
   var iA = ExcelUtils.getRowDatas("Invoice OnAccount No",EnvParams.Opco);
-  var iTM = ExcelUtils.getRowDatas("Time and Material Invoice No",EnvParams.Opco);
+  var iTM = ExcelUtils.getRowDatas("Time & Material Invocing No",EnvParams.Opco);
   
   var sP = ExcelUtils.getRowDatas("Single Invoice Payment used Invoice No",EnvParams.Opco);
   var fP = ExcelUtils.getRowDatas("Foreign Invoice Payment used Invoice No",EnvParams.Opco);
@@ -598,7 +598,12 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }  
 var getjournal = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite.journal.getText().OleValue.toString().trim();
 
-       
+var BankAccount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2).getText().OleValue.toString().trim();
+//var BankAccount = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2).getText().OleValue.toString().trim();
+var Transaction_No = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite2.SWTObject("McTextWidget", "", 2).getText().OleValue.toString().trim();
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Foreign Payment Trans No",EnvParams.Opco,"Data Management",Transaction_No)
+  ExcelUtils.WriteExcelSheet("Account Number",EnvParams.Opco,"Data Management",BankAccount)    
        
 var artable = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table;
 Sys.HighlightObject(artable);       

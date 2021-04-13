@@ -18,7 +18,7 @@ function Employeenumber(SelectionBilling,EmpNo){
       var Save = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel;
       WorkspaceUtils.waitForObj(Save);
       for(var i=0;i<Save.ChildCount;i++){ 
-        if((Save.Child(i).isVisible())&&(Save.Child(i).toolTipText=="Save Invoice Selection Line")){
+        if((Save.Child(i).isVisible())&&((Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Save Invoice Selection Line (Enter)").OleValue.toString().trim()) || (Save.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,WorkspaceUtils.Language, "Save Invoice Selection Line").OleValue.toString().trim()))){
           Save = Save.Child(i);
           WorkspaceUtils.waitForObj(Save);
           ReportUtils.logStep_Screenshot("");

@@ -53,7 +53,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   Log.Message(jobNumber);
   }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
     jobNumber = "";
   }
   if((jobNumber=="")||(jobNumber==null)){ 
@@ -245,7 +245,7 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function getDetails(){ 
 sheetName ="InvoicePlansInvoiceOnAccount";  
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
 //  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
 //  if((jobNumber=="")||(jobNumber==null)){
 //  ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -255,11 +255,11 @@ sheetName ="InvoicePlansInvoiceOnAccount";
 //  ValidationUtils.verify(false,true,"Job Number is needed for Invoice On Account");
 //
 //  
-//  ExcelUtils.setExcelName(workBook, sheetName, true);
-//  EmpNo = ExcelUtils.getColumnDatas("Employee Number",EnvParams.Opco)
-//
-//  if((EmpNo=="")||(EmpNo==null))
-//  ValidationUtils.verify(false,true,"Employee Number is needed for Invoice from Budget");
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  EmpNo = ExcelUtils.getColumnDatas("Employee Number",EnvParams.Opco)
+
+  if((EmpNo=="")||(EmpNo==null))
+  ValidationUtils.verify(false,true,"Employee Number is needed for Invoice from Budget");
   
 }
 
@@ -639,6 +639,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
 
 var Employee = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+Employee.Click();
 WorkspaceUtils.SearchByValue(Employee,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee").OleValue.toString().trim(),EmpNo,"Employee Number");
 aqUtils.Delay(1000, Indicator.Text);
 

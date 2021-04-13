@@ -552,12 +552,25 @@ artable.Keys("[Down]");
 }       
              
 artable.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
-      
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}    
     
 var tp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.table.assettype;
 WorkspaceUtils.waitForObj(tp);
-tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim())
+//tp.Keys(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim())
 //tp.Click();
+tp.Click();
+aqUtils.Delay(4000, Indicator.Text);
+WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Totally").OleValue.toString().trim(),"Totally/Partially",tp)
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 aqUtils.Delay(2000, Indicator.Text);
 //WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Totally").OleValue.toString().trim(),"Totally");
 
