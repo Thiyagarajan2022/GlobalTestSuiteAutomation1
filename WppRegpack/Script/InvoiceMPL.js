@@ -76,7 +76,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog("Heading is available Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Heading is available Pdf")
+          ValidationUtils.verify(false,true,"Heading is not available Pdf")
           
     if(index>=0){
           ReportUtils.logStep("INFO",clientName+"ClientName is matching with Pdf")

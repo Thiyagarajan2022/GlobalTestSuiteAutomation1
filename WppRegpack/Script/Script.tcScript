@@ -192,6 +192,9 @@
 				<child name="PaymentSelection_MPL" key="{13F93619-589E-419D-9CD8-84F131177053}" path="PaymentSelection_MPL.js" />
 				<child name="PaymentOrder_MPL" key="{756D9DD0-91F6-4445-87A7-496DF38983CA}" path="PaymentOrder_MPL.js" />
 				<child name="PrintPaymentRemittance_MPL" key="{636CEB43-855E-4982-A287-4A0F1756F2C6}" path="PrintPaymentRemittance_MPL.js" />
+				<child name="PurchaseOrder_MPL" key="{1A6FFE53-BF7B-4193-87A6-E4EFD3902DD2}" path="PurchaseOrder_MPL.js" />
+				<child name="DraftCreditMemo_MPL" key="{77F0A635-9680-4642-BDC6-298870A9613C}" path="DraftCreditMemo_MPL.js" />
+				<child name="CreditMemo_MPL" key="{94F69842-0894-4393-88DC-9774538C107B}" path="CreditMemo_MPL.js" />
 			</folder>
 			<folder name="UAE">
 				<child name="UAE_CreateClient" key="{DDF699D8-0E53-4E78-ABE6-3DF33EE535A6}" path="UAE_CreateClient.js" />
