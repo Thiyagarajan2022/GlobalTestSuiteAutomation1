@@ -126,5 +126,5 @@ function verifyJobSummaryScreen()
      } 
   else
      ReportUtils.logStep("Fail", "Job Summary Screen not displayed");         
-     Sys.Browser("chrome").Close()   
+     Sys.Browser("chrome").Close();  
 }

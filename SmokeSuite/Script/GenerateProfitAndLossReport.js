@@ -183,7 +183,7 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
+    aqUtils.Delay(18000, "Waiting to Download Report");
     ReportUtils.logStep("Pass", "Profit And Loss Report exported successfully");
     Log.Message("Profit And Loss Report exported successfully"); 
     }
@@ -201,7 +201,7 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
   else
      ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");          
      
-     Sys.Browser("chrome").Close();  
+      Sys.Browser("chrome").BrowserWindow(0).Keys("^w"); 
      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
      okbutton.Click(); 
        

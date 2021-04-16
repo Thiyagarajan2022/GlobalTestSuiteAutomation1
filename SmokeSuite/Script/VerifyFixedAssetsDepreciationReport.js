@@ -116,7 +116,7 @@ aqUtils.Delay(3000, "Navigating to Browser and waiting for Data Protection windo
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
+aqUtils.Delay(2000, "Loading Fixed Assets Depreciation Forecast Screen");
 
 
 var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;

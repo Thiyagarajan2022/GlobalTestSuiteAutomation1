@@ -104,7 +104,8 @@ newGlobalClientButton.Click();
 if(ImageRepository.ImageSet.LoadedBox.Exists()){}
 
 
-var globalClientMasterDataLabel = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Label;
+var globalClientMasterDataLabel = Aliases.Maconomy.Shell.Composite.Label;
+//Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Label;
 
 if(globalClientMasterDataLabel.isVisible())
 {
@@ -117,7 +118,8 @@ if(globalClientMasterDataLabel.isVisible())
      ReportUtils.logStep("Fail", "New Global Client Screen not loaded");
 
 
-var globalClientMasterCancelBttn = Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Composite.Composite.Composite.Button;
+var globalClientMasterCancelBttn = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Button;
+//Aliases.Maconomy.AR_ClientMangmnt_GlobalClient.Composite.Composite.Composite.Composite.Button;
 globalClientMasterCancelBttn.Click();
 
 if(ImageRepository.ImageSet.LoadedBox.Exists()){}

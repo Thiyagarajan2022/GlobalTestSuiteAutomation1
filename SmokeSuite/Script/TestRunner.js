@@ -87,7 +87,7 @@ else
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath"),"GlobalTestCase");
 var rowcount = ExcelUtils.getRowCount()-1;
 var excelRow=1;
-if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")||(EnvParams.TestingType=="Full_Regression")||(EnvParams.TestingType=="Smoke")){   //Checking whether need to execute ALL TestCase or NOT
+if((EnvParams.testcase==null)||(EnvParams.testcase=="")||(EnvParams.testcase=="ALL")||(EnvParams.TestingType=="Full_Regression")){   //Checking whether need to execute ALL TestCase or NOT
 var excelName = EnvParams.path;
 workBook = Project.Path+excelName;
   
@@ -152,16 +152,16 @@ ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("RunManagerPath")
 JkinsName = ExcelUtils.getAllRowDatas("Jenkins Name",excelRow);
 unitName = ExcelUtils.getAllRowDatas("UnitName",excelRow);
 testCase = ExcelUtils.getAllRowDatas("TestCases",excelRow);
-moduleName = ExcelUtils.getAllRowDatas("ModuleName",excelRow);
+moduleName = ExcelUtils.getAllRowDatas("Module",excelRow);
 description = moduleName;
-
+// Log.Message("JenkinsName :"+JkinsName)
 if(TestingType.toUpperCase()=="SMOKE")
 execute = ExcelUtils.getAllRowDatas("Execute",excelRow);
 else
 execute = ExcelUtils.getAllRowDatas(businessFlow,excelRow);
 
 if(execute.toUpperCase()=="YES"){   //Login for each Opco 
-
+Log.Message("executeIn :")
 ExcelUtils.setExcelName(Project.Path+TextUtils.GetProjectValue("EnvDetailsPath"),"JIRA_Details",true)
 testCaseId = ExcelUtils.getRowDatas(JkinsName,EnvParams.Country)
 releasename  = ExcelUtils.getRowDatas("Current Release Name",EnvParams.Country)
@@ -240,14 +240,14 @@ TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime);
 
 // Verify Statistics file exists or not. If not create it.
 if(!aqFile.Exists(automationStat_file))
- ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
+// ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
 
 // Calculate RunTime and publish in Excel 
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,JkinsName,EnvParams.Opco,executionTime);
-testCase_Stat_updated_flag=true;
+//ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,JkinsName,EnvParams.Opco,executionTime);
+testCase_Stat_updated_flag=false;
 }
  
 excelRow++;
@@ -455,13 +455,13 @@ TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime);
 
 // Verify Statistics file exists or not. If not create it.
 if(!aqFile.Exists(automationStat_file))
- ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
+// ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
 
 // Calculate RunTime and publish in Excel 
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,testList[tL],EnvParams.Opco,executionTime);
+//ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,testList[tL],EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
 
 

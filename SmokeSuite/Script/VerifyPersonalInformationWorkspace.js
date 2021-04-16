@@ -104,7 +104,7 @@ Sys.HighlightObject(empInfoSection);
 ReportUtils.logStep_Screenshot();
 empInfoSection.Click();
 ReportUtils.logStep("INFO", "Clicked on EmpInfo Section");
-Log.Message("Clicked on Trail Balance Link");
+Log.Message("Clicked on Empo Info");
 
 var cardAndBankDetailsSection = Aliases.Maconomy.PersonalInformation.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget;
 

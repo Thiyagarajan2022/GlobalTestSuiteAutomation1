@@ -84,6 +84,8 @@ function getDetails(){
         } 
         
         date = ExcelUtils.getRowDatas("AssetDate",EnvParams.Opco)
+        if(date = "AUTOFILL")
+        date = getSpecificDate(0);
         Log.Message(date)
         if((date==null)||(date=="")){ 
         ValidationUtils.verify(false,true,"AssetDate is Needed to Create a Asset");

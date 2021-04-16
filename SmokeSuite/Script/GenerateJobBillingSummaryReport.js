@@ -162,7 +162,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Report download is in progress");
+    aqUtils.Delay(15000, "Report download is in progress");
     ReportUtils.logStep("Pass", "Job Billing Summary report exported successfully");
     Log.Message("Job Billing Summary Report exported successfully"); 
     }
@@ -182,5 +182,6 @@ aqUtils.Delay(5000, "Navigating to Browser");
      
       Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
       var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
+      waitForObj(okbutton);
       okbutton.Click();       
 }

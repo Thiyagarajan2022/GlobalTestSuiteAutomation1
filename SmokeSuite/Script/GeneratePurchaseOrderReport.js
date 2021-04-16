@@ -157,7 +157,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Report download is in progress");
+    aqUtils.Delay(18000, "Report download is in progress");
     ReportUtils.logStep("Pass", "Purchase Order Report exported successfully");
     Log.Message("Purchase Order Report exported successfully"); 
     }
@@ -173,7 +173,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
   else
      ReportUtils.logStep("Fail", "Purchase Order Screen not displayed"); 
      
-     Sys.Browser("chrome").Close();  
+     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
      okbutton.Click();            
 }

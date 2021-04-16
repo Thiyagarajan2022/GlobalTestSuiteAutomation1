@@ -166,7 +166,7 @@ aqUtils.Delay(5000, "Navigating to Browser");
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Report download is in progress");
+    aqUtils.Delay(18000, "Report download is in progress");
     ReportUtils.logStep("Pass", "Exchange Rate Report exported successfully");
     Log.Message("Exchange Rate Report exported successfully"); 
     }

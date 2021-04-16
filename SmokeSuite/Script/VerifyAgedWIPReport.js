@@ -125,5 +125,5 @@ if(pageName.trim() == "Aged WIP"  || ImageRepository.Browser_Reporting.AgedWIP_L
      } 
   else
      ReportUtils.logStep("Fail", "Aged WIP Screen not displayed");       
-     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");        
+      Sys.Browser("chrome").Close();        
 }

@@ -116,6 +116,7 @@ ReportUtils.logStep_Screenshot();
  curr.HoverMouse();
  Sys.HighlightObject(curr);
  curr.Click();
+ aqUtils.Delay(3000, "Waiting to Load currerncies");
  WorkspaceUtils.DropDownList("GBP","Currency");
  
 if(curr.isVisible())

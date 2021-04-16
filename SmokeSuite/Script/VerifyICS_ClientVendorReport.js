@@ -116,7 +116,7 @@ aqUtils.Delay(2000, "Waiting for Prompt window in Browser");
   if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
     ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt_Cancel.Click();
   
-aqUtils.Delay(2000, "Loading Trail Balance Detail Screen");
+aqUtils.Delay(2000, "Loading ICS Client Vendor Screen");
 
 var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
 

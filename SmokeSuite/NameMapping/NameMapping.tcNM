@@ -10382,7 +10382,7 @@
 														<Value Value="org.eclipse.swt.widgets.Label" />
 													</Property>
 													<Property Name="WndCaption">
-														<Value Value="Global Client Master Data" />
+														<Value Value="Country Client Master Data" />
 													</Property>
 												</Properties>
 											</Child>
@@ -13546,6 +13546,103 @@
 									</Child>
 								</Children>
 							</Child>
+							<Child Name="Shell" Key="{6026F9DC-344D-4B95-BF1F-BFD9EA0509F7}">
+								<Image FileName="597133485" Left="0" Top="0" Right="1355" Bottom="667" />
+								<TypeInfo Item0="{1194EB3F-8661-49D2-B4ED-3436C1AF3F2E}" />
+								<Properties>
+									<Property Name="JavaFullClassName">
+										<Value Value="org.eclipse.swt.widgets.Shell" />
+									</Property>
+									<Property Name="WndCaption">
+										<Value Value="New Country Client" />
+									</Property>
+								</Properties>
+								<Children>
+									<Child Name="Composite" Key="{0B1B6536-38B8-497D-8434-CE96AB5A4231}">
+										<Image FileName="597133485" Left="8" Top="31" Right="1347" Bottom="659" />
+										<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
+										<Properties>
+											<Property Name="JavaFullClassName">
+												<Value Value="org.eclipse.swt.widgets.Composite" />
+											</Property>
+											<Property Name="WndCaption">
+												<Value Value="" />
+											</Property>
+										</Properties>
+										<Children>
+											<Child Name="Label" Key="{C706DFD6-8D73-40E5-8932-986E118AA9B8}">
+												<Image FileName="597133485" Left="14" Top="39" Right="1272" Bottom="55" />
+												<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
+												<Properties>
+													<Property Name="JavaFullClassName">
+														<Value Value="org.eclipse.swt.widgets.Label" />
+													</Property>
+													<Property Name="WndCaption">
+														<Value Value="Country Client Master Data" />
+													</Property>
+												</Properties>
+											</Child>
+											<Child Name="Composite" Key="{CED8F55F-3767-4ADD-8DDB-97AE5A4F2AF6}">
+												<Image FileName="1857880879" Left="8" Top="97" Right="1347" Bottom="659" />
+												<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
+												<Properties>
+													<Property Name="JavaFullClassName">
+														<Value Value="org.eclipse.swt.widgets.Composite" />
+													</Property>
+													<Property Name="WndCaption">
+														<Value Value="" />
+													</Property>
+												</Properties>
+												<Children>
+													<Child Name="Composite" Key="{DD20D495-823A-49F5-8F2F-A1F08646F3D2}">
+														<Image FileName="1857880879" Left="8" Top="608" Right="1347" Bottom="659" />
+														<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
+														<Properties>
+															<Property Name="JavaFullClassName">
+																<Value Value="org.eclipse.swt.widgets.Composite" />
+															</Property>
+															<Property Name="WndCaption">
+																<Value Value="" />
+															</Property>
+															<Property Name="Index">
+																<Value Value="2" Type="0" />
+															</Property>
+														</Properties>
+														<Children>
+															<Child Name="Composite" Key="{622121E0-71C7-4511-91F5-B0549B2D7C07}">
+																<Image FileName="1857880879" Left="945" Top="608" Right="1347" Bottom="659" />
+																<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
+																<Properties>
+																	<Property Name="JavaFullClassName">
+																		<Value Value="org.eclipse.swt.widgets.Composite" />
+																	</Property>
+																	<Property Name="WndCaption">
+																		<Value Value="" />
+																	</Property>
+																</Properties>
+																<Children>
+																	<Child Name="Button" Key="{14E92384-F2EE-4EF9-95F0-030BBC0E15F1}">
+																		<Image FileName="1857880879" Left="1244" Top="621" Right="1336" Bottom="646" />
+																		<TypeInfo Item0="{6C819B7F-E7E1-4C9A-82D5-49845467687C}" />
+																		<Properties>
+																			<Property Name="JavaFullClassName">
+																				<Value Value="org.eclipse.swt.widgets.Button" />
+																			</Property>
+																			<Property Name="WndCaption">
+																				<Value Value="Cancel" />
+																			</Property>
+																		</Properties>
+																	</Child>
+																</Children>
+															</Child>
+														</Children>
+													</Child>
+												</Children>
+											</Child>
+										</Children>
+									</Child>
+								</Children>
+							</Child>
 						</Children>
 					</Child>
 					<Child Name="browser" Key="{B47729E5-6420-4061-B68D-F1FF5CBD64FC}">
@@ -16310,6 +16407,18 @@
 										</Child>
 									</Child>
 								</Child>
+							</Child>
+						</Child>
+					</Child>
+				</Child>
+			</Child>
+			<Child Name="Shell" Owner="{6026F9DC-344D-4B95-BF1F-BFD9EA0509F7}">
+				<Child Name="Composite" Owner="{0B1B6536-38B8-497D-8434-CE96AB5A4231}">
+					<Child Name="Label" Owner="{C706DFD6-8D73-40E5-8932-986E118AA9B8}" />
+					<Child Name="Composite" Owner="{CED8F55F-3767-4ADD-8DDB-97AE5A4F2AF6}">
+						<Child Name="Composite" Owner="{DD20D495-823A-49F5-8F2F-A1F08646F3D2}">
+							<Child Name="Composite" Owner="{622121E0-71C7-4511-91F5-B0549B2D7C07}">
+								<Child Name="Button" Owner="{14E92384-F2EE-4EF9-95F0-030BBC0E15F1}" />
 							</Child>
 						</Child>
 					</Child>

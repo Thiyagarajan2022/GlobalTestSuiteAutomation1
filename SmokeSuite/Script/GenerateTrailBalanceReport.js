@@ -185,7 +185,7 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
     waitForObj(export_OKButton);
     export_OKButton.Click();
     
-    aqUtils.Delay(8000, "Waiting to Download Report");
+    aqUtils.Delay(18000, "Waiting to Download Report");
     ReportUtils.logStep("Pass", "Trail Balance Report exported successfully");
     Log.Message("Trail Balance Report exported successfully"); 
     }
