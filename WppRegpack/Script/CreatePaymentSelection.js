@@ -103,7 +103,7 @@ ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment S
 
 function CreatePaymentSeletion() {
 ReportUtils.logStep("INFO", "Enter Bank Details");
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
 

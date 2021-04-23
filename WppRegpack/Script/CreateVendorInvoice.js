@@ -155,11 +155,15 @@ ValidationUtils.verify(false,true,"Invoice No. is Needed to Create a Vendor Invo
 }
 //Log.Message(InvoiceNo)
 EDate = ExcelUtils.getColumnDatas("Entry Date",EnvParams.Opco)
+  if(EDate = "AUTOFILL")
+        EDate = getSpecificDate(0);
 if((EDate==null)||(EDate=="")){ 
 ValidationUtils.verify(false,true,"Entry Date is Needed to Create a Vendor Invoice");
 }
 //Log.Message(EDate)
 IDate = ExcelUtils.getColumnDatas("Invoice Date",EnvParams.Opco)
+  if(IDate = "AUTOFILL")
+        IDate = getSpecificDate(0);
 if((IDate==null)||(IDate=="")){ 
 ValidationUtils.verify(false,true,"Invoice Date is Needed to Create a Vendor Invoice");
 }

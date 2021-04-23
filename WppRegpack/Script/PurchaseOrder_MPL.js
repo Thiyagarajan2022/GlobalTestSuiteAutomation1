@@ -226,14 +226,13 @@ Log.Message("i: "+i);
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,poMPL,total);
   }
 Log.Message(q)
-for(var i=q;i<5;i++){ 
-  ExcelUtils.setExcelName(workBook,QuoteMPL, true);
-    ExcelUtils.WriteExcelSheet(EnvParams.Opco,"JobNumber",poMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,poMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,poMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,poMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Amount_"+q,poMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,poMPL,"");
+for(var i=q+1;i<5;i++){ 
+  ExcelUtils.setExcelName(workBook,poMPL, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+i,poMPL,"");
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+i,poMPL,"");
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+i,poMPL,"");
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Amount_"+i,poMPL,"");
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+i,poMPL,"");
 }
 
 var print = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
