@@ -132,7 +132,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 transactiontype = ExcelUtils.getRowDatas("TransactionType",EnvParams.Opco)
 Log.Message(company);
 if((transactiontype==null)||(transactiontype=="")){ 
-ValidationUtils.verify(false,true,"TransactionType is Needed to Create a fixedasset");
+ValidationUtils.verify(false,true,"TransactionType is Needed to Post asset entries");
 
 
 }
@@ -161,7 +161,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Transactiontypeaddr = ExcelUtils.getRowDatas("AssetTransactionType",EnvParams.Opco)
 Log.Message(company);
 if((Transactiontypeaddr==null)||(Transactiontypeaddr=="")){ 
-ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Create a fixedasset");
+ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Post asset entries");
 
 
 }
@@ -170,7 +170,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Amountbase = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
 Log.Message(company);
 if((Amountbase==null)||(Amountbase=="")){ 
-ValidationUtils.verify(false,true,"Amount is Needed to Create a fixedasset");
+ValidationUtils.verify(false,true,"Amount is Needed to Post asset entries");
 
 
 }

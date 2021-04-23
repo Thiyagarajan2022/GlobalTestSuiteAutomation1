@@ -96,7 +96,7 @@ ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Payment F
 
 function PaymentFile() {
   ReportUtils.logStep("INFO", "Enter Payment File Details");
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
   var banking = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -251,6 +251,11 @@ function PaymentFile() {
 //  waitForObj(save)
 //  save.Click();
   TextUtils.writeLog("Create Payment File is Saved");
+
+ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){  
+   aqUtils.Delay(1000,"Entries are loading")
+ }
+  
   
   var entries = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;  
   Sys.HighlightObject(entries)
