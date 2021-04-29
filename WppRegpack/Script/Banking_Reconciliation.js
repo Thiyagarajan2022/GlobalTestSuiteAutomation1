@@ -590,7 +590,7 @@ Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("RePrint Bank_Reconciliation  PDF",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
+ExcelUtils.WriteExcelSheet("Bank_Reconciliation PDF",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
    aqUtils.Delay(5000, Indicator.Text);
    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
    aqUtils.Delay(5000, Indicator.Text);

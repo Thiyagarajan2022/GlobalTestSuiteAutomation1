@@ -195,6 +195,8 @@
 				<child name="PurchaseOrder_MPL" key="{1A6FFE53-BF7B-4193-87A6-E4EFD3902DD2}" path="PurchaseOrder_MPL.js" />
 				<child name="DraftCreditMemo_MPL" key="{77F0A635-9680-4642-BDC6-298870A9613C}" path="DraftCreditMemo_MPL.js" />
 				<child name="CreditMemo_MPL" key="{94F69842-0894-4393-88DC-9774538C107B}" path="CreditMemo_MPL.js" />
+				<child name="BankingReconciliation_MPL" key="{B0014E10-69AC-40AB-869C-7C97E03A191E}" path="BankingReconciliation_MPL.js" />
+				<child name="BankingReconciliation_InProgress_MPL" key="{6F12A830-052B-4E14-8B61-13D2726E2C0E}" path="BankingReconciliation_InProgress_MPL.js" />
 			</folder>
 			<folder name="UAE">
 				<child name="UAE_CreateClient" key="{DDF699D8-0E53-4E78-ABE6-3DF33EE535A6}" path="UAE_CreateClient.js" />

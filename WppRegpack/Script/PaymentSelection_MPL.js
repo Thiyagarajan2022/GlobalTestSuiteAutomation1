@@ -12,9 +12,6 @@ var Language = "";
   Indicator.Show();
   
 ExcelUtils.setExcelName(workBook, sheetName, true);
-var Arrays = [];
-var count = true;
-var checkmark = false;
 var STIME = "";
 var Duedate="";
 var VendorNo="";
@@ -67,7 +64,7 @@ Duedate = ExcelUtils.getRowDatas("Vendor Invoice Due Date",EnvParams.Opco)
   }
 Log.Message(Duedate)
 if((Duedate==null)||(Duedate=="")){ 
-ValidationUtils.verify(false,true,"Due Date Number is Needed to Create a Payment Selection");
+ValidationUtils.verify(false,true,"Due Date is Needed to Create a Payment Selection");
 }
 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
