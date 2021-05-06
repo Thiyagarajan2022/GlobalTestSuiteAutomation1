@@ -185,7 +185,7 @@
 			<folder name="MPLs">
 				<child name="InvoiceMPL" key="{67814B51-A398-44B1-8CCD-CB5677B30462}" path="InvoiceMPL.js" />
 				<child name="DraftInvoice_MPL" key="{61473CB0-81EA-41EA-B661-AD42B6F84209}" path="DraftInvoice_MPL.js" />
-				<child name="Print_Order_Confirmation_MPL" key="{4F00E074-02FF-441B-8F1B-FD94ACD2AE5F}" path="Print_Order_Confirmation_MPL.js" />
+				<child name="JobOrderConfirmation_MPL" key="{4F00E074-02FF-441B-8F1B-FD94ACD2AE5F}" path="JobOrderConfirmation_MPL.js" />
 				<child name="Quote_MPL" key="{517932F2-214A-45E3-AC95-A2CC6B837FEC}" path="Quote_MPL.js" />
 				<child name="BudgetEstimateMPL" key="{03FFC0A9-1A2A-4EF5-89D2-4AD98C5F6342}" path="BudgetEstimateMPL.js" />
 				<child name="PostingJournal_MPL" key="{A39A50C0-E384-4182-A197-F3EDC1F073F9}" path="PostingJournal_MPL.js" />

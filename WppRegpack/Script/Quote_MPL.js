@@ -15,7 +15,6 @@ function validateQuotePdf()
   Language = "";
   Language = EnvParams.LanChange(EnvParams.Language);
   WorkspaceUtils.Language = Language;  
-//  var fileName = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegPack\\MPLReports\\Critical_Regression\\India\\1707\\PDF\\Print Job Quote-23.pdf";
   var fileName = "";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   fileName = ExcelUtils.getRowDatas("PDF Quote",EnvParams.Opco)
@@ -32,10 +31,7 @@ function validateQuotePdf()
   }catch(objEx){
     Log.Error("Exception while reading document::"+objEx);
   }
-//  var workBook = "C:\\Users\\674087\\Music\\July Regression\\GlobalTestSuiteAutomation\\WppRegpack\\TestResource\\Regression\\DS_IND_REGRESSION.xlsx";
   var sheetName = "QuoteMPL";
-//  EnvParams.Country = "India";
-//  EnvParams.Opco = "1707";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
  
   var pdflineSplit = docObj.split("\r\n");
@@ -65,19 +61,20 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 
    if(EnvParams.Country.toUpperCase()=="INDIA")
    var index = pdflineSplit.indexOf("ESTIMATE");
-   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
+   else
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
    
        if(index>=0){
-          ReportUtils.logStep("INFO","Heading is available Pdf")
-          ValidationUtils.verify(true,true,"Heading is available Pdf")
+          ReportUtils.logStep("INFO","Heading is available in QuotePdf")
+          ValidationUtils.verify(true,true,"Heading is available in Quote Pdf")
           TextUtils.writeLog("Heading is available Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Heading is available Pdf")
-          
+          ValidationUtils.verify(false,true,"Heading is not available in Quote Pdf")
+     
+   var index = pdflineSplit.indexOf(clientName);            
     if(index>=0){
           ReportUtils.logStep("INFO",clientName+"ClientName is matching with Pdf")
           ValidationUtils.verify(true,true,clientName+" ClientName is matching with Pdf")
@@ -121,7 +118,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog(country+" Country is matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Country is not same in Draft Quote");
+          ValidationUtils.verify(false,true,"Country is not same in Quote");
    
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
   if((jobNumber=="")||(jobNumber==null)){
@@ -129,7 +126,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Validate Draft Quote");
+  ValidationUtils.verify(false,true,"Job Number is needed to Validate Quote");
    
   var j, x, pdfJobNum, pointer, pdfJobName;
   
@@ -151,7 +148,7 @@ var pName = false;
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if(Attn!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Attention is not same in Draft Quote");
+        ValidationUtils.verify(false,true,"Attention is not same in Quote");
         else{
           ReportUtils.logStep("INFO",Attn+" Attention is matching with Pdf");
         ValidationUtils.verify(true,true,Attn+" Attention is matching with Pdf");
@@ -159,12 +156,12 @@ var pName = false;
         }
     }
 
-        if(pdflineSplit[j].includes("Version No"))
+    if(pdflineSplit[j].includes("Version No"))
     {
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
        if(Revesion!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Revesion Number is not same in Draft Quote");
+        ValidationUtils.verify(false,true,"Revesion Number is not same in Quote");
         else{
         ReportUtils.logStep("INFO",Revesion+" Revesion Number is matching with Pdf")
         ValidationUtils.verify(true,true,Revesion+" Revesion Number is matching with Pdf")
@@ -173,21 +170,18 @@ var pName = false;
     }
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobNum = x[1].trim();
-       if(jobNumber!=pdfJobNum)
-        ValidationUtils.verify(false,true,"Job Number is not same in Quote");
-        else{
-        ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
+       if(pdflineSplit[j].includes(jobNumber))
+       {
+         ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
         ValidationUtils.verify(true,true,jobNumber+" Job Number is matching with Pdf")
         TextUtils.writeLog(jobNumber+" Job Number is matching with Pdf")
         }
+        else
+        ValidationUtils.verify(false,true,"Job Number is not same in Quote"); 
     }
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Name").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
-      if(pdfJobName.includes(jobName)){
+      if(pdflineSplit[j].includes(jobName)){
           ReportUtils.logStep("INFO",jobName+" Job Name is matching with Pdf")
           ValidationUtils.verify(true,true,jobName+" Job Name is matching with Pdf")
           TextUtils.writeLog(jobName+" Job Name is matching with Pdf")
@@ -207,13 +201,9 @@ var pName = false;
           ValidationUtils.verify(false,true,"Job Currency is not same in Quote");
         }
     }
-//    if(EnvParams.Country.toUpperCase()=="SPAIN"){
 
-//    }
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Product Number").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
         if(pdflineSplit[j].includes(productNumber))
          {
           ReportUtils.logStep("INFO",productNumber+" Product Number is matching with Pdf")
@@ -224,14 +214,10 @@ var pName = false;
           ValidationUtils.verify(false,true,"Product Number is not same in Quote");
         }
     }
-//    if(EnvParams.Country.toUpperCase()=="INDIA"){
+
      if(pdflineSplit[j].includes("Product Name"))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
-      Log.Message(pdflineSplit[j])
-      Log.Message(productName)
-        if(pdflineSplit[j].includes(productName))
+         if(pdflineSplit[j].includes(productName))
          {
           ReportUtils.logStep("INFO",productName+" Product Name is matching with Pdf")
           ValidationUtils.verify(true,true,productName+" Product Name is matching with Pdf")
@@ -242,14 +228,10 @@ var pName = false;
           ValidationUtils.verify(false,true,"Product Name is not same in Quote");
         }
     }
-//    }else{ 
 
-//    }
 
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
         if(pdflineSplit[j].includes(clientNumber))
          {
           ReportUtils.logStep("INFO",clientNumber+"Client Number is matching with Pdf")
@@ -407,9 +389,9 @@ var TaxVariable = "";
   for(var i=1;i<11;i++){
   var temp = "";
   var Q_Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco);
-  Log.Message(Q_Desp)
+ // Log.Message(Q_Desp)
   if(Q_Desp!=""){
-  Q_Desp = Q_Desp.replace(/(?![\x00-\x7F])./g, '');
+  Q_Desp = Q_Desp.replace(/(?![\ñáóí\x00-\x7F])./g, '');
   temp = temp + Q_Desp+" ";
   
   var Q_Qty = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco);
@@ -423,26 +405,27 @@ var TaxVariable = "";
   var Q_BillingTotal = ExcelUtils.getColumnDatas("TotalBilling_"+i,EnvParams.Opco);
   if(Q_BillingTotal!="")
     temp = temp + Q_BillingTotal+" ";
-  Log.Message(EnvParams.Country.toUpperCase())
+  //Log.Message(EnvParams.Country.toUpperCase())
    if(EnvParams.Country.toUpperCase()=="INDIA")
    { 
         var Q_Tax1 = ExcelUtils.getColumnDatas("Tax1_"+i,EnvParams.Opco);
          var matches = Q_Tax1.match(/(\d+)/); 
          if (matches) 
           temp = temp + matches[1]+".00 ";  
-     
-        var Q_Tax2 = ExcelUtils.getColumnDatas("Tax2_"+i,EnvParams.Opco);
-        if(Q_Tax2!=""){
-//           temp = temp + Q_Tax2+" ";
-         var matches = Q_Tax2.match(/(\d+)/); 
-         if (matches) 
-          temp = temp + matches[1]+".00 "; 
-          }
-  
+      
         var Q_Tax1currency = ExcelUtils.getColumnDatas("Tax1currency_"+i,EnvParams.Opco);
         if(Q_Tax1currency!="")
           if(Q_Tax1currency!="0.00")
            temp = temp + Q_Tax1currency+" ";
+  
+  
+       var Q_Tax2 = ExcelUtils.getColumnDatas("Tax2_"+i,EnvParams.Opco);
+        if(Q_Tax2!=""){
+         var matches = Q_Tax2.match(/(\d+)/); 
+         if (matches) 
+          temp = temp + matches[1]+".00 "; 
+          }
+
   
         var Q_Tax2currency = ExcelUtils.getColumnDatas("Tax2currency_"+i,EnvParams.Opco);
         if(Q_Tax2currency!="")
@@ -490,212 +473,8 @@ var TaxVariable = "";
           TextUtils.writeLog(GrandTotal+" Total is matching with Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Total is not same in Draft Quote");
+          ValidationUtils.verify(false,true,"Total is not same in Quote");
 }
-
-
-//function validateInvoicePdf()
-//{
-//  var fileName = "C:\\Users\\516188\\Documents\\2011\\Print Invoice Editing-6.pdf";
-//  var docObj;
-//
-//  // Load the PDF file to the PDDocument object
-//  try{
-//  Log.Message(fileName)
-//  docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(fileName);
-//  docObj = getTextFromPDF(docObj).OleValue.toString().trim();
-//  }catch(objEx){
-//    Log.Error("Exception while reading document::"+objEx);
-//  }
-//  var workBook = "C:\\Users\\516188\\Documents\\2011\\DS_MLY_REGRESSION.xlsx";
-//  var sheetName = "InvoicePreparation";
-//  var country = "Malaysia";
-//  EnvParams.Opco = "2011";
-//  ExcelUtils.setExcelName(workBook, "Data Management", true);
-// 
-//  var pdflineSplit = docObj.split("\r\n");
-//  
-//  var clientName = ReadExcelSheet("Client Name",EnvParams.Opco,"CreateClient");
-//  var street = ReadExcelSheet("Street 1",EnvParams.Opco,"CreateClient");
-//  var postCode = ReadExcelSheet("Post Code",EnvParams.Opco,"CreateClient");
-//  var postDistrict = ReadExcelSheet("Post District",EnvParams.Opco,"CreateClient");
-//  var clientCountry = ReadExcelSheet("Country",EnvParams.Opco,"CreateClient");
-//  
-//  var clientFound = false;
-//  for (var j=0; j<pdflineSplit.length; j++)
-//  {
-//         if(pdflineSplit[j].includes(clientName))
-//             {
-//             Log.Message(clientName+" clientName is matching with Pdf");
-//             clientFound = true;
-//             break;
-//             }
-//         if(j==pdflineSplit.length-1 && !clientFound)
-//          ValidationUtils.verify(false,true,"clientName is not found in Invoice");
-//    
-//  }          
-//   var index = pdflineSplit.indexOf(street);
-//    if(index>=0)
-//          Log.Message(street+" Street is matching with Pdf")
-//          else
-//          ValidationUtils.verify(false,true,"Street is not same in Invoice");
-//   var index = pdflineSplit.indexOf(postCode+"  "+postDistrict);
-//    if (index == -1)
-//        index = pdflineSplit.indexOf(postCode+" "+postDistrict);
-//    if(index>=0)
-//          Log.Message(postCode+" "+postDistrict+" PostCode and Post District are matching with Pdf")
-//          else
-//          ValidationUtils.verify(false,true,"PostCode and Post District are not same in Invoice");
-//   var index = pdflineSplit.indexOf(clientCountry);
-//    if(index>=0)
-//          Log.Message(clientCountry+" Country is matching with Pdf")
-//          else
-//          ValidationUtils.verify(false,true,"Country is not same in Invoice");
-//   
-//  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-//  if((jobNumber=="")||(jobNumber==null)){
-//  ExcelUtils.setExcelName(workBook, sheetName, true);
-//  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-//  }
-//  if((jobNumber=="")||(jobNumber==null))
-//  ValidationUtils.verify(false,true,"Job Number is needed to Validate Invoice");
-//   
-//  var j, x, pdfJobNum, pointer, pdfJobName;
-//  
-//  var jobName = ReadExcelSheet("Job_name",EnvParams.Opco,"JobCreation");
-//  
-//  for (j=0; j<pdflineSplit.length; j++)
-//  {
-//    if(pdflineSplit[j].includes("Job No"))
-//    {
-//      x= pdflineSplit[j].split(":");
-//      pdfJobNum = x[1].trim();
-//       if(jobNumber!=pdfJobNum)
-//        ValidationUtils.verify(false,true,"Job Number is not same in Invoice");
-//        else
-//        Log.Message(jobNumber+" Job Number is matching with Pdf")
-//    }
-//     if(pdflineSplit[j].includes("Job Name"))
-//    {
-//      x= pdflineSplit[j].split(":");
-//      pdfJobName = x[1].trim();
-//      if(pdfJobName.includes(jobName))
-//          Log.Message(jobName+" Job Name is matching with Pdf")
-//          else
-//          ValidationUtils.verify(false,true,"Job Name is not same in Invoice");
-//      break;
-//    }
-//  }
-//  
-//   if(country=="India"){
-//    pointer = pdflineSplit.indexOf("Agency GST Details")+1;
-//    if(pointer>=0){
-//    var pdfPan, pdfGstin, pdfCin;  
-//    var pan = ReadExcelSheet("OpCo PAN",EnvParams.Opco,"Data Management");
-//    var gstin = ReadExcelSheet("OpCo GSTIN",EnvParams.Opco,"Data Management");
-//    var cin = ReadExcelSheet("CIN/UIN",EnvParams.Opco,"Data Management");
-//   
-//      for (j=pointer; j<pdflineSplit.length; j++)
-//      {
-//      if(pdflineSplit[j].includes("PAN"))
-//      {
-//        x= pdflineSplit[j].split(":");
-//        pdfPan = x[1].trim();
-//         if(pan!=pdfPan)
-//          ValidationUtils.verify(false,true,"PAN is not same in Invoice");
-//         else
-//          Log.Message(pan+" PAN is matching with Pdf")
-//      }
-//       if(pdflineSplit[j].includes("GSTIN"))
-//      {
-//        x= pdflineSplit[j].split(":");
-//        pdfGstin = x[1].trim();
-//        if(gstin!=pdfGstin)
-//            ValidationUtils.verify(false,true,"GSTIN is not same in Invoice");
-//        else
-//            Log.Message(gstin+" GSTIN is matching with Pdf")
-//      }
-//      if(pdflineSplit[j].includes("CIN/UIN"))
-//      {
-//        x= pdflineSplit[j].split(":");
-//        pdfCin = x[1].trim();
-//        if(cin!=pdfCin)
-//            ValidationUtils.verify(false,true,"CIN/UIN is not same in Invoice");
-//        else
-//            Log.Message(cin+" CIN/UIN is matching with Pdf")
-//      }
-//    }
-//   }
-//  }
-//  
-//  ExcelUtils.setExcelName(workBook, sheetName, true);
-//  for(var i=1;i<11;i++){
-//  var temp = "";
-//  var Q_Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco);
-//  if(Q_Desp!=""){
-//    if(Q_Desp.includes("HSN"))
-//    temp = Q_Desp;
-//    else
-//    {
-//      temp = temp + Q_Desp+" ";
-//  
-//      var Q_Qty = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco);
-//      if(Q_Qty!=""){
-//      temp = temp + Q_Qty+" ";
-//      }
-//      var Q_Billing = ExcelUtils.getColumnDatas("UnitPrice_"+i,EnvParams.Opco);
-//      if(Q_Billing!="")
-//        temp = temp + Q_Billing+" ";
-//  
-//      var Q_BillingTotal = ExcelUtils.getColumnDatas("TotalBilling_"+i,EnvParams.Opco);
-//      if(Q_BillingTotal!="")
-//        temp = temp + Q_BillingTotal+" ";
-//  
-//       if(country=="India")
-//       { 
-//            var Q_Tax1 = ExcelUtils.getColumnDatas("Tax1_"+i,EnvParams.Opco);
-//             var matches = Q_Tax1.match(/(\d+)/); 
-//             if (matches) 
-//              temp = temp + matches[1]+".00 ";  
-//     
-//            var Q_Tax2 = ExcelUtils.getColumnDatas("Tax2_"+i,EnvParams.Opco);
-//            if(Q_Tax2!="")
-//               temp = temp + Q_Tax2+" ";
-//  
-//            var Q_Tax1currency = ExcelUtils.getColumnDatas("Tax1currency_"+i,EnvParams.Opco);
-//            if(Q_Tax1currency!="")
-//              if(Q_Tax1currency!="0.00")
-//               temp = temp + Q_Tax1currency+" ";
-//  
-//            var Q_Tax2currency = ExcelUtils.getColumnDatas("Tax2currency_"+i,EnvParams.Opco);
-//            if(Q_Tax2currency!="")
-//             if(Q_Tax2currency!="0.00")
-//               temp = temp + Q_Tax2currency+" ";
-// 
-//            var Q_total = ExcelUtils.getColumnDatas("Total_"+i,EnvParams.Opco);
-//            if(Q_total!="")
-//               temp = temp + Q_total;
-//       }
-//  }
-//  Log.Message("From Excel :"+temp.trim()) 
-//  var found = false;
-//   for (z=0; z<pdflineSplit.length; z++){
-//      if(pdflineSplit[z].includes(temp.trim())){
-//        ValidationUtils.verify(true,true,temp+" is matching with the Pdf");
-//         Log.Message(temp+" Matched with pdf"); 
-//        found = true;
-//        break;
-//      }
-//      if(z==pdflineSplit.length-1 && !found){
-//        ValidationUtils.verify(false,true,temp+" is not matching with the Pdf"); 
-//        break;
-//      }
-//   } 
-//   }
-//   else
-//    break;
-//  }
-//}
 
 
 
@@ -727,13 +506,3 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
   }
 };
 
-function hj(){ 
-var a= "Billable Amount (Acc Rev B/S) - B/S Accrual - PR - Outlay 50.00 700.00 35,000.00";
-var b= "Billable Amount (Acc Rev B/S) - B/S Accrual - PR - Outlay 50.00 700.00 35,000.00";
-//if(a==b)
-if(a.includes(b))
-Log.Message("true");
-else
-Log.Message("False");
-
-}
