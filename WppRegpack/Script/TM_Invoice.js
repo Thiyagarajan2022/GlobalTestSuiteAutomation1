@@ -1476,8 +1476,11 @@ aqUtils.Delay(3000, "Waiting to Refresh ToDo's List");
 if(ImageRepository.ImageSet.ToDos_Icon.Exists())
 { 
   
-}else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+}
+aqUtils.Delay(3000, "Waiting to Refresh ToDo's List");
+if(ImageRepository.ImageSet.ToDos_Icon.Exists())
+{ 
+  
 }
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
@@ -1544,14 +1547,15 @@ var listPass = false;
 
 
 function FinalApprove(JobNum,Apvr,lvl){ 
-
+  aqUtils.Delay(4000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
 var table = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
 if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
 

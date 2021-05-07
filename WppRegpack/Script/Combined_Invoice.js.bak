@@ -600,6 +600,29 @@ for(var i=0;i<Save.ChildCount;i++){
     ReportUtils.logStep_Screenshot("");
     Save.Click();
     TextUtils.writeLog("Line is Saved");
+    
+//    aqUtils.Delay(10000, "Specification Line is Saved On Account");
+//    var p = Sys.Process("Maconomy");
+//    Sys.HighlightObject(p);
+//    Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Specifications").OleValue.toString().trim())
+//    var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Specifications").OleValue.toString().trim(), 2000);
+//    if (w.Exists)
+//    { 
+//    var label = w.SWTObject("Label", "*");
+//    Log.Message(label.getText());
+//    var lab = label.getText().OleValue.toString().trim();
+//    ReportUtils.logStep("INFO",lab)
+//    TextUtils.writeLog(lab);
+//    var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+//    Ok.HoverMouse();
+//    ReportUtils.logStep_Screenshot("");
+//    Ok.Click();
+//    } 
+    
+    
+    
+    
+    
     break;
   }
 }
@@ -920,7 +943,7 @@ var PrintDraft = "";
   if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
   PrintDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
   else
-  PrintDraft = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+  PrintDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
 
   WorkspaceUtils.waitForObj(PrintDraft);
   for(var i=0;i<PrintDraft.ChildCount;i++){ 
@@ -1015,7 +1038,7 @@ var SubmitDraft = ""
   if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
   SubmitDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
   else
-  SubmitDraft = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+  SubmitDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
 
   WorkspaceUtils.waitForObj(SubmitDraft);
   for(var i=0;i<SubmitDraft.ChildCount;i++){ 
@@ -1101,8 +1124,10 @@ level = 1;
 var Approve;
   if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
   Approve = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.SingleToolItemControl2;
+  else if(Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.isVisible())
+  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2;
   else
-  Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
 
         
  var ApproveStat = false;

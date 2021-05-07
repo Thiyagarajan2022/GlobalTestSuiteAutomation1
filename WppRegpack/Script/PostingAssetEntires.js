@@ -132,7 +132,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 transactiontype = ExcelUtils.getRowDatas("TransactionType",EnvParams.Opco)
 Log.Message(company);
 if((transactiontype==null)||(transactiontype=="")){ 
-ValidationUtils.verify(false,true,"TransactionType is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"TransactionType is Needed to Create a fixedasset");
 
 
 }
@@ -161,7 +161,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Transactiontypeaddr = ExcelUtils.getRowDatas("AssetTransactionType",EnvParams.Opco)
 Log.Message(company);
 if((Transactiontypeaddr==null)||(Transactiontypeaddr=="")){ 
-ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Create a fixedasset");
 
 
 }
@@ -170,7 +170,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Amountbase = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
 Log.Message(company);
 if((Amountbase==null)||(Amountbase=="")){ 
-ValidationUtils.verify(false,true,"Amount is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"Amount is Needed to Create a fixedasset");
 
 
 }
@@ -214,7 +214,9 @@ function fixedassetdrevlinfo()
       }  
       
    var transactionaddr = Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
-   //Sys.HighlightObject(transaction);   
+   //Sys.HighlightObject(transaction);  
+   Log.Message(Language);
+   Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim())
    if(transactiontype!=""){
      transactionaddr.Click();  
         WorkspaceUtils.SearchByValueasset(transactionaddr,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim(),transactiontype,"Transactiontype");

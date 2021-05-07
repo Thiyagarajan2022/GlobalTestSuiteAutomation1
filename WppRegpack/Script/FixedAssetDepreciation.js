@@ -307,6 +307,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     aqUtils.Delay(10000,Indicator.Text);
     assettype.Click();
     aqUtils.Delay(1000, Indicator.Text);
+    Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, Transactiontype).OleValue.toString().trim() )
        WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, Transactiontype).OleValue.toString().trim() ,"Asset Transaction Type");
        aqUtils.Delay(1000, Indicator.Text); 
     } 

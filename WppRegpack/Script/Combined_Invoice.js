@@ -940,10 +940,20 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       
 var PrintDraft = "";
 
-  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
-  PrintDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
-  else
-  PrintDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+//  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
+//  PrintDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
+//  else
+//  PrintDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+//
+//  var PrintDraft;
+  if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
+  PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+ else
+  PrintDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+// var PrintDraft = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
 
   WorkspaceUtils.waitForObj(PrintDraft);
   for(var i=0;i<PrintDraft.ChildCount;i++){ 
@@ -1035,11 +1045,17 @@ aqUtils.Delay(1000, Indicator.Text);
 
 
 var SubmitDraft = ""
-  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
-  SubmitDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
-  else
-  SubmitDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
-
+//  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
+//  SubmitDraft = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2;
+//  else
+//  SubmitDraft = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+//
+//  var SubmitDraft;
+  if(Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.isVisible())
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
+ else
+  SubmitDraft = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+      
   WorkspaceUtils.waitForObj(SubmitDraft);
   for(var i=0;i<SubmitDraft.ChildCount;i++){ 
     if((SubmitDraft.Child(i).isVisible())&&(SubmitDraft.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit Draft").OleValue.toString().trim())){
@@ -1121,16 +1137,29 @@ var OpCo2 = ApproveInfo[0].split("*");
 if(OpCo2[2]==Project_manager){
 level = 1;
 
-var Approve;
-  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
-  Approve = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.SingleToolItemControl2;
-  else if(Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.isVisible())
-  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2;
-  else
-  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+//var Approve;
+//  if(Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.isVisible())
+//  Approve = Aliases.Maconomy.Combined_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.SingleToolItemControl2;
+//  else if(Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.isVisible())
+//  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2;
+//  else
+//  Approve = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite;
+//
+//        
+// var ApproveStat = false;
+//Sys.HighlightObject(Approve);
+//for(var i=0;i<Approve.ChildCount;i++){ 
+//  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
+//    Approve = Approve.Child(i);
+//    ApproveStat =true;
+//    break;
+//  }
+//}
 
-        
+
+var Approve;
  var ApproveStat = false;
+Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite;
 Sys.HighlightObject(Approve);
 for(var i=0;i<Approve.ChildCount;i++){ 
   if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
@@ -1140,6 +1169,17 @@ for(var i=0;i<Approve.ChildCount;i++){
   }
 }
 
+if(!ApproveStat){ 
+Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite;
+Sys.HighlightObject(Approve);
+for(var i=0;i<Approve.ChildCount;i++){ 
+  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
+    Approve = Approve.Child(i);
+    break;
+  }
+} 
+}
+Log.Message(Approve.FullName)
 
 Log.Message(Approve.FullName)
 WorkspaceUtils.waitForObj(Approve);
@@ -1641,6 +1681,28 @@ break;
 }
 } 
 
+    aqUtils.Delay(10000, Indicator.Text);
+    
+    
+     var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Invoice Drafts by Type - Invoice Editing").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Invoice Drafts by Type - Invoice Editing").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+  
+var label = w.SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+ReportUtils.logStep("INFO",lab)
+TextUtils.writeLog(lab);
+var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Ok.Click();
+}
+TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
+    aqUtils.Delay(5000, Indicator.Text);
 
 //Saving PDF
 TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 

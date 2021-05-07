@@ -193,8 +193,6 @@ ValidationUtils.verify(true,true,"Company field is available in Maconomy");
 
 var transactiontype1= Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McTextWidget.getText();
 Sys.HighlightObject(transactiontype1);
-Log.Message(transactiontype1);
-Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim())
 if(transactiontype1!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim())
 ValidationUtils.verify(false,true,"Transaction Type field is missing in Maconomy");
 else
