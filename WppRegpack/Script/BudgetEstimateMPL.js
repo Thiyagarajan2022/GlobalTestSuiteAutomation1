@@ -13,6 +13,8 @@ var STIME = "";
 var jobNumber = "";
 var Language = "";
 
+
+//Main Function
 function ValidateJobPdf(){ 
 TextUtils.writeLog("Job Quote and Client Approved Estimate Creation Started"); 
 Indicator.PushText("waiting for window to open");
@@ -40,16 +42,16 @@ jobNumber = "";
 comapany = EnvParams.Opco;
 sheetName ="JobEstimateMPL";
 
-//try{
+try{
 getDetails();
-//goToJobMenuItem();
-//goToBudget();
-//validatingWorkEstimate();
-//PrintJobBudgetMpl();
+goToJobMenuItem();
+goToBudget();
+validatingWorkEstimate();
+PrintJobBudgetMpl();
 validateJobBudgetPdf();
-//}catch(err){ 
-//  Log.Message(err);
-//}
+}catch(err){ 
+  Log.Message(err);
+}
 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -404,8 +406,6 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-//saveAs.Click();
 var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
 var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
 Sys.HighlightObject(p);
@@ -415,10 +415,6 @@ if (saveAs.Exists)
 saveAs.Click();
 }
 aqUtils.Delay(2000, Indicator.Text);
-//if(ImageRepository.ImageSet.SaveAs.Exists()){
-//var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-//conSaveAs.Click();
-//}
 Sys.HighlightObject(pdf);
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
@@ -458,13 +454,6 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
 
 function validateJobBudgetPdf()
 {
-  //Setting Language in WorkspaceUtils
-//  Language = "";
-//  Language = EnvParams.Language;
-//  Language = EnvParams.LanChange(Language);
-//  WorkspaceUtils.Language = Language;  
-
-//  var fileName ="C:\\Users\\516188\\Documents\\JobBudget\\P_JobBudget-11_1006.pdf";
   var fileName = "";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   fileName = ExcelUtils.getRowDatas("PDF Job Budget",EnvParams.Opco)
@@ -481,10 +470,6 @@ function validateJobBudgetPdf()
   }catch(objEx){
     Log.Error("Exception while reading document::"+objEx);
   }
-//  var workBook = "C:\\Users\\516188\\Documents\\JobBudget\\DS_SPN_REGRESSION.xlsx";
-  //var sheetName = "JobBudgetCreation";
- // EnvParams.Country = "Spain";
-  //EnvParams.Opco = "1006";
   ExcelUtils.setExcelName(workBook, "Data Management", true);
  
   var pdflineSplit = docObj.split("\r\n");
@@ -512,12 +497,11 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 
    if((EnvParams.Country.toUpperCase()=="INDIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
-   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
+   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="UAE"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
-//   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
-       if(index>=0){
+    if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")
           TextUtils.writeLog("Heading is available Pdf")
@@ -601,19 +585,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
   {
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attention").OleValue.toString().trim()))
     {
-      Log.Message(pdflineSplit[j])
-      if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Attention").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else{
-      x= pdflineSplit[j].split(":");
-      }
-
-      pdfAttn = x[1].trim();
-       if(Attn!=pdfAttn)
+        if(!pdflineSplit[j].includes(Attn))
         ValidationUtils.verify(false,true,"Attention is not same in pdf");
         else{
           ReportUtils.logStep("INFO",Attn+" Attention is matching with Pdf");
@@ -636,17 +608,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
-            if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job No").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      
-      pdfJobNum = x[1].trim();
-       if(jobNumber!=pdfJobNum)
+       if(!pdflineSplit[j].includes(jobNumber))
         ValidationUtils.verify(false,true,"Job Number is not same in pdf");
         else{
         ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
@@ -656,17 +618,8 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Name").OleValue.toString().trim()))
     {
-      
-    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job Name").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
-      if(pdfJobName.includes(jobName)){
+     
+      if(pdflineSplit[j].includes(jobName)){
           ReportUtils.logStep("INFO",jobName+" Job Name is matching with Pdf")
           ValidationUtils.verify(true,true,jobName+" Job Name is matching with Pdf")
           TextUtils.writeLog(jobName+" Job Name is matching with Pdf")
@@ -689,9 +642,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Product Number").OleValue.toString().trim()))
     {
-      x= pdflineSplit[j].split(":");
-      pdfproductNumber = x[1].trim();
-        if(productNumber.includes(pdfproductNumber))
+        if(pdflineSplit[j].includes(pdfproductNumber))
          {
           ReportUtils.logStep("INFO",pdfproductNumber+" Product Number is matching with Pdf")
           ValidationUtils.verify(true,true,pdfproductNumber+" Product Number is matching with Pdf")
@@ -703,17 +654,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     }
    if(pdflineSplit[j].includes("Product Name"))
     {
-      
-    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Product Name").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      pdfproductName = x[1].trim();
-        if(productName.includes(pdfproductName))
+       if(pdflineSplit[j].includes(pdfproductName))
          {
           ReportUtils.logStep("INFO",productName+" Product Name is matching with Pdf")
           ValidationUtils.verify(true,true,productName+" Product Name is matching with Pdf")
@@ -724,18 +665,8 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
         }
     }
    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
-    {
-      
-    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Client No").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      pdfclientNumber = x[1].trim();
-        if(pdfclientNumber.includes(clientNumber))
+    {      
+       if(pdflineSplit[j].includes(clientNumber))
          {
           ReportUtils.logStep("INFO",clientNumber+"Client Number is matching with Pdf")
           ValidationUtils.verify(true,true,clientNumber+" Client Number is matching with Pdf")
@@ -771,10 +702,8 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
                }
              }
              if(pdflineSplit[j].includes("Place of Supply"))
-              {
-                x= pdflineSplit[j].split(":");
-                pdfPOS = x[1].trim();
-               if(pdfPOS.includes(pos))
+              {               
+               if(pdflineSplit[j].includes(pos))
                {
                 ReportUtils.logStep("INFO",pos+" POS is matching with Pdf")
                 ValidationUtils.verify(true,true,pos+" POS is matching with Pdf")
@@ -828,9 +757,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
      
       if(pdflineSplit[j].includes("State"))
       {
-        x= pdflineSplit[j].split(":");
-        pdfStatePOS = x[1].trim();
-        if(pdfStatePOS.includes(statePOS))
+        if(pdflineSplit[j].includes(statePOS))
         {
           ReportUtils.logStep("INFO",cin+" State is matching with Pdf")
           ValidationUtils.verify(true,true,cin+" State is matching with Pdf")
@@ -921,10 +848,6 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
     break;
   }
   
-  
-    //var sheetName = "JobEstimateMPL";
-    //ExcelUtils.setExcelName(workBook, sheetName, true);
-    //var tot = ExcelUtils.getColumnDatas("Total",EnvParams.Opco);
     var grandTotal = ExcelUtils.getColumnDatas("GrandTotal",EnvParams.Opco);
     found = false;
     for (var j=20; j<=pdflineSplit.length; j++)
