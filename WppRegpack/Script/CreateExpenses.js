@@ -209,7 +209,7 @@ TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 
 function CreateEmpxnse(){ 
   ReportUtils.logStep("INFO", "Enter Expenses Details");
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
   var ExpenseTab = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;

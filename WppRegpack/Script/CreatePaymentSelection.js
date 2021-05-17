@@ -113,6 +113,8 @@ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){
   var create = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
   create.HoverMouse();
   ReportUtils.logStep_Screenshot("");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
   var vendor = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
   Sys.HighlightObject(vendor);
   if(VendorNo!=""){

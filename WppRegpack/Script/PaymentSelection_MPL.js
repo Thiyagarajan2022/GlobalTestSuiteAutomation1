@@ -137,7 +137,7 @@ function validateCreateChangePaymentSelection_standardLayout()
   verifyVendorNumber(VendorNo, pdflineSplit);     
   //verifyPaymentAgent(Paymentagent, pdflineSplit);    
   verifyPaymodeMode(Paymodemode,pdflineSplit);          
-  verifyExchangeDate(exchangeDate,pdflineSplit);
+  //verifyExchangeDate(exchangeDate,pdflineSplit);
   verifyDueDate(Duedate,pdflineSplit);     
   verifyAmount(amount,pdflineSplit);
  }
@@ -163,7 +163,7 @@ function validateCreateChangePaymentSelection_wppLayout()
   verifyVendorNumber(VendorNo, pdflineSplit);
   verifyInvoiceNumber(Invoicenumber,pdflineSplit);          
   verifyAmount(amount,pdflineSplit);
-  verifyExchangeDate(exchangeDate,pdflineSplit);
+ // verifyExchangeDate(exchangeDate,pdflineSplit);
   verifyDueDate(Duedate,pdflineSplit);     
   verifyPaymodeMode(Paymodemode,pdflineSplit);  
           
