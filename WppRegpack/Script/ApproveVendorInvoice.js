@@ -118,6 +118,84 @@ else{
 
 }
 
+// Approving 2nd Created vendor invoice for Reverse, credit note, reverse credit note
+function Approve_Vendor_Invoice(){ 
+  
+
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
+
+TextUtils.writeLog("Approve Vendor Invoice Started"); 
+Indicator.PushText("waiting for window to open");
+aqUtils.Delay(1000, Indicator.Text);
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+  menuBar.Click();
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Junior AP","Username")
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
+  
+}
+
+excelName = EnvParams.path;
+workBook = Project.Path+excelName;
+sheetName = "ApproveVendorInvoice";
+level =0;
+Approve_Level = [];
+ApproveInfo = [];
+mainParent = "";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+STIME = "";
+InvoiceNo ="";
+vID_Status = true;
+
+
+
+STIME = WorkspaceUtils.StartTime();
+ReportUtils.logStep("INFO", "Creating Vendor Invoice started::"+STIME);
+TextUtils.writeLog("Execution Start Time :"+STIME); 
+try{
+getDetails_Dependency();
+goToJobMenuItem();
+invoiceAllocation();
+WorkspaceUtils.closeAllWorkspaces();
+CredentialLogin();
+for(var i=level;i<ApproveInfo.length;i++){
+WorkspaceUtils.closeMaconomy();
+aqUtils.Delay(10000, Indicator.Text);
+var temp = ApproveInfo[i].split("*");
+Restart.login(temp[2]);
+aqUtils.Delay(5000, Indicator.Text);
+vID_Status = true;
+todo(temp[3],i,temp[1],temp[2]);
+//FinalApproveinvoice(temp[1],temp[2],i,temp[3]);
+}
+}catch(err){ 
+  Log.Message(err);
+}
+WorkspaceUtils.closeAllWorkspaces();
+}
+
+
+function getDetails_Dependency(){ 
+ExcelUtils.setExcelName(workBook, sheetName, true);
+
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+InvoiceNo = ReadExcelSheet("Second Vendor Invoice NO",EnvParams.Opco,"Data Management");
+if((InvoiceNo=="")||(InvoiceNo==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+InvoiceNo = ExcelUtils.getRowDatas("Invoice NO",EnvParams.Opco)
+}
+if((InvoiceNo==null)||(InvoiceNo=="")){ 
+ValidationUtils.verify(false,true,"Vendor Invoice NO is Needed to Approve Vendor Invoice");
+}
+else{ 
+  ValidationUtils.verify(true,true,"Approving Vendor Invoice NO :"+InvoiceNo)
+}
+
+}
+
 function goToJobMenuItem(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   Sys.Desktop.KeyDown(0x12);
@@ -170,6 +248,14 @@ TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
 function invoiceAllocation(){ 
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+
+
   var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
   WorkspaceUtils.waitForObj(allocation);
   allocation.Click();
@@ -205,9 +291,12 @@ for(var i=0;i<labels.ChildCount;i++){
 }
 
 WorkspaceUtils.waitForObj(labels);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+
 var i=0;
 while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1)&&(i!=60)){ 
   aqUtils.Delay(100);
@@ -465,12 +554,11 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
 
 refresh.Click();
-if(ImageRepository.ImageSet.ToDos_Icon.Exists())
-{ 
-  
-}else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+aqUtils.Delay(4000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+aqUtils.Delay(4000, Indicator.Text);
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
 //aqUtils.Delay(15000, Indicator.Text);
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible)
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
@@ -586,9 +674,11 @@ if(vID_Status)
 function FinalApproveinvoice(InvoiceNo,Apvr,lvl){ 
   
 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+aqUtils.Delay(4000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
 
 var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);

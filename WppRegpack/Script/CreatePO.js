@@ -6,6 +6,9 @@
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
 //USEUNIT EventHandler
+//USEUNIT CreditNotePO
+//USEUNIT ReverseCreditNote
+
 Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
@@ -227,17 +230,17 @@ Log.Message(ContryCurrency)
 
 var ExchangeRate;
 var BaseCurrency;
-  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
-  if(ContryCurrency!="GBP")  
-  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
-  else
-  ExchangeRate = "1.00";
-  if(ClientCurrency!=ContryCurrency)  
-  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
-  else
-  BaseCurrency = "1.00";
-  Log.Message("ExchangeRate :"+ExchangeRate);
-  Log.Message("BaseCurrency :"+BaseCurrency)
+//  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
+//  if(ContryCurrency!="GBP")  
+//  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
+//  else
+//  ExchangeRate = "1.00";
+//  if(ClientCurrency!=ContryCurrency)  
+//  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
+//  else
+//  BaseCurrency = "1.00";
+//  Log.Message("ExchangeRate :"+ExchangeRate);
+//  Log.Message("BaseCurrency :"+BaseCurrency)
   
 var RowCount = 0;
 var addedlines = false;
@@ -377,9 +380,13 @@ var Unit_Price =
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3)
 //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
    if(UnitPrice!=""){
-   Unit_Price.setText(UnitPrice);
+        if(CreditNotePO.CreatePO)
+        Unit_Price.setText("-"+UnitPrice);
+        else
+        Unit_Price.setText(UnitPrice);
      }
-     
+
+        
 Log.Message("OHSN :"+OHSN);
 Log.Message("IHSN :"+IHSN);
 Log.Message("POS :"+POS);
@@ -607,8 +614,23 @@ SubmitPurchase.Click();
   Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTextWidget", "", 2).getText().OleValue.toString().trim();;
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText().OleValue.toString().trim();;
   ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
+   ExcelUtils.setExcelName(workBook,"Data Management", true);
+    if(CreditNotePO.CreatePO){ 
+  ExcelUtils.WriteExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
   ExcelUtils.WriteExcelSheet("PO Number_"+POnum,EnvParams.Opco,"Data Management",PurchaseNumber)
+  TextUtils.writeLog("Created Credit PO Number :"+PurchaseNumber);
+  }
+  else if(ReverseCreditNote.CreatePO){ 
+  ExcelUtils.WriteExcelSheet("ReverseCredit PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
+  ExcelUtils.WriteExcelSheet("PO Number_"+POnum,EnvParams.Opco,"Data Management",PurchaseNumber)
+  TextUtils.writeLog("Created ReverseCredit PO Number :"+PurchaseNumber);
+  }
+  else{
+  ExcelUtils.WriteExcelSheet("PO Number_"+POnum,EnvParams.Opco,"Data Management",PurchaseNumber)
+  TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
+  }
+ 
+//  ExcelUtils.WriteExcelSheet("PO Number_"+POnum,EnvParams.Opco,"Data Management",PurchaseNumber)
   TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
 }
 

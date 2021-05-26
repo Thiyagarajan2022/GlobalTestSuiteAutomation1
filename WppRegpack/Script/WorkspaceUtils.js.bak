@@ -3053,7 +3053,7 @@ var checkmark = false;
     Sys.Desktop.KeyUp(0x11);
     Sys.Desktop.KeyUp(0x47);
     aqUtils.Delay(3000, Indicator.Text);
-    var code = Sys.Process("Maconomy").SWTObject("Shell", "Transaction Type").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
+    var code = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "");
     code.setText(value);
     aqUtils.Delay(3000, Indicator.Text);
     var serch = Sys.Process("Maconomy").SWTObject("Shell", popupName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McPagingWidget", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Search").OleValue.toString().trim()+" ");
@@ -3245,20 +3245,20 @@ Log.Error("Object is not Visible/Enabled")
 */
 function getSpecificDate(daysFromToday)
 {
-  var today = new Date();
-  today.setDate(today.getDate() + daysFromToday);
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; 
-  var yyyy = today.getFullYear();
+  var date = new Date();
+  date.setDate(date.getDate() + daysFromToday);
+  var dd = date.getDate();
+  var mm = date.getMonth()+1; 
+  var yyyy = date.getFullYear();
   if(dd<10) {
       dd='0'+dd;
   } 
   if(mm<10) {
       mm='0'+mm;
   } 
-  today = mm+'/'+dd+'/'+yyyy;
-  Log.Message(today);
-  return today;
+  date = mm+'/'+dd+'/'+yyyy;
+  Log.Message(date);
+  return date;
 }
 
 function levelMatch(Approve_Level){

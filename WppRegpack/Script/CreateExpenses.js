@@ -209,7 +209,7 @@ TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 
 function CreateEmpxnse(){ 
   ReportUtils.logStep("INFO", "Enter Expenses Details");
-  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
   var ExpenseTab = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -219,6 +219,19 @@ function CreateEmpxnse(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(5000, "Create Expenses Sheet");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(5000, "Create Expenses Sheet");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  Sys.Desktop.KeyDown(0x11)
+  Sys.Desktop.KeyDown(0x46)
+  aqUtils.Delay(3000, "Create Expenses Sheet");
+  Sys.Desktop.KeyUp(0x11)
+  Sys.Desktop.KeyUp(0x46)
   
 //  if(ImageRepository.ImageSet.Close_Filter.Exists()){
 //  ImageRepository.ImageSet.Close_Filter.Click();

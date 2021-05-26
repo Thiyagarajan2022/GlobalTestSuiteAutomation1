@@ -28,6 +28,7 @@ var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
 var VendorID,company,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
+var Ipreparation_ID,IpreparationUnit,JobNoTo = "";
 var Language = "";
 var description="";
 var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
@@ -69,659 +70,42 @@ ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
 
 
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
-if((POnumber==null)||(POnumber=="")){ 
-TextUtils.writeLog("Creating Negative Purchase Order for Credit Note");
-CreatePO = true;
-Runner.CallMethod("CreatePurchaseOrder.CreatePurchaseOrder");
-}
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
-Log.Message(POnumber)
-CreatePO = false;
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-Approved_POnumber = ReadExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management");
-if((Approved_POnumber==null)||(Approved_POnumber=="")){ 
-TextUtils.writeLog("Approving Negative Purchase Order for Credit Note");
-CreatePO = true;
-Runner.CallMethod("ApprovePurchaseOrder.ApprovePurchaseOrder");
-}
-
-CreatePO = false;
-
-
-//try{
-//getDetails();
 //ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  gotoMenu();
-//  goToCreatePurchase();
-//  gettingApproval();
-//  WorkspaceUtils.closeAllWorkspaces();
-//    for(var i=level;i<ApproveInfo.length;i++){
-//      level=i;
-//    WorkspaceUtils.closeMaconomy();
-//    aqUtils.Delay(10000, Indicator.Text);
-//    var temp = ApproveInfo[i].split("*");
-//    Restart.login(temp[2]);
-//    aqUtils.Delay(5000, Indicator.Text);
-//    todo(temp[3]);
-//    FinalApprovePO(temp[1],temp[2],i,temp[3]);
-//    }
-//POnumber = "1284100108";
-   vendorinvoice();
-   InvoiceCreation();
+//POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+//if((POnumber==null)||(POnumber=="")){ 
+//TextUtils.writeLog("Creating Negative Purchase Order for Credit Note");
+//CreatePO = true;
+//Runner.CallMethod("CreatePurchaseOrder.CreatePurchaseOrder");
+//}
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+//Log.Message(POnumber)
+//CreatePO = false;
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//Approved_POnumber = ReadExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management");
+//if((Approved_POnumber==null)||(Approved_POnumber=="")){ 
+//TextUtils.writeLog("Approving Negative Purchase Order for Credit Note");
+//CreatePO = true;
+//Runner.CallMethod("ApprovePurchaseOrder.ApprovePurchaseOrder");
+//}
+//
+//CreatePO = false;
+
+
+   Get_Details();
+   Login_Maconomy();
    goToAPMenuItem(); 
    invoiceAllocation();
-//}
-//  catch(err){
-//    Log.Message(err);
-//  }
+
 WorkspaceUtils.closeAllWorkspaces();
 }
 
 
-function closeAllWorkspaces(){
-  Sys.Desktop.KeyDown(0x12); //Ctrl
-  Sys.Desktop.KeyDown(0x57); //W
-  Sys.Desktop.KeyDown(0x0D); //Enter
-  Sys.Desktop.KeyUp(0x12); //Ctrl
-  Sys.Desktop.KeyUp(0x57);
-  Sys.Desktop.KeyUp(0x0D);
-}  
-
-
-function getDetails(){ 
-  
-ExcelUtils.setExcelName(workBook, sheetName, true);
-wCodeID = ExcelUtils.getRowDatas("WorkCode",EnvParams.Opco)
-Log.Message(wCodeID)
-if((wCodeID==null)||(wCodeID=="")){ 
-ValidationUtils.verify(false,true,"WorkCode is Needed to Create a Negative Purchase Order");
-}
-
-Desp = ExcelUtils.getRowDatas("Description",EnvParams.Opco)
-Log.Message(Desp)
-if((Desp==null)||(Desp=="")){ 
-ValidationUtils.verify(false,true,"Description is Needed to Create a Negative Purchase Order");
-}
-
-Qly = ExcelUtils.getRowDatas("Quantity",EnvParams.Opco)
-Log.Message(Qly)
-if((Qly==null)||(Qly=="")){ 
-ValidationUtils.verify(false,true,"Quantity is Needed to Create a Negative Purchase Order");
-}
-UnitPrice = ExcelUtils.getRowDatas("Cost",EnvParams.Opco)
-Log.Message(UnitPrice)
-if((UnitPrice==null)||(UnitPrice=="")){ 
-ValidationUtils.verify(false,true,"Cost is Needed to Create a Negative Purchase Order");
-}
-OHSN = ExcelUtils.getRowDatas("Outward HSN",EnvParams.Opco)
-//Log.Message(OHSN)
-//if((OHSN==null)||(OHSN=="")){ 
-//ValidationUtils.verify(false,true,"Outward HSN is Needed to Create a Negative Purchase Order");
-//}
-IHSN = ExcelUtils.getRowDatas("Inward HSN",EnvParams.Opco)
-//Log.Message(IHSN)
-//if((IHSN==null)||(IHSN=="")){ 
-//ValidationUtils.verify(false,true,"Inward HSN is Needed to Create a Negative Purchase Order");
-//}
-
-POS = ExcelUtils.getRowDatas("POS",EnvParams.Opco)
-//Log.Message(POS)
-//if((POS==null)||(POS=="")){ 
-//ValidationUtils.verify(false,true,"POS is Needed to Create a Negative Purchase Order");
-//}
-  
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-VendorID = ReadExcelSheet("Vendor Number",EnvParams.Opco,"Data Management");
-if((VendorID=="")||(VendorID==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-VendorID = ExcelUtils.getColumnDatas("Vendor Number",EnvParams.Opco)
-}
-if((VendorID==null)||(VendorID=="")){ 
-ValidationUtils.verify(false,true,"Vendor Number is Needed to Create a Negative Purchase Order");
-}
-
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-Job_Number = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-if((Job_Number=="")||(Job_Number==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-}
-if((Job_Number==null)||(Job_Number=="")){ 
-ValidationUtils.verify(false,true,"Job Number is Needed to Create a Negative Purchase Order");
-}
- 
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//NOL = ExcelUtils.getColumnDatas("Number of Lines To ADD",EnvParams.Opco)
-
-}
-
-
-function gotoMenu(){ 
-  
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.DblClick();
-if(ImageRepository.ImageSet.AccountPayable.Exists()){
-ImageRepository.ImageSet.AccountPayable.Click();// GL
-}
-else if(ImageRepository.ImageSet.AccountPayable2.Exists()){
-ImageRepository.ImageSet.AccountPayable2.Click();
-}
-else{
-ImageRepository.ImageSet.AccountPayable2.Click();
-}
-
-
-var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
-var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-var MainBrnch = "";
-for(var bi=0;bi<WrkspcCount;bi++){ 
-  if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
-    MainBrnch = Workspc.Child(bi);
-    break;
-  }
-}
-
-
-var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
-  var Client_Managt;
-for(var i=1;i<=childCC;i++){ 
-Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
-if(Client_Managt.isVisible()){ 
-Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
-Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Purchase Orders").OleValue.toString().trim());
-ReportUtils.logStep_Screenshot();
-Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Purchase Orders").OleValue.toString().trim());
-}
-
-} 
-
-ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu");
-TextUtils.writeLog("Entering into Purchase Orders from Accounts Payable Menu");
-}
-
-function goToCreatePurchase(){ 
-//  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//  }
-//var allPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Purchase Orders").OleValue.toString().trim())
-//WorkspaceUtils.waitForObj(allPurchase);
-//allPurchase.Click();
-
-var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
-WorkspaceUtils.waitForObj(closefilter);
-closefilter.Click();
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-var craetePurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite;
-Sys.HighlightObject(craetePurchase)
-for(var i=0;i<craetePurchase.ChildCount;i++){ 
-  if((craetePurchase.Child(i).isVisible())&&(craetePurchase.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Purchase Order (Ctrl+N)").OleValue.toString().trim())){
-    craetePurchase = craetePurchase.Child(i);
-  Log.Message(craetePurchase.FullName)
-    break;
-  }
-}
-WorkspaceUtils.waitForObj(craetePurchase);
-craetePurchase.HoverMouse();
-ReportUtils.logStep_Screenshot(); 
-craetePurchase.Click();
-TextUtils.writeLog("Create Purchase Order is Clicked");
-if(ImageRepository.ImageSet.Img_search.Exists()){ 
-  
-}
-
-var company = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
-if(EnvParams.Opco!=""){
-company.Click();
-WorkspaceUtils.SearchByValue(company,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company").OleValue.toString().trim(),EnvParams.Opco,"Company");
-  }else{ 
-  ValidationUtils.verify(false,true,"Company Number is Need to create PurchaseOrder");
-}
-  
-var vendor = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
-vendor.Click();
-SearchByValues_Col_1_all(vendor,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Vendor").OleValue.toString().trim(),VendorID,"Vendor Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Vendors").OleValue.toString().trim());
-  
- 
-var jobNo = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McValuePickerWidget;
-jobNo.Click();
-WorkspaceUtils.SearchByValues_all_Col_2(jobNo,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),Job_Number,"Job Number",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
-
-var create = Aliases.Maconomy.Shell6.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim())
-create.HoverMouse();
-ReportUtils.logStep_Screenshot();
-create.Click();
-TextUtils.writeLog("Credit Note Purchase Order is created");
-ValidationUtils.verify(true,true,"Credit Note Purchase Order is created")
-
-var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
-WorkspaceUtils.waitForObj(screen);
-  screen.Click();
-  screen.MouseWheel(-40);
-  aqUtils.Delay(5000, Indicator.Text);
-  
-var ClientCurrency =  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget;
-ClientCurrency =  ClientCurrency.getText();  
-Log.Message(ClientCurrency);
-ExcelUtils.setExcelName(workBook, "CountryCurrency", true);
-var ContryCurrency = ExcelUtils.getRowDatas(EnvParams.Country,"Currency");
-Log.Message(ContryCurrency)
-
-var ExchangeRate;
-var BaseCurrency;
-  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
-  if(ContryCurrency!="GBP")  
-  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
-  else
-  ExchangeRate = "1.00";
-  if(ClientCurrency!=ContryCurrency)  
-  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
-  else
-  BaseCurrency = "1.00";
-  Log.Message("ExchangeRate :"+ExchangeRate);
-  Log.Message("BaseCurrency :"+BaseCurrency)
-  
-var RowCount = 0;
-var addedlines = false;
-var jB = true;
-var line_i =1;
-var LTA = 1;
-var init = 1;
-if((NOL==null)||(NOL==""))
-{ 
-  LTA = 10;
-}else{ 
-  if(NOL.indexOf("-")!=-1){ 
-    var line_Temp = NOL.split("-");
-    init = aqConvert.StrToInt(line_Temp[0]);
-    LTA = aqConvert.StrToInt(line_Temp[1]);
-  }else{
-  LTA = aqConvert.StrToInt(NOL);
-  }
-}
-
-Log.Message(init)
-Log.Message(LTA)
-
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-
-// for(var i=1;i<=10;i++){
-//var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
-//var IHSN ="";
-//
-//sheetName = "CreditNoteWithPO";
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-// wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-// Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
-// Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
-// UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
-// OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
-// IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
-// 
-//if((wCodeID!="")||(wCodeID!=null)){
-// jB = false; 
-// break;
-//}
-//else{ 
-//sheetName = "CreatePurchaseOrder"; 
-//init = 0;
-//LTA = 10;
-//}
-//
-// }
-
-Log.Message(sheetName)
-Log.Message(init)
-Log.Message(LTA)
-
-
-// for(var i=init;i<=LTA;i++){
-//var OHSN,IHSN,wCodeID,Desp,Qly,UnitPrice ="";
-//var IHSN ="";
-//
-//if(!jB){ 
-// sheetName = "JobBudgetCreation"; 
-//}else{ 
-// sheetName = "CreatePurchaseOrder"; 
-//}
-//
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-// wCodeID = ExcelUtils.getColumnDatas("WorkCode_"+i,EnvParams.Opco)
-// Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco)
-// Qly = ExcelUtils.getColumnDatas("Quantity_"+i,EnvParams.Opco)
-// UnitPrice = ExcelUtils.getColumnDatas("Cost_"+i,EnvParams.Opco)
-// OHSN = ExcelUtils.getColumnDatas("Outward HSN_"+i,EnvParams.Opco)
-// IHSN = ExcelUtils.getColumnDatas("Inward HSN_"+i,EnvParams.Opco)
-////}
-//sheetName = "CreatePurchaseOrder";
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//var POS = ExcelUtils.getColumnDatas("POS",EnvParams.Opco)
-
-
-if((wCodeID!="")&&(wCodeID!=null)&&(wCodeID.indexOf("T")==-1)){
-//if(line_i<=LTA){
-TextUtils.writeLog("Line item "+line_i+" is adding in PO");
-line_i++;
-var addBudget = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-WorkspaceUtils.waitForObj(addBudget);
-addBudget.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-var jobNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
-WorkspaceUtils.waitForObj(jobNo);
-jobNo.Keys("[Tab][Tab]");
-
-var workcode = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
-  workcode.Click();
-  WorkspaceUtils.SearchByValue(workcode,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Work Code").OleValue.toString().trim(),wCodeID,"WorkCode");
-  addedlines = true;
-  workcode.Keys("[Tab]");
-var detailedDescription = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget3;
-   if(Desp!=""){
-   detailedDescription.setText(Desp);
-   }else{ 
-   ValidationUtils.verify(false,true,"Detailed Description Needed to create PurchaseOrder");
-     }
-   detailedDescription.Keys("[Tab]"); 
-var Quantity = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
-   if(Qly!=""){
-   Quantity.setText(Qly);
-   }
-   Quantity.Keys("[Tab]");
-var Unit_Price = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget;
-   if(UnitPrice!=""){
-   Unit_Price.setText(UnitPrice);
-     }
-     
-Log.Message("OHSN :"+OHSN);
-Log.Message("IHSN :"+IHSN);
-Log.Message("POS :"+POS);
-  if(EnvParams.Country.toUpperCase()=="INDIA")
-   Runner.CallMethod("IND_PurchaseOrder.IND_Specific",Unit_Price,OHSN,IHSN,POS);
-   
-var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl3;
-WorkspaceUtils.waitForObj(save);
-save.HoverMouse();
-ReportUtils.logStep_Screenshot();
-save.Click();
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-
-
-  RowCount++;
-}
-
-//}
-
-if(!addedlines)
-ValidationUtils.verify(false,true,"WorkCode is not availble in to Create Budget");
-else{
-  TextUtils.writeLog("Credit Note Purchase Order lines are Saved");
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-
-var SubmitPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
-Sys.HighlightObject(SubmitPurchase);
-for(var i=0;i<SubmitPurchase.ChildCount;i++){ 
-  if((SubmitPurchase.Child(i).isVisible())&&(SubmitPurchase.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submit Purchase Order").OleValue.toString().trim())){
-    SubmitPurchase = SubmitPurchase.Child(i);
-    break;
-  }
-}
-WorkspaceUtils.waitForObj(SubmitPurchase);
-SubmitPurchase.HoverMouse();
-ReportUtils.logStep_Screenshot(); 
-SubmitPurchase.Click();
-
-  ReportUtils.logStep_Screenshot();
-  aqUtils.Delay(8000, "Submit Purchase Order");;
-  TextUtils.writeLog("Submit Purchase Order is Clicked");
-
-  ValidationUtils.verify(true,true,"Purchase Order is Created and Submitted");
-  var PurchaseNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget.getText().OleValue.toString().trim();;
-  ValidationUtils.verify(true,true,"Created Purchase Order Number :"+PurchaseNumber);
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
-  ExcelUtils.WriteExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management",PurchaseNumber)
-  TextUtils.writeLog("Created Purchase Order Number :"+PurchaseNumber);
-  
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-}
-}
 
 
 
-function gettingApproval(){ 
-  
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
-if((POnumber=="")||(POnumber==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
-}
-if((POnumber==null)||(POnumber=="")){ 
-ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
-} 
 
-        Sys.Desktop.KeyDown(0x11);
-        Sys.Desktop.KeyDown(0x46);
-        Sys.Desktop.KeyUp(0x11);
-        Sys.Desktop.KeyUp(0x46);
-
-  
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
-var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder;
-waitForObj(table);
-Sys.HighlightObject(table);
-
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Visible){
-
-}else{ 
-ImageRepository.ImageSet.Show_Filter.Click();
-}
-
-//  var allPurchase = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Purchase Orders").OleValue.toString().trim())
-//  WorkspaceUtils.waitForObj(allPurchase);
-//  allPurchase.Click();
-  var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.CompanyNo;
-  WorkspaceUtils.waitForObj(companyNo);
-  companyNo.Click();
-  companyNo.Keys("[Tab]");
-  var purchaseNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid.PurchaseNumber;
-  WorkspaceUtils.waitForObj(purchaseNo);
-  purchaseNo.Click();
-  purchaseNo.setText(POnumber);
-
-  var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid;
-  WorkspaceUtils.waitForObj(table);
-  aqUtils.Delay(3000, "Reading Table Data");
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  var flag=false;
-  for(var v=0;v<table.getItemCount();v++){ 
-  if(table.getItem(v).getText_2(1).OleValue.toString().trim()==POnumber){ 
-  flag=true;    
-  break;
-  }
-  else{ 
-  table.Keys("[Down]");
-  }
-  }
-  ValidationUtils.verify(flag,true,"Created Purchase Order is available in system");
-  TextUtils.writeLog("Created Purchase Order is available in system");
-  
-  
- if(flag){
-  var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite.SingleToolItemControl;
-  WorkspaceUtils.waitForObj(closefilter);
-  closefilter.HoverMouse();
-  ReportUtils.logStep_Screenshot();
-  closefilter.Click();
-
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
-  WorkspaceUtils.waitForObj(purchaseOrderApproval);
-  purchaseOrderApproval.Click();
-  
-  
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-
-  ImageRepository.ImageSet.Maximize.Click();
-
-  var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
-  WorkspaceUtils.waitForObj(purchaseApproval);
-  purchaseApproval.Click();
-  var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
-  WorkspaceUtils.waitForObj(ApproverTable);
-  var y=0;
-  for(var i=0;i<ApproverTable.getItemCount();i++){   
-     var approvers="";
-      if(ApproverTable.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-        
-        var mainApprover = ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim();
-        var substitur = ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
-        var temp = "";
-        if(mainApprover .indexOf(Project_manager)==-1){ 
-          temp = temp+mainApprover+"*";
-        }else{ 
-          temp = temp+"SelfApprove"+"*";
-        }
-        if(substitur .indexOf(Project_manager)==-1){ 
-          temp = temp+substitur;
-        }
-      approvers = EnvParams.Opco+"*"+POnumber+"*"+ temp;  
-//      approvers = EnvParams.Opco+"*"+POnumber+"*"+ApproverTable.getItem(i).getText_2(7).OleValue.toString().trim()+"*"+ApproverTable.getItem(i).getText_2(8).OleValue.toString().trim();
-      Log.Message("Approver level :" +i+ ": " +approvers);
-      Approve_Level[y] = approvers;
-      y++;
-      }
-}
-TextUtils.writeLog("Finding approvers for Created Purchase Order");
-var listPurchaseOrder = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.listPurchaseOrder.TabControl;
-listPurchaseOrder.Click();
-ImageRepository.ImageSet.Forward.Click();
-
-
-CredentialLogin();
-var OpCo2 = ApproveInfo[0].split("*");
-
-//ExcelUtils.setExcelName(workBook, "Server Details", true);
-//var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
-    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
-sheetName = "CreditNoteWithPO";
-if(OpCo2[2]==Project_manager){
-level = 1;
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite
-Sys.HighlightObject(Approve);
-for(var i=0;i<Approve.ChildCount;i++){ 
-  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
-    Approve = Approve.Child(i);
-    break;
-  }
-}
-Sys.HighlightObject(Approve)
-if(Approve.isEnabled()){ 
-Approve.HoverMouse();
-ReportUtils.logStep_Screenshot();
-  Approve.Click();
-ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Project_manager)
-TextUtils.writeLog("Levels 0 has  Approved the Created PO");
-
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-
-var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
-    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-
-  ValidationUtils.verify(true,true,"Purchase Order is Approved by :"+loginPer)
-  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer); 
-
-  
-if(Approve_Level.length==1){
-  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
-  purchaseOrderApproval.Click();
-
-  ImageRepository.ImageSet.Maximize.Click();
-
-  var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
-  WorkspaceUtils.waitForObj(purchaseApproval)
-  purchaseApproval.Click();
-  var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
-WorkspaceUtils.waitForObj(ApproverTable)
-ReportUtils.logStep_Screenshot();
-}
-}
-}
-}
-}
-
-
-function CredentialLogin(){ 
-  var AppvLevl = [];
-for(var i=0;i<Approve_Level.length;i++){
-  var UserN = true;
-  var temp="";
-  var temp1="";
-  var Cred = Approve_Level[i].split("*");
-  for(var j=2;j<4;j++){
-  temp="";
-  if((Cred[j]!="")&&(Cred[j]!=null))
-  if((Cred[j].indexOf("CHFP")==-1)&&(Cred[j].indexOf("SSC - ")==-1)&&(Cred[j].indexOf("Central Team - Client Management")==-1) &&(Cred[j].indexOf("Central Team - Vendor Management")==-1) && ((Cred[j].indexOf("OpCo - ")!=-1) || (Cred[j].indexOf(EnvParams.Opco+" ")!=-1)))
-  { 
-     var sheetName = "Agency Users";
-     workBook = Project.Path+excelName;
-    ExcelUtils.setExcelName(workBook, sheetName, true);
-    temp = ExcelUtils.AgencyLogin(Cred[j],EnvParams.Opco);
-  }
-  else if((Cred[j].indexOf("CHFP")!=-1)||(Cred[j].indexOf("SSC - ")!=-1)||(Cred[j].indexOf("Central Team - Vendor Management")!=-1) ||(Cred[j].indexOf("Central Team - Client Management")!=-1))
-  { 
-
-    var sheetName = "SSC Users";
-    ExcelUtils.setExcelName(workBook, sheetName, true);
-    temp = ExcelUtils.SSCLogin(Cred[j],"Username");
-  }
-
-  if(temp.length!=0){
-    temp1 = temp1+temp+"*"+j+"*";
-//  break;
-  }
-  }
-  if((temp1=="")||(temp1==null))
-  Log.Error("User Name is Not available for level :"+i);
-  Log.Message(temp1)
-  AppvLevl[i] = temp1;
-}
-  ApproveInfo = levelMatch(AppvLevl)
-  Log.Message("-----Approvers-------------")
-  for(var i=0;i<ApproveInfo.length;i++){
-    ApproveInfo[i] = Cred[0]+"*"+Cred[1]+"*"+ApproveInfo[i];
-    Log.Message(ApproveInfo[i]);
-    }
-//WorkspaceUtils.closeAllWorkspaces();
-}
-
-function vendorinvoice(){
+function Login_Maconomy(){
       var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
       menuBar.Click();
     ExcelUtils.setExcelName(workBook, "SSC Users", true);
@@ -781,14 +165,16 @@ ReportUtils.logStep("INFO", "Moved to AP Transactions from Accounts Payable Menu
 TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
-function InvoiceCreation(){
+function Get_Details(){
+sheetName = "CreditNoteWithPO";
 ExcelUtils.setExcelName(workBook, "Data Management", true);
-POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+POnumber = ReadExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management");
 if((POnumber=="")||(POnumber==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
+
+Create_New_Job_2();
+
 }
-var sheetName = "CreditNoteWithPO";
+Log.Message("Get Details POnumber :"+POnumber)
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
 company = EnvParams.Opco;
@@ -796,26 +182,26 @@ company = EnvParams.Opco;
 if((company==null)||(company=="")){ 
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Vendor Invoice");
 }
-InvoiceNo = ExcelUtils.getRowDatas("Invoice No",EnvParams.Opco)
+InvoiceNo = ExcelUtils.getColumnDatas("Invoice No",EnvParams.Opco)
 if((InvoiceNo==null)||(InvoiceNo=="")){ 
 ValidationUtils.verify(false,true,"Invoice No. is Needed to Create a Vendor Invoice");
 }
 Log.Message(InvoiceNo)
-EDate = ExcelUtils.getRowDatas("Entry Date",EnvParams.Opco)
+EDate = ExcelUtils.getColumnDatas("Entry Date",EnvParams.Opco)
 if((EDate==null)||(EDate=="")){ 
 ValidationUtils.verify(false,true,"Entry Date is Needed to Create a Vendor Invoice");
 }
 Log.Message(EDate)
-IDate = ExcelUtils.getRowDatas("Invoice Date",EnvParams.Opco)
+IDate = ExcelUtils.getColumnDatas("Invoice Date",EnvParams.Opco)
 if((IDate==null)||(IDate=="")){ 
 ValidationUtils.verify(false,true,"Invoice Date is Needed to Create a Vendor Invoice");
 }
 Log.Message(IDate)
-description = ExcelUtils.getRowDatas("Description1",EnvParams.Opco)
+description = ExcelUtils.getColumnDatas("Description1",EnvParams.Opco)
 if((description==null)||(description=="")){ 
 ValidationUtils.verify(false,true,"Description1 is Needed to Create a Vendor Invoice");
 }
-TDSValue = ExcelUtils.getRowDatas("TDS",EnvParams.Opco)
+TDSValue = ExcelUtils.getColumnDatas("TDS",EnvParams.Opco)
 
 }
 
@@ -868,6 +254,8 @@ aqUtils.Delay(5000, "Waiting for Action");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+
+Log.Message("Invoice POnumber :"+POnumber)
 var PONumber = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 2);
 if(POnumber!=""){
   Log.Message(POnumber)
@@ -1254,223 +642,241 @@ WorkspaceUtils.waitForObj(ObjectAddrs);
 }
 
 
-
-function FinalApprovePO(PONum,Apvr,lvl){ 
-
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+function Create_New_Job_2(){ 
+  
+    //Creation of Job
+    Ipreparation_ID,IpreparationUnit = "";
+    Ipreparation_ID = TestRunner.testCaseId;
+    IpreparationUnit = TestRunner.unitName; 
+    TestRunner.TempUnit = IpreparationUnit;
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
+    if(jobSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Job to Create Vendor Invoice")
+    }
     
-  }
-var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder;
-WorkspaceUtils.waitForObj(table);
-Sys.HighlightObject(table);
-
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Visible){
-
-}else{ 
-ImageRepository.ImageSet.Show_Filter.Click();
-}
-
-var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid;
-var firstCell = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.ApprovelTabel.McGrid.TextBox;
-WorkspaceUtils.waitForObj(firstCell);
-firstCell.setText(PONum);
-var closefilter = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.CloseFilter;
-WorkspaceUtils.waitForObj(table);
-aqUtils.Delay(3000, "Reading Data from table");;
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    ExcelUtils.setExcelName(workBook, jobSheet, true);
+    var serialOder = ExcelUtils.getRowDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Vendor Invoice")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    JobNoTo = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
+    if((JobNoTo=="")||(JobNoTo==null)){
+      
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    Job_JIRAID = ExcelUtils.getRowDatas("JobCreation_"+serialOder,EnvParams.Country);
+    if((Job_JIRAID=="")||(Job_JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for Jobcreation_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = Job_JIRAID;
+    TestRunner.unitName = "JobCreation_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Job");
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job");
+    Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+Job_JIRAID)
+    Runner.CallMethod("Creation_Of_Job.createJob",jobSheet,serialOder);
+    Log.PopLogFolder();
     
-  }
-var flag=false;
-for(var v=0;v<table.getItemCount();v++){ 
-  if(table.getItem(v).getText_2(1).OleValue.toString().trim()==PONum){ 
-    flag=true;    
-    break;
-  }
-  else{ 
-    table.Keys("[Down]");
-  }
-}
-
-ValidationUtils.verify(flag,true,"Created Purchase Order is available in Approval List");
-TextUtils.writeLog("Created Purchase Order is available in Approval List");
-if(flag){ 
-closefilter.HoverMouse();
-ReportUtils.logStep_Screenshot();
-closefilter.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    JobNoTo = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)  
+     
+    //Creation of Budget
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
+    if(budgetSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Working Estimate for Job to Create Vendor Invoice")
+    }
+    ExcelUtils.setExcelName(workBook, budgetSheet, true);
+    var serialOder = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Budget")
+    }
     
-}
-var Approve = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.Composite2;
-Sys.HighlightObject(Approve);
-for(var i=0;i<Approve.ChildCount;i++){ 
-  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim())){
-    Approve = Approve.Child(i);
-    break;
-  }
-}
-WorkspaceUtils.waitForObj(Approve);
-Sys.HighlightObject(Approve)
-if(Approve.isEnabled()){ 
-Approve.HoverMouse();
-ReportUtils.logStep_Screenshot();
-Approve.Click();
-//aqUtils.Delay(3000, Indicator.Text);
-//Approve.PopupMenu.Click("Approve Purchase Order");
-//ReportUtils.logStep_Screenshot();
-//aqUtils.Delay(8000, Indicator.Text);;
-ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
-TextUtils.writeLog("Purchase Order is Approved by "+Apvr);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var WE_Number = ExcelUtils.getRowDatas("Working Estimate_"+serialOder,EnvParams.Opco)
+    if((WE_Number=="")||(WE_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreateBudget_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreateBudget_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;  
+    TestRunner.unitName = "CreateBudget_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Job Budget");
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Job Budget");
+    Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
+    Runner.CallMethod("BudgetCreation.createBudget",budgetSheet,serialOder);
+    Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    }
+  //Creation of Quote 
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var quoteSheet = ExcelUtils.getColumnDatas("Quote Sheet",EnvParams.Opco)
+    if(quoteSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Client Approved Estimate for Job to Create Vendor Invoice")
+    }
+    ExcelUtils.setExcelName(workBook, quoteSheet, true);
+    var serialOder = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create Quote")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var CE_Number = ExcelUtils.getRowDatas("Client Approved Estimate_"+serialOder,EnvParams.Opco)
+    if((CE_Number=="")||(CE_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreateQuote_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreateQuote_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;    
+    TestRunner.unitName = "CreateQuote_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Quote");
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Quote");
+    Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
+    Runner.CallMethod("Creation_of_Quote.CreateQuote",quoteSheet,serialOder);
+    Log.PopLogFolder();
+    
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    }
+
+    //Creation of PO
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var POSheet = ExcelUtils.getColumnDatas("PO Sheet",EnvParams.Opco)
+    if(POSheet==""){ 
+      ValidationUtils.verify(true,false,"Need PO for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, POSheet, true);
+    var JobSO = ExcelUtils.getColumnDatas("Job Serial Order",EnvParams.Opco)
+    if(JobSO==""){ 
+      ValidationUtils.verify(true,false,"Need Job Serial Order to Create PO")
+    }
+    var PO_SO = ExcelUtils.getColumnDatas("PO Serial Order",EnvParams.Opco)
+    if(PO_SO==""){ 
+      ValidationUtils.verify(true,false,"Need PO Serial Order to Create PO")
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var PO_Number = ExcelUtils.getRowDatas("PO Number_"+PO_SO,EnvParams.Opco)
+    if((PO_Number=="")||(PO_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("CreatePurchaseOrder_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for CreatePurchaseOrder_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;   
+    TestRunner.unitName = "CreatePurchaseOrder_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Creation of Purchase Order");
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Creation of Purchase Order");
+    Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
+    CreatePO = true;
+    Runner.CallMethod("CreatePO.CreatePurchaseOrder",POSheet,JobSO,PO_SO);
+    Log.PopLogFolder();
+    CreatePO = false;
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    PoNumber2 = ExcelUtils.getRowDatas("PO Number_"+PO_SO,EnvParams.Opco)
+    POnumber = PoNumber2;
+    Log.Message("POnumber :"+POnumber)
+    Log.Message("POnumber :"+PoNumber2)
+    
+  //Approving PO
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    var APSheet = ExcelUtils.getColumnDatas("Approve PO Sheet",EnvParams.Opco)
+    if(APSheet==""){ 
+      ValidationUtils.verify(true,false,"Need Approve PO Sheet for Job to Create Invoice preparation")
+    }
+    ExcelUtils.setExcelName(workBook, APSheet, true);
+    var serialOder = ExcelUtils.getRowDatas("PO Serial Order",EnvParams.Opco)
+    if(serialOder==""){ 
+      ValidationUtils.verify(true,false,"Need PO Serial Order to Approve PO")
+    }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    var AP_Number = ExcelUtils.getRowDatas("Approved PO_"+serialOder,EnvParams.Opco)
+    if((AP_Number=="")||(AP_Number==null)){
+    TestRunner.JiraStat = true;
+    TestRunner.JiraUpdate = true;
+    var xlDriver= Project.Path+TextUtils.GetProjectValue("EnvDetailsPath");
+    ExcelUtils.setExcelName(xlDriver, "JIRA_Details", true);
+    var JIRAID = ExcelUtils.getRowDatas("ApprovePurchaseOrder_"+serialOder,EnvParams.Country);
+    if((JIRAID=="")||(JIRAID==null)){
+      ValidationUtils.verify(true,false,"JIRA ID for ApprovePurchaseOrder_"+serialOder+" is needed");
+      }
+    TestRunner.testCaseId = JIRAID;    
+    TestRunner.unitName = "ApprovePurchaseOrder_"+serialOder;
+    ReportUtils.DStat = true;
+    var reportName = "Report_"+EnvParams.Opco+"_"+TestRunner.unitName;
+    ReportUtils.createDependencyReport(reportName);
+    ReportUtils.DependycreateTest(TestRunner.unitName, "Approve Purchase Order");
+    var FolderID = Log.CreateFolder(EnvParams.Opco+"_Approve Purchase Order");
+    Log.PushLogFolder(FolderID);
+    Log.Message("TestCase ID: "+JIRAID)
+    CreatePO = true;
+    Runner.CallMethod("ApprovePO.ApprovePurchaseOrder",APSheet,serialOder);
+    Log.PopLogFolder();
+    CreatePO = false;
+    ReportUtils.Dreport.endTest(ReportUtils.Dtest);
+    ReportUtils.Dreport.flush();
+    Runner.CallMethod("JIRA.JIRAUpdate");
+    ReportUtils.DStat = false;
+    Approved_POnumber = PoNumber2;
+    Log.Message("Approved_POnumber :"+Approved_POnumber)
+   }
+
+TestRunner.testCaseId = Ipreparation_ID;
+TestRunner.unitName = IpreparationUnit;
+
+Log.Message("Job To :"+JobNoTo)
+
+
+
+TestRunner.JiraStat = true;
+TestRunner.JiraUpdate = true;
+
 }
 
-//Uncommand
-/*
-//var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "");;
-var screen = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
-WorkspaceUtils.waitForObj(screen);
-  screen.Click();
-  screen.MouseWheel(-5);
-//  aqUtils.Delay(5000, Indicator.Text);
-//var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
-var ApvPerson = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 6).SWTObject("Composite", "", 5).SWTObject("McTextWidget", "", 2);
-var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
-    loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-    var i=0;
-while ((ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)&&(i!=60))
-{
-  aqUtils.Delay(100);
-  i++;
-  ApvPerson.Refresh();
-}
-
-    if(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1){
-  ValidationUtils.verify(true,true,"Purchase Order is Approved by :"+loginPer)
-  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer); 
-  }else{ 
-  TextUtils.writeLog("Purchase Order is Approved by :"+loginPer+ "But its Not Reflected"); 
-  ValidationUtils.verify(true,false,"Purchase Order is Approved by :"+loginPer+ "But its Not Reflected")
-  }
-  
-*/
 
 
-if(Approve_Level.length==lvl+1){
-var approvalBar = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals;
-approvalBar.HoverMouse();
-ReportUtils.logStep_Screenshot();
-approvalBar.Click();
-ImageRepository.ImageSet.Maximize.Click();
-
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN"))
-   Runner.CallMethod("IND_ApprovePurchaseOrder.ApprovalStatus");
-else{
-var POapproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.POApproval;
-WorkspaceUtils.waitForObj(POapproval)
-POapproval.HoverMouse();
-ReportUtils.logStep_Screenshot();
-POapproval.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-var approvertable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
-WorkspaceUtils.waitForObj(approvertable)
-ReportUtils.logStep_Screenshot();
-}
-}
-ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Apvr)
-}
-}
-
-} 
-
-
-function todo(lvl){ 
-  TextUtils.writeLog("Loged into Level "+level+" Approver login"); 
-  var toDo = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.ToDos;
-  toDo.HoverMouse();
-  ReportUtils.logStep_Screenshot();
-  toDo.DBlClick();
-  TextUtils.writeLog("Entering into To-Dos List");
-  aqUtils.Delay(3000, Indicator.Text);
-  //To Maximaize the window
-  Sys.Desktop.KeyDown(0x12);
-  Sys.Desktop.KeyDown(0x20);
-  Sys.Desktop.KeyUp(0x12);
-  Sys.Desktop.KeyUp(0x20);
-  Sys.Desktop.KeyDown(0x58);
-  Sys.Desktop.KeyUp(0x58);  
-  aqUtils.Delay(1000, Indicator.Text);
-
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
-}
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
-}
-refresh.Click();
-aqUtils.Delay(15000, Indicator.Text);
-if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
-  
-}
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
-Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
-}
-if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 2).Visible){
-Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Tree;
-}
-var listPass = true;
-if(lvl==2)
-for(var j=0;j<Client_Managt.getItemCount();j++){ 
-  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
-  var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
-Client_Managt.ClickItem("|"+temp);   
-ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|"+temp);  
-TextUtils.writeLog("Entering into Approve Purchase Order from To-Dos List"); 
-listPass = false; 
-  }
-}
-if(lvl==3)
-for(var j=0;j<Client_Managt.getItemCount();j++){ 
-  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
-  var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
-Client_Managt.ClickItem("|"+temp);    
-ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|"+temp); 
-TextUtils.writeLog("Entering into Approve Purchase Order (Substitute) from To-Dos List");  
-var listPass = false;   
-  }
-}  
-
-
-if(listPass){
-if(lvl==2)
-for(var j=0;j<Client_Managt.getItemCount();j++){ 
-  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
-  var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order by Type").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
-Client_Managt.ClickItem("|"+temp);   
-ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|"+temp);  
-TextUtils.writeLog("Entering into Approve Purchase Order by Type from To-Dos List"); 
-listPass = false; 
-  }
-}
-if(lvl==3)
-for(var j=0;j<Client_Managt.getItemCount();j++){ 
-  var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
-  var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Purchase Order by Type (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
-Client_Managt.ClickItem("|"+temp);    
-ReportUtils.logStep_Screenshot(); 
-Client_Managt.DblClickItem("|"+temp); 
-TextUtils.writeLog("Entering into Approve Purchase Order by Type (Substitute) from To-Dos List"); 
-var listPass = false;   
-  }
-} 
-  }
-  
-}

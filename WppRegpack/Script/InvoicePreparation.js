@@ -1937,6 +1937,7 @@ var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Invoice preparation No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management",PONum)
+  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 }else{ 

@@ -210,7 +210,7 @@ Dlang= ExcelUtils.getColumnDatas("Language",EnvParams.Opco)
 BFC= ExcelUtils.getColumnDatas("Counter Party BFC",EnvParams.Opco)
 
 pTerm= ExcelUtils.getColumnDatas("Payment Terms",EnvParams.Opco)
-Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+//Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 }
 
 function getPODetail(){ 
@@ -323,6 +323,13 @@ if(ImageRepository.ImageSet.Img_search.Exists()){
   
 }
 
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Job_Number = ReadExcelSheet("Internal Job Number",EnvParams.Opco,"Data Management");
+if((Job_Number=="")||(Job_Number==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Job_Number = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+}
+
 var company = Aliases.Maconomy.Shell6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McValuePickerWidget;
 if(EnvParams.Opco!=""){
 company.Click();
@@ -366,17 +373,17 @@ Log.Message(ContryCurrency)
 
 var ExchangeRate;
 var BaseCurrency;
-  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
-  if(ContryCurrency!="GBP")  
-  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
-  else
-  ExchangeRate = "1.00";
-  if(ClientCurrency!=ContryCurrency)  
-  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
-  else
-  BaseCurrency = "1.00";
-  Log.Message("ExchangeRate :"+ExchangeRate);
-  Log.Message("BaseCurrency :"+BaseCurrency)
+//  ExcelUtils.setExcelName(workBook, "ExchangeRate", true);
+//  if(ContryCurrency!="GBP")  
+//  ExchangeRate = ExcelUtils.getRowDatas(ContryCurrency,"Exchange Rate");
+//  else
+//  ExchangeRate = "1.00";
+//  if(ClientCurrency!=ContryCurrency)  
+//  BaseCurrency = ExcelUtils.getRowDatas(ClientCurrency,"Exchange Rate");
+//  else
+//  BaseCurrency = "1.00";
+//  Log.Message("ExchangeRate :"+ExchangeRate);
+//  Log.Message("BaseCurrency :"+BaseCurrency)
   
 var RowCount = 0;
 var addedlines = false;
@@ -1178,6 +1185,10 @@ function Submiting_Job() {
 
   }
   aqUtils.Delay(3000, "Submitting Job");
+  
+  Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+  Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
+    
   var AccountDirector = Aliases.Maconomy.SubJob.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McValuePickerWidget", "", 3);
   if((AccountDirector.getText()=="")||(AccountDirector.getText()==null)){ 
   AccountDirector.Click();

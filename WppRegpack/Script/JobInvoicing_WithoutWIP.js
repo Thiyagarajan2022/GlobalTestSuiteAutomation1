@@ -185,6 +185,17 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
   *  This function to get details for Job Invoice Allocation
   */
 function gotoAllocation(){ 
+  
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
+aqUtils.Delay(4000,"Maconomy is loading all entries");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy is loading all entries");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy is loading all entries");
+
   var allJobs = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -1057,11 +1068,14 @@ TextUtils.writeLog("Entering into GL Lookups from General Ledger Menu");
   *  This function prints journal for Job Invoice Allocation
   */
 function GlLookups(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  aqUtils.Delay(4000,"Maconomy is loading all entries");
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  aqUtils.Delay(4000,"Maconomy is loading all entries");
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  
   var journal = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
   WorkspaceUtils.waitForObj(journal);
   journal.Click();

@@ -1271,6 +1271,14 @@ function ConvetToQuote(){
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(3000, Indicator.Text);
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+    aqUtils.Delay(3000, Indicator.Text);
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
   var closeFilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "");
 
   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
@@ -1303,7 +1311,7 @@ function ConvetToQuote(){
 
   job.setText(JobID);
   WorkspaceUtils.waitForObj(table);
-  aqUtils.Delay(2000, "Reading Table Data in Job List");
+  aqUtils.Delay(4000, "Reading Table Data in Job List");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }

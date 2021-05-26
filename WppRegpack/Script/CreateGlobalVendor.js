@@ -17,7 +17,7 @@ var ApproveInfo = [];
 STIME = WorkspaceUtils.StartTime();
 var VendorName,strt1,post,City,country,taxcode,companyReg,Currency,VendorGroup,controlAct,BankAccountName,bfc,Iban,Swift,
 BankActNo,Sortcode,company,attn,CpyTaxCode,Mail,phone,Taxderivation,Paymentmode,payterm,Annualsupplier,
-Supplier,Method,Section,TDSAplicable,GSTVendor,StateCode,Vendortype,licenceEndDate,licenceNumber,SII_Tax ="";
+Supplier,Method,Section,TDSAplicable,GSTVendor,StateCode,Vendortype,licenceEndDate,licenceNumber,SII_Tax,Branch_Name ="";
 var VendorNumber ="";
 var languagee="";
 var Language = "";
@@ -39,7 +39,7 @@ Restart.login(Project_manager);
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 sheetName = "CreateGlobalVendor";
-Currency,VendorName ="";
+Currency,VendorName,Branch_Name ="";
 
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME);
@@ -170,6 +170,12 @@ function getDetails(){
       if((BankActNo==null)||(BankActNo=="")){ 
       ValidationUtils.verify(false,true,"BankAcctNo is Needed to Create Global Vendor");
       }      
+      Branch_Name = ExcelUtils.getRowDatas("Branch Name",EnvParams.Opco)
+      Log.Message(Branch_Name)
+      if((Branch_Name==null)||(Branch_Name=="")){ 
+      ValidationUtils.verify(false,true,"Branch Name is Needed to Create Global Vendor");
+      }  
+      
       Sortcode = ExcelUtils.getRowDatas("SortCode",EnvParams.Opco)
       Log.Message(Sortcode)
       if((Sortcode==null)||(Sortcode=="")){ 
@@ -790,6 +796,51 @@ function Information(){
   info.HoverMouse();
   info.HoverMouse();
   info.Click();
+  aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+  aqUtils.Delay(5000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+
+  
+  
+ var ChildCount = 0;
+    var Add = [];
+    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+    for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==1)){
+       Log.Message(PChild.Name)
+            Add[ChildCount] = PChild;
+            ChildCount++;
+     }
+     }
+
+     var BranchName = "";
+     var pos = 0;
+     for(var ip=0;ip<Add.length;ip++){ 
+     if(Add[ip].ScreenTop>pos){ 
+       pos = Add[ip].ScreenTop;
+       Log.Message(pos)
+       BranchName = Add[ip];
+     }     
+     }
+     
+     Parent = BranchName.SWTObject("Composite", "").SWTObject("PTabFolder", "")
+     for(var ip=0;ip<Parent.ChildCount;ip++){ 
+     var PChild = Parent.Child(ip);
+     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")){
+            BranchName = PChild;
+     }
+     }
+     
+     BranchName = BranchName.SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 4).SWTObject("McValuePickerWidget", "", 2);
+     Sys.HighlightObject(BranchName);
+  Sys.HighlightObject(BranchName)
+  BranchName.setText(Branch_Name);
   aqUtils.Delay(5000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     

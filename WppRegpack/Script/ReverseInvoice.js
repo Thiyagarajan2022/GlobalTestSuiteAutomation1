@@ -64,13 +64,13 @@ company,PurchOrderNo,InvoiceNo,NewInvoiceNo,Description,IDate,EDate,TDSValue =""
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Creating Vendor Invoice started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-try{
+//try{
 getDetails();
 goToJobMenuItem(); 
 invoiceAllocation();
-}catch(err){ 
-  Log.Message(err);
-}
+//}catch(err){ 
+//  Log.Message(err);
+//}
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
@@ -132,28 +132,33 @@ TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 
 
 function getDetails(){ 
-
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-//PurchOrderNo = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
-//Log.Message(PurchOrderNo)
-//if((PurchOrderNo=="")||(PurchOrderNo==null)){
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//PurchOrderNo = ExcelUtils.getColumnDatas("Purch Order No",EnvParams.Opco)
-//}
-//if((PurchOrderNo==null)||(PurchOrderNo=="")){ 
-//ValidationUtils.verify(false,true,"PO Number is Needed to Create a Vendor Invoice");
-//}
-
-InvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
-Log.Message(InvoiceNo)
-if((InvoiceNo=="")||(InvoiceNo==null)){
-ExcelUtils.setExcelName(workBook, sheetName, true);
-InvoiceNo = ExcelUtils.getColumnDatas("Invoice No",EnvParams.Opco)
-}
-if((InvoiceNo==null)||(InvoiceNo=="")){ 
-ValidationUtils.verify(false,true,"Invoice Number is Needed to Create a Vendor Invoice");
-}
 sheetName = "Reverse Invoice"
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+        ExcelUtils.setExcelName(workBook, "Data Management", true);
+        InvoiceNo = ReadExcelSheet("Second Vendor Invoice NO",EnvParams.Opco,"Data Management");
+        if((InvoiceNo=="")||(InvoiceNo==null)){
+          ExcelUtils.setExcelName(workBook, "Data Management", true);
+          InvoiceNo = ReadExcelSheet("InvoiceNo",EnvParams.Opco,"Data Management");
+          }
+        else if((InvoiceNo=="")||(InvoiceNo==null)){
+        ExcelUtils.setExcelName(workBook, sheetName, true);
+        InvoiceNo = ExcelUtils.getRowDatas("InvoiceNo",EnvParams.Opco)
+        }
+         
+        if((InvoiceNo==null)||(InvoiceNo=="")){ 
+        ValidationUtils.verify(false,true,"Invoice Number is needed to Reverse Invoice"); 
+        } 
+
+//InvoiceNo = ReadExcelSheet("Vendor Invoice NO",EnvParams.Opco,"Data Management");
+//Log.Message(InvoiceNo)
+//if((InvoiceNo=="")||(InvoiceNo==null)){
+//ExcelUtils.setExcelName(workBook, sheetName, true);
+//InvoiceNo = ExcelUtils.getColumnDatas("Invoice No",EnvParams.Opco)
+//}
+//if((InvoiceNo==null)||(InvoiceNo=="")){ 
+//ValidationUtils.verify(false,true,"Invoice Number is Needed to Create a Vendor Invoice");
+//}
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 EDate = ExcelUtils.getColumnDatas("Entry Date",EnvParams.Opco)
 Log.Message(EDate)

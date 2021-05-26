@@ -122,6 +122,10 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
+    
     //Creation of Budget
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
@@ -1896,6 +1900,27 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
     }
   } 
   
+      aqUtils.Delay(10000, Indicator.Text);
+    
+    
+     var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Invoice Drafts by Type - Invoice Editing").OleValue.toString().trim())
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Invoice Drafts by Type - Invoice Editing").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+  
+var label = w.SWTObject("Label", "*");
+Log.Message(label.getText());
+var lab = label.getText().OleValue.toString().trim();
+ReportUtils.logStep("INFO",lab)
+TextUtils.writeLog(lab);
+var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+Ok.HoverMouse();
+ReportUtils.logStep_Screenshot("");
+Ok.Click();
+}
+  
     TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
@@ -1976,6 +2001,7 @@ var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+Sav
 var textobj;
   try{
   var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
+  textobj = obj.getText_2(docObj).OleValue.toString(); 
   var invoiceName = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No:").OleValue.toString().trim();
   invoiceName = invoiceName.length;
   Log.Message(invoiceName)

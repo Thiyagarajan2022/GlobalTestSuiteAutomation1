@@ -91,29 +91,33 @@ function getDetails(){
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
   var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
   
-// Checking Job Number has been used any of Invoice
-  if(((JobNo=="")||(JobNo==null))||(invoicePreparation==JobNo)||(AllocationWIP==JobNo)||(invoiceBudget==JobNo)||(invoiceAccount==JobNo)||(writeoffInvoice==JobNo)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  JobNo = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  }
-// Making Job Number as ' Null ' to Create New Job if existing Job Number has used for any of Invoice
-  if((invoicePreparation==JobNo)||(AllocationWIP==JobNo)||(invoiceBudget==JobNo)||(invoiceAccount==JobNo)||(writeoffInvoice==JobNo)){
-   JobNo = "";
-   Create_New_Job();
-  }else{ 
-    
-ExcelUtils.setExcelName(workBook, "Data Management", true);
-PoNumber = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
-if((PoNumber=="")||(PoNumber==null)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  PoNumber = ExcelUtils.getRowDatas("PoNumber",EnvParams.Opco)
-  }
-  if((PoNumber==null)||(PoNumber=="")){ 
-  ValidationUtils.verify(false,true,"PoNo is Needed to Create a Job");
-  }
-  Log.Message(PoNumber)  
   
-  }
+//Uncommand This Line if need to use Main Job Number
+  
+//// Checking Job Number has been used any of Invoice
+//  if(((JobNo=="")||(JobNo==null))||(invoicePreparation==JobNo)||(AllocationWIP==JobNo)||(invoiceBudget==JobNo)||(invoiceAccount==JobNo)||(writeoffInvoice==JobNo)){
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  JobNo = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+//  }
+//  
+//// Making Job Number as ' Null ' to Create New Job if existing Job Number has used for any of Invoice
+//  if((invoicePreparation==JobNo)||(AllocationWIP==JobNo)||(invoiceBudget==JobNo)||(invoiceAccount==JobNo)||(writeoffInvoice==JobNo)){
+//   JobNo = "";
+   Create_New_Job();
+//  }else{ 
+//    
+//ExcelUtils.setExcelName(workBook, "Data Management", true);
+//PoNumber = ReadExcelSheet("PO Number",EnvParams.Opco,"Data Management");
+//if((PoNumber=="")||(PoNumber==null)){
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  PoNumber = ExcelUtils.getRowDatas("PoNumber",EnvParams.Opco)
+//  }
+//  if((PoNumber==null)||(PoNumber=="")){ 
+//  ValidationUtils.verify(false,true,"PoNo is Needed to Create a Job");
+//  }
+//  Log.Message(PoNumber)  
+//  
+//  }
   
 Log.Message(JobNo)
 ExcelUtils.setExcelName(workBook, sheetName, true);

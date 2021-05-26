@@ -48,14 +48,19 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   Log.Message(invoiceBudget==jobNumber)
   Log.Message(invoiceAccount==jobNumber)
   Log.Message(writeoffInvoice==jobNumber)
-  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  Log.Message(jobNumber);
-  }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+  
+  
+//Uncommand This Line if need to use Main Job Number
+  
+//  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+//  Log.Message(jobNumber);
+//  }
+//  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
     jobNumber = "";
-  }
+//  }
+  
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
     
