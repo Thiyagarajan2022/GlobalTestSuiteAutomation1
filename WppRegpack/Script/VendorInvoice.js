@@ -163,9 +163,12 @@ TDSValue = ExcelUtils.getColumnDatas("TDS",EnvParams.Opco)
 
 function invoiceAllocation(){ 
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
 
 var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
 allocation.Click(); 

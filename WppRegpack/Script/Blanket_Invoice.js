@@ -160,9 +160,15 @@ function getDetails(){
   EmployeeNumber = ExcelUtils.getColumnDatas("Employee Number",EnvParams.Opco)
   jobNumber_1 = ExcelUtils.getColumnDatas("Job Number_1",EnvParams.Opco)
   jobNumber_2 = ExcelUtils.getColumnDatas("Job Number_2",EnvParams.Opco)
-
+  var Foreign_Client = ExcelUtils.getColumnDatas("Foreign Client",EnvParams.Opco)
+  if(Foreign_Client.toUpperCase()=="YES"){ 
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Global_Client_Number = ReadExcelSheet("Foreign Global Client Number",EnvParams.Opco,"Data Management");
+  }else{
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 Global_Client_Number = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+}
+
 if((Global_Client_Number=="")||(Global_Client_Number==null)){
 ExcelUtils.setExcelName(workBook, "BlanketInvoice", true);
 Global_Client_Number = ExcelUtils.getRowDatas("Client No",EnvParams.Opco)
@@ -1478,6 +1484,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf");
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Blanket Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 aqUtils.Delay(4000, Indicator.Text);
 
   
@@ -1999,6 +2007,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Blanket Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;

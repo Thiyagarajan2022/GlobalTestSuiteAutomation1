@@ -55,8 +55,16 @@ gotoGeneralJournal();
 AddJournalLines();
 attachDocument();
 submit();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 WorkspaceUtils.closeAllWorkspaces();
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 WorkspaceUtils.closeMaconomy();
+
 aqUtils.Delay(10000, Indicator.Text);
 ExcelUtils.setExcelName(workBook, "SSC Users", true);
 var username = ExcelUtils.getRowDatas("SSC - Senior Accountant","Username")
@@ -64,6 +72,9 @@ Restart.login(username);
 aqUtils.Delay(5000, Indicator.Text);
 todo();
 ApproveGL();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 WorkspaceUtils.closeAllWorkspaces();
 }
 
@@ -541,16 +552,22 @@ function attachDocument(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(4000,"Maconomy loading data");
+  
     var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  aqUtils.Delay(4000,"Maconomy loading data");
   WorkspaceUtils.waitForObj(submit);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
   submit.Click();
-  
+  aqUtils.Delay(4000,"Maconomy loading data");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  aqUtils.Delay(4000,"Maconomy loading data");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //  var doc =  Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.AttachDocument;
 //
 //  Sys.HighlightObject(doc);
@@ -573,6 +590,9 @@ function attachDocument(){
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Document Attached");
+  
+  aqUtils.Delay(4000,"Maconomy loading data");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 }
 
 

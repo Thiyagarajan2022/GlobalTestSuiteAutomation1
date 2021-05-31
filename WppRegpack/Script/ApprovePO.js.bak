@@ -5,6 +5,9 @@
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
 //USEUNIT Restart
+//USEUNIT CreditNotePO
+//USEUNIT ReverseCreditNote
+
 
 Indicator.Show();
 var excelName = EnvParams.path;
@@ -70,7 +73,24 @@ aqUtils.Delay(5000, Indicator.Text);
 todo(temp[3]);
 FinalApprovePO(temp[1],temp[2],i,temp[3]);
 }
+
+
+if(CreditNotePO.CreatePO){ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Approved Credit PO Number",EnvParams.Opco,"Data Management",POnumber)
+TextUtils.writeLog("Approved Credit PO Number :"+POnumber); 
+}
+
+else if(ReverseCreditNote.CreatePO){ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("Approved ReverseCredit PO Number",EnvParams.Opco,"Data Management",POnumber)
+TextUtils.writeLog("Approved ReverseCredit PO Number :"+POnumber); 
+}
 TextUtils.writeLog("Purchase Orders("+POnumber+") is Approved");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+}
+
 }
   catch(err){
     Log.Message(err);
@@ -80,6 +100,26 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function getDetails(){ 
 ExcelUtils.setExcelName(workBook, "Data Management", true);
+
+if(CreditNotePO.CreatePO){ 
+// Getting Negative PO Number to Approve
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+POnumber = ReadExcelSheet("Credit PO Number",EnvParams.Opco,"Data Management");
+if((POnumber==null)||(POnumber=="")){ 
+ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
+}
+
+}
+else if(ReverseCreditNote.CreatePO){ 
+// Getting Negative PO Number to Approve
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+POnumber = ReadExcelSheet("ReverseCredit PO Number",EnvParams.Opco,"Data Management");
+if((POnumber==null)||(POnumber=="")){ 
+ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
+}
+
+}
+else{
 POnumber = ReadExcelSheet("PO Number_"+POnum,EnvParams.Opco,"Data Management");
 if((POnumber=="")||(POnumber==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -88,7 +128,7 @@ POnumber = ExcelUtils.getRowDatas("PO Number",EnvParams.Opco)
 if((POnumber==null)||(POnumber=="")){ 
 ValidationUtils.verify(false,true,"PO Number is Needed to Approve Purchase Order");
 }
- 
+ }
 }
 
 function gotoMenu(){ 

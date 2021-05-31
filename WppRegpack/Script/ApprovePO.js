@@ -485,9 +485,13 @@ var listPass = false;
 
 function FinalApprovePO(PONum,Apvr,lvl){ 
 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+
 var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);

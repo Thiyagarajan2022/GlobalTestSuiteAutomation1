@@ -33,7 +33,7 @@
 	</testItems>
 	<variables key="{0D97164A-3D68-49E4-9ACF-0AFB6033AA32}" />
 	<settings key="{25D1EFDE-33AE-481E-8A94-90126DAB0A8F}">
-		<settingsVersion value="14.60" />
+		<settingsVersion value="14.50" />
 		<setting name="AgOpenApp_ExtendedSilverlightObjectTree" type="1" value="False" />
 		<setting name="ApplicationHangingProcessFilterMode" type="6" rowIndex="4" colIndex="0">
 			<columns>
@@ -140,7 +140,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="12" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="14" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -158,9 +158,11 @@
 				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
 				<row val0="com.ImageComparison.ImageCompMain" />
 				<row val0="org.excelwrite.companyinfo" />
+				<row val0="Text_Modify.Text_Delimited" />
+				<row val0="Text_Modify.Edit_AP_Fapio" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="14" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="15" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -180,6 +182,7 @@
 				<row val0=".\ProjectLibraries\pdfbox-app-1.8.16.jar" />
 				<row val0=".\ProjectLibraries\ImageComparison.jar" />
 				<row val0=".\ProjectLibraries\ExcelFunction.jar" />
+				<row val0=".\ProjectLibraries\Tab_Delimited.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />

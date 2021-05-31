@@ -30,6 +30,7 @@ var Language = "";
 var CombinedInvoice_JIRA_ID = "";
 var CombinedInvoice_UnitName_JIRA = "";
 var Estimatelines = []; 
+var MainJob = "";
 
 //Main Function
 function Create_Combined_Invoice() {
@@ -58,6 +59,7 @@ sheetName = "CombinedInvoice";
 
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
+MainJob = true;
 Arrays = [];
 count = true;
 checkmark = false;
@@ -138,7 +140,7 @@ function getDetails(){
   var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
-  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
+  var writeoffInvoice = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
 
   Log.Message(invoicePreparation==jobNumber)
@@ -161,7 +163,7 @@ function getDetails(){
   //If Main Job Number is used for any Other Invoice it will try to create New Job
   if((jobNumber=="")||(jobNumber==null)){ 
     
-  
+  MainJob = false;
     //Creation of Job
     CombinedInvoice_JIRA_ID = TestRunner.testCaseId;
     CombinedInvoice_UnitName_JIRA = TestRunner.unitName; 
@@ -219,6 +221,8 @@ function getDetails(){
     ReportUtils.DStat = false;
     }
     
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
     
     //------------Creation of Budget---------------------------------------------
     
@@ -1035,6 +1039,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf");
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Combined Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 aqUtils.Delay(4000, Indicator.Text);
 
   
@@ -1776,6 +1782,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Combined Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;

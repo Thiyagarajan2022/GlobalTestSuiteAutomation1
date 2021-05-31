@@ -28,7 +28,7 @@ var checkmark = false;
 var STIME = "";
 var comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile;
 var Approve_Level = [];
-var JobID,level = ""; 
+var JobID,level,Foreign = ""; 
 var flag=false;
 var Jobnum = "";
 
@@ -65,7 +65,7 @@ checkmark = false;
 STIME = "";
 comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile ="";
 Approve_Level = [];
-JobID = "";
+JobID,Foreign = "";
 level = "";
 
 Log.Message(Language)
@@ -160,6 +160,25 @@ TemplateNo = ExcelUtils.getRowDatas("Template",EnvParams.Opco)
 if((TemplateNo==null)||(TemplateNo=="")){ 
 ValidationUtils.verify(false,true,"Template Number is Needed to Create a Job");
 }
+
+Foreign= ExcelUtils.getRowDatas("Foreign Client",EnvParams.Opco)
+if(Foreign.toUpperCase()=="YES"){ 
+// Create Job Using Foreign Client
+Log.Message("Foreign Client");
+ExcelUtils.setExcelName(workBook, "Data Management", true);
+Product = ReadExcelSheet("Foreign Global Product Number",EnvParams.Opco,"Data Management");
+if((Product=="")||(Product==null)){
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
+}
+if((Product==null)||(Product=="")){ 
+ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
+}
+  
+}
+else{
+// Create Job Using Local Client
+Log.Message("Local Client");
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 Product = ReadExcelSheet("Global Product Number",EnvParams.Opco,"Data Management");
 if((Product=="")||(Product==null)){
@@ -168,6 +187,7 @@ Product = ExcelUtils.getRowDatas("Product",EnvParams.Opco)
 }
 if((Product==null)||(Product=="")){ 
 ValidationUtils.verify(false,true,"Product Number is Needed to Create a Job");
+}
 }
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -180,6 +200,8 @@ Dlang= ExcelUtils.getRowDatas("Language",EnvParams.Opco)
 BFC= ExcelUtils.getRowDatas("Counter Party BFC",EnvParams.Opco)
 
 pTerm= ExcelUtils.getRowDatas("Payment Terms",EnvParams.Opco)
+
+
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Project_manager = ExcelUtils.getRowDatas("Project Manager",EnvParams.Opco)

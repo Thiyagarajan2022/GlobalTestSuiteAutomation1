@@ -1274,10 +1274,13 @@ function todo(lvl){
   ReportUtils.logStep_Screenshot();
   toDo.DBlClick();
   TextUtils.writeLog("Entering into To-Dos List");
-  if(ImageRepository.ImageSet.ToDos_Icon.Exists())
-{ 
+  if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+  aqUtils.Delay(3000, Indicator.Text);
   
-}
+    if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+  aqUtils.Delay(3000, Indicator.Text);
+  
+    if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
   aqUtils.Delay(3000, Indicator.Text);
   //To Maximaize the window
   Sys.Desktop.KeyDown(0x12);
@@ -1366,9 +1369,14 @@ var listPass = true;
 
   
 function FinalApproveClient(ClientNum,Apvr,lvl){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
 var table = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
 waitForObj(table);
 Sys.HighlightObject(table);

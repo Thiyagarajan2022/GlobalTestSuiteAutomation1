@@ -25,7 +25,7 @@ var Descp = [];
 var TemplateJob = "";
 var IBudget_ID = "";
 var IBudgetUnit = "";
-
+var MainJob = "";
 
 //Main Function
 function InvoiceAllocation(){ 
@@ -39,7 +39,7 @@ IBudgetUnit = "";
 Hitpoint,Buss_Area_2 = "";
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-  
+  MainJob = true;
   
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
@@ -66,7 +66,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
   //}
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
-    
+    MainJob = false
     IBudget_ID = TestRunner.testCaseId;
     IBudgetUnit = TestRunner.unitName; 
     TestRunner.TempUnit = IBudgetUnit;
@@ -111,6 +111,9 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)  
+    
     //Creation of Budget
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
@@ -1137,7 +1140,14 @@ Sys.HighlightObject(pdf);
     }
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+if(MainJob){ 
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}else{ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft T&M Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -2073,8 +2083,17 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-ExcelUtils.setExcelName(workBook,"Data Management", true);
+
+if(MainJob){ 
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}else{ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF T&M Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
+//ExcelUtils.setExcelName(workBook,"Data Management", true);
+//ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;
   try{
@@ -2094,6 +2113,7 @@ var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Time & Material Invocing No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Time & Material Invocing Job",EnvParams.Opco,"Data Management",JobNum)
+  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 }else{ 

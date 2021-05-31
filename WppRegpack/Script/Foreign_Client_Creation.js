@@ -9,7 +9,7 @@
 //Indicator.Show();
 var excelName = EnvParams.path;
 var workBook = Project.Path+excelName;
-var sheetName = "CreateClient";
+var sheetName = "Foreign Client Creation";
 var level =0;
 var Approve_Level = []; 
 var ApproveInfo = [];
@@ -50,7 +50,7 @@ Restart.login(Project_manager);
 //Initializing Variables
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
-sheetName = "CreateClient";
+sheetName = "Foreign Client Creation";
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Arrays = [];
@@ -1172,7 +1172,7 @@ CredentialLogin();
 var OpCo2 = ApproveInfo[0].split("*");
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco);
-sheetName = "CreateClient";
+sheetName = "Foreign Client Creation";
 if(OpCo2[2]==Project_manager){
 level = 1;
 var apStat = true
@@ -1274,10 +1274,13 @@ function todo(lvl){
   ReportUtils.logStep_Screenshot();
   toDo.DBlClick();
   TextUtils.writeLog("Entering into To-Dos List");
-  if(ImageRepository.ImageSet.ToDos_Icon.Exists())
-{ 
+  if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+  aqUtils.Delay(3000, Indicator.Text);
   
-}
+    if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+  aqUtils.Delay(3000, Indicator.Text);
+  
+    if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
   aqUtils.Delay(3000, Indicator.Text);
   //To Maximaize the window
   Sys.Desktop.KeyDown(0x12);
@@ -1366,9 +1369,14 @@ var listPass = true;
 
   
 function FinalApproveClient(ClientNum,Apvr,lvl){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
 var table = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder;
 waitForObj(table);
 Sys.HighlightObject(table);

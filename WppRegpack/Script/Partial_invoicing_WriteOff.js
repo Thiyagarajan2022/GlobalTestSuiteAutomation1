@@ -53,7 +53,7 @@ try{
   var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
-  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
+  var writeoffInvoice = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
   template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
   Log.Message((jobNumber!="")||(jobNumber!=null))
@@ -120,6 +120,10 @@ try{
     Runner.CallMethod("JIRA.JIRAUpdate");
     ReportUtils.DStat = false;
     }
+    
+    ExcelUtils.setExcelName(workBook, "Data Management", true);
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)  
+    
     //Creation of Budget
     ExcelUtils.setExcelName(workBook, sheetName, true);
     var budgetSheet = ExcelUtils.getColumnDatas("Budget sheet",EnvParams.Opco)
@@ -480,11 +484,10 @@ sheetName ="InvoicingWriteOff";
 //  if((jobNumber=="")||(jobNumber==null))
 //  ValidationUtils.verify(false,true,"Job Number is needed for Invoice from Budget");
   
-  EmpNo = ReadExcelSheet("Timesheet Employee No",EnvParams.Opco,"Data Management");
-  if((EmpNo=="")||(EmpNo==null)){
+
   ExcelUtils.setExcelName(workBook, sheetName, true);
   EmpNo = ExcelUtils.getColumnDatas("Employee Number",EnvParams.Opco)
-  }
+
   if((EmpNo=="")||(EmpNo==null))
   ValidationUtils.verify(false,true,"Employee Number is needed for Invoice from Budget");
   
@@ -890,6 +893,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice Write-Off",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -994,10 +999,10 @@ for(var i=0;i<Approve.ChildCount;i++){
 
 var p = Sys.Process("Maconomy");
 Sys.HighlightObject(p);
-var w = p.FindChild("Text", "Approve Draft", 2000);
+var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim(), 2000);
   if (w.Exists)
 { 
-Approve = w.FullName;
+Approve = w;
 }
 Log.Message(Approve.FullName)
 WorkspaceUtils.waitForObj(Approve);
@@ -1350,6 +1355,7 @@ function ParticalWriteOff(writeOff_Line,SelectionBilling){
     Log.Message(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim())
     for(var z=0;z<writeOff_Line.length;z++){
     var temp = writeOff_Line[z].split("*");
+    Log.Message(temp[0])
     if(SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim().indexOf(temp[0])!=-1){
       Log.Message(temp[0])
     WriteOff_Match = true;
@@ -1785,7 +1791,21 @@ var printInvoice;
      else
      printInvoice = printInvoice.SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1);
      Sys.HighlightObject(printInvoice)  
+     
+     
+
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Invoice").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+printInvoice = w;
+}
+Log.Message(printInvoice.FullName);
+Sys.HighlightObject(printInvoice)
+printInvoice.Click();
     TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
+    
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
@@ -1859,6 +1879,8 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Invoice Write-Off",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;

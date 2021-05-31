@@ -23,6 +23,7 @@ var IAccUnit = "";
 var workCodeList = [];
 var workActivity = [];
 var   Descp = [];
+var MainJob = "";
 //Main Function
 function InvoiceOnAccount(){ 
 Language = EnvParams.LanChange(EnvParams.Language);
@@ -32,7 +33,7 @@ Indicator.PushText("waiting for window to open");
 aqUtils.Delay(1000, Indicator.Text);
 
 
-
+MainJob = true;
 
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
@@ -55,7 +56,7 @@ try{
   var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
-  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
+  var writeoffInvoice = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
   template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
   Log.Message((jobNumber!="")||(jobNumber!=null))
@@ -82,7 +83,7 @@ try{
   
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
-    
+    MainJob = false;
     IAcc_ID = TestRunner.testCaseId;
     IAccUnit = TestRunner.unitName; 
     TestRunner.TempUnit = IAccUnit;
@@ -1029,46 +1030,48 @@ var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composi
   var q = 0;
 QuoteDetails = [];
 var InvoiceMPl = "InvoiceMPL";
-//for(var i=0;i<specification.getItemCount();i++){ 
-//
-//  var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
-//  if(Q_Desp!=""){
-//  var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
-//  var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
-//  var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
-//  var Q_Tax1 = specification.getItem(i).getText_2(7).OleValue.toString().trim();
-//  var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
-//  var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
-//  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
-////  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
-////  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
-////  Log.Message(QuoteDetails[q]);
-//  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
-//  Log.Message(Q_total);
+
+if(MainJob){ 
+for(var i=0;i<specification.getItemCount();i++){ 
+
+  var Q_Desp = specification.getItem(i).getText_2(1).OleValue.toString().trim();
+  if(Q_Desp!=""){
+  var Q_Qty = specification.getItem(i).getText_2(2).OleValue.toString().trim();
+  var Q_Billing = specification.getItem(i).getText_2(3).OleValue.toString().trim();
+  var Q_BillingTotoal = specification.getItem(i).getText_2(4).OleValue.toString().trim();
+  var Q_Tax1 = specification.getItem(i).getText_2(7).OleValue.toString().trim();
+  var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
+  var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
+  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
+//  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
 //  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
 //  Log.Message(QuoteDetails[q]);
-//  q++;
-//  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPl,Q_Desp);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPl,Q_Qty);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPl,Q_Billing);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPl,Q_BillingTotoal);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPl,Q_Tax1);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPl,Q_Tax2);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPl,Q_Tax1currency);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPl,Q_Tax2currency);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPl,Q_total);
-//
-//  }
-//  }
-//
-//  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPl,Excl_Tax);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPl,grandTotal);
-//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
+  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  Log.Message(Q_total);
+  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+  Log.Message(QuoteDetails[q]);
+  q++;
+  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,InvoiceMPl,Q_Desp);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,InvoiceMPl,Q_Qty);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,InvoiceMPl,Q_Billing);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,InvoiceMPl,Q_BillingTotoal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,InvoiceMPl,Q_Tax1);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,InvoiceMPl,Q_Tax2);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,InvoiceMPl,Q_Tax1currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,InvoiceMPl,Q_Tax2currency);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,InvoiceMPl,Q_total);
+
+  }
+  }
+
+  ExcelUtils.setExcelName(workBook,InvoiceMPl, true);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPl,Excl_Tax);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPl,grandTotal);
+  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
   
    
-  
+  }
   
   
   
@@ -1167,8 +1170,13 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+if(MainJob){ 
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}else{ 
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Draft Invoice On Account",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -1999,8 +2007,13 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+if(MainJob){ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")   
+}else{
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Invoice On Account",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;

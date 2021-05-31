@@ -1382,10 +1382,15 @@ var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Co
 }
 refresh.Click();
 aqUtils.Delay(3000, "Waiting to Refresh ToDo's List");
-if(ImageRepository.ImageSet.ToDos_Icon.Exists())
-{ 
-  
-}
+
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
 
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
@@ -1457,26 +1462,70 @@ var listPass = false;
 function FinalApprove(JobNum,Apvr,lvl){ 
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
 
-//Checking the screen with CloseFilter or ShowFilter
-var table = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder;
-WorkspaceUtils.waitForObj(table);
-Sys.HighlightObject(table);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  
-if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
+aqUtils.Delay(4000,"Maconomy loading data")
 
-}else{ 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+
+if(ImageRepository.ImageSet.Show_Filter.Exists()){
 ImageRepository.ImageSet.Show_Filter.Click();
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
 
+var Maconomy_Index = ""; 
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Draft Invoices").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+Maconomy_Index = w.FullName;
+}
+  
+var fg = Maconomy_Index.indexOf("PTabFolder");
+Log.Message(fg)
+Maconomy_Index = Maconomy_Index.substring(0,fg);
+Log.Message(Maconomy_Index)
+Maconomy_Index = Maconomy_Index.substring(0,Maconomy_Index.lastIndexOf("."));
+Log.Message(Maconomy_Index)
+Maconomy_Index = Maconomy_Index.substring(0,Maconomy_Index.lastIndexOf("."));
+Log.Message(Maconomy_Index)
+Maconomy_Index = Maconomy_Index.substring(Maconomy_Index.lastIndexOf(" ")+1,Maconomy_Index.lastIndexOf(")"));
+Log.Message(Maconomy_Index)
 
+//Checking the screen with CloseFilter or ShowFilter
+//var table = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder;
+//WorkspaceUtils.waitForObj(table);
+//Sys.HighlightObject(table);
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+//  
+//if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
+//
+//}else{ 
+//ImageRepository.ImageSet.Show_Filter.Click();
+//}
 
-var table = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
-var firstCell = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading data")
+
+            
+var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", Maconomy_Index).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
+//var table = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+var firstCell = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", Maconomy_Index).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McValuePickerWidget", "")
+//var firstCell = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
 WorkspaceUtils.waitForObj(firstCell);
 firstCell.setText(JobNum);
-var closefilter = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+//var closefilter = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 
 
 aqUtils.Delay(1000, Indicator.Text);
@@ -1500,9 +1549,16 @@ ValidationUtils.verify(flag,true,"Created Draft Invoice is available in Approval
 TextUtils.writeLog("Created Draft Invoice is available in Approval List");
 if(flag){ 
 aqUtils.Delay(1000, Indicator.Text);
+
+var closefilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", Maconomy_Index).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "");
 closefilter.HoverMouse();
 ReportUtils.logStep_Screenshot();
 closefilter.Click();
+
+
+
+                  
+
 
 aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
@@ -1511,19 +1567,29 @@ aqUtils.Delay(1000, Indicator.Text);
 
 var Approve;
 
-  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
-  Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
- else
-  Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
-            
-    
-Sys.HighlightObject(Approve);
-for(var i=0;i<Approve.ChildCount;i++){ 
-  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
-    Approve = Approve.Child(i);
-    break;
-  }
+//  if(Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite.isVisible())
+//  Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
+// else
+//  Approve = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
+//            
+//    
+//Sys.HighlightObject(Approve);
+//for(var i=0;i<Approve.ChildCount;i++){ 
+//  if((Approve.Child(i).isVisible())&&(Approve.Child(i).toolTipText==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim())){
+//    Approve = Approve.Child(i);
+//    break;
+//  }
+//}
+
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Draft").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+Approve = w;
 }
+Log.Message(Approve.FullName);
+Sys.HighlightObject(Approve)
 
 Sys.HighlightObject(Approve)
 if(Approve.isEnabled()){ 
@@ -1597,7 +1663,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 
 var printStat = false;
+var printInvoice = "";
 
+/*
 var ChildCount = 0;
 var Add = [];
 var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
@@ -1612,7 +1680,7 @@ Log.Message(PChild.Name)
 }
 }
 
-var printInvoice = "";
+
 var pos = 0;
 for(var ip=0;ip<Add.length;ip++){ 
 if(Add[ip].Height>pos){ 
@@ -1640,11 +1708,23 @@ printInvoice.Child(i).Click();
 break;
 }
 } 
+*/
+
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Credit Memo").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+printInvoice = w;
+}
+Log.Message(printInvoice.FullName);
+Sys.HighlightObject(printInvoice);
+printInvoice.Click();
 
 
 //Saving PDF
 TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(9000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);

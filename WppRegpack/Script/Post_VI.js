@@ -354,6 +354,10 @@ aqUtils.Delay(2000, "finding Company field");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
 var companyNoField = Aliases.ObjectGroup.CompanyNoVendorJournal;
 
 companyNoField.setText(companyNo)

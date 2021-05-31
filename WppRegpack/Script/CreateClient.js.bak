@@ -611,7 +611,7 @@ function newGlobalClient(){
  var C_Currency = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.Currency;
   if(currency!=""){
   C_Currency.Click();
-  aqUtils.Delay(10000,"Loading currencies")
+  aqUtils.Delay(30000,"Loading currencies")
   WorkspaceUtils.DropDownList(currency,"Currency")
   }
  
@@ -1223,7 +1223,6 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 }
   
-  
 function CredentialLogin(){ 
   var AppvLevl = [];
 for(var i=0;i<Approve_Level.length;i++){
@@ -1267,10 +1266,6 @@ for(var i=0;i<Approve_Level.length;i++){
     }
 
 }
-
-
-
-
   
 function todo(lvl){ 
   TextUtils.writeLog("Loged into Level "+level+" Approver login"); 

@@ -172,15 +172,16 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
   if(((invoicePreparation!="")&&(invoicePreparation!=null))&&((iP!="")&&(iP!=null))&&(iP!=sP)&&(iP!=fP)&&(iP!=mP)){
     InvoiceNumber = iP;
     Jobno = invoicePreparation;
-  }else  if(((invoiceBudget!="")&&(invoiceBudget!=null))&&((iB!="")&&(iB!=null))&&(iB!=sP)&&(iB!=fP)&&(iB!=mP)){
+  }else  if(((TM!="")&&(TM!=null))&&((iTM!="")&&(iTM!=null))&&(iTM!=sP)&&(iTM!=fP)&&(iTM!=mP)){
+    InvoiceNumber = iTM;
+    Jobno = TM;
+  }
+  else  if(((invoiceBudget!="")&&(invoiceBudget!=null))&&((iB!="")&&(iB!=null))&&(iB!=sP)&&(iB!=fP)&&(iB!=mP)){
     InvoiceNumber = iB;
     Jobno = invoiceBudget;
   }else  if(((invoiceAccount!="")&&(invoiceAccount!=null))&&((iA!="")&&(iA!=null))&&(iA!=sP)&&(iA!=fP)&&(iA!=mP)){
     InvoiceNumber = iA;
     Jobno = invoiceAccount;
-  }else  if(((TM!="")&&(TM!=null))&&((iTM!="")&&(iTM!=null))&&(iTM!=sP)&&(iTM!=fP)&&(iTM!=mP)){
-    InvoiceNumber = iA;
-    Jobno = TM;
   }else{ 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Jobno = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
@@ -205,7 +206,11 @@ ValidationUtils.verify(false,true,"Invoice Number is needed to Create Single Inv
 //ValidationUtils.verify(false,true,"Job Number is needed to Create Single Invoice");
         
 ExcelUtils.setExcelName(workBook, "Data Management", true);
+clientnum = ReadExcelSheet("Foreign Global Client Number",EnvParams.Opco,"Data Management");
+if((clientnum=="")||(clientnum==null)){
+ExcelUtils.setExcelName(workBook, "Data Management", true);
 clientnum = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+}
 Log.Message(clientnum)
 if((clientnum=="")||(clientnum==null)){
 ExcelUtils.setExcelName(workBook, sheetName, true);
@@ -989,9 +994,16 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 function reconsilejob(){  
   
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy is loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy is loading data");
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy is loading data");
+
+
       var table = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid      
       var compno = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
       compno.Click();

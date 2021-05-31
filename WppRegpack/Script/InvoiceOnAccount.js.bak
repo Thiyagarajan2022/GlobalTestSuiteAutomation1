@@ -65,16 +65,21 @@ try{
   Log.Message(invoiceBudget==jobNumber)
   Log.Message(invoiceAccount==jobNumber)
   Log.Message(writeoffInvoice==jobNumber)
-//  if((jobNumber=="")||(jobNumber==null)){
-  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
-  ExcelUtils.setExcelName(workBook, sheetName, true);
-  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-  Log.Message(jobNumber);
-  }
-  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+  
+// Picking Invoice from Main Job Number
+
+
+//  if(((jobNumber=="")||(jobNumber==null))||(invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
+//  ExcelUtils.setExcelName(workBook, sheetName, true);
+//  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
+//  Log.Message(jobNumber);
+//  }
+//  if((invoicePreparation==jobNumber)||(AllocationWIP==jobNumber)||(invoiceBudget==jobNumber)||(invoiceAccount==jobNumber)||(writeoffInvoice==jobNumber)){
 //    Log.Message(jobNumber+"Job Number is already used")
     jobNumber = "";
-  }
+//  }
+  
+  
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
     
@@ -1163,7 +1168,7 @@ ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Save
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice On Account",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -1995,7 +2000,7 @@ ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Sav
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+ExcelUtils.WriteExcelSheet("PDF Invoice On Account",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
 
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;
@@ -2014,6 +2019,7 @@ var textobj;
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Invoice OnAccount No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Invoice OnAccount Job",EnvParams.Opco,"Data Management",JobNum)
+  ExcelUtils.WriteExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management",textobj)
   TextUtils.writeLog("Client Invoice No: "+textobj);
 
 

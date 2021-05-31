@@ -943,7 +943,7 @@ var Approve;
 //  Approve = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
   
 
-/*          
+/*        
  var ApproveStat = false;
 Approve = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.Composite;
 Sys.HighlightObject(Approve);
@@ -965,7 +965,7 @@ for(var i=0;i<Approve.ChildCount;i++){
   }
 } 
 }
-*/
+
 
 
  var ApproveStat = false;
@@ -988,6 +988,16 @@ for(var i=0;i<Approve.ChildCount;i++){
     break;
   }
 } 
+}
+*/
+
+
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("Text", "Approve Draft", 2000);
+  if (w.Exists)
+{ 
+Approve = w.FullName;
 }
 Log.Message(Approve.FullName)
 WorkspaceUtils.waitForObj(Approve);

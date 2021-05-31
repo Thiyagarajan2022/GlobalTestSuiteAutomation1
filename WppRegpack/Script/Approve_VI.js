@@ -145,6 +145,14 @@ TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
 function invoiceAllocation(){ 
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+
   var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
   WorkspaceUtils.waitForObj(allocation);
   allocation.Click();
@@ -562,9 +570,13 @@ if(vID_Status)
 function FinalApproveinvoice(InvoiceNo,Apvr,lvl){ 
   
 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy Loading Data");
+
 
 var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
