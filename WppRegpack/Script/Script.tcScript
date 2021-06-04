@@ -139,6 +139,7 @@
 				<child name="Banking_Reconciliation" key="{21993FAE-570D-4DDE-A52D-B0E44E11FE8F}" path="Banking_Reconciliation.js" />
 				<child name="Foreign_Client_Creation" key="{E1D9FBED-CEAC-4966-A471-B479D5592CFD}" path="Foreign_Client_Creation.js" />
 				<child name="Client_Invoice_With_Hitpoint_Integration" key="{D91CA8FF-EF4E-406B-875A-3761D728EDE2}" path="Client_Invoice_With_Hitpoint_Integration.js" />
+				<child name="RePrint_Banking_Reconciliation" key="{90144C40-EFB8-4625-B477-0EB07CB00ABA}" path="RePrint_Banking_Reconciliation.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />

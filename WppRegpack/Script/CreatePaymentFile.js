@@ -425,7 +425,7 @@ function ElectronicPaymentFile() {
   var CreatepaymentFile = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
   Sys.HighlightObject(CreatepaymentFile);
   CreatepaymentFile.Click();
-  aqUtils.Delay(10000, Indicator.Text);
+  aqUtils.Delay(60000, Indicator.Text);
    var p = Sys.Process("Maconomy");
   Sys.HighlightObject(p);
   Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Bank Transactions - Payment File").OleValue.toString().trim())
@@ -443,6 +443,129 @@ Ok.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 Ok.Click();
 }
+
+
+
+aqUtils.Delay(15000, Indicator.Text);
+var SaveTitle = "";
+var sFolder = "";
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print out Payment Listing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print out Payment Listing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Order Confirmation")!=-1){
+    aqUtils.Delay(2000, Indicator.Text);
+    
+Sys.HighlightObject(pdf)
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x41); //A 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x12);     
+Sys.Desktop.KeyUp(0x41);
+    
+if(ImageRepository.PDF.ChooseFolder.Exists())
+ImageRepository.PDF.ChooseFolder.Click();
+else{ 
+var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+WorkspaceUtils.waitForObj(window);
+
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x73); //F4
+Sys.Desktop.KeyUp(0x12); //Alt
+Sys.Desktop.KeyUp(0x73); //F4
+aqUtils.Delay(2000, Indicator.Text);
+Sys.HighlightObject(pdf)
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x41); //A 
+Sys.Desktop.KeyUp(0x12); 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x41);
+}
+var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+aqUtils.Delay(2000, Indicator.Text);
+SaveTitle = save.wText;
+    
+sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
+if (! aqFileSystem.Exists(sFolder)){
+if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+}
+else{
+Log.Error("Could not create the folder " + sFolder);
+}
+}
+save.Keys(sFolder+SaveTitle+".pdf");
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
+saveAs.Click();
+}
+aqUtils.Delay(2000, Indicator.Text);
+
+if(ImageRepository.ImageSet.SaveAs.Exists()){
+var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
+conSaveAs.Click();
+}
+Sys.HighlightObject(pdf);
+Sys.Desktop.KeyDown(0x12); //Alt
+Sys.Desktop.KeyDown(0x46); //F
+Sys.Desktop.KeyDown(0x58); //X 
+Sys.Desktop.KeyUp(0x46); //Alt
+Sys.Desktop.KeyUp(0x12);     
+Sys.Desktop.KeyUp(0x58);
+}
+ValidationUtils.verify(true,true,"Create Payment File is Clicked and PDF is Saved");
+Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
+ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+aqUtils.Delay(4000, Indicator.Text);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Payment File",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
+
+
+
+
+aqUtils.Delay(9000, Indicator.Text);
+
+
+    var Save_Import_Message = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save file").OleValue.toString().trim(), 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
+//    Save_Import_Message.Keys(workBook);
+    aqUtils.Delay(2000, Indicator.Text);
+    var SaveTitle = Save_Import_Message.wText;
+    
+    sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
+    if (! aqFileSystem.Exists(sFolder)){
+    if (aqFileSystem.CreateFolder(sFolder) == 0){ 
+    
+    }
+    else{
+    Log.Error("Could not create the folder " + sFolder);
+    }
+    }
+    Save_Import_Message.Keys(sFolder+SaveTitle);
+
+    var Save = Sys.Process("Maconomy").Window("#32770", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save file").OleValue.toString().trim(), 1).Window("Button", "&Save", 1)
+    Save.Click();
+    aqUtils.Delay(5000, "Document Attached");
+
+var p = Sys.Process("Maconomy");
+  Sys.HighlightObject(p);
+ var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save file").OleValue.toString().trim(), 2000);
+  if (w.Exists)
+{ 
+    var SaveAs = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Save file").OleValue.toString().trim()).SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim())
+    SaveAs.Click();
+}
+    aqUtils.Delay(2000, "Document Attached");
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+    }
+
+
+
+
 
 }
 
@@ -547,6 +670,8 @@ Restart.login(Project_manager);
     catch(err){
       Log.Message(err);
     }
+    
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();

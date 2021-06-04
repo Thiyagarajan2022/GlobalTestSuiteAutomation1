@@ -99,6 +99,14 @@ if((Entrydate==null)||(Entrydate=="")){
 ValidationUtils.verify(false,true,"Reversion Date is Needed to Create Currency Journal");
 }
 Log.Message(Entrydate)
+
+
+layoutTypes = ExcelUtils.getRowDatas("Layout",EnvParams.Opco)
+Log.Message(layoutTypes)
+if((layoutTypes==null)||(layoutTypes=="")){ 
+ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Selection");
+}
+
 }
 
 function gotToCurrencyRevaluation(){ 
@@ -124,7 +132,23 @@ GLEntries.Click();
 var RDate = Aliases.Maconomy.CurrencyJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite2.McDatePickerWidget
 WorkspaceUtils.waitForObj(RDate);
 WorkspaceUtils.CalenderDateSelection(RDate,Entrydate)
+aqUtils.Delay(2000, "Saving the Changes");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
+var layout = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget3.Composite2.McPopupPickerWidget;
+layout.Keys(layoutTypes);
+  Delay(5000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
+
+var StatementDate = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
+if((StatementDate.getText()=="")||(StatementDate.getText()==null)){ 
+  StatementDate.Click();
+  StatementDate.setText( getSpecificDate(0) );
+
+}
+aqUtils.Delay(2000, "Saving the Changes");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -171,8 +195,15 @@ Log.Error("Could not create the folder " + sFolder);
 }
 }
 save.Keys(sFolder+SaveTitle+".pdf");
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
+//saveAs.Click();
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
 saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
 //if(ImageRepository.ImageSet.SaveAs.Exists()){
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)

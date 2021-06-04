@@ -21,45 +21,56 @@ var count = true;
 var checkmark = false;
 var STIME = "";
 var JobNo,Reallocation_Job_No,WorkCode,JournalNumber;
-
+var Project_manager = "";
 
 
 //getting data from datasheet
                                                                                                                                                                                       
                                                                                                                                                                                       
 function getDetails(){
-//Log.Message("excelName :"+workBook);
-//Log.Message("sheet :"+sheetName);
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
-//Log.Message(EnvParams.Opco)
 
 
-JobNo=ExcelUtils.getRowDatas("Job Number",EnvParams.Opco)
+
+JobNo=ExcelUtils.getRowDatas("Re-allocate From Job Number",EnvParams.Opco)
 if((JobNo==null)||(JobNo=="")){ 
-ValidationUtils.verify(false,true,"Job Number is Needed to Create a Job");
+  JobNo=ExcelUtils.getRowDatas("Job Serial Order From",EnvParams.Opco)
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  JobNo = ExcelUtils.getRowDatas("Job Number_"+JobNo,EnvParams.Opco)
+}
+if((JobNo==null)||(JobNo=="")){ 
+ValidationUtils.verify(false,true,"Re-allocate From Job Number is Needed to Reallocating Job Entries");
 }
 Log.Message(JobNo)
 
-Reallocation_Job_No=ExcelUtils.getRowDatas("ReallocationJobNo",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, sheetName, true);
+Reallocation_Job_No=ExcelUtils.getRowDatas("Re-allocate To Job Number",EnvParams.Opco)
 if((Reallocation_Job_No==null)||(Reallocation_Job_No=="")){ 
-ValidationUtils.verify(false,true,"Reallocation_Job_No is Needed to Re-allocate a Job");
+  Reallocation_Job_No=ExcelUtils.getRowDatas("Job Serial Order To",EnvParams.Opco)
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  Reallocation_Job_No = ExcelUtils.getRowDatas("Job Number_"+Reallocation_Job_No,EnvParams.Opco)
+}
+if((Reallocation_Job_No==null)||(Reallocation_Job_No=="")){ 
+ValidationUtils.verify(false,true,"Re-allocate To Job Number is Needed to Reallocating Job Entries");
 }
 
+ExcelUtils.setExcelName(workBook, sheetName, true);
 WorkCode = ExcelUtils.getRowDatas("WorkCode",EnvParams.Opco)
 if((WorkCode==null)||(WorkCode=="")){ 
-ValidationUtils.verify(false,true,"WorkCode is Needed to Create a Job");
+ValidationUtils.verify(false,true,"WorkCode is Needed to Reallocating Job Entries");
 }
 Log.Message(WorkCode)
 
-JournalNumber = ExcelUtils.getRowDatas("JournalNumber",EnvParams.Opco)
-if((JournalNumber==null)||(JournalNumber=="")){ 
-ValidationUtils.verify(false,true,"JournalNumber is Needed to Create a Job");
-}
-Log.Message(JournalNumber)
+//JournalNumber = ExcelUtils.getRowDatas("JournalNumber",EnvParams.Opco)
+//if((JournalNumber==null)||(JournalNumber=="")){ 
+//ValidationUtils.verify(false,true,"JournalNumber is Needed to Reallocating Job Entries");
+//}
+//Log.Message(JournalNumber)
 
 
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+//ExcelUtils.setExcelName(workBook, "Server Details", true);
+//Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
 //OpCoFile=ExcelUtils.getRowData1("OpCo File")
 //if((OpCoFile==null)||(OpCoFile=="")){ 
 //ValidationUtils.verify(false,true,"OpCoFile is Needed to Create a Job");
@@ -145,8 +156,8 @@ Indicator.PushText("waiting for window to open");
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 
 menuBar.Click();
-ExcelUtils.setExcelName(workBook, "Server Details", true);
-var Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
@@ -195,7 +206,12 @@ GoToJob();
 
 function GoToJob() {
   
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
 
 var JobNoTextBox = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.JobNo;
 
@@ -203,6 +219,10 @@ var JobNoTextBox = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Com
 
 JobNoTextBox.setText(JobNo);
 aqUtils.Delay(1000);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
 var table = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid
 
 WorkspaceUtils.waitForObj(table);
@@ -253,7 +273,8 @@ aqUtils.Delay(1000);
   closefilter.Click();
 
 aqUtils.Delay(1000);
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(4000,"Maconomy loading Data");
 
 
 
@@ -388,34 +409,59 @@ aqUtils.Delay(4000);
  // purchaseOrderTable.Click();
   
     var flag=false;
-  
+ JournalNumber
    for(var v=0;v<purchaseOrderTable.getItemCount();v++){ 
-  
-    if(purchaseOrderTable.getItem(v).getText_2(4).OleValue.toString().trim()==(WorkCode)&&(purchaseOrderTable.getItem(v).getText_2(3).OleValue.toString().trim()==(JournalNumber))){ 
+  if(purchaseOrderTable.getItem(v).getText_2(11).OleValue.toString().trim()==WorkCode){ 
+//    if(purchaseOrderTable.getItem(v).getText_2(4).OleValue.toString().trim()==(WorkCode)&&(purchaseOrderTable.getItem(v).getText_2(3).OleValue.toString().trim()==(JournalNumber))){ 
 
       flag=true;
-    purchaseOrderTable.Keys("[Tab]");
-    aqUtils.Delay(100);
-    purchaseOrderTable.Keys(" ");
-    aqUtils.Delay(1000);
-    purchaseOrderTable.Keys("[Tab]");
-    aqUtils.Delay(500);
-      purchaseOrderTable.Keys(" ");
-    aqUtils.Delay(1000);
+//    purchaseOrderTable.Keys("[Tab]");
+//    aqUtils.Delay(100);
+//    purchaseOrderTable.Keys(" ");
+//    aqUtils.Delay(1000);
+//    purchaseOrderTable.Keys("[Tab]");
+//    aqUtils.Delay(500);
+//      purchaseOrderTable.Keys(" ");
+//    aqUtils.Delay(1000);
     
+var Job_Entries = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
+Job_Entries.Click();
+aqUtils.Delay(4000,"Maconomy loading data");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+var ReAllocate_CheckBox = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.JobReallocationTable.SWTObject("McPlainCheckboxView", "").SWTObject("Button", "");
+if(!ReAllocate_CheckBox.getSelection()){ 
+  ReAllocate_CheckBox.Click();
+  aqUtils.Delay(4000,"Maconomy loading data");
+}
 
-
+purchaseOrderTable.Keys("[Tab]");
+var Selected_CheckBox = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.JobReallocationTable.SWTObject("McPlainCheckboxView", "").SWTObject("Button", "");
+if(!Selected_CheckBox.getSelection()){ 
+  Selected_CheckBox.Click();
+  aqUtils.Delay(4000,"Maconomy loading data");
+}
+JournalNumber = purchaseOrderTable.getItem(v).getText_2(6).OleValue.toString().trim()
   var savePOLine = Aliases.Maconomy.ReallocateJobEntries.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.SaveReallocation;
   
 //Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SavePOLine
 
   savePOLine.Click();
   aqUtils.Delay(4000);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //    var MarkForAccrual =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.MarkForAccrual;
 //  MarkForAccrual.Click();
     
   aqUtils.Delay(3000);
  
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Re-Allocated Entries From Job No",EnvParams.Opco,"Data Management",JobNo)
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Re-Allocated Entries To Job No",EnvParams.Opco,"Data Management",Reallocation_Job_No)
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Re-Allocated Journal No",EnvParams.Opco,"Data Management",JournalNumber)
+  
+  
+  
       break;
       
     }
@@ -438,7 +484,7 @@ var ApproveReallocation =Aliases.Maconomy.ReallocateJobEntries.Composite.Composi
 Sys.HighlightObject(ApproveReallocation);
 ApproveReallocation.Click();
 aqUtils.Delay(4000);
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job Administration - Job Reallocation by Job").OleValue.toString().trim())    
 {
   Log.Message("Inside popup")
@@ -454,6 +500,7 @@ var button =Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLing
      ReportUtils.logStep_Screenshot("");
       button.Click();
       Delay(5000);
+      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   }   
   
   

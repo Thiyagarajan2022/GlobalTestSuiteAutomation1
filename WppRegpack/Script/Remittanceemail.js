@@ -218,7 +218,7 @@ if(flag){
     waitForObj(email);
   email.HoverMouse();
   ReportUtils.logStep_Screenshot("");
-//    email.Click();
+    email.Click();
   TextUtils.writeLog("Details are send to the Email"); 
    aqUtils.Delay(15000, Indicator.Text);
    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
