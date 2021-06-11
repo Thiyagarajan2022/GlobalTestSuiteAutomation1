@@ -7,7 +7,7 @@
 			<image imageFileName="Data\Jobs.png" initialHash="F2135B2B" selectionLeft="67" selectionTop="241" selectionWidth="37" selectionHeight="30" initialLeft="67" initialTop="241" initialWidth="37" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="HumanResource" moniker="{C6E47EA8-8A58-4B0D-A7CE-14FAA0394DE0}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\HumanResource.png" initialHash="852A1226" selectionLeft="45" selectionTop="277" selectionWidth="29" selectionHeight="28" initialLeft="45" initialTop="277" initialWidth="29" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\HumanResource.png" initialHash="00000000" selectionLeft="45" selectionTop="277" selectionWidth="147" selectionHeight="28" initialLeft="45" initialTop="277" initialWidth="147" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Job" moniker="{949D04A3-E95B-4039-9290-D32A67C67825}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Job.png" initialHash="72565EB4" selectionLeft="43" selectionTop="340" selectionWidth="33" selectionHeight="32" initialLeft="43" initialTop="340" initialWidth="33" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
@@ -85,13 +85,13 @@
 			<image imageFileName="Data\Submit.png" initialHash="7CE4A431" selectionLeft="677" selectionTop="178" selectionWidth="19" selectionHeight="20" initialLeft="677" initialTop="178" initialWidth="19" initialHeight="20" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="HR" moniker="{1D40A39A-8E52-418E-888A-69ADD1765BA5}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\HR.png" initialHash="67BD7949" selectionLeft="35" selectionTop="231" selectionWidth="32" selectionHeight="32" initialLeft="35" initialTop="231" initialWidth="32" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\HR.png" initialHash="00000000" selectionLeft="35" selectionTop="231" selectionWidth="144" selectionHeight="33" initialLeft="35" initialTop="231" initialWidth="144" initialHeight="33" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="HR1" moniker="{CF497B6F-8A94-44F7-B100-E29BFCC8BA14}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\HR1.png" initialHash="1B7A5C59" selectionLeft="38" selectionTop="478" selectionWidth="28" selectionHeight="30" initialLeft="38" initialTop="478" initialWidth="28" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\HR1.png" initialHash="00000000" selectionLeft="38" selectionTop="478" selectionWidth="140" selectionHeight="30" initialLeft="38" initialTop="478" initialWidth="140" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="HR2" moniker="{A4E75797-4FF8-4416-855F-EE3FAFBFCB92}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\HR2.png" initialHash="8E5488BD" selectionLeft="40" selectionTop="235" selectionWidth="27" selectionHeight="25" initialLeft="40" initialTop="235" initialWidth="27" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\HR2.png" initialHash="00000000" selectionLeft="40" selectionTop="235" selectionWidth="142" selectionHeight="25" initialLeft="40" initialTop="235" initialWidth="142" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Clnt_Mangmt" moniker="{B45D6999-EDDC-4069-9D3F-B7D5C4E23AAC}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\Clnt_Mangmt.png" initialHash="CCA01AFF" selectionLeft="84" selectionTop="273" selectionWidth="138" selectionHeight="19" initialLeft="84" initialTop="273" initialWidth="138" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
@@ -124,7 +124,7 @@
 			<image imageFileName="Data\Vendor_Mngt_2.png" initialHash="F655D9F6" selectionLeft="52" selectionTop="466" selectionWidth="139" selectionHeight="14" initialLeft="52" initialTop="466" initialWidth="139" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Human_Resource" moniker="{2E24009C-A91F-4553-A431-B01B55E91733}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Human_Resource.png" initialHash="963F560C" selectionLeft="45" selectionTop="242" selectionWidth="29" selectionHeight="27" initialLeft="45" initialTop="242" initialWidth="29" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Human_Resource.png" initialHash="00000000" selectionLeft="45" selectionTop="242" selectionWidth="144" selectionHeight="27" initialLeft="45" initialTop="242" initialWidth="144" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="All_Approve_Action" moniker="{11E261B7-E5DC-4D19-9412-5E59736EC73C}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\All_Approve_Action.png" initialHash="FFD2C30E" selectionLeft="339" selectionTop="126" selectionWidth="115" selectionHeight="13" initialLeft="339" initialTop="126" initialWidth="115" initialHeight="13" pixelTolerance="0" colorTolerance="0" deviceName="" />

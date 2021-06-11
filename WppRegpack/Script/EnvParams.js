@@ -307,6 +307,11 @@ temp = "UAE"
 }
 break;
 
+case "Hong Kong":{
+temp = "HK"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -423,6 +428,11 @@ break;
 
 case "UAE":{
 temp = "UAE"
+}
+break;
+
+case "Hong Kong":{
+temp = "HK"
 }
 break;
 
