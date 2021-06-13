@@ -45,14 +45,8 @@
 		<item caption="AssetsWorkspace" moniker="{1CCCDCA8-AE1B-4D79-8CD2-624D7E9390C9}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\AssetsWorkspace.png" initialHash="DA7D56A9" selectionLeft="36" selectionTop="237" selectionWidth="87" selectionHeight="32" initialLeft="36" initialTop="237" initialWidth="87" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
-		<item caption="AccountsReceivable" moniker="{C6996C1D-3328-4B3C-AE2A-B56255B0EA58}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\AccountsReceivable.png" initialHash="4AD46078" selectionLeft="34" selectionTop="206" selectionWidth="165" selectionHeight="31" initialLeft="34" initialTop="206" initialWidth="165" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
 		<item caption="AccountsPayable" moniker="{000BA9AE-09CD-4D13-9C7A-134AD9706688}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\AccountsPayable.png" initialHash="48E62F9C" selectionLeft="44" selectionTop="154" selectionWidth="140" selectionHeight="30" initialLeft="44" initialTop="154" initialWidth="140" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
-		</item>
-		<item caption="BankingWorkspace" moniker="{08D53F2F-6A22-4E6D-B09A-7CAD9E2EC763}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\BankingWorkspace.png" initialHash="9ED4D99C" selectionLeft="45" selectionTop="232" selectionWidth="92" selectionHeight="27" initialLeft="45" initialTop="232" initialWidth="92" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="SetupWorkspace" moniker="{7D6256C6-8404-4398-8CF3-05E33A3125EC}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\SetupWorkspace.png" initialHash="4B127099" selectionLeft="41" selectionTop="177" selectionWidth="92" selectionHeight="30" initialLeft="41" initialTop="177" initialWidth="92" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
@@ -73,7 +67,13 @@
 			<image imageFileName="Data\BankingWorkspace_2.png" initialHash="866A8A12" selectionLeft="44" selectionTop="617" selectionWidth="88" selectionHeight="27" initialLeft="44" initialTop="617" initialWidth="88" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="AccountsReceivable_3" moniker="{05F2F5E9-81FD-4850-B2DE-0C672882028E}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\AccountsReceivable_3.png" initialHash="00000000" selectionLeft="44" selectionTop="470" selectionWidth="156" selectionHeight="30" initialLeft="44" initialTop="470" initialWidth="156" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\AccountsReceivable_3.png" initialHash="E315B416" selectionLeft="44" selectionTop="470" selectionWidth="156" selectionHeight="30" initialLeft="44" initialTop="470" initialWidth="156" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsReceivable" moniker="{F4724AA2-41C0-409D-954E-CA831D5E230D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsReceivable_1.png" initialHash="13C29F66" selectionLeft="34" selectionTop="476" selectionWidth="190" selectionHeight="34" initialLeft="34" initialTop="476" initialWidth="190" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BankingWorkspace" moniker="{CECA5C13-7319-4317-84D1-7319CB8170E6}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BankingWorkspace_1.png" initialHash="00000000" selectionLeft="36" selectionTop="550" selectionWidth="96" selectionHeight="30" initialLeft="36" initialTop="550" initialWidth="96" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 	</data>
 </Root>
