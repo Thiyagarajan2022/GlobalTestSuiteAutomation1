@@ -187,7 +187,7 @@ ValidationUtils.verify(false,true,"Description is Needed to Create a Vendor Invo
 
 
 Hitpoint = ExcelUtils.getColumnDatas("AP Fapio Hitpoint",EnvParams.Opco)
-if(EnvParams.Country.toUpperCase()=="CHINA"){
+if((EnvParams.Country.toUpperCase()=="CHINA")||(EnvParams.Country.toUpperCase()=="HONG KONG")){
 if((Hitpoint==null)||(Hitpoint=="")){ 
 ValidationUtils.verify(false,true,"AP Fapio Hitpoint YES/NO is Needed to Create a Vendor Invoice");
 }
