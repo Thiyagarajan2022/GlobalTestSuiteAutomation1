@@ -20,11 +20,12 @@
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{A99E64BA-378E-45AB-8AFB-6BCE3513F45F}" version="14">
 		<children>
-			<testItem name="Group1" key="{77BDA847-A55F-4283-9107-D896267228AA}" group="True" enabled="True" testMoniker="" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
+			<testItem name="Group1" key="{77BDA847-A55F-4283-9107-D896267228AA}" group="True" parallel="False" enabled="True" testMoniker="" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
 				<testParameters />
 				<children>
-					<testItem name="ProjectTestItem1" key="{CA26A9C7-ADF6-4849-88A4-B98D6005D6E8}" group="False" enabled="True" testMoniker="{808405B8-0747-445B-9F6E-64BEF03B5AF9}executeTestCases" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
+					<testItem name="ProjectTestItem1" key="{CA26A9C7-ADF6-4849-88A4-B98D6005D6E8}" group="False" parallel="False" enabled="True" testMoniker="{808405B8-0747-445B-9F6E-64BEF03B5AF9}executeTestCases" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
 						<testParameters />
+						<environments testedURL="" />
 						<children />
 					</testItem>
 				</children>
@@ -33,7 +34,7 @@
 	</testItems>
 	<variables key="{0D97164A-3D68-49E4-9ACF-0AFB6033AA32}" />
 	<settings key="{25D1EFDE-33AE-481E-8A94-90126DAB0A8F}">
-		<settingsVersion value="14.50" />
+		<settingsVersion value="14.81" />
 		<setting name="AgOpenApp_ExtendedSilverlightObjectTree" type="1" value="False" />
 		<setting name="ApplicationHangingProcessFilterMode" type="6" rowIndex="4" colIndex="0">
 			<columns>
@@ -60,7 +61,23 @@
 		<setting name="AzureDevOps_TeamProject" type="5" value="" />
 		<setting name="AzureDevOps_TeamProjectCollection" type="5" value="" />
 		<setting name="AzureDevOps_URL" type="5" value="" />
+		<setting name="CBT_AppsAvailability" type="6" rowIndex="0" colIndex="0">
+			<columns>
+				<column type="5" enabled="True" />
+			</columns>
+			<data>
+				<row val0="Everywhere" />
+				<row val0="In a local network" />
+				<row val0="On a local computer" />
+				<row val0="Via proxy" />
+			</data>
+		</setting>
 		<setting name="CBT_Authkey" type="5" value="" />
+		<setting name="CBT_LocalHtmlDir" type="5" value="" />
+		<setting name="CBT_ProxyAddress" type="5" value="" />
+		<setting name="CBT_ProxyLogin" type="5" value="" />
+		<setting name="CBT_ProxyPassword" type="5" value="" />
+		<setting name="CBT_ProxyPort" type="2" value="0" />
 		<setting name="CBT_UserName" type="5" value="" />
 		<setting name="CLRBridge_PreferredApartmentModel" type="6" rowIndex="0" colIndex="0">
 			<columns>
@@ -132,6 +149,7 @@
 			</data>
 		</setting>
 		<setting name="Gherkin_ExamplesAreTestCases" type="1" value="False" />
+		<setting name="Gherkin_StopScenarioOutlineIfExampleFails" type="1" value="False" />
 		<setting name="HipTest_ProjectID" type="2" value="-1" />
 		<setting name="HipTest_ProjectName" type="5" value="The current project is not bound to HipTest." />
 		<setting name="HipTest_SaveResults" type="1" value="True" />
@@ -140,7 +158,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="14" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="7" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -320,7 +338,7 @@
 			</data>
 		</setting>
 		<setting name="OpenApps_MSAA_TreeModel" type="1" value="False" />
-		<setting name="OpenApps_PriorityOfObjects" type="6" rowIndex="14" colIndex="0">
+		<setting name="OpenApps_PriorityOfObjects" type="6" rowIndex="15" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -340,6 +358,7 @@
 				<row val0="NativeChromeObject" />
 				<row val0="NativeFirefoxObject" />
 				<row val0="NativeWebDriverObject" />
+				<row val0="NativeSAPObject" />
 			</data>
 		</setting>
 		<setting name="OpenApps_ProcessFilter_ProcessFilterMode" type="6" rowIndex="0" colIndex="0">
@@ -384,7 +403,7 @@
 			</data>
 		</setting>
 		<setting name="OpenApps_Web_EnableSupportForWebComponents" type="1" value="False" />
-		<setting name="OpenApps_Web_ObjIdentification_DynamicIdentifiers" type="6" rowIndex="30" colIndex="9">
+		<setting name="OpenApps_Web_ObjIdentification_DynamicIdentifiers" type="6" rowIndex="30" colIndex="4">
 			<columns>
 				<column type="2" enabled="True" />
 				<column type="2" enabled="True" />
@@ -552,6 +571,7 @@
 				<row val0="Continue running" val1="0" />
 				<row val0="Stop project" val1="1" />
 				<row val0="Stop current item" val1="2" />
+				<row val0="Stop and rerun current item" val1="4" />
 			</data>
 		</setting>
 		<setting name="Playback_ErrHandling_OnObjectRecognitionError" type="6" rowIndex="0" colIndex="1">
@@ -598,6 +618,7 @@
 		<setting name="Playback_StopOnError" type="1" value="False" />
 		<setting name="Playback_StopOnObjectRecognitionError" type="1" value="False" />
 		<setting name="Playback_StopOnWarning" type="1" value="False" />
+		<setting name="Playback_TestItemMaxReRunCount" type="2" value="1" />
 		<setting name="Playback_UnexpectedWndHandling_ClickOnFocusedControl" type="1" value="True" />
 		<setting name="Playback_UnexpectedWndHandling_IgnoreUnexpectedWindow" type="1" value="False" />
 		<setting name="Playback_UnexpectedWndHandling_PressEnter" type="1" value="True" />

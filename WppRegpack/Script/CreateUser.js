@@ -836,7 +836,7 @@ var approver_table = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Comp
 
 for(var i=0;i<approver_table.getItemCount();i++){   
 
-if(approver_table.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+if(approver_table.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
 ValidationUtils.verify(false,true,"Level "+i+"Is not Approved");
 }
 }

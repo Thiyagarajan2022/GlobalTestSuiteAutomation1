@@ -788,7 +788,7 @@ next.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-if((EnvParams.Country.toUpperCase()!="SPAIN")&&(EnvParams.Country.toUpperCase()!="MALAYSIA")&&(EnvParams.Country.toUpperCase()!="CHINA")&&(EnvParams.Country.toUpperCase()!="UAE")){
+if(EnvParams.Country.toUpperCase()=="INDIA"){
 var Percentage = Aliases.Maconomy.PrepareInvoice.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.Composite.Percentage;
 WorkspaceUtils.waitForObj(Percentage);
 Percentage.Click();

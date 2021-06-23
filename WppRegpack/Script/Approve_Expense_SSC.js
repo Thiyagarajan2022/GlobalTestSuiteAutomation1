@@ -677,8 +677,8 @@ var flag=false;
       table.Keys("[Down]");
     }
   }
-TextUtils.writeLog("Expenses Sheet is listed for Reject");
-ValidationUtils.verify(flag,true,"Expenses Sheet is listed for Reject");
+TextUtils.writeLog("Expenses Sheet is listed for Approval");
+ValidationUtils.verify(flag,true,"Expenses Sheet is listed for Approval");
 Sys.HighlightObject(closefilter)    
 closefilter.Click();    
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 

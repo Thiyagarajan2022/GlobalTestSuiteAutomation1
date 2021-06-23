@@ -27,7 +27,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
 
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
 //Project_manager = ExcelUtils.getRowDatas("Agency - Biller",EnvParams.Opco);
-Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
+Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco)
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
 Restart.login(Project_manager);
@@ -495,19 +495,19 @@ if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
 
-   if((EnvParams.Country.toUpperCase()=="INDIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
+   if((EnvParams.Country.toUpperCase()=="INDIA")|| (EnvParams.Country.toUpperCase()=="CHINA") || (EnvParams.Country.toUpperCase()=="HONG KONG"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
    else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="UAE"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
     if(index>=0){
-          ReportUtils.logStep("INFO","Heading is available Pdf")
-          ValidationUtils.verify(true,true,"Heading is available Pdf")
-          TextUtils.writeLog("Heading is available Pdf")
+          ReportUtils.logStep("INFO","Heading is available in Pdf")
+          ValidationUtils.verify(true,true,"Heading is available in Pdf")
+          TextUtils.writeLog("Heading is available in Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Heading is not available Pdf")
+          ValidationUtils.verify(false,true,"Heading is not available in Pdf")
    var index = pdflineSplit.indexOf(clientName);        
     if(index>=0){
           ReportUtils.logStep("INFO",clientName+"ClientName is matching with Pdf")

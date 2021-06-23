@@ -13,33 +13,15 @@ var sheetName = "ExpensesMPL";
 Indicator.Show();
 Indicator.PushText("waiting for window to open");
 
-Log.Message(workBook);
+var Language = "";
+Language = EnvParams.LanChange(EnvParams.Language);
+
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Log.Message(sheetName);
-var Arrays = [];
-var count = true;
 var STIME = "";
-var Description = "";
-var Expense_Number = "";
-var Approve_Level = [];
-var y=0;
-var w=0;
-var login =[];
-var logindetail = []; 
-var ApproveInfo = [];
-var level =0;
-var Language = "";
-var comapany = "";
-var approvers = [];
-var OpCo2 = [];
-var sLevel = true;
-var EmployeeNo = "";
-var Amountt = "";
-var date = "";
-var currency = "";
-var Description = "";
-//var excelName = EnvParams.getEnvironment();
-//ExcelUtils.setExcelName(Project.Path+excelName, "Approve Expenses Sheet Opco", true);
+var Expense_Number, fileName, pdflineSplit = "";
+
 
 function MPLExpenses() {
 
@@ -54,22 +36,16 @@ Restart.login(Project_manager);
 
 STIME = WorkspaceUtils.StartTime();
 excelName = EnvParams.path;
-workBook = Project.Path+excelName;
-STIME = "";
-Description;
-Expense_Number = "";
-Approve_Level = [];
-y=0;
-ApproveInfo = [];
-level =0; 
-logindetail = [];    
-sLevel = true;
-Amountt = "";
-EmployeeNo = "";
-Description="";
-date ="";
+workBook = Project.Path+excelName
+
+if(EnvParams.Country.toLowerCase() == "china")
+Language ="Chinese";
+if(EnvParams.Country.toLowerCase() == "spain")
+Language ="Spanish";
+Log.Message(Language);
+
   getDetails();
-//  goToJobMenuItem();
+  goToJobMenuItem();
   gotoTimeExpenses();
   print();
   WorkspaceUtils.closeAllWorkspaces();    
@@ -92,17 +68,6 @@ if((Expense_Number=="")||(Expense_Number==null)){
  ValidationUtils.verify(true,false,"Expense Number is need to reject expense") 
 }
 
-//ExcelUtils.setExcelName(workBook, sheetName, true);
-//Amountt = ExcelUtils.getColumnDatas("Amount",EnvParams.Opco) 
-//EmployeeNo = ExcelUtils.getColumnDatas("Employeeno",EnvParams.Opco) 
-//date = ExcelUtils.getColumnDatas("Date",EnvParams.Opco) 
-//currency = ExcelUtils.getColumnDatas("Currency",EnvParams.Opco) 
-//Description = ExcelUtils.getColumnDatas("Description",EnvParams.Opco) 
-//Log.Message("Amountt :"+Amountt)
-//Log.Message("EmployeeNo :"+EmployeeNo)
-//Log.Message("date :"+date)
-//Log.Message("currency :"+currency)
-//Log.Message("Description :"+Description)
 } 
   
   
@@ -142,15 +107,17 @@ for(var bi=0;bi<WrkspcCount;bi++){
 var childCC= MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").ChildCount;
   var Client_Managt;
 for(var i=1;i<=childCC;i++){ 
-  Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
-  if(Client_Managt.isVisible()){ 
-    Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
+Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i)
+if(Client_Managt.isVisible()){ 
+Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", i).SWTObject("Tree", "");
 Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Time & Expenses").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Time & Expenses").OleValue.toString().trim());
-  }
 }
-Delay(3000);
+}
+aqUtils.Delay(10000, Indicator.Text);
+ReportUtils.logStep("INFO", "Moved to Time & Expenses from Time & Expenses Menu");
+TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 }
   
  function gotoTimeExpenses(){ 
@@ -194,13 +161,16 @@ Delay(3000);
   }
   
   
-  function print(){
+function print(){
   
     var print = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl5;
      Sys.HighlightObject(print);
     waitForObj(print)
     ReportUtils.logStep_Screenshot();
     print.Click();    
+    
+TextUtils.writeLog("Print Expense Sheet is Clicked"); 
+aqUtils.Delay(5000, Indicator.Text);    
     
 var SaveTitle = "";
 var sFolder = "";
@@ -209,6 +179,7 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_ExpenseSheet"
    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_ExpenseSheet"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("P_ExpenseSheet")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
 
+WorkspaceUtils.waitForObj(pdf);
 Sys.HighlightObject(pdf)
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
@@ -252,11 +223,18 @@ Log.Error("Could not create the folder " + sFolder);
 }
 save.Keys(sFolder+SaveTitle+".pdf");
 
-var filepathforMplValidation =sFolder+SaveTitle+".pdf";
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-saveAs.Click();
+var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
+Sys.HighlightObject(p);
+var saveAs = p.FindChild("WndCaption", "&Save", 2000);
+if (saveAs.Exists)
+{ 
+  saveAs.Click();
+}
 aqUtils.Delay(2000, Indicator.Text);
-
+if(ImageRepository.ImageSet.SaveAs.Exists()){
+var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
+conSaveAs.Click();
+}
 Sys.HighlightObject(pdf);
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
@@ -269,8 +247,8 @@ ValidationUtils.verify(true,true,"Print Expenses is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
 
-validateExpenseSheet(filepathforMplValidation,workBook,sheetName)
-
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("ExpenseMPL",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
 }
   
 function closeAllWorkspaces(){
@@ -283,11 +261,15 @@ function closeAllWorkspaces(){
 }
 
 
-function validateExpenseSheet(filepathforMplValidation,workBook,sheetName)
+function validateExpenseSheet()
 {
-  var fileName = filepathforMplValidation;
-  var docObj;
+   ExcelUtils.setExcelName(workBook, "Data Management", true);
+  var fileName = ExcelUtils.getRowDatas("ExpenseMPL",EnvParams.Opco)
+  if((fileName==null)||(fileName=="")){ 
+  ValidationUtils.verify(false,true,"ExpenseMPL is needed to validate");
+  }
 
+  var docObj;
   // Load the PDF file to the PDDocument object
   try{
   Log.Message(fileName)
@@ -296,9 +278,6 @@ function validateExpenseSheet(filepathforMplValidation,workBook,sheetName)
   }catch(objEx){
     Log.Error("Exception while reading document::"+objEx);
   }
-//  var workBook = "C:\\Users\\516188\\Documents\\TimeSheet\\DS_IND_REGRESSION - BAU.xlsx";
-//  EnvParams.Country = "India";
-//  EnvParams.Opco = "1707";
  
   var pdflineSplit = docObj.split("\r\n");
  

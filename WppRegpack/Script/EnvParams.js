@@ -307,7 +307,7 @@ temp = "UAE"
 }
 break;
 
-case "Hong Kong":{
+case "HONG KONG":{
 temp = "HK"
 }
 break;
@@ -431,7 +431,7 @@ temp = "UAE"
 }
 break;
 
-case "Hong Kong":{
+case "HONG KONG":{
 temp = "HK"
 }
 break;
