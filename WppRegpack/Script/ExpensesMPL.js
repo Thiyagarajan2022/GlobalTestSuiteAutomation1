@@ -9,7 +9,6 @@
 
 var excelName = EnvParams.getEnvironment();
 var workBook = Project.Path+excelName;
-var sheetName = "ExpensesMPL";
 Indicator.Show();
 Indicator.PushText("waiting for window to open");
 
@@ -38,21 +37,12 @@ STIME = WorkspaceUtils.StartTime();
 excelName = EnvParams.path;
 workBook = Project.Path+excelName
 
-if(EnvParams.Country.toLowerCase() == "china")
-Language ="Chinese";
-if(EnvParams.Country.toLowerCase() == "spain")
-Language ="Spanish";
-Log.Message(Language);
-
   getDetails();
-  goToJobMenuItem();
+  goToExpeseMenuItem();
   gotoTimeExpenses();
   print();
+  validateExpenseSheet();
   WorkspaceUtils.closeAllWorkspaces();    
-  
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.Click();
-WorkspaceUtils.closeAllWorkspaces(); 
 }
 
 
@@ -71,13 +61,13 @@ if((Expense_Number=="")||(Expense_Number==null)){
 } 
   
   
-function goToJobMenuItem(){
+function goToExpeseMenuItem(){
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 menuBar.DblClick();
 if(ImageRepository.ImageSet.TimeExpense.Exists()){
-ImageRepository.ImageSet.TimeExpense.Click();// GL
+ImageRepository.ImageSet.TimeExpense.Click();
 }
 else if(ImageRepository.ImageSet.TimeExpense1.Exists()){
 ImageRepository.ImageSet.TimeExpense1.Click();
@@ -95,7 +85,7 @@ Sys.Desktop.KeyUp(0x58);
 aqUtils.Delay(1000, Indicator.Text);
 var WrkspcCount = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").ChildCount;
 var Workspc = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "");
-Delay(3000);
+aqUtils.Delay(1000,"Loading Workspace")
 var MainBrnch = "";
 for(var bi=0;bi<WrkspcCount;bi++){ 
   if((Workspc.Child(bi).isVisible())&&(Workspc.Child(bi).Child(0).Name.indexOf("Composite")!=-1)&&(Workspc.Child(bi).Child(0).isVisible())){ 
@@ -120,23 +110,53 @@ ReportUtils.logStep("INFO", "Moved to Time & Expenses from Time & Expenses Menu"
 TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 }
   
- function gotoTimeExpenses(){ 
-    ReportUtils.logStep("INFO","Approve Expenses Second Level is Started:"+STIME);    
+function gotoTimeExpenses(){ 
+    ReportUtils.logStep("INFO","Approve Expenses Second Level is Started");    
     aqUtils.Delay(2000,Indicator.Text); 
     Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Refresh(); 
     var expenses = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.expensestab;
     expenses.Click();
     ReportUtils.logStep_Screenshot();
     aqUtils.Delay(1000,Indicator.Text);
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-      
-    }   
-     var table = Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
- 
-    var sheetno = Aliases.Maconomy.Group2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
-    Sys.HighlightObject(sheetno);    
-    sheetno.Click();
-    sheetno.setText(Expense_Number);
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){  } 
+    
+  var allExpenses = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Expense Sheets").OleValue.toString().trim());    
+  waitForObj(allExpenses)
+  allExpenses.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  } 
+  var table = ""
+  var sheetno = ""
+  var childcount = 0;
+  var Add = [];
+  var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  Sys.Process("Maconomy").Refresh()
+  for(var i = 0;i<Parent.ChildCount;i++){ 
+    if((Parent.Child(i).isVisible()) && (Parent.Child(i).ChildCount == 1)){
+    Add[childcount] = Parent.Child(i);
+    childcount++;
+    }
+  }
+
+  Parent = "";
+  var pos = 1000;
+  for(var i=0;i<Add.length;i++){ 
+    if(Add[i].Height<pos){ 
+      pos = Add[i].Height;
+      Parent = Add[i];
+    }
+  }
+
+
+  Log.Message(Parent.FullName)
+  table = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
+  Sys.HighlightObject(table)
+  sheetno = Parent.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
+  Sys.HighlightObject(sheetno)
+
+   Log.Message(sheetno.FullName) 
+   Sys.HighlightObject(sheetno);    
+   sheetno.Click();
+   sheetno.setText(Expense_Number);
     aqUtils.Delay(1000,Indicator.Text); 
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
@@ -151,20 +171,29 @@ TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
         table.Keys("[Down]");
       }
      }   
+     
+     var closefilter = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl
+       waitForObj(closefilter);
+       Sys.HighlightObject(closefilter);
+       closefilter.Click();
+           
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }    
      TextUtils.writeLog("Expense Sheet is available in Maconomy :"+Expense_Number);
     ValidationUtils.verify(flag,true,"Expense Sheet is available in Maconomy"); 
-        Sys.Desktop.KeyDown(0x11);
-        Sys.Desktop.KeyDown(0x46);
-        Sys.Desktop.KeyUp(0x11);
-        Sys.Desktop.KeyUp(0x46);       
-  
+        
+        
+  var total_curr = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.McTextWidget;
+  total_curr.Click();            
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+  ExcelUtils.WriteExcelSheet("Expense Total",EnvParams.Opco,"Data Management",total_curr.getText().OleValue.toString().trim());
+  Log.Message(total_curr.getText().OleValue.toString().trim());
+        
   }
   
   
 function print(){
-  
-    var print = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl5;
-     Sys.HighlightObject(print);
+    var print = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SWTObject("SingleToolItemControl", "", 5)
+    Sys.HighlightObject(print);
     waitForObj(print)
     ReportUtils.logStep_Screenshot();
     print.Click();    
@@ -175,7 +204,6 @@ aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_ExpenseSheet"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
-//Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "PaymentSelection"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_ExpenseSheet"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("P_ExpenseSheet")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
 
@@ -263,6 +291,16 @@ function closeAllWorkspaces(){
 
 function validateExpenseSheet()
 {
+if(EnvParams.Country.toLowerCase() == "china")
+Language = "Chinese (Simplified)";
+if(EnvParams.Country.toLowerCase() == "spain")
+Language ="Spanish";  
+Log.Message(Language)
+
+  ExcelUtils.setExcelName(workBook, "CreateExpense", true);
+  var employeeNo= ExcelUtils.getColumnDatas("Employeeno",EnvParams.Opco)
+  var expenseCurrency = ExcelUtils.getColumnDatas("currency_1",EnvParams.Opco)
+
    ExcelUtils.setExcelName(workBook, "Data Management", true);
   var fileName = ExcelUtils.getRowDatas("ExpenseMPL",EnvParams.Opco)
   if((fileName==null)||(fileName=="")){ 
@@ -280,23 +318,18 @@ function validateExpenseSheet()
   }
  
   var pdflineSplit = docObj.split("\r\n");
- 
-  ExcelUtils.setExcelName(workBook, "ExpensesMPL", true);
- 
-  var expenseNumber = ExcelUtils.getColumnDatas("ExpenseNumber",EnvParams.Opco);
-  var expenseAmount = ExcelUtils.getColumnDatas("Amount",EnvParams.Opco);
-  Log.Message(expenseAmount)
-  var employeeNo = ExcelUtils.getColumnDatas("Employeeno",EnvParams.Opco);
-  var expenseDate = ExcelUtils.getColumnDatas("Date",EnvParams.Opco);
-  var expenseCurrency = ExcelUtils.getColumnDatas("Currency",EnvParams.Opco);
-  var expenseDescription = ExcelUtils.getColumnDatas("Description",EnvParams.Opco);
-  var jobNumber  = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco);
+  
+
+  var expenseNumber = ExcelUtils.getRowDatas("Expense Number",EnvParams.Opco);
+  var expenseAmount = ExcelUtils.getRowDatas("Expense Total",EnvParams.Opco);
+  var expenseDescription = ExcelUtils.getRowDatas("Expense Description",EnvParams.Opco);
+  var jobNumber  = ExcelUtils.getRowDatas("Job Number",EnvParams.Opco);
+
   Log.Message(jobNumber)
           
   verifyExpenseNumber(expenseNumber, pdflineSplit);     
   verifyJobNumber(jobNumber, pdflineSplit);       
   verifyEmployeeNumber(employeeNo,pdflineSplit);
-  verifyExpenseDate(expenseDate,pdflineSplit); 
   verifyExpenseCurrency(expenseCurrency,pdflineSplit); 
   verifyExpenseDescription(expenseDescription,pdflineSplit);  
   verifyExpenseAmount(expenseAmount, pdflineSplit); 
@@ -306,15 +339,10 @@ function validateExpenseSheet()
 
 function verifyExpenseNumber(expenseNumber,pdflineSplit)
 {
-  var variableName;
-  if(EnvParams.Country == "India")
-      variableName = "Expense Sheet No";
-  else if (EnvParams.Country == "Spain")     
-      variableName = "Nº Hoja de gastos:";
     var expenseNoFound = false;
   for (var j=0; j<pdflineSplit.length; j++)
   {
-         if(pdflineSplit[j].includes(variableName))
+         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Expense Sheet No").OleValue.toString().trim()))
         {
          if(pdflineSplit[j].includes(expenseNumber))
              {
@@ -326,21 +354,16 @@ function verifyExpenseNumber(expenseNumber,pdflineSplit)
              }
              }
          if(j==pdflineSplit.length-1 && !expenseNoFound)
-          ValidationUtils.verify(false,true,"expenseNumber is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"expenseNumber is not same/found in Expense PDF");
         }  
 }
 
 function verifyEmployeeNumber(employeeNo,pdflineSplit)
 {
-  var variableName;
-  if(EnvParams.Country == "India")
-      variableName = "Employee No";
-  else if (EnvParams.Country == "Spain")     
-      variableName = "Nº empleado";
-    var employeeNoFound = false;
+  var employeeNoFound = false;
   for (var j=0; j<pdflineSplit.length; j++)
   {
-         if(pdflineSplit[j].includes(variableName))
+         if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee No").OleValue.toString().trim()))
         {
          if(pdflineSplit[j].includes(employeeNo))
              {
@@ -352,7 +375,7 @@ function verifyEmployeeNumber(employeeNo,pdflineSplit)
              }
              }
          if(j==pdflineSplit.length-1 && !employeeNoFound)
-          ValidationUtils.verify(false,true,"EmployeeNumber is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"EmployeeNumber is not same/found in Expense PDF");
         }  
 }
 
@@ -363,34 +386,18 @@ function verifyExpenseAmount(expenseAmount,pdflineSplit)
   {
          if(pdflineSplit[j].includes(expenseAmount))
              {
-             Log.Message(expenseAmount+" expenseAmount is matching with Pdf");
+             Log.Message(expenseAmount+"expenseAmount is matching with Pdf");
              ValidationUtils.verify(true,true," expenseAmount is matching with Pdf:"+expenseAmount);
              TextUtils.writeLog(" expenseAmount is matching with Pdf:"+expenseAmount);
              expenseAmountFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !expenseAmountFound)
-          ValidationUtils.verify(false,true,"expenseAmount is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"expenseAmount is not same/found in Expense PDF");
         }  
 }
  
-function verifyExpenseDate(expenseDate,pdflineSplit)
-{
-    var expenseDateFound = false;
-  for (var j=0; j<pdflineSplit.length; j++)
-  {
-         if(pdflineSplit[j].includes(expenseDate))
-             {
-             Log.Message(expenseDate+" expenseDate is matching with Pdf");
-             ValidationUtils.verify(true,true," expenseDate is matching with Pdf:"+expenseDate);
-             TextUtils.writeLog(" expenseDate is matching with Pdf:"+expenseDate);
-             expenseDateFound = true;
-             break;
-             }
-         if(j==pdflineSplit.length-1 && !expenseDateFound)
-          ValidationUtils.verify(false,true,"expenseDate is not same/found in TimesheetFile");
-        }  
-}
+
 function verifyExpenseCurrency(expenseCurrency,pdflineSplit)
 {
     var expenseCurrencytFound = false;
@@ -398,14 +405,14 @@ function verifyExpenseCurrency(expenseCurrency,pdflineSplit)
   {
          if(pdflineSplit[j].includes(expenseCurrency))
              {
-             Log.Message(expenseCurrency+" expenseCurrency is matching with Pdf");
+             Log.Message(expenseCurrency+"expenseCurrency is matching with Pdf");
              ValidationUtils.verify(true,true," expenseCurrency is matching with Pdf:"+expenseCurrency);
              TextUtils.writeLog(" expenseCurrency is matching with Pdf:"+expenseCurrency);
              expenseCurrencytFound = true;
              break;
              }
          if(j==pdflineSplit.length-1 && !expenseCurrencytFound)
-          ValidationUtils.verify(false,true,"expenseCurrency is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"expenseCurrency is not same/found in Expense PDF");
         }  
 }
 
@@ -423,7 +430,7 @@ function verifyExpenseDescription(expenseDescription,pdflineSplit)
              break;
              }
          if(j==pdflineSplit.length-1 && !expenseDescriptionFound)
-          ValidationUtils.verify(false,true,"expenseDescription is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"expenseDescription is not same/found in Expense PDF");
         }  
 }
  
@@ -441,6 +448,6 @@ function verifyJobNumber(jobNumber,pdflineSplit)
              break;
              }
          if(j==pdflineSplit.length-1 && !jobNoFound)
-          ValidationUtils.verify(false,true,"jobNumber is not same/found in TimesheetFile");
+          ValidationUtils.verify(false,true,"jobNumber is not same/found in Expense PDF");
         }  
 }

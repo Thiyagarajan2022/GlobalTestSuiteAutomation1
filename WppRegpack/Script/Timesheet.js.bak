@@ -19,6 +19,7 @@ var visible_Startindex = 0;
 var visible_Endindex;
 var jobNumber,weekno,workID,Descrip,mon,tue,wed,thu,fri,sat,sun,EmployeeNumber,EmployeeName,startdate,enddate = "";
 var mon_Des,tue_Des,wed_Des,thu_Des,fri_Des,sat_Des,sun_Des = "";
+var numberOfHours =0;
 //var jobNumber = "1307200330";
 //var weekno = "40"
 //var workID = "T1001"
@@ -348,13 +349,13 @@ days.HoverMouse();
 ReportUtils.logStep_Screenshot("");  
 days.Click();   
 TextUtils.writeLog("Week has been Selected");
-  var monday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 2);
-  var tuesday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 3);
-  var wednesday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 4);
-  var thursday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 5);
-  var friday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 6);
-  var saturday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 7);
-  var sunday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 8);
+//  var monday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 2);
+//  var tuesday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 3);
+//  var wednesday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 4);
+//  var thursday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 5);
+//  var friday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 6);
+//  var saturday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 7);
+//  var sunday = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 8);
 //aqUtils.Delay(4000, Indicator.Text);
 //Delay(4000);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -440,6 +441,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     ValidationUtils.verify(true,true,"Description is Entered");
     }
     var Time_for_day = switchcase(0,6)
+    
 //    Log.Message("Time_for_day :"+Time_for_day.length);
     for(var kk=0;kk<7;kk++){
 //    var dashboard = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("McTextWidget", "", 2+kk).getText();
@@ -454,6 +456,7 @@ aqUtils.Delay(1000, Indicator.Text);
 //if((switchDayValue(Time_for_day[kk])!="")||(switchDayValue(Time_for_day[kk])!=null)){
 if(((switchDayValue(Time_for_day[kk])!="")||(switchDayValue(Time_for_day[kk])!=null))&&(days.getText()!=switchDayValue(Time_for_day[kk]))){
 days.Keys(switchDayValue(Time_for_day[kk]));
+numberOfHours = numberOfHours + parseInt(switchDayValue(Time_for_day[kk]));
 ValidationUtils.verify(true,true,"Time is Entered for "+Time_for_day[kk]);
 }
     z++;
@@ -468,7 +471,7 @@ ValidationUtils.verify(true,true,"Time is Entered for "+Time_for_day[kk]);
 
 //    if(Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2.toolTipText=="Save Time Sheet Line")
 //    var Save = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-    
+Log.Message("Total hours:"+numberOfHours);    
     var Save;
    if(Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.isVisible()) 
    Save = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
@@ -717,6 +720,8 @@ ReportUtils.logStep_Screenshot("");
       ExcelUtils.WriteExcelSheet("Timesheet Employee No",EnvParams.Opco,"Data Management",EmployeeNumber)
       ExcelUtils.WriteExcelSheet("Timesheet Employee Name",EnvParams.Opco,"Data Management",EmployeeName)
       ExcelUtils.WriteExcelSheet("Timesheet Week No",EnvParams.Opco,"Data Management",weekno)
+      ExcelUtils.WriteExcelSheet("Timesheet Job No",EnvParams.Opco,"Data Management",jobNumber)
+      ExcelUtils.WriteExcelSheet("Timesheet Hours",EnvParams.Opco,"Data Management",numberOfHours)
       
       TextUtils.writeLog("Timesheet is submitted by Employee No:"+EmployeeNumber);
       TextUtils.writeLog("Timesheet is submitted by Employee Name:"+EmployeeName);
@@ -1427,6 +1432,7 @@ aqUtils.Delay(1000, Indicator.Text);
     }
     var Time_for_day = switchcase(invisible_Startindex,invisible_Endindex)
     var z=0;
+    
     for(var k=0;k<7;k++){ 
       if((k>=invisible_Startindex)&&(k<=invisible_Endindex)){ 
     aqUtils.Delay(1000, Indicator.Text);
@@ -1453,6 +1459,8 @@ ValidationUtils.verify(true,true,"Time is Entered for "+Time_for_day[z]);
       }
     }
 //var Save = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
+
+ 
     var Save;
    if(Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.isVisible()) 
    Save = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
@@ -1815,6 +1823,8 @@ ReportUtils.logStep_Screenshot("");
       ExcelUtils.WriteExcelSheet("Timesheet Employee No",EnvParams.Opco,"Data Management",EmployeeNumber)
       ExcelUtils.WriteExcelSheet("Timesheet Employee Name",EnvParams.Opco,"Data Management",EmployeeName)
       ExcelUtils.WriteExcelSheet("Timesheet Week No",EnvParams.Opco,"Data Management",weekno)
+      ExcelUtils.WriteExcelSheet("Timesheet Job No",EnvParams.Opco,"Data Management",jobNumber)
+      ExcelUtils.WriteExcelSheet("Timesheet Hours",EnvParams.Opco,"Data Management",numberOfHours)
       
       TextUtils.writeLog("Timesheet is submitted by Employee No:"+EmployeeNumber);
       TextUtils.writeLog("Timesheet is submitted by Employee Name:"+EmployeeName);

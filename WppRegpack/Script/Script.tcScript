@@ -124,9 +124,7 @@
 				<child name="FixedAssetResolution" key="{4247F3C9-7CE7-4F08-AA4E-6899E28EA9C1}" path="FixedAssetResolution.js" />
 				<child name="CreateAnAccrualJobByJob" key="{E85ABD8E-6444-46D9-8555-24249320C5F6}" path="CreateAnAccrualJobByJob.js" />
 				<child name="CopyBudget" key="{89EA977D-FF6A-4158-8984-64709965CC9E}" path="CopyBudget.js" />
-				<child name="ExpensesMPL" key="{CBB03673-53BF-4027-A8F5-383098DBA29F}" path="ExpensesMPL.js" />
 				<child name="ReverseInvoice" key="{B4E96580-901D-48AE-99B0-BC0C681DBD66}" path="ReverseInvoice.js" />
-				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
 				<child name="TM_Invoice" key="{E2F4334A-4603-45D3-996B-029D82E9A318}" path="TM_Invoice.js" />
 				<child name="CreateCompanyProduct" key="{B02F7F51-D171-4306-B51F-48FB26E8E530}" path="CreateCompanyProduct.js" />
 				<child name="VoidPayment" key="{08AC017E-FEFD-4496-85BD-0BA7364B6C4A}" path="VoidPayment.js" />
@@ -199,6 +197,8 @@
 				<child name="CreditMemo_MPL" key="{94F69842-0894-4393-88DC-9774538C107B}" path="CreditMemo_MPL.js" />
 				<child name="BankingReconciliation_MPL" key="{B0014E10-69AC-40AB-869C-7C97E03A191E}" path="BankingReconciliation_MPL.js" />
 				<child name="BankingReconciliation_InProgress_MPL" key="{6F12A830-052B-4E14-8B61-13D2726E2C0E}" path="BankingReconciliation_InProgress_MPL.js" />
+				<child name="TimesheetMPL" key="{7E3415F5-C620-43CA-B838-D6C333184007}" path="TimesheetMPL.js" />
+				<child name="ExpensesMPL" key="{CBB03673-53BF-4027-A8F5-383098DBA29F}" path="ExpensesMPL.js" />
 			</folder>
 			<folder name="UAE">
 				<child name="UAE_CreateClient" key="{DDF699D8-0E53-4E78-ABE6-3DF33EE535A6}" path="UAE_CreateClient.js" />

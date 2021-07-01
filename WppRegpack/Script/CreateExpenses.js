@@ -18,7 +18,7 @@ var ApproveInfo = [];
 var mainParent = "";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 var STIME = "";
-var employeeNo,Description,VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
+var employeeNo,Description,desp,VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
 var Language = "";
 
 
@@ -54,8 +54,8 @@ jobNumber = "";
 
           STIME = WorkspaceUtils.StartTime();
           getDetails();
-          goToJobMenuItem();
-          CreateEmpxnse();
+          goToExpenseMenuItem();
+          newExpenseSheet();
           gotoTimeExpenses();
           WorkspaceUtils.closeAllWorkspaces();
 }
@@ -159,8 +159,8 @@ ValidationUtils.verify(true,true,"Job field is available in Macanomy for the Exp
 
 
 
-//Go To Job from Menu
-function goToJobMenuItem(){
+//Go To Time and Expense from Menu
+function goToExpenseMenuItem(){
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
@@ -207,7 +207,7 @@ TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 
 
 
-function CreateEmpxnse(){ 
+function newExpenseSheet(){ 
   ReportUtils.logStep("INFO", "Enter Expenses Details");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -233,30 +233,6 @@ function CreateEmpxnse(){
   Sys.Desktop.KeyUp(0x11)
   Sys.Desktop.KeyUp(0x46)
   
-//  if(ImageRepository.ImageSet.Close_Filter.Exists()){
-//  ImageRepository.ImageSet.Close_Filter.Click();
-//  ReportUtils.logStep_Screenshot("");
-//  }else{
-
-//var closeFilter = "";
-//if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.isVisible()){
-//closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//Sys.HighlightObject(closeFilter)
-//}
-//else{ 
-//closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-//Sys.HighlightObject(closeFilter)
-//}
-////  var closeFilter = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//  Log.Message(closeFilter.FullName)
-//  waitForObj(closeFilter)
-//  ReportUtils.logStep_Screenshot("");
-//  closeFilter.Click();
-////  }
-//  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-//    
-//  }
-                  
 var expenses = "";
 if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.isVisible()){
 expenses =  Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
@@ -275,18 +251,6 @@ Sys.HighlightObject(expenses)
   expenses.Click();
   TextUtils.writeLog("Create New Expense Sheet is Clicked");
   
-//for(var i=0;i<expenses.ChildCount;i++){
-//  Log.Message(expenses.Child(i).Name)
-//  Log.Message(expenses.Child(i).toolTipText.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Expense Sheet (Ctrl+N)").OleValue.toString().trim())!=-1)
-//  
-//if((expenses.Child(i).isVisible())&&(expenses.Child(i).toolTipText.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Expense Sheet (Ctrl+N)").OleValue.toString().trim())!=-1)){
-//  expenses = expenses.Child(i);
-//  WorkspaceUtils.waitForObj(expenses);
-//  ReportUtils.logStep_Screenshot("");
-//  expenses.Click();
-//  break;
-//}    
-//} 
   aqUtils.Delay(5000, "Create Expenses Sheet");
   
   var Cancel = Aliases.Maconomy.ExpenseSheet.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim())
@@ -308,7 +272,8 @@ Sys.HighlightObject(expenses)
   descrip.HoverMouse();
   Sys.HighlightObject(descrip)
   WorkspaceUtils.waitForObj(descrip)
-  descrip.setText(Description+" "+STIME); 
+  desp = Description+" "+STIME;
+  descrip.setText(desp); 
   
   var job = Aliases.Maconomy.ExpenseSheet.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.Composite.McValuePickerWidget;
   job.HoverMouse();
@@ -561,20 +526,6 @@ Sys.HighlightObject(attchDocument)
   }
 
 var submit = "";
-
-//submit = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.Submit
-//if(Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.isVisible()){
-// submit = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-//Sys.HighlightObject(submit);
-//}
-//else{
-// submit = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
-//Sys.HighlightObject(submit);
-//}
-
-//  var submit = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
-
-
 var table = "";
 var Add = [];
 var childcount = 0;
@@ -605,6 +556,7 @@ Sys.HighlightObject(submit)
   submit.Click();
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Expense Number",EnvParams.Opco,"Data Management",ExpenseNumber);
+  ExcelUtils.WriteExcelSheet("Expense Description",EnvParams.Opco,"Data Management",desp);
   TextUtils.writeLog("Created Expenses Number :"+ExpenseNumber);
 
   }
