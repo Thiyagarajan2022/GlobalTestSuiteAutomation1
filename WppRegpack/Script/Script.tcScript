@@ -138,6 +138,9 @@
 				<child name="Foreign_Client_Creation" key="{E1D9FBED-CEAC-4966-A471-B479D5592CFD}" path="Foreign_Client_Creation.js" />
 				<child name="Client_Invoice_With_Hitpoint_Integration" key="{D91CA8FF-EF4E-406B-875A-3761D728EDE2}" path="Client_Invoice_With_Hitpoint_Integration.js" />
 				<child name="RePrint_Banking_Reconciliation" key="{90144C40-EFB8-4625-B477-0EB07CB00ABA}" path="RePrint_Banking_Reconciliation.js" />
+				<child name="GenerateBalanceSheetReport" key="{902A7324-44D5-436D-B610-BC879EBA770B}" path="GenerateBalanceSheetReport.js" />
+				<child name="GenerateProfitAndLossReport" key="{4CD24AAC-3D17-4291-B516-2927B663B893}" path="GenerateProfitAndLossReport.js" />
+				<child name="GenerateTrailBalanceDetailReport" key="{EF10740A-E7EE-433B-98E2-71809A8E5119}" path="GenerateTrailBalanceDetailReport.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
