@@ -354,7 +354,7 @@ var lab = label.getText().OleValue.toString().trim();
 var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
 Ok.Click();
-Delay(8000);
+Delay(10000);
 
 break;
 }
@@ -660,7 +660,8 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+//if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+  if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -832,12 +833,12 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 ReportUtils.logStep_Screenshot();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var approver_table = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-  Log.Message(approver_table.getItemCount());
-
 for(var i=0;i<approver_table.getItemCount();i++){   
-
 if(approver_table.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-ValidationUtils.verify(false,true,"Level "+i+"Is not Approved");
+ValidationUtils.verify(false,true,"User is NOT APPROVED in Level :"+i);
+}
+else{ 
+ValidationUtils.verify(true,true,"User is APPROVED in Level :"+i);  
 }
 }
 TextUtils.writeLog("User is Approved in all levels");   

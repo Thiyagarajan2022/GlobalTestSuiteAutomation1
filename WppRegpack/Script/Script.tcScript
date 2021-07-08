@@ -209,6 +209,16 @@
 				<child name="UAE_CompanyVendor" key="{88C38FED-AFC0-4DD7-9863-1F35B273FE13}" path="UAE_CompanyVendor.js" />
 				<child name="UAE_CompanyClient" key="{B4BDC97A-837E-4362-835B-8B46F62BDD29}" path="UAE_CompanyClient.js" />
 			</folder>
+			<folder name="InterCompany TestCases">
+				<child name="InterCompany_Client" key="{74FE35BC-C403-43FD-A22F-EADF54867BC8}" path="InterCompany_Client.js" />
+				<child name="InterCompany_Job" key="{4A4ACFD6-CD98-42C0-8F8A-F6A56DB398A5}" path="InterCompany_Job.js" />
+				<child name="InterCompany_Budget" key="{69175A34-C4C3-4D20-A0DF-EF0EAC48BE17}" path="InterCompany_Budget.js" />
+				<child name="InterCompany_Quote" key="{D1DC0FAF-EBE3-4A96-909E-9F3EBE216ACB}" path="InterCompany_Quote.js" />
+				<child name="InterCompany_ExpenseSheet" key="{DEA2594F-61F7-4556-8AE0-36A39834BE9E}" path="InterCompany_ExpenseSheet.js" />
+				<child name="InterCompany_Approve_Expense_SSC" key="{55FE9D80-6570-4F46-8B87-8A56BEE422C4}" path="InterCompany_Approve_Expense_SSC.js" />
+				<child name="InterCompany_Approve_Expenses_Opco" key="{AE9A4A74-98F4-464B-BD24-EC316BAD9886}" path="InterCompany_Approve_Expenses_Opco.js" />
+				<child name="InterCompany_PO" key="{6F5F312D-32C8-4DAB-A68A-B4011395641A}" path="InterCompany_PO.js" />
+			</folder>
 		</folder>
 		<folder name="EnvConfig">
 			<child name="EnvParams" key="{70346006-8F35-4727-AA07-0BFF8EA1A617}" path="EnvParams.js" />

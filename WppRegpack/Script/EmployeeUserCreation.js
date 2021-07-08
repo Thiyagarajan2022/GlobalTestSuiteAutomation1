@@ -1273,7 +1273,9 @@ ReportUtils.logStep_Screenshot();
 
 for(var z=0;z<approver_table.getItemCount();z++){ 
    if(approver_table.getItem(z).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-ValidationUtils.verify(true,false,"Employee is not Approved in level "+z);
+   ValidationUtils.verify(true,false,"Employee,Employee Vendor and User is NOT APPROVED in Level :"+z);
+   }else{ 
+   ValidationUtils.verify(true,true,"Employee,Employee Vendor and User is APPROVED in Level :"+z);  
    }
   }
 ValidationUtils.verify(true,true,"Employee is Approved in all level ");  
@@ -1925,6 +1927,7 @@ if(lvl==2)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
+//if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==2)){ 
 Client_Managt.ClickItem("|"+temp);   
 ReportUtils.logStep_Screenshot(); 
@@ -1937,7 +1940,8 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+  Log.Message(temp+" : "+temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)
+if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 

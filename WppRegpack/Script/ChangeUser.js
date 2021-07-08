@@ -699,7 +699,8 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+//if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -759,6 +760,7 @@ if(ApproveBtn.isEnabled()){
 ApproveBtn.HoverMouse();
 ReportUtils.logStep_Screenshot();
   ApproveBtn.Click(); 
+  aqUtils.Delay(5000,"Maconomy loading data");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 
@@ -775,97 +777,58 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(apvLvl==(ApproveInfo.length-1)){
 
 
-
-
-var  Okay = ""; 
-var p = Sys.Process("Maconomy");
-Sys.HighlightObject(p);
-var w = p.FindChild("Text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&OK").OleValue.toString().trim(), 2000);
-  if (w.Exists)
-{ 
-Okay = w;
-}
-Log.Message(Okay.FullName);
-Sys.HighlightObject(Okay);
-Okay.Click();
 aqUtils.Delay(5000,"Maconomy loading data");
 
- var p = Sys.Process("Maconomy");
+
+
+for(var h=0;h<2;h++){
+  var p = Sys.Process("Maconomy");
   Sys.HighlightObject(p);
-  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information").OleValue.toString().trim())
- var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information").OleValue.toString().trim(), 2000);
-  if (w.Exists)
-{ 
-  
-var label = w.SWTObject("Label", "*");
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
 Log.Message(label.getText());
 var lab = label.getText().OleValue.toString().trim();
-ReportUtils.logStep("INFO",lab)
-TextUtils.writeLog(lab);
-var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
-ReportUtils.logStep_Screenshot("");
 Ok.Click();
 aqUtils.Delay(10000,"Maconomy loading data");
+
+break;
 }
 
- var p = Sys.Process("Maconomy");
-  Sys.HighlightObject(p);
-  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information").OleValue.toString().trim())
- var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information").OleValue.toString().trim(), 2000);
-  if (w.Exists)
-{ 
-  
-var label = w.SWTObject("Label", "*");
-Log.Message(label.getText());
-var lab = label.getText().OleValue.toString().trim();
-ReportUtils.logStep("INFO",lab)
-TextUtils.writeLog(lab);
-var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-Ok.HoverMouse();
-ReportUtils.logStep_Screenshot("");
-Ok.Click();
-aqUtils.Delay(10000,"Maconomy loading data");
+}
 }
 
 
 
- var p = Sys.Process("Maconomy");
+for(var h=0;h<2;h++){
+  var p = Sys.Process("Maconomy");
   Sys.HighlightObject(p);
-  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim())
- var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim(), 2000);
-  if (w.Exists)
-{ 
-  
-var label = w.SWTObject("Label", "*");
+ var w = p.FindAllChildren("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information").OleValue.toString().trim(), 2000) ;
+
+if (w.length > 0)
+for(var popup_Index=0;popup_Index<w.length;popup_Index++){ 
+  if ((w[popup_Index].Exists) && (w[popup_Index].Enabled) )
+{
+
+var label = w[popup_Index].SWTObject("Label", "*");
 Log.Message(label.getText());
 var lab = label.getText().OleValue.toString().trim();
-ReportUtils.logStep("INFO",lab)
-TextUtils.writeLog(lab);
-var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
+var Ok = w[popup_Index].SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 Ok.HoverMouse();
-ReportUtils.logStep_Screenshot("");
 Ok.Click();
 aqUtils.Delay(10000,"Maconomy loading data");
+
+break;
 }
 
- var p = Sys.Process("Maconomy");
-  Sys.HighlightObject(p);
-  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim())
- var w = p.FindChild("WndCaption", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve User Information (Substitute)").OleValue.toString().trim(), 2000);
-  if (w.Exists)
-{ 
-  
-var label = w.SWTObject("Label", "*");
-Log.Message(label.getText());
-var lab = label.getText().OleValue.toString().trim();
-ReportUtils.logStep("INFO",lab)
-TextUtils.writeLog(lab);
-var Ok = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
-Ok.HoverMouse();
-ReportUtils.logStep_Screenshot("");
-Ok.Click();
-aqUtils.Delay(10000,"Maconomy loading data");
+}
 }
 
 Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
@@ -890,8 +853,11 @@ var approver_table = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Comp
 
 for(var i=0;i<approver_table.getItemCount();i++){   
 
-if(approver_table.getItem(i).getText_2(6)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
-ValidationUtils.verify(false,true,"Level "+i+"Is not Approved");
+if(approver_table.getItem(i).getText_2(5)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+ValidationUtils.verify(false,true,"Changed User NOT APPROVED in Level :"+i);
+}
+else{ 
+ValidationUtils.verify(true,true,"Changed User APPROVED in Level :"+i);  
 }
 }
 TextUtils.writeLog("User is Approved in all levels");   

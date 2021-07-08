@@ -601,7 +601,8 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+//if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
@@ -659,8 +660,8 @@ for(var v=0;v<table.getItemCount();v++){
     
 ReportUtils.logStep_Screenshot();  
 
-ValidationUtils.verify(flag,true,"Employee Created is available in system");
-TextUtils.writeLog("Created Employee is available in Approver List");  
+ValidationUtils.verify(flag,true,"Employee is available in system");
+TextUtils.writeLog("Employee is available in Approver List");  
   
   
 if(flag){ 
@@ -731,8 +732,8 @@ Ok.HoverMouse();
 ReportUtils.logStep_Screenshot();
 Ok.Click();
 }
-ValidationUtils.verify(true,true,"Created Employee is Approved by :"+userNmae)
-TextUtils.writeLog("Created Employee is Approved by :"+userNmae); 
+ValidationUtils.verify(true,true,"Changed Employee is Approved by :"+userNmae)
+TextUtils.writeLog("Changed Employee is Approved by :"+userNmae); 
 }
 else{ 
   ReportUtils.logStep("INFO","Approve Button Is Invisible");
@@ -775,7 +776,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 ReportUtils.logStep_Screenshot();
 var approver_table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 5).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
-
+for(var z=0;z<approver_table.getItemCount();z++){ 
+   approvers="";
+   if(approver_table.getItem(z).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+   ValidationUtils.verify(true,false,"Employee is NOT APPROVED in Level :"+z);
+   }else{ 
+   ValidationUtils.verify(true,true,"Employee is APPROVED in Level :"+z);  
+   }
+}
 var y=0;
 
 }

@@ -1091,18 +1091,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 ReportUtils.logStep_Screenshot();
 var approver_table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 5).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
 //  Log.Message(approver_table.getItemCount());
-var y=0;
-//for(var z=0;z<approver_table.getItemCount();z++){ 
-//   approvers="";
-//   if(approver_table.getItem(z).getText_2(8)!="Approved"){
-//   approvers = approver_table.getItem(z).getText_2(3).OleValue.toString().trim()+"*"+approver_table.getItem(z).getText_2(4).OleValue.toString().trim();
-//   ReportUtils.logStep("INFO","Employee Approver level : " +z+ " Approver :" +approvers);
-////   Approve_Level[y] = Employee_detail[3]+"*"+Employee_detail[0]+"*"+approvers;
-//   Approve_Level[y] = comapany+"*"+empNumber+"*"+approvers;
-//   Log.Message(Approve_Level[y])
-//   y++;
-//   }
-//}
+for(var z=0;z<approver_table.getItemCount();z++){ 
+   approvers="";
+   if(approver_table.getItem(z).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){
+   ValidationUtils.verify(true,false,"Employee is NOT APPROVED in Level :"+z);
+   }else{ 
+   ValidationUtils.verify(true,true,"Employee is APPROVED in Level :"+z);  
+   }
+}
 }
 var info_Bar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("PTabItemPanel", "", 1).SWTObject("TabControl", "");
 info_Bar.Click();
@@ -1784,7 +1780,8 @@ if(lvl==3)
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
-if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+//if((temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1)&&(temp1.length==3)){ 
+  if(temp.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve Employee (Substitute)").OleValue.toString().trim()+" (")!=-1){ 
 Client_Managt.ClickItem("|"+temp);    
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
