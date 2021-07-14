@@ -189,8 +189,6 @@ if((comapany==null)||(comapany=="")){
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Employee");
 }
 DateEmployed = ExcelUtils.getRowDatas("DateEmployed",EnvParams.Opco)
-if(DateEmployed = "AUTOFILL")
-DateEmployed = getSpecificDate(0);
 if((DateEmployed==null)||(DateEmployed=="")){ 
 ValidationUtils.verify(false,true,"DateEmployed is Needed to Create a Employee");
 }
@@ -249,14 +247,10 @@ if((UserType==null)||(UserType=="")){
 ValidationUtils.verify(false,true,"User Type is Needed to Create a Employee");
 }
 ValidityPeriodFrom= ExcelUtils.getRowDatas("Validity Period From",EnvParams.Opco)
-if(ValidityPeriodFrom = "AUTOFILL")
-ValidityPeriodFrom = getSpecificDate(0);
 if((ValidityPeriodFrom==null)||(ValidityPeriodFrom=="")){ 
 ValidationUtils.verify(false,true,"Validity Period From is Needed to Create a Employee");
 }
 ValidityPeriodTo= ExcelUtils.getRowDatas("Validity Period To",EnvParams.Opco)
-if(ValidityPeriodTo = "AUTOFILL")
-ValidityPeriodTo = getSpecificDate(30);
 if((ValidityPeriodTo==null)||(ValidityPeriodTo=="")){ 
 ValidationUtils.verify(false,true,"Validity Period To is Needed to Create a Employee");
 }
@@ -438,6 +432,12 @@ else{
 
 if(DateEmployed!=""){
 var DateEmployed_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 1).SWTObject("McDatePickerWidget", "", 2)
+if(DateEmployed = "AUTOFILL")
+{
+  DateEmployed = getSpecificDate(0);
+  DateEmployed_1.setText(DateEmployed)
+}
+else
 WorkspaceUtils.CalenderDateSelection(DateEmployed_1,DateEmployed)
 ValidationUtils.verify(true,true,"Date Employed is selected in Maconomy"); 
 }else{ 
@@ -688,6 +688,13 @@ user_type.Click();
 
 var valid_period_from = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 3).SWTObject("McDatePickerWidget", "", 2);
 if(ValidityPeriodFrom!=""){ 
+  
+if(ValidityPeriodFrom = "AUTOFILL")
+{
+  ValidityPeriodFrom = getSpecificDate(0);  
+  valid_period_from.setText(ValidityPeriodFrom)
+}
+else
 WorkspaceUtils.CalenderDateSelection(valid_period_from,ValidityPeriodFrom);
 ValidationUtils.verify(true,true,"Valid Period from is Selected to Create a User");
 }else{ 
@@ -696,6 +703,12 @@ ValidationUtils.verify(true,true,"Valid Period from is Selected to Create a User
 
 var valid_period_to = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 3).SWTObject("McDatePickerWidget", "", 4);
 if(ValidityPeriodTo!=""){ 
+  
+if(ValidityPeriodTo = "AUTOFILL")
+{ ValidityPeriodTo = getSpecificDate(30);
+  valid_period_to.setText(ValidityPeriodTo)
+  }
+else
  WorkspaceUtils.CalenderDateSelection(valid_period_to,ValidityPeriodTo); 
  ValidationUtils.verify(true,true,"Valid Period is Selected to Create a User");
 }else{ 

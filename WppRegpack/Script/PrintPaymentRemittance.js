@@ -877,6 +877,9 @@ WorkspaceUtils.closeAllWorkspaces();
 
 
 function formatDate(d){ 
+  var dd=""
+if(d.includes("/"))
+{
   var parts = d.split("/");
   if(parts[0].indexOf("0")==0){
    parts[0] = parts[0].replace("0", "");
@@ -884,8 +887,21 @@ function formatDate(d){
   if(parts[1].indexOf("0")==0){
     parts[1] = parts[1].replace("0", "");
   }
-  var dd = parts[0]+"/"+parts[1]+"/"+parts[2];
+  dd = parts[0]+"/"+parts[1]+"/"+parts[2];
   Log.Message(dd)
+  }
+  if(d.includes("-"))
+  {
+  var parts = d.split("-");
+  if(parts[0].indexOf("0")==0){
+   parts[0] = parts[0].replace("0", "");
+  }
+  if(parts[1].indexOf("0")==0){
+    parts[1] = parts[1].replace("0", "");
+  }
+  dd = parts[0]+"-"+parts[1]+"-"+parts[2];
+  Log.Message(dd)
+  }
   return dd;
 }
 

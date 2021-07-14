@@ -255,10 +255,8 @@ var pName = false;
         TextUtils.writeLog(PaymentTerm+" Payment Terms is matching with Pdf")
         }
     }
-    
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
-    {
-      
+    {      
     if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
         var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Job No").OleValue.toString().trim();
       pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
@@ -266,9 +264,10 @@ var pName = false;
       x[0]= pdflineSplit[j];
       x[1]= pdflineSplit[j];
       }else
-      x= pdflineSplit[j].split(":");
+        x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
-       if(jobNumber!=pdfJobNum)
+      Log.Message(pdfJobNum+" "+jobNumber)
+       if(pdfJobNum.includes(jobNumber))
         ValidationUtils.verify(false,true,"Job Number is not same in Invoice");
         else{
         ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
@@ -277,43 +276,37 @@ var pName = false;
         }
     }
 
-var TaxVariable = "";
-   if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="CHINA")){
-     //Log.Message(pdflineSplit)
-     //Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim())
-   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
-       // Log.Message(TaxVariable)
-   }
-   else if(EnvParams.Country.toUpperCase()=="SINGAPORE"){
-   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
-   }
-//   Log.Message(TaxVariable)
-    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
-    {
-      
-    
-    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Tax No").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      pdfJobName = x[1].trim();
-      Log.Message(pdflineSplit[j])
-      Log.Message(TaxNo)
-      Log.Message(pdflineSplit[j].includes(TaxNo))
-        if(pdflineSplit[j].includes(TaxNo))
-         {
-          ReportUtils.logStep("INFO","Tax No is matching with Pdf")
-          ValidationUtils.verify(true,true,TaxNo+" Tax No is matching with Pdf")
-          TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
-          }
-          else{
-          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
-        }
-    }
+//var TaxVariable = "";
+//   if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") || (EnvParams.Country.toUpperCase()=="CHINA")){
+//     //Log.Message(pdflineSplit)
+//     //Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim())
+//   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
+//       // Log.Message(TaxVariable)
+//   }
+//   else if(EnvParams.Country.toUpperCase()=="SINGAPORE"){
+//   TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
+//   }
+////   Log.Message(TaxVariable)
+//    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
+//    {
+//    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+//        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Tax No").OleValue.toString().trim();
+//      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+////      x= pdflineSplit[j].split(" ");
+////      x[0]= pdflineSplit[j];
+////      x[1]= pdflineSplit[j];
+//      }else
+//      Log.Message(pdflineSplit[j].includes(TaxNo))
+//        if(pdflineSplit[j].includes(TaxNo))
+//         {
+//          ReportUtils.logStep("INFO","Tax No is matching with Pdf")
+//          ValidationUtils.verify(true,true,TaxNo+" Tax No is matching with Pdf")
+//          TextUtils.writeLog(TaxNo+" Tax No is matching with Pdf")
+//          }
+//          else{
+//          ValidationUtils.verify(false,true,"Tax No is not same in Invoice");
+//        }
+//    }
 
      if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client No").OleValue.toString().trim()))
     {
@@ -340,10 +333,7 @@ var TaxVariable = "";
           if(EnvParams.Country.toUpperCase()=="INDIA")
            break;
         }
-    }
-
-    
-    
+    }      
   }
   
    if(EnvParams.Country.toUpperCase()=="INDIA"){
@@ -395,7 +385,6 @@ var TaxVariable = "";
     var pan = ReadExcelSheet("OpCo PAN",EnvParams.Opco,"OpCo Details");
     var gstin = ReadExcelSheet("OpCo GSTIN",EnvParams.Opco,"OpCo Details");
     var cin = ReadExcelSheet("CIN/UIN",EnvParams.Opco,"OpCo Details");
-   
       for (j=pointer; j<pdflineSplit.length; j++)
       {
       if(pdflineSplit[j].includes("PAN"))
@@ -442,12 +431,12 @@ var TaxVariable = "";
   
   
   ExcelUtils.setExcelName(workBook, sheetName, true);
-  Log.Message(workBook)
-  Log.Message(sheetName)
+//  Log.Message(workBook)
+//  Log.Message(sheetName)
   for(var i=1;i<11;i++){
   var temp = "";
   var Q_Desp = ExcelUtils.getColumnDatas("Description_"+i,EnvParams.Opco);
-  Log.Message(Q_Desp)
+//  Log.Message(Q_Desp)
  
   if(Q_Desp!=""){
      if (Q_Desp.includes("HSN Code"))
@@ -468,7 +457,7 @@ var TaxVariable = "";
         var Q_BillingTotal = ExcelUtils.getColumnDatas("TotalBilling_"+i,EnvParams.Opco);
         if(Q_BillingTotal!="")
           temp = temp + Q_BillingTotal+" ";
-        Log.Message(EnvParams.Country.toUpperCase())
+        //Log.Message(EnvParams.Country.toUpperCase())
          if(EnvParams.Country.toUpperCase()=="INDIA")
          { 
               var Q_Tax1 = ExcelUtils.getColumnDatas("Tax1_"+i,EnvParams.Opco);

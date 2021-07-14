@@ -1033,7 +1033,7 @@ var checkmark =  false;
 
 function CalenderDateSelection(ObjectAddrs,value){ 
     var temp = "";
-  temp = value.split("/");
+      temp = value.split(/[\/ | -]/g);
   
   var leapYear = false;
   if((temp[2]>=1800) &&(temp[2]<2500)){
@@ -3256,7 +3256,10 @@ function getSpecificDate(daysFromToday)
   if(mm<10) {
       mm='0'+mm;
   } 
-  date = mm+'/'+dd+'/'+yyyy;
+  if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
+    date = dd+'-'+mm+'-'+yyyy;
+  else
+    date = mm+'/'+dd+'/'+yyyy;
   Log.Message(date);
   return date;
 }

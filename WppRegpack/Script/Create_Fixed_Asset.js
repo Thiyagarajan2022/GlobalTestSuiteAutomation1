@@ -89,8 +89,6 @@ function getDetails(){
         } 
         
         date = ExcelUtils.getRowDatas("AssetDate",EnvParams.Opco)
-        if(date = "AUTOFILL")
-        date = getSpecificDate(0);
         Log.Message(date)
         if((date==null)||(date=="")){ 
         ValidationUtils.verify(false,true,"AssetDate is Needed to Create a Asset");
@@ -235,6 +233,11 @@ function createAssets(){
     
     if(date!=""){
       var datefiled = Aliases.Maconomy.Group5.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.date;
+      if(date = "AUTOFILL"){
+        date = getSpecificDate(0);
+        datefiled.setText(date);
+        }
+      else
       WorkspaceUtils.CalenderDateSelection(datefiled,date)
       ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
     }

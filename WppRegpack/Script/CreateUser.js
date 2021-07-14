@@ -230,15 +230,11 @@ ValidationUtils.verify(false,true,"User Type is Needed to Create a User");
 }
 
 validityPeriodFrom= ExcelUtils.getRowDatas("Valid From",EnvParams.Opco)
-if(validityPeriodFrom = "AUTOFILL")
-validityPeriodFrom = getSpecificDate(0);
 if((validityPeriodFrom==null)||(validityPeriodFrom=="")){ 
 ValidationUtils.verify(false,true,"Valid Period From is Needed to Create a User");
 }
 
 validityPeriodTo= ExcelUtils.getRowDatas("Valid To",EnvParams.Opco)
-if(validityPeriodTo = "AUTOFILL")
-validityPeriodTo = getSpecificDate(30);
 if((validityPeriodTo==null)||(validityPeriodTo=="")){ 
 ValidationUtils.verify(false,true,"Valid Period To is Needed to Create a User");
 }
@@ -281,10 +277,20 @@ WorkspaceUtils.SearchByValue(userTypeObj,JavaClasses.MLT.MultiLingualTranslator.
 
 
 var validityFrom = Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Create User").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("McDatePickerWidget", "", 2);
+if(validityPeriodFrom = "AUTOFILL")
+{ validityPeriodFrom = getSpecificDate(0);
+  validityFrom.setText(validityPeriodFrom)
+}
+else
 WorkspaceUtils.CalenderDateSelection(validityFrom,validityPeriodFrom)
 ValidationUtils.verify(true,true,"Validity Period From is selected in Maconomy"); 
 
 var validityTo= Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language,"Create User").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "").SWTObject("McDatePickerWidget", "", 4);
+if(validityPeriodTo = "AUTOFILL"){
+validityPeriodTo = getSpecificDate(30);
+validityTo.setText(validityPeriodTo)
+}
+else
 WorkspaceUtils.CalenderDateSelection(validityTo,validityPeriodTo)
 ValidationUtils.verify(true,true,"Validity Period To is selected in Maconomy"); 
 
