@@ -203,8 +203,6 @@ if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
   else
      ReportUtils.logStep("Fail", "Profit And Loss Screen not displayed");          
      
-      Sys.Browser("chrome").BrowserWindow(0).Keys("^w"); 
-     var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
-     okbutton.Click(); 
+      Sys.Browser("chrome").Terminate();
        
 }

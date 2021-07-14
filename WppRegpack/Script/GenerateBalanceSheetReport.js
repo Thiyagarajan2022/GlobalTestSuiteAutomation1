@@ -203,5 +203,5 @@ aqUtils.Delay(2000, "Loading Balance Sheet Screen");
      } 
   else
      ReportUtils.logStep("Fail", "Balance Sheet Screen not displayed");  
-     Sys.Browser("chrome").BrowserWindow(0).Keys("^w");               
+      var brow = Sys.Browser("chrome"); brow.Close(); if(brow.Exists) brow.Terminate();         
 }

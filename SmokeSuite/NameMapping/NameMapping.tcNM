@@ -13547,8 +13547,6 @@
 								</Children>
 							</Child>
 							<Child Name="Shell" Key="{6026F9DC-344D-4B95-BF1F-BFD9EA0509F7}">
-								<Image FileName="597133485" Left="0" Top="0" Right="1355" Bottom="667" />
-								<TypeInfo Item0="{1194EB3F-8661-49D2-B4ED-3436C1AF3F2E}" />
 								<Properties>
 									<Property Name="JavaFullClassName">
 										<Value Value="org.eclipse.swt.widgets.Shell" />
@@ -13559,8 +13557,6 @@
 								</Properties>
 								<Children>
 									<Child Name="Composite" Key="{0B1B6536-38B8-497D-8434-CE96AB5A4231}">
-										<Image FileName="597133485" Left="8" Top="31" Right="1347" Bottom="659" />
-										<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
 										<Properties>
 											<Property Name="JavaFullClassName">
 												<Value Value="org.eclipse.swt.widgets.Composite" />
@@ -13571,8 +13567,6 @@
 										</Properties>
 										<Children>
 											<Child Name="Label" Key="{C706DFD6-8D73-40E5-8932-986E118AA9B8}">
-												<Image FileName="597133485" Left="14" Top="39" Right="1272" Bottom="55" />
-												<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
 												<Properties>
 													<Property Name="JavaFullClassName">
 														<Value Value="org.eclipse.swt.widgets.Label" />
@@ -13583,8 +13577,6 @@
 												</Properties>
 											</Child>
 											<Child Name="Composite" Key="{CED8F55F-3767-4ADD-8DDB-97AE5A4F2AF6}">
-												<Image FileName="1857880879" Left="8" Top="97" Right="1347" Bottom="659" />
-												<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
 												<Properties>
 													<Property Name="JavaFullClassName">
 														<Value Value="org.eclipse.swt.widgets.Composite" />
@@ -13595,8 +13587,6 @@
 												</Properties>
 												<Children>
 													<Child Name="Composite" Key="{DD20D495-823A-49F5-8F2F-A1F08646F3D2}">
-														<Image FileName="1857880879" Left="8" Top="608" Right="1347" Bottom="659" />
-														<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
 														<Properties>
 															<Property Name="JavaFullClassName">
 																<Value Value="org.eclipse.swt.widgets.Composite" />
@@ -13610,8 +13600,6 @@
 														</Properties>
 														<Children>
 															<Child Name="Composite" Key="{622121E0-71C7-4511-91F5-B0549B2D7C07}">
-																<Image FileName="1857880879" Left="945" Top="608" Right="1347" Bottom="659" />
-																<TypeInfo Item0="{6788BD1B-C890-4137-BC49-4B2CBA6DA0BE}" />
 																<Properties>
 																	<Property Name="JavaFullClassName">
 																		<Value Value="org.eclipse.swt.widgets.Composite" />
@@ -13622,8 +13610,6 @@
 																</Properties>
 																<Children>
 																	<Child Name="Button" Key="{14E92384-F2EE-4EF9-95F0-030BBC0E15F1}">
-																		<Image FileName="1857880879" Left="1244" Top="621" Right="1336" Bottom="646" />
-																		<TypeInfo Item0="{6C819B7F-E7E1-4C9A-82D5-49845467687C}" />
 																		<Properties>
 																			<Property Name="JavaFullClassName">
 																				<Value Value="org.eclipse.swt.widgets.Button" />
@@ -14500,14 +14486,24 @@
 																</Properties>
 																<Children>
 																	<Child Name="textnodeBtnCancelBtnPromptsdlg" Key="{08413A12-041B-454D-B066-4CF65F7C542C}" ExtendedFind="True">
-																		<Image FileName="173014936" Left="1027" Top="607" Right="1059" Bottom="620" />
-																		<TypeInfo Item0="{23E60F4D-4A53-4A43-901D-E4A813DFDD9F}" />
 																		<Properties>
 																			<Property Name="ObjectType">
 																				<Value Value="TextNode" />
 																			</Property>
 																			<Property Name="idStr">
 																				<Value Value="Btn_CANCEL_BTN_promptsDlg" />
+																			</Property>
+																		</Properties>
+																	</Child>
+																	<Child Name="buttonCancel" Key="{5B188C97-6F2D-4097-B848-7A6C3EDB3986}" ExtendedFind="True">
+																		<Image FileName="-223171867" Left="1022" Top="607" Right="1064" Bottom="620" />
+																		<TypeInfo Item0="{8E6C0645-916F-4E12-A0F7-AF1D64CD19D2}" />
+																		<Properties>
+																			<Property Name="ObjectType">
+																				<Value Value="Button" />
+																			</Property>
+																			<Property Name="idStr">
+																				<Value Value="RealBtn_CANCEL_BTN_promptsDlg" />
 																			</Property>
 																		</Properties>
 																	</Child>
@@ -14604,13 +14600,51 @@
 															</Child>
 														</Children>
 													</Child>
+													<Child Name="cellIconmidDhtmllib307" Key="{C39BC326-9613-48CE-92B3-74F846CDD40A}" ExtendedFind="True">
+														<Image FileName="1691663480" Left="314" Top="117" Right="330" Bottom="139" />
+														<TypeInfo Item0="{633BB855-719D-4167-9129-C7BCD6EFC70E}" />
+														<Properties>
+															<Property Name="ObjectType">
+																<Value Value="Cell" />
+															</Property>
+															<Property Name="idStr">
+																<Value Value="iconmid__dhtmlLib_307" />
+															</Property>
+														</Properties>
+														<Children>
+															<Child Name="panel" Key="{0ECC4F13-5616-4C67-B463-2AAC859A93F2}" ExtendedFind="True">
+																<Image FileName="1691663480" Left="314" Top="118" Right="330" Bottom="138" />
+																<TypeInfo Item0="{37FD5847-4CB7-473F-B4C9-D76AD854DACC}" />
+																<Properties>
+																	<Property Name="ObjectType">
+																		<Value Value="Panel" />
+																	</Property>
+																	<Property Name="ObjectIdentifier">
+																		<Value Value="0" Type="0" />
+																	</Property>
+																</Properties>
+																<Children>
+																	<Child Name="panelIconimgDhtmllib307" Key="{2BDCF495-F925-47A9-9E02-0D085DFF4980}">
+																		<Image FileName="1691663480" Left="314" Top="120" Right="330" Bottom="136" />
+																		<TypeInfo Item0="{37FD5847-4CB7-473F-B4C9-D76AD854DACC}" />
+																		<Properties>
+																			<Property Name="ObjectType">
+																				<Value Value="Panel" />
+																			</Property>
+																			<Property Name="idStr">
+																				<Value Value="IconImg__dhtmlLib_307" />
+																			</Property>
+																		</Properties>
+																	</Child>
+																</Children>
+															</Child>
+														</Children>
+													</Child>
 												</Children>
 											</Child>
 										</Children>
 									</Child>
 									<Child Name="checkboxDialogservice1Check" Key="{3DA1A3CE-A4CE-4835-9045-C0E5A6A67A18}" ExtendedFind="True">
-										<Image FileName="-622616227" Left="444" Top="434" Right="457" Bottom="447" />
-										<TypeInfo Item0="{3805DE58-D214-4351-AB00-69864EA73FA9}" />
 										<Properties>
 											<Property Name="ObjectType">
 												<Value Value="Checkbox" />
@@ -14621,8 +14655,6 @@
 										</Properties>
 									</Child>
 									<Child Name="buttonOk" Key="{B62A1872-DC52-4B9F-B6DB-E3677FF8AAEB}" ExtendedFind="True">
-										<Image FileName="-2107852201" Left="951" Top="475" Right="977" Bottom="496" />
-										<TypeInfo Item0="{AB0ACFE0-31EC-43CB-82B3-3A315217ACA0}" />
 										<Properties>
 											<Property Name="ObjectType">
 												<Value Value="Button" />
@@ -14633,8 +14665,6 @@
 										</Properties>
 									</Child>
 									<Child Name="Confirm" Key="{A10D0E64-8C72-491A-8086-47E8E17BED11}">
-										<Image FileName="-74189239" Left="0" Top="0" Right="462" Bottom="144" />
-										<TypeInfo Item0="{327E7060-376E-414E-98A4-75C26D6B0118}" />
 										<Properties>
 											<Property Name="ObjectType">
 												<Value Value="Confirm" />
@@ -14642,8 +14672,6 @@
 										</Properties>
 										<Children>
 											<Child Name="buttonOk" Key="{1D1B6D46-8D51-49B2-B7D2-0E03A2FA964B}">
-												<Image FileName="-74189239" Left="295" Top="87" Right="363" Bottom="119" />
-												<TypeInfo Item0="{739E9AEE-3A6C-4A6E-A256-567827F39BB3}" />
 												<Properties>
 													<Property Name="ObjectType">
 														<Value Value="Button" />
@@ -16464,12 +16492,14 @@
 						<Child Name="panel" Owner="{9905A355-57E3-414E-AE38-62341884B56C}" />
 						<Child Name="cellBtncimgCancelBtnPromptsdlg" Owner="{DECA8E29-4A71-47FF-ACE5-DA1B3B5CA7E1}">
 							<Child Name="textnodeBtnCancelBtnPromptsdlg" Owner="{08413A12-041B-454D-B066-4CF65F7C542C}" />
+							<Child Name="buttonCancel" Owner="{5B188C97-6F2D-4097-B848-7A6C3EDB3986}" />
 						</Child>
 						<Child Name="frameIframeleftpanew" Owner="{0C1586DA-DD3F-4EA8-B957-9030158EC73C}">
 							<Child Name="cell" Owner="{CE4AB25D-135A-4FBB-9E46-F156A160C8B1}">
 								<Child Name="panelDivdocname" Owner="{142DB2FA-C990-4F1E-A6E5-8ABA1108713A}" />
 							</Child>
 						</Child>
+						<Child Name="panelIconimgDhtmllib307" Owner="{2BDCF495-F925-47A9-9E02-0D085DFF4980}" />
 					</Child>
 				</Child>
 				<Child Name="checkboxDialogservice1Check" Owner="{3DA1A3CE-A4CE-4835-9045-C0E5A6A67A18}" />

@@ -203,7 +203,5 @@ if(pageName.trim() == "Trail Balance Detail" || ImageRepository.Browser_Reportin
      ReportUtils.logStep("Fail", "Trail Balance Detail Screen not displayed");     
      
      
-      Sys.Browser("chrome").BrowserWindow(0).Keys("^w");
-      var okbutton = Aliases.browser.pageOpendocument.Confirm.Button("OK");
-      okbutton.Click();        
+     var brow = Sys.Browser("chrome"); brow.Close(); if(brow.Exists) brow.Terminate();
 }

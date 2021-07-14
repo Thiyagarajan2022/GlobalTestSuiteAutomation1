@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root>
 	<Images>
-		<Image File="101032031.png" Checksum="-622616227" />
-		<Image File="101327156.png" Checksum="-2107852201" />
 		<Image File="10467687.png" Checksum="-2108465556" />
 		<Image File="104940671.png" Checksum="-2103635798" />
 		<Image File="105147796.png" Checksum="784206833" />
@@ -17,7 +15,9 @@
 		<Image File="116798421.png" Checksum="-431255349" />
 		<Image File="116845750.png" Checksum="-872919698" />
 		<Image File="11864828.png" Checksum="1051988110" />
+		<Image File="1193134625.png" Checksum="-223171867" />
 		<Image File="11978953.png" Checksum="2022353333" />
+		<Image File="1203406078.png" Checksum="1691663480" />
 		<Image File="12091421.png" Checksum="-1205560033" />
 		<Image File="121003500.png" Checksum="-743220680" />
 		<Image File="121043921.png" Checksum="-1675521930" />
@@ -35,7 +35,6 @@
 		<Image File="129464906.png" Checksum="252743191" />
 		<Image File="129538062.png" Checksum="489709543" />
 		<Image File="129631687.png" Checksum="-550626882" />
-		<Image File="141112000.png" Checksum="-74189239" />
 		<Image File="14805640.png" Checksum="1299606331" />
 		<Image File="15026203.png" Checksum="340811202" />
 		<Image File="15128609.png" Checksum="371049391" />
@@ -157,8 +156,6 @@
 		<Image File="794958734.png" Checksum="-1008986225" />
 		<Image File="8076562.png" Checksum="433136747" />
 		<Image File="8256265.png" Checksum="667807867" />
-		<Image File="842401015.png" Checksum="597133485" />
-		<Image File="842634093.png" Checksum="1857880879" />
 		<Image File="86490250.png" Checksum="-1151956376" />
 		<Image File="8746578.png" Checksum="1722821232" />
 		<Image File="886773515.png" Checksum="-1351698164" />
@@ -171,7 +168,6 @@
 		<Image File="94580015.png" Checksum="-1658818732" />
 		<Image File="95174250.png" Checksum="1898806582" />
 		<Image File="95914781.png" Checksum="10988585" />
-		<Image File="96256796.png" Checksum="173014936" />
 		<Image File="96655093.png" Checksum="1301096363" />
 	</Images>
 </Root>
