@@ -213,6 +213,7 @@ function verifyVendorNumber(vendorNumber,pdflineSplit)
              {
              Log.Message(vendorNumber+" vendorNumber is matching with Pdf");
              ValidationUtils.verify(true,true,"VendorNumber is matched in with Pdf");
+             TextUtils.writeLog(vendorNumber+" vendorNumber is matching with Pdf")
              vendorNoFound = true;
              break;
              }
@@ -229,6 +230,7 @@ function verifyInvoiceNumber(vendorInvoiceNo,pdflineSplit)
           if(vendorInvoiceNo.includes(pdflineSplit[j]))             {
              Log.Message(vendorInvoiceNo+" vendorInvoiceNo is matching with Pdf");
              ValidationUtils.verify(true,true,"Vendor Invoice No is matched with Pdf");
+             TextUtils.writeLog(vendorInvoiceNo+" vendorInvoiceNo is matching with Pdf")
              vendorInvoiceNoFound = true;
              break;
              }
@@ -249,6 +251,7 @@ function verifyAmount(amount,pdflineSplit)
              {
              Log.Message(amount+" amount is matching with Pdf");
              ValidationUtils.verify(true,true,"Amount is matched with Pdf");
+             TextUtils.writeLog(amount+" amount is matching with Pdf")
              amountFound = true;
              break;
              }
@@ -267,6 +270,7 @@ function verifyExchangeDate(exchangeDate,pdflineSplit)
              {
              Log.Message(exchangeDate+" exchangeDate is matching with Pdf");
              ValidationUtils.verify(true,true,"Exchange Date is matched with Pdf");
+             TextUtils.writeLog(exchangeDate+" exchangeDate is matching with Pdf")
              exchangeDateFound = true;
              break;
              }
@@ -285,6 +289,7 @@ function verifyDueDate(dueDate,pdflineSplit)
              {
              Log.Message(dueDate+" DueDate is matching with Pdf");
              ValidationUtils.verify(true,true,"Due Date is matched with Pdf");
+             extUtils.writeLog(dueDate+" DueDate is matching with Pdf")
              dueDateFound = true;
              break;
              }
@@ -303,6 +308,7 @@ function verifyPaymodeMode(paymodeMode, pdflineSplit)
              {
              Log.Message(paymodeMode+" paymodeMode is matching with Pdf");
              ValidationUtils.verify(true,true,"Payment Mode is matched with Pdf");
+             extUtils.writeLog(paymodeMode+" paymodeMode is matching with Pdf")
              paymodeModeFound = true;
              break;
              }
@@ -319,6 +325,7 @@ function verifyPaymentAgent(paymentAgent,pdflineSplit)
              {
              Log.Message(paymentAgent+" paymentAgent is matching with Pdf");
              ValidationUtils.verify(true,true,"Payment Agent is matched with Pdf");
+             extUtils.writeLog(paymentAgent+" paymentAgent is matching with Pdf")
              paymentAgentFound = true;
              break;
              }
