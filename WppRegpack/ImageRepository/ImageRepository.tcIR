@@ -13,5 +13,6 @@
 		<child key="{FEE2542A-6301-40C0-BCCB-AB8D845BB7EA}" path="ImageRepository_01\ImageSet0.tcIRIS" />
 		<child key="{CF229575-AC26-43CA-AFD4-CB467AB4A380}" path="ImageRepository_01\ImageSet01.tcIRIS" />
 		<child key="{6A6EFFEF-1C0C-422E-AAF3-4E9E4816AC1D}" path="ImageSet_Banking.tcIRIS" />
+		<child key="{7B467A3F-745E-4DCA-8B76-43AE8D0716AB}" path="Browser_Reporting.tcIRIS" />
 	</children>
 </Root>

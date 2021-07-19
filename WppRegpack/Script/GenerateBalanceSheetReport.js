@@ -19,12 +19,15 @@ Language = EnvParams.Language;
 Language = EnvParams.LanChange(Language);
 WorkspaceUtils.Language = Language;
 
-//Checking Login for Client Creation
-var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
-menuBar.Click();
+//Checking Login
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4).Click();
+ExcelUtils.setExcelName(workBook, "Agency Users", true);
+Project_manager = ExcelUtils.getRowDatas("Agency - Finance",EnvParams.Opco);
 if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
 WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
 }
+
 
 //Initializing Variables
 
@@ -34,7 +37,7 @@ WorkspaceUtils.closeAllWorkspaces();
 gotoMenu(); 
 gotoGLScreen();
 gotoBalanceSheetLink();
-verifyBalanceSheetScreen();
+generateBalanceSheetReport();
 }
   catch(err){
     Log.Message(err);
@@ -84,7 +87,7 @@ Log.Message("Entering into GL Reports from Reporting Menu");
 }
 
 function gotoGLScreen(){ 
-var glScreen = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.GLTab;
+var glScreen = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl;
 waitForObj(glScreen);
 Sys.HighlightObject(glScreen);
 glScreen.Click();
@@ -94,7 +97,7 @@ Log.Message("Clicked GL Menu Section")
 
 function gotoBalanceSheetLink()
 {
-var balanceSheetLink = Aliases.Maconomy.Reports_GL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite5.McLinkLabelWidget.McTextWidget;
+var balanceSheetLink = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite2.McLinkLabelWidget.McTextWidget;
 waitForObj(balanceSheetLink);
 Sys.HighlightObject(balanceSheetLink);
 ReportUtils.logStep_Screenshot();
@@ -117,83 +120,110 @@ var company =  ExcelUtils.getRowDatas("Company",EnvParams.Opco);
 aqUtils.Delay(5000, "Navigating to Browser");
 
 aqUtils.Delay(8000, "Navigating to Browser and waiting for Data Protection window");
-  if(ImageRepository.Browser_Reporting.Browser_DataProtection_Dialog.Exists())
-    ImageRepository.Browser_Reporting.Browser_DataProtection_OK_Button.Click();
-
-aqUtils.Delay(2000, "Waiting for Prompt window in Browser");       
-  if(ImageRepository.Browser_Reporting.Browser_GLTransaction_Prompt.Exists())
+ if(ImageRepository.Browser_Reporting.DataProtectionDialog.Exists())
   {
-     var companySearch = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneSea;
+    var ok_button = Aliases.browser.pageOpendocument.buttonOk
+    ok_button.Click();
+    }
+  else{
+  var dataProtectionDialog = Aliases.browser.pageOpendocument.panel
+  waitForObj(dataProtectionDialog);
+  var ok_button = Aliases.browser.pageOpendocument.buttonOk
+  ok_button.Click();
+  }  
+
+aqUtils.Delay(5000, "Waiting for Prompt Dialog");    
+    var promptDialog = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogPromptsdlg.table.cell.table.cell
+    waitForObj(promptDialog);
+    
+    var companySearch = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneSea;
     waitForObj(companySearch);
     companySearch.SetText(company);
     
-    var searchIcon = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgIconmenuIconLovwidge;
+    var searchIcon =  Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellIconmidIconmenuIconLovwidget.panel
     waitForObj(searchIcon);
     searchIcon.Click();
     
-    var searchResult = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelMclm0;
-
+    var searchResult = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelMlstBodylovwidgetpromptlovz.table.cell.panelMclm0;
+    
     Log.Message("Company is Listed in Search Result")
     searchResult.Click();
-    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgLrzArrowaddPromptlovz;
+    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.buttonRealbtnLrzArrowaddPromptlo;
     waitForObj(moveRightArrow);
     moveRightArrow.Click();
     
-    var periodFrom = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell5;
+    var periodFrom = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogPromptsdlg.table.panelTreecontPromptlist.tableCwpromptspromptlisttwe1.cell;
     periodFrom.Click();
     var fromPeriod =  ExcelUtils.getRowDatas("PeriodFrom",EnvParams.Opco);
-    var startDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneTex;
+    var startDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.tableLovwidgetpromptlovzone.cell.panelDivInputLovwidgetpromptlovz.textboxLovwidgetpromptlovzoneTex;
     waitForObj(startDateField);
     startDateField.setText(fromPeriod);
     
-    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgLrzArrowaddPromptlovz;
+    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.buttonRealbtnLrzArrowaddPromptlo;
     waitForObj(moveRightArrow);
     moveRightArrow.Click();
     
     
-    var periodTo = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell6;
+    var periodTo = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogPromptsdlg.table.panelTreecontPromptlist.tableCwpromptspromptlisttwe2.cell;
     periodTo.Click();
     var toPeriod = ExcelUtils.getRowDatas("PeriodTo",EnvParams.Opco);
-    var endDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.textboxLovwidgetpromptlovzoneTex;
+    var endDateField = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.tableLovwidgetpromptlovzone.cell.panelDivInputLovwidgetpromptlovz.textboxLovwidgetpromptlovzoneTex;
     waitForObj(endDateField);
     endDateField.setText(toPeriod);
     
-    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgLrzArrowaddPromptlovz;
+    var moveRightArrow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.buttonRealbtnLrzArrowaddPromptlo;
     waitForObj(moveRightArrow);
     moveRightArrow.Click();
 
     ReportUtils.logStep("INFO", "Selecting Criteria Values Entered Sucessfully");
     
-    var okButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnPromptsdlg;
+    var okButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.tableOkBtnPromptsdlg.cellBtncimgOkBtnPromptsdlg;
     waitForObj(okButton);
     okButton.Click();
     
-    var retrievingDataWindow = NameMapping.Sys.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogWaitdlg;
+    var retrievingDataWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogWaitdlg;
     waitForObj(retrievingDataWindow);
     waitUntilInvisibleOfObj(retrievingDataWindow);
      
-    var exportButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.panelIconimgDhtmllib296;
+    if(EnvParams.instanceData.includes("APAC"))
+    {
+    var exportButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellIconmidDhtmllib307.panel.panelIconimgDhtmllib307;
     waitForObj(exportButton);
     exportButton.Click();
     
-    var ExportWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cell4;
+    var ExportWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogIdexportdlg.table.cell.table.cell;
     waitForObj(ExportWindow);
     ReportUtils.logStep_Screenshot();
         
-    var export_OKButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellBtncimgOkBtnIdexportdlg;
+    var export_OKButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogIdexportdlg.table.tableOkBtnIdexportdlg.cellBtncimgOkBtnIdexportdlg;
     waitForObj(export_OKButton);
     export_OKButton.Click();
-    
-    aqUtils.Delay(18000, "Waiting to Download Report");
-    ReportUtils.logStep("Pass", "Balance Sheet Report exported successfully");
-    Log.Message("Trail Balance Sheet Report exported successfully"); 
     }
-  else
-   ReportUtils.logStep("Fail", "Selection Criteria Prompt window not displayed");  
+    else if(EnvParams.instanceData.includes("EMEA"))
+    {
+    var exportButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellIconmidDhtmllib292.panel.panelIconimgDhtmllib292;
+    waitForObj(exportButton);
+    exportButton.Click();
+    
+    var ExportWindow = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogIdexportdlg.table.cell.table.cell
+    waitForObj(ExportWindow);
+    ReportUtils.logStep_Screenshot();
+        
+    var export_OKButton = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.cellTdDialogIdexportdlg.table.tableOkBtnIdexportdlg.cellBtncimgOkBtnIdexportdlg;
+    waitForObj(export_OKButton);
+    export_OKButton.Click();  
+    }
+    aqUtils.Delay(25000, "Waiting to Download Report");
+    ReportUtils.logStep("Pass", "Balance Sheet Report exported successfully");
+    Log.Message("GL Balance Sheet Report exported successfully"); 
+   
   
 aqUtils.Delay(2000, "Loading Balance Sheet Screen");
-
-   var pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.cell.panelDivdocname.textContent;
+  var pageName = "";
+   if(EnvParams.instanceData.includes("EMEA"))
+    pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.textnode.textContent;
+   else if(EnvParams.instanceData.includes("APAC")) 
+    pageName = Aliases.browser.pageOpendocument.frameOpendocchildframe.frameWebiviewframe.frameIframeleftpanew.panelDivdocname.textContent;
   
   if(pageName.trim()== "Balance Sheet" || ImageRepository.Browser_Reporting.BalanceSheet_Logo.Exists())
   {
