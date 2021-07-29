@@ -219,12 +219,12 @@ var pName = false;
       }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
-       if(pdfJobNum.includes(jobNumber))
-        ValidationUtils.verify(false,true,jobNumber+"Job Number is not same in Invoice");
+        if(pdfJobNum==jobNumber)
+        ValidationUtils.verify(true,true,jobNumber+"Job Number is same in Invoice");
         else{
-        ReportUtils.logStep("INFO",jobNumber+" Job Number is matching with Pdf")
-        ValidationUtils.verify(true,true,jobNumber+" Job Number is matching with Pdf")
-        TextUtils.writeLog(jobNumber+" Job Number is matching with Pdf")
+        ReportUtils.logStep("INFO",jobNumber+" Job Number is not matching with Pdf")
+        ValidationUtils.verify(false,true,jobNumber+" Job Number is not matching with Pdf")
+        TextUtils.writeLog(jobNumber+" Job Number is not matching with Pdf")
         }
     }
 
@@ -513,16 +513,3 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
     console.log(e)
   }
 };
-
-
-function hj(){ 
-var Date = "07/14/2020"
-//var Date = "2015/01/05";
-var dateType = /(\d{1,2})([\/-])(\d{1,2})\2(\d{4})/;
-var isMatch = dateType.test(Date);
-if(isMatch){
-  Log.Message("Success")
-}else{ 
-  Log.Message("Error")
-}
-}

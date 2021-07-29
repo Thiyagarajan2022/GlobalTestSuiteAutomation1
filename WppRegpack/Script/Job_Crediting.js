@@ -737,8 +737,8 @@ for(var i=0;i<specification.getItemCount();i++){
   var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
   var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
   var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
-
-  Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  Q_total =parseFloat(Q_BillingTotal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  //Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
   Log.Message(Q_total);
   QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
   Log.Message(QuoteDetails[q]);
