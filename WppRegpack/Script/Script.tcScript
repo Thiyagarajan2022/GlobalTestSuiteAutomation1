@@ -218,6 +218,10 @@
 				<child name="InterCompany_Approve_Expense_SSC" key="{55FE9D80-6570-4F46-8B87-8A56BEE422C4}" path="InterCompany_Approve_Expense_SSC.js" />
 				<child name="InterCompany_Approve_Expenses_Opco" key="{AE9A4A74-98F4-464B-BD24-EC316BAD9886}" path="InterCompany_Approve_Expenses_Opco.js" />
 				<child name="InterCompany_PO" key="{6F5F312D-32C8-4DAB-A68A-B4011395641A}" path="InterCompany_PO.js" />
+				<child name="InterCompany_Aprrove_PO" key="{89B1E462-274B-4361-A253-C2056CC30CF6}" path="InterCompany_Aprrove_PO.js" />
+				<child name="InterCompany_Import_General_Journal" key="{CB4125B3-A37B-49D5-BB0C-A1520175389E}" path="InterCompany_Import_General_Journal.js" />
+				<child name="InterCompany_IC_Invoice_Printing" key="{E4CE3A32-A6C7-4BAF-902F-D993F02BE7A9}" path="InterCompany_IC_Invoice_Printing.js" />
+				<child name="InterCompany_RechargeInvoice" key="{6523A0F1-3B54-418E-83A1-934CE87054DE}" path="InterCompany_RechargeInvoice.js" />
 			</folder>
 		</folder>
 		<folder name="EnvConfig">
