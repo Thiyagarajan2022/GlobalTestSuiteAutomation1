@@ -312,6 +312,16 @@ temp = "HK"
 }
 break;
 
+case "EGYPT":{
+temp = "EGY"
+}
+break;
+
+case "QATAR":{
+temp = "QAT"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -433,6 +443,16 @@ break;
 
 case "HONG KONG":{
 temp = "HK"
+}
+break;
+
+case "EGYPT":{
+temp = "EGY"
+}
+break;
+
+case "QATAR":{
+temp = "QAT"
 }
 break;
 
