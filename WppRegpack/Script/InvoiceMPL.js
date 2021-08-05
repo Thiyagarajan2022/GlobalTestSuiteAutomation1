@@ -61,7 +61,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 
    if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
    var index = pdflineSplit.indexOf("TAX INVOICE");
-   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA")|| (EnvParams.Country.toUpperCase()=="CHINA"))
+   else 
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
 //   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
 //   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
@@ -128,7 +128,10 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           else
           ValidationUtils.verify(false,true,"Country is not same in Draft Invoice");
    
+ jobNumber = ReadExcelSheet("Invoice preparation Job",EnvParams.Opco,"Data Management");
+   if((jobNumber=="")||(jobNumber==null)){
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  }
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)

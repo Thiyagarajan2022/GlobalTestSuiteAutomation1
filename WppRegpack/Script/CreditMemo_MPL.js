@@ -212,8 +212,10 @@ var pName = false;
       }else
       x= pdflineSplit[j].split(":");
       pdfJobNum = x[1].trim();
-       if(pdfJobNum==jobNumber)
+       if(pdfJobNum==jobNumber){
         ValidationUtils.verify(true,true,jobNumber+"Job Number is same in Credit Note");
+        TextUtils.writeLog(jobNumber+" Job Number is matching with Pdf")
+        }
         else{
         ReportUtils.logStep("INFO",jobNumber+" Job Number is not matching with Pdf")
         ValidationUtils.verify(false,true,jobNumber+" Job Number is not matching with Pdf")

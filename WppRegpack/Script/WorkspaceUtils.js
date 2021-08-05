@@ -2742,10 +2742,9 @@ splits[1] = ExcelData[exl].substring(ExcelData[exl].indexOf(splits[0])+(splits[0
 }
           
         }
-//        Log.Message("splits[0] :"+splits[0])
-//        Log.Message("splits[1] :"+splits[1])
+
 //-------------------For INDIA ------------------------------
-      if(splits[0]==Job_Type.toString().trim()){ 
+      if(splits[0].trim()==Job_Type.toString().trim()){ 
         compStatus = true;
         if(Jobgroup.toString().trim()!="Client Non-Billable"){
     if(splits[1]=="Fixed Price - CP")
