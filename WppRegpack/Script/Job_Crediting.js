@@ -737,7 +737,7 @@ for(var i=0;i<specification.getItemCount();i++){
   var Q_Tax2 = specification.getItem(i).getText_2(9).OleValue.toString().trim();
   var Q_Tax1currency = specification.getItem(i).getText_2(8).OleValue.toString().trim();
   var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
-  Q_total =parseFloat(Q_BillingTotal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+  Q_total =parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
   //Q_total =Q_total+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
   Log.Message(Q_total);
   QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
@@ -1727,8 +1727,8 @@ TextUtils.writeLog("Print Client Invoice is Clicked and saved");
 aqUtils.Delay(9000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Invoice")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Credit Memo")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -1805,19 +1805,19 @@ var textobj;
 
 var obj = JavaClasses.org_apache_pdfbox_util.PDFTextStripper.newInstance();
   textobj = obj.getText_2(docObj).OleValue.toString(); 
-  var invoiceName = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Invoice No:").OleValue.toString().trim();
+  var invoiceName = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Credit Note No").OleValue.toString().trim();
   invoiceName = invoiceName.length;
   Log.Message(invoiceName)
-  textobj = textobj.substring(textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice No:").OleValue.toString().trim()+" ")+invoiceName+1);
-  Log.Message("Invoice No:"+textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim())))
-  textobj = textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice Date").OleValue.toString().trim()));
+  textobj = textobj.substring(textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note No").OleValue.toString().trim()+" ")+invoiceName+1);
+  Log.Message("CreditNote No:"+textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note Date").OleValue.toString().trim())))
+  textobj = textobj.substring(0,textobj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Credit Note Date").OleValue.toString().trim()));
   }catch(objEx){
     Log.Error("Exception while getting text from document::"+objEx);
   }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Credit Memo Invoice No",EnvParams.Opco,"Data Management",textobj)
   ExcelUtils.WriteExcelSheet("Credit Memo Job",EnvParams.Opco,"Data Management",JobNum)
-  TextUtils.writeLog("Client Credit Memo No: "+textobj);
+  TextUtils.writeLog("Client Credit Memo No"+textobj);
 
 
 }
