@@ -141,6 +141,7 @@
 				<child name="GenerateBalanceSheetReport" key="{902A7324-44D5-436D-B610-BC879EBA770B}" path="GenerateBalanceSheetReport.js" />
 				<child name="GenerateProfitAndLossReport" key="{4CD24AAC-3D17-4291-B516-2927B663B893}" path="GenerateProfitAndLossReport.js" />
 				<child name="GenerateTrailBalanceDetailReport" key="{EF10740A-E7EE-433B-98E2-71809A8E5119}" path="GenerateTrailBalanceDetailReport.js" />
+				<child name="Payment_Listing" key="{2C862DD1-8E58-45B6-9CBB-05E6BCFA91FC}" path="Payment_Listing.js" />
 			</folder>
 			<folder name="China">
 				<folder name="Regression" />
