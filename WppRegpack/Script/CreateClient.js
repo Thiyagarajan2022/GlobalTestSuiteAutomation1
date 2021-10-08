@@ -82,7 +82,7 @@ Runner.CallMethod("IND_CreationClient.indiaSpecific",State,GST,PAN,TAN,TIN);
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 Runner.CallMethod("SPA_CreateClient.spainSpecific",SII_Tax);
 }
-if(EnvParams.Country.toUpperCase()=="UAE"){
+if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
 Runner.CallMethod("UAE_CreateClient.UAE_Specific",Licence_No,Licence_EndDate);
 }
 attachDocument();
@@ -415,7 +415,7 @@ ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Client");
 }
 
 Licence_No,Licence_EndDate = "";
-if(EnvParams.Country.toUpperCase()=="UAE"){
+if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
 Licence_EndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
 if((Licence_EndDate==null)||(Licence_EndDate=="")){ 
 ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Client");
@@ -852,7 +852,7 @@ checks_did_you_perform.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransTe
   var Create = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create").OleValue.toString().trim());
   waitForObj(Create);
   Create.Click();
-
+aqUtils.Delay(3000, "Client is getting Created");
 var Label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim()+"*").SWTObject("Label", "*").getText();
 ReportUtils.logStep("INFO",Label.OleValue.toString().trim());
 var OK = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Client Management").OleValue.toString().trim()+"*").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());

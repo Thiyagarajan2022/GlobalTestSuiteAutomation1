@@ -59,7 +59,7 @@ TextUtils.writeLog("Execution Start Time :"+STIME);
    if(EnvParams.Country.toUpperCase()=="SPAIN"){
   Runner.CallMethod("SPA_CreateGlobalVendor.spainSpecific",SII_Tax);
   }
-   if(EnvParams.Country.toUpperCase()=="UAE"){
+  if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
   Runner.CallMethod("UAE_CreateGlobalVendor.UAE_Specific",licenceEndDate,licenceNumber);
   }
   
@@ -269,7 +269,7 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
       }
       }
       
-      if(EnvParams.Country.toUpperCase()=="UAE"){
+      if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
       licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
       Log.Message(licenceEndDate)
       if((licenceEndDate==null)||(licenceEndDate=="")){ 

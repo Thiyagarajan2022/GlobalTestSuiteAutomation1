@@ -141,11 +141,11 @@ ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
     Log.Error("Exception while reading document::"+objEx);
   }
 
-if(PrintLayout=="WPP Payment Chinese")
+if(PrintLayout=="WPP PaymentOrder Chinese")
 {
 validateCreateChangePaymentSelection_wppChineseLayout()
 }
-else if(PrintLayout=="WPP Payment")
+else if(PrintLayout=="WPP PaymentOrder")
 {
   validateCreateChangePaymentSelection_wppLayout()
 }

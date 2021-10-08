@@ -91,7 +91,7 @@ ValidationUtils.verify(false,true,"Time for Thursday is Needed to Create Timeshe
 }
 fri= ExcelUtils.getRowDatas("Fri",EnvParams.Opco)
 if((fri==null)||(fri=="")){ 
-ValidationUtils.verify(false,true,"Time for Friday is Needed to Create Timesheet");
+//ValidationUtils.verify(false,true,"Time for Friday is Needed to Create Timesheet");
 }
 sat = ExcelUtils.getRowDatas("Sat",EnvParams.Opco)
 sun = ExcelUtils.getRowDatas("Sun",EnvParams.Opco)

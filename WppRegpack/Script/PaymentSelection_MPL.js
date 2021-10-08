@@ -187,7 +187,7 @@ ReportUtils.logStep("INFO", "Execution Start Time :"+STIME);
 try{
   
 getDetails();
-if(layoutTypes=="WPP Payment")
+if((layoutTypes=="WPP Payment") || (layoutTypes=="WPP Payment China"))
 {
 validateCreateChangePaymentSelection_wppLayout();
 }

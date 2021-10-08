@@ -800,7 +800,7 @@ function ApprvalInformation(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="SPAIN")||(EnvParams.Country.toUpperCase()=="UAE")){
+if((EnvParams.Country.toUpperCase()=="INDIA")||(EnvParams.Country.toUpperCase()=="EGYPT")||(EnvParams.Country.toUpperCase()=="SPAIN")||(EnvParams.Country.toUpperCase()=="UAE")){
  var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.PTabItemPanel.TabControl;;
  }else{
  var ClientApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabItemPanel.TabControl

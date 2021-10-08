@@ -329,20 +329,21 @@ function GoToSubJob() {
     
     
 function Entering_Details(){
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 TextUtils.writeLog("Entering Details in Create Sub Job Wizard")
 aqUtils.Delay(3000, "Waiting for ScrolledComposite");
 var job = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Sub Job").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "").SWTObject("Composite", "", 2).SWTObject("McPopupPickerWidget", "", 2);
 
 if(Job_group!=""){
 job.Click();
-aqUtils.Delay(3000, "Waiting for ScrolledComposite");
+aqUtils.Delay(5000, "Waiting for ScrolledComposite");
 var list = "";
 try{
 list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
 }
 catch(e){ 
 job.Click(); 
-aqUtils.Delay(3000, "Waiting for ScrolledComposite");
+aqUtils.Delay(6000, "Waiting for ScrolledComposite");
 list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
 }
 

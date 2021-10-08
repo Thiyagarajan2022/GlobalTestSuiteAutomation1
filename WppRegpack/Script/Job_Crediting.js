@@ -792,8 +792,8 @@ TextUtils.writeLog("Print Draft is Clicked");
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -1175,8 +1175,8 @@ TextUtils.writeLog("Print Draft is Clicked");
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -1727,8 +1727,8 @@ TextUtils.writeLog("Print Client Invoice is Clicked and saved");
 aqUtils.Delay(9000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Job Credit Memo")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Print Job Credit Memo"+"*", 1).WndCaption.indexOf("Print Job Credit Memo")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt

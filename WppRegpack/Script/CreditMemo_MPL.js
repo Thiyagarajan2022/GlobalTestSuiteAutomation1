@@ -122,13 +122,17 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           else
           ValidationUtils.verify(false,true,"Country is not same in Credit Note");
    
+ jobNumber = ReadExcelSheet("Credit Memo Job",EnvParams.Opco,"Data Management");
+   if((jobNumber=="")||(jobNumber==null)){
   jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
+  }
   if((jobNumber=="")||(jobNumber==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
   }
   if((jobNumber=="")||(jobNumber==null))
-  ValidationUtils.verify(false,true,"Job Number is needed to Validate Credit Note");
+  ValidationUtils.verify(false,true,"Job Number is needed to Validate Credit Note");   
+
    
   var j, x, pdfJobNum, pointer, pdfJobName;
   
