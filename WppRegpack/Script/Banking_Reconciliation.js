@@ -341,8 +341,8 @@ Save.Click();
    var SaveTitle = "";
 var sFolder = "";
 
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*"+".pdf - Adobe Acrobat Reader DC*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
-   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*"+".pdf - Adobe Acrobat Reader DC*", 1).WndCaption.indexOf("P_BankReconciliation")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
+   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*", 1).WndCaption.indexOf("P_BankReconciliation")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
 
 Sys.HighlightObject(pdf)

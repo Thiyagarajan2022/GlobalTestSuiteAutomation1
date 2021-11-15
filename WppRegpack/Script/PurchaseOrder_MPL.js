@@ -243,7 +243,7 @@ print.Click();
 TextUtils.writeLog("Print PO is Clicked and saved"); 
 aqUtils.Delay(5000, Indicator.Text);
  
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_PurchaseOrder"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);

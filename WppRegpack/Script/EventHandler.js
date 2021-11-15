@@ -39,9 +39,9 @@ function GeneralEvents_OnStopTest(Sender)
    eTime = new Date(); 
    exeTime = WorkspaceUtils.timeDifference(TestRunner.sTime, eTime); 
 
-   if(!TestRunner.testCase_Stat_updated_flag)  
-       ExcelUtils.writeTo_AutomationStat_Excel(filePath,TestRunner.testName,exeTime);
-   ExcelUtils.close_AutomationStat_Excel(); 
+//   if(!TestRunner.testCase_Stat_updated_flag)  
+//       ExcelUtils.writeTo_AutomationStat_Excel(filePath,TestRunner.testName,exeTime);
+//   ExcelUtils.close_AutomationStat_Excel(); 
    TextUtils.writeLog(TestRunner.testName +" Execution End Time :"+eTime); 
   
     var projectName = EnvParams.Pname;

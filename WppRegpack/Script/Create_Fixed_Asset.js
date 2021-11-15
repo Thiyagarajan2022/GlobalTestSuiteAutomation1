@@ -175,9 +175,8 @@ function goToJobMenuItem(){
   
   
 function createAssets(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
     ReportUtils.logStep("INFO","Create Fixed Asset is started:"+STIME); 
     var newAssets = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;   
 //    var newAssets = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite2.newassetadjust;
