@@ -20,7 +20,7 @@ var Arrays = [];
 var count = true;
 var checkmark = false;
 var STIME = "";
-var comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile;
+var comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_number,Project_manager,OpCoFile;
 
 
 
@@ -35,9 +35,15 @@ if((comapany==null)||(comapany=="")){
 ValidationUtils.verify(false,true,"Company Number is Needed to Create a Job");
 }
 
-Job_name= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
-if((Job_name==null)||(Job_name=="")){ 
-ValidationUtils.verify(false,true,"Job Name is Needed to Create a Job");
+ ExcelUtils.setExcelName(workBook, "Data Management", true);
+  Job_number= ExcelUtils.getRowDatas("Job Number",EnvParams.Opco);
+  if((Job_number==null)|| (Job_number==""))
+  {
+    ExcelUtils.setExcelName(workBook, sheetName, true);
+    Job_number= ExcelUtils.getRowDatas("Job_name",EnvParams.Opco)
+  }
+  if((Job_number==null)||(Job_number=="")){ 
+  ValidationUtils.verify(false,true,"Job_number is Needed to Create a Job");
 }
 ExcelUtils.setExcelName(workBook, "Server Details", true);
 Project_manager = ExcelUtils.getRowDatas("UserName",EnvParams.Opco)
@@ -141,12 +147,12 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3);
   job.Click();
 
-  job.setText(Job_name);
+  job.setText(Job_number);
   aqUtils.Delay(7000, Indicator.Text);
 //  Delay(7000);
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
-    if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(Job_name)){ 
+    if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(Job_number)){ 
 //  var ExlArray = getExcelData("Validate_Company",EnvParams.Opco)  
 //   var name =  LogReport_name(ExlArray,comapany,Job_group);
 //      var notepadPath = Project.Path+"RegressionLogs\\"+EnvParams.instanceData+"\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+name+".txt";
@@ -256,7 +262,7 @@ Arrays = [];
 count = true;
 checkmark = false;
 STIME = "";
-comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_name,Project_manager,OpCoFile ="";
+comapany,Job_group,Job_Type,department,buss_unit,TemplateNo,Product,Job_number,Project_manager,OpCoFile ="";
 
 
 Language = EnvParams.Language;

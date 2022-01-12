@@ -1016,11 +1016,9 @@ var Sliding_Panel = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 
-      var CreditNote_Reason = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McValuePickerWidget;
-      Sys.HighlightObject(CreditNote_Reason);
+      var CreditNote_Reason = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 10).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McValuePickerWidget", "", 2)
       CreditNote_Reason.Click();
-  
-      CreditNote_Reason.setText("Invoice Error Correction");
+      CreditNote_Reason.setText("Sales Return");
       aqUtils.Delay(4000, Indicator.Text);
       TextUtils.writeLog("Credit Memo Reason is Entered");
       

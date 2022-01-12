@@ -188,7 +188,7 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
 }
 if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
   Log.Message(labels.getText().OleValue.toString().trim())
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+ ValidationUtils.verify(true,true,"Maconomy is loading continously......") 
 }
 
 //aqUtils.Delay(5000, Indicator.Text);
@@ -224,15 +224,15 @@ TextUtils.writeLog("Created Vendor Invoice is available in system");
   aqUtils.Delay(3000, Indicator.Text);;
   var purchaseApproval = 
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.TabControl
-  Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 10);
+  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.CloseFilter.InitiatePO
   WorkspaceUtils.waitForObj(purchaseApproval);  
   purchaseApproval.Click();
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  var ApproverTable = //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
- // Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("Composite", "", 9).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2)
-  Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 9).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2)
+  var ApproverTable = 
+  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite5.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+  Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.Composite.POTable.McGrid
   var y=0;
   for(var ii=0;ii<3;ii++){
   for(var i=0;i<ApproverTable.getItemCount();i++){  
@@ -395,7 +395,7 @@ if(ImageRepository.ImageSet.ToDos_Icon.Exists())
 { 
   
 }else{ 
-  ValidationUtils.verify(true,true,"Maconomy is loading continously......")  
+  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
 //aqUtils.Delay(15000, Indicator.Text);
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible)

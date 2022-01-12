@@ -535,6 +535,9 @@ ValidationUtils.verify(true,true,"Print Posting Journal is Clicked and PDF is Sa
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
     aqUtils.Delay(4000, Indicator.Text);
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Print General Journal",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf");
+
 
 //var OKay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 //OKay.Click();
