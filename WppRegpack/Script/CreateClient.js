@@ -596,6 +596,7 @@ function newGlobalClient(){
  var C_Country = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.Country_Dropdown;
  if(country!=""){
   C_Country.Click();
+  aqUtils.Delay(2000,"Waiting to Load countries list");
   WorkspaceUtils.DropDownList(country,"Country")
   }
   

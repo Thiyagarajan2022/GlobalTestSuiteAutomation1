@@ -265,6 +265,9 @@ ReportUtils.logStep("INFO", "Enter Job Details");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+  
+}
 
 //To Maximaize the window
   Sys.Desktop.KeyDown(0x12);

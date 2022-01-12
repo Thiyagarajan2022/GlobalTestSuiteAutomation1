@@ -342,7 +342,8 @@ TextUtils.writeLog("Entering into GL Transactions from General Ledger Menu");
 }
 
 function gotoGeneralJournal(){ 
-  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
+
 var table = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);

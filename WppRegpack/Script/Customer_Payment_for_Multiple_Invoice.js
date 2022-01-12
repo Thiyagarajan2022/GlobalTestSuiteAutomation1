@@ -145,12 +145,12 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
   var invoicePreparation = ExcelUtils.getRowDatas("Invoice preparation Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
-  var TM = ExcelUtils.getRowDatas("Time and Material Invoice Job",EnvParams.Opco);
+  var TM = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
   var iP = ExcelUtils.getRowDatas("Invoice preparation No",EnvParams.Opco);
   var iB = ExcelUtils.getRowDatas("Invoice from Budget No",EnvParams.Opco);
   var iA = ExcelUtils.getRowDatas("Invoice OnAccount No",EnvParams.Opco);
-  var iTM = ExcelUtils.getRowDatas("Time and Material Invoice No",EnvParams.Opco);
+  var iTM = ExcelUtils.getRowDatas("Time & Material Invocing No",EnvParams.Opco);
   
   var sP = ExcelUtils.getRowDatas("Single Invoice Payment used Invoice No",EnvParams.Opco);
   var fP = ExcelUtils.getRowDatas("Foreign Invoice Payment used Invoice No",EnvParams.Opco);
@@ -465,13 +465,13 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Comp
      WorkspaceUtils.waitForObj(newbutton)
      Sys.HighlightObject(newbutton);
      newbutton.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){   
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){   
+}    
      
-
-     
-var company = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.company;
+var company = //NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.company;
+Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.SWTObject("McValuePickerWidget", "", 3)
 WorkspaceUtils.waitForObj(company)
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   

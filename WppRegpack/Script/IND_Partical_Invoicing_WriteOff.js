@@ -195,7 +195,7 @@ Sys.HighlightObject(SelectionBilling);
       SelectionBilling.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
       var hsn = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
       hsn.Click();
-      WorkspaceUtils.SearchByValue(hsn,"Local Specification 8",temp[2],"HSN");
+      //WorkspaceUtils.SearchByValue(hsn,"Local Specification 8",temp[2],"HSN");
       if(temp[0].indexOf("T")==0){
       hsn.Keys("[Tab]");
       var Employee = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;

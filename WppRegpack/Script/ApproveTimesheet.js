@@ -103,7 +103,8 @@ function AprveTimesheet(comID,EmpName,AprName){
 //} 
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
 }
 var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "");
 WorkspaceUtils.waitForObj(table);
