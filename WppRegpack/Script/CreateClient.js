@@ -622,6 +622,8 @@ function newGlobalClient(){
   Sys.HighlightObject(ClientGroup);
   if(clientgrp!=""){
   ClientGroup.Click();
+  aqUtils.Delay(5000,"Loading Client Groups")
+
   WorkspaceUtils.DropDownList(clientgrp,"Client Group")
   }
   aqUtils.Delay(2000,"Waiting System to Load fully");
@@ -2661,7 +2663,7 @@ function CompanyClient(){
     
   }
   information.Click();
-  aqUtils.Delay(3000, "Findind Client Approval");
+  aqUtils.Delay(3000, "Finding Client Approval");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -2672,7 +2674,7 @@ function CompanyClient(){
   Sys.HighlightObject(E_ID)
   WorkspaceUtils.waitForObj(E_ID)
   E_ID.setText(mail)
-    aqUtils.Delay(3000, "Findind Client Approval");
+    aqUtils.Delay(3000, "Finding Client Approval");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 //  var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;

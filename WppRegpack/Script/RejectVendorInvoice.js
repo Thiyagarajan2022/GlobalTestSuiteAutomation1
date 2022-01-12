@@ -634,8 +634,9 @@ if(vID_Status)
 //}
 
 function FinalApproveinvoice(InvoiceNo,Apvr,lvl){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  
+  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  
   }
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);

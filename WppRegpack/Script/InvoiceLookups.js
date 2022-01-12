@@ -115,6 +115,7 @@ TextUtils.writeLog("Entering into Jobs from Job Invoices Menu");
 }
 
 function Lookups(){ 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
   
   var labels = Aliases.Maconomy.InvoiceLookUps.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McPagingWidget;
   WorkspaceUtils.waitForObj(labels);
@@ -175,8 +176,8 @@ if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){
   aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  }  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
   }
   
   var PrintCopy = Aliases.Maconomy.InvoiceLookUps.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite;

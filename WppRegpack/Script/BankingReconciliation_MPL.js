@@ -168,15 +168,15 @@ function Banking_Reconciliation()
           else
           ValidationUtils.verify(false,true,"Local Account Number is not available in Pdf")  
           
-     index = docObj.indexOf(statementDate);  
-     if(index>=0){
-          ReportUtils.logStep("INFO","Statement Date is available in Pdf")
-          ValidationUtils.verify(true,true,"Statement Date is available in Pdf")
-          TextUtils.writeLog("Statement Date is available in Pdf")
-          }
-          else
-          ValidationUtils.verify(false,true,"Statement Date is not available in Pdf")       
-          
+//     index = docObj.indexOf(statementDate);  
+//     if(index>=0){
+//          ReportUtils.logStep("INFO","Statement Date is available in Pdf")
+//          ValidationUtils.verify(true,true,"Statement Date is available in Pdf")
+//          TextUtils.writeLog("Statement Date is available in Pdf")
+//          }
+//          else
+//          ValidationUtils.verify(false,true,"Statement Date is not available in Pdf")       
+//          
      index = docObj.indexOf(statementNo);  
      if(index>=0){
           ReportUtils.logStep("INFO","Statement Number is available in Pdf")

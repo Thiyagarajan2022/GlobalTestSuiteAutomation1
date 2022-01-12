@@ -190,7 +190,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
   
   
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-  clientName = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
+  clientName = ReadExcelSheet("Global Client Name",EnvParams.Opco,"Data Management");
   if((clientName=="")||(clientName==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   clientName = ExcelUtils.getRowDatas("Client Name",EnvParams.Opco)

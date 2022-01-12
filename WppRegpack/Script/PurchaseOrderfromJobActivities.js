@@ -361,7 +361,6 @@ Log.Message(LTA)
   save.Click();
   aqUtils.Delay(3000, "Saving Changes");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
   }
   aqUtils.Delay(1000, Indicator.Text);
   Sys.Desktop.KeyDown(0x10);
@@ -429,7 +428,7 @@ if(j<table.getItemCount()-2)
   ReportUtils.logStep_Screenshot("");
   createPurchaseOrder.Click();
 //  aqUtils.Delay(8000,Indicator.Text);
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var label = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Jobs").OleValue.toString().trim()).SWTObject("Label", "*");
   ReportUtils.logStep(label.getText());
   Log.Message(label.getText())

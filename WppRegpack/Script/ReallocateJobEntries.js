@@ -392,6 +392,7 @@ if(Reallocation_Job_No!=""){
 
 saveButton.Click();
 aqUtils.Delay(4000);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //jobReAllocateTo.Click();
 //Delay(5000);
 //jobReAllocateTo.setText(NewJob_No);

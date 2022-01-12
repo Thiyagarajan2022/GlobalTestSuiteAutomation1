@@ -58,10 +58,10 @@ if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
 
-   if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
-   var index = pdflineSplit.indexOf("TAX INVOICE");
+   if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="QATAR") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
+   var index = docObj.indexOf("TAX INVOICE");
    else 
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
+   var index = docObj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());
 //   else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
 //   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
    Log.Message(pdflineSplit)
@@ -71,7 +71,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
           TextUtils.writeLog("Heading is available Pdf")
           }
           else
-          ValidationUtils.verify(false,true,"Heading is available Pdf")
+          ValidationUtils.verify(false,true,"Heading is not available in Pdf")
     
     var index = pdflineSplit.indexOf(clientName)            
     if(index>=0){
@@ -150,7 +150,7 @@ JobCurrency = ReadExcelSheet("Currency",EnvParams.Opco,"CreateClient");
   var clientNumber = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
 var pName = false;  
  Log.Message(pdflineSplit.length)
-  for (j=0; j<pdflineSplit.length; j++)
+  for (j=0; j<35; j++)
   {
     Log.Message(pdflineSplit[j])
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attn.").OleValue.toString().trim()))
@@ -495,7 +495,7 @@ var pName = false;
   Log.Message("From Excel :"+temp.trim()) 
   var found = false;
   temp = temp.trim();
-   for (z=0; z<pdflineSplit.length; z++){
+   for (z=10; z<pdflineSplit.length; z++){
 //     Log.Message(temp.trim()+":"+temp.trim().length)
 //     Log.Message(pdflineSplit[z]+":"+pdflineSplit[z].length)
 //     Log.Message(" ");
