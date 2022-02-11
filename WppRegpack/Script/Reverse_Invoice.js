@@ -60,12 +60,18 @@ function getDetails(){
         if((Invoicenew==null)||(Invoicenew=="")){ 
         ValidationUtils.verify(false,true,"Vendor Number is needed to Reverse Invoice"); 
         }
-        Invoiceno = ExcelUtils.getRowDatas("InvoiceNo",EnvParams.Opco)
-        Log.Message(Invoiceno)
-        if((Invoiceno=="")||(Invoiceno==null)){
+        
+        ExcelUtils.setExcelName(workBook, "Data Management", true);
+        InvoiceNo = ReadExcelSheet("Second Vendor Invoice NO",EnvParams.Opco,"Data Management");
+        if((InvoiceNo=="")||(InvoiceNo==null)){
           ExcelUtils.setExcelName(workBook, "Data Management", true);
           Invoiceno = ReadExcelSheet("InvoiceNo",EnvParams.Opco,"Data Management");
-        }  
+          }
+        else if((InvoiceNo=="")||(InvoiceNo==null)){
+        ExcelUtils.setExcelName(workBook, sheetName, true);
+        Invoiceno = ExcelUtils.getRowDatas("InvoiceNo",EnvParams.Opco)
+        }
+         
         if((Invoiceno==null)||(Invoiceno=="")){ 
         ValidationUtils.verify(false,true,"Invoice Number is needed to Reverse Invoice"); 
         }        

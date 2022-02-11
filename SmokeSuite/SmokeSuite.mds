@@ -5,38 +5,28 @@
 			<child name="Events" key="{BC9D771E-B020-4A1E-88E4-959AFF2F400F}" type="Events" typeId="{E7ABA87F-E873-4452-9921-6F4BAAEB2BCC}" pluginName="" path="Events\Events.tcAX" />
 			<child name="Script" key="{A997569A-D4EA-4417-80FA-EDEC8D838F31}" type="Script" typeId="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" pluginName="Script" path="Script\Script.tcScript" />
 		</folder>
-<<<<<<< HEAD
-		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
-	</children>
-	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
-	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
-		<children />
-=======
 		<folder name="TestResource">
 			<child name="DS_CHN_SYSTEST.xlsx" key="{78A766BA-0CCD-421D-8530-0DB88056D359}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\SysTest\DS_CHN_SYSTEST.xlsx" />
 			<child name="EnvParamaters.xlsx" key="{A36665FC-710C-4E6B-A540-CE7EAAB9F372}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\EnvParamaters.xlsx" />
 			<child name="TC_RunManager.xlsx" key="{F21CC1B4-C2BA-4636-9B96-5DD3FB064A34}" type="Other File" typeId="{7E17765D-0A59-4C70-A5DA-31DC6D5FED35}" pluginName="Other Files" path="TestResource\TC_RunManager.xlsx" />
 		</folder>
 		<child name="KeywordTests" key="{6F8D781E-4155-44BC-A084-E9673664B943}" type="Keyword Testing" typeId="{9576DAFD-0ADD-41A8-9897-C72F150AF6BB}" pluginName="Keyword Testing" path="KeywordTests\KeywordTests.tcKDT" />
-		<child name="NameMapping" key="{63138B44-92CD-4787-BFE7-D450728F7290}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
 		<child name="ImageRepository" key="{22746466-E4D7-4FA2-9F43-ED370A5B696A}" type="Image Repository" typeId="{E7C36009-4A66-4899-99AE-DEFC5C22C057}" pluginName="" path="ImageRepository\ImageRepository.tcIR" />
 		<child name="TestedApps" key="{A208EC67-6D6A-445D-B10D-B760A0BCE18B}" type="Tested Applications" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" pluginName="" path="TestedApps\TestedApps.tcTAs" />
+		<child name="NameMapping" key="{D7FB333C-3D94-4C73-B779-38E953C7CEF0}" type="Name Mapping" typeId="{5DCBAC3B-D39C-497C-9BE8-744CBADD37AA}" pluginName="NameMapping" path="NameMapping\NameMapping.tcNM" />
 	</children>
 	<config language="{90F89436-9452-4F95-9882-6B5210079F13}" />
 	<testItems key="{59702F30-A67E-489B-812C-6B3DF889A0A3}" version="14">
 		<children>
-			<testItem name="ProjectTestItem1" key="{04B8CD53-85DD-46A4-B4EA-97C0848282A0}" group="False" enabled="True" testMoniker="{026D01DC-007B-4C4C-AAB4-11025D236684}executeTestCases" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
+			<testItem name="ProjectTestItem1" key="{04B8CD53-85DD-46A4-B4EA-97C0848282A0}" group="False" enabled="True" testMoniker="{026D01DC-007B-4C4C-AAB4-11025D236684}executeTestCases" count="1" timeout="0" stopOnError="0" stopOnException="2" description="" tmsData="" testCase="True">
 				<testParameters />
 				<children />
 			</testItem>
 		</children>
->>>>>>> 4c918db65de477106867b49e97036663a0842003
 	</testItems>
-	<variables key="{F6EFEAC4-85A0-40A0-ACD1-4C0638AF1FCA}">
-		<data Version="3" />
-	</variables>
+	<variables key="{F6EFEAC4-85A0-40A0-ACD1-4C0638AF1FCA}" />
 	<settings key="{2106875B-CA0B-4B57-8BCC-BA9643C18A50}">
-		<settingsVersion value="14.20" />
+		<settingsVersion value="14.60" />
 		<setting name="AgOpenApp_ExtendedSilverlightObjectTree" type="1" value="False" />
 		<setting name="ApplicationHangingProcessFilterMode" type="6" rowIndex="4" colIndex="0">
 			<columns>
@@ -63,6 +53,8 @@
 		<setting name="AzureDevOps_TeamProject" type="5" value="" />
 		<setting name="AzureDevOps_TeamProjectCollection" type="5" value="" />
 		<setting name="AzureDevOps_URL" type="5" value="" />
+		<setting name="CBT_Authkey" type="5" value="" />
+		<setting name="CBT_UserName" type="5" value="" />
 		<setting name="CLRBridge_PreferredApartmentModel" type="6" rowIndex="0" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
@@ -132,6 +124,7 @@
 				<row val0="Auto" />
 			</data>
 		</setting>
+		<setting name="Gherkin_ExamplesAreTestCases" type="1" value="False" />
 		<setting name="HipTest_ProjectID" type="2" value="-1" />
 		<setting name="HipTest_ProjectName" type="5" value="The current project is not bound to HipTest." />
 		<setting name="HipTest_SaveResults" type="1" value="True" />
@@ -140,11 +133,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-<<<<<<< HEAD
-		<setting name="JavaBridge_Classes" type="6" rowIndex="3" colIndex="0">
-=======
-		<setting name="JavaBridge_Classes" type="6" rowIndex="15" colIndex="0">
->>>>>>> 4c918db65de477106867b49e97036663a0842003
+		<setting name="JavaBridge_Classes" type="6" rowIndex="16" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -153,8 +142,6 @@
 				<row val0="org.apache.pdfbox.util.PDFTextStripper" />
 				<row val0="javax.imageio.ImageIO" />
 				<row val0="java.io.File" />
-<<<<<<< HEAD
-=======
 				<row val0="com.relevantcodes.extentreports.Extent_Craft" />
 				<row val0="java.io" />
 				<row val0="org.apache.pdfbox.pdmodel.PDDocument" />
@@ -167,17 +154,14 @@
 				<row val0="com.cts.ZephyrApiUsecases.UpdateExecutionStatus" />
 				<row val0="com.thed.zephyr.cloud.rest.ZFJCloudRestClient" />
 				<row val0="com.ImageComparison.ImageCompMain" />
->>>>>>> 4c918db65de477106867b49e97036663a0842003
+				<row val0="org.excelwrite.companyinfo" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="0" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="11" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
 			<data>
-<<<<<<< HEAD
-				<row val0="..\..\..\..\Downloads\pdfbox-app-1.8.16.jar" />
-=======
 				<row val0=".\ProjectLibraries\zfj-cloud-rest-client-3.0.jar" />
 				<row val0=".\ProjectLibraries\sqlite-jdbc-3.8.11.1.jar" />
 				<row val0=".\ProjectLibraries\pdfbox-app-1.8.16.jar" />
@@ -192,7 +176,7 @@
 				<row val0=".\ProjectLibraries\extentreports-3.1.5.jar" />
 				<row val0=".\ProjectLibraries\extentreports-2.41.2.jar" />
 				<row val0=".\ProjectLibraries\bson-3.0.4.jar" />
->>>>>>> 4c918db65de477106867b49e97036663a0842003
+				<row val0=".\ProjectLibraries\ExcelFunction.jar" />
 			</data>
 		</setting>
 		<setting name="JavaFXOpenApp_DoNotRecognizeJavaFXStageAsAWTComponent" type="1" value="True" />
@@ -251,6 +235,65 @@
 				<row val0="True" val1="%PRODUCT_LOCATION%\Open Apps\Flex\FlashInjector.swf" />
 			</data>
 		</setting>
+		<setting name="OpenApps_HybridMobile_AccessPolicy" type="1" value="False" />
+		<setting name="OpenApps_HybridMobile_DynamicIdentifiers" type="6" rowIndex="32" colIndex="9">
+			<columns>
+				<column type="2" enabled="True" />
+				<column type="2" enabled="True" />
+				<column type="1" enabled="True" />
+				<column type="1" enabled="True" />
+				<column type="5" enabled="True" />
+				<column type="5" enabled="True" />
+				<column type="5" enabled="True" />
+				<column type="5" enabled="True" />
+				<column type="5" enabled="True" />
+				<column type="2" enabled="True" />
+			</columns>
+			<data>
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Yahoo! UI library" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="0" val1="0" val2="False" val3="True" val4="Do not use IDs starting with &quot;yui-gen&quot;" val5="Wildcard" val6="yui-gen*" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="0" val1="0" val2="False" val3="True" val4="Do not use IDs containing &quot;yui_3_&quot;" val5="Wildcard" val6="*yui_3_*" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="jQuery UI library" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="3" val1="0" val2="False" val3="True" val4="Do not use IDs starting with &quot;ui-id-&quot;" val5="Wildcard" val6="ui-id-*" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Dojo toolkit" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="5" val1="0" val2="False" val3="True" val4="Do not use IDs starting with &quot;dijit_&quot;" val5="Wildcard" val6="dijit_*" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Other" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="7" val1="0" val2="False" val3="True" val4="Do not use IDs containing GUID" val5="RegExp" val6="\h+-\h+-\h+-\h+-\h+" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="7" val1="0" val2="False" val3="True" val4="Remove leading characters from IDs like &quot;c1114509959-searchform&quot;" val5="RegExp" val6="^[A-Za-z](\d\d\d\d\d+){[A-Za-z-]*}$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="7" val1="0" val2="False" val3="True" val4="Remove trailing digits from IDs like &quot;unique-123456&quot;" val5="RegExp" val6="^{[A-Za-z-]+}(\d\d\d\d\d+)$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="7" val1="0" val2="False" val3="True" val4="Remove digits from IDs like &quot;some_unique_123456_text&quot;" val5="RegExp" val6="^{[A-Za-z_]+}_(\d\d\d\d\d+){[A-Za-z_]*}$" val7="$1$2" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="7" val1="0" val2="False" val3="True" val4="Remove digits from IDs like &quot;some_unique123456_text&quot;" val5="RegExp" val6="^{[A-Za-z_]+}(\d\d\d\d\d+){[A-Za-z_]*}$" val7="$1$2" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="ASP.NET" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="13" val1="0" val2="False" val3="True" val4="Do not use IDs ending with a string like &quot;ctl00&quot;" val5="RegExp" val6="^(.*[-_$])?(ctl[0-9]+)$" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="13" val1="0" val2="False" val3="True" val4="Remove GUIDs and ctl00-like prefixes from Sharepoint IDs" val5="RegExp" val6="(.+?_(\h+_\h+_\h+_\h+_\h+))+(.*ctr?l[0-9]+)?[_$]?{.*}$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="13" val1="0" val2="False" val3="True" val4="For IDs containing a string like &quot;ctl00_&quot;, leave only symbols after this string" val5="RegExp" val6=".*(ctl[0-9]+[-_$]+){.*}" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Sencha ExtJS" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="17" val1="0" val2="False" val3="True" val4="Do not use IDs containing &quot;ext-gen&quot;" val5="RegExp" val6="^(.*-)?ext-gen" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="17" val1="0" val2="False" val3="True" val4="Do not use IDs containing &quot;ext-comp&quot;" val5="RegExp" val6="^(.*-)?ext-comp" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="17" val1="0" val2="False" val3="True" val4="Do not use IDs starting with &quot;extdd-&quot;" val5="Wildcard" val6="extdd-*" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="17" val1="0" val2="False" val3="True" val4="Remove digits from IDs like &quot;treepicker-1038&quot; or &quot;treepicker-1038-inputEl&quot;" val5="RegExp" val6="^{[A-Za-z-]+}-{\d\d\d\d+}{.*}$" val7="$1$3" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Sencha Touch" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="22" val1="0" val2="False" val3="True" val4="Remove dynamic parts of Sencha Touch IDs" val5="RegExp" val6="^ext-{.*}-\d+$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="JavaServer Faces" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="24" val1="0" val2="False" val3="True" val4="Do not use IDs like &quot;_t14&quot;" val5="RegExp" val6="^{_t}{[0-9]+}$" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="24" val1="0" val2="False" val3="True" val4="Do not use IDs like &quot;j_id23&quot; or &quot;j_idt23&quot;" val5="RegExp" val6="^{j_idt?}{[0-9]+}$" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="24" val1="0" val2="False" val3="True" val4="Remove all but the last part of IDs like &quot;frm:menuLinks:0:link&quot;" val5="RegExp" val6="(.+):{[^0-9]+}$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="24" val1="0" val2="False" val3="True" val4="Do not use IDs like &quot;frm:menuLinks:3:link&quot;" val5="RegExp" val6="(.+):(.*)" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Google Web Toolkit" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="29" val1="0" val2="False" val3="True" val4="Remove all but the last part of IDs like &quot;gwt-uid-370_runButton&quot;" val5="RegExp" val6="^(gwt-uid-[0-9]+)(_{.*})?$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="29" val1="0" val2="False" val3="True" val4="Remove dynamic parts of Sencha GXT IDs" val5="RegExp" val6="^(x-((widget)|(auto))-.*[0-9]+)([-_]{.*})?$" val7="$1" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+				<row val0="-1" val1="0" val2="True" val3="True" val4="Custom" val5="" val6="" val7="" val8="Wildcard&#13;&#10;RegExp" val9="0" />
+			</data>
+		</setting>
+		<setting name="OpenApps_HybridMobile_IdentificationAttribute" type="6" rowIndex="0" colIndex="0">
+			<columns>
+				<column type="5" enabled="True" />
+			</columns>
+			<data>
+				<row val0="ID" />
+				<row val0="Name" />
+			</data>
+		</setting>
 		<setting name="OpenApps_MethodInvokeTimeout" type="2" value="3000" />
 		<setting name="OpenApps_MSAA_ListOfAcceptedWindows" type="6" rowIndex="11" colIndex="1">
 			<columns>
@@ -273,7 +316,7 @@
 			</data>
 		</setting>
 		<setting name="OpenApps_MSAA_TreeModel" type="1" value="False" />
-		<setting name="OpenApps_PriorityOfObjects" type="6" rowIndex="13" colIndex="0">
+		<setting name="OpenApps_PriorityOfObjects" type="6" rowIndex="14" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -292,6 +335,7 @@
 				<row val0="NativeWebObject" />
 				<row val0="NativeChromeObject" />
 				<row val0="NativeFirefoxObject" />
+				<row val0="NativeWebDriverObject" />
 			</data>
 		</setting>
 		<setting name="OpenApps_ProcessFilter_ProcessFilterMode" type="6" rowIndex="0" colIndex="0">
@@ -394,6 +438,7 @@
 				<row val0="Name" />
 			</data>
 		</setting>
+		<setting name="OpenApps_Web_RecordScalableTests" type="1" value="False" />
 		<setting name="OpenApps_Web_RecordTestedHost" type="5" value="" />
 		<setting name="OpenApps_Web_TestedHost" type="5" value="" />
 		<setting name="OpenApps_Web_TreeModel" type="6" rowIndex="3" colIndex="0">
@@ -488,7 +533,7 @@
 			</columns>
 			<data />
 		</setting>
-		<setting name="Playback_ErrHandling_OnError" type="6" rowIndex="1" colIndex="1">
+		<setting name="Playback_ErrHandling_OnError" type="6" rowIndex="0" colIndex="1">
 			<columns>
 				<column type="5" enabled="True" />
 				<column type="2" enabled="True" />
@@ -496,7 +541,7 @@
 			<data>
 				<row val0="Continue running" val1="0" />
 				<row val0="Stop project" val1="1" />
-				<row val0="Stop test item" val1="2" />
+				<row val0="Stop current item" val1="2" />
 			</data>
 		</setting>
 		<setting name="Playback_ErrHandling_OnObjectRecognitionError" type="6" rowIndex="0" colIndex="1">
@@ -507,7 +552,7 @@
 			<data>
 				<row val0="Continue running" val1="0" />
 				<row val0="Stop project" val1="1" />
-				<row val0="Stop test item" val1="2" />
+				<row val0="Stop current item" val1="2" />
 			</data>
 		</setting>
 		<setting name="Playback_ErrHandling_OnWarning" type="6" rowIndex="0" colIndex="1">
@@ -518,7 +563,7 @@
 			<data>
 				<row val0="Continue running" val1="0" />
 				<row val0="Stop project" val1="1" />
-				<row val0="Stop test item" val1="2" />
+				<row val0="Stop current item" val1="2" />
 			</data>
 		</setting>
 		<setting name="Playback_ErrHandling_ShowErrorDialog" type="1" value="True" />
@@ -535,12 +580,12 @@
 			</data>
 		</setting>
 		<setting name="Playback_OverlappingWindow_IgnoreOverlappingWindow" type="1" value="False" />
-		<setting name="Playback_Runtime_AutoWaitTimeout" type="2" value="10000" />
+		<setting name="Playback_Runtime_AutoWaitTimeout" type="2" value="40000" />
 		<setting name="Playback_Runtime_DelayBetweenEvents" type="2" value="50" />
 		<setting name="Playback_Runtime_DisableMouse" type="1" value="False" />
 		<setting name="Playback_Runtime_MinimizeBeforePlayback" type="1" value="False" />
 		<setting name="Playback_Runtime_UseCaseSensitiveParameters" type="1" value="False" />
-		<setting name="Playback_StopOnError" type="1" value="True" />
+		<setting name="Playback_StopOnError" type="1" value="False" />
 		<setting name="Playback_StopOnObjectRecognitionError" type="1" value="False" />
 		<setting name="Playback_StopOnWarning" type="1" value="False" />
 		<setting name="Playback_UnexpectedWndHandling_ClickOnFocusedControl" type="1" value="True" />

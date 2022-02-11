@@ -4,12 +4,8 @@
 	<testData />
 	<data />
 	<children>
-		<child key="{06ECAC00-193E-4244-A17A-A44C7674BF11}" path="ImageRepository\ImageSet.tcIRIS" />
-		<child key="{35C98D11-ADD2-43C6-8355-C927184B0402}" path="ImageRepository\ImageSet1.tcIRIS" />
-		<child key="{D974792B-774B-4467-B0F7-BB2BEA91CF1E}" path="ImageRepository\ImageSet2.tcIRIS" />
-		<child key="{487CCD67-B0CA-42E1-B3CC-891F3FF38CAE}" path="ImageRepository\ImageSet3.tcIRIS" />
-		<child key="{74E331C1-5C04-42D3-92B6-2BD8697A5E36}" path="ImageRepository\ImageSet4.tcIRIS" />
-		<child key="{5A16CDB4-15B5-42B7-A2AC-A1574266C11C}" path="ImageRepository\PDF.tcIRIS" />
-		<child key="{326278AF-7224-4D97-A78F-CEA58F5E45AF}" path="ImageRepository\Spanish.tcIRIS" />
+		<child key="{43401DD0-18EE-4AB2-9AD3-A5DEC45DAC4B}" path="ImageSet.tcIRIS" />
+		<child key="{3D0C0E49-B36E-4391-A731-024198E26E33}" path="PDF.tcIRIS" />
+		<child key="{FE240510-BA5C-43A8-A835-A18E95C1986B}" path="Browser_Reporting.tcIRIS" />
 	</children>
 </Root>

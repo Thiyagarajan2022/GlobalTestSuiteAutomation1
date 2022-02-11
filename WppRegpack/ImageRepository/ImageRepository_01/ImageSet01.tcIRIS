@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{E0777D55-AAEC-4895-B221-E0F64581102E}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{CF229575-AC26-43CA-AFD4-CB467AB4A380}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
 	<config nodeName="ImageSet01" />
 	<testData />
-	<data />
+	<data>
+		<item caption="Finance_Budget" moniker="{725DFF0D-639D-4BD7-8871-F2FE1555F1BA}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Finance_Budget.png" initialHash="0A87DED5" selectionLeft="36" selectionTop="327" selectionWidth="31" selectionHeight="31" initialLeft="36" initialTop="327" initialWidth="31" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Finance_Budget_1" moniker="{BC80062C-2B95-4DFF-A992-3BBD1EA6BC86}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Finance_Budget_1.png" initialHash="6C18CFFA" selectionLeft="37" selectionTop="550" selectionWidth="30" selectionHeight="30" initialLeft="37" initialTop="550" initialWidth="30" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Finance_Budget_2" moniker="{1EFB9565-A3C0-4D43-B00F-A259EF81D662}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Finance_Budget_2.png" initialHash="00000000" selectionLeft="37" selectionTop="326" selectionWidth="30" selectionHeight="31" initialLeft="37" initialTop="326" initialWidth="30" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
 </Root>

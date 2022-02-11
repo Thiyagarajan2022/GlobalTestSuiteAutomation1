@@ -28,7 +28,7 @@ var usernameAddr;
    var company="";
    var loginName = "*";
    var serverName ="*";
-   
+var LangdB = "";  
 
 
 function menu_link(){
@@ -37,7 +37,7 @@ function menu_link(){
     }
     
 function login() {
-  
+LangdB = EnvParams.LanChange(EnvParams.Language);
 Sys.Refresh();
 var sysCount = Sys.ChildCount;
 var process = false;
@@ -57,7 +57,47 @@ var colsList = [];
 var login_colsList = [];
 email_ID =[];
 
-TestedApps.Maconomy.Run();
+if(EnvParams.instanceData=="BAUTESTAPAC")
+TestedApps.BAUTESTAPAC.Run();
+if(EnvParams.instanceData=="BAUTESTEMEA")
+TestedApps.BAUTESTEMEA.Run();
+if(EnvParams.instanceData=="DATAAPAC")
+TestedApps.DATAAPAC.Run();
+if(EnvParams.instanceData=="DATAEMEA")
+TestedApps.DATAEMEA.Run();
+if(EnvParams.instanceData=="DEV1EMEA")
+TestedApps.DEV1EMEA.Run();
+if(EnvParams.instanceData=="DEV2EMEA")
+TestedApps.DEV2EMEA.Run();
+if(EnvParams.instanceData=="DEV3EMEA")
+TestedApps.DEV3EMEA.Run();
+if(EnvParams.instanceData=="DEV4EMEA")
+TestedApps.DEV4EMEA.Run();
+if(EnvParams.instanceData=="PRODAPAC")
+TestedApps.PRODAPAC.Run();
+if(EnvParams.instanceData=="PRODEMEA")
+TestedApps.PRODEMEA.Run();
+if(EnvParams.instanceData=="PRPRAPAC")
+TestedApps.PRPRAPAC.Run();
+if(EnvParams.instanceData=="PRPREMEA")
+TestedApps.PRPREMEA.Run();
+if(EnvParams.instanceData=="SUPPAPAC")
+TestedApps.SUPPAPAC.Run();
+if(EnvParams.instanceData=="SUPPEMEA")
+TestedApps.SUPPEMEA.Run();
+if(EnvParams.instanceData=="TESTAPAC")
+TestedApps.TESTAPAC.Run();
+if(EnvParams.instanceData=="TESTEMEA")
+TestedApps.TESTEMEA.Run();
+if(EnvParams.instanceData=="TRNAPAC")
+TestedApps.TRNAPAC.Run();
+if(EnvParams.instanceData=="TRNEMEA")
+TestedApps.TRNEMEA.Run();
+if(EnvParams.instanceData=="UATAPAC")
+TestedApps.UATAPAC.Run();
+if(EnvParams.instanceData=="UATEMEA")
+TestedApps.UATEMEA.Run();
+
 aqUtils.Delay(20000, "Waiting for Maconomy to Start");
 var status = true;
 while(status){
@@ -85,7 +125,8 @@ if((Name=="Login to Deltek Maconomy")|| (Name=="Inicio de sesión en Deltek Maco
     loginName = "登录到 Deltek Maconomy";
     serverName = "Server Configuration";
   }
-LoginMaconomy();
+//LoginMaconomy();
+Maconomy();
 }
 if((Name=="Server Configuration")||(Name=="Configuración de servidor")||(Name=="Server Configuration")){ 
 aqUtils.Delay(2000, Indicator.Text);
@@ -115,7 +156,7 @@ break;
     usernameAddr = Sys.Process("Maconomy").SWTObject("Shell", loginName).SWTObject("Composite", "").WaitSWTObject("Composite", "", 1,60000).SWTObject("Text", "", 1);
     pwdAddr = Sys.Process("Maconomy").SWTObject("Shell", loginName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 2);
     dropdown = Sys.Process("Maconomy").SWTObject("Shell", loginName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Combo", "");
-    btnLogin = Sys.Process("Maconomy").SWTObject("Shell", loginName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", "Login");
+    btnLogin = Sys.Process("Maconomy").SWTObject("Shell", loginName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,LangdB, "Login").OleValue.toString().trim());
     }
     
     function ServerAddress(){
@@ -123,8 +164,8 @@ break;
     port_number = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 2)
     company_name = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Text", "", 3)
 //    company_name = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Combo", "");
-    chk_box = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Button", "Do not ask me again");
-    connectbtn = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", "Connect");
+    chk_box = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,LangdB, "Do not ask me again").OleValue.toString().trim());
+    connectbtn = Sys.Process("Maconomy").SWTObject("Shell", serverName).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,LangdB, "Connect").OleValue.toString().trim());
     }
     
     
@@ -207,6 +248,54 @@ ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
       Delay(1000);
       usernameAddr.SetFocus();
       usernameAddr.setText(loginuser);
+      
+if(EnvParams.instanceData.indexOf("BAU")!=-1){
+if(loginuser.indexOf(EnvParams.Opco)!=-1){ 
+ loginpassword= "CORE@TESTING"+EnvParams.Opco;
+}
+else{ 
+  Log.Message(EnvParams.Country.toUpperCase())
+  if(EnvParams.Country.toUpperCase()=="INDIA")
+  loginpassword="CORE@TESTINGIND321";
+  if(EnvParams.Country.toUpperCase()=="SPAIN")
+  loginpassword="CORE@TESTINGSPA123";
+  if(EnvParams.Country.toUpperCase()=="MALAYSIA")
+  loginpassword="CORE@TESTINGMYS321";
+  if(EnvParams.Country.toUpperCase()=="SINGAPORE")
+  loginpassword="CORE@TESTINGSGP321";
+  
+}
+
+}
+
+if(EnvParams.instanceData.indexOf("TRN")!=-1){
+  if(loginuser.indexOf("1006 Finance")!=-1){ 
+    loginpassword = "CORE@WPP456"
+  }
+  if(loginuser.indexOf("SPA Biller (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  if(loginuser.indexOf("SPA Management (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  if(loginuser.indexOf("SPA Senior Accountant (TST)")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+  
+}
+
+if(EnvParams.instanceData.indexOf("BAU")!=-1){
+  if(loginuser.indexOf("1707 Finance")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+    if(loginuser.indexOf("IND Junior APs")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+    if(loginuser.indexOf("MYS Junior Accountants")!=-1){ 
+    loginpassword = "CORE@WPP123"
+  }
+}
+
       pwdAddr.setText(loginpassword);
       dropdown.DropDown();
       dropdown.ClickItem(Language);
@@ -217,6 +306,11 @@ ValidationUtils.verify(false,true,"Language is Needed to Login Maconomy");
   }
   var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - "+loginuser).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
   menuBar.Click();
-
+  Sys.Desktop.KeyDown(0x12);
+  Sys.Desktop.KeyDown(0x20);
+  Sys.Desktop.KeyUp(0x12);
+  Sys.Desktop.KeyUp(0x20);
+  Sys.Desktop.KeyDown(0x58);
+  Sys.Desktop.KeyUp(0x58);  
     }
  

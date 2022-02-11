@@ -10,11 +10,9 @@
 			<testItem key="{516A88BA-5E84-4BD4-8E16-A9A9855E0A5B}" enabled="True" timeout="0" stopOnError="True" description="" />
 		</children>
 	</testItems>
-	<variables key="{D9509ADF-4AD1-46D9-A36E-7E23E4C049FB}">
-		<data Version="3" />
-	</variables>
+	<variables key="{D9509ADF-4AD1-46D9-A36E-7E23E4C049FB}" />
 	<analysis key="{EE424258-7729-4A84-BAA2-EB618A74D4C8}" />
-	<scc key="{C900492B-D218-429C-9AA0-264B7D78CA88}" name="Git Plugin">
+	<scc key="{00000000-0000-0000-0000-000000000000}" name="">
 		<data />
 	</scc>
 	<extender key="{1A3FC97E-9A66-4716-B166-35D10B4146E0}">

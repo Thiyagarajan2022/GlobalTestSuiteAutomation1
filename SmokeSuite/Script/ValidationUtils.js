@@ -5,6 +5,7 @@ Log.Checkpoint(message);
 ReportUtils.logStep("PASS",message);
 }
 else{  
+TestRunner.JiraStat = false;
 ReportUtils.logStep("FAIL",message);
 Log.Error(message);
 }

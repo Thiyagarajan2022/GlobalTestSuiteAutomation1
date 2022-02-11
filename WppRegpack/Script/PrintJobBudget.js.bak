@@ -12,7 +12,7 @@ var sheetName = "PrintJobBudget";
 var jobNumber = "";
 var referPDF = "";
 Indicator.Show();
-
+ 
 
 function PrintJobBudget(){ 
 Indicator.PushText("waiting for window to open");

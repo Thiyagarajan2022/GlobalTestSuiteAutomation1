@@ -4,22 +4,22 @@
 	<testData />
 	<data>
 		<item caption="TE" moniker="{75D8274D-03B2-4FAD-8ED3-C395AC8F3312}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\TE_1.png" initialHash="034A4ADC" selectionLeft="67" selectionTop="185" selectionWidth="111" selectionHeight="24" initialLeft="67" initialTop="185" initialWidth="111" initialHeight="24" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\TE_1.png" initialHash="00000000" selectionLeft="37" selectionTop="183" selectionWidth="29" selectionHeight="29" initialLeft="37" initialTop="183" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="TE1" moniker="{CB44B290-A5E8-4A3E-BBAD-8260CE32F7DF}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\TE1.png" initialHash="43903B46" selectionLeft="68" selectionTop="188" selectionWidth="117" selectionHeight="20" initialLeft="68" initialTop="188" initialWidth="117" initialHeight="20" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\TE1.png" initialHash="00000000" selectionLeft="37" selectionTop="184" selectionWidth="29" selectionHeight="28" initialLeft="37" initialTop="184" initialWidth="29" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="TE2" moniker="{472A682E-7DE2-4D5C-8D4C-A06DF01623FA}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\TE2.png" initialHash="9478F29E" selectionLeft="69" selectionTop="413" selectionWidth="104" selectionHeight="19" initialLeft="69" initialTop="413" initialWidth="104" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\TE2.png" initialHash="00000000" selectionLeft="37" selectionTop="407" selectionWidth="30" selectionHeight="28" initialLeft="37" initialTop="407" initialWidth="30" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Jobs" moniker="{4B6CB107-0619-41EC-ACE5-179DE05AFB4B}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Jobs_1.png" initialHash="986C6695" selectionLeft="77" selectionTop="231" selectionWidth="58" selectionHeight="23" initialLeft="77" initialTop="231" initialWidth="58" initialHeight="23" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Jobs_1.png" initialHash="00000000" selectionLeft="45" selectionTop="228" selectionWidth="29" selectionHeight="29" initialLeft="45" initialTop="228" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Job" moniker="{7E4073D5-3002-44E0-B2F2-9F9066065630}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Job_1.png" initialHash="B8E079D4" selectionLeft="76" selectionTop="440" selectionWidth="61" selectionHeight="19" initialLeft="76" initialTop="440" initialWidth="61" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Job_1.png" initialHash="00000000" selectionLeft="45" selectionTop="435" selectionWidth="29" selectionHeight="29" initialLeft="45" initialTop="435" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="Jobs1" moniker="{72383F39-C5B1-4BFF-B617-4D79A8E976F1}" isComposite="False" simpleMode="True" currentImageIndex="0">
-			<image imageFileName="Data\Jobs1_1.png" initialHash="95739BAF" selectionLeft="77" selectionTop="234" selectionWidth="52" selectionHeight="19" initialLeft="77" initialTop="234" initialWidth="52" initialHeight="19" pixelTolerance="0" colorTolerance="0" deviceName="" />
+			<image imageFileName="Data\Jobs1_1.png" initialHash="00000000" selectionLeft="45" selectionTop="228" selectionWidth="29" selectionHeight="28" initialLeft="45" initialTop="228" initialWidth="29" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
 		</item>
 		<item caption="arrow" moniker="{400DC6B3-EE3D-414E-8C14-7C54B4CA1846}" isComposite="False" simpleMode="True" currentImageIndex="0">
 			<image imageFileName="Data\arrow.png" initialHash="72F63C36" selectionLeft="1308" selectionTop="391" selectionWidth="22" selectionHeight="22" initialLeft="1308" initialTop="391" initialWidth="22" initialHeight="22" pixelTolerance="0" colorTolerance="0" deviceName="" />

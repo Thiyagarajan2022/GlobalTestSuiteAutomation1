@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
 	<children>
-<<<<<<< HEAD
-		<child name="Unit1" key="{F89B70BF-08E5-480C-ACAE-9EBCCA6BDD5C}" path="Unit1.js" />
-=======
 		<folder name="BusinessComponents">
 			<folder name="Windows">
 				<child name="Expenses" key="{8C8BE56A-4C15-4CBA-BDD0-BB288039A985}" path="Expenses.js" />
@@ -30,13 +27,100 @@
 			<child name="TextUtils" key="{946ED8FD-F62F-44A5-8D65-95FF60DF2C41}" path="TextUtils.js" />
 		</folder>
 		<folder name="TestScripts">
-			<child name="PrintJobBudgetMPL" key="{ED0135EE-EA12-41D7-BEF0-63F145AD9C1F}" path="PrintJobBudgetMPL.js" />
-			<child name="QueryAndValidateExistingEmployee" key="{768CEDC4-50E0-4FC1-946C-4E76017A56CC}" path="QueryAndValidateExistingEmployee.js" />
-			<child name="QueryAndValidateExistingJob" key="{8FA6B68D-7358-4393-A767-5263B06CB46E}" path="QueryAndValidateExistingJob.js" />
-			<child name="VerfiyTimesheet" key="{37E395CB-1826-49D5-954A-44B3DC305FA3}" path="VerfiyTimesheet.js" />
+			<child name="Verify_BFC_Mada_Moda_Report" key="{DE377C49-E997-41A1-96A2-61F18D846974}" path="Verify_BFC_Mada_Moda_Report.js" />
+			<child name="Verify_HAndK_CubeReport" key="{175B3A8F-5073-4A9A-AFA6-340901F0F01F}" path="Verify_HAndK_CubeReport.js" />
+			<child name="VerifyAccountsPayableWorkspace" key="{B7E1D6D8-534F-45C2-8954-B0B4BA85448A}" path="VerifyAccountsPayableWorkspace.js" />
+			<child name="VerifyAccountsReceivableWorkspace" key="{1C437BAD-23DA-4162-B1BF-F841D6482CB2}" path="VerifyAccountsReceivableWorkspace.js" />
+			<child name="VerifyAgedAPTransactionsReport" key="{46204336-8DCB-45A5-8AB9-42B96054441B}" path="VerifyAgedAPTransactionsReport.js" />
+			<child name="VerifyAgedARTransactionsReport" key="{20D2B3D3-78AD-49B3-850B-DD1C52C51A90}" path="VerifyAgedARTransactionsReport.js" />
+			<child name="VerifyAgedWIPReport" key="{D9118320-843A-488C-8D9A-50BBE97D929C}" path="VerifyAgedWIPReport.js" />
+			<child name="VerifyAP_PurchaseOrder_MPL" key="{C3B5AA5C-60AF-48EE-B456-CAD9A32DF6BA}" path="VerifyAP_PurchaseOrder_MPL.js" />
+			<child name="VerifyAPInvoiceStatusReport" key="{856C9F88-949C-427C-B558-94203BDEFA50}" path="VerifyAPInvoiceStatusReport.js" />
+			<child name="VerifyApprovalHierarchyReport" key="{BFAF5681-CDA2-4128-83BE-8824DB058ADC}" path="VerifyApprovalHierarchyReport.js" />
+			<child name="VerifyApprovalsReport" key="{B506ED81-929B-4C8A-AF94-E05A74B9A7D8}" path="VerifyApprovalsReport.js" />
+			<child name="VerifyAPTransactionListReport" key="{A6F88344-713B-4243-8F62-21557126E910}" path="VerifyAPTransactionListReport.js" />
+			<child name="VerifyAR_ReceiptReconciliationReport" key="{4F40D25F-616E-4E67-8FA5-DFF475FAEB65}" path="VerifyAR_ReceiptReconciliationReport.js" />
+			<child name="VerifyARTransactionListReport" key="{2E62FC5C-575D-4FB2-B8EB-0FE38290C3D3}" path="VerifyARTransactionListReport.js" />
+			<child name="VerifyAssetsWorkspace" key="{0DF390DC-7739-402D-917E-C8D1571A33C3}" path="VerifyAssetsWorkspace.js" />
+			<child name="GenerateEmployeeExportReport" key="{B7BF00EC-5338-40AE-9147-E3A8C49B36BD}" path="GenerateEmployeeExportReport.js" />
+			<child name="GenerateExchangeRateReport" key="{970AB106-966F-4B3E-BA73-5704EF716B92}" path="GenerateExchangeRateReport.js" />
+			<child name="GenerateGLTransactionListReport" key="{344CC5D4-7234-42DE-B457-AD21EF3577A8}" path="GenerateGLTransactionListReport.js" />
+			<child name="GenerateJobBillingSummaryReport" key="{3C3C6F12-8781-4CCE-9219-E1F2A9ECE6D3}" path="GenerateJobBillingSummaryReport.js" />
+			<child name="GenerateProfitAndLossReport" key="{F42B3994-DEC1-401C-AF43-1A82CF9F2770}" path="GenerateProfitAndLossReport.js" />
+			<child name="GeneratePurchaseOrderReport" key="{056164B8-69FB-4C02-A0F6-64F0272A432B}" path="GeneratePurchaseOrderReport.js" />
+			<child name="GenerateSPN_ProfitAndLossReport" key="{73DE201A-90BC-4E8C-99E0-015D6ED269E1}" path="GenerateSPN_ProfitAndLossReport.js" />
+			<child name="GenerateTrailBalanceDetailReport" key="{F91407E7-5FCA-4A09-BEA8-7BEDDAF65F12}" path="GenerateTrailBalanceDetailReport.js" />
+			<child name="GenerateTrailBalanceReport" key="{1CFCD5F9-3524-493B-9FEB-67008EBD0323}" path="GenerateTrailBalanceReport.js" />
+			<child name="VerifyBalanceSheetReport" key="{5029175C-C568-4AAB-A588-1AFAEBBBC988}" path="VerifyBalanceSheetReport.js" />
+			<child name="VerifyBankingWorkspace" key="{A1EC3CAA-3BD0-4D3E-ADEF-C88CDE8A887B}" path="VerifyBankingWorkspace.js" />
+			<child name="VerifyBankReconciliationsReport" key="{79D272E8-54D4-4620-A143-A34F906892A6}" path="VerifyBankReconciliationsReport.js" />
+			<child name="VerifyBAVEL_Report" key="{98B34C25-707A-49AC-8142-69BA64C3A6BE}" path="VerifyBAVEL_Report.js" />
+			<child name="VerifyBFC_ExtractReport" key="{23F13188-6372-4B9A-BE5A-AB612918BA55}" path="VerifyBFC_ExtractReport.js" />
+			<child name="VerifyBillingAndIncomeReport" key="{194F84F8-3351-46E5-A3CE-E55A29CBF2A1}" path="VerifyBillingAndIncomeReport.js" />
+			<child name="VerifyBravoReport" key="{F770F4FD-5683-4A93-89D3-BFF48A4BAD42}" path="VerifyBravoReport.js" />
+			<child name="VerifyBudgetInvoiceReport" key="{2261234F-60ED-4691-B8E2-A06D7184A8BB}" path="VerifyBudgetInvoiceReport.js" />
+			<child name="VerifyChangeLogReport" key="{1F37B8B6-1E1B-40AB-AC3D-FE70BCD8F959}" path="VerifyChangeLogReport.js" />
+			<child name="VerifyClientBrandProductExportReport" key="{B9CB7E53-4820-4839-8828-6C1BFEC22822}" path="VerifyClientBrandProductExportReport.js" />
+			<child name="VerifyClientCreditNote_MPL" key="{56348363-4FDB-41F3-A58C-4CB15FE40A4D}" path="VerifyClientCreditNote_MPL.js" />
+			<child name="VerifyClientInvoice_MPL" key="{FB353317-4A53-4A00-8433-9CA2C5ADF53A}" path="VerifyClientInvoice_MPL.js" />
+			<child name="VerifyClientProfitabilityReport" key="{5C4B6120-0576-4F37-9757-C0CE09F188FA}" path="VerifyClientProfitabilityReport.js" />
+			<child name="VerifyDraftCreditNote_MPL" key="{FC8C76D8-8F43-479B-BCE5-F31D55397FC8}" path="VerifyDraftCreditNote_MPL.js" />
+			<child name="VerifyDraftInvoice_MPL" key="{D4AA4C98-E26B-448C-BF2E-51F488E7B285}" path="VerifyDraftInvoice_MPL.js" />
+			<child name="VerifyEmployeeCreationScreen" key="{339EC7E6-4630-4906-91B7-C0CB8C8D59A6}" path="VerifyEmployeeCreationScreen.js" />
+			<child name="VerifyEmployeeExpenseSheetReport" key="{887908D6-A485-449D-A2EC-9514263020B3}" path="VerifyEmployeeExpenseSheetReport.js" />
+			<child name="VerifyEmployeeExportReport" key="{206E9208-39DE-4A91-9E5D-001163C4B583}" path="VerifyEmployeeExportReport.js" />
+			<child name="VerifyEmployeeUtilisationReport" key="{40DCD91D-DB4A-4D11-AB25-C9F0D9F19F1F}" path="VerifyEmployeeUtilisationReport.js" />
+			<child name="VerifyExchangeRateReport" key="{77D67E06-0B8A-46C6-A7F1-B90110EC6949}" path="VerifyExchangeRateReport.js" />
+			<child name="VerifyFixedAssetsDepreciationReport" key="{EE520A59-37E0-4E9F-A9B9-A853BC565FE2}" path="VerifyFixedAssetsDepreciationReport.js" />
+			<child name="VerifyFixedAssetsReport" key="{F54499DE-EC6D-49C9-963E-B24591772936}" path="VerifyFixedAssetsReport.js" />
+			<child name="VerifyGeneralLedgerWorkspace" key="{81BD4999-1758-4204-AC60-285BDAAB2292}" path="VerifyGeneralLedgerWorkspace.js" />
+			<child name="VerifyGlobalClientCreationScreen" key="{C2264A2E-DCC4-42DC-A14E-73685CBA82DA}" path="VerifyGlobalClientCreationScreen.js" />
+			<child name="VerifyGlobalVendorCreationScreen" key="{F8A507C8-2EA5-43D4-A2B4-38B6D4BCACB2}" path="VerifyGlobalVendorCreationScreen.js" />
+			<child name="VerifyGLTransactionListReport" key="{3D025E3C-BB84-4609-B8C8-967AA81AFB2C}" path="VerifyGLTransactionListReport.js" />
+			<child name="VerifyHR_AbsenceReport" key="{3EE168DD-9EB3-42D3-87DC-7D21AF013D1D}" path="VerifyHR_AbsenceReport.js" />
+			<child name="VerifyHR_EmployeeLinksReport" key="{A7DBD4D5-057E-4878-8BB9-545C698D085D}" path="VerifyHR_EmployeeLinksReport.js" />
+			<child name="VerifyHumanResourceWorkspace" key="{7D1E8D60-B02C-469A-8143-D48D7C68C0A4}" path="VerifyHumanResourceWorkspace.js" />
+			<child name="VerifyICS_ClientVendorReport" key="{5EB34FC0-0BAE-49BD-8726-1E28406D802A}" path="VerifyICS_ClientVendorReport.js" />
+			<child name="VerifyIND_AdvanceReceiptVoucherReport" key="{7C82AC9B-43C3-4530-92EA-0D6D5E079F5A}" path="VerifyIND_AdvanceReceiptVoucherReport.js" />
+			<child name="VerifyIND_AdvanceRefundVoucherReport" key="{AA7AAC07-DAD9-4C90-8D2E-C228C4BB1781}" path="VerifyIND_AdvanceRefundVoucherReport.js" />
+			<child name="VerifyIND_GSTRReport" key="{B1AAC629-0E82-46F9-B62B-C745416C9B98}" path="VerifyIND_GSTRReport.js" />
+			<child name="VerifyIND_MSMEReport" key="{AD5EC3F7-4648-4385-AD0F-B81F3CC82DF5}" path="VerifyIND_MSMEReport.js" />
+			<child name="VerifyIND_PaymentVoucherREport" key="{049DB128-649B-48CE-BA07-58B7DC3AAACD}" path="VerifyIND_PaymentVoucherREport.js" />
+			<child name="VerifyIND_RCMSelfInvoiceVoucherReport" key="{DB9AD1CE-4A07-40C3-9922-D7C0472BB891}" path="VerifyIND_RCMSelfInvoiceVoucherReport.js" />
+			<child name="VerifyIND_TDSAPRegisterReport" key="{636D43E3-92AD-4073-977E-10EBE9BF3215}" path="VerifyIND_TDSAPRegisterReport.js" />
+			<child name="VerifyIND_TDSARRegisterReport" key="{F10E2872-AB3A-4F52-9124-02495CAFD805}" path="VerifyIND_TDSARRegisterReport.js" />
+			<child name="VerifyJobBillingSummaryReport" key="{C351853C-24F6-41CE-BCC5-F77B4A2A7B8A}" path="VerifyJobBillingSummaryReport.js" />
+			<child name="VerifyJobDetailReport" key="{F8748D62-70F6-4C4C-AF28-2F6261BEA1D0}" path="VerifyJobDetailReport.js" />
+			<child name="VerifyJobSummaryReport" key="{D2AA9DAE-7396-4786-BA59-DA7A15EB8914}" path="VerifyJobSummaryReport.js" />
+			<child name="VerifyJobsWorkspace" key="{C82A9472-9990-4D53-9636-A5C4E4D1D177}" path="VerifyJobsWorkspace.js" />
+			<child name="VerifyMLY_GAFReport" key="{A8554D0A-5172-421B-A72B-E3CB0E3CBF22}" path="VerifyMLY_GAFReport.js" />
+			<child name="VerifyOB10Report" key="{E40A0351-B4CE-47EC-82CF-BC5C36C1F706}" path="VerifyOB10Report.js" />
+			<child name="VerifyPaymentSelectionReport" key="{A268941A-C218-49E3-A0E8-917EB287EACE}" path="VerifyPaymentSelectionReport.js" />
+			<child name="VerifyPersonalInformationWorkspace" key="{0554A0D4-A9EF-42AF-BA2E-F4C6211D3D36}" path="VerifyPersonalInformationWorkspace.js" />
+			<child name="VerifyProfitAndLossReport" key="{4046B989-BB0D-4350-AAA8-96C61108D0A0}" path="VerifyProfitAndLossReport.js" />
+			<child name="VerifyPurchaseOrderReport" key="{EE18587C-9F82-4761-B5C5-7D2C5E773D3F}" path="VerifyPurchaseOrderReport.js" />
+			<child name="VerifyReportingWorkspace" key="{A979559B-505C-4365-BF47-3D2C52BC76B2}" path="VerifyReportingWorkspace.js" />
+			<child name="VerifyReportPromptsReport" key="{4DED8B83-F5E3-43E8-A926-E11AAF6CD2B7}" path="VerifyReportPromptsReport.js" />
+			<child name="VerifyReportStatisticsReport" key="{621BD66E-5B3A-47E6-A872-AC340CAEDAA4}" path="VerifyReportStatisticsReport.js" />
+			<child name="VerifySetupWorkspace" key="{9C58C002-6FD7-4759-8477-93FD5D8B4FD5}" path="VerifySetupWorkspace.js" />
+			<child name="VerifySPN_BalanceSheetReport" key="{A36342C5-DB4F-41B2-8F7E-167F963318B1}" path="VerifySPN_BalanceSheetReport.js" />
+			<child name="VerifySPN_EUTurnoverReport" key="{782CC024-731D-4835-8E26-1EBEEA03B021}" path="VerifySPN_EUTurnoverReport.js" />
+			<child name="VerifySPN_ProfitAndLossReport" key="{A6FCCF92-B28D-41FC-9493-2006B8D0C09A}" path="VerifySPN_ProfitAndLossReport.js" />
+			<child name="VerifySPN_TaxSettlementReport" key="{05247CE6-39B4-4567-BD6A-09412632BC50}" path="VerifySPN_TaxSettlementReport.js" />
+			<child name="VerifySPN_TrailBalanceReport" key="{C317983E-6DF0-4D7A-A8FA-4A4B4377FC8F}" path="VerifySPN_TrailBalanceReport.js" />
+			<child name="VerifyTimeExpensesWorkspace" key="{0711496F-9FB3-4509-9323-C7B9C0942CE4}" path="VerifyTimeExpensesWorkspace.js" />
+			<child name="VerifyTimeFinancialAnalysisReport" key="{878F5464-03D7-4BA6-8794-D2A67300ED0B}" path="VerifyTimeFinancialAnalysisReport.js" />
+			<child name="VerifyTimeSheetDailyWeeklyReport" key="{8408356F-A93D-4360-AB71-45A11C3175C7}" path="VerifyTimeSheetDailyWeeklyReport.js" />
+			<child name="VerifyTimeSheetMonthlyReport" key="{2406FCE5-98D0-4890-9100-C980E2ACE61E}" path="VerifyTimeSheetMonthlyReport.js" />
+			<child name="VerifyTimeSheetStatusReport" key="{4FBB6380-CE0E-40AE-9E36-D298A42CAD58}" path="VerifyTimeSheetStatusReport.js" />
+			<child name="VerifyTrailBalanceDetailReport" key="{B28C3975-D4A7-47DA-99A5-16F8211993BE}" path="VerifyTrailBalanceDetailReport.js" />
+			<child name="VerifyTrailBalanceReport" key="{96F383EA-72C6-4333-83B3-62F6EEFA8740}" path="VerifyTrailBalanceReport.js" />
+			<child name="VerifyUserCreationScreen" key="{BD74AF41-C00B-4BA7-98B2-53B872229A13}" path="VerifyUserCreationScreen.js" />
+			<child name="VerifyUserTypesAccessRightsReport" key="{3B1E7406-A868-45F6-9792-54B74B9C7422}" path="VerifyUserTypesAccessRightsReport.js" />
+			<child name="VerifyVendorExportReport" key="{5E520B6C-FB84-4844-9091-F53E9C71B52B}" path="VerifyVendorExportReport.js" />
+			<child name="VerifyVendorInvoiceQueryReport" key="{BE9EF3AB-B5CC-4114-83B4-83E365F6F69D}" path="VerifyVendorInvoiceQueryReport.js" />
 		</folder>
 		<child name="Unit1" key="{F89B70BF-08E5-480C-ACAE-9EBCCA6BDD5C}" path="Unit1.js" />
 		<child name="TestRunner" key="{026D01DC-007B-4C4C-AAB4-11025D236684}" path="TestRunner.js" />
->>>>>>> 4c918db65de477106867b49e97036663a0842003
 	</children>
 </Root>

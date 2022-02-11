@@ -71,7 +71,7 @@ TestRunner.archivePath = TestRunner.packedResults + TestRunner.reportName;
 // Packes the resutls
 if (slPacker.Pack(fileList, TestRunner.workDir, TestRunner.archivePath))
   Log.Message("Files compressed successfully.");
-  
+ // Consolidate 
 ReportUtils.reportConsolidated.endTest(testConsolidated);
 ReportUtils.reportConsolidated.flush();
 
