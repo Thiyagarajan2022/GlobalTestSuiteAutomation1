@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{43401DD0-18EE-4AB2-9AD3-A5DEC45DAC4B}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+	<config nodeName="ImageSet" />
+	<testData />
+	<data>
+		<item caption="Icon" moniker="{1F5F9672-F99B-4399-8A0D-DB7EB3673112}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Icon.png" initialHash="23784569" selectionLeft="1175" selectionTop="54" selectionWidth="100" selectionHeight="38" initialLeft="1175" initialTop="54" initialWidth="100" initialHeight="38" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Workspace" moniker="{F10FA72A-0F6B-45EA-87C2-79A5157653C7}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Workspace.png" initialHash="B48E0461" selectionLeft="62" selectionTop="50" selectionWidth="65" selectionHeight="23" initialLeft="62" initialTop="50" initialWidth="65" initialHeight="23" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Reporting" moniker="{52B0CCF7-5C0A-46B8-A9B2-4429A0FCE7E8}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Reporting.png" initialHash="0A72C125" selectionLeft="33" selectionTop="205" selectionWidth="108" selectionHeight="31" initialLeft="33" initialTop="205" initialWidth="108" initialHeight="31" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Reporting_1" moniker="{8D3C075C-A5EA-468E-BF40-68A8CBC8182F}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Reporting_1.png" initialHash="7B070323" selectionLeft="30" selectionTop="204" selectionWidth="122" selectionHeight="34" initialLeft="30" initialTop="204" initialWidth="122" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="PersonalInformation" moniker="{B1C3E303-0EA6-4F0E-BF67-1E62437E634A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\PersonalInformation.png" initialHash="B6C30840" selectionLeft="34" selectionTop="147" selectionWidth="166" selectionHeight="29" initialLeft="34" initialTop="147" initialWidth="166" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="LoadedBox" moniker="{36BD76B6-A04E-4E39-B5A8-EE4EA64858B8}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\LoadedBox.png" initialHash="F4725E38" selectionLeft="245" selectionTop="52" selectionWidth="26" selectionHeight="21" initialLeft="245" initialTop="52" initialWidth="26" initialHeight="21" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Time_Expense" moniker="{484AB7CA-907D-4136-B490-4D7986F933C4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Time_Expense.png" initialHash="0715ACA0" selectionLeft="35" selectionTop="184" selectionWidth="143" selectionHeight="25" initialLeft="35" initialTop="184" initialWidth="143" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="ExcelImage" moniker="{F9F08C01-7C08-4EE2-86D6-4668E7E85310}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\ExcelImage.png" initialHash="446D00DE" selectionLeft="403" selectionTop="80" selectionWidth="25" selectionHeight="28" initialLeft="403" initialTop="80" initialWidth="25" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Legend" moniker="{76123266-8EFB-4446-B70E-5001A72D4793}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Legend.png" initialHash="D2C01F2C" selectionLeft="453" selectionTop="133" selectionWidth="60" selectionHeight="120" initialLeft="453" initialTop="133" initialWidth="60" initialHeight="120" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobsMenu" moniker="{065D8300-95DB-4066-9B15-D6C9AAEC02B4}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobsMenu.png" initialHash="E965347E" selectionLeft="35" selectionTop="220" selectionWidth="78" selectionHeight="28" initialLeft="35" initialTop="220" initialWidth="78" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="HumanResources" moniker="{75375C05-BCFC-4B37-A3B3-741C368ED2D0}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\HumanResources.png" initialHash="228A7F8E" selectionLeft="35" selectionTop="183" selectionWidth="152" selectionHeight="29" initialLeft="35" initialTop="183" initialWidth="152" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="GeneralLedger" moniker="{C76378A8-4A6D-4599-A88E-9020CD351A66}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\GeneralLedger.png" initialHash="169184D9" selectionLeft="35" selectionTop="189" selectionWidth="135" selectionHeight="31" initialLeft="35" initialTop="189" initialWidth="135" initialHeight="31" pixelTolerance="837" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="RefreshIcon" moniker="{B781FD28-E4F4-439B-AA32-3E70F64119ED}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\RefreshIcon.png" initialHash="548D8F57" selectionLeft="411" selectionTop="183" selectionWidth="26" selectionHeight="25" initialLeft="411" initialTop="183" initialWidth="26" initialHeight="25" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AssetsWorkspace" moniker="{1CCCDCA8-AE1B-4D79-8CD2-624D7E9390C9}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AssetsWorkspace.png" initialHash="DA7D56A9" selectionLeft="36" selectionTop="237" selectionWidth="87" selectionHeight="32" initialLeft="36" initialTop="237" initialWidth="87" initialHeight="32" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsPayable" moniker="{000BA9AE-09CD-4D13-9C7A-134AD9706688}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsPayable.png" initialHash="48E62F9C" selectionLeft="44" selectionTop="154" selectionWidth="140" selectionHeight="30" initialLeft="44" initialTop="154" initialWidth="140" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="SetupWorkspace" moniker="{7D6256C6-8404-4398-8CF3-05E33A3125EC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\SetupWorkspace.png" initialHash="4B127099" selectionLeft="41" selectionTop="177" selectionWidth="92" selectionHeight="30" initialLeft="41" initialTop="177" initialWidth="92" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Jobs_Workspace" moniker="{B136CBB8-1AD8-42BD-BA70-EDC4AAE32040}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Jobs_Workspace.png" initialHash="786142B8" selectionLeft="35" selectionTop="399" selectionWidth="77" selectionHeight="30" initialLeft="35" initialTop="399" initialWidth="77" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsPayable_2" moniker="{C201ADD7-9D79-4F80-93A2-7491F11434EA}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsPayable_2.png" initialHash="A5FDFD70" selectionLeft="34" selectionTop="513" selectionWidth="140" selectionHeight="30" initialLeft="34" initialTop="513" initialWidth="140" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AssetsWorkspace_2" moniker="{99B6F2B1-AB2B-4082-9D02-8A7E0FAAAEC0}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AssetsWorkspace_2.png" initialHash="08079AD9" selectionLeft="44" selectionTop="507" selectionWidth="83" selectionHeight="30" initialLeft="44" initialTop="507" initialWidth="83" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsReceivable_2" moniker="{E18C125A-8F10-4524-9899-9153C67BD1A1}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsReceivable_2.png" initialHash="1715B967" selectionLeft="44" selectionTop="542" selectionWidth="159" selectionHeight="30" initialLeft="44" initialTop="542" initialWidth="159" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BankingWorkspace_2" moniker="{2A02F05E-A6D4-4FFF-A360-B6DD6E0B360A}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BankingWorkspace_2.png" initialHash="866A8A12" selectionLeft="44" selectionTop="617" selectionWidth="88" selectionHeight="27" initialLeft="44" initialTop="617" initialWidth="88" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsReceivable_3" moniker="{05F2F5E9-81FD-4850-B2DE-0C672882028E}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsReceivable_3.png" initialHash="E315B416" selectionLeft="44" selectionTop="470" selectionWidth="156" selectionHeight="30" initialLeft="44" initialTop="470" initialWidth="156" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="AccountsReceivable" moniker="{F4724AA2-41C0-409D-954E-CA831D5E230D}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\AccountsReceivable_1.png" initialHash="13C29F66" selectionLeft="34" selectionTop="476" selectionWidth="190" selectionHeight="34" initialLeft="34" initialTop="476" initialWidth="190" initialHeight="34" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="BankingWorkspace" moniker="{CECA5C13-7319-4317-84D1-7319CB8170E6}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\BankingWorkspace_1.png" initialHash="00000000" selectionLeft="36" selectionTop="550" selectionWidth="96" selectionHeight="30" initialLeft="36" initialTop="550" initialWidth="96" initialHeight="30" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
+</Root>
