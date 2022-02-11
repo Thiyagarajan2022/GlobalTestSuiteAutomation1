@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{5CD7ACAD-CD81-4B10-9DE8-FBBFB3DA877E}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+	<config nodeName="ImageSet2" />
+	<testData />
+	<data>
+		<item caption="TE" moniker="{75D8274D-03B2-4FAD-8ED3-C395AC8F3312}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TE_1.png" initialHash="00000000" selectionLeft="37" selectionTop="183" selectionWidth="29" selectionHeight="29" initialLeft="37" initialTop="183" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TE1" moniker="{CB44B290-A5E8-4A3E-BBAD-8260CE32F7DF}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TE1.png" initialHash="00000000" selectionLeft="37" selectionTop="184" selectionWidth="29" selectionHeight="28" initialLeft="37" initialTop="184" initialWidth="29" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="TE2" moniker="{472A682E-7DE2-4D5C-8D4C-A06DF01623FA}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\TE2.png" initialHash="00000000" selectionLeft="37" selectionTop="407" selectionWidth="30" selectionHeight="28" initialLeft="37" initialTop="407" initialWidth="30" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Jobs" moniker="{4B6CB107-0619-41EC-ACE5-179DE05AFB4B}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Jobs_1.png" initialHash="00000000" selectionLeft="45" selectionTop="228" selectionWidth="29" selectionHeight="29" initialLeft="45" initialTop="228" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Job" moniker="{7E4073D5-3002-44E0-B2F2-9F9066065630}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Job_1.png" initialHash="00000000" selectionLeft="45" selectionTop="435" selectionWidth="29" selectionHeight="29" initialLeft="45" initialTop="435" initialWidth="29" initialHeight="29" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Jobs1" moniker="{72383F39-C5B1-4BFF-B617-4D79A8E976F1}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Jobs1_1.png" initialHash="00000000" selectionLeft="45" selectionTop="228" selectionWidth="29" selectionHeight="28" initialLeft="45" initialTop="228" initialWidth="29" initialHeight="28" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="arrow" moniker="{400DC6B3-EE3D-414E-8C14-7C54B4CA1846}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\arrow.png" initialHash="72F63C36" selectionLeft="1308" selectionTop="391" selectionWidth="22" selectionHeight="22" initialLeft="1308" initialTop="391" initialWidth="22" initialHeight="22" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="JobWizard" moniker="{CA077CCA-3820-44C5-B3CF-07E174500448}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\JobWizard_1.png" initialHash="AB073AE7" selectionLeft="435" selectionTop="72" selectionWidth="505" selectionHeight="450" initialLeft="435" initialTop="72" initialWidth="505" initialHeight="450" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
+</Root>

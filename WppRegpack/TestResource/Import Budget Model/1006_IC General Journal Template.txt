@@ -1,0 +1,6 @@
+JOURNAL:FORMAT	JournalNumber	CompanyNumber												
+JOURNAL	#KEEP	1006												
+							Job	Work Code		CounterParty BFC	Job Department	Job Business Unit		
+GENERALJOURNAL:FORMAT	JournalNumber	LineNumber	TransactionNumber	EntryDate	EntryText	TypeOfEntry	JobNumber	TaskName	CompanyNumber	Specification1Name	LocalSpec2Name	LocalSpec4Name	DebitBase	CreditBase
+GENERALJOURNAL	#KEEP	#KEEP	#KEEP	10.10.2021	Staff cost Recharges - FEB 2018 - 1028 Share	G	1006P	759100000-01	1006	GYASPIHC	D112	B101	0	1000
+GENERALJOURNAL	#KEEP	#KEEP	#KEEP	10.10.2021	Staff cost from 1025	G	1008P	629110000-01	1008	GYASPTBA	D112	B101	1000	0

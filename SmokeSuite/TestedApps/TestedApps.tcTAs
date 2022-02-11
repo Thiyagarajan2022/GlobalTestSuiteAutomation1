@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{90D101C8-80C7-48D4-9055-2E451B9BCD75}" version="1400" key="{A208EC67-6D6A-445D-B10D-B760A0BCE18B}" typeId="{90D101C8-80C7-48D4-9055-2E451B9BCD75}">
+	<config nodeName="TestedApps" />
+	<testData />
+	<data />
+	<children>
+		<child key="{FA30A8F5-8B7C-4E87-A923-1853481578A5}">
+			<config nodeName="DATAEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dataemea.deltekenterprise.com -p 443 -s dataemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dataemea.deltekenterprise.com -p 443 -s dataemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dataemea.deltekenterprise.com -p 443 -s dataemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DATAEMEA\" parameters="-a https://wpp-dataemea.deltekenterprise.com -p 443 -s dataemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{2E6795BD-DD78-4878-81C9-B608DD893514}">
+			<config nodeName="DATAAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dataapac.deltekenterprise.com -p 443 -s dataapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dataapac.deltekenterprise.com -p 443 -s dataapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dataapac.deltekenterprise.com -p 443 -s dataapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DATAAPAC\" parameters="-a https://wpp-dataapac.deltekenterprise.com -p 443 -s dataapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{B694EC15-40BF-4D7C-AA47-C751A471EC4F}">
+			<config nodeName="SUPPEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-suppemea.deltekenterprise.com -p 443 -s suppemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-suppemea.deltekenterprise.com -p 443 -s suppemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-suppemea.deltekenterprise.com -p 443 -s suppemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\SUPPEMEA\" parameters="-a https://wpp-suppemea.deltekenterprise.com -p 443 -s suppemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{3976BF74-5D54-42D7-A70D-9C4036B49AA7}">
+			<config nodeName="SUPPAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-suppapac.deltekenterprise.com -p 443 -s suppapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-suppapac.deltekenterprise.com -p 443 -s suppapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-suppapac.deltekenterprise.com -p 443 -s suppapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\SUPPAPAC\" parameters="-a https://wpp-suppapac.deltekenterprise.com -p 443 -s suppapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{58FAF74E-64FC-43BC-9AE2-65A44A674259}">
+			<config nodeName="PRODEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-emea.deltekenterprise.com -p 443 -s emea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-emea.deltekenterprise.com -p 443 -s emea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-emea.deltekenterprise.com -p 443 -s emea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\PRODEMEA\" parameters="-a https://wpp-emea.deltekenterprise.com -p 443 -s emea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{17222CE5-BA5A-467F-B9D4-8092ED5BB30E}">
+			<config nodeName="PRODAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-apac.deltekenterprise.com -p 443 -s apac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-apac.deltekenterprise.com -p 443 -s apac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-apac.deltekenterprise.com -p 443 -s apac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\PRODAPAC\" parameters="-a https://wpp-apac.deltekenterprise.com -p 443 -s apac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{9D9E5C66-7C75-4C6C-B6DD-6156AA820A91}">
+			<config nodeName="PRPREMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-prpremea.deltekenterprise.com -p 443 -s prpremea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-prpremea.deltekenterprise.com -p 443 -s prpremea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-prpremea.deltekenterprise.com -p 443 -s prpremea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\PRPREMEA\" parameters="-a https://wpp-prpremea.deltekenterprise.com -p 443 -s prpremea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{3EBE6393-220C-460C-98E2-661CF0524C34}">
+			<config nodeName="PRPRAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-prprapac.deltekenterprise.com -p 443 -s prprapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-prprapac.deltekenterprise.com -p 443 -s prprapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-prprapac.deltekenterprise.com -p 443 -s prprapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\PRPRAPAC\" parameters="-a https://wpp-prprapac.deltekenterprise.com -p 443 -s prprapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{B6A6AEC7-4189-4102-B25B-CA9C4EEDB909}">
+			<config nodeName="TRNEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-trnemea.deltekenterprise.com -p 443 -s trnemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-trnemea.deltekenterprise.com -p 443 -s trnemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-trnemea.deltekenterprise.com -p 443 -s trnemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\TRNEMEA\" parameters="-a https://wpp-trnemea.deltekenterprise.com -p 443 -s trnemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{35AAC571-296D-4493-B4DB-31E82ECB5018}">
+			<config nodeName="UATEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-uatemea.deltekenterprise.com -p 443 -s uatemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-uatemea.deltekenterprise.com -p 443 -s uatemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-uatemea.deltekenterprise.com -p 443 -s uatemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\UATEMEA\" parameters="-a https://wpp-uatemea.deltekenterprise.com -p 443 -s uatemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{2F932117-9D2E-4037-A642-E1B3D6E98360}">
+			<config nodeName="UATAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-uatapac.deltekenterprise.com -p 443 -s uatapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-uatapac.deltekenterprise.com -p 443 -s uatapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-uatapac.deltekenterprise.com -p 443 -s uatapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\UATAPAC\" parameters="-a https://wpp-uatapac.deltekenterprise.com -p 443 -s uatapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{8E0E9DD9-F658-4892-B479-5C25F86D7E28}">
+			<config nodeName="TESTEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-testemea.deltekenterprise.com -p 443 -s testemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-testemea.deltekenterprise.com -p 443 -s testemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-testemea.deltekenterprise.com -p 443 -s testemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\TESTEMEA\" parameters="-a https://wpp-testemea.deltekenterprise.com -p 443 -s testemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{4E196758-3BF6-4318-9D38-AAAE47436411}">
+			<config nodeName="TESTAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-testapac.deltekenterprise.com -p 443 -s testapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-testapac.deltekenterprise.com -p 443 -s testapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-testapac.deltekenterprise.com -p 443 -s testapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\TESTAPAC\" parameters="-a https://wpp-testapac.deltekenterprise.com -p 443 -s testapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{D063188F-FA39-47EC-8860-66EAB65909AA}">
+			<config nodeName="DEV4EMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dev4emea.deltekenterprise.com -p 443 -s dev4emea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dev4emea.deltekenterprise.com -p 443 -s dev4emea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dev4emea.deltekenterprise.com -p 443 -s dev4emea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DEV4EMEA\" parameters="-a https://wpp-dev4emea.deltekenterprise.com -p 443 -s dev4emea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{1B793D4C-E3C0-4112-8CCD-A0F00989F017}">
+			<config nodeName="DEV3EMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dev3emea.deltekenterprise.com -p 443 -s dev3emea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dev3emea.deltekenterprise.com -p 443 -s dev3emea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dev3emea.deltekenterprise.com -p 443 -s dev3emea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DEV3EMEA\" parameters="-a https://wpp-dev3emea.deltekenterprise.com -p 443 -s dev3emea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{1C2E9ED8-67B9-4116-84A7-1B970DA413FF}">
+			<config nodeName="DEV2EMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dev2emea.deltekenterprise.com -p 443 -s dev2emea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dev2emea.deltekenterprise.com -p 443 -s dev2emea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dev2emea.deltekenterprise.com -p 443 -s dev2emea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DEV2EMEA\" parameters="-a https://wpp-dev2emea.deltekenterprise.com -p 443 -s dev2emea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{A4F70C80-B35E-4793-9D64-22E987660083}">
+			<config nodeName="DEV1EMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-dev1emea.deltekenterprise.com -p 443 -s dev1emea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-dev1emea.deltekenterprise.com -p 443 -s dev1emea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-dev1emea.deltekenterprise.com -p 443 -s dev1emea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\DEV1EMEA\" parameters="-a https://wpp-dev1emea.deltekenterprise.com -p 443 -s dev1emea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{4A4996B3-06E8-40AD-AEE8-7C303F6D4FC9}">
+			<config nodeName="BAUTESTEMEA" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-bautestemea.deltekenterprise.com -p 443 -s bauemea" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-bautestemea.deltekenterprise.com -p 443 -s bauemea" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-bautestemea.deltekenterprise.com -p 443 -s bauemea" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\BAUTESTEMEA\" parameters="-a https://wpp-bautestemea.deltekenterprise.com -p 443 -s bauemea" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{058ED89C-F6A5-4DCC-AFCA-E470912086DB}">
+			<config nodeName="BAUTESTAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-bautestapac.deltekenterprise.com -p 443 -s bauapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-bautestapac.deltekenterprise.com -p 443 -s bauapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-bautestapac.deltekenterprise.com -p 443 -s bauapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\BAUTESTAPAC\" parameters="-a https://wpp-bautestapac.deltekenterprise.com -p 443 -s bauapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{B96A50AC-FFAD-43E6-8C52-70461F71E89A}">
+			<config nodeName="TRNAPAC" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="True">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="-a https://wpp-trnapac.deltekenterprise.com -p 443 -s trnapac" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="-a https://wpp-trnapac.deltekenterprise.com -p 443 -s trnapac" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="-a https://wpp-trnapac.deltekenterprise.com -p 443 -s trnapac" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Deltek\WSClients\TRNAPAC\" parameters="-a https://wpp-trnapac.deltekenterprise.com -p 443 -s trnapac" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+		<child key="{4BE30500-B6B4-4A01-8A8A-982F2B6C67DC}">
+			<config nodeName="Maconomy" autorunOnRecording="False" enabled="True" count="1" useFeaturedRuntimeObject="True" userChangeName="False">
+				<runModeParams activeRunMode="Simple">
+					<param name="RunAs" parameters="" workFolder="" userName="" password="" domain="" />
+					<param name="Profile" parameters="" workFolder="" useProject="False" projectFileName="" overrideProfiler="False" profilerName="" profileRunMode="Silent" AQtimeVersion="0" forceRunMode="False" />
+					<param name="Debug" parameters="" workFolder="" />
+					<param name="Simple" fileName="Maconomy.exe" filePath="C:\Program Files (x86)\Deltek Maconomy 19.0.100.3\" parameters="" workFolder="" />
+				</runModeParams>
+			</config>
+			<testData />
+			<data />
+		</child>
+	</children>
+</Root>

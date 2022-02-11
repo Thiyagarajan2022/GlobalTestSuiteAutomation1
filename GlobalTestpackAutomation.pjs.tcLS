@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="data">
+			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
+				<Prp name="default project" type="S" value="{BFF5243D-B39E-43BD-83E5-EAB78A5D5F16}"/>
+			</Node>
+			<Node name="{516a88ba-5e84-4bd4-8e16-a9a9855e0a5b}">
+				<Prp name="relpath" type="S" value="SmokeSuite\SmokeSuite.mds.tcLS"/>
+			</Node>
+			<Node name="{bff5243d-b39e-43bd-83e5-eab78a5d5f16}">
+				<Prp name="relpath" type="S" value="WppRegPack\GlobaltestPack.mds.tcLS"/>
+			</Node>
+			<Node name="envmngrlogs">
+				<Prp name="key" type="S" value="{0FCACC7F-9456-4B35-A5AB-9CFC427EA8A8}"/>
+			</Node>
+			<Node name="logs">
+				<Prp name="key" type="S" value="{F23D5325-A6C8-4EEE-8DCB-66BF37B61188}"/>
+				<Prp name="relpath" type="S" value="Log"/>
+			</Node>
+			<Node name="variables"/>
+		</Node>
+		<Prp name="signature" type="S" value="{71078212-FAEB-4856-A901-B237C89E6B5C}"/>
+	</Node>
+</Nodes>

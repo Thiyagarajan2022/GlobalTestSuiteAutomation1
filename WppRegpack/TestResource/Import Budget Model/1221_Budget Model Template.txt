@@ -1,0 +1,7 @@
+BUDGETJOURNALHEADER:FORMAT	JournalNumber	BudgetModelName	CompanyNumber	EnterFiguresInThousands																						
+BUDGETJOURNALHEADER	#KEEP	Q3RF FINAL 2018	1221	0																						
+							Cartesis Code	CORE Global GL	CORE Local GL Code															Job Type	Department	Business Unit
+BUDGETJOURNALLINE:FORMAT	JournalNumber	LineNumber	CompanyNumber	BudgetModelName	EntryDate	EntryText	Specification3Name	AccountNumber	LocalAccountNumber	AmountBaseOpening	AmountBase1	AmountBase2	AmountBase3	AmountBase4	AmountBase5	AmountBase6	AmountBase7	AmountBase8	AmountBase9	AmountBase10	AmountBase11	AmountBase12		LocalSpec1Name	LocalSpec2Name	LocalSpec4Name
+	#KEEP	#KEEP	1221	Q3RF FINAL 2018	31.12.2018	External Billings and Fees	10001			0													0	RB109	D112	B101
+	#KEEP	#KEEP	1221	Q3RF FINAL 2018	31.12.2018	Billings - Media	10006			0													0	RB109	D112	B101
+BudgetJournalLine	#KEEP	#KEEP	1221	Q3RF FINAL 2018	31.12.2018	Billings - Non-Media	10008	1020000	1020000	0	0	0	0	0	0	0	0	0	-1000	-500	-500	-300	-2300	RB109	D112	B101

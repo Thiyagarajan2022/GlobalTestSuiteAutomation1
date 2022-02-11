@@ -1,0 +1,11 @@
+# ------------------------------------------------
+# Import General Journal, W 21.0 p100
+# ------------------------------------------------
+# Executed by: 2130 Finance (TST)
+# Date, Time: 10.11.21, 08:35:20
+# Input: D:\maconomy\Tmp/TEMP10564_e2d6dd10.txt
+# ------------------------------------------------
+Error in line 	5	There is no access to Job 2130P
+Error in line 	6	Work Code 629110000-01 is not in work code list P&L - Global
+# 5 line(s) read, of which 2 had errors
+# ------------------------------------------------

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{302E54A8-7D5B-4593-9563-357C2734256B}" version="1400" key="{7B467A3F-745E-4DCA-8B76-43AE8D0716AB}" typeId="{302E54A8-7D5B-4593-9563-357C2734256B}">
+	<config nodeName="Browser_Reporting" />
+	<testData />
+	<data>
+		<item caption="Browser_DataProtection_Dialog" moniker="{7F8DD203-3216-41A1-8A52-0B8C2AD9E9FF}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris44E440C9D8A8FD9.png" initialHash="71DAA90A" selectionLeft="384" selectionTop="339" selectionWidth="104" selectionHeight="20" initialLeft="384" initialTop="339" initialWidth="104" initialHeight="20" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt" moniker="{D6069C40-E420-428C-B0A3-65DAF60150D1}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris44E440CAC4DA049.png" initialHash="DD72EA7C" selectionLeft="290" selectionTop="222" selectionWidth="62" selectionHeight="18" initialLeft="290" initialTop="222" initialWidth="62" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_GLTransaction_Prompt_Cancel" moniker="{33F7EB7D-33EE-4F1E-8E2D-F873A23BB0DC}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris44E440CB65B2840.png" initialHash="E630ECC7" selectionLeft="1014" selectionTop="598" selectionWidth="44" selectionHeight="14" initialLeft="1014" initialTop="598" initialWidth="44" initialHeight="14" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Browser_Reports_Prompt" moniker="{F7F3EF93-549D-4CBC-8B47-5601D9B82E01}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\iris44E440CBB93D52A.png" initialHash="41737853" selectionLeft="289" selectionTop="224" selectionWidth="62" selectionHeight="16" initialLeft="289" initialTop="224" initialWidth="62" initialHeight="16" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="DataProtectionDialog" moniker="{8B1A926D-32E6-4F78-98F9-1C3A9DB8D260}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\DataProtectionDialog.png" initialHash="49FD1B01" selectionLeft="143" selectionTop="337" selectionWidth="101" selectionHeight="26" initialLeft="143" initialTop="337" initialWidth="101" initialHeight="26" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="Prompts_Dialog" moniker="{9CA27FEB-F903-4622-9F09-B92B8D2F4A44}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\Prompts_Dialog.png" initialHash="62ACD724" selectionLeft="340" selectionTop="208" selectionWidth="66" selectionHeight="18" initialLeft="340" initialTop="208" initialWidth="66" initialHeight="18" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+		<item caption="WorkspaceClient" moniker="{043B8832-2128-4539-B18B-D96D41DF340C}" isComposite="False" simpleMode="True" currentImageIndex="0">
+			<image imageFileName="Data\WorkspaceClient.png" initialHash="00000000" selectionLeft="35" selectionTop="51" selectionWidth="128" selectionHeight="27" initialLeft="35" initialTop="51" initialWidth="128" initialHeight="27" pixelTolerance="0" colorTolerance="0" deviceName="" />
+		</item>
+	</data>
+</Root>
