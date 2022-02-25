@@ -1,12 +1,12 @@
-﻿//USEUNIT EnvParams
+﻿//USEUNIT ActionUtils
+//USEUNIT EnvParams
 //USEUNIT ExcelUtils
+//USEUNIT ObjectUtils
 //USEUNIT ReportUtils
+//USEUNIT Restart
 //USEUNIT TestRunner
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
-//USEUNIT Restart
-//USEUNIT ObjectUtils
-//USEUNIT ActionUtils
 
 
 /**
@@ -14,7 +14,7 @@
  * @author  : Muthu Kumar M
  * @version : 2.0
  * Created Date :02/10/2021
- * Modified Date(MM/DD/YYYY) : 01/19/2022
+ * Modified Date(MM/DD/YYYY) : 02/19/2022
 */
 
 Indicator.Show();
@@ -81,6 +81,7 @@ Hitpoint,Buss_Area_2 = "";
     //jobNumber = "";
   //}
   if((jobNumber=="")||(jobNumber==null)){ 
+    
     //Creation of Job
     MainJob = false
     IBudget_ID = TestRunner.testCaseId;
@@ -390,7 +391,7 @@ TemplateJob = ""
   ReportUtils.logStep_Screenshot("");
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy for Time & Material Invocing"); 
   closeFilter.Click();
-  
+
   aqUtils.Delay(1000, Indicator.Text);
   waitUntil_MaconomyScreen_loaded_Completely();
   
@@ -993,11 +994,8 @@ WorkspaceUtils.waitForObj(DraftInvoice);
 ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+
+ActionUtils.waitUntil_MaconomyScreen_loaded_Completely();
 
 //var draftNo = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 //var draftNo = ActionUtils.getObjectAddress_JavaClasssName_and_Index(Maconomy_ParentAddress,"McGrid", "2");
@@ -1268,8 +1266,9 @@ for(var i=0;i<ApproverTable.getItemCount();i++){
 }
 ReportUtils.logStep_Screenshot("");
 //var closeBar = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
-var closeBar = ActionUtils.getObjectAddress_forSlidingPanel_JavaClasssName_and_Index_withParent(Maconomy_ParentAddress,"PTabItemPanel",1,"Composite",2);
-closeBar = closeBar.SWTObject("TabControl", "");
+//var closeBar = ActionUtils.getObjectAddress_forSlidingPanel_JavaClasssName_and_Index_withParent(Maconomy_ParentAddress,"PTabItemPanel",1,"Composite",2);
+//closeBar = closeBar.SWTObject("TabControl", "");
+var closeBar = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("PTabItemPanel", "", 1).SWTObject("TabControl", "");
 WorkspaceUtils.waitForObj(closeBar);
 closeBar.Click();
 
@@ -1669,8 +1668,9 @@ ActionUtils.waitUntil_MaconomyScreen_loaded_Completely();
 ReportUtils.logStep_Screenshot();
 
 //var closeBar = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel2.TabControl;
-var closeBar = ActionUtils.getObjectAddress_forSlidingPanel_JavaClasssName_and_Index_withParent(Maconomy_ParentAddress,"PTabItemPanel",1,"Composite",2)
-closeBar = closeBar.SWTObject("TabControl", "");
+//var closeBar = ActionUtils.getObjectAddress_forSlidingPanel_JavaClasssName_and_Index_withParent(Maconomy_ParentAddress,"PTabItemPanel",1,"Composite",2)
+//closeBar = closeBar.SWTObject("TabControl", "");
+var closeBar = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("PTabItemPanel", "", 1).SWTObject("TabControl", "");
 WorkspaceUtils.waitForObj(closeBar);
 closeBar.Click();
 

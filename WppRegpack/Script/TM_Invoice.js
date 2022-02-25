@@ -65,6 +65,7 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
     //jobNumber = "";
   //}
   if((jobNumber=="")||(jobNumber==null)){ 
+    
     //Creation of Job
     MainJob = false
     IBudget_ID = TestRunner.testCaseId;
@@ -73,18 +74,19 @@ var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").
     TestRunner.JiraStat = true;
     TestRunner.JiraUpdate = true;
     ExcelUtils.setExcelName(workBook, sheetName, true);
-    var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)
+    var jobSheet = ExcelUtils.getColumnDatas("Job Sheet",EnvParams.Opco)    // Job Creation 5 -> Sheet Name
     if(jobSheet==""){ 
       ValidationUtils.verify(true,false,"Need Job to Create Time & Material Invocing")
     }
     
     ExcelUtils.setExcelName(workBook, jobSheet, true);
-    var serialOder = ExcelUtils.getRowDatas("Job Serial Order",EnvParams.Opco)
+    var serialOder = ExcelUtils.getRowDatas("Job Serial Order",EnvParams.Opco)  // Job Creation Serial Number -> 5
     if(serialOder==""){ 
       ValidationUtils.verify(true,false,"Need Job Serial Order to Create Time & Material Invocing")
     }
+    
     ExcelUtils.setExcelName(workBook, "Data Management", true);
-    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco)
+    jobNumber = ExcelUtils.getRowDatas("Job Number_"+serialOder,EnvParams.Opco) //Job Number_5
     
     if((jobNumber=="")||(jobNumber==null)){
       

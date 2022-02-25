@@ -15,7 +15,7 @@
  * This script create PO for Job
  * @author  : Muthu Kumar M
  * @version : 2.0
- * Created Date :02/12/2021
+ * Modified Date :02/12/2021
 */
 
 
@@ -46,7 +46,7 @@ WorkspaceUtils.Language = Language;
 
 
 
-//Checking Login to execute Create Job Quotation
+//Checking Login to execute Create Purchase Order
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
 Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco);
 
@@ -156,7 +156,7 @@ function goToCreatePurchase(){
 
 ActionUtils.waitUntil_MaconomyScreen_loaded_Completely();
 
-var allPurchase = ActionUtils.getObjectAddress_JavaClasssName_withTabText(Maconomy_ParentAddress,"Button",JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "My POs").OleValue.toString().trim());
+var allPurchase = ActionUtils.getObjectAddress_JavaClasssName_withTabText(Maconomy_ParentAddress,"Button", "My POs");
 
 //var allPurchase = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McFilterContainer", "", 1).SWTObject("Composite", "").SWTObject("McFilterPanelWidget", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "My POs").OleValue.toString().trim())
 Sys.HighlightObject(allPurchase);

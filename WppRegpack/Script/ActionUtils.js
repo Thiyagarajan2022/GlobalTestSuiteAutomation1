@@ -309,7 +309,7 @@ function getObjectAddress_forSlidingPanel_JavaClasssName_and_Index_withParent(Ma
   p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   for (let i_count = 0; i_count < obj.length; i_count++){ 
-  if((obj[i_count].Parent.Index == Parent_Index) || (obj[i_count].Parent.JavaClassName == Parent_JavaClass)){
+  if((obj[i_count].Parent.Index == Parent_Index) && (obj[i_count].Parent.JavaClassName == Parent_JavaClass)){
     ObjAddress = obj[i_count];
     break;      
   }
@@ -425,14 +425,15 @@ return ObjAddress;
 
 
 //Finding Object in selected screen with JavaClassName and Index Property
-function getObjectAddress_JavaClasssName_conatinsTooltip(Maconomy_ParentAddress,JClassName,Text){ 
+function getObjectAddress_JavaClasssName_conatinsTooltip(Maconomy_ParentAddress,JClassName,ele_Text){ 
   var ObjAddress ;
   PropArray = new Array("JavaClassName",  "Visible");
   ValuesArray = new Array(JClassName, "true");
   p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   for (let i_count = 0; i_count < obj.length; i_count++){ 
-  if(obj[i_count].toolTipText.OleValue.toString().trim().indexOf(Text)!=-1){
+    if(obj[i_count].toolTipText!=null)
+  if(obj[i_count].toolTipText.OleValue.toString().trim().indexOf(ele_Text)!=-1){
     ObjAddress = obj[i_count];
     break;      
   }
@@ -454,6 +455,7 @@ function getObjectAddress_JavaClasssName_Index_conatinsTooltip(Maconomy_ParentAd
   p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   for (let i_count = 0; i_count < obj.length; i_count++){ 
+    if(obj[i_count].toolTipText!=null)
   if(obj[i_count].toolTipText.OleValue.toString().trim().indexOf(Text)!=-1){
     ObjAddress = obj[i_count];
     break;      
@@ -653,7 +655,7 @@ listPass = false;
 
 
 
-if(listPass || Substitute_byType!=null){
+if(listPass && Substitute_byType!=null){
 
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
@@ -681,10 +683,11 @@ ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|"+temp); 
 TextUtils.writeLog("Entering into "+MainAprover+" from To-Dos List");
 var listPass = false;   
+break;
   }
 }  
 
-if(listPass || MainApprover_byType!=null){
+if(listPass && MainApprover_byType!=null){
 for(var j=0;j<Client_Managt.getItemCount();j++){ 
   var temp = Client_Managt.getItem(j).getText().OleValue.toString().trim();
   var temp1 = temp.split("(");
@@ -693,7 +696,8 @@ Client_Managt.ClickItem("|"+temp);
 ReportUtils.logStep_Screenshot(); 
 Client_Managt.DblClickItem("|"+temp); 
 TextUtils.writeLog("Entering into "+MainApprover_byType+" from To-Dos List");
-var listPass = false;   
+var listPass = false; 
+break;  
   }
 } 
   }

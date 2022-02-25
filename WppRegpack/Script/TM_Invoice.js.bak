@@ -1,10 +1,10 @@
 ﻿//USEUNIT EnvParams
 //USEUNIT ExcelUtils
 //USEUNIT ReportUtils
+//USEUNIT Restart
 //USEUNIT TestRunner
 //USEUNIT ValidationUtils
 //USEUNIT WorkspaceUtils
-//USEUNIT Restart
 
 Indicator.Show();
 var excelName = EnvParams.path;

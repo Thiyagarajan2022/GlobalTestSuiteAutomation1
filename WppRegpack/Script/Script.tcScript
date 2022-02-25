@@ -239,7 +239,7 @@
 				<child name="ES02__To_Reject_a_Expense_Sheet" key="{D494E032-4EFA-470C-A797-3388CDBAEEED}" path="ES02__To_Reject_a_Expense_Sheet.js" />
 				<child name="ES03__To_Approve_a_Expense_Sheet__OpCo" key="{C734293F-5FFF-4835-BEF4-5EB2819ABE2A}" path="ES03__To_Approve_a_Expense_Sheet__OpCo.js" />
 				<child name="ES04__To_Approve_a_Expense_Sheet__SSC" key="{270DF0F5-4C84-419E-A6A9-1566682171EF}" path="ES04__To_Approve_a_Expense_Sheet__SSC.js" />
-				<child name="Unit4" key="{216D40CF-E130-407E-8192-725FA5026B33}" path="Unit4.js" />
+				<child name="AP_03_Invoice_rejection_process" key="{216D40CF-E130-407E-8192-725FA5026B33}" path="AP_03_Invoice_rejection_process.js" />
 				<child name="Dependency_Job_Creation" key="{CE85C29D-3D96-4F08-9150-0A32A652E7DC}" path="Dependency_Job_Creation.js" />
 				<child name="Dependency_JobBudget_Creation" key="{52FE4A0D-4640-4881-99A1-BF13832EE32A}" path="Dependency_JobBudget_Creation.js" />
 				<child name="Dependency_JobQuote_Creation" key="{EE03C114-F19B-4696-B55C-9DF6818B1105}" path="Dependency_JobQuote_Creation.js" />
@@ -247,6 +247,12 @@
 				<child name="KT_Sample" key="{1AFF695D-090A-481F-9DC5-1347B6FC86E4}" path="KT_Sample.js" />
 				<child name="AP_01_Enter_a_Vendor_Invoice_From_Purchase_Order_PO" key="{43B1C4FE-F45E-4226-A9F3-1F102370C63B}" path="AP_01_Enter_a_Vendor_Invoice_From_Purchase_Order_PO.js" />
 				<child name="JM_07_Create_a_Job_Purchase_Order" key="{B3AC92FE-CFFE-4ED3-8A83-34CDFC3DB34D}" path="JM_07_Create_a_Job_Purchase_Order.js" />
+				<child name="JM_09_Rejecting_a_Purchase_Order" key="{9B3D1AB4-E201-4023-B7BB-8592CF4AD8AC}" path="JM_09_Rejecting_a_Purchase_Order.js" />
+				<child name="JM_10_Approving_a_Purchase_Order" key="{FF8D3AF2-BC5C-475D-8FCC-A0D81339D92C}" path="JM_10_Approving_a_Purchase_Order.js" />
+				<child name="AP_02_Invoice_Approval_Line_Level" key="{9FE18100-B587-4C87-A8A3-ED41C845698B}" path="AP_02_Invoice_Approval_Line_Level.js" />
+				<child name="AP_04_Post_Vendor_Journal" key="{E95A7314-2A8D-4969-BB09-259BB662CE48}" path="AP_04_Post_Vendor_Journal.js" />
+				<child name="JI_Invoicing_Plans_Transfer_Plan_to_Invoice_On_Account" key="{8CCFA9A7-71F7-4FDF-9E4D-C5686682497D}" path="JI_Invoicing_Plans_Transfer_Plan_to_Invoice_On_Account.js" />
+				<child name="JI_Job_Invoice_Allocation_With_WIP" key="{512159E0-1C9B-40FA-930C-8D89087EA83D}" path="JI_Job_Invoice_Allocation_With_WIP.js" />
 			</folder>
 			<folder name="KT">
 				<child name="TestScript_01" key="{65E15931-8797-473E-BFE5-4A7BD3094DF8}" path="TestScript_01.js" />

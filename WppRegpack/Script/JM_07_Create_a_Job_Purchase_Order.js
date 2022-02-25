@@ -15,7 +15,7 @@
  * This script create PO for Job
  * @author  : Muthu Kumar M
  * @version : 2.0
- * Created Date :02/12/2021
+ * Modified Date :02/12/2021
 */
 
 
@@ -46,7 +46,7 @@ WorkspaceUtils.Language = Language;
 
 
 
-//Checking Login to execute Create Job Quotation
+//Checking Login to execute Create Purchase Order
 ExcelUtils.setExcelName(workBook, "Agency Users", true);
 Project_manager = ExcelUtils.getRowDatas("Agency - Senior Finance",EnvParams.Opco);
 
@@ -81,15 +81,15 @@ VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice,NOL = "";
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
 TextUtils.writeLog("Execution Start Time :"+STIME); 
-//try{
+try{
 getDetails();
 ExcelUtils.setExcelName(workBook, "Data Management", true);
   goto_AccountPayable();
   goToCreatePurchase();
-//}
-//  catch(err){
-//    Log.Message(err);
-//  }
+}
+  catch(err){
+    Log.Message(err);
+  }
   
 var menuBar = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();

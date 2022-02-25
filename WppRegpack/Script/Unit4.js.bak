@@ -2681,25 +2681,9 @@ WorkspaceUtils.waitForObj(grid);
 return grid;
 }
 
-function Test1()
-{
-  let explorer = Aliases.explorer;
-  let MSTaskListWClass = explorer.wndShell_TrayWnd.ReBarWindow32.MSTaskSwWClass.MSTaskListWClass;
-  MSTaskListWClass.Click(483, 39);
-  MSTaskListWClass.Click(483, 39);
-  explorer.wndTaskListThumbnailWnd.Click(165, 137);
-  let maconomy = Aliases.Maconomy;
-  maconomy.GlobalVendor.Activate();
-  let composite = maconomy.Hitpoint.Composite.Composite.Composite.Composite.Composite2.Composite.Composite.Composite;
-  let PTabFolder = composite.Composite.Composite.PTabFolder;
-  PTabFolder.TabFolderPanel.TabControl.Click(40, 14);
-  let composite2 = PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite;
-  composite2.Composite.McGroupWidget.Composite.McValuePickerWidget.Click(50, 6);
-  let mcGroupWidget = composite2.Composite2.McGroupWidget;
-  mcGroupWidget.Composite.McTextWidget.Drag(39, 9, -40, 1);
-  mcGroupWidget.Composite2.McTextWidget.Click(19, 11);
-  composite.Composite2.Composite.PTabFolder.TabFolderPanel.TabControl.Click(55, 16);
-  let mcFilterPanelWidget = composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget;
-  mcFilterPanelWidget.Button.ClickButton();
-  mcFilterPanelWidget.Button2.ClickButton();
+
+function hj(){ 
+  
+ImageRepository.Spanish.Maximize.Click();
 }
+
