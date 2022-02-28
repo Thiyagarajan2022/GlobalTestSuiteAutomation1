@@ -108,6 +108,73 @@ WorkspaceUtils.closeAllWorkspaces();
 
 }
 
+
+
+function postVendorJournal_Dependency(){ 
+Indicator.PushText("waiting for window to open");
+Language = EnvParams.LanChange(EnvParams.Language);
+WorkspaceUtils.Language = Language;
+
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+ExcelUtils.setExcelName(workBook, "SSC Users", true);
+var Project_manager = ExcelUtils.getRowDatas("SSC - Senior AP","Username")
+if(Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption.toString().trim().indexOf(Project_manager)==-1){ 
+WorkspaceUtils.closeMaconomy();
+Restart.login(Project_manager);
+}
+
+
+excelName = EnvParams.path;
+workBook = Project.Path+excelName;
+sheetName = "PostVendorJournal";
+VInum = "";
+level =0;
+Approve_Level = [];
+ApproveInfo = [];
+mainParent = "";
+ExcelUtils.setExcelName(workBook, sheetName, true);
+STIME = "";
+//VendorID,Job_Number,WorkCode,Detailed_Description,Qly,UnitPrice = "";
+companyNo,JournalNo ="";
+  
+STIME = WorkspaceUtils.StartTime();
+ReportUtils.logStep("INFO", "PO Creation started::"+STIME);
+
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+    
+  JournalNo = ReadExcelSheet("Second Invoice Journal NO",EnvParams.Opco,"Data Management");
+  if((JournalNo=="")||(JournalNo==null)){
+  ExcelUtils.setExcelName(workBook, sheetName, true);
+  JournalNo = ExcelUtils.getRowDatas("Journal No",EnvParams.Opco)
+  }
+  if((JournalNo=="")||(JournalNo==null))
+  ValidationUtils.verify(false,true,"journal No is required to create USER");
+  
+  else{ 
+  ValidationUtils.verify(true,true,"Posting Invoice Journal NO :"+JournalNo)
+}
+
+
+
+companyNo = EnvParams.Opco
+if((companyNo==null)||(companyNo=="")){ 
+ValidationUtils.verify(false,true,"CompanyNo is required to create USER");
+}
+
+  gotoMenu();
+  Delay(5000);
+searchForJournal();
+postJournal();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
+menuBar.Click();
+WorkspaceUtils.closeAllWorkspaces();
+
+}
+
 function gotoMenu(){ 
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.DblClick();

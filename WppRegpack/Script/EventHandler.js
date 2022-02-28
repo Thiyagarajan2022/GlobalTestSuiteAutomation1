@@ -33,7 +33,7 @@ function GeneralEvents_OnStopTest(Sender)
   var exeTime ="";
   // Create RuntimeStatistics file if not exists. (If first testcase itself failed this steps will be executed)
   if(!aqFile.Exists(filePath))
-      ExcelUtils.create_AutomationStat_Excel(filePath);  
+     // ExcelUtils.create_AutomationStat_Excel(filePath);  
       
    // Calculate Runtime value and publish to excel.   
    eTime = new Date(); 

@@ -316,6 +316,9 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 }
 
 function gotoInvoicing(){ 
+ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){  
+  }  
+
   var allJobs = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -381,15 +384,10 @@ TemplateJob = ""
   aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  
   }
   
   var clientApproved = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;

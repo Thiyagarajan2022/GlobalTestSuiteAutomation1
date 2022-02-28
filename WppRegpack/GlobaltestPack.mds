@@ -25,16 +25,24 @@
 				<children>
 					<testItem name="ProjectTestItem1" key="{CA26A9C7-ADF6-4849-88A4-B98D6005D6E8}" group="False" parallel="False" enabled="True" testMoniker="{808405B8-0747-445B-9F6E-64BEF03B5AF9}executeTestCases" count="1" timeout="0" stopOnError="3" stopOnException="2" description="" tmsData="" testCase="True">
 						<testParameters />
-						<environments testedURL="" />
+						<environments activeCloud="CBT" />
 						<children />
 					</testItem>
 				</children>
 			</testItem>
 		</children>
 	</testItems>
-	<variables key="{0D97164A-3D68-49E4-9ACF-0AFB6033AA32}" />
+	<variables key="{0D97164A-3D68-49E4-9ACF-0AFB6033AA32}">
+		<data Version="4">
+			<Items>
+				<Variable Name="Var1" Type="String" Local="False">
+					<DefValue />
+				</Variable>
+			</Items>
+		</data>
+	</variables>
 	<settings key="{25D1EFDE-33AE-481E-8A94-90126DAB0A8F}">
-		<settingsVersion value="14.81" />
+		<settingsVersion value="14.90" />
 		<setting name="AgOpenApp_ExtendedSilverlightObjectTree" type="1" value="False" />
 		<setting name="ApplicationHangingProcessFilterMode" type="6" rowIndex="4" colIndex="0">
 			<columns>
@@ -61,6 +69,7 @@
 		<setting name="AzureDevOps_TeamProject" type="5" value="" />
 		<setting name="AzureDevOps_TeamProjectCollection" type="5" value="" />
 		<setting name="AzureDevOps_URL" type="5" value="" />
+		<setting name="BitBar_APIKey" type="5" value="" />
 		<setting name="CBT_AppsAvailability" type="6" rowIndex="0" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
@@ -137,6 +146,7 @@
 			</data>
 		</setting>
 		<setting name="General_ProjectLogLocation" type="5" value="Log" />
+		<setting name="General_RepaintWindowBeforeCapturingImage" type="1" value="True" />
 		<setting name="General_UnitsEncoding" type="6" rowIndex="1" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
@@ -158,7 +168,7 @@
 		<setting name="HipTest_SynchronizeTestRun" type="1" value="False" />
 		<setting name="HipTest_TestRunID" type="5" value="" />
 		<setting name="HipTest_TestRunName" type="5" value="[Test run created last]" />
-		<setting name="JavaBridge_Classes" type="6" rowIndex="7" colIndex="0">
+		<setting name="JavaBridge_Classes" type="6" rowIndex="14" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -180,7 +190,7 @@
 				<row val0="Text_Modify.Edit_AP_Fapio" />
 			</data>
 		</setting>
-		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="15" colIndex="0">
+		<setting name="JavaBridge_ClassPaths" type="6" rowIndex="6" colIndex="0">
 			<columns>
 				<column type="5" enabled="True" />
 			</columns>
@@ -232,6 +242,15 @@
 		</setting>
 		<setting name="JavaOpenApp_DoNotRecognizeChildSWTAsParent" type="1" value="False" />
 		<setting name="KeyPressingDelay" type="2" value="0" />
+		<setting name="MobileSupportType" type="6" rowIndex="0" colIndex="0">
+			<columns>
+				<column type="5" enabled="True" />
+			</columns>
+			<data>
+				<row val0="Mobile device cloud (BitBar and local Appium)" />
+				<row val0="Legacy mobile support" />
+			</data>
+		</setting>
 		<setting name="MouseMovementDelay" type="2" value="0" />
 		<setting name="ObjectMapping_Objects" type="6" rowIndex="-1" colIndex="3">
 			<columns>
@@ -260,7 +279,7 @@
 			</data>
 		</setting>
 		<setting name="OpenApps_HybridMobile_AccessPolicy" type="1" value="False" />
-		<setting name="OpenApps_HybridMobile_DynamicIdentifiers" type="6" rowIndex="30" colIndex="9">
+		<setting name="OpenApps_HybridMobile_DynamicIdentifiers" type="6" rowIndex="30" colIndex="4">
 			<columns>
 				<column type="2" enabled="True" />
 				<column type="2" enabled="True" />
@@ -665,6 +684,7 @@
 			</data>
 		</setting>
 		<setting name="Visualizer_DeleteAll" type="1" value="True" />
+		<setting name="Visualizer_ParallelPlaybackCapture" type="1" value="False" />
 		<setting name="Visualizer_PlaybackCaptureProperties" type="1" value="False" />
 		<setting name="Visualizer_PlaybackCollectMode" type="6" rowIndex="1" colIndex="0">
 			<columns>

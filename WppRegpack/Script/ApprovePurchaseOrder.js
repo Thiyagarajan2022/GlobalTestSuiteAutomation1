@@ -207,9 +207,8 @@ var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Comp
 //  var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.PurchaseTable.McGrid;
   WorkspaceUtils.waitForObj(table);
   aqUtils.Delay(3000, "Reading Table Data");
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(1).OleValue.toString().trim()==POnumber){ 
@@ -220,8 +219,8 @@ var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Comp
   table.Keys("[Down]");
   }
   }
-  ValidationUtils.verify(flag,true,"Created Purchase Order is available in system");
-  TextUtils.writeLog("Created Purchase Order is available in system");
+  ValidationUtils.verify(flag,true,"Created Purchase Order is not available in system");
+  TextUtils.writeLog("Created Purchase Order is not available in system");
   
   
  if(flag){

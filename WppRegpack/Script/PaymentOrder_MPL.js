@@ -102,7 +102,7 @@ function validateCreateChangePaymentSelection_wppLayout()
   verifyVendorNumber(VendorNo, pdflineSplit);     
   verifyInvoiceNumber(Invoicenumber,pdflineSplit);  
   //verifyExchangeDate(exchangeDate,pdflineSplit);
-  verifyDueDate(dueDate,pdflineSplit);     
+  //verifyDueDate(dueDate,pdflineSplit);     
   verifyAmount(amount,pdflineSplit);
   verifyPaymentNumber(PaymentNo,pdflineSplit)
  }
@@ -116,7 +116,7 @@ function validateCreateChangePaymentSelection_wppChineseLayout()
   verifyInvoiceNumber(Invoicenumber,pdflineSplit);          
   verifyAmount(amount,pdflineSplit);
   //verifyExchangeDate(exchangeDate,pdflineSplit);
-  verifyDueDate(dueDate,pdflineSplit);     
+  //verifyDueDate(dueDate,pdflineSplit);     
   verifyPaymentNumber(PaymentNo,pdflineSplit)
   //verifyPaymodeMode(paymentMode,pdflineSplit);  
           

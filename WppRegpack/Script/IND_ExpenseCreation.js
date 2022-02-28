@@ -10,7 +10,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     
 }
 
-var Jtab = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
+var Jtab = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
   WorkspaceUtils.waitForObj(Jtab);
   Jtab.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -18,8 +18,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
     Sys.Desktop.KeyDown(0x09);
     Sys.Desktop.KeyUp(0x09);
-    aqUtils.Delay(1000, Indicator.Text);;
-var Exp_Reason = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+    aqUtils.Delay(2000, Indicator.Text);;
+var Exp_Reason = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.table.McGrid.McValuePickerWidget
 WorkspaceUtils.waitForObj(Exp_Reason);
 if(Ereason!=""){
   Exp_Reason.Click()
@@ -30,7 +30,7 @@ WorkspaceUtils.waitForObj(Exp_Reason);
     Sys.Desktop.KeyUp(0x28);
     aqUtils.Delay(1000, Indicator.Text);;
     
-var Vendor = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+var Vendor = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.table.McGrid.McValuePickerWidget
 WorkspaceUtils.waitForObj(Vendor);
 if(Vname!=""){
   Vendor.Click()
@@ -41,7 +41,7 @@ WorkspaceUtils.waitForObj(Vendor);
     Sys.Desktop.KeyUp(0x28);
     aqUtils.Delay(1000, Indicator.Text);;
     
-var GST = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+var GST = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.table.McGrid.McValuePickerWidget;
 WorkspaceUtils.waitForObj(GST);
 if(GSTIN!=""){
   GST.Click()
@@ -52,7 +52,7 @@ WorkspaceUtils.waitForObj(GST);
     Sys.Desktop.KeyUp(0x28);
     aqUtils.Delay(1000, Indicator.Text);;
     
-var InvoiceNo = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
+var InvoiceNo = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.table.McGrid.McValuePickerWidget;
 WorkspaceUtils.waitForObj(InvoiceNo);
 if(I_no!=""){
   InvoiceNo.Click()
@@ -68,8 +68,8 @@ WorkspaceUtils.waitForObj(InvoiceNo);
     Sys.Desktop.KeyUp(0x09);
     aqUtils.Delay(1000, Indicator.Text);;
 //var InvoiceDate = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget;
-var InvoiceDate = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McDatePickerWidget
-WorkspaceUtils.waitForObj(InvoiceDate);
+var InvoiceDate =NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.table.McGrid.McDatePickerWidget
+ WorkspaceUtils.waitForObj(InvoiceDate);
 InvoiceDate.Click()
 InvoiceDate.setText(I_Date);
 WorkspaceUtils.waitForObj(InvoiceDate);
@@ -97,7 +97,7 @@ Sys.Desktop.KeyDown(0x09);
 aqUtils.Delay(1000, Indicator.Text);;
 Sys.Desktop.KeyUp(0x10);
 Sys.Desktop.KeyUp(0x09);
-var save = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.save
 WorkspaceUtils.waitForObj(save);
 ReportUtils.logStep_Screenshot();
 save.Click();

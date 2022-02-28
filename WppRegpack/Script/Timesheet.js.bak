@@ -536,6 +536,7 @@ Log.Message(switchDayValue("Thu"))
 Log.Message(switchDayValue("Fri"))
 Log.Message(switchDayValue("Sat"))
 Log.Message(switchDayValue("Sun"))
+aqUtils.Delay("1000","Loading");
   var monday_Des = "";
 //  monday_Des = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McTextWidget", "", 3)
 //  monday_Des = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget

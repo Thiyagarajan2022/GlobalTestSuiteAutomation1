@@ -216,13 +216,13 @@ ReportUtils.logStep_Screenshot("");
     selectDay(36);
     break;
   }else{
-  if(week6.getText()>weekno){ 
+  if(week6.getText()>weekNo){ 
 previousMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   previousMonth.Click();
   aqUtils.Delay(4000, "Changing Month");
   }
-  if(week6.getText()<weekno){ 
+  if(week6.getText()<weekNo){ 
 nextMonth.HoverMouse();
 ReportUtils.logStep_Screenshot("");
   nextMonth.Click();
@@ -234,7 +234,7 @@ ReportUtils.logStep_Screenshot("");
 }
 
 function print(){
-  var print = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl2;
+  var print = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 7)
   Sys.HighlightObject(print);
     waitForObj(print)
     ReportUtils.logStep_Screenshot();
@@ -402,7 +402,9 @@ function verifyWeekNo()
   {
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Week No").OleValue.toString().trim()))
         {
-         if(pdflineSplit[j].includes(weekNo))
+          Log.Message(pdflineSplit[j])
+          Log.Message(weekNo)
+         if(pdflineSplit[j].includes(parseInt(weekNo)))
              {
              Log.Message(weekNo+" weekNo is matching with Pdf");             
              ValidationUtils.verify(true,true,"weekNo is matching with Pdf:"+weekNo);

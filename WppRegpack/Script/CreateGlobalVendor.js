@@ -457,25 +457,29 @@ function NewglobalVendor(){
   WorkspaceUtils.DropDownList(controlAct,"Control Account")
   }
 
-  var CounterPartyBFC = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.McValuePickerWidget;
+  var wppVendor = Sys.Process("Maconomy").SWTObject("Shell", "*").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 13).SWTObject("McPopupPickerWidget", "", 2)  
+  wppVendor.Click();
+  WorkspaceUtils.DropDownList("Yes","WPP Preferred Vendor")
+  
+  var CounterPartyBFC =  Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.Counter_Party_BFC;
   if(bfc!=""){
     CounterPartyBFC.Click();
     WorkspaceUtils.SearchByValue(CounterPartyBFC,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Counter Party BFC").OleValue.toString().trim(),bfc,"Counter Party BFC");
   }
   
-  var bname = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite8.McTextWidget2;
+  var bname = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McTextWidget2;
   bname.setText(BankAccountName);  
   
-  var IBAN = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite9.McTextWidget2
+  var IBAN = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.McTextWidget2
   IBAN.setText(Iban);  
 
-  var swift = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.McTextWidget2;
+  var swift = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite11.McTextWidget2;
   swift.setText(Swift); 
   
-  var bankno = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite11.McTextWidget2;
+  var bankno = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite12.McTextWidget2;
   bankno.setText(BankActNo);  
   
-  var sortcode = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite12.McTextWidget2;
+  var sortcode = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite17.McTextWidget;
   sortcode.setText(Sortcode);  
   
    var Next = Aliases.Maconomy.Group8.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim());
@@ -485,6 +489,14 @@ function NewglobalVendor(){
   }
    
 function VendorScreen(){
+      
+      Sys.Desktop.KeyDown(0x12);
+      Sys.Desktop.KeyDown(0x20);
+      Sys.Desktop.KeyUp(0x12);
+      Sys.Desktop.KeyUp(0x20);
+      Sys.Desktop.KeyDown(0x58);
+      Sys.Desktop.KeyUp(0x58);  
+      aqUtils.Delay(1000, "Maximize the screen");
    var Compny = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite13.McValuePickerWidget;   
    waitForObj(Compny)   
     Compny.Click();

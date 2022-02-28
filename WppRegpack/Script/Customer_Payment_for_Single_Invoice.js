@@ -599,10 +599,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var saveentry = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3);
 WorkspaceUtils.waitForObj(saveentry)
 saveentry.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-       
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }      
 var released = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 7).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
 Sys.HighlightObject(released);
 WorkspaceUtils.waitForObj(released)

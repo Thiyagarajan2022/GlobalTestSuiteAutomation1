@@ -772,7 +772,7 @@ aqUtils.Delay(2000, "Rejecting Invoice");;
 var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
 //WorkspaceUtils.waitForObj(screen);
 screen.Click();
-screen.MouseWheel(-100);
+screen.MouseWheel(-200);
 var ApvPerson = "";
 var Apv = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 2).SWTObject("Composite", "");
 //var Apv = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite3.SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 1);
@@ -800,9 +800,8 @@ while ((((ApvPerson.getText().OleValue.toString().trim().indexOf("ejected")==-1)
 }
 
   Log.Message(ApvPerson.getText())
-  Log.Message((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "ejected").OleValue.toString().trim())==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1))
-  Log.Message(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1)
-  if(((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "ejected").OleValue.toString().trim())==-1)&&(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1))||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1)){
+  Log.Message((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "ejected").OleValue.toString().trim())!==-1))
+  if(((ApvPerson.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "ejected").OleValue.toString().trim())!==-1))){
   ValidationUtils.verify(true,true,"Vendor Invoice is Rejected by :"+loginPer)
   TextUtils.writeLog("Vendor Invoice is Rejected by :"+loginPer); 
   }else{ 

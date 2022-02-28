@@ -78,9 +78,9 @@ gotoMenu();
 gotoClientSearch();
 NewCompanyClient();
 CompanyClientTable();
-if(EnvParams.Country.toUpperCase()=="INDIA"){
-Runner.CallMethod("IND_CreateCompnayClient.indiaSpecific",State,GST,PAN,TAN,TIN);
-}
+//if(EnvParams.Country.toUpperCase()=="INDIA"){
+//Runner.CallMethod("IND_CreateCompnayClient.indiaSpecific",State,GST,PAN,TAN,TIN);
+//}
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 Runner.CallMethod("SPA_CompanyClient.spainSpecific",SII_Tax);
 }

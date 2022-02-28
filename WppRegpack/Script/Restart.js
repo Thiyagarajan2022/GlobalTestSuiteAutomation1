@@ -97,9 +97,28 @@ aqUtils.Delay(20000, "Waiting for Maconomy to Start");
 var status = true;
 while(status){
 var mainparent = Sys.Process("Maconomy")
-aqUtils.Delay(5000, "Waiting to find Object");
+aqUtils.Delay(9000, "Waiting to find Object");
+var  Users = ""; 
+var p = Sys.Process("Maconomy");
+Sys.HighlightObject(p);
+var w = p.FindChild("alt", "WPP logo logo", 2000);
+  if (w.Exists)
+{ 
+ //w = p.FindChild("text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim(), 2000);
+  w= p.FindChild("text","Cancel",2000);
+  if (w.Exists)
+{ 
+Users = w;
+Log.Message(Users.FullName);
+Sys.HighlightObject(Users);
+Users.Click();
+}
+
+}
+aqUtils.Delay(5000, "Waiting to find Child branch");
 Sys.Process("Maconomy").SWTObject("Shell", "*Deltek Maconomy*");
 aqUtils.Delay(5000, "Waiting to find Child branch");
+
 var childCount = Sys.Process("Maconomy").ChildCount;
 for(var ci=0;ci<childCount;ci++){ 
   if((mainparent.Child(ci).Name!="JavaRuntime()")&&(mainparent.Child(ci).Visible!=false)){
