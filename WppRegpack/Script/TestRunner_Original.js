@@ -241,13 +241,13 @@ TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime);
 
 // Verify Statistics file exists or not. If not create it.
 if(!aqFile.Exists(automationStat_file))
- ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
+ //ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
 
 // Calculate RunTime and publish in Excel 
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,JkinsName,EnvParams.Opco,executionTime);
+//ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,JkinsName,EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
 }
  
@@ -456,13 +456,13 @@ TextUtils.writeLog(unitName +" Execution Ended Time :"+eTime);
 
 // Verify Statistics file exists or not. If not create it.
 if(!aqFile.Exists(automationStat_file))
- ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
+ //ExcelUtils.create_AutomationStat_Excel(automationStat_file);  
 
 // Calculate RunTime and publish in Excel 
 
 executionTime = 0;    
 executionTime = WorkspaceUtils.timeDifference(sTime, eTime)   
-ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,testList[tL],EnvParams.Opco,executionTime);
+//ExcelUtils.writeTo_AutomationStat_Excel(automationStat_file,moduleName,testList[tL],EnvParams.Opco,executionTime);
 testCase_Stat_updated_flag=true;
 
 

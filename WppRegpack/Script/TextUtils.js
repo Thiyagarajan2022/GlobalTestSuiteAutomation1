@@ -40,7 +40,7 @@ return value;
 function GetProjectValue(element)
 {
 var value = "";
-var UserConfigPath = Project.Path + "\\" + "ProjectConfig.config";
+var UserConfigPath = Project.Path + "\\" + "ProjectConfig.txt";
 var File, line;
    
 File = aqFile.OpenTextFile(UserConfigPath, aqFile.faRead, aqFile.ctANSI);
@@ -49,7 +49,7 @@ File.Cursor = 0;
 
 while(! File.IsEndOfFile()){
 line = File.ReadLine(); 
-
+Log.Message(line)
 key = line.substring(0, line.indexOf("=")); 
    
 
