@@ -115,9 +115,10 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 
 function goToBudget(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
+  
   var allJobs = Aliases.Maconomy.JobBudgetMPL.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
   WorkspaceUtils.waitForObj(allJobs);
   allJobs.Click();

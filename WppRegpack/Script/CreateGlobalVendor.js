@@ -389,14 +389,6 @@ function globalVendor(){
 ////=======================Vendor Creation=============////////
 function NewglobalVendor(){ 
 
- Sys.Desktop.KeyDown(0x12);
-      Sys.Desktop.KeyDown(0x20);
-      Sys.Desktop.KeyUp(0x12);
-      Sys.Desktop.KeyUp(0x20);
-      Sys.Desktop.KeyDown(0x58);
-      Sys.Desktop.KeyUp(0x58);  
-      aqUtils.Delay(1000, "Maximize the screen");
-
   //aqUtils.Delay(4000, Indicator.Text);
    var Wizard_Name = Sys.Process("Maconomy").SWTObject("Shell", "*").WndCaption;
    Log.Message(Wizard_Name)
@@ -464,7 +456,7 @@ function NewglobalVendor(){
   controlacc.Click();
   WorkspaceUtils.DropDownList(controlAct,"Control Account")
   }
-  
+
   var wppVendor = Sys.Process("Maconomy").SWTObject("Shell", "*").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 13).SWTObject("McPopupPickerWidget", "", 2)  
   wppVendor.Click();
   WorkspaceUtils.DropDownList("Yes","WPP Preferred Vendor")
@@ -493,19 +485,18 @@ function NewglobalVendor(){
    var Next = Aliases.Maconomy.Group8.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim());
    Next.HoverMouse();
    ReportUtils.logStep_Screenshot() ;
-   Next.Click();
+   Next.Click(); 
   }
    
 function VendorScreen(){
-  
- Sys.Desktop.KeyDown(0x12);
+      
+      Sys.Desktop.KeyDown(0x12);
       Sys.Desktop.KeyDown(0x20);
       Sys.Desktop.KeyUp(0x12);
       Sys.Desktop.KeyUp(0x20);
       Sys.Desktop.KeyDown(0x58);
       Sys.Desktop.KeyUp(0x58);  
       aqUtils.Delay(1000, "Maximize the screen");
-      
    var Compny = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite13.McValuePickerWidget;   
    waitForObj(Compny)   
     Compny.Click();

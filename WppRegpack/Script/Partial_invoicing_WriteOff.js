@@ -1691,10 +1691,9 @@ var approvalBar = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Compos
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){    
+}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){    
 }
     ImageRepository.ImageSet.Maximize.Click();
 

@@ -3255,9 +3255,9 @@ function getSpecificDate(daysFromToday)
   if(mm<10) {
       mm='0'+mm;
   } 
-  if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
-    date = dd+'-'+mm+'-'+yyyy;
-  else
+//  if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
+//    date = dd+'-'+mm+'-'+yyyy;
+//  else
     date = mm+'/'+dd+'/'+yyyy;
   Log.Message(date);
   return date;

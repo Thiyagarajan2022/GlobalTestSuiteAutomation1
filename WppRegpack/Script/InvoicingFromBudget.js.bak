@@ -21,7 +21,7 @@ var IBudget_ID = "";
 var IBudgetUnit = "";
 var   Descp = [];
 var Estimatelines = [];;
-
+var MainJob = ""
 //Main Function
 function InvoicingFromBudget(){ 
 TextUtils.writeLog("Create Invoice from Budget Started"); 
@@ -40,7 +40,7 @@ STIME = "";
 Approve_Level =[];
 ApproveInfo = [];
 jobNumber,EmpNo ,Hitpoint,Buss_Area_2 = "";
-
+MainJob = true;
 STIME = WorkspaceUtils.StartTime();
 ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
 
@@ -53,7 +53,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
   var AllocationWIP = ExcelUtils.getRowDatas("Job Invoice Allocation with WIP Job",EnvParams.Opco);
   var invoiceBudget = ExcelUtils.getRowDatas("Invoice from Budget Job",EnvParams.Opco);
   var invoiceAccount = ExcelUtils.getRowDatas("Invoice OnAccount Job",EnvParams.Opco);
-  var writeoffInvoice = ExcelUtils.getRowDatas("Write Off Invoicing Job",EnvParams.Opco);
+  var writeoffInvoice = ExcelUtils.getRowDatas("Time & Material Invocing Job",EnvParams.Opco);
   
   template = ReadExcelSheet("Main Job Template",EnvParams.Opco,"Data Management");
   Log.Message((jobNumber!="")||(jobNumber!=null))
@@ -75,7 +75,7 @@ ReportUtils.logStep("INFO", "Invoice from Budget started::"+STIME);
   }
   if((jobNumber=="")||(jobNumber==null)){ 
     //Creation of Job
-    
+    MainJob = false;
     IBudget_ID = TestRunner.testCaseId;
     IBudgetUnit = TestRunner.unitName; 
     TestRunner.TempUnit = IBudgetUnit;
@@ -1130,6 +1130,8 @@ var SubmitDraft;
     
   }   
   
+  
+  if(MainJob){
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
 //var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
 var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.descrip
@@ -1203,7 +1205,7 @@ for(var i=0;i<specification.getItemCount();i++){
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPl,Payment_Terms);
   
    
-  
+  }
   
   
   
@@ -1236,8 +1238,8 @@ var PrintDraft;
 TextUtils.writeLog("Print Draft is Clicked");
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*"+".pdf - Adobe Acrobat Reader DC", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
+var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
@@ -1306,8 +1308,14 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
+if(MainJob){ 
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
+else{ 
+  ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Draft Invoice from Budget",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}
     aqUtils.Delay(4000, Indicator.Text);
    
 
@@ -1986,7 +1994,7 @@ if(Hitpoint.toUpperCase()!="YES"){
     }
   } 
   
-    aqUtils.Delay(10000, Indicator.Text);
+    aqUtils.Delay(50000, Indicator.Text);
     
     
      var p = Sys.Process("Maconomy");
@@ -2083,8 +2091,13 @@ Sys.HighlightObject(pdf);
 ValidationUtils.verify(true,true,"Print Client Invoice is Clicked and PDF is Saved");
 Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
 ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
+if(MainJob){ 
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PDF Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
+}else{ 
+ExcelUtils.setExcelName(workBook,"Data Management", true);
+ExcelUtils.WriteExcelSheet("PDF Invoice from Budget",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")    
+}
 var docObj = JavaClasses.org_apache_pdfbox_pdmodel.PDDocument.load_3(sFolder+SaveTitle+".pdf");
 var textobj;
   try{

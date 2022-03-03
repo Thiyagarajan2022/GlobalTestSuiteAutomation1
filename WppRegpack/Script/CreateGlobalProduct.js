@@ -63,9 +63,9 @@ SubLevels();
 GlobalClient_Screen2();
 PopUp();
 SelectProduct();
-if(EnvParams.Country.toUpperCase()=="INDIA"){
-Runner.CallMethod("IND_CreateGlobalBrand.indiaSpecific",State,GST,PAN,TAN,TIN);
-}
+//if(EnvParams.Country.toUpperCase()=="INDIA"){
+//Runner.CallMethod("IND_CreateGlobalBrand.indiaSpecific",State,GST,PAN,TAN,TIN);
+//}
 if(EnvParams.Country.toUpperCase()=="SPAIN"){
 Runner.CallMethod("SPA_GlobalBrand.spainSpecific",SII_Tax);
 }

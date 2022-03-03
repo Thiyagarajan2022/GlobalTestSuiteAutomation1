@@ -310,8 +310,7 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   }
   
 // Navigating to Invoicing  
-  var Invoicing = 
-  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  var Invoicing = //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   NameMapping.Sys.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();

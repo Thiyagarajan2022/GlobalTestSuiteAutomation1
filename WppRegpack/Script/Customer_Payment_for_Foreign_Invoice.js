@@ -824,7 +824,8 @@ firstcell.Click();
 firstcell.setText(JournalNo);
 aqUtils.Delay(1000,Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
+}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
 }
 var flag =false;
 for(var i=0;i<table.getItemCount();i++){

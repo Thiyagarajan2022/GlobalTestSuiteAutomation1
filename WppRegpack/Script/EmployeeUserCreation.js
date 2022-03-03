@@ -623,8 +623,8 @@ WorkspaceUtils.waitForObj(Role_1);
 if(Role!=""){
  Role_1.Click();
 var ExlArray = ReadExcelSheet("Validate_EmployeeCategories",EnvParams.Opco)
-WorkspaceUtils.config_with_Maconomy_Validation(Role_1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee Category").OleValue.toString().trim(),Role,ExlArray,"Role");
-// WorkspaceUtils.SearchByValue(Role_1,"Employee Category",Role,"Role");
+//WorkspaceUtils.config_with_Maconomy_Validation(Role_1,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Employee Category").OleValue.toString().trim(),Role,ExlArray,"Role");
+ WorkspaceUtils.SearchByValue(Role_1,"Employee Category",Role,"Role");
      }else{ 
   ValidationUtils.verify(false,true,"Role is Needed to Create a Employee");
 } 

@@ -5,7 +5,7 @@ var file_path;
 var file_name;
 var testExe = "";
 var ig = 0;
-var logStatus = JavaClasses.com_relevantcodes_extentreports.LogStatus;
+var logStatus = JavaClasses.com_relevantcodes_extentreports.LogStatus
 var Dfile_path;
 var Dfile_name;
 var DStat = false;

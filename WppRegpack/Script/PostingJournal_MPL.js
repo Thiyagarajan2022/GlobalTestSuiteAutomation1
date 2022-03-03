@@ -57,37 +57,48 @@ function validatePostingJournal()
   {
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "JOURNAL NO").OleValue.toString().trim()))
     {
-       if(pdflineSplit[j].includes(journalNo))
+       if(pdflineSplit[j].includes(journalNo)){
        Log.Message(journalNo+" Journal Number is matching with Pdf")
+       TextUtils.writeLog("Journal Number is matching with Pdf")
+       }
         else
+        {
         ValidationUtils.verify(false,true,"Journal Number is not same in pdf");
+         TextUtils.writeLog("Journal Number is not matching with Pdf")
+         }
     }
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company No").OleValue.toString().trim()))
     {
-       if(pdflineSplit[j].includes(EnvParams.Opco))
+       if(pdflineSplit[j].includes(EnvParams.Opco)){
        Log.Message(EnvParams.Opco+" Company Number is matching with Pdf")
+       TextUtils.writeLog("Company Number is matching with Pdf")
+       }
         else
         ValidationUtils.verify(false,true,"Company Number is not same in pdf");
     }
-    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company Name").OleValue.toString().trim()))
-     {
-       if(pdflineSplit[j].includes(companyName))
-       Log.Message(companyName+" Company Name is matching with Pdf")
-        else
-        ValidationUtils.verify(false,true,"Company Name is not same in pdf");
-      }
+//    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Company Name").OleValue.toString().trim()))
+//     {
+//       if(pdflineSplit[j].includes(companyName))
+//       Log.Message(companyName+" Company Name is matching with Pdf")
+//        else
+//        ValidationUtils.verify(false,true,"Company Name is not same in pdf");
+//      }
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Base Currency").OleValue.toString().trim()))
      {
-       if(pdflineSplit[j].includes(baseCurrency))
+       if(pdflineSplit[j].includes(baseCurrency)){
        Log.Message(baseCurrency+" Base Currency is matching with Pdf")
+       TextUtils.writeLog("Base Currency is matching with Pdf")
+       }
         else
         ValidationUtils.verify(false,true,"Base Currency is not same in pdf");
       }
       
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Submitted By").OleValue.toString().trim()))
      {
-       if(pdflineSplit[j].includes(submittedBy))
+       if(pdflineSplit[j].includes(submittedBy)){
        Log.Message(submittedBy+" Submitted By is matching with Pdf")
+        TextUtils.writeLog(submittedBy+" Submitted By is matching with Pdf")
+       }
         else
         ValidationUtils.verify(false,true,"Submitted By is not same in pdf");
       }
@@ -101,7 +112,10 @@ function validatePostingJournal()
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Posted By").OleValue.toString().trim()))
      {
        if(pdflineSplit[j].includes(postedBy))
-       Log.Message(postedBy+" Posted By is matching with Pdf")
+       {
+           Log.Message(postedBy+" Posted By is matching with Pdf")
+            TextUtils.writeLog(postedBy+" Posted By is matching with Pdf")
+       }
         else
         ValidationUtils.verify(false,true,"Posted By is not same in pdf");
       }
@@ -116,7 +130,10 @@ function validatePostingJournal()
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Period End").OleValue.toString().trim()))
      {
        if(pdflineSplit[j].includes(periodEnd))
+       {
         Log.Message(periodEnd+" Period End is matching with Pdf")
+         TextUtils.writeLog(periodEnd+" Period End is matching with Pdf")
+        }
         else
         ValidationUtils.verify(false,true,"Period End is not same in pdf");
       }
@@ -152,13 +169,17 @@ function validatePostingJournal()
           {
               Log.Message(localAccount+" Local Account is matching with Pdf")
              
-                if(pdflineSplit[j].includes(entryDate))
+                if(pdflineSplit[j].includes(entryDate)){
                     Log.Message(entryDate+" Entry Date is matching with Pdf")
+                    TextUtils.writeLog( entryDate+" Entry Date is matching with Pdf")
+                    }
                       else
                     ValidationUtils.verify(false,true,"Entry Date is not same in pdf");
               
-                if(pdflineSplit[j].includes(transNo))
+                if(pdflineSplit[j].includes(transNo)){
                     Log.Message(transNo+" Transaction Number is matching with Pdf")
+                    TextUtils.writeLog(transNo+" Transaction Number is matching with Pdf")
+                    }
                       else
                     ValidationUtils.verify(false,true,"Local Account is not same in pdf");
                 }

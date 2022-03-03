@@ -464,6 +464,9 @@ Selection.Click();
   TextUtils.writeLog("Moving to Invoice Selection Tab");
   
 var Action = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.GroupToolItemControl;
+
+if(EnvParams.Country.toUpperCase()=="INDIA")
+var Action = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.SWTObject("GroupToolItemControl", "", 9)
 Sys.HighlightObject(Action);
 Action.Click();
 
@@ -1012,7 +1015,7 @@ var Sliding_Panel = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy 
 //  var Sliding_Panel = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
   Sys.HighlightObject(Sliding_Panel);
   Sliding_Panel.Click();
-  aqUtils.Delay(3000, Indicator.Text);
+  aqUtils.Delay(3000, "Trying to click on side panel");
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 
@@ -1081,6 +1084,7 @@ var grandTotal = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Co
 //Finding Payment Terms
 var break_MainLoop = false;
 var ParentAdd = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.Composite.McGroupWidget;
+//Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget;
 var Payment_Terms = "";
 for(var i=0;i<ParentAdd.ChildCount;i++){ 
   var temp = ParentAdd.Child(i);
