@@ -540,9 +540,7 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 function gotoInvoicing(){ 
   
-if(ImageRepository.ImageSet.Tab_Icon.Exists()) { 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()) { }
 var allJobs = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -575,8 +573,11 @@ WorkspaceUtils.waitForObj(labels);
   var job = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
   job.Click();
   job.setText(jobNumber);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()) { }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()) { }
   WorkspaceUtils.waitForObj(job);
   WorkspaceUtils.waitForObj(table);
+  
 
 var i=0;
 while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1)&&(i!=60)){ 
@@ -585,7 +586,7 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   labels.Refresh();
 }
 if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+ ValidationUtils.verify(true,true,"Maconomy is loading ......") 
 }
 
   var flag=false;

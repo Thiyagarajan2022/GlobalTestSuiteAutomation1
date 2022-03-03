@@ -326,6 +326,10 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 
 function gotoAllocation(){ 
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+    
+  }
+
   var allJobs = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -367,8 +371,9 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   i++;
   labels.Refresh();
 }
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+ ValidationUtils.verify(true,true,"Maconomy is loading ......") 
 }
 TemplateJob = ""
   var flag=false;
@@ -390,11 +395,7 @@ TemplateJob = ""
   closeFilter.Click();
   
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   var clientApproved = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
   WorkspaceUtils.waitForObj(clientApproved);
@@ -528,7 +529,8 @@ else{
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();  
   }else{
-  var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite10.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();
   }

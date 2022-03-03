@@ -62,6 +62,8 @@ function getDetails(){
 sheetName ="InvoiceLookups";  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
   InvoiceNo = ReadExcelSheet("Client Invoice No",EnvParams.Opco,"Data Management");
+  if((InvoiceNo=="")||(InvoiceNo==null))
+  InvoiceNo = ReadExcelSheet("Invoice preparation No",EnvParams.Opco,"Data Management");  
   if((InvoiceNo=="")||(InvoiceNo==null)){
   ExcelUtils.setExcelName(workBook, sheetName, true);
   InvoiceNo = ExcelUtils.getRowDatas("Invoice No",EnvParams.Opco)

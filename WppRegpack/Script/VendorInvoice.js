@@ -468,9 +468,7 @@ var Okay = w.SWTObject("Composite", "", 2).SWTObject("Button", JavaClasses.MLT.M
 Okay.Click();
 }
 aqUtils.Delay(200, "Waiting for Action")
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
 action.Click();
 aqUtils.Delay(2000, "Waiting for Action");
@@ -516,6 +514,9 @@ action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Proje
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Attaching Document");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  
+
   var action = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.GroupToolItemControl;
   WorkspaceUtils.waitForObj(action);
   action.Click();

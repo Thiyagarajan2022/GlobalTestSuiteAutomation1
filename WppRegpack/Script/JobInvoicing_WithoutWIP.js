@@ -228,6 +228,8 @@ WorkspaceUtils.waitForObj(labels);
   var job = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
   job.Click();
   job.setText(jobNumber);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   WorkspaceUtils.waitForObj(job);
   WorkspaceUtils.waitForObj(table);
 
@@ -263,9 +265,7 @@ TemplateJob = "";
   closeFilter.Click();
   
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   
   // validating Client and Working Estimate is approved
@@ -351,7 +351,9 @@ TemplateJob = "";
   
   
 
-  var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  var Invoicing = 
+  //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 8)  
   WorkspaceUtils.waitForObj(Invoicing);
   Invoicing.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 

@@ -154,7 +154,7 @@ var lookups =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Comp
 waitForObj(lookups);
 lookups.Click();
 ReportUtils.logStep_Screenshot("");
-aqUtils.Delay(1000);
+ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var paymentDateFrom =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;
 
 paymentDateFrom.setText(PaymentDate);

@@ -400,12 +400,8 @@ WorkspaceUtils.waitForObj(save);
 save.HoverMouse();
 ReportUtils.logStep_Screenshot();
 save.Click();
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
  /* 
 aqUtils.Delay(4000, "Validating Tax");
   var tableGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
