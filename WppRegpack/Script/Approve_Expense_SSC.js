@@ -418,15 +418,13 @@ Sys.HighlightObject(sheetno)
        }
         
        Sys.HighlightObject(Approval_table) ;
-              Log.Message(Approval_table.FullName)     
-              Sys.HighlightObject(Approval_table);  
+       Log.Message(Approval_table.FullName)     
+       Sys.HighlightObject(Approval_table);  
             var tableCnt = Approval_table.getItemCount();
             tableCnt = tableCnt/Lcount;
             Log.Message(tableCnt);
             Log.Message(tableCnt-1);
             var CCount = tableCnt-1
-//              for(var z=0;z<Approval_table.getItemCount();z++){                 
-//                if(z<CCount){
                    approvers="";   
                    if(Approval_table.getItem(CCount).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim()){      
                      approvers = Approval_table.getItem(CCount).getText_2(3).OleValue.toString().trim()+"*"+Approval_table.getItem(CCount).getText_2(4).OleValue.toString().trim();

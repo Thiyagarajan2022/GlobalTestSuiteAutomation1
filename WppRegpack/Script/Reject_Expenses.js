@@ -317,20 +317,48 @@ Sys.HighlightObject(sheetno)
         
        Sys.HighlightObject(Approval_table) ;
               Log.Message(Approval_table.FullName)  
-                Sys.HighlightObject(Approval_table);               
-                    for(var z=0;z<Approval_table.getItemCount();z++){ 
-                        if(z<1){
-                             approvers="";   
-                             if(Approval_table.getItem(z).getText_2(8)!="Rejected"){      
-                               approvers = Approval_table.getItem(z).getText_2(3).OleValue.toString().trim()+"*"+Approval_table.getItem(z).getText_2(4).OleValue.toString().trim();
-//                               Approve_Level[y] = EnvParams.Opco+"*"+Expense_Number+"*"+approvers;desp
-                               Approve_Level[y] = EnvParams.Opco+"*"+desp+"*"+approvers;
-                               Log.Message(Approve_Level[y]);
-                               ReportUtils.logStep("INFO","Approver level :" +z+ ": " +Approve_Level[y]);
-                               y++;
-                             }  
-                        }
-                    }
+                Sys.HighlightObject(Approval_table);  
+     //Getting User Name
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
+  for(var i=0;i<Approval_table.getItemCount();i++){   
+     var approvers="";
+      if(Approval_table.getItem(i).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Rejected").OleValue.toString().trim()){
+        
+      //Self Approve is Disabled. So finding different Approver
+        var mainApprover = Approval_table.getItem(i).getText_2(3).OleValue.toString().trim();
+        var substitur = Approval_table.getItem(i).getText_2(4).OleValue.toString().trim();
+        var temp = "";
+        if(mainApprover .indexOf(Project_manager)==-1){ 
+          temp = temp+mainApprover+"*";
+        }else{ 
+          temp = temp+"SelfApprove"+"*";
+        }
+        if(substitur .indexOf(Project_manager)==-1){ 
+          temp = temp+substitur;
+        }
+      approvers = EnvParams.Opco+"*"+desp+"*"+ temp;
+      Log.Message("Approver level :" +i+ ": " +approvers);
+      Approve_Level[y] = approvers;
+      y++;
+      } 
+                
+      }          
+                
+                
+                             
+//                    for(var z=0;z<Approval_table.getItemCount();z++){ 
+//                        if(z<1){
+//                             approvers="";   
+//                             if(Approval_table.getItem(z).getText_2(8)!="Rejected"){      
+//                               approvers = Approval_table.getItem(z).getText_2(3).OleValue.toString().trim()+"*"+Approval_table.getItem(z).getText_2(4).OleValue.toString().trim();
+//                               Approve_Level[y] = EnvParams.Opco+"*"+desp+"*"+approvers;
+//                               Log.Message(Approve_Level[y]);
+//                               ReportUtils.logStep("INFO","Approver level :" +z+ ": " +Approve_Level[y]);
+//                               y++;
+//                             }  
+//                        }
+//                    }
           }
 //          var info_Bar = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.PTabItemPanel2.TabControl;
           

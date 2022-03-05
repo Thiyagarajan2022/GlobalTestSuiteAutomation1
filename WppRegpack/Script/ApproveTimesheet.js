@@ -450,17 +450,42 @@ var approver_table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy
 WorkspaceUtils.waitForObj(approver_table);
 //  Log.Message(approver_table.getItemCount());
 var y=0;
-for(var z=0;z<approver_table.getItemCount();z++){ 
-   approvers="";
-   if(approver_table.getItem(z).getText_2(8)!="Approved"){
-   approvers = approver_table.getItem(z).getText_2(3).OleValue.toString().trim()+"*"+approver_table.getItem(z).getText_2(4).OleValue.toString().trim();
-   ReportUtils.logStep("INFO","Employee Approver level : " +z+ " Approver :" +approvers);
-//   Approve_Level[y] = Employee_detail[3]+"*"+Employee_detail[0]+"*"+approvers;
-   Approve_Level[y] = comapany+"*"+EmpNumber+"*"+approvers;
-   Log.Message(Approve_Level[y])
-   y++;
-   }
-}
+//Getting User Name
+    Project_manager = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
+    Project_manager = Project_manager.substring(Project_manager.indexOf(" - ")+3);
+  for(var i=0;i<approver_table.getItemCount();i++){   
+     var approvers="";
+      if(approver_table.getItem(i).getText_2(8)!=JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approved").OleValue.toString().trim())
+      { 
+      //Self Approve is Disabled. So finding different Approver
+        var mainApprover = approver_table.getItem(i).getText_2(3).OleValue.toString().trim();
+        var substitur = approver_table.getItem(i).getText_2(4).OleValue.toString().trim();
+        var temp = "";
+        if(mainApprover .indexOf(Project_manager)==-1){ 
+          temp = temp+mainApprover+"*";
+        }else{ 
+          temp = temp+"SelfApprove"+"*";
+        }
+        if(substitur .indexOf(Project_manager)==-1){ 
+          temp = temp+substitur;
+        }
+      approvers = EnvParams.Opco+"*"+EmpNumber+"*"+ temp;
+      Log.Message("Approver level :" +i+ ": " +approvers);
+      Approve_Level[y] = approvers;
+      y++;
+      }
+  }
+//for(var z=0;z<approver_table.getItemCount();z++){ 
+//   approvers="";
+//   if(approver_table.getItem(z).getText_2(8)!="Approved"){
+//   approvers = approver_table.getItem(z).getText_2(3).OleValue.toString().trim()+"*"+approver_table.getItem(z).getText_2(4).OleValue.toString().trim();
+//   ReportUtils.logStep("INFO","Employee Approver level : " +z+ " Approver :" +approvers);
+////   Approve_Level[y] = Employee_detail[3]+"*"+Employee_detail[0]+"*"+approvers;
+//   Approve_Level[y] = comapany+"*"+EmpNumber+"*"+approvers;
+//   Log.Message(Approve_Level[y])
+//   y++;
+//   }
+//}
 }
 TextUtils.writeLog("Finding approvers for Created Timesheet");
 var info_Bar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabItemPanel", "", 1).SWTObject("TabControl", "");

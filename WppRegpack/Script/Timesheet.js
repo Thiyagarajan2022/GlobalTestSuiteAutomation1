@@ -497,9 +497,8 @@ ReportUtils.logStep_Screenshot("");
 //      Delay(5000);
     }
     
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){   }
   var balance = Aliases.Maconomy.CreateTimesheet.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.Composite.McGroupWidget.Composite.Composite.McTextWidget;
 //  if(balance.getText()!="0:00"){ 
   if(balance.getText().OleValue.toString().trim().indexOf("-")!=-1){
