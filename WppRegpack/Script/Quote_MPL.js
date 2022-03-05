@@ -253,7 +253,8 @@ var TaxVariable = "";
    var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
-   
+  Log.Message(EnvParams.Country.toUpperCase())
+   if((EnvParams.Country.toUpperCase()!="QATAR") && (EnvParams.Country.toUpperCase()!="UAE") && (EnvParams.Country.toUpperCase()!="HONG KONG"))
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
     {
       x= pdflineSplit[j].split(":");
