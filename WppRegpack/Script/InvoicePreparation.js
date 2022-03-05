@@ -1091,13 +1091,13 @@ var ParentAdd = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Compo
 //}
 
 
-Payment_Terms =Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1221 Finance (TST)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").
+//Payment_Terms =Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1221 Finance (TST)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").
 SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).
 SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2)
 Excl_Tax = Excl_Tax.getText().OleValue.toString().trim();
 grandTotal = grandTotal.getText().OleValue.toString().trim();
-Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();
-Payment_Terms = Payment_Terms.replace(/[^0-9]+/g, "");;
+//Payment_Terms = Payment_Terms.getText().OleValue.toString().trim();
+//Payment_Terms = Payment_Terms.replace(/[^0-9]+/g, "");;
 var Q_total = 0;
 var specification = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   var q = 0;
@@ -1140,7 +1140,7 @@ for(var i=0;i<specification.getItemCount();i++){
   ExcelUtils.setExcelName(workBook,InvoiceMPL, true);
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TOTAL EXC. TAX",InvoiceMPL,Excl_Tax);
   ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Invoice TOTAL",InvoiceMPL,grandTotal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPL,Payment_Terms);
+ // ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Payment Terms",InvoiceMPL,Payment_Terms);
   
   
 var PrintDraft;

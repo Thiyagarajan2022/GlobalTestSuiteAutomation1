@@ -45,7 +45,7 @@ function Invoice()
   ExcelUtils.setExcelName(workBook, "InvoiceMPL", true);
 //  var Revesion = ExcelUtils.getColumnDatas("Quote Revision",EnvParams.Opco)
   var GrandTotal = ExcelUtils.getColumnDatas("Invoice TOTAL",EnvParams.Opco)
-  var PaymentTerm = ExcelUtils.getColumnDatas("Payment Terms",EnvParams.Opco)
+  //var PaymentTerm = ExcelUtils.getColumnDatas("Payment Terms",EnvParams.Opco)
   
 ExcelUtils.setExcelName(workBook, "Data Management", true);
 var clientName = ExcelUtils.getRowDatas("Global Client Name",EnvParams.Opco)
@@ -186,27 +186,27 @@ var pName = false;
         TextUtils.writeLog("Invoice Number is availble in Pdf")
         }
     }
-   if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Terms").OleValue.toString().trim()))
-    {    
-    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
-        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Payment Terms").OleValue.toString().trim();
-      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
-      x= pdflineSplit[j].split(" ");
-      x[0]= pdflineSplit[j];
-      x[1]= pdflineSplit[j];
-      }else
-      x= pdflineSplit[j].split(":");
-      pdfJobNum = x[1].trim();
-      Log.Message(PaymentTerm)
-      Log.Message(pdfJobNum)
-       if(pdfJobNum.indexOf(PaymentTerm)==-1)
-        ValidationUtils.verify(false,true,"Payment Terms is not same in Draft Invoice");
-        else{
-        ReportUtils.logStep("INFO",PaymentTerm+" Payment Terms is matching with Pdf")
-        ValidationUtils.verify(true,true,PaymentTerm+" Payment Terms is matching with Pdf")
-        TextUtils.writeLog(PaymentTerm+" Payment Terms is matching with Pdf")
-        }
-    }
+//   if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Payment Terms").OleValue.toString().trim()))
+//    {    
+//    if((EnvParams.Country.toUpperCase()=="CHINA")&&(Language=="Chinese (Simplified)")){
+//        var atSize = JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path, Language, "Payment Terms").OleValue.toString().trim();
+//      pdflineSplit[j] = pdflineSplit[j].substring(atSize.length+1); 
+//      x= pdflineSplit[j].split(" ");
+//      x[0]= pdflineSplit[j];
+//      x[1]= pdflineSplit[j];
+//      }else
+//      x= pdflineSplit[j].split(":");
+//      pdfJobNum = x[1].trim();
+//      Log.Message(PaymentTerm)
+//      Log.Message(pdfJobNum)
+//       if(pdfJobNum.indexOf(PaymentTerm)==-1)
+//        ValidationUtils.verify(false,true,"Payment Terms is not same in Draft Invoice");
+//        else{
+//        ReportUtils.logStep("INFO",PaymentTerm+" Payment Terms is matching with Pdf")
+//        ValidationUtils.verify(true,true,PaymentTerm+" Payment Terms is matching with Pdf")
+//        TextUtils.writeLog(PaymentTerm+" Payment Terms is matching with Pdf")
+//        }
+//    }
     
     if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job No").OleValue.toString().trim()))
     {
