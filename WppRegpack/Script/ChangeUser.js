@@ -192,7 +192,7 @@ waitForObj(table);
 
 var firstCell = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
 firstCell.setText(userName);  
-aqUtils.Delay(2000,"Waiting for results to filter");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var flag=false;
 if(table.getItemCount()>=1)
 for(var v=0;v<table.getItemCount();v++){ 
@@ -204,15 +204,12 @@ for(var v=0;v<table.getItemCount();v++){
     table.Keys("[Down]");
   }
 }
-else
-ValidationUtils.verify(flag,false,"User is not available in system");
-
-if(!flag)
-ValidationUtils.verify(flag,false,"User is not available in system");
-   
+var msg ="not"
+if (flag)
+  msg =""  
 ReportUtils.logStep_Screenshot();
-ValidationUtils.verify(flag,true,"User is available in system");
-TextUtils.writeLog("User is available in Maconomy screen");
+ValidationUtils.verify(flag,true,"User is" +msg+" available in system");
+TextUtils.writeLog("User is" +msg+" available in Maconomy screen");
   
   
 if(flag){ 

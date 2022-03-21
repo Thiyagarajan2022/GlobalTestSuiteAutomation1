@@ -222,9 +222,8 @@ journal.setText(JournalNumber);
 
 var table = Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
 Sys.HighlightObject(table);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+aqUtils.Delay(3000, "Journals are loading")
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 

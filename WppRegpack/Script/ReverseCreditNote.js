@@ -386,8 +386,6 @@ Okay.Click();
 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;

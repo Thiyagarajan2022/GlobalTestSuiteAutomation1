@@ -321,7 +321,7 @@ aqUtils.Delay(3000, Indicator.Text);
   var blockClient = Aliases.ObjectGroup.BlockedIsland;
 
   if(blockClient.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
-  ValidationUtils.verify(false,true,"Company Brand is already blocked");
+  ValidationUtils.verify(true,true,"Company Brand is already blocked");
   else{ 
   blockClient.Click();
   DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())

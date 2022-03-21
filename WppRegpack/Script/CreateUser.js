@@ -712,13 +712,13 @@ for(var v=0;v<table.getItemCount();v++){
   }
 } 
     
+var msg ="not"
+if (flag)
+  msg =""  
+ReportUtils.logStep_Screenshot();
+ValidationUtils.verify(flag,true,"User is" +msg+" available in system");
+TextUtils.writeLog("User is" +msg+" available in Maconomy screen");
     
-ReportUtils.logStep_Screenshot();  
-
-ValidationUtils.verify(flag,true,"User Created is available in system");
-TextUtils.writeLog("Created User is available in Approver List");  
-  
-  
 if(flag){ 
 closefilter.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }

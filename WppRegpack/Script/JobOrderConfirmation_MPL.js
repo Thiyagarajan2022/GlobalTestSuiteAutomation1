@@ -58,7 +58,7 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
    var index = pdflineSplit.indexOf("ESTIMATE");
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
-   else if (EnvParams.Country.toUpperCase()=="CHINA")
+   else if (EnvParams.Country.toUpperCase()=="CHINA" || EnvParams.Country.toUpperCase()=="HONG KONG")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "ORDER CONFIRMATION").OleValue.toString().trim());
    else
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());

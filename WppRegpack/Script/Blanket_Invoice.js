@@ -662,7 +662,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   Information.Click();
   
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  var layout = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+  var layout = 
+  //Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
+  Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.SWTObject("Composite", "", 3).SWTObject("McGroupWidget", "", 3).SWTObject("Composite", "", 1).SWTObject("McPopupPickerWidget", "", 2)
   layout.Keys(" ");
   aqUtils.Delay(4000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -677,7 +679,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     
   }
   TextUtils.writeLog("Layout is Seleted as Blanket Invoice")
-  var CheckBox_BlanketInvoice = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.McPlainCheckboxView.Button;
+  var CheckBox_BlanketInvoice = 
+  //Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.McPlainCheckboxView.Button;
+  Aliases.Maconomy.SubJob.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPlainCheckboxView.BlanketInvoicing
   if(!CheckBox_BlanketInvoice.getSelection()){ 
     CheckBox_BlanketInvoice.Click();
     aqUtils.Delay(5000, "Blanket Invoice Selected");
@@ -685,7 +689,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   }
   
-  var Save = Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.SingleToolItemControl;
+  var Save = Aliases.Maconomy.SubJob.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite3.SaveButton
+  //Aliases.Maconomy.Blanket_Invoice.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.SingleToolItemControl;
   if(Save.Enabled){ 
     Save.Click();
   }

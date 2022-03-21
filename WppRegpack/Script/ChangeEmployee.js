@@ -151,7 +151,7 @@ var closefilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 
 var emplNo = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 2);
 waitForObj(emplNo);
 emplNo.setText(employeeNo);
-aqUtils.Delay(4000,"Results are filtering")
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(1).OleValue.toString().trim()==(employeeNo)){ 
@@ -162,10 +162,12 @@ for(var v=0;v<table.getItemCount();v++){
     table.Keys("[Down]");
   }
 }
-           
+var msg = "not"           
 ReportUtils.logStep_Screenshot();
-ValidationUtils.verify(flag,true,"Employee is available in system");
-TextUtils.writeLog("Employee is available in Maconomy screen");
+if(flag)
+  msg ="" 
+ValidationUtils.verify(flag,true,"Employee is" +msg+" available in system");
+TextUtils.writeLog("Employee is" +msg+" available in Maconomy screen");
   
   
 if(flag){ 
