@@ -15,9 +15,9 @@
  
 /** 
  * This script modified for pop-up issue
- * @author  : Muthu Kumar M
+ * @author  : Sai Kiran Vemula
  * @version : 2.0
- * Created Date :11/06/2020
+ * Created Date :03/21/2022
  */
  
 var excelName = EnvParams.path;
@@ -465,8 +465,39 @@ if(flag){
    var closefilter = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
    closefilter.Click();    
  
+   
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
+ImageRepository.ImageSet.Maximize1.Click();
+
+aqUtils.Delay(1000,"Waiting for octa fields to appear");
+
+var roleInfoPane =  Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 1753 Senior Finance (TST)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "")
+waitForObj(roleInfoPane);
+Sys.HighlightObject(roleInfoPane);
+
+var octaUserName = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2)
+waitForObj(octaUserName);
+Sys.HighlightObject(octaUserName);
+octaUserName.setText(EnvParams.Country + Math.floor(Math.random() * 100));
+
+var octaOrg =  Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2) 
+waitForObj(octaOrg);
+Sys.HighlightObject(octaOrg);
+octaOrg.setText(EnvParams.Country +  Math.floor(Math.random() * 100));
+
+var octaSave = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3)
+Sys.HighlightObject(octaSave);
+octaSave.Click()
+ 
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
+var userinfoWindow = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("PTabItemPanel", "", 1).SWTObject("TabControl", "")
+waitForObj(userinfoWindow);
+userinfoWindow.Click()
+
 aqUtils.Delay(1000,"Waiting for submit button to appear");
+
 var submitBtn = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 waitForObj(submitBtn);
 Sys.HighlightObject(submitBtn);

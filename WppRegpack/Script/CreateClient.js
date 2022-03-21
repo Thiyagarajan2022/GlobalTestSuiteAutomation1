@@ -604,10 +604,14 @@ function newGlobalClient(){
  var TaxNo = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.TaxNo;
  TaxNo.HoverMouse();
  Sys.HighlightObject(TaxNo);
- TaxNo.setText(taxcode); 
+ TaxNo.setText(taxcode+Math.floor(Math.random() * 100)); 
+ //TaxNo.setText(taxcode); 
   
  var ComapnyReg = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.CompanyRegNo;
- ComapnyReg.setText(companyReg); 
+ ComapnyReg.setText(companyReg+Math.floor(Math.random() * 100));  
+ //ComapnyReg.setText(companyReg); 
+
+
  aqUtils.Delay(3000,"Waiting System to Load fully");
  var C_Currency = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite7.Currency;
   if(currency!=""){
