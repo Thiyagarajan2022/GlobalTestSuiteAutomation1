@@ -132,6 +132,8 @@ Log.Message(JobNoFrom)
 sheetName = "CreateAnAccrualForAGroupOfJobs";
 ExcelUtils.setExcelName(workBook, sheetName, true);
 EntryDate = ExcelUtils.getColumnDatas("EntryDate",EnvParams.Opco)
+if(EntryDate == "AUTOFILL")
+        EntryDate = getSpecificDate(0); 
 if((EntryDate==null)||(EntryDate=="")){ 
 ValidationUtils.verify(false,true,"EntryDate is Needed to Create a Job");
 }

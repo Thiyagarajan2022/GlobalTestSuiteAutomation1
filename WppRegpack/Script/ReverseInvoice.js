@@ -161,13 +161,15 @@ ExcelUtils.setExcelName(workBook, "Data Management", true);
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 EDate = ExcelUtils.getColumnDatas("Entry Date",EnvParams.Opco)
-Log.Message(EDate)
+if(EDate == "AUTOFILL")
+        EDate = getSpecificDate(0);        
 if((EDate==null)||(EDate=="")){ 
 ValidationUtils.verify(false,true,"Entry Date is Needed to Create a Vendor Invoice");
 }
-//Log.Message(EDate)
+
 IDate = ExcelUtils.getColumnDatas("Invoice Date",EnvParams.Opco)
-Log.Message(IDate)
+if(IDate == "AUTOFILL")
+        IDate = getSpecificDate(0);
 if((IDate==null)||(IDate=="")){ 
 ValidationUtils.verify(false,true,"Invoice Date is Needed to Create a Vendor Invoice");
 }
@@ -271,18 +273,7 @@ if(ReverseCopying.getSelection()){
   
   
 var OriginalExchangeRate = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 6).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");
-//if(OriginalExchangeRate.getSelection()){ 
-//  OriginalExchangeRate.HoverMouse();
-//  ReportUtils.logStep_Screenshot("");
-//  ReportUtils.logStep("INFO", "OriginalExchangeRate");
-//    Log.Message("OriginalExchangeRate")
-//    checkmark = true;
-//  }
-//  else{
-//    OriginalExchangeRate.Click();
-//    TextUtils.writeLog("OriginalExchangeRate is Clicked");
-//  }
-  
+
 var EntryDate = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Create Vendor Invoice").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 1).SWTObject("McDatePickerWidget", "", 2);
 if(EDate!=""){
   EntryDate.Click();
