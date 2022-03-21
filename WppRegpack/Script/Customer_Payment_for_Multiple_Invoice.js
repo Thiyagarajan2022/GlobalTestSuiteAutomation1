@@ -977,9 +977,8 @@ aqUtils.Delay(4000,"Maconomy is loading data");
       jobno.Click();
       jobno.setText(Jobno);
       aqUtils.Delay(1000,Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
       var flag =false; 
         for(var i=0;i<table.getItemCount();i++){          
           if(table.getItem(i).getText_2(2).OleValue.toString().trim()==Jobno){

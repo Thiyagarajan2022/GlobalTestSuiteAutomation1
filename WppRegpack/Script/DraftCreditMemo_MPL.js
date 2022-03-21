@@ -57,7 +57,9 @@ var productName = ExcelUtils.getRowDatas("Global Product Name",EnvParams.Opco)
 if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
-
+  if((EnvParams.Country.toUpperCase()=="QATAR"))
+  var index = pdflineSplit.indexOf("TAX CREDIT NOTE");
+   else 
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "CREDIT NOTE").OleValue.toString().trim());
    Log.Message(pdflineSplit)
        if(index>=0){

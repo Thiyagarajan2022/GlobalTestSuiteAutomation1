@@ -160,7 +160,14 @@ function getDetails(){
   Log.Message(I_Budget_Job_Invoice_No!="")
   Log.Message(I_Budget_Job_Invoice_No!=null)
   
-  if(((I_Budget_Job_No!=null)&&(I_Budget_Job_No!="")) && ((I_Budget_Job_Invoice_No!="")&&(I_Budget_Job_Invoice_No!=null))){
+  
+  if((Time_Material_Job_No!="")&&(Time_Material_Job_No!=null) && (Time_Material_Job_Invoice_No!="")&&(Time_Material_Job_Invoice_No!=null)){
+  Job_Number = Time_Material_Job_No;
+  invoice_Number = Time_Material_Job_Invoice_No;
+  Log.Message("Used Time and Material Invoice Job and Invoice No");
+  }
+  
+  else if(((I_Budget_Job_No!=null)&&(I_Budget_Job_No!="")) && ((I_Budget_Job_Invoice_No!="")&&(I_Budget_Job_Invoice_No!=null))){
   Job_Number = I_Budget_Job_No;
   invoice_Number = I_Budget_Job_Invoice_No;
   Log.Message("Used Invoice From Budget Job and Invoice No");
@@ -180,11 +187,7 @@ function getDetails(){
   invoice_Number = I_OnAccount_Job_Invoice_No;
   Log.Message("Used Invoice On Account Job and Invoice No");
   }
-  else if((Time_Material_Job_No!="")&&(Time_Material_Job_No!=null) && (Time_Material_Job_Invoice_No!="")&&(Time_Material_Job_Invoice_No!=null)){
-  Job_Number = Time_Material_Job_No;
-  invoice_Number = Time_Material_Job_Invoice_No;
-  Log.Message("Used Time and Material Invoice Job and Invoice No");
-  }
+  
   else if((I_Preparation_job_No!="")&&(I_Preparation_job_No!=null) && (I_Preparation_job_Invoice_No!="")&&(I_Preparation_job_Invoice_No!=null)){
   Job_Number = I_Preparation_job_No;
   invoice_Number = I_Preparation_job_Invoice_No;

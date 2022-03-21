@@ -573,7 +573,7 @@ WorkspaceUtils.waitForObj(labels);
   var job = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
   job.Click();
   job.setText(jobNumber);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()) { }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()) { }
   WorkspaceUtils.waitForObj(job);
   WorkspaceUtils.waitForObj(table);
   
@@ -583,9 +583,6 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   aqUtils.Delay(100);
   i++;
   labels.Refresh();
-}
-if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,true,"Maconomy is loading ......") 
 }
 
   var flag=false;
@@ -605,11 +602,8 @@ if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLing
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy for Invoice OnAccount"); 
   closeFilter.Click();
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  
   var clientApproved = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
   WorkspaceUtils.waitForObj(clientApproved);
   if(clientApproved.background!=10674625){
@@ -733,13 +727,15 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 //  Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 7)
 //                   Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite3.PTabFolder.TabFolderPanel.TabControl             
+  
   var iOnAccount = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
   Log.Message(iOnAccount.FullName)
   WorkspaceUtils.waitForObj(iOnAccount);
   ReportUtils.logStep_Screenshot("");
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   iOnAccount.Click();
   TextUtils.writeLog("Entering into Invoice On Account Tab");
- 
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var jB = true; 
   var addedlines = false;
   var line_i = 0;
@@ -750,9 +746,7 @@ for(var ij=0;ij<workActivity.length;ij++){
 var AccTemp =   workActivity[ij].split("*");
 
 if((temp[0]==AccTemp[0])&&(AccTemp[1]=="true")){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 
 wCodeID = temp[0];

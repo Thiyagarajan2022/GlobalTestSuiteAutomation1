@@ -210,7 +210,7 @@ WorkspaceUtils.waitForObj(post);
 post.Click();
 ReportUtils.logStep_Screenshot("");          
 ValidationUtils.verify(true,true,"Journal is Posted");  
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
