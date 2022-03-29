@@ -95,6 +95,8 @@ TextUtils.writeLog("Entering into GL Transactions from General Ledger Menu");
 function getDetails(){ 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 Entrydate = ExcelUtils.getRowDatas("Reversion Date",EnvParams.Opco)
+if (Entrydate == "AUTOFILL")
+  Entrydate = getSpecificDate(1)
 if((Entrydate==null)||(Entrydate=="")){ 
 ValidationUtils.verify(false,true,"Reversion Date is Needed to Create Currency Journal");
 }
@@ -131,7 +133,8 @@ GLEntries.Click();
 
 var RDate = Aliases.Maconomy.CurrencyJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite2.McDatePickerWidget
 WorkspaceUtils.waitForObj(RDate);
-WorkspaceUtils.CalenderDateSelection(RDate,Entrydate)
+//WorkspaceUtils.CalenderDateSelection(RDate,Entrydate)
+RDate.setText(Entrydate);
 aqUtils.Delay(2000, "Saving the Changes");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 

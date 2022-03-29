@@ -975,8 +975,6 @@ var SubmitDraft;
   aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
   
@@ -1216,7 +1214,7 @@ appvBar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+ValidationUtils.verify(true,true,"Maconomy is loading ......")  
 }
   
 ImageRepository.ImageSet.Maximize.Click();

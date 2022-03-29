@@ -76,7 +76,8 @@ function getDetails(){
 ExcelUtils.setExcelName(workBook, sheetName, true);
 
 EDate = ExcelUtils.getColumnDatas("DateEntry",EnvParams.Opco)
-
+if (EDate == "AUTOFILL")
+  EDate = getSpecificDate(0);
 if((EDate==null)||(EDate=="")){ 
 ValidationUtils.verify(false,true,"Entry Date is Needed to Create Reverse General Journal");
 }
@@ -581,7 +582,8 @@ CreateRev.Click();
     
   }
 var EntryDate = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite3.SWTObject("McDatePickerWidget", "", 2);
-WorkspaceUtils.CalenderDateSelection(EntryDate,EDate)
+//WorkspaceUtils.CalenderDateSelection(EntryDate,EDate)
+  EntryDate.setText(EDate)
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }

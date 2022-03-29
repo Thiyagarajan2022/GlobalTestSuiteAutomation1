@@ -212,9 +212,8 @@ Sys.HighlightObject(sheetno)
     sheetno.Click();
     sheetno.setText(Expense_Number);
     aqUtils.Delay(1000,Indicator.Text); 
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-      
-    }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     var flag=false;  
     for(var v=0;v<table.getItemCount();v++){ 
       if(table.getItem(v).getText_2(1).OleValue.toString().trim()==Expense_Number){ 

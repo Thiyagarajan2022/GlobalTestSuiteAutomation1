@@ -1214,7 +1214,7 @@ appvBar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+ValidationUtils.verify(true,true,"Maconomy is loading ......")  
 }
   
 ImageRepository.ImageSet.Maximize.Click();
@@ -1224,7 +1224,7 @@ DraftApproval.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+ValidationUtils.verify(true,true,"Maconomy is loading ......")  
 }
 var ApproverTable = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 WorkspaceUtils.waitForObj(ApproverTable);
