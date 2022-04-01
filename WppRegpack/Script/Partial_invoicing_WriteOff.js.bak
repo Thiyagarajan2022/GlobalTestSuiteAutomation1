@@ -735,7 +735,7 @@ aqUtils.Delay(1000, "Approve is Clicked");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+ValidationUtils.verify(true,true,"Maconomy is loading continously......")  
 }
 
 var DraftInvoice = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -1691,10 +1691,9 @@ var approvalBar = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Compos
 approvalBar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approvalBar.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){    
+}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){    
 }
     ImageRepository.ImageSet.Maximize.Click();
 

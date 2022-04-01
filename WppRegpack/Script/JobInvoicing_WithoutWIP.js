@@ -258,6 +258,11 @@ TemplateJob = "";
     }
   }
   
+  if(TemplateJob == null || TemplateJob == ""){
+  ExcelUtils.setExcelName(workBook, "Data Management", true);
+  TemplateJob = ReadExcelSheet("Job Template_2",EnvParams.Opco,"Data Management");
+  }
+  
   if(flag){
   ReportUtils.logStep("INFO", "Job is listed in table to for Job Invoice Allocation");
   ReportUtils.logStep_Screenshot("");
@@ -1079,7 +1084,8 @@ function GlLookups(){
   
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
-  var journal = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  var journal = //Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  NameMapping.Sys.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(journal);
   journal.Click();
   aqUtils.Delay(1000, Indicator.Text);

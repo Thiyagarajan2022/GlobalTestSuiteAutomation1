@@ -20,6 +20,7 @@ var Estimatelines = [];
 var IBudget_ID = "";
 var IBudgetUnit = "";
 var Descp = [];
+var Hitpoint ="";
 
 //Main Function
 var Language = "";
@@ -258,17 +259,10 @@ WorkspaceUtils.closeAllWorkspaces();
 function getDetails(){ 
 sheetName ="InvoicePreparation";  
   ExcelUtils.setExcelName(workBook, "Data Management", true);
-//  jobNumber = ReadExcelSheet("Job Number",EnvParams.Opco,"Data Management");
-//  if((jobNumber=="")||(jobNumber==null)){
-//  ExcelUtils.setExcelName(workBook, sheetName, true);
-//  jobNumber = ExcelUtils.getColumnDatas("Job Number",EnvParams.Opco)
-//  }
-//  if((jobNumber=="")||(jobNumber==null))
-//  ValidationUtils.verify(false,true,"Job Number is needed for Invoice On Account");
-//
-//  
+
 ExcelUtils.setExcelName(workBook, sheetName, true);
-var Hitpoint = ExcelUtils.getColumnDatas("Sent To Hitpoint",EnvParams.Opco)
+Hitpoint = ExcelUtils.getColumnDatas("Sent To Hitpoint",EnvParams.Opco)
+Log.Message(Hitpoint)
 if((EnvParams.Country.toUpperCase()=="CHINA")){
 if((Hitpoint==null)||(Hitpoint=="")){ 
 ValidationUtils.verify(false,true,"Sent to Hitpoint YES/NO is Needed to Create a Invoice");
@@ -327,6 +321,8 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 }
 
 function gotoInvoicing(){ 
+  
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var allJobs = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -369,7 +365,7 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   labels.Refresh();
 }
 if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+ ValidationUtils.verify(true,true,"Maconomy is loading ......") 
 }
 TemplateJob = ""
   var flag=false;
@@ -392,16 +388,9 @@ TemplateJob = ""
   aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-  
+  }  
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   var clientApproved = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
   WorkspaceUtils.waitForObj(clientApproved);
@@ -1709,7 +1698,6 @@ ValidationUtils.verify(true,false,"Maconomy is loading continously......")
 // else
 //  printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
     
-
 if(Hitpoint.toUpperCase()!="YES"){
 
     var ChildCount = 0;

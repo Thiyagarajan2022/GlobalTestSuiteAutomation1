@@ -86,8 +86,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   job.Click();
 
   job.setText(Job_number);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
