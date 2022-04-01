@@ -136,6 +136,8 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 sheetName="CopyGL";
   aqUtils.Delay(3000, Indicator.Text);
 Entrydate = ExcelUtils.getRowDatas("DateEntry",EnvParams.Opco)
+if(Entrydate == "AUTOFILL")
+  Entrydate = getSpecificDate(0);
 if((Entrydate==null)||(Entrydate=="")){ 
 ValidationUtils.verify(false,true,"DateEntry is Needed to Reverse General Journal");
 }
@@ -266,7 +268,8 @@ if(Entrydate!=""){
     var date1=Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Copy Journal").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McDatePickerWidget", "", 2);
 Sys.HighlightObject(date1);
 Log.Message(Entrydate);
-WorkspaceUtils.CalenderDateSelection(date1,Entrydate)
+//WorkspaceUtils.CalenderDateSelection(date1,Entrydate)
+  date1.setText(Entrydate);
 
       ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
     }

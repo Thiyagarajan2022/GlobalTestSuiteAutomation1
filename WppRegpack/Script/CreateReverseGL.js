@@ -649,9 +649,7 @@ function submit(){
   Sys.HighlightObject(jornalNumber);
   jornalNumber.Click();
   jornalNumber = jornalNumber.getText().OleValue.toString().trim();
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     aqUtils.Delay(2000, "Submitting General Ledger");
 //  var submit = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Submit;
 //  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -673,7 +671,7 @@ function submit(){
 //  var Okay = Aliases.Maconomy.GLJornalAwaitingApproval.Okay.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "OK").OleValue.toString().trim());
 //  Okay.Click();
   
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   ValidationUtils.verify(true,true,"Journal Number :"+jornalNumber);
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Reverse General Journal No",EnvParams.Opco,"Data Management",jornalNumber);

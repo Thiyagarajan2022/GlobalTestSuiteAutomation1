@@ -271,6 +271,8 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
       
       if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
       licenceEndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+      if(licenceEndDate == "AUTOFILL")
+        licenceEndDate = getSpecificDate(30)
       Log.Message(licenceEndDate)
       if((licenceEndDate==null)||(licenceEndDate=="")){ 
       ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Global Vendor");
@@ -750,7 +752,6 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-//   var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl2;
    var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel;
    var docCount = doc.ChildCount;
   for(var i=0;i<docCount;i++){ 

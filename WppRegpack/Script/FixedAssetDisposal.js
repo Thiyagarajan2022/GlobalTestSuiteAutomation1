@@ -47,7 +47,9 @@ if((PercentageSold==null)||(PercentageSold=="")){
 ValidationUtils.verify(false,true,"Percentage Sold is Needed to Asset Disposal");
 } 
 DateofSale = ExcelUtils.getRowDatas("DateofSale",EnvParams.Opco)
-if((DateofSale==null)||(DateofSale=="")){ 
+if(DateofSale == "AUTOFILL")
+  DateofSale = getSpecificDate(0);
+else if((DateofSale==null)||(DateofSale=="")){ 
 ValidationUtils.verify(false,true,"Date of Sale is Needed to Create a Asset Disposal");
 }   
 Remark = ExcelUtils.getRowDatas("Remark",EnvParams.Opco)

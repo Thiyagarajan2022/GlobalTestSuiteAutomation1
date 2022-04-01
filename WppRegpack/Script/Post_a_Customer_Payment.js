@@ -389,17 +389,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
        Sys.HighlightObject(invoice);       
        ReportUtils.logStep_Screenshot(""); 
        invoice.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
        var invoicehistory = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.invoicehis;
 //       var invoicehistory = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 10);
        Sys.HighlightObject(invoicehistory);
        invoicehistory.Click();
        aqUtils.Delay(1000,Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-       }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
        var invoicetable = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.invoicetable;
 //       var invoicetable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.SWTObject("Composite", "", 9).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McTableWidget", "").SWTObject("McGrid", "", 2);
        Sys.HighlightObject(invoicetable);

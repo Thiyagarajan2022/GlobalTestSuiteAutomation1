@@ -1825,9 +1825,12 @@ Approve.HoverMouse();
 ReportUtils.logStep_Screenshot();
 Approve.Click();
 aqUtils.Delay(8000, "Waiting for Approve");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 ValidationUtils.verify(true,true,"Company Brand is Approved by "+Project_manager)
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
-//aqUtils.Delay(8000, Indicator.Text);;
+
+
+
 }
 }
 //var Approve = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.Approve;

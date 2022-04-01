@@ -417,6 +417,8 @@ ValidationUtils.verify(false,true,"SII Tax Group is Needed to Create a Client");
 Licence_No,Licence_EndDate = "";
 if((EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR")){
 Licence_EndDate = ExcelUtils.getRowDatas("Licence End Date",EnvParams.Opco)
+if (Licence_EndDate == "AUTOFILL")
+  Licence_EndDate = getSpecificDate(30)
 if((Licence_EndDate==null)||(Licence_EndDate=="")){ 
 ValidationUtils.verify(false,true,"Licence End Date is Needed to Create a Client");
 }
@@ -1015,26 +1017,15 @@ save.Click();
 }
   
 function attachDocument(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  } 
-  aqUtils.Delay(4000, "Finding Document");;
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  } 
- if(EnvParams.Country.toUpperCase()=="INDIA"){
-//  var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
-  var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
-  }else if(EnvParams.Country.toUpperCase()=="SPAIN"){ 
-//    var doc = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl
-    var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
-  }
-  else if(EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
-  var doc= Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ } 
+  aqUtils.Delay(2000, "Finding Documents Tab");;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ } 
+ 
+  if(EnvParams.Country.toUpperCase()=="INDIA" || EnvParams.Country.toUpperCase()=="SPAIN" ||  EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
+  var doc= Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)          
   }
   else{ 
-//  var doc =  Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document;
-  var doc =  Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.history;
+  var doc =Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
   }
   
   Sys.HighlightObject(doc)
