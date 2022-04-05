@@ -322,6 +322,21 @@ temp = "QAT"
 }
 break;
 
+case "PHILIPPINES":{
+temp = "PHP"
+}
+break;
+
+case "JAPAN":{
+temp = "JPN"
+}
+break;
+
+case "INDONESIA":{
+temp = "IDA"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -453,6 +468,21 @@ break;
 
 case "QATAR":{
 temp = "QAT"
+}
+break;
+
+case "PHILIPPINES":{
+temp = "PHP"
+}
+break;
+
+case "JAPAN":{
+temp = "JPN"
+}
+break;
+
+case "INDONESIA":{
+temp = "IDA"
 }
 break;
 
