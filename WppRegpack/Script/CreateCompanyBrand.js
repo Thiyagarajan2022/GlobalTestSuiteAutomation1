@@ -1410,23 +1410,13 @@ function attachDocument(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-// if(EnvParams.Country.toUpperCase()=="INDIA"){
-//  var doc = Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.AttachDoc
-//  //Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Document
-//  }
-//  else{ 
-//  var doc =Aliases.CreateCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.AttachDoc
-//  
-// // Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Document
-//  }
-  
-  
-  if((EnvParams.Country.toUpperCase()=="INDIA")&&(EnvParams.Country.toUpperCase()=="SPAIN")&&(EnvParams.Country.toUpperCase()=="UAE")){
-//if((EnvParams.Country.toUpperCase()=="SPAIN")&&(EnvParams.Country.toUpperCase()=="UAE")){
-var doc = Aliases.CreateCompanyClient.Composite.AttachDocTab
+if(EnvParams.Country.toUpperCase()=="INDIA" || EnvParams.Country.toUpperCase()=="SPAIN" ||  EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
+var doc = 
+//Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
+Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)           
 }
 else{ 
-var doc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+var doc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
 
 }
   Sys.HighlightObject(doc);

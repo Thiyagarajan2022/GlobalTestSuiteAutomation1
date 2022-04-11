@@ -406,7 +406,7 @@ function client(){
   ValidationUtils.verify(true,true,"Company Brand is available in maconomy to block");
   }
   
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -415,7 +415,7 @@ function client(){
   //Aliases.ObjectGroup.InformationTab
   //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
   information.Click();
-  aqUtils.Delay(2000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
@@ -458,9 +458,11 @@ function client(){
     
         if(changes){ 
     
-  var save =Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
+  var save =
+  //Aliases.Maconomy.AmendCompanyClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SaveButton;
+  Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl
   save.Click();
-  aqUtils.Delay(5000, Indicator.Text);
+  aqUtils.Delay(2000, Indicator.Text);
   ValidationUtils.verify(true,true,"Company Brand is Amended");
   ReportUtils.logStep_Screenshot();
   }

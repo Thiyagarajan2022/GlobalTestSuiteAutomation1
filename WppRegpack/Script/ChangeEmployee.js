@@ -116,6 +116,8 @@ ValidationUtils.verify(false,true,"Employee Number is Needed to Change a Employe
 
 ExcelUtils.setExcelName(workBook, sheetName, true);  
 dateEmployed = ExcelUtils.getRowDatas("DateEmployed",EnvParams.Opco)
+if(dateEmployed == "AUTOFILL")
+  dateEmployed = getSpecificDate(2)
 Log.Message(dateEmployed)
 if((dateEmployed==null)||(dateEmployed=="")){ 
 ValidationUtils.verify(false,true,"Date Employed is Needed to Change a Employee Information");
@@ -178,7 +180,8 @@ aqUtils.Delay(1000,"Waiting to load")
 var dateEmpObj  = Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
 waitForObj(dateEmpObj);
 Sys.HighlightObject(dateEmpObj);
-CalenderDateSelection(dateEmpObj,dateEmployed);
+//CalenderDateSelection(dateEmpObj,dateEmployed);
+dateEmpObj.setText(dateEmployed)
 
 var emailObj  = Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget;
 waitForObj(emailObj);

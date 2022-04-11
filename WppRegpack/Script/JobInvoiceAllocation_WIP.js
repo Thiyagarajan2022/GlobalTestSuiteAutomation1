@@ -700,6 +700,8 @@ function GlLookups(){
   WorkspaceUtils.waitForObj(labels);
   var JornalNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
   WorkspaceUtils.waitForObj(JornalNo);
+  JornalNo.HoverMouse();
+  JornalNo.Click();
   JornalNo.Click();
   Sys.Desktop.KeyDown(0x09);
   aqUtils.Delay(1000, Indicator.Text);

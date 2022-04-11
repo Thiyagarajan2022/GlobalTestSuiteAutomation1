@@ -1457,7 +1457,7 @@ aqUtils.Delay(5000, Indicator.Text);;
     
   }
 
-var Approve = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SWTObject("SingleToolItemControl", "", 8);
+var Approve = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite2.SWTObject("SingleToolItemControl", "", 9);
 Sys.HighlightObject(Approve)
 
 Approve.HoverMouse();

@@ -928,7 +928,7 @@ var listPass = true;
 function CompanyClientTable()
 {
   
-aqUtils.Delay(3000, Indicator.Text);
+aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var table = Aliases.CreateCompanyClient.Composite.CompanyClientTableBlocked;
@@ -937,7 +937,7 @@ Sys.HighlightObject(table);
 var Client_type = Aliases.CreateCompanyClient.Composite.CompanyClientTableBlocked.SWTObject("McPopupPickerWidget", "");
 Client_type.Keys("[Tab][Tab]");
       
-aqUtils.Delay(3000, Indicator.Text);
+aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
    
 if(table.getItem(0).getText_2(3).OleValue.toString().trim()==clientName){
@@ -983,18 +983,18 @@ function attachDocument(){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-aqUtils.Delay(5000, Indicator.Text);
+aqUtils.Delay(2000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
 
-if((EnvParams.Country.toUpperCase()=="INDIA")&&(EnvParams.Country.toUpperCase()=="SPAIN")&&(EnvParams.Country.toUpperCase()=="UAE")){
-//if((EnvParams.Country.toUpperCase()=="SPAIN")&&(EnvParams.Country.toUpperCase()=="UAE")){
-//var doc = Aliases.CreateCompanyClient.Composite.AttachDocTab
-var doc = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
+if(EnvParams.Country.toUpperCase()=="INDIA" || EnvParams.Country.toUpperCase()=="SPAIN" ||  EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
+var doc = 
+//Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
+Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)           
 }
 else{ 
-var doc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
+var doc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
 
 }
   Sys.HighlightObject(doc);
@@ -1316,10 +1316,10 @@ if(Approve.isEnabled()){
 Approve.HoverMouse();
 ReportUtils.logStep_Screenshot();
 Approve.Click();
-aqUtils.Delay(8000, "Waiting for Approve");;
+aqUtils.Delay(5000, "Waiting for Approve");;
 ValidationUtils.verify(true,true,"Purchase Order is Approved by "+Project_manager)
 TextUtils.writeLog("Levels 0 has  Approved the Created Budget");
-aqUtils.Delay(8000, Indicator.Text);;
+aqUtils.Delay(5000, Indicator.Text);;
 //  Delay(3000);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   

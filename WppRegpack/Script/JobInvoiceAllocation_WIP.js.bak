@@ -680,7 +680,8 @@ function GlLookups(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  var journal = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  var journal =// Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
+  NameMapping.Sys.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(journal);
   journal.Click();
   aqUtils.Delay(1000, Indicator.Text);
@@ -699,6 +700,7 @@ function GlLookups(){
   WorkspaceUtils.waitForObj(labels);
   var JornalNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
   WorkspaceUtils.waitForObj(JornalNo);
+  JornalNo.Click();
   JornalNo.Click();
   Sys.Desktop.KeyDown(0x09);
   aqUtils.Delay(1000, Indicator.Text);

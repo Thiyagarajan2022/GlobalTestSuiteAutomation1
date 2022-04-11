@@ -83,6 +83,8 @@ ValidationUtils.verify(false,true,"Employee Number is Needed to Block an User");
 
 ExcelUtils.setExcelName(workBook, sheetName, true);
 terminationDate = ExcelUtils.getRowDatas("TerminationDate",EnvParams.Opco)
+if (terminationDate == "AUTOFILL")
+  terminationDate = getSpecificDate(0)
 Log.Message(terminationDate)
 if((terminationDate==null)||(terminationDate=="")) 
 ValidationUtils.verify(false,true,"Termination Date is Needed to Block an User");
@@ -946,7 +948,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 
 //var Termination_Date = Screen.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 4).SWTObject("McDatePickerWidget", "", 2);
 var Termination_Date = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite10.Composite.PTabFolder.SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 4).SWTObject("McDatePickerWidget", "", 2);
-Termination_Date.setText( getSpecificDate(0) );
+Termination_Date.setText(terminationDate);
 aqUtils.Delay(2000,"Loading Employee");  
 
 //var Blocked = Screen.SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 5).SWTObject("McPlainCheckboxView", "", 2).SWTObject("Button", "");

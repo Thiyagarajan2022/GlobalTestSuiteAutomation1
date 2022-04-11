@@ -418,7 +418,7 @@ function Posting(){
     aqUtils.Delay(3000,Indicator.Text);
 
     
-    
+     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     var posting = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.posting;    
     posting.Click();
     aqUtils.Delay(1000,Indicator.Text);

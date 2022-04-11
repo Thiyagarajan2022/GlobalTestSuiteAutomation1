@@ -548,57 +548,57 @@ var Q_revision = McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWi
 newQuote = Q_revision.getText().OleValue.toString().trim();
 EffQuotePrice = EffQuotePrice.getText().OleValue.toString().trim();
 Q_revision = Q_revision.getText().OleValue.toString().trim();
-var QuoteMPL = "QuoteMPL";
-
-
-var q = 0;
-QuoteDetails = [];
-Log.Message(specification.getItemCount())
-for(var i=0;i<specification.getItemCount();i++){ 
-Log.Message("i: "+i);
-  var Q_Desp = specification.getItem(i).getText_2(0).OleValue.toString().trim();
-  if(Q_Desp!=""){
-  var Q_Qty = specification.getItem(i).getText_2(1).OleValue.toString().trim();
-  var Q_Billing = specification.getItem(i).getText_2(2).OleValue.toString().trim();
-  var Q_BillingTotoal = specification.getItem(i).getText_2(3).OleValue.toString().trim();
-  var Q_Tax1 = specification.getItem(i).getText_2(4).OleValue.toString().trim();
-  var Q_Tax2 = specification.getItem(i).getText_2(5).OleValue.toString().trim();
-  var Q_Tax1currency = specification.getItem(i).getText_2(9).OleValue.toString().trim();
-  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
-  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
-  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
-  Log.Message(QuoteDetails[q]);
-  q++;
-  ExcelUtils.setExcelName(workBook,QuoteMPL, true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,QuoteMPL,Q_Desp);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,QuoteMPL,Q_Qty);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,QuoteMPL,Q_Billing);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,QuoteMPL,Q_BillingTotoal);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,QuoteMPL,Q_Tax1);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,QuoteMPL,Q_Tax2);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,QuoteMPL,Q_Tax1currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,QuoteMPL,Q_Tax2currency);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,QuoteMPL,Q_total);
-
-  }
-  }
-Log.Message(q)
-for(var i=q;i<11;i++){ 
-  ExcelUtils.setExcelName(workBook,QuoteMPL, true);
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,QuoteMPL,"");
-  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,QuoteMPL,"");
-}
-
-ExcelUtils.setExcelName(workBook,QuoteMPL, true);
-ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Revision",QuoteMPL,Q_revision);
-ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Total",QuoteMPL,EffQuotePrice);
+//var QuoteMPL = "QuoteMPL";
+//
+//
+//var q = 0;
+//QuoteDetails = [];
+//Log.Message(specification.getItemCount())
+//for(var i=0;i<specification.getItemCount();i++){ 
+//Log.Message("i: "+i);
+//  var Q_Desp = specification.getItem(i).getText_2(0).OleValue.toString().trim();
+//  if(Q_Desp!=""){
+//  var Q_Qty = specification.getItem(i).getText_2(1).OleValue.toString().trim();
+//  var Q_Billing = specification.getItem(i).getText_2(2).OleValue.toString().trim();
+//  var Q_BillingTotoal = specification.getItem(i).getText_2(3).OleValue.toString().trim();
+//  var Q_Tax1 = specification.getItem(i).getText_2(4).OleValue.toString().trim();
+//  var Q_Tax2 = specification.getItem(i).getText_2(5).OleValue.toString().trim();
+//  var Q_Tax1currency = specification.getItem(i).getText_2(9).OleValue.toString().trim();
+//  var Q_Tax2currency = specification.getItem(i).getText_2(10).OleValue.toString().trim();
+//  var Q_total = parseFloat(Q_BillingTotoal.replace(/,/g, ''))+ parseFloat(Q_Tax1currency.replace(/,/g, '')) + parseFloat(Q_Tax2currency.replace(/,/g, ''));
+//  QuoteDetails[q] = Q_Desp+"*"+Q_Qty+"*"+Q_Billing+"*"+Q_BillingTotoal+"*"+Q_Tax1+"*"+Q_Tax2+"*"+Q_Tax1currency+"*"+Q_Tax2currency+"*"+Q_total.toFixed(2)+"*";
+//  Log.Message(QuoteDetails[q]);
+//  q++;
+//  ExcelUtils.setExcelName(workBook,QuoteMPL, true);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,QuoteMPL,Q_Desp);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,QuoteMPL,Q_Qty);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,QuoteMPL,Q_Billing);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,QuoteMPL,Q_BillingTotoal);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,QuoteMPL,Q_Tax1);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,QuoteMPL,Q_Tax2);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,QuoteMPL,Q_Tax1currency);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,QuoteMPL,Q_Tax2currency);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,QuoteMPL,Q_total);
+//
+//  }
+//  }
+//Log.Message(q)
+//for(var i=q;i<11;i++){ 
+//  ExcelUtils.setExcelName(workBook,QuoteMPL, true);
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Description_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quantity_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"UnitPrice_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"TotalBilling_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax1currency_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Tax2currency_"+q,QuoteMPL,"");
+//  ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Total_"+q,QuoteMPL,"");
+//}
+//
+//ExcelUtils.setExcelName(workBook,QuoteMPL, true);
+//ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Revision",QuoteMPL,Q_revision);
+//ExcelUtils.WriteExcelSheet(EnvParams.Opco,"Quote Total",QuoteMPL,EffQuotePrice);
 
 
 
@@ -784,7 +784,7 @@ aqUtils.Delay(2000, Indicator.Text);
 var approve_bar ;
   PropArray = new Array("JavaClassName", "Index","ChildCount");
   ValuesArray = new Array("PTabItemPanel", "3","1");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   Log.Message(obj.length)
   for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -801,7 +801,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var AprveAction;
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   
 for (let i_count = 0; i_count < obj.length; i_count++){ 

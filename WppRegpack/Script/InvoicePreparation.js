@@ -1155,7 +1155,7 @@ var PrintDraft;
       break;
     }
   } 
-  
+ aqUtils.Delay(2000, Indicator.Text); 
 TextUtils.writeLog("Print Draft is Clicked");
 var SaveTitle = "";
 var sFolder = "";

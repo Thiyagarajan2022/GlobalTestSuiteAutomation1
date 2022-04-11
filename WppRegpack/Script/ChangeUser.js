@@ -165,12 +165,16 @@ ValidationUtils.verify(false,true,"UserName is Needed to Change a User Informati
 
 ExcelUtils.setExcelName(workBook, sheetName, true);  
 validityPeriodFrom= ExcelUtils.getRowDatas("Valid From",EnvParams.Opco)
+if(validityPeriodFrom == "AUTOFILL")
+  validityPeriodFrom = getSpecificDate(1)
 Log.Message(validityPeriodFrom)
 if((validityPeriodFrom==null)||(validityPeriodFrom=="")){
 ValidationUtils.verify(false,true,"Validity Period From is Needed to Change a User Information");
 }
 
 validityPeriodTo= ExcelUtils.getRowDatas("Valid To",EnvParams.Opco)
+if(validityPeriodTo == "AUTOFILL")
+  validityPeriodTo = getSpecificDate(10)
 Log.Message(validityPeriodTo)
 if((validityPeriodTo==null)||(validityPeriodTo=="")){ 
 ValidationUtils.verify(false,true,"Validity Period To is Needed to Change a User Information");
@@ -193,6 +197,7 @@ waitForObj(table);
 var firstCell = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
 firstCell.setText(userName);  
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(1000,"Loading")
 var flag=false;
 if(table.getItemCount()>=1)
 for(var v=0;v<table.getItemCount();v++){ 
@@ -221,12 +226,14 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var periodFromObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
 waitForObj(periodFromObj);
-CalenderDateSelection(periodFromObj,validityPeriodFrom);
+periodFromObj.setText(validityPeriodFrom)
+//CalenderDateSelection(periodFromObj,validityPeriodFrom);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var periodToObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget2;
 waitForObj(periodToObj);
-CalenderDateSelection(periodToObj,validityPeriodTo);
+periodToObj.setText(validityPeriodTo)
+//CalenderDateSelection(periodToObj,validityPeriodTo);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var save = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
@@ -864,6 +871,33 @@ info_Bar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 ImageRepository.ImageSet.Forward.Click();
 
+
+var periodFromObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
+waitForObj(periodFromObj);
+var changedPeriodFrom = periodFromObj.getText().OleValue.toString().trim();
+if(changedPeriodFrom == validityPeriodFrom){
+ValidationUtils.verify(flag,true,"Validity Period From Change successfully reflected in system");
+TextUtils.writeLog("Validity Period From Change successfully reflected in system"); 
+}
+else
+{
+ValidationUtils.verify(flag,false,"Validity Period From Change is not reflected in system");
+TextUtils.writeLog("Validity Period From Change is not reflected in system"); 
+}        
+
+var periodToObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget2;
+waitForObj(periodToObj);
+var changedPeriodTo = periodToObj.getText().OleValue.toString().trim();
+if(changedPeriodTo == validityPeriodTo){
+ValidationUtils.verify(flag,true,"Validity Period To Change successfully reflected in system");
+TextUtils.writeLog("Validity Period To Change successfully reflected in system"); 
+}
+else
+{
+ValidationUtils.verify(flag,false,"Validity Period To Change is not reflected in system");
+TextUtils.writeLog("Validity Period To Change is not reflected in system"); 
+}  
+
 var show_filter = Aliases.Maconomy.NewUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.SingleToolItemControl;
 show_filter.Click();
 
@@ -893,31 +927,6 @@ ReportUtils.logStep_Screenshot();
 ValidationUtils.verify(flag,true,"Changed User is activated and available in system");
 TextUtils.writeLog("Changed User is activated and available in system"); 
 
-var periodFromObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
-waitForObj(periodFromObj);
-var changedPeriodFrom = periodFromObj.getText().OleValue.toString().trim();
-if(changedPeriodFrom == validityPeriodFrom){
-ValidationUtils.verify(flag,true,"Validity Period From Change successfully reflected in system");
-TextUtils.writeLog("Validity Period From Change successfully reflected in system"); 
-}
-else
-{
-ValidationUtils.verify(flag,false,"Validity Period From Change is not reflected in system");
-TextUtils.writeLog("Validity Period From Change is not reflected in system"); 
-}        
-
-var periodToObj = Aliases.Maconomy.ChangeUser.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget2;
-waitForObj(periodToObj);
-var changedPeriodTo = periodToObj.getText().OleValue.toString().trim();
-if(changedPeriodTo == validityPeriodTo){
-ValidationUtils.verify(flag,true,"Validity Period To Change successfully reflected in system");
-TextUtils.writeLog("Validity Period To Change successfully reflected in system"); 
-}
-else
-{
-ValidationUtils.verify(flag,false,"Validity Period To Change is not reflected in system");
-TextUtils.writeLog("Validity Period To Change is not reflected in system"); 
-}  
 
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("Changed_UserName",EnvParams.Opco,"Data Management",userNmae);

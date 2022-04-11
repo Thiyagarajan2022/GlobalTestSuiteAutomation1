@@ -996,14 +996,13 @@ if(check_Bal.getText()=="0.00"){
     var Approve = TabFolders.Child(i);
     Log.Message(Approve.FullName);
     Approve.Click();
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+        }
     }
-        }
-        }
 
   }
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 // Getting Latest Transaction Number to print Journal  
   ImageRepository.ImageSet.Close_Down.Click();
 
@@ -1085,8 +1084,9 @@ function GlLookups(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   var journal = //Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl2;
-  NameMapping.Sys.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
+  Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.journal
   WorkspaceUtils.waitForObj(journal);
+  journal.Click();
   journal.Click();
   aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
