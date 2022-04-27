@@ -60,9 +60,9 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
 
  if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="QATAR") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
-  var index = pdflineSplit.indexOf("TAX INVOICE");
+  var index = docObj.indexOf("TAX INVOICE");
    else 
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());  
+   var index = docObj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());  
        if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")
