@@ -249,13 +249,19 @@ var pName = false;
 
     
 var TaxVariable = "";
+var flag = false;
    if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA"))
-   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
+   {
+    TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Tax No").OleValue.toString().trim());
+    falg = true;
+   }
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
-   var TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
+   {
+    TaxVariable = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GST No").OleValue.toString().trim());
+    flag =true;
+  }
   Log.Message(EnvParams.Country.toUpperCase())
-   if((EnvParams.Country.toUpperCase()!="QATAR") && (EnvParams.Country.toUpperCase()!="UAE") && (EnvParams.Country.toUpperCase()!="HONG KONG"))
-    if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
+    if(flag && pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, TaxVariable).OleValue.toString().trim()))
     {
       x= pdflineSplit[j].split(":");
       pdfJobName = x[1].trim();
