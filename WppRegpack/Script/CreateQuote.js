@@ -783,7 +783,7 @@ aqUtils.Delay(2000, Indicator.Text);
 var approve_bar ;
   PropArray = new Array("JavaClassName", "Index","ChildCount");
   ValuesArray = new Array("PTabItemPanel", "3","1");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   Log.Message(obj.length)
   for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -800,7 +800,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var AprveAction;
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -820,7 +820,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var Approval_table;
   PropArray = new Array("JavaClassName", "Index");
   ValuesArray = new Array("McGrid", "2");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -1013,7 +1013,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var home = ""
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -1034,7 +1034,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var Information = ""
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -1059,7 +1059,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("SingleToolItemControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var convertToOrder = "";
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -1088,7 +1088,7 @@ TextUtils.writeLog("Convert To Order is Clicked");
 
   PropArray = new Array("JavaClassName", "Index","Visible");
   ValuesArray = new Array("McGroupWidget", "2", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   Log.Message(obj.length)
   var McGroupWidget = "";
@@ -1124,7 +1124,7 @@ ValidationUtils.verify(true,false,"Convert to Order is Cliecked But its Not Refl
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var Budget;
 for (let i_count = 0; i_count < obj.length; i_count++){ 
@@ -1145,7 +1145,7 @@ aqUtils.Delay(3000, Indicator.Text);
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var quoteTab;
 for (let i_count = 0; i_count < obj.length; i_count++){ 

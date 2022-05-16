@@ -164,8 +164,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var print = Aliases.Maconomy.CurrencyJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2
 WorkspaceUtils.waitForObj(print);
 print.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){   
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){   }
    TextUtils.writeLog("Post and Email is Clicked");
     //aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";

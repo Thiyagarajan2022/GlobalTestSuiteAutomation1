@@ -340,16 +340,15 @@ Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions").OleValue.toString().trim());
 }
-
 } 
-
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //aqUtils.Delay(5000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to GL Transactions from General Ledger Menu");
 TextUtils.writeLog("Entering into GL Transactions from General Ledger Menu");
 }
 
 function gotoGeneralJournal(){ 
-  
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }  
 var table = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);
@@ -672,11 +671,14 @@ TextUtils.writeLog("Entering into GL Journals Awaiting Approval from To-Dos List
 listPass = false; 
   }
 }
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 }
 
 
 function ApproveGL(){ 
+  
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var showFilter = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.CloseFilter
   WorkspaceUtils.waitForObj(showFilter)
   if(showFilter.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Show Filter List").OleValue.toString().trim()){ 
@@ -722,9 +724,7 @@ closefilter.Click();
   var Approve = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.EditableBar.RemoveLatestDraft;
   Sys.HighlightObject(Approve);
   Approve.Click();
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 var Post = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.SWTObject("SingleToolItemControl", "", 12);
 //var Post = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Post;

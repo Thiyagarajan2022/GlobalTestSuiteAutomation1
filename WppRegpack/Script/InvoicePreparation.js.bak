@@ -491,6 +491,7 @@ Log.Message(workCodeList[i])
 workActivity = [];
 var i=0
 var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+Log.Message(WorkCodeGrid.getItemCount())
 for(var v=0;v<WorkCodeGrid.getItemCount();v++){ 
   for(var y=0;y<workCodeList.length;y++){ 
   if(WorkCodeGrid.getItem(v).getText(0).OleValue.toString().trim()==workCodeList[y]){ 
@@ -501,6 +502,7 @@ for(var v=0;v<WorkCodeGrid.getItemCount();v++){
   
   }
 }
+Log.Message(workActivity.length)
 
   var Invoicing = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 8)
   WorkspaceUtils.waitForObj(Invoicing);
@@ -1155,7 +1157,7 @@ var PrintDraft;
       break;
     }
   } 
-  
+ aqUtils.Delay(2000, Indicator.Text); 
 TextUtils.writeLog("Print Draft is Clicked");
 var SaveTitle = "";
 var sFolder = "";

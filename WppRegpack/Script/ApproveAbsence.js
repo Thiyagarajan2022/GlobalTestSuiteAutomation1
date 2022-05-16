@@ -321,13 +321,10 @@ Client_Managt = MainBrnch.SWTObject("Composite", "").SWTObject("Composite", "").
 Client_Managt.ClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Absence").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot();
 Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Absence").OleValue.toString().trim());
+aqUtils.Delay(7000, Indicator.Text);   
 }
-
 }    
-
-     aqUtils.Delay(5000, Indicator.Text);     
-//     ReportUtils.logStep("INFO", "Moved to Time & Expenses from Absence Menu");
-     TextUtils.writeLog("Moved to Time & Expenses from Absence Menu");
+   TextUtils.writeLog("Moved to Time & Expenses from Absence Menu");
 }
 
 function goToAbsenceMenuItem(){

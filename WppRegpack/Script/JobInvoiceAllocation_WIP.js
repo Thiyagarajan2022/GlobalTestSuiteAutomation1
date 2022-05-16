@@ -144,7 +144,7 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 }
 
 } 
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 
 ReportUtils.logStep("INFO", "Moved to Jobs from Jobs Menu");
 TextUtils.writeLog("Entering into Jobs from Jobs Menu");

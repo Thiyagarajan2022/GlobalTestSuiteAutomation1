@@ -178,8 +178,7 @@ var firstcell = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Co
 firstcell.Click();
 firstcell.setText(JournalNo);
 aqUtils.Delay(1000,Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var flag =false;
 for(var i=0;i<table.getItemCount();i++){
 if((table.getItem(i).getText_2(0).OleValue.toString().trim()==JournalNo)){

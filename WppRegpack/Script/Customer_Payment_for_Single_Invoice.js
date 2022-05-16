@@ -282,9 +282,7 @@ while(!ImageRepository.ImageSet.Tab_Icon.Exists()){
        var invoicehistory = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.invoicehis;
        Sys.HighlightObject(invoicehistory);
        invoicehistory.Click();
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
        
        var invoicetable = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite3.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.invoicetable;
        Sys.HighlightObject(invoicetable);

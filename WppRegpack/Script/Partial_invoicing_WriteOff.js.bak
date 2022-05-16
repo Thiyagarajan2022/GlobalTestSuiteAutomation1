@@ -747,7 +747,7 @@ aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+ValidationUtils.verify(true,true,"Maconomy is loading continously......")  
 }
 
 var draftNo = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;

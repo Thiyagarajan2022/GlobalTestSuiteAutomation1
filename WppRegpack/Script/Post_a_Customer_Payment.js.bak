@@ -389,9 +389,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
        Sys.HighlightObject(invoice);       
        ReportUtils.logStep_Screenshot(""); 
        invoice.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
        var invoicehistory = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.invoicehis;
 //       var invoicehistory = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 10);
        Sys.HighlightObject(invoicehistory);

@@ -934,11 +934,7 @@ aqUtils.Delay(2000, Indicator.Text);;
 Action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transfer Budget").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot("");
 aqUtils.Delay(100, "Approve is Clicked");
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var SelectionBilling = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 aqUtils.Delay(1000, "Billing Price");
@@ -1415,13 +1411,15 @@ var ApvPerson = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composi
 Log.Message(ApvPerson.FullName)
 var loginPer = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").WndCaption;
     loginPer = loginPer.substring(loginPer.indexOf(" - ")+3);
-    var i=0;
-while (((ApvPerson.getText().OleValue.toString().trim().toLowerCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "pproved").OleValue.toString().trim())==-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))&&(i!=60))
-{
-  aqUtils.Delay(100);
-  i++;
-  ApvPerson.Refresh();
-}
+    
+    
+//    var i=0;
+//while (((ApvPerson.getText().OleValue.toString().trim().toLowerCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "pproved").OleValue.toString().trim())==-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())==-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)==-1))&&(i!=60))
+//{
+//  aqUtils.Delay(100);
+//  i++;
+//  ApvPerson.Refresh();
+//}
 
   if((ApvPerson.getText().OleValue.toString().trim().toLowerCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "pproved").OleValue.toString().trim())!=-1)||(ApvPerson.getText().OleValue.toString().trim().toUpperCase().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "YOU").OleValue.toString().trim())!=-1)||(ApvPerson.getText().OleValue.toString().trim().indexOf(loginPer)!=-1)){
   ValidationUtils.verify(true,true,"Draft Invoice is Approved by :"+loginPer)

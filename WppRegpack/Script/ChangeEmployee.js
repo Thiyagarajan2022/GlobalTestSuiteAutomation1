@@ -153,7 +153,7 @@ var closefilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 
 var emplNo = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 2);
 waitForObj(emplNo);
 emplNo.setText(employeeNo);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(1).OleValue.toString().trim()==(employeeNo)){ 

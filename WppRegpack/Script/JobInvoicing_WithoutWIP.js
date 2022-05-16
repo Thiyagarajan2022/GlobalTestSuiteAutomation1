@@ -1142,15 +1142,15 @@ function GlLookups(){
   var closeFilter = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
   var table = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   
-  var i=0;
-while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1)&&(i!=60)){ 
-  aqUtils.Delay(100);
-  i++;
-  labels.Refresh();
-}
-if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
-}
+//  var i=0;
+//while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1)&&(i!=60)){ 
+//  aqUtils.Delay(100);
+//  i++;
+//  labels.Refresh();
+//}
+//if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
+// ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
+//}
 Sys.HighlightObject(table);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
@@ -1351,21 +1351,17 @@ aqUtils.Delay(1000, Indicator.Text);
       if(grid.getItem(i).getText_2(1).OleValue.toString().trim()==temp[0]){ 
         if(grid.getItem(i).getText_2(1).OleValue.toString().trim()!=temp[1]){
           grid.Keys("[Tab]");
-            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-              }
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
           var Des = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget3;
           Des.Click();
           Des.setText(temp[1]);
-          aqUtils.Delay(1000, Indicator.Text);
+          aqUtils.Delay(100, Indicator.Text);
             if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
             }
           Save.Click();
-          aqUtils.Delay(1000, Indicator.Text);
-            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-              }
+          aqUtils.Delay(100, Indicator.Text);
+            if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
           Sys.Desktop.KeyDown(0x10);
           Sys.Desktop.KeyDown(0x09);
           aqUtils.Delay(1000, Indicator.Text);

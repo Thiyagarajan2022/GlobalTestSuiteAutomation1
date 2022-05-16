@@ -70,9 +70,7 @@ Indicator.PushText("Playback");
 function gotoAbsence() {
 ReportUtils.logStep("INFO", "Enter Payment File Details");
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var absenceallowance1 = Aliases.Maconomy.AbsenceAllowance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 WorkspaceUtils.waitForObj(absenceallowance1);
 absenceallowance1.HoverMouse();
@@ -463,7 +461,7 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 }
 
 } 
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 ReportUtils.logStep("INFO", "Moved to Absence from Absence Menu");
 TextUtils.writeLog("Entering into Absence from Time & Expense Menu");
 }

@@ -120,8 +120,9 @@ function gotoTimeExpenses(){
     aqUtils.Delay(1000,Indicator.Text);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){  } 
     
-  var allExpenses = Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Expense Sheets").OleValue.toString().trim());    
-  waitForObj(allExpenses)
+  var allExpenses = //NameMapping.Sys.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Expense Sheets").OleValue.toString().trim());
+   Aliases.Maconomy.Shell2.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", "All Expense Sheets")
+   waitForObj(allExpenses)
   allExpenses.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){  } 
   var table = ""
