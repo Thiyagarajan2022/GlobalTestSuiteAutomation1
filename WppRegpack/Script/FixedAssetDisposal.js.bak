@@ -47,7 +47,9 @@ if((PercentageSold==null)||(PercentageSold=="")){
 ValidationUtils.verify(false,true,"Percentage Sold is Needed to Asset Disposal");
 } 
 DateofSale = ExcelUtils.getRowDatas("DateofSale",EnvParams.Opco)
-if((DateofSale==null)||(DateofSale=="")){ 
+if(DateofSale == "AUTOFILL")
+  DateofSale = getSpecificDate(0);
+else if((DateofSale==null)||(DateofSale=="")){ 
 ValidationUtils.verify(false,true,"Date of Sale is Needed to Create a Asset Disposal");
 }   
 Remark = ExcelUtils.getRowDatas("Remark",EnvParams.Opco)
@@ -494,13 +496,15 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
-    var fromCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+    var fromCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+    Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget
     waitForObj(fromCompany)
     fromCompany.Click();
     fromCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);
  
-    var toCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+    var toCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+    NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2
     toCompany.Click();
     toCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);

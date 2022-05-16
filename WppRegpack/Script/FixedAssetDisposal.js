@@ -496,13 +496,15 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
-    var fromCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+    var fromCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+    Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget
     waitForObj(fromCompany)
     fromCompany.Click();
     fromCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);
  
-    var toCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+    var toCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+    NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2
     toCompany.Click();
     toCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);
@@ -510,23 +512,23 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 
-      var createfrom = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget;
-      createfrom.setText(aqDateTime.Today())
-//      WorkspaceUtils.CalenderDateSelection(createfrom,aqDateTime.Today().toString().trim())
-      ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
-  
-      aqUtils.Delay(1000,Indicator.Text);   
-      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-      }
-    
-
-      var createTo = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget2;
-      createTo.setText(aqDateTime.Today())
-//      WorkspaceUtils.CalenderDateSelection(createTo,aqDateTime.Today().toString().trim())
-      ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
-
-      aqUtils.Delay(2000,Indicator.Text);  
+//      var createfrom = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget;
+//      createfrom.setText(aqDateTime.Today())
+////      WorkspaceUtils.CalenderDateSelection(createfrom,aqDateTime.Today().toString().trim())
+//      ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
+//  
+//      aqUtils.Delay(1000,Indicator.Text);   
+//      if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//  
+//      }
+//    
+//
+//      var createTo = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McDatePickerWidget2;
+//      createTo.setText(aqDateTime.Today())
+////      WorkspaceUtils.CalenderDateSelection(createTo,aqDateTime.Today().toString().trim())
+//      ValidationUtils.verify(true,true,"Date is selected in Maconomy"); 
+//
+//      aqUtils.Delay(2000,Indicator.Text);  
          
       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   

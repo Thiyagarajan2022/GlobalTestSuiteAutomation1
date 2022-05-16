@@ -300,7 +300,8 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 
 } 
 
-aqUtils.Delay(10000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(1000, Indicator.Text);
 ReportUtils.logStep("INFO", "Moved to Time & Expenses from Time & Expenses Menu");
 TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 }

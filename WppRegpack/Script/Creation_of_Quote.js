@@ -2381,7 +2381,7 @@ ApprovalTableBar.Click();
 
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-ImageRepository.ImageSet.Forward.Click();// GL
+ImageRepository.ImageSet.Forward.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 

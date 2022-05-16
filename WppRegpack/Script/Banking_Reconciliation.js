@@ -259,7 +259,7 @@ Sys.HighlightObject(table)
         Sys.HighlightObject(ToReconcile);
         if(ToReconcile.getSelection()){
         ToReconcile.Click();
-        aqUtils.Delay(3000, Indicator.Text);
+        aqUtils.Delay(100, Indicator.Text);
         if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }   
         }
         

@@ -384,11 +384,10 @@ AttachDoc.Click();
   ReportUtils.logStep_Screenshot();
   opendoc.Click();
   aqUtils.Delay(2000, "Document Attached");
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var submit = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
 submit.Click();
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 
 //var email=Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;

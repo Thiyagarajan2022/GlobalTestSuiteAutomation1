@@ -751,12 +751,11 @@ var closefilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - 
 var job = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 2);
 //  job.setText("GAIL C COUTINHO")
 job.setText(FullName + " "+STIME);
-Delay(6000);
+aqUtils.Delay(5000, "Reading Tables in Maconomy");
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(FullName + " "+STIME)){ 
-//if(table.getItem(v).getText_2(2).OleValue.toString().trim()=="GAIL C COUTINHO"){
-
     flag=true;    
     break;
   }

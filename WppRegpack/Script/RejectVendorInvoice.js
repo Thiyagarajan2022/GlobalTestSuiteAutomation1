@@ -720,30 +720,30 @@ ReportUtils.logStep_Screenshot();
 closefilter.Click();
 aqUtils.Delay(5000, Indicator.Text);;
 
-//var Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl5
+var Reject = //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl5
+Aliases.Maconomy.BatchAccrual.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Composite.markBatchAccruals
 
-
-var st = false;
-  var Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;
-  Sys.HighlightObject(Reject)
-  for(var i=0;i<Reject.ChildCount;i++){ 
-    if((Reject.Child(i).isVisible())&&(Reject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())){
-      Reject = Reject.Child(i);
-      st = true;
-      break;
-    }
-  }
-  
-  if(!st) { 
- Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2;
- Sys.HighlightObject(Reject)
- for(var i=0;i<Reject.ChildCount;i++){ 
-  if((Reject.Child(i).isVisible())&&(Reject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())){
-    Reject = Reject.Child(i);
-    break;
-  }
-}
-}
+//var st = false;
+//  var Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;
+//  Sys.HighlightObject(Reject)
+//  for(var i=0;i<Reject.ChildCount;i++){ 
+//    if((Reject.Child(i).isVisible())&&(Reject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())){
+//      Reject = Reject.Child(i);
+//      st = true;
+//      break;
+//    }
+//  }
+//  
+//  if(!st) { 
+// Reject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2;
+// Sys.HighlightObject(Reject)
+// for(var i=0;i<Reject.ChildCount;i++){ 
+//  if((Reject.Child(i).isVisible())&&(Reject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())){
+//    Reject = Reject.Child(i);
+//    break;
+//  }
+//}
+//}
 Sys.HighlightObject(Reject)
 if(Reject.isEnabled()){ 
 Reject.HoverMouse();
@@ -754,19 +754,16 @@ var remarkStatus = Aliases.Maconomy.Shell7.Composite2.Composite.Composite.Compos
 WorkspaceUtils.waitForObj(remarkStatus);
 remarkStatus.Click();
 remarkStatus.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim());
-var rejectButton = Aliases.Maconomy.Shell7.Composite2.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())
+var rejectButton = Sys.Process("Maconomy").SWTObject("Shell", "Reject").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject").OleValue.toString().trim())
+//Aliases.Maconomy.Shell7.Composite2.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Reject all").OleValue.toString().trim())
 rejectButton.Click();
 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
 aqUtils.Delay(2000, "Rejecting Invoice");; 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
 var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -852,32 +849,34 @@ ImageRepository.ImageSet.Forward.Click();
 //}
 
   ValidationUtils.verify(true,true,"Vendor Invoice is Rejected by "+Apvr)
-//  aqUtils.Delay(8000, Indicator.Text);;  
-//  var undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl6;
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
+
+var undoReject = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.submitjournal
   
- var st = false; 
-  var undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;
-  Sys.HighlightObject(undoReject)
-  for(var i=0;i<undoReject.ChildCount;i++){ 
-    if((undoReject.Child(i).isVisible())&&(undoReject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Undo All Approvals/Rejections").OleValue.toString().trim())){
-      undoReject = undoReject.Child(i);
-      st = true;
-      break;
-    }
-  }
-  
-  if(!st) { 
- undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2;
- Sys.HighlightObject(undoReject)
-  for(var i=0;i<undoReject.ChildCount;i++){ 
-    if((undoReject.Child(i).isVisible())&&(undoReject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Undo All Approvals/Rejections").OleValue.toString().trim())){
-      undoReject = undoReject.Child(i);
-      break;
-    }
-  }
-  }
+// var st = false; 
+//  var undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;
+//  Sys.HighlightObject(undoReject)
+//  for(var i=0;i<undoReject.ChildCount;i++){ 
+//    if((undoReject.Child(i).isVisible())&&(undoReject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Undo All Approvals/Rejections").OleValue.toString().trim())){
+//      undoReject = undoReject.Child(i);
+//      st = true;
+//      break;
+//    }
+//  }
+//  
+//  if(!st) { 
+// undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2;
+// Sys.HighlightObject(undoReject)
+//  for(var i=0;i<undoReject.ChildCount;i++){ 
+//    if((undoReject.Child(i).isVisible())&&(undoReject.Child(i).text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Undo All Approvals/Rejections").OleValue.toString().trim())){
+//      undoReject = undoReject.Child(i);
+//      break;
+//    }
+//  }
+//  }
   undoReject.Click();
-aqUtils.Delay(2000, "Invoice Rejected");; 
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
 }
 }

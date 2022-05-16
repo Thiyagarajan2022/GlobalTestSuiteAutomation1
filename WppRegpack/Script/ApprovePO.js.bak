@@ -235,23 +235,19 @@ var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Comp
     
   }
   //var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.PTabItemPanel.Approvals
-  var purchaseOrderApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+  var purchaseOrderApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
   WorkspaceUtils.waitForObj(purchaseOrderApproval);
   purchaseOrderApproval.Click();
   
   
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   ImageRepository.ImageSet.Maximize.Click();
 
 var purchaseApproval = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl3
 //  var purchaseApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.PurchaseApprovalTab;
   WorkspaceUtils.waitForObj(purchaseApproval);
   purchaseApproval.Click();
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   var ApproverTable = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
 //  var ApproverTable = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(ApproverTable);

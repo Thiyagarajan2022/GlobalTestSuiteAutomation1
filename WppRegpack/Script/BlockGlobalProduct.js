@@ -216,9 +216,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   aqUtils.Delay(5000, Indicator.Text);
   TextUtils.writeLog("Global Client is available in maconomy to Amend");
     aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 }
 
 

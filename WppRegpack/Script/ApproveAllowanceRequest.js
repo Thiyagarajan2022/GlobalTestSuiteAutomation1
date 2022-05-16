@@ -80,7 +80,7 @@ WorkspaceUtils.waitForObj(absenceallowance1);
 absenceallowance1.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 absenceallowance1.Click();
-aqUtils.Delay(3000, "waiting for new absence allowance");
+aqUtils.Delay(6000, "waiting for new absence allowance");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
@@ -92,7 +92,7 @@ all.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 all.Click();
 TextUtils.writeLog("New Allowance Request is clicked");
-aqUtils.Delay(3000, "Checking Labels");
+aqUtils.Delay(6000, "Checking Labels");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }

@@ -150,7 +150,7 @@ JobCurrency = ReadExcelSheet("Currency",EnvParams.Opco,"CreateClient");
   var clientNumber = ReadExcelSheet("Global Client Number",EnvParams.Opco,"Data Management");
 var pName = false;  
  Log.Message(pdflineSplit.length)
-  for (j=0; j<35; j++)
+  for (j=1; j<35; j++)
   {
     Log.Message(pdflineSplit[j])
       if(pdflineSplit[j].includes(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Attn.").OleValue.toString().trim()))

@@ -834,8 +834,6 @@ aqUtils.Delay(5000, "Reading Tables in Maconomy");
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(FullName + " "+STIME)){ 
-//if(table.getItem(v).getText_2(2).OleValue.toString().trim()=="GAIL C COUTINHO"){
-
     flag=true;    
     break;
   }

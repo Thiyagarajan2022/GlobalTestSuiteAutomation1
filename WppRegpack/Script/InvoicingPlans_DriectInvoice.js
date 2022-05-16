@@ -423,22 +423,15 @@ TemplateJob = ""
   Estimate.Keys("Client Approved Estimate");
   aqUtils.Delay(100, Indicator.Text);
   
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   var FullBudget = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
   WorkspaceUtils.waitForObj(FullBudget);
   FullBudget.Click();
   
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
+  aqUtils.Delay(100, Indicator.Text);
   var BudgetGrid = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(BudgetGrid);
   var ii=0;

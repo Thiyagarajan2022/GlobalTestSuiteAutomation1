@@ -1796,6 +1796,7 @@ ReportUtils.logStep_Screenshot();
 approvalBar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
  ImageRepository.ImageSet.Maximize.Click();
 
 var DraftApproval = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl2;
