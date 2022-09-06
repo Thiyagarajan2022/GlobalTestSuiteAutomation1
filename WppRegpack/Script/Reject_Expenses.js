@@ -665,7 +665,7 @@ closefilter.Click();
               var row = lneaprovetab.getItemCount();
               var col = lneaprovetab.getColumnCount();
                var APGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-              for(var i=0;i<row-2;i++){
+              for(var i=1;i<row;i++){
                   var remark = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
                   remark.Click()
                   remark.setText("Rejected");
@@ -762,7 +762,7 @@ closefilter.Click();
                 
                   aqUtils.Delay(2000, Indicator.Text);
                   ReportUtils.logStep_Screenshot();
-                  ImageRepository.ImageSet0.Forward.Click(); 
+                  //ImageRepository.ImageSet0.Forward.Click(); 
                    aqUtils.Delay(2000, Indicator.Text);
                    lines.Click();
                    lines.HoverMouse();
