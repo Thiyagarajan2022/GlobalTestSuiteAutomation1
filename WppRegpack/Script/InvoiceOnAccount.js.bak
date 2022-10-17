@@ -1171,50 +1171,54 @@ ExcelUtils.WriteExcelSheet("PDF Draft Invoice On Account",EnvParams.Opco,"Data M
     aqUtils.Delay(4000, Indicator.Text);
    
 
+var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
+WorkspaceUtils.waitForObj(appvBar);
+appvBar.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //var appvBar = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 
 //var appvBar = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
 
-    var ChildCount = 0;
-    var Add = [];
-    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
-    Sys.Process("Maconomy").Refresh();  
-    for(var ip=0;ip<Parent.ChildCount;ip++){ 
-     var PChild = Parent.Child(ip);
-     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==3)){
-       Log.Message(PChild.Name)
-//       for(var jp=0;jp<PChild.ChildCount;jp++){ 
-//         var CChild = PChild.Child(jp);
-//            if((CChild.isVisible()) && (CChild.JavaClassName=="Composite") && (CChild.Index==2)){
-            Add[ChildCount] = PChild;
-            ChildCount++;
-//            }
+//    var ChildCount = 0;
+//    var Add = [];
+//    var Parent = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+//    Sys.Process("Maconomy").Refresh();  
+//    for(var ip=0;ip<Parent.ChildCount;ip++){ 
+//     var PChild = Parent.Child(ip);
+//     if((PChild.isVisible()) && (PChild.JavaClassName=="Composite")&& (PChild.ChildCount==3)){
+//       Log.Message(PChild.Name)
+////       for(var jp=0;jp<PChild.ChildCount;jp++){ 
+////         var CChild = PChild.Child(jp);
+////            if((CChild.isVisible()) && (CChild.JavaClassName=="Composite") && (CChild.Index==2)){
+//            Add[ChildCount] = PChild;
+//            ChildCount++;
+////            }
+////     }
 //     }
-     }
-     }
-
-     var appvBar = "";
-     var pos = 1000;
-     for(var ip=0;ip<Add.length;ip++){ 
-     if(Add[ip].Height<pos){ 
-       pos = Add[ip].Height;
-       Log.Message(pos)
-       appvBar = Add[ip];
-     }     
-     }
-     
-     Log.Message(appvBar.FullName);
-     Sys.HighlightObject(appvBar)
-     appvBar = appvBar.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
-     
-Sys.HighlightObject(appvBar)
-WorkspaceUtils.waitForObj(appvBar);
-appvBar.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,true,"Maconomy is loading ......")  
-}
+//     }
+//
+//     var appvBar = "";
+//     var pos = 1000;
+//     for(var ip=0;ip<Add.length;ip++){ 
+//     if(Add[ip].Height<pos){ 
+//       pos = Add[ip].Height;
+//       Log.Message(pos)
+//       appvBar = Add[ip];
+//     }     
+//     }
+//     
+//     Log.Message(appvBar.FullName);
+//     Sys.HighlightObject(appvBar)
+//     appvBar = appvBar.SWTObject("PTabItemPanel", "", 3).SWTObject("TabControl", "");
+//     
+//Sys.HighlightObject(appvBar)
+//WorkspaceUtils.waitForObj(appvBar);
+//appvBar.Click();
+//if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//    
+//}else{ 
+//ValidationUtils.verify(true,true,"Maconomy is loading ......")  
+//}
   
 ImageRepository.ImageSet.Maximize.Click();
 var DraftApproval = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl2;
@@ -1564,9 +1568,8 @@ aqUtils.Delay(3000, "Waiting to Refresh ToDo's List");
 if(ImageRepository.ImageSet.ToDos_Icon.Exists())
 { 
   
-}else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 }
@@ -1636,11 +1639,7 @@ function FinalApprove(JobNum,Apvr,lvl){
 var table = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
 
 }else{ 

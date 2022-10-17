@@ -482,10 +482,8 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Comp
      WorkspaceUtils.waitForObj(newbutton)
      Sys.HighlightObject(newbutton);
      newbutton.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-     
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }   
 
      
 var company = //NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.company;

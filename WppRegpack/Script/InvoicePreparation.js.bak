@@ -322,7 +322,7 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 function gotoInvoicing(){ 
   
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var allJobs = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -422,11 +422,7 @@ TemplateJob = ""
   aqUtils.Delay(100, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
-  
-
   
   var Estimate = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McPopupPickerWidget;
   Estimate.Keys("Client Approved Estimate");
@@ -434,20 +430,13 @@ TemplateJob = ""
   
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
   
   var FullBudget = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
   WorkspaceUtils.waitForObj(FullBudget);
   FullBudget.Click();
-  
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-  
+    aqUtils.Delay(2000, Indicator.Text);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var BudgetGrid = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(BudgetGrid);
   var ii=0;
@@ -1241,8 +1230,6 @@ WorkspaceUtils.waitForObj(appvBar);
 appvBar.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
   
 ImageRepository.ImageSet.Maximize.Click();
@@ -1316,8 +1303,6 @@ TextUtils.writeLog("Levels 0 has  Approved Draft Invoice");
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
 
 var screen = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite8.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;

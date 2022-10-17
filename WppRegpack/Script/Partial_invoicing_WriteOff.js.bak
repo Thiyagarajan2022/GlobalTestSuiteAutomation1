@@ -1013,11 +1013,7 @@ Approve.Click();
 ValidationUtils.verify(true,true,"Draft Invoice is Approved by "+Project_manager)
 TextUtils.writeLog("Levels 0 has  Approved Draft Invoice");
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var screen = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
 //             Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;

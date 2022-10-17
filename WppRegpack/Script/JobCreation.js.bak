@@ -396,7 +396,7 @@ WorkspaceUtils.config_with_Maconomy_Validation(BussUnit,JavaClasses.MLT.MultiLin
 if(TemplateNo!=""){
 template.Click();
 var ExlArray = getExcelData("Validate Template",EnvParams.Opco)
-WorkspaceUtils.SearchByValue(template,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),"*"+TemplateNo+"*","Template Number");
+WorkspaceUtils.Config_with_Maconomy_templateValidation(template,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Job").OleValue.toString().trim(),TemplateNo,ExlArray,Job_Type,comapany,Job_group,"Template Number");
 }else{ 
   ValidationUtils.verify(false,true,"Template is Needed to Create Job");
 }

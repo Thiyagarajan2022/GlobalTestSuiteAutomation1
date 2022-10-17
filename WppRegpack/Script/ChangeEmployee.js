@@ -156,6 +156,7 @@ emplNo.setText(employeeNo);
 while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
+  aqUtils.Delay(3000)
   if(table.getItem(v).getText_2(1).OleValue.toString().trim()==(employeeNo)){ 
     flag=true;    
     break;
@@ -177,7 +178,9 @@ closefilter.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(1000,"Waiting to load")
 
-var dateEmpObj  = Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
+var dateEmpObj  = 
+//      Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
+NameMapping.Sys.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget
 waitForObj(dateEmpObj);
 Sys.HighlightObject(dateEmpObj);
 //CalenderDateSelection(dateEmpObj,dateEmployed);

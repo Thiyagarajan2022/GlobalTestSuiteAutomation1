@@ -58,10 +58,7 @@ var productName = ExcelUtils.getRowDatas("Global Product Name",EnvParams.Opco)
 if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
-  if((EnvParams.Country.toUpperCase()=="QATAR"))
-  var index = pdflineSplit.indexOf("TAX CREDIT NOTE");
-   else 
-     var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "CREDIT NOTE").OleValue.toString().trim());
+    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "CREDIT NOTE").OleValue.toString().trim());
        if(index>=0){
           ReportUtils.logStep("INFO","Heading is available Pdf")
           ValidationUtils.verify(true,true,"Heading is available Pdf")

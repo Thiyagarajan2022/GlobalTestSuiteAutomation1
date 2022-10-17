@@ -450,17 +450,20 @@ function NewglobalVendor(){
   var vgroup = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite5.McPopupPickerWidget;
   if(VendorGroup!=""){
   vgroup.Click();
+  aqUtils.Delay(1000,"Loading  Values")
   WorkspaceUtils.DropDownList(VendorGroup,"Vendor Group")
   }
   
   var controlacc = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite6.McPopupPickerWidget;
   if(controlAct!=""){
   controlacc.Click();
+  aqUtils.Delay(1000,"Loading  Values")
   WorkspaceUtils.DropDownList(controlAct,"Control Account")
   }
 
   var wppVendor = Sys.Process("Maconomy").SWTObject("Shell", "*").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "", 13).SWTObject("McPopupPickerWidget", "", 2)  
   wppVendor.Click();
+  aqUtils.Delay(1000,"Loading  Values")
   WorkspaceUtils.DropDownList("Yes","WPP Preferred Vendor")
   
   var CounterPartyBFC =  Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.Counter_Party_BFC;
@@ -526,6 +529,7 @@ function VendorScreen(){
     var companyTaxCode = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
    if(CpyTaxCode!=""){
     companyTaxCode.Click();
+    aqUtils.Delay(1000,"Loading  Values")
     WorkspaceUtils.DropDownList(CpyTaxCode,"Company Tax Code")
     }
 
@@ -536,11 +540,11 @@ function VendorScreen(){
 //    WorkspaceUtils.SearchByValue(taxDerivation,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Local Specification 6").OleValue.toString().trim(),Taxderivation,"Name");
   }  
     
-    Delay(5000)
+    Delay(1000)
    var paymentTerms = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McPopupPickerWidget;
    if(payterm!=""){
     paymentTerms.Click();
-    aqUtils.Delay(3000,"Loading Dropdown Values");
+    aqUtils.Delay(1000,"Loading Dropdown Values");
     WorkspaceUtils.DropDownList(payterm,"Payment Terms")
     }
 
@@ -741,14 +745,9 @@ function Policy(){
 
 
 function AttachDocument(){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  aqUtils.Delay(10000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  aqUtils.Delay(10000, Indicator.Text);
+
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  aqUtils.Delay(5000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }

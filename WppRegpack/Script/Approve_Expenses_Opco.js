@@ -147,6 +147,7 @@ Delay(3000);
 }
   
  function gotoTimeExpenses(){ 
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     ReportUtils.logStep("INFO","Approve Expenses Second Level is Started:"+STIME);    
     aqUtils.Delay(2000,Indicator.Text); 
     Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Refresh(); 

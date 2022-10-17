@@ -12,8 +12,8 @@ if(EnvParams.Country.toUpperCase()=="INDIA"){
 }else{ 
   specTableData = SelectionBilling.getItem(t).getText_2(0).OleValue.toString().trim();
 }
-        if(specTableData.indexOf(temp[0])==0){
-          if(specTableData.indexOf("T")==0){
+       // if(specTableData.indexOf(temp[0])==0){
+        //  if(specTableData.indexOf("T")==0){
       aqUtils.Delay(100, Indicator.Text);
       SelectionBilling.Keys("[Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab][Tab]");
       var Employee = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McValuePickerWidget2;
@@ -183,8 +183,8 @@ var SaveStat = true;
       }
       ImageRepository.ImageSet.Close_Down.Click();
       }
-      }
+     // }
       SelectionBilling.Keys("[Down]");
-  }
+  //}
 
 }

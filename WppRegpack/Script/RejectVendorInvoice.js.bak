@@ -852,7 +852,7 @@ ImageRepository.ImageSet.Forward.Click();
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 
-var undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl6;
+var undoReject = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.submitjournal
   
 // var st = false; 
 //  var undoReject = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2;

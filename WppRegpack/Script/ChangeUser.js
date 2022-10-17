@@ -201,6 +201,7 @@ aqUtils.Delay(1000,"Loading")
 var flag=false;
 if(table.getItemCount()>=1)
 for(var v=0;v<table.getItemCount();v++){ 
+  aqUtils.Delay(3000)
   if(table.getItem(v).getText_2(0).OleValue.toString().trim()==(userName)){ 
     flag=true;
     break;

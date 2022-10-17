@@ -379,6 +379,7 @@ function todo(){
   Sys.Desktop.KeyUp(0x58);  
   aqUtils.Delay(1000, Indicator.Text);
 
+ 
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.ToDoRefresh;
 }
@@ -415,9 +416,7 @@ listPass = false;
 
 
 function ApproveGL(){ 
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    while(!ImageRepository.ImageSet.Tab_Icon.Exists()){  }
   var showFilter = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.CloseFilter
   WorkspaceUtils.waitForObj(showFilter)
   if(showFilter.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Show Filter List").OleValue.toString().trim()){ 

@@ -117,7 +117,7 @@ Users.Click();
 }
 aqUtils.Delay(5000, "Waiting to find Child branch");
 Sys.Process("Maconomy").SWTObject("Shell", "*Deltek Maconomy*");
-aqUtils.Delay(5000, "Waiting to find Child branch");
+aqUtils.Delay(7000, "Waiting to find Child branch");
 
 var childCount = Sys.Process("Maconomy").ChildCount;
 for(var ci=0;ci<childCount;ci++){ 

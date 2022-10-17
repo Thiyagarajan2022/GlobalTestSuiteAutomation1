@@ -104,7 +104,8 @@ Sys.HighlightObject(p);
 var w = p.FindChild("alt", "WPP logo logo", 2000);
   if (w.Exists)
 { 
- w = p.FindChild("text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim(), 2000);
+ //w = p.FindChild("text", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Cancel").OleValue.toString().trim(), 2000);
+  w= p.FindChild("text","Cancel",2000);
   if (w.Exists)
 { 
 Users = w;

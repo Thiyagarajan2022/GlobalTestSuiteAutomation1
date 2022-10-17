@@ -429,7 +429,7 @@ Delay(5000);
 var ApproverGroup_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 8).SWTObject("McPopupPickerWidget", "", 2) 
 if(ApproverGroup!=null){
 ApproverGroup_1.Click();
-
+aqUtils.Delay(1000);
 Sys.Process("Maconomy").Refresh();
 var list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
 var Add_Visible3 = true;
@@ -466,11 +466,10 @@ Add_Visible3 = false;
   
 }
  
-Delay(5000); 
 var EmploymentType_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 9).SWTObject("McPopupPickerWidget", "", 2);
 if(EmploymentType!=""){
 EmploymentType_1.Click();  
-Delay(5000);
+aqUtils.Delay(2000);
 Sys.Process("Maconomy").Refresh(); 
 WorkspaceUtils.DropDownList(EmploymentType,"Employment Type"); 
 

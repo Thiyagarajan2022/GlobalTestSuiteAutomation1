@@ -1317,7 +1317,7 @@ var checkMark = false;
 Sys.Process("Maconomy").Refresh();
 var list = "";
 try{
-  aqUtils.Delay(100,"Loading Dropdown Values");
+  aqUtils.Delay(1000,"Loading Dropdown Values");
   list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
   }
   catch(e){ 
@@ -2097,7 +2097,7 @@ var tl = 0;
 //      Log.Message(splits[0]==value.toString().trim());
       }
   if(!compStatus){
-    ValidationUtils.verify(false,true,"Given "+fieldName+" in Datasheet is not available in ConfigPack");
+   // ValidationUtils.verify(false,true,"Given "+fieldName+" in Datasheet is not available in ConfigPack");
     }
   //====================================
   var code = Sys.Process("Maconomy").SWTObject("Shell", wizName).SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "");
@@ -2798,9 +2798,10 @@ splits[1] = ExcelData[exl].substring(ExcelData[exl].indexOf(splits[0])+(splits[0
 //      }
       }
   if(!compStatus){
-    if((Jobgroup.toString().trim()=="Client Billable")||(Jobgroup.toString().trim()=="Client Non-Billable"))
+    if((Jobgroup.toString().trim()=="Client Billable")||(Jobgroup.toString().trim()=="Client Non-Billable")){
 //    if(Job_group.toString().trim()!="Internal")
     ValidationUtils.verify(false,true,"Selected JobType doesn't have any Templete in Config Sheet");
+    }
     else
     Log.Warning("Selected JobType doesn't have any Templete in Config Sheet")
     } 

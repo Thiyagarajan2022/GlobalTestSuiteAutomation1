@@ -215,9 +215,8 @@ TDSValue = ExcelUtils.getColumnDatas("TDS",EnvParams.Opco)
 
 
 function invoiceAllocation(){ 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
 allocation.Click(); 
@@ -239,6 +238,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
 var newInvoice = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite2.SingleToolItemControl2;
+//Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl
 WorkspaceUtils.waitForObj(newInvoice);
 ReportUtils.logStep_Screenshot();
 newInvoice.Click();

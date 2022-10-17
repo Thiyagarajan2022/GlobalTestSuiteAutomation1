@@ -1089,21 +1089,18 @@ function GlLookups(){
   journal.Click();
   journal.Click();
   aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-  var labels = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McPagingWidget;
-  WorkspaceUtils.waitForObj(labels);
-  for(var i=0;i<labels.ChildCount;i++){ 
-    if((labels.Child(i).isVisible())&&(labels.Child(i).WndCaption.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Now showing").OleValue.toString().trim())!=-1)){
-      labels = labels.Child(i);
-      break;
-    }
-  }
-
-  WorkspaceUtils.waitForObj(labels);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+//  
+//  var labels = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McPagingWidget;
+//  WorkspaceUtils.waitForObj(labels);
+//  for(var i=0;i<labels.ChildCount;i++){ 
+//    if((labels.Child(i).isVisible())&&(labels.Child(i).WndCaption.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Now showing").OleValue.toString().trim())!=-1)){
+//      labels = labels.Child(i);
+//      break;
+//    }
+//  }
+//  WorkspaceUtils.waitForObj(labels);
+  
   var JornalNo = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
   WorkspaceUtils.waitForObj(JornalNo);
   JornalNo.Click();

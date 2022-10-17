@@ -164,6 +164,7 @@ function address(){
 }
 
 function assetcost(){
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var assettable = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid  
   Sys.HighlightObject(assettable);
   var comp = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
@@ -175,9 +176,7 @@ function assetcost(){
   Sys.HighlightObject(table);
   
   aqUtils.Delay(4000,Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(1).OleValue.toString().trim()==AssetsNo){ 

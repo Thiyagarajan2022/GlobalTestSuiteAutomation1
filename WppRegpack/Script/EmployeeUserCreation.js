@@ -141,9 +141,7 @@ TextUtils.writeLog("Entering into Employees from Human Resources Menu");
 
 
 function goToEmployees(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //  var employees = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McMaconomyPShelfMenuGui$3", "", 2).SWTObject("PShelf", "").SWTObject("Composite", "", 5).SWTObject("Tree", "");
 //  employees.DblClickItem("|Employees");
 
@@ -477,6 +475,7 @@ ValidationUtils.verify(true,true,"Email Id is Entered in Maconomy");
 var ApproverGroup_1 = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "New Employee").OleValue.toString().trim()).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("McGroupWidget", "", 2).SWTObject("Composite", "", 8).SWTObject("McPopupPickerWidget", "", 2) 
 if(ApproverGroup!=null){
 ApproverGroup_1.Click();
+aqUtils.Delay(1000);
 
 Sys.Process("Maconomy").Refresh();
 var list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
@@ -517,6 +516,7 @@ WorkspaceUtils.waitForObj(EmploymentType_1);
 if(EmploymentType!=""){
 EmploymentType_1.Click();  
 Sys.Process("Maconomy").Refresh(); 
+aqUtils.Delay(1000);
 WorkspaceUtils.DropDownList(EmploymentType,"Employment Type"); 
  }else{ 
   ValidationUtils.verify(false,true,"Employment Type is Needed to Create a Employee");

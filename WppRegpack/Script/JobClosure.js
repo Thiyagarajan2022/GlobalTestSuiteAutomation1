@@ -58,7 +58,8 @@ Restart.login(Project_manager);
 function GoToJob() {
   
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+aqUtils.Delay(5000, Indicator.Text)
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var closeFilter = Aliases.Maconomy.WorkingEstimate.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
  
   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
@@ -79,8 +80,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3);
 
   job.setText(Job_number);
+  aqUtils.Delay(5000)
   while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-
   var flag=false;
   for(var v=0;v<table.getItemCount();v++){ 
     if(table.getItem(v).getText_2(2).OleValue.toString().trim()==(Job_number)){ 
@@ -194,7 +195,10 @@ WorkspaceUtils.closeAllWorkspaces();
 
 function closeJob()
 {
-    Delay(8000);
+  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  aqUtils.Delay(5000, Indicator.Text)
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var jobClosingTab = Aliases.ObjectGroup.JobClosingTab;
   
   jobClosingTab.HoverMouse();
@@ -202,7 +206,7 @@ function closeJob()
   jobClosingTab.Click();
   count=false;
   
-  aqUtils.Delay(5000, Indicator.Text);
+  
   aqUtils.Delay(5000, Indicator.Text);
 var closeJobButton = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl2;
 

@@ -537,7 +537,8 @@ function gotoInvoicing(){
   
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(2000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  
 var allJobs = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
 
@@ -934,11 +935,7 @@ aqUtils.Delay(2000, Indicator.Text);;
 Action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transfer Budget").OleValue.toString().trim());
 ReportUtils.logStep_Screenshot("");
 aqUtils.Delay(100, "Approve is Clicked");
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var SelectionBilling = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
 aqUtils.Delay(1000, "Billing Price");
@@ -1010,12 +1007,7 @@ WorkspaceUtils.waitForObj(DraftInvoice);
 ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var draftNo = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(draftNo);
 draftNo.Keys("[Tab][Tab][Tab]");

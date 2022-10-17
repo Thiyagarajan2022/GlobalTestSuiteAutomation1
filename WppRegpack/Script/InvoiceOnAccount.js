@@ -697,7 +697,7 @@ workCodeList[i] = temp[0];
 Log.Message(workCodeList[i])
 }
 }
-
+aqUtils.Delay(1000,"Workcodes are Loading")
 
 var i=0
 var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
@@ -1568,9 +1568,8 @@ aqUtils.Delay(3000, "Waiting to Refresh ToDo's List");
 if(ImageRepository.ImageSet.ToDos_Icon.Exists())
 { 
   
-}else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible){
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
 }
@@ -1640,11 +1639,7 @@ function FinalApprove(JobNum,Apvr,lvl){
 var table = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 if(Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
 
 }else{ 

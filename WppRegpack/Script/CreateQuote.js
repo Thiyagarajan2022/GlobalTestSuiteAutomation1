@@ -1281,7 +1281,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
   PropArray = new Array("JavaClassName", "Visible");
   ValuesArray = new Array("TabControl", "true");
-  p = eval(Maconomy_ParentAddress).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
+  p = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "");
   obj = p.FindAll(PropArray, ValuesArray, 1000);
   var budget;
 for (let i_count = 0; i_count < obj.length; i_count++){ 

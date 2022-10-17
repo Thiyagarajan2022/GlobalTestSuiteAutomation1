@@ -539,9 +539,7 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 
 function gotoInvoicing(){
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
   var allJobs = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();

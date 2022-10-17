@@ -431,9 +431,9 @@ function globalClient(){
     
   }
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
-  table.HoverMouse(49, 52);
+  table.HoverMouse(50, 58);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 52);
+  table.Click(50, 58);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to Amend");
   }
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -465,9 +465,7 @@ function globalClient(){
 
 function newGlobalClient(){ 
   
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var home= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
 // var ClientName = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.ClientName_textbox;
  waitForObj(home);
@@ -695,9 +693,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
   if(table.getItem(0).getText_2(1).OleValue.toString().trim()==brandname){
   BrdNum = table.getItem(0).getText_2(0).OleValue.toString().trim();
-  table.HoverMouse(49, 52);
+  table.HoverMouse(49, 58);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 52);
+  table.Click(49, 58);
   ValidationUtils.verify(true,true,"Global Brand is available in maconomy");
   }
   else if(table.getItem(1).getText_2(1).OleValue.toString().trim()==brandname){

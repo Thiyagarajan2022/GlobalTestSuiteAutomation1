@@ -639,6 +639,7 @@ function newGlobalClient(){
   Sys.HighlightObject(controlAccount);
   if(controlAct!=""){
   controlAccount.Click();
+  aqUtils.Delay(2000,"Waiting to load dropdown elements");
   WorkspaceUtils.DropDownList(controlAct,"Control Account")
   }
   
@@ -683,6 +684,7 @@ function GlobalClient_Screen2(){
   var C_Language = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.Language;
   if(clientlan!=""){
   C_Language.Click();
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   WorkspaceUtils.DropDownList(clientlan,"Language")
   }
   aqUtils.Delay(2000,"Waiting System to Load fully");
@@ -714,6 +716,7 @@ function GlobalClient_Screen2(){
   var C_PaymentTerm = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.Country_Dropdown;
   if(payterm!=""){
   Sys.HighlightObject(C_PaymentTerm);
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   C_PaymentTerm.Click();
   WorkspaceUtils.DropDownList(payterm,"Payment Terms",C_PaymentTerm)
   }
@@ -723,6 +726,7 @@ function GlobalClient_Screen2(){
   C_companyTaxCode.HoverMouse();
   Sys.HighlightObject(C_companyTaxCode);
   C_companyTaxCode.Click();
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   WorkspaceUtils.DropDownList(Comtaxcode,"Company Tax Code");
   }
   
@@ -767,6 +771,7 @@ Log.Message(Language)
 Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())
 //DueDiligence.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
   DueDiligence.Click();
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",DueDiligence)
   
 var next = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite2.Composite.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "&Next >").OleValue.toString().trim());
@@ -825,6 +830,7 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
 // sanction_lists.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
   Sys.HighlightObject(sanction_lists);
   sanction_lists.Click();
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",sanction_lists)
   
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite10.TextBox;
@@ -836,6 +842,7 @@ var client_identification = Aliases.Maconomy.New_Global_Client.Composite.Composi
 //  potential_client_conflicts.setText(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim());
   Sys.HighlightObject(potential_client_conflicts);
   potential_client_conflicts.Click();
+  aqUtils.Delay(2000,"Waiting System to Load fully");
   WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim(),"DueDiligence",potential_client_conflicts)
 
  var checks_did_you_perform = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite16.TextBox;
@@ -908,9 +915,9 @@ function globalClientTable(){
   
   if(table.getItem(0).getText_2(2).OleValue.toString().trim()==clientName){
   ClientNumber = table.getItem(0).getText_2(0).OleValue.toString().trim();
-  table.HoverMouse(49, 52);
+  table.HoverMouse(49, 57);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 52);
+  table.Click(49, 57);
   ValidationUtils.verify(true,true,"Created Global Client Name is available in Maconomy");
   }
   else if(table.getItem(1).getText_2(2).OleValue.toString().trim()==clientName){
@@ -1019,10 +1026,12 @@ save.Click();
 function attachDocument(){ 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ } 
   aqUtils.Delay(2000, "Finding Documents Tab");;
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ } 
+ 
  
   if(EnvParams.Country.toUpperCase()=="INDIA" || EnvParams.Country.toUpperCase()=="SPAIN" ||  EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
-  var doc= Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)          
+  var doc= 
+  //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)          
+    Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
   }
   else{ 
   var doc =

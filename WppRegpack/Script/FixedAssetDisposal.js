@@ -474,9 +474,7 @@ Client_Managt.DblClickItem("|"+JavaClasses.MLT.MultiLingualTranslator.GetTransTe
 }
 }
     aqUtils.Delay(3000,Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     var posting = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.posting;    
     posting.Click();
     aqUtils.Delay(1000,Indicator.Text);
@@ -495,16 +493,15 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-
-    var fromCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
-    Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget
+    var fromCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget;
+    //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget
     waitForObj(fromCompany)
     fromCompany.Click();
     fromCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);
  
-    var toCompany = //Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
-    NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2
+    var toCompany = Aliases.Maconomy.Group7.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2;
+   // NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.McTextWidget2
     toCompany.Click();
     toCompany.setText(EnvParams.Opco);
     aqUtils.Delay(1000,Indicator.Text);
@@ -551,7 +548,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
     aqUtils.Delay(1000,Indicator.Text);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     
-    var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+    var table = 
+    //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+    Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
     Sys.HighlightObject(table);
 
     for(var i=0;i<table.getItemCount();i++){ 

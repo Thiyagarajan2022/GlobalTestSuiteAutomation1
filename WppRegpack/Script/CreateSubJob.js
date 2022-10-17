@@ -224,7 +224,7 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 function GoToSubJob() {
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
  var closeFilter = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 2).SWTObject("SingleToolItemControl", "");
 
   var table = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 3).SWTObject("McGrid", "", 2);
@@ -337,46 +337,48 @@ var job = Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingua
 
 if(Job_group!=""){
 job.Click();
-aqUtils.Delay(5000, "Waiting for ScrolledComposite");
-var list = "";
-try{
-list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+aqUtils.Delay(1000, "Waiting for values");
+WorkspaceUtils.DropDownList(Job_group,"Job Group")
 }
-catch(e){ 
-job.Click(); 
-aqUtils.Delay(6000, "Waiting for ScrolledComposite");
-list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
-}
-
-var Add_Visible2 = true;
-while(Add_Visible2){
-if(list.isEnabled()){
-Add_Visible2 = false;
-var dropstatus = false;
-    for(var i=0;i<list.getItemCount();i++){ 
-      if(list.getItem(i).getText_2(0)!=null){ 
-        if(list.getItem(i).getText_2(0).OleValue.toString().trim()==Job_group.toString().trim()){ 
-          list.Keys("[Enter]");
-          aqUtils.Delay(1000, Indicator.Text);
-          dropstatus = true;
-          ValidationUtils.verify(true,true,"Job Group is listed and selected in Maconomy");
-          break;
-        }else{ 
-          list.Keys("[Down]");
-        }
-          
-      }else{ 
-        list.Keys("[Down]");
-      }
-    }
-    if(!dropstatus)
-    ValidationUtils.verify(false,true,"Job Group is not listed in Maconomy");
-}
-}
-}
-else{ 
-    ValidationUtils.verify(false,true,"Job Group is Needed to Create a Job");
-  }
+//var list = "";
+//try{
+//list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+//}
+//catch(e){ 
+//job.Click(); 
+//aqUtils.Delay(6000, "Waiting for ScrolledComposite");
+//list = Sys.Process("Maconomy").SWTObject("Shell", "").SWTObject("ScrolledComposite", "").SWTObject("McValuePickerPanel", "").WaitSWTObject("Grid", "", 3,60000); 
+//}
+//
+//var Add_Visible2 = true;
+//while(Add_Visible2){
+//if(list.isEnabled()){
+//Add_Visible2 = false;
+//var dropstatus = false;
+//    for(var i=0;i<list.getItemCount();i++){ 
+//      if(list.getItem(i).getText_2(0)!=null){ 
+//        if(list.getItem(i).getText_2(0).OleValue.toString().trim()==Job_group.toString().trim()){ 
+//          list.Keys("[Enter]");
+//          aqUtils.Delay(1000, Indicator.Text);
+//          dropstatus = true;
+//          ValidationUtils.verify(true,true,"Job Group is listed and selected in Maconomy");
+//          break;
+//        }else{ 
+//          list.Keys("[Down]");
+//        }
+//          
+//      }else{ 
+//        list.Keys("[Down]");
+//      }
+//    }
+//    if(!dropstatus)
+//    ValidationUtils.verify(false,true,"Job Group is not listed in Maconomy");
+//}
+//}
+//}
+//else{ 
+//    ValidationUtils.verify(false,true,"Job Group is Needed to Create a Job");
+//  }
 
   
   

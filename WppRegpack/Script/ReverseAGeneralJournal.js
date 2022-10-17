@@ -190,9 +190,7 @@ return excelData;
 }
 
 function JournalListTab(){
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var JournalList = Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 waitForObj(JournalList);
 Sys.HighlightObject(JournalList);
@@ -214,9 +212,7 @@ var all = Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composit
 waitForObj(all);
 Sys.HighlightObject(all);
 all.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var journal=Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 Sys.HighlightObject(journal);
 journal.Click();

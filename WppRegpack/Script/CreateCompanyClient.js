@@ -990,11 +990,12 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 
 if(EnvParams.Country.toUpperCase()=="INDIA" || EnvParams.Country.toUpperCase()=="SPAIN" ||  EnvParams.Country.toUpperCase()=="EGYPT" || EnvParams.Country.toUpperCase()=="QATAR" || EnvParams.Country.toUpperCase()=="LEBANON"  || EnvParams.Country.toUpperCase()=="UAE"){
 var doc = 
-//Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
-Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)           
+Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 11);
+//Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)           
 }
 else{ 
-var doc = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
+var doc = 
+Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 13)
 
 }
   Sys.HighlightObject(doc);

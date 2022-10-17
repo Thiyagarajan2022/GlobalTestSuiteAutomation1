@@ -638,6 +638,7 @@ function newGlobalClient(){
   Sys.HighlightObject(ClientGroup);
   if(clientgrp!=""){
   ClientGroup.Click();
+   aqUtils.Delay(3000,"Loading Dropdown values")
   WorkspaceUtils.DropDownList(clientgrp,"Client Group")
   }
   aqUtils.Delay(2000,"Waiting System to Load fully");
@@ -647,6 +648,7 @@ function newGlobalClient(){
   Sys.HighlightObject(controlAccount);
   if(controlAct!=""){
   controlAccount.Click();
+   aqUtils.Delay(3000,"Loading Dropdown values")
   WorkspaceUtils.DropDownList(controlAct,"Control Account")
   }
   

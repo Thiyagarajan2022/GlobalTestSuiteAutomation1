@@ -128,6 +128,8 @@ function getDetails(){
    
   ExcelUtils.setExcelName(workBook, "Banking Reconciliation", true);
   Statment_Date = ExcelUtils.getRowDatas("Statement Date",EnvParams.Opco);
+  if(Statment_Date = "AUTOFILL"){
+        Statment_Date = getSpecificDate(0);}
   if((Statment_Date=="") && (Statment_Date=="") ){
     ValidationUtils.verify(true,false,"Statement Date is needed to create Banking Reconciliation")
   }
@@ -259,7 +261,6 @@ Sys.HighlightObject(table)
         Sys.HighlightObject(ToReconcile);
         if(ToReconcile.getSelection()){
         ToReconcile.Click();
-        aqUtils.Delay(100, Indicator.Text);
         if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }   
         }
         
@@ -435,15 +436,21 @@ Approve_Reconciliation.Click();
 
 
 function Reprint_Previous_Reconciliations(){ 
-  
-var History = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
+
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+     
+var History = 
+//Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl;
+Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy *)").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 5)
 Sys.HighlightObject(History);
 History.Click();
    aqUtils.Delay(2000, Indicator.Text);
    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
    aqUtils.Delay(5000, Indicator.Text);
 
-   
+var historyGrid = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
+Sys.HighlightObject(historyGrid); 
+     
 var Bank_Acc = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
 Sys.HighlightObject(Bank_Acc);
 Bank_Acc.Click();
@@ -462,7 +469,7 @@ Company.Click();
    aqUtils.Delay(2000, Indicator.Text);
    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
-var Stat_Date = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+var Stat_Date = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McTextWidget", "", 4)
 Sys.HighlightObject(Stat_Date);
 Stat_Date.Click();
 
@@ -472,14 +479,14 @@ Stat_Date.Click();
    aqUtils.Delay(2000, Indicator.Text);
    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
-var Stat_No = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget2;
-Sys.HighlightObject(Stat_No);
-Stat_No.Click();
-
-   Stat_No.Keys(Statment_No);
-   aqUtils.Delay(2000, Indicator.Text);
-   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-   aqUtils.Delay(2000, Indicator.Text);
+//var Stat_No = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidgetSys.HighlightObject(Stat_No);
+////Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 4).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McWorkspaceSheafGui$McDecoratedPaneGui", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McFilterPaneWidget", "").SWTObject("McTableWidget", "", 2).SWTObject("McGrid", "", 2).SWTObject("McTextWidget", "", 3)
+//Stat_No.Click();
+//
+//   Stat_No.Keys(Statment_No);
+//   aqUtils.Delay(2000, Indicator.Text);
+//   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+//   aqUtils.Delay(2000, Indicator.Text);
    
    var table = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
 Sys.HighlightObject(table)

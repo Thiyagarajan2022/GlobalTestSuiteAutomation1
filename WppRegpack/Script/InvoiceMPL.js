@@ -59,7 +59,7 @@ if((productName=="")||(productName==null)){
 productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
 }
 
- if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="QATAR") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
+ if((EnvParams.Country.toUpperCase()=="INDIA") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="SINGAPORE"))
   var index = docObj.indexOf("TAX INVOICE");
    else 
    var index = docObj.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "INVOICE").OleValue.toString().trim());  

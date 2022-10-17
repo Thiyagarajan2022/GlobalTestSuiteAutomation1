@@ -962,9 +962,9 @@ function NewCompanyBrand(){
   }
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
   //  table.getItem(0).
-  table.HoverMouse(49, 52);
+  table.HoverMouse(49, 58);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 52);
+  table.Click(49, 58);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy");
   }
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==ClientNo){

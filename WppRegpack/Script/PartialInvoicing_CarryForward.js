@@ -540,9 +540,7 @@ TextUtils.writeLog("Entering into Jobs from Jobs Menu");
 
 
 function gotoInvoicing(){
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
   var allJobs = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
 allJobs.Click();
@@ -735,8 +733,6 @@ TextUtils.writeLog("Approve is clicked");
 aqUtils.Delay(1000, "Approve is Clicked");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
 }
 
 var DraftInvoice = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
@@ -745,12 +741,8 @@ WorkspaceUtils.waitForObj(DraftInvoice);
 ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+Sys.Desktop.Keys("[Up]")
 var draftNo = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(draftNo);
 draftNo.Keys("[Tab][Tab][Tab]");
@@ -776,12 +768,7 @@ var CloseFilter = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Compos
 ReportUtils.logStep_Screenshot("");
 CloseFilter.Click();
 aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //var SubmitDraft = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite2.PTabFolder.TabFolderPanel.Composite;
 
 var SubmitDraft;
@@ -804,8 +791,6 @@ var SubmitDraft;
   aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
   }
 var PrintDraft;
      
@@ -1498,7 +1483,7 @@ Sys.HighlightObject(table);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
 }else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
+
 }
 if(Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Visible){
 
@@ -1530,15 +1515,11 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   labels.Refresh();
 }
 if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
 }
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
-WorkspaceUtils.waitForObj(table);
+}WorkspaceUtils.waitForObj(table);
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 
   if(table.getItem(v).getText_2(0).OleValue.toString().trim()==JobNum){ 
