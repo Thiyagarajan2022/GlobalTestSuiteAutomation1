@@ -913,14 +913,11 @@ WorkspaceUtils.waitForObj(DraftInvoice);
 ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+Sys.Desktop.Keys("[Up]");
 var draftNo = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(draftNo);
+
 draftNo.Keys("[Tab][Tab][Tab]");
 var billiablePrice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(billiablePrice);

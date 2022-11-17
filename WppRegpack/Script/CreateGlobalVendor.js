@@ -540,11 +540,11 @@ function VendorScreen(){
 //    WorkspaceUtils.SearchByValue(taxDerivation,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Local Specification 6").OleValue.toString().trim(),Taxderivation,"Name");
   }  
     
-    Delay(1000)
+    Delay(2000)
    var paymentTerms = Aliases.Maconomy.Group8.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.McPopupPickerWidget;
    if(payterm!=""){
     paymentTerms.Click();
-    aqUtils.Delay(1000,"Loading Dropdown Values");
+    aqUtils.Delay(10000,"Loading Dropdown Values");
     WorkspaceUtils.DropDownList(payterm,"Payment Terms")
     }
 
@@ -800,6 +800,7 @@ function Information(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+  Sys.Process("Maconomy").Refresh();
   var info = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
   info.HoverMouse();
   info.HoverMouse();

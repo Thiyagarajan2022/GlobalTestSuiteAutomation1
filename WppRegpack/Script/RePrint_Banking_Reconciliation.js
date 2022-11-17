@@ -179,7 +179,7 @@ var Stat_Date = Aliases.Maconomy.Banking_Reconciliation.Composite.Composite.Comp
 Sys.HighlightObject(Stat_Date);
 Stat_Date.Click();
 
-   Stat_Date.Keys(Statment_Date);
+   //Stat_Date.Keys(Statment_Date);
    aqUtils.Delay(2000, Indicator.Text);
    Stat_Date.Keys("[Tab]");
    aqUtils.Delay(2000, Indicator.Text);
@@ -229,87 +229,7 @@ Re_Print_Reconciliation.Click();
 
    aqUtils.Delay(5000, Indicator.Text);
    
-   var SaveTitle = "";
-var sFolder = "";
-
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
-   if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_BankReconciliation"+"*", 1).WndCaption.indexOf("P_BankReconciliation")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
-
-Sys.HighlightObject(pdf)
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-    
-if(ImageRepository.PDF.ChooseFolder.Exists())
-ImageRepository.PDF.ChooseFolder.Click();
-else{ 
-var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-WorkspaceUtils.waitForObj(window);
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x73); //F4
-Sys.Desktop.KeyUp(0x12); //Alt
-Sys.Desktop.KeyUp(0x73); //F4
-aqUtils.Delay(2000, Indicator.Text);
-Sys.HighlightObject(pdf);
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-}
-var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-aqUtils.Delay(2000, Indicator.Text);
-SaveTitle = save.wText;
-    
-sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-if (! aqFileSystem.Exists(sFolder)){
-if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-}
-else{
-Log.Error("Could not create the folder " + sFolder);
-}
-}
-save.Keys(sFolder+SaveTitle+".pdf");
-
-filepathforMplValidation =sFolder+SaveTitle+".pdf";
-var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-Sys.HighlightObject(p);
-var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-if (saveAs.Exists)
-{ 
-saveAs.Click();
-}
-aqUtils.Delay(2000, Indicator.Text);
-aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.ImageSet.SaveAs.Exists()){
-var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-conSaveAs.Click();
-}
-Sys.HighlightObject(pdf);
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x58); //X 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x12);     
-Sys.Desktop.KeyUp(0x58);
-}
-ValidationUtils.verify(true,true,"RePrint Bank_Reconciliation  PDF is Clicked and PDF is Saved");
-Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-
-ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("RePrint_Bank_Reconciliation PDF",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
-   aqUtils.Delay(5000, Indicator.Text);
-   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-   aqUtils.Delay(5000, Indicator.Text);
+  WorkspaceUtils.savePDF_And_WriteToExcel("RePrint_Bank_Reconciliation PDF","P_BankReconciliation");
 }
 
    

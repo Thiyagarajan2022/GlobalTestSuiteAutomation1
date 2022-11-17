@@ -134,7 +134,8 @@ TextUtils.writeLog("Entering into Time & Expenses from Time & Expenses Menu");
 
 
 function selectWeek(){ 
-Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){  } 
+//Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).Refresh();
   var previousMonth = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McCalendarWidget", "", 2).SWTObject("McDateChooser", "").SWTObject("McComposite", "", 1).SWTObject("McGenericButton", "", 2);
   var nextMonth = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McCalendarWidget", "", 2).SWTObject("McDateChooser", "").SWTObject("McComposite", "", 1).SWTObject("McGenericButton", "", 3);
   var week1 = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 5).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 1).SWTObject("McGroupWidget", "").SWTObject("Composite", "").SWTObject("McCalendarWidget", "", 2).SWTObject("McDateChooser", "").SWTObject("McComposite", "", 2).SWTObject("Composite", "", 3).SWTObject("DateChooser$CellLabel", "", 1)
@@ -239,84 +240,9 @@ function print(){
     waitForObj(print)
     ReportUtils.logStep_Screenshot();
     print.Click();
-TextUtils.writeLog("Print Timesheet is Clicked and saved"); 
-aqUtils.Delay(5000, Indicator.Text);        
-    
-var SaveTitle = "";
-var sFolder = "";
-var pdf = 
-Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Time Sheet"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
-  if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Time Sheet"+"*", 1).WndCaption.indexOf("Print Time Sheet")!=-1){
-    aqUtils.Delay(5000, Indicator.Text);
-WorkspaceUtils.waitForObj(pdf);
-Sys.HighlightObject(pdf)
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-    
-if(ImageRepository.PDF.ChooseFolder.Exists())
-ImageRepository.PDF.ChooseFolder.Click();
-else{ 
-var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-WorkspaceUtils.waitForObj(window);
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x73); //F4
-Sys.Desktop.KeyUp(0x12); //Alt
-Sys.Desktop.KeyUp(0x73); //F4
-aqUtils.Delay(2000, Indicator.Text);
-Sys.HighlightObject(pdf)
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-}
-var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-aqUtils.Delay(2000, Indicator.Text);
-SaveTitle = save.wText;
-    
-sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-if (! aqFileSystem.Exists(sFolder)){
-if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-}
-else{
-Log.Error("Could not create the folder " + sFolder);
-}
-}
-save.Keys(sFolder+SaveTitle+".pdf");
-
-var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-Sys.HighlightObject(p);
-var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-if (saveAs.Exists)
-{ 
-  saveAs.Click();
-}
-aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.ImageSet.SaveAs.Exists()){
-var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-conSaveAs.Click();
-}
-Sys.HighlightObject(pdf);
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x58); //X 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x12);     
-Sys.Desktop.KeyUp(0x58);
-}
-ValidationUtils.verify(true,true,"Print TimeSheet is Clicked and PDF is Saved");
-Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("TimeSheetMPL",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")
+ TextUtils.writeLog("Print Timesheet is Clicked and saved"); 
+ aqUtils.Delay(1000, Indicator.Text);
+ WorkspaceUtils.savePDF_And_WriteToExcel("TimeSheetMPL","Print Time Sheet");
     
 }
 

@@ -931,12 +931,8 @@ WorkspaceUtils.waitForObj(DraftInvoice);
 ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+Sys.Desktop.Keys("[Up]")
 var draftNo = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 WorkspaceUtils.waitForObj(draftNo);
 draftNo.Keys("[Tab][Tab][Tab]");
@@ -1067,10 +1063,8 @@ var SubmitDraft = ""
 TextUtils.writeLog("Print Draft is Clicked");
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1088,7 +1082,6 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice E
       Sys.Desktop.KeyUp(0x12); //Alt
       Sys.Desktop.KeyUp(0x73); //F4
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1125,7 +1118,6 @@ conSaveAs.Click();
 }
 aqUtils.Delay(2000, Indicator.Text);
 
-Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
@@ -1326,10 +1318,8 @@ var printInvoice = Aliases.Maconomy.InvoicingFromBudget.Composite.Composite.Comp
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).WndCaption.indexOf("JobInvoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1347,7 +1337,6 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*
       Sys.Desktop.KeyUp(0x12); //Alt
       Sys.Desktop.KeyUp(0x73); //F4
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1376,7 +1365,7 @@ aqUtils.Delay(2000, Indicator.Text);
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
 //conSaveAs.Click();
 //}
-Sys.HighlightObject(pdf);
+//Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
@@ -2009,10 +1998,10 @@ Ok.Click();
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+v//ar pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 1).WndCaption.indexOf("Invoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
+   // Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -2030,7 +2019,7 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 
       Sys.Desktop.KeyUp(0x12); //Alt
       Sys.Desktop.KeyUp(0x73); //F4
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
+    //Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -2067,7 +2056,7 @@ if(ImageRepository.ImageSet.SaveAs.Exists()){
 var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
 conSaveAs.Click();
 }
-Sys.HighlightObject(pdf);
+//Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 

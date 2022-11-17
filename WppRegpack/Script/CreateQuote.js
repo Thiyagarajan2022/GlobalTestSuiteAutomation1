@@ -620,7 +620,7 @@ Sys.HighlightObject(printQuote);
 printQuote.Click();
 TextUtils.writeLog("Print Draft Quote is Clicked and saved"); 
 aqUtils.Delay(5000, Indicator.Text);
-WorkspaceUtils.savePDF_localDirectory("PDF Print Draft Quote","Print Job Quote");
+WorkspaceUtils.savePDF_And_WriteToExcel("PDF Print Draft Quote","Print Job Quote");
 
 //var SaveTitle = "";
 //var sFolder = "";
@@ -1187,7 +1187,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 TextUtils.writeLog("Print Order Confirmation is Clicked");
     aqUtils.Delay(5000, Indicator.Text);
     aqUtils.Delay(3000, Indicator.Text);
-WorkspaceUtils.savePDF_localDirectory("PDF Print Order Confirmation","Print Job Order Confirmation");
+WorkspaceUtils.savePDF_And_WriteToExcel("PDF Print Order Confirmation","Print Job Order Confirmation");
 //
 //aqUtils.Delay(3000, Indicator.Text);
 //var SaveTitle = "";
@@ -3210,7 +3210,7 @@ Actions.Click();
   Actions.PopupMenu.Click("Print Quote");
      TextUtils.writeLog("Print Quote is Clicked");
     aqUtils.Delay(5000, Indicator.Text);
-    WorkspaceUtils.savePDF_localDirectory("PDF Quote","Print Job Quote");
+    WorkspaceUtils.savePDF_And_WriteToExcel("PDF Quote","Print Job Quote");
 
 }
 

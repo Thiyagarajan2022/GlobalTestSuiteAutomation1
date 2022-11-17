@@ -337,6 +337,26 @@ temp = "IDA"
 }
 break;
 
+case "SOUTH KOREA":{
+temp = "SKA"
+}
+break;
+
+case "TAIWAN":{
+temp = "TWN"
+}
+break;
+
+case "VIETNAM":{
+temp = "VNM"
+}
+break;
+
+case "THAILAND":{
+temp = "TLD"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -483,6 +503,26 @@ break;
 
 case "INDONESIA":{
 temp = "IDA"
+}
+break;
+
+case "SOUTH KOREA":{
+temp = "SKA"
+}
+break;
+
+case "TAIWAN":{
+temp = "TWN"
+}
+break;
+
+case "VIETNAM":{
+temp = "VNM"
+}
+break;
+
+case "THAILAND":{
+temp = "TLD"
 }
 break;
 

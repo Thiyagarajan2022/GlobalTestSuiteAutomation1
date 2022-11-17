@@ -697,7 +697,7 @@ workCodeList[i] = temp[0];
 Log.Message(workCodeList[i])
 }
 }
-
+aqUtils.Delay(1000,"Workcodes are Loading")
 
 var i=0
 var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
@@ -865,7 +865,7 @@ ReportUtils.logStep_Screenshot("");
 DraftInvoice.Click();
 aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-
+Sys.Desktop.Keys("[Up]");
 var draftNo = 
 //Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite3.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
@@ -894,11 +894,7 @@ var CloseFilter = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composit
 ReportUtils.logStep_Screenshot("");
 CloseFilter.Click();
 aqUtils.Delay(1000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
   var DraftEditing = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.TabControl2;
   DraftEditing.Click();
@@ -972,23 +968,11 @@ var SubmitDraft;
     }
   }
   aqUtils.Delay(2000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
-  
-  aqUtils.Delay(2000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }  
+ 
 var Excl_Tax = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
-//var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 2).SWTObject("McTextWidget", "", 2);
-//var grandTotal = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite2.McGroupWidget.Composite.descrip
 var grandTotal = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("Composite", "", 3).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("McClumpSashForm", "").SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("McPaneGui$10", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("McGroupWidget", "", 1).SWTObject("Composite", "", 1).SWTObject("McTextWidget", "", 2);
-
-//var Payment_Terms = Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2);
-//var Payment_Terms = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 6).SWTObject("McPopupPickerWidget", "", 2)
-//var Payment_Terms = Aliases.Maconomy.InvoicePlan.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.SWTObject("McPopupPickerWidget", "", 2)
 
 
 
@@ -1092,83 +1076,8 @@ var PrintDraft;
   } 
   
 TextUtils.writeLog("Print Draft is Clicked");
-var SaveTitle = "";
-var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x41); //A 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x41);
-    
-    if(ImageRepository.PDF.ChooseFolder.Exists())
-    ImageRepository.PDF.ChooseFolder.Click();
-    else{ 
-      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-      WorkspaceUtils.waitForObj(window);
-      Sys.Desktop.KeyDown(0x12); //Alt
-      Sys.Desktop.KeyDown(0x73); //F4
-      Sys.Desktop.KeyUp(0x12); //Alt
-      Sys.Desktop.KeyUp(0x73); //F4
-    aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x41); //A 
-    Sys.Desktop.KeyUp(0x12); 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x41);
-    }
-    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-    aqUtils.Delay(2000, Indicator.Text);
-    SaveTitle = save.wText;
-    
-sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-if (! aqFileSystem.Exists(sFolder)){
-if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-}
-else{
-Log.Error("Could not create the folder " + sFolder);
-}
-}
-save.Keys(sFolder+SaveTitle+".pdf");
-//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-//saveAs.Click();
-var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
- var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-  Sys.HighlightObject(p);
-//  Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Jobs - Job").OleValue.toString().trim())
- var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-  if (saveAs.Exists)
-{ 
-saveAs.Click();
-  }
-aqUtils.Delay(2000, Indicator.Text);
-
-Sys.HighlightObject(pdf);
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
-    }
-ValidationUtils.verify(true,true,"Print Draft Invoice is Clicked and PDF is Saved");
-Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
-if(MainJob){ 
-  ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Draft Invoice",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
-}else{ 
-ExcelUtils.setExcelName(workBook,"Data Management", true);
-ExcelUtils.WriteExcelSheet("PDF Draft Invoice On Account",EnvParams.Opco,"Data Management",sFolder+SaveTitle+".pdf")  
-}
-    aqUtils.Delay(4000, Indicator.Text);
+WorkspaceUtils.savePDF_And_WriteToExcel("PDF Draft Invoice On Account","Print Invoice Editing");
+   aqUtils.Delay(4000, Indicator.Text);
    
 
 var appvBar = Aliases.Maconomy.InvoicePreparation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl;
@@ -1406,10 +1315,8 @@ var printInvoice = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composi
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).WndCaption.indexOf("JobInvoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1427,7 +1334,6 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*
       Sys.Desktop.KeyUp(0x12); //Alt
       Sys.Desktop.KeyUp(0x73); //F4
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -1456,7 +1362,7 @@ aqUtils.Delay(2000, Indicator.Text);
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
 //conSaveAs.Click();
 //}
-Sys.HighlightObject(pdf);
+
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 

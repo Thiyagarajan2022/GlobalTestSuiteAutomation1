@@ -212,11 +212,11 @@ ValidationUtils.verify(true,true,"Journal is Posted");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+//var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).WndCaption.indexOf("Print Posting Journal")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
 
-Sys.HighlightObject(pdf)
+//Sys.HighlightObject(pdf)
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
 Sys.Desktop.KeyDown(0x41); //A 
@@ -235,7 +235,7 @@ Sys.Desktop.KeyDown(0x73); //F4
 Sys.Desktop.KeyUp(0x12); //Alt
 Sys.Desktop.KeyUp(0x73); //F4
 aqUtils.Delay(2000, Indicator.Text);
-Sys.HighlightObject(pdf)
+//Sys.HighlightObject(pdf)
 
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
@@ -274,7 +274,7 @@ aqUtils.Delay(2000, Indicator.Text);
 //var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
 //conSaveAs.Click();
 //}
-Sys.HighlightObject(pdf);
+//Sys.HighlightObject(pdf);
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x46); //F
 Sys.Desktop.KeyDown(0x58); //X 

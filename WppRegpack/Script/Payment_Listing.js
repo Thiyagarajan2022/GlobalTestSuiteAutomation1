@@ -335,7 +335,7 @@ ValidationUtils.verify(false,true,"Layout is Needed to Create a Payment Listing"
 		}
 		aqUtils.Delay(4000, "Validing Maconomy Screen is loaded completly with full information");
   //Save PDF in Local Directory
-  savePDF_localDirectory("Print Listing");
+  savePDF_And_WriteToExcel("Print Listing");
   
   }
 

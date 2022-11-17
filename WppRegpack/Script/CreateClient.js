@@ -915,9 +915,9 @@ function globalClientTable(){
   
   if(table.getItem(0).getText_2(2).OleValue.toString().trim()==clientName){
   ClientNumber = table.getItem(0).getText_2(0).OleValue.toString().trim();
-  table.HoverMouse(49, 57);
+  table.HoverMouse(49, 59);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 57);
+  table.Click(49, 59);
   ValidationUtils.verify(true,true,"Created Global Client Name is available in Maconomy");
   }
   else if(table.getItem(1).getText_2(2).OleValue.toString().trim()==clientName){

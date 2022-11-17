@@ -138,9 +138,7 @@ TextUtils.writeLog("Entering into AP Transactions from Accounts Payable Menu");
 }
 
 function invoiceAllocation(){ 
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+    while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var allocation = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Budgeting;
   WorkspaceUtils.waitForObj(allocation);
   allocation.Click();
@@ -163,7 +161,8 @@ WorkspaceUtils.waitForObj(companyNo);
 companyNo.Click();
 aqUtils.Delay(1000, Indicator.Text);
 companyNo.Keys("[Tab][Tab][Tab][Tab][Tab][Tab]");
-var invoiceNumber = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+var invoiceNumber = //Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McTextWidget", "")
 invoiceNumber.Click();
 invoiceNumber.setText(InvoiceNo);
 
@@ -391,12 +390,7 @@ if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "
 var refresh = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
 
 refresh.Click();
-if(ImageRepository.ImageSet.ToDos_Icon.Exists())
-{ 
-  
-}else{ 
-  ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
 //aqUtils.Delay(15000, Indicator.Text);
 if(Aliases.Maconomy.Shell.Composite.Composite.Composite.SWTObject("Composite", "", 1).Visible)
 Client_Managt = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite2.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.ToDoList;
@@ -636,8 +630,7 @@ if(vID_Status)
 function FinalApproveinvoice(InvoiceNo,Apvr,lvl){ 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){  
   }
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){  
-  }
+  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){  }
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder;
 WorkspaceUtils.waitForObj(table);
 Sys.HighlightObject(table);

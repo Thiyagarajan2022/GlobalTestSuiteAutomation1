@@ -796,6 +796,7 @@ Add_Visible8 = false;
 approve_Bar.HoverMouse();
 ReportUtils.logStep_Screenshot();
 approve_Bar.Click();
+aqUtils.Delay(1000);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }

@@ -228,9 +228,8 @@ ReportUtils.logStep("INFO", "Moved to Purchase Orders from Accounts Payable Menu
 }
 
 function postJournal(){ 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var postVendotJournal = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 Sys.HighlightObject(postVendotJournal);
 postVendotJournal.click();

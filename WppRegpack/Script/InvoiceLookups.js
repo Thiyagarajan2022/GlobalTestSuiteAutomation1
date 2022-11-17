@@ -194,75 +194,8 @@ if(labels.getText().OleValue.toString().trim().indexOf("results")==-1){
   }
   
   TextUtils.writeLog("Print Copy is Clicked");
-  var SaveTitle = "";
-  var sFolder = "";
-  var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Invoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-  if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Job Invoice"+"*", 1).WndCaption.indexOf("Print Job Invoice")!=-1){
-  aqUtils.Delay(2000, Indicator.Text);
-  Sys.HighlightObject(pdf)
-  Sys.Desktop.KeyDown(0x12); //Alt
-  Sys.Desktop.KeyDown(0x46); //F
-  Sys.Desktop.KeyDown(0x41); //A 
-  Sys.Desktop.KeyUp(0x46); //Alt
-  Sys.Desktop.KeyUp(0x12);     
-  Sys.Desktop.KeyUp(0x41);
-    
-  if(ImageRepository.PDF.ChooseFolder.Exists())
-  ImageRepository.PDF.ChooseFolder.Click();
-  else{ 
-  var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-  WorkspaceUtils.waitForObj(window);
-  Sys.Desktop.KeyDown(0x12); //Alt
-  Sys.Desktop.KeyDown(0x73); //F4
-  Sys.Desktop.KeyUp(0x12); //Alt
-  Sys.Desktop.KeyUp(0x73); //F4
-  aqUtils.Delay(2000, Indicator.Text);
-  Sys.HighlightObject(pdf)
-  Sys.Desktop.KeyDown(0x12); //Alt
-  Sys.Desktop.KeyDown(0x46); //F
-  Sys.Desktop.KeyDown(0x41); //A 
-  Sys.Desktop.KeyUp(0x12); 
-  Sys.Desktop.KeyUp(0x46); //Alt
-  Sys.Desktop.KeyUp(0x41);
-  }
-  var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-  aqUtils.Delay(2000, Indicator.Text);
-  SaveTitle = save.wText;
-    
-  sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-  if (! aqFileSystem.Exists(sFolder)){
-  if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-  }
-  else{
-  Log.Error("Could not create the folder " + sFolder);
-  }
-  }
-  save.Keys(sFolder+SaveTitle+".pdf");
-//  var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-//  saveAs.Click();
-  var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-Sys.HighlightObject(p);
-var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-if (saveAs.Exists)
-{ 
-saveAs.Click();
-}
-  aqUtils.Delay(2000, Indicator.Text);
-  Sys.HighlightObject(pdf);
-  Sys.Desktop.KeyDown(0x12); //Alt
-  Sys.Desktop.KeyDown(0x46); //F
-  Sys.Desktop.KeyDown(0x58); //X 
-  Sys.Desktop.KeyUp(0x46); //Alt
-  Sys.Desktop.KeyUp(0x12);     
-  Sys.Desktop.KeyUp(0x58);
-  }
-  ValidationUtils.verify(true,true,"Print Job Invoice is Clicked and PDF is Saved");
-  Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-  ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
-  aqUtils.Delay(4000, Indicator.Text);
-   
-
+  
+  WorkspaceUtils.savePDF_To_LocalDirectory("PDF Job Invoice","Print Job Invoice");
   
   }
 }

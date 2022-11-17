@@ -813,10 +813,10 @@ var PrintDraft;
 TextUtils.writeLog("Print Draft is Clicked");
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
+//var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice Editing"+"*", 1).WndCaption.indexOf("Print Invoice Editing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
+  //  Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -834,7 +834,7 @@ var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Invoice E
       Sys.Desktop.KeyUp(0x12); //Alt
       Sys.Desktop.KeyUp(0x73); //F4
     aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
+    //Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x41); //A 
@@ -868,7 +868,7 @@ saveAs.Click();
 aqUtils.Delay(2000, Indicator.Text);
 aqUtils.Delay(2000, Indicator.Text);
 
-Sys.HighlightObject(pdf);
+//Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F
     Sys.Desktop.KeyDown(0x58); //X 
@@ -1066,7 +1066,7 @@ var printInvoice = Aliases.Maconomy.Invoicing_WriteOff.Composite.Composite.Compo
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+var pdf = Sys.WaitProcess("AcroRd32", 2,120000).Window("AcrobatSDIWindow", "*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*JobInvoice"+"*", 1).WndCaption.indexOf("JobInvoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
@@ -1723,7 +1723,7 @@ printInvoice.Click();
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
+var pdf = Sys.WaitProcess("AcroRd32", 2,120000).Window("AcrobatSDIWindow", "*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
     if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*", 1).WndCaption.indexOf("Invoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
@@ -1776,12 +1776,7 @@ if (saveAs.Exists)
 saveAs.Click();
 }
 aqUtils.Delay(2000, Indicator.Text);
-//saveAs.Click();
-aqUtils.Delay(2000, Indicator.Text);
-//if(ImageRepository.ImageSet.SaveAs.Exists()){
-//var conSaveAs = Sys.Process("AcroRd32").Window("#32770", "Confirm Save As", 1).UIAObject("Confirm_Save_As").Window("CtrlNotifySink", "", 7).Window("Button", "&Yes", 1)
-//conSaveAs.Click();
-//}
+
 Sys.HighlightObject(pdf);
     Sys.Desktop.KeyDown(0x12); //Alt
     Sys.Desktop.KeyDown(0x46); //F

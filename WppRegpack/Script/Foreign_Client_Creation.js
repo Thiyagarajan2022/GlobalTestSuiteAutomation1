@@ -490,6 +490,7 @@ function gotoClientSearch(){
  Sys.HighlightObject(curr);
  if(currency!=""){
   curr.Click();
+  aqUtils.Delay(15000, "Loading currencies");
   WorkspaceUtils.DropDownList(currency,"Currency")
   }
   
@@ -596,7 +597,7 @@ function newGlobalClient(){
  var C_Country = Aliases.Maconomy.New_Global_Client.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite4.Country_Dropdown;
  if(country!=""){
   C_Country.Click();
-  aqUtils.Delay(3000,"Loading dropdown values")
+  aqUtils.Delay(10000,"Loading dropdown values")
   WorkspaceUtils.DropDownList(country,"Country")
   }
   

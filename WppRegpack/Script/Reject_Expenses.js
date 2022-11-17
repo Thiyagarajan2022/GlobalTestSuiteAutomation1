@@ -94,10 +94,10 @@ closeAllWorkspaces();
 }
 
 function gotoTimeExpenses(){
-    
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     ReportUtils.logStep("INFO","Reject Expenses is Started:"+STIME);  
     aqUtils.Delay(2000,Indicator.Text); 
-    Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Refresh(); 
+   // Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Refresh(); 
     var expenses = Aliases.Maconomy.Group.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.expensestab;
     expenses.Click();
     ReportUtils.logStep_Screenshot();
@@ -646,7 +646,7 @@ closefilter.Click();
          var lines = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
          Sys.HighlightObject(lines);
          var row =  lines.getItemCount();
-         for(var l=0;l<row;l++){
+//         for(var l=0;l<row;l++){
 
                 var lineapprove = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.PTabItemPanel.TabControl;
                  lineapprove.Click();
@@ -665,7 +665,7 @@ closefilter.Click();
               var row = lneaprovetab.getItemCount();
               var col = lneaprovetab.getColumnCount();
                var APGrid = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
-              for(var i=1;i<row;i++){
+ //             for(var i=1;i<row;i++){
                   var remark = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
                   remark.Click()
                   remark.setText("Rejected");
@@ -677,50 +677,50 @@ closefilter.Click();
                       if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
                   
                       }                  
-                        if(l==0){
-                      if(ImageRepository.ImageSet0.Reject.Exists()){
-                        ImageRepository.ImageSet0.Reject.Click();
-                        ReportUtils.logStep_Screenshot();    
-                        TextUtils.writeLog("Created Expenses Linelevel is Rejected");                    
-                        ValidationUtils.verify(true,true,"Created Expenses Linelevel:" +l+ " is Rejected by :"+loginname)
-                        aqUtils.Delay(6000, Indicator.Text);
-                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-                  
-                        }
-                        APGrid.HoverMouse();
-                       ImageRepository.ImageSet.Undo.Click();
-                       aqUtils.Delay(2000, Indicator.Text);
-                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-                  
-                        }
-                       Sys.Desktop.KeyDown(0x09);
-                       Sys.Desktop.KeyUp(0x09);
-                          var remark = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
-                          remark.Click()
-                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-                  
-                        }
-                          remark.setText(" ");
-                          var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
-                          Sys.HighlightObject(save);
-                          save.Click();
-                          aqUtils.Delay(2000, Indicator.Text);
-                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-                  
-                        }
-                
-                      }
-                      else{ 
-                        Log.Message("Invisible");
-                      } 
-                  }
-                  if(l>0){ 
+//                        if(l==0){
+//                      if(ImageRepository.ImageSet0.Reject.Exists()){
+//                        ImageRepository.ImageSet0.Reject.Click();
+//                        ReportUtils.logStep_Screenshot();    
+//                        TextUtils.writeLog("Created Expenses Linelevel is Rejected");                    
+//                        ValidationUtils.verify(true,true,"Created Expenses Linelevel:" +l+ " is Rejected by :"+loginname)
+//                        aqUtils.Delay(6000, Indicator.Text);
+//                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//                  
+//                        }
+//                        APGrid.HoverMouse();
+//                       ImageRepository.ImageSet.Undo.Click();
+//                       aqUtils.Delay(2000, Indicator.Text);
+//                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//                  
+//                        }
+//                       Sys.Desktop.KeyDown(0x09);
+//                       Sys.Desktop.KeyUp(0x09);
+//                          var remark = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid.McTextWidget2;
+//                          remark.Click()
+//                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//                  
+//                        }
+//                          remark.setText(" ");
+//                          var save = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
+//                          Sys.HighlightObject(save);
+//                          save.Click();
+//                          aqUtils.Delay(2000, Indicator.Text);
+//                        if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
+//                  
+//                        }
+//                
+//                      }
+//                      else{ 
+//                        Log.Message("Invisible");
+//                      } 
+//                  }
+//                  if(l>0){ 
                     APGrid.HoverMouse();
                       if(ImageRepository.ImageSet0.reject01.Exists()){                        
                         ImageRepository.ImageSet0.reject01.Click();
 //                        ImageRepository.ImageSet0.Reject.Click();
                         ReportUtils.logStep_Screenshot();
-                        ValidationUtils.verify(true,true,"Created Expenses Linelevel:" +l+ " is Rejected by :"+loginname)
+                        ValidationUtils.verify(true,true,"Created Expenses Linelevel is Rejected by :"+loginname)
 
                         aqUtils.Delay(6000, Indicator.Text);
                         if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -753,7 +753,7 @@ closefilter.Click();
                         ReportUtils.logStep("INFO","Reject Button Is Invisible");
                         Log.Warning(EnvParams.Opco+" - "+Expense_Number+" - Rejected :"+loginname);
                       } 
-                  }                  
+//                  }                  
                 
 //                  Sys.Desktop.KeyDown(0x09);
 //                  Sys.Desktop.KeyUp(0x09);
@@ -775,9 +775,9 @@ closefilter.Click();
                         }
                }   
                
-               } 
+//               } 
                
-  }
+//  }
   
   
      function AfterAllaprove(){

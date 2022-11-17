@@ -269,9 +269,9 @@ if(closefilter.text==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project
   closefilter.Click();
 }
 //aqUtils.Delay(3000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  
+   Sys.Desktop.Keys("[Up]");
 var companyNo = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite9.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McValuePickerWidget;
 WorkspaceUtils.waitForObj(companyNo);
 companyNo.Click();
