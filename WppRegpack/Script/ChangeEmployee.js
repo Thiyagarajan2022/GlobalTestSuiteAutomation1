@@ -178,13 +178,13 @@ closefilter.Click();
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(1000,"Waiting to load")
 
-var dateEmpObj  = 
-//      Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
-NameMapping.Sys.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget
-waitForObj(dateEmpObj);
-Sys.HighlightObject(dateEmpObj);
-//CalenderDateSelection(dateEmpObj,dateEmployed);
-dateEmpObj.setText(dateEmployed)
+//var dateEmpObj  = 
+////      Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget;
+//NameMapping.Sys.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.McDatePickerWidget
+//waitForObj(dateEmpObj);
+//Sys.HighlightObject(dateEmpObj);
+////CalenderDateSelection(dateEmpObj,dateEmployed);
+//dateEmpObj.setText(dateEmployed)
 
 var emailObj  = Aliases.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget2.Composite.McTextWidget;
 waitForObj(emailObj);

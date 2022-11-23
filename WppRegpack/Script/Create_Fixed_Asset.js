@@ -517,7 +517,9 @@ Log.Message(fromCompany.FullName)
     save.Click();
     aqUtils.Delay(1000,Indicator.Text);
 
-    var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+    var table = //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
+    Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid
+    
     Sys.HighlightObject(table);
 
     for(var i=0;i<table.getItemCount();i++){ 
@@ -541,9 +543,10 @@ Log.Message(fromCompany.FullName)
   
         }
           aqUtils.Delay(2000,Indicator.Text);
-         var save = NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.save;
-         save.Click();
-         aqUtils.Delay(2000,Indicator.Text);
+         var save = //NameMapping.Sys.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite2.PTabFolder.TabFolderPanel.Composite.save;
+          Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 3)
+          save.Click();
+          aqUtils.Delay(2000,Indicator.Text);
          ReportUtils.logStep_Screenshot();
          aqUtils.Delay(2000,Indicator.Text);
         if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -564,81 +567,8 @@ Log.Message(fromCompany.FullName)
        }
      } 
 
-aqUtils.Delay(9000,Indicator.Text); 
-     var SaveTitle = "";
-var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal-"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
-  if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal-"+"*", 1).WndCaption.indexOf("Print Posting Journal-")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
-
-Sys.HighlightObject(pdf)
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-    
-if(ImageRepository.PDF.ChooseFolder.Exists())
-ImageRepository.PDF.ChooseFolder.Click();
-else{ 
-var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-WorkspaceUtils.waitForObj(window);
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x73); //F4
-Sys.Desktop.KeyUp(0x12); //Alt
-Sys.Desktop.KeyUp(0x73); //F4
-aqUtils.Delay(2000, Indicator.Text);
-Sys.HighlightObject(pdf)
-
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x41); //A 
-Sys.Desktop.KeyUp(0x12); 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x41);
-}
-var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-aqUtils.Delay(2000, Indicator.Text);
-SaveTitle = save.wText;
-    
-sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-if (! aqFileSystem.Exists(sFolder)){
-if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-}
-else{
-Log.Error("Could not create the folder " + sFolder);
-}
-}
-save.Keys(sFolder+SaveTitle+".pdf");
-
-var filepathforMplValidation =sFolder+SaveTitle+".pdf";
-//var saveAs = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("Button", "&Save", 1);
-//saveAs.Click();
-var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-Sys.HighlightObject(p);
-var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-if (saveAs.Exists)
-{ 
-saveAs.Click();
-}
-aqUtils.Delay(2000, Indicator.Text);
-aqUtils.Delay(2000, Indicator.Text);
-
-Sys.HighlightObject(pdf);
-Sys.Desktop.KeyDown(0x12); //Alt
-Sys.Desktop.KeyDown(0x46); //F
-Sys.Desktop.KeyDown(0x58); //X 
-Sys.Desktop.KeyUp(0x46); //Alt
-Sys.Desktop.KeyUp(0x12);     
-Sys.Desktop.KeyUp(0x58);
-}
-ValidationUtils.verify(true,true,"Print Asset is Clicked and PDF is Saved");
-Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf");
-
+aqUtils.Delay(1000,Indicator.Text); 
+WorkspaceUtils.savePDF_To_LocalDirectory("PDF Fixed Asset","Print Posting Journal");
      
 }
 

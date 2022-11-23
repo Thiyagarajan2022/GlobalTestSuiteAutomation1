@@ -330,6 +330,7 @@ function goToBudget(){
     Sys.HighlightObject(show_budget);
 
 Log.Message(show_budget.FullName);
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ } 
     
 WorkspaceUtils.waitForObj(show_budget);
 show_budget.Keys("Working Estimate"); 
@@ -2990,10 +2991,8 @@ Log.Message(refresh.FullName)
 Sys.HighlightObject(refresh)
 refresh.Click();
 aqUtils.Delay(15000, Indicator.Text);
-if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ 
-  
-}
-
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
+if(ImageRepository.ImageSet.ToDos_Icon.Exists()){ }
 
   PropArray = new Array("JavaClassName", "Index");
   ValuesArray = new Array("Tree", "1");

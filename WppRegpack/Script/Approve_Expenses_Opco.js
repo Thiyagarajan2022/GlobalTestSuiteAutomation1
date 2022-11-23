@@ -105,7 +105,7 @@ menuBar.HoverMouse();
 ReportUtils.logStep_Screenshot("");
 menuBar.DblClick();
 if(ImageRepository.ImageSet.TimeExpense.Exists()){
-ImageRepository.ImageSet.TimeExpense.Click();// GL
+ImageRepository.ImageSet.TimeExpense.Click();
 }
 else if(ImageRepository.ImageSet.TimeExpense1.Exists()){
 ImageRepository.ImageSet.TimeExpense1.Click();
@@ -158,6 +158,8 @@ Delay(3000);
     if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
       
     }
+    
+    
     
 var table = ""
 var sheetno = ""

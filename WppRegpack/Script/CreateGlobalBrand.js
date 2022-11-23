@@ -431,9 +431,9 @@ function globalClient(){
     
   }
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
-  table.HoverMouse(50, 58);
+  table.HoverMouse(50, 57);
   ReportUtils.logStep_Screenshot();
-  table.Click(50, 58);
+  table.Click(50, 57);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to Amend");
   }
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==ClientNo){

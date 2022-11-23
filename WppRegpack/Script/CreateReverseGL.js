@@ -799,14 +799,12 @@ var Post = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Compos
 //var Post = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Post;
 WorkspaceUtils.waitForObj(Post);
 Post.Click();
-//var Post = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.TabFolderPanel.Journal_TabLine.Post;
-//WorkspaceUtils.waitForObj(Post);
-//Post.Click();
+
 
    TextUtils.writeLog("Post and Email is Clicked");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
        
     aqUtils.Delay(1000, Indicator.Text);
-    WorkspaceUtils.savePDF_To_LocalDirectory("PDF Print Posting Journal","Print Posting Journal");
+    WorkspaceUtils.savePDF_To_LocalDirectory("PDF ReverseGL","Print Posting Journal");
 }
 }

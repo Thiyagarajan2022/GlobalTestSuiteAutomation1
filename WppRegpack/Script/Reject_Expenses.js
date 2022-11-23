@@ -102,9 +102,12 @@ function gotoTimeExpenses(){
     expenses.Click();
     ReportUtils.logStep_Screenshot();
     aqUtils.Delay(1000,Indicator.Text);
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-      
-    }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+    
+    var all_expenses = NameMapping.Sys.Maconomy.ChangeEmployee.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Expense Sheets").OleValue.toString().trim());
+    waitForObj(all_expenses);
+    Sys.HighlightObject(all_expenses)
+    all_expenses.Click();
     
     
 //      ExcelUtils.setExcelName(workBook, sheetName, true);

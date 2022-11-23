@@ -796,77 +796,9 @@ Sys.HighlightObject(table);
 
   
 //Saving Print Posting Journal in Local Machine 
-var SaveTitle = "";
-var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print Posting Journal"+"*", 1).WndCaption.indexOf("Print Posting Journal")!=-1){
-    aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x41); //A 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x41);
-    
-    if(ImageRepository.PDF.ChooseFolder.Exists())
-    ImageRepository.PDF.ChooseFolder.Click();
-    else{ 
-      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-      WorkspaceUtils.waitForObj(window);
-      Sys.Desktop.KeyDown(0x12); //Alt
-      Sys.Desktop.KeyDown(0x73); //F4
-      Sys.Desktop.KeyUp(0x12); //Alt
-      Sys.Desktop.KeyUp(0x73); //F4
-    aqUtils.Delay(2000, Indicator.Text);
-    Sys.HighlightObject(pdf)
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x41); //A 
-    Sys.Desktop.KeyUp(0x12); 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x41);
-    }
-    var save = Sys.Process("AcroRd32").Window("#32770", "Save As", 1).Window("DUIViewWndClassName", "", 1).UIAObject("Explorer_Pane").Window("FloatNotifySink", "", 1).Window("ComboBox", "", 1).Window("Edit", "", 1);
-    aqUtils.Delay(2000, Indicator.Text);
-    SaveTitle = save.wText;
-    
-sFolder = Project.Path+"MPLReports\\"+EnvParams.TestingType+"\\"+EnvParams.Country+"\\"+EnvParams.Opco+"\\";
-if (! aqFileSystem.Exists(sFolder)){
-if (aqFileSystem.CreateFolder(sFolder) == 0){ 
-    
-}
-else{
-Log.Error("Could not create the folder " + sFolder);
+ WorkspaceUtils.savePDF_To_LocalDirectory("PDF JobInvoiceAllocation_WIP","Print Posting Journal");
 }
 }
-save.Keys(sFolder+SaveTitle+".pdf");
-var p = Sys.Process("AcroRd32").Window("#32770", "Save As", 1);
-Sys.HighlightObject(p);
-var saveAs = p.FindChild("WndCaption", "&Save", 2000);
-if (saveAs.Exists)
-{ 
-saveAs.Click();
-}
-aqUtils.Delay(2000, Indicator.Text);
-aqUtils.Delay(2000, Indicator.Text);
-
-Sys.HighlightObject(pdf);
-    Sys.Desktop.KeyDown(0x12); //Alt
-    Sys.Desktop.KeyDown(0x46); //F
-    Sys.Desktop.KeyDown(0x58); //X 
-    Sys.Desktop.KeyUp(0x46); //Alt
-    Sys.Desktop.KeyUp(0x12);     
-    Sys.Desktop.KeyUp(0x58);
-    }
-ValidationUtils.verify(true,true,"Print Journal is Clicked and PDF is Saved");
-Log.Message("PDF saved location : "+sFolder+SaveTitle+".pdf")
-ReportUtils.logStep("INFO","PDF saved location : "+sFolder+SaveTitle+".pdf")
-    aqUtils.Delay(4000, Indicator.Text);
-}
-  
-}
-
 
 // Selecting any one Work Code for Allocation
 function Search_WorkCode(Obj_Address,wizName,ExcelData,fieldName){ 

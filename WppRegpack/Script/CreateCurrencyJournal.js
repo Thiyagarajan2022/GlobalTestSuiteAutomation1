@@ -167,11 +167,7 @@ print.Click();
 while(!ImageRepository.ImageSet.Tab_Icon.Exists()){   }
    TextUtils.writeLog("Post and Email is Clicked");
     //aqUtils.Delay(5000, Indicator.Text);
-var SaveTitle = "";
-var sFolder = "";
-//var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_CurrencyReport"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);;
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "P_CurrencyReport"+"*", 1).WndCaption.indexOf("P_CurrencyReport")!=-1){
-   aqUtils.Delay(1000, Indicator.Text);
+
     WorkspaceUtils.savePDF_To_LocalDirectory("PDF Currency Report","P_CurrencyReport");
-}
+
 }

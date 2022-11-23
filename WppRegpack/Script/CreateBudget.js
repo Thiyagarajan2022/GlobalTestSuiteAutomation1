@@ -274,11 +274,7 @@ function goToBudget(){
   TextUtils.writeLog("Job("+jobNumber+") is available in maconommy to create budget"); 
   closeFilter.Click();
   
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var workCodeAdd = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 WorkspaceUtils.waitForObj(workCodeAdd);
 workCodeAdd.Click();
