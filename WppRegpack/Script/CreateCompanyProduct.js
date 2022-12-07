@@ -625,6 +625,7 @@ function NewCompanyBrand(){
   var table = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   var productNmae = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
   Sys.HighlightObject(productNmae); 
+  Sys.Desktop.Keys("[Up]");
   productNmae.HoverMouse();
   productNmae.HoverMouse();
   productNmae.Click();

@@ -375,9 +375,8 @@ Aliases.Maconomy.Group3.Composite.Composite.Composite.Composite.Composite.Compos
 //Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 2).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 2)
 NewJournal.Click();
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+
 var company = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.CompanyNumber;
 WorkspaceUtils.waitForObj(company);
   if(EnvParams.Opco!=""){
@@ -544,6 +543,7 @@ WorkspaceUtils.SearchByValue(JBusinessUnit,JavaClasses.MLT.MultiLingualTranslato
 var save = Aliases.Maconomy.CreateGeneralJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.Save;
 WorkspaceUtils.waitForObj(save);
 save.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 }
 }
 

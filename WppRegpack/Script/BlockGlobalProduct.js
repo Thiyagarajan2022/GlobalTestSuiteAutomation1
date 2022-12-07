@@ -258,6 +258,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   TextUtils.writeLog("Active Brand is selected");
   var table = Aliases.Maconomy.Screen3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   var brandNmae = Aliases.Maconomy.Screen3.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
+  Sys.Desktop.Keys("[Up]");
   brandNmae.Click();
   brandNmae.Keys(BrandName);
   aqUtils.Delay(4000, Indicator.Text);

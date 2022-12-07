@@ -47,9 +47,7 @@ fixedassetvaladdr();
 getDetails();  
 fixedassetdrevlinfo();
 goToasset();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -112,10 +110,11 @@ function goToJobMenuItem(){
 var adjustment=Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.TabControl;
 Sys.HighlightObject(adjustment);
 adjustment.Click();
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var newadj=Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 Sys.HighlightObject(newadj);
 newadj.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     
     }
     

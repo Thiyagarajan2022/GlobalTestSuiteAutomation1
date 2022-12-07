@@ -212,10 +212,12 @@ var all = Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composit
 waitForObj(all);
 Sys.HighlightObject(all);
 all.Click();
+aqUtils.Delay(500,"Loading");
 while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 Sys.Desktop.Keys("[Up]");
 var journal=Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 Sys.HighlightObject(journal);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 journal.Click();
 journal.setText(JournalNumber);
 

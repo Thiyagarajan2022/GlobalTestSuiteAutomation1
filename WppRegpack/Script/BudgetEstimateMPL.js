@@ -427,13 +427,16 @@ productName = ReadExcelSheet("Product Name",EnvParams.Opco,"CreateClient");
    if((EnvParams.Country.toUpperCase()=="INDIA")|| (EnvParams.Country.toUpperCase()=="CHINA") || (EnvParams.Country.toUpperCase()=="HONG KONG"))
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Budget").OleValue.toString().trim());
    
-   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") ||
-   (EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR") ||
-   (EnvParams.Country.toUpperCase()=="JAPAN") || (EnvParams.Country.toUpperCase()=="PHILIPPINES") || (EnvParams.Country.toUpperCase()=="INDONESIA") )
-   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
+//   else if((EnvParams.Country.toUpperCase()=="SPAIN") || (EnvParams.Country.toUpperCase()=="MALAYSIA") ||
+//   (EnvParams.Country.toUpperCase()=="UAE") || (EnvParams.Country.toUpperCase()=="EGYPT") || (EnvParams.Country.toUpperCase()=="QATAR") ||
+//   (EnvParams.Country.toUpperCase()=="JAPAN") || (EnvParams.Country.toUpperCase()=="PHILIPPINES") || (EnvParams.Country.toUpperCase()=="INDONESIA") )
+//   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
    
    else if(EnvParams.Country.toUpperCase()=="SINGAPORE")
    var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTATION").OleValue.toString().trim());
+   else
+   var index = pdflineSplit.indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "QUOTE").OleValue.toString().trim());
+   
     if(index>=0){
           ReportUtils.logStep("INFO","Heading is available in Pdf")
           ValidationUtils.verify(true,true,"Heading is available in Pdf")

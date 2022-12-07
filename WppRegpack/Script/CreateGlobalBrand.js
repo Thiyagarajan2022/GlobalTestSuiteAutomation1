@@ -677,9 +677,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   
 }
   aqUtils.Delay(3000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+Sys.Desktop.Keys("[Up]")
 var name1=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 name1.Click();
   name1.Keys(brandname); 
@@ -693,9 +692,9 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 }
   if(table.getItem(0).getText_2(1).OleValue.toString().trim()==brandname){
   BrdNum = table.getItem(0).getText_2(0).OleValue.toString().trim();
-  table.HoverMouse(49, 58);
+  table.HoverMouse(49, 57);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 58);
+  table.Click(49, 57);
   ValidationUtils.verify(true,true,"Global Brand is available in maconomy");
   }
   else if(table.getItem(1).getText_2(1).OleValue.toString().trim()==brandname){

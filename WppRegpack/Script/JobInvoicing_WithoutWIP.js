@@ -239,9 +239,6 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   i++;
   labels.Refresh();
 }
-if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
-}
 TemplateJob = "";
 
 // To select particular Job mentioned in datasheet
@@ -742,16 +739,12 @@ var SaveStat = true;
     ReportUtils.logStep_Screenshot("");
     }
     aqUtils.Delay(100, "Job Invoice Allocation");
-    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-    }else{ 
-    ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-    }
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     }
     break;
   }
 }
-
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 // Validating Balance Amount
 var balance = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
 if(balance.getText()!="0.00"){

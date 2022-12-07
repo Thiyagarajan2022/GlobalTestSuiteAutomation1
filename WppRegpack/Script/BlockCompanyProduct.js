@@ -358,6 +358,7 @@ aqUtils.Delay(2000, Indicator.Text);
   }
  var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   Sys.HighlightObject(table);
+  Sys.Desktop.Keys("[Up]");
 var ClientType = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McPopupPickerWidget", "");
 ClientType.Keys("[Tab][Tab]");
 aqUtils.Delay(3000, Indicator.Text);

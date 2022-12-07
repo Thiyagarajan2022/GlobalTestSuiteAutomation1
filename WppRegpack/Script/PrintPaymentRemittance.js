@@ -157,7 +157,7 @@ ReportUtils.logStep_Screenshot("");
  while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var paymentDateFrom =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;
 
-paymentDateFrom.setText(PaymentDate);
+//paymentDateFrom.setText(PaymentDate);
 aqUtils.Delay(1000);
 var paymentDateTo =Aliases.Maconomy.PrintRemittance.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.PaymentDateTo;
 
@@ -315,7 +315,7 @@ print.Click();
 var PrintPopup =Aliases.Maconomy.SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Print Payment Order").OleValue.toString().trim());
 
 waitForObj(PrintPopup);
-aqUtils.Delay(15000);
+aqUtils.Delay(2000);
 
 
 var paymentDateFrom =Aliases.Maconomy.PrintRemittancePopup.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite.PaymentDateFrom;

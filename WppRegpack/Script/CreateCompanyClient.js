@@ -932,7 +932,7 @@ aqUtils.Delay(1000, Indicator.Text);
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 
 var table = Aliases.CreateCompanyClient.Composite.CompanyClientTableBlocked;
-       
+ Sys.Desktop.Keys("[Up]");      
 Sys.HighlightObject(table);
 var Client_type = Aliases.CreateCompanyClient.Composite.CompanyClientTableBlocked.SWTObject("McPopupPickerWidget", "");
 Client_type.Keys("[Tab][Tab]");

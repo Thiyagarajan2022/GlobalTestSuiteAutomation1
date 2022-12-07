@@ -534,12 +534,12 @@ aqUtils.Delay(10000, Indicator.Text);
          
       var table = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;      
       Sys.HighlightObject(table);
+      Sys.Desktop.Keys("[Up][Tab]")
       var vendorname = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget3;
       vendorname.Click();
       vendorname.setText(VendorName)
       vendorname.HoverMouse();
-      vendorname.HoverMouse();
-      vendorname.HoverMouse();
+
        aqUtils.Delay(3000, "Reading Table Data");
        
        

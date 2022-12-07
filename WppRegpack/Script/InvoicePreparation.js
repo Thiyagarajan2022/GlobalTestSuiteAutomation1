@@ -1662,8 +1662,8 @@ TextUtils.writeLog("Print Client Invoice is Clicked and saved");
     aqUtils.Delay(5000, Indicator.Text);
 var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*"+".pdf*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVTopBarView", 4);
-    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*Invoice"+"*"+".pdf*", 1).WndCaption.indexOf("Invoice")!=-1){
+var pdf = Sys.WaitProcess("AcroRd32", 2,120000).Window("AcrobatSDIWindow", "*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
+    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "*"+".pdf*", 1).WndCaption.indexOf("Invoice")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
     Sys.HighlightObject(pdf)
     Sys.Desktop.KeyDown(0x12); //Alt

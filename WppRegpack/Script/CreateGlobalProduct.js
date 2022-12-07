@@ -417,9 +417,9 @@ function globalClient(){
     
   }
   if(table.getItem(0).getText_2(0).OleValue.toString().trim()==ClientNo){
-  table.HoverMouse(49, 57);
+  table.HoverMouse(49, 56);
   ReportUtils.logStep_Screenshot();
-  table.Click(49, 57);
+  table.Click(49, 56);
   ValidationUtils.verify(true,true,"Global Client is available in maconomy to Amend");
   }
   else if(table.getItem(1).getText_2(0).OleValue.toString().trim()==ClientNo){
@@ -638,7 +638,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-  
+   Sys.Desktop.Keys("[Up]");
 var name1=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 name1.Click();
   name1.Keys(brandname); 

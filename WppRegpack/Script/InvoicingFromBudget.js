@@ -1113,11 +1113,7 @@ var SubmitDraft;
     }
   }
   aqUtils.Delay(2000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   
   aqUtils.Delay(2000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
@@ -1246,8 +1242,8 @@ var sFolder = "";
     if(ImageRepository.PDF.ChooseFolder.Exists())
     ImageRepository.PDF.ChooseFolder.Click();
     else{ 
-      var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-      WorkspaceUtils.waitForObj(window);
+     // var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+     // WorkspaceUtils.waitForObj(window);
       Sys.Desktop.KeyDown(0x12); //Alt
       Sys.Desktop.KeyDown(0x73); //F4
       Sys.Desktop.KeyUp(0x12); //Alt

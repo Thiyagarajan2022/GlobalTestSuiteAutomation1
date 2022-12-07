@@ -47,9 +47,7 @@ fixedassetvaladdr();
 getDetails();  
 fixedassetdrevlinfo();
 goToasset();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var menuBar = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 4).SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("TabControl", "", 4)
 menuBar.Click();
 WorkspaceUtils.closeAllWorkspaces();
@@ -116,6 +114,7 @@ adjustment.Click();
 var newadj=Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 Sys.HighlightObject(newadj);
 newadj.Click();
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
     
     }
     
@@ -132,7 +131,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 transactiontype = ExcelUtils.getRowDatas("TransactionType",EnvParams.Opco)
 Log.Message(company);
 if((transactiontype==null)||(transactiontype=="")){ 
-ValidationUtils.verify(false,true,"TransactionType is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"TransactionType is Needed to Create a fixedasset");
 
 
 }
@@ -161,7 +160,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Transactiontypeaddr = ExcelUtils.getRowDatas("AssetTransactionType",EnvParams.Opco)
 Log.Message(company);
 if((Transactiontypeaddr==null)||(Transactiontypeaddr=="")){ 
-ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"AssetTransactionType is Needed to Create a fixedasset");
 
 
 }
@@ -170,7 +169,7 @@ ExcelUtils.setExcelName(workBook, sheetName, true);
 Amountbase = ExcelUtils.getRowDatas("Amount",EnvParams.Opco)
 Log.Message(company);
 if((Amountbase==null)||(Amountbase=="")){ 
-ValidationUtils.verify(false,true,"Amount is Needed to Post asset entries");
+ValidationUtils.verify(false,true,"Amount is Needed to Create a fixedasset");
 
 
 }
@@ -214,7 +213,9 @@ function fixedassetdrevlinfo()
       }  
       
    var transactionaddr = Aliases.Maconomy.Screen6.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.Composite2.McValuePickerWidget;
-   //Sys.HighlightObject(transaction);   
+   //Sys.HighlightObject(transaction);  
+   Log.Message(Language);
+   Log.Message(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim())
    if(transactiontype!=""){
      transactionaddr.Click();  
         WorkspaceUtils.SearchByValueasset(transactionaddr,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Transaction Type").OleValue.toString().trim(),transactiontype,"Transactiontype");

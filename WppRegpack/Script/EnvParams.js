@@ -357,6 +357,11 @@ temp = "TLD"
 }
 break;
 
+case "MEXICO":{
+temp = "MXC"
+}
+break;
+
 default:{
 temp = ""; 
 }
@@ -523,6 +528,11 @@ break;
 
 case "THAILAND":{
 temp = "TLD"
+}
+break;
+
+case "MEXICO":{
+temp = "MXC"
 }
 break;
 

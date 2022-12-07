@@ -299,7 +299,7 @@ aqUtils.Delay(10000);
  
  var SaveTitle = "";
 var sFolder = "";
-var pdf = Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print out Payment Listing"+"*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
+var pdf = Sys.WaitProcess("AcroRd32", 2,120000).Window("AcrobatSDIWindow", "*"+".pdf*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);
    if(Sys.Process("AcroRd32", 2).Window("AcrobatSDIWindow", "Print out Payment Listing"+"*", 1).WndCaption.indexOf("Print out Payment Listing")!=-1){
     aqUtils.Delay(2000, Indicator.Text);
 
@@ -314,8 +314,8 @@ Sys.Desktop.KeyUp(0x41);
 if(ImageRepository.PDF.ChooseFolder.Exists())
 ImageRepository.PDF.ChooseFolder.Click();
 else{ 
-var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
-WorkspaceUtils.waitForObj(window);
+//var window = Sys.Process("AcroRd32", 2).Window("AVL_AVDialog", "Save As", 1).Window("AVL_AVView", "AVAiCDialogView", 1);
+//WorkspaceUtils.waitForObj(window);
 
 Sys.Desktop.KeyDown(0x12); //Alt
 Sys.Desktop.KeyDown(0x73); //F4

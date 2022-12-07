@@ -269,6 +269,7 @@ function client(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
+   Sys.Desktop.Keys("[Up]");
   TextUtils.writeLog("Active Brand is selected");
   var ClientType = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McPopupPickerWidget", "");
 ClientType.Keys("[Tab][Tab]");

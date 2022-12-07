@@ -244,7 +244,7 @@ TextUtils.writeLog("Print PO is Clicked and saved");
 
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){  }
  TextUtils.writeLog("Print Timesheet is Clicked and saved"); 
- aqUtils.Delay(1000, Indicator.Text);
+ aqUtils.Delay(5000, Indicator.Text);
  WorkspaceUtils.savePDF_And_WriteToExcel("PurchaseOrderMPL","P_PurchaseOrder");
 
 }

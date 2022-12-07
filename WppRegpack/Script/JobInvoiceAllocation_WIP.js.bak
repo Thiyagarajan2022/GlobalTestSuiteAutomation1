@@ -798,7 +798,7 @@ Sys.HighlightObject(table);
 //Saving Print Posting Journal in Local Machine 
  WorkspaceUtils.savePDF_To_LocalDirectory("PDF JobInvoiceAllocation_WIP","Print Posting Journal");
 }
-
+}
 
 // Selecting any one Work Code for Allocation
 function Search_WorkCode(Obj_Address,wizName,ExcelData,fieldName){ 

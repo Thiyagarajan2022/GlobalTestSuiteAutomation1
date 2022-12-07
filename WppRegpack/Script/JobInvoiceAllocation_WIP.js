@@ -572,10 +572,9 @@ if(check_Bal.getText()=="0.00"){
   Action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Approve").OleValue.toString().trim());
   ReportUtils.logStep_Screenshot("");
   aqUtils.Delay(100, "Approve is Clicked");
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
-  
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   }else{ 
     var TabFolders = Aliases.Maconomy.JobInvoiceAllocation_wip.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2;
   for(var i=0;i<TabFolders.ChildCount;i++){ 
