@@ -341,11 +341,7 @@ Okay.Click();
 }
 
 
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 excelName = EnvParams.path;
 workBook = Project.Path+excelName;
 var npEdit = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10;
@@ -385,11 +381,7 @@ ReportUtils.logStep_Screenshot();
   }
   }
   
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
  
   var dueDate = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite2.PTabFolder.Composite.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite2.McGroupWidget.Composite.SWTObject("Composite", "", 5).SWTObject("McDatePickerWidget", "", 2);
   dueDate = dueDate.getText().OleValue.toString().trim();

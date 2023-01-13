@@ -358,9 +358,9 @@ aqUtils.Delay(2000, Indicator.Text);
   }
  var table = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid;
   Sys.HighlightObject(table);
-  Sys.Desktop.Keys("[Up]");
+    Sys.Desktop.Keys("[Tab][Tab][Up]");
 var ClientType = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McPopupPickerWidget", "");
-ClientType.Keys("[Tab][Tab]");
+//ClientType.Keys("[Tab][Tab]");
 aqUtils.Delay(3000, Indicator.Text);
 var ProductNmae = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McTextWidget", "",2);
 Sys.HighlightObject(ProductNmae);
@@ -412,10 +412,9 @@ home.Click();
   
 aqUtils.Delay(2000, Indicator.Text);
   aqUtils.Delay(2000, Indicator.Text);
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
-aqUtils.Delay(2000, Indicator.Text);
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+ var swiftcode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2);
+  swiftcode.Click();
 
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite;
   screen.Click();

@@ -465,9 +465,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var workCodeAdd = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 7)
 WorkspaceUtils.waitForObj(workCodeAdd);
 workCodeAdd.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+aqUtils.Delay(1000,"Workcodes are Loading")
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 
 workCodeList = [];
 for(var i=0;i<Estimatelines.length;i++){
@@ -478,7 +477,7 @@ workCodeList[i] = temp[0];
 Log.Message(workCodeList[i])
 }
 }
-
+aqUtils.Delay(2000,"Workcodes are Loading")
 workActivity = [];
 var i=0
 var WorkCodeGrid = Aliases.Maconomy.WorkCodeValidation.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;

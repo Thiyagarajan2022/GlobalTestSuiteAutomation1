@@ -190,7 +190,7 @@ function selectJobs(){
   
   var job = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.JobsTable.McGrid.Jobno;
   WorkspaceUtils.waitForObj(job);
-  job.Click();
+    job.Click();
   job.setText(Job_Number);
   WorkspaceUtils.waitForObj(table);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 

@@ -269,10 +269,11 @@ function client(){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-   Sys.Desktop.Keys("[Up]");
+   Sys.Desktop.Keys("[Tab][Up]");
+  
   TextUtils.writeLog("Active Brand is selected");
   var ClientType = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.SWTObject("McPopupPickerWidget", "");
-ClientType.Keys("[Tab][Tab]");
+
 aqUtils.Delay(3000, Indicator.Text);
   var table = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.CompanyBrandTable
   table.Keys(brandName);
@@ -311,14 +312,15 @@ aqUtils.Delay(3000, Indicator.Text);
   var information = Aliases.Maconomy.AmendCompanyBrand.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.Information;
   information.Click();
   aqUtils.Delay(2000, Indicator.Text);
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+  var swiftcode = Aliases.Maconomy.Banking.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.McGroupWidget.SWTObject("Composite", "", 4).SWTObject("McTextWidget", "", 2);
+  swiftcode.Click();
+  
   aqUtils.Delay(2000, Indicator.Text);
   var screen = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.Composite.McPaneGui_10.Composite;
   screen.Click();
   screen.MouseWheel(-200);
-   aqUtils.Delay(2000, Indicator.Text);
+   aqUtils.Delay(1000, Indicator.Text);
   var blockClient = Aliases.ObjectGroup.BlockedIsland;
 
   if(blockClient.getText()==JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Yes").OleValue.toString().trim())

@@ -554,6 +554,8 @@ Sys.HighlightObject(submit)
   WorkspaceUtils.waitForObj(submit);
   ReportUtils.logStep_Screenshot();
   submit.Click();
+  aqUtils.Delay(500,"Submitting Expense")
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   ExcelUtils.setExcelName(workBook,"Data Management", true);
   ExcelUtils.WriteExcelSheet("Expense Number",EnvParams.Opco,"Data Management",ExpenseNumber);
   ExcelUtils.WriteExcelSheet("Expense Description",EnvParams.Opco,"Data Management",desp);

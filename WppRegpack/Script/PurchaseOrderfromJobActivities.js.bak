@@ -166,7 +166,7 @@ TextUtils.writeLog("Moved to Jobs from Jobs Menu");
 function selectJobs(){ 
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   aqUtils.Delay(2000,"Loading")
-   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
+   while(!ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var allJobs = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite2.McClumpSashForm.POApproverList.McWorkspaceSheafGui_McDecoratedPaneGui.Composite.Composite.McFilterPaneWidget.McFilterContainer.Composite.McFilterPanelWidget.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "All Jobs").OleValue.toString().trim());
   WorkspaceUtils.waitForObj(allJobs);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 

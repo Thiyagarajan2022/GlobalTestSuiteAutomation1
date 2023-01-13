@@ -638,7 +638,7 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
     
   }
-   Sys.Desktop.Keys("[Up]");
+   Sys.Desktop.Keys("[Up][Up]");
 var name1=Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite2.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.McFilterPaneWidget.McTableWidget.McGrid.McTextWidget;
 name1.Click();
   name1.Keys(brandname); 
@@ -1310,15 +1310,22 @@ aqUtils.Delay(20000, Indicator.Text); ;
 // var ClientApproval = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 var ClientApproval = Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabItemPanel.TabControl
  Sys.HighlightObject(ClientApproval);
- ClientApproval.HoverMouse();
- ClientApproval.Click();
- if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-  
-}
+
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 // }
  if(ImageRepository.ImageSet.Maximize.Exists()){
-ImageRepository.ImageSet.Maximize.Click();
+    ImageRepository.ImageSet.Maximize.Click();
 }
+else
+{
+   ClientApproval.HoverMouse();
+    ClientApproval.Click();
+    if(ImageRepository.ImageSet.Maximize.Exists()){
+    ImageRepository.ImageSet.Maximize.Click();}
+}
+
+
+
 // var ClientApproval = Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.PTabFolder.TabFolderPanel.TabControl;
 var ClientApproval = Aliases.Maconomy.CreateClient.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.TabFolderPanel.TabControl;
  Sys.HighlightObject(ClientApproval);

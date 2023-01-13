@@ -260,7 +260,7 @@ aqUtils.Delay(2000, "finding Company field");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
   
 }
-
+Sys.Desktop.Keys("[Up]");
 var companyNoField = Aliases.ObjectGroup.CompanyNoVendorJournal;
 
 companyNoField.setText(companyNo)

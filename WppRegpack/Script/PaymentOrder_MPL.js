@@ -124,7 +124,7 @@ function validateCreateChangePaymentSelection_wppChineseLayout()
 
 //Main Function
 function PrintPaymentOrder() {
-TextUtils.writeLog("Create Payment Selection Started"); 
+TextUtils.writeLog("Payment Order MPL Validation started"); 
 Indicator.PushText("waiting for window to open");
 STIME = WorkspaceUtils.StartTime();
 TextUtils.writeLog("Execution Start Time :"+STIME); 
@@ -145,7 +145,7 @@ if(PrintLayout=="WPP PaymentOrder Chinese")
 {
 validateCreateChangePaymentSelection_wppChineseLayout()
 }
-else if(PrintLayout=="WPP PaymentOrder")
+else if(PrintLayout=="WPP Payment")
 {
   validateCreateChangePaymentSelection_wppLayout()
 }

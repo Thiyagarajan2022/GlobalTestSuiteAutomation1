@@ -300,6 +300,7 @@ aqUtils.Delay(2000, Indicator.Text);
 
 
 function ReversePop(){
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var popup=Sys.Process("Maconomy").SWTObject("Shell", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "GL Transactions - General Journal").OleValue.toString().trim());
 Sys.HighlightObject(popup);
 //Log.Message(popup.getText());
@@ -399,7 +400,7 @@ AttachDoc.Click();
   }
 var submit = Aliases.Maconomy.CreateExpense.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite2.SingleToolItemControl;
 submit.Click();
-
+    if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 //var email=Aliases.Composite7.Composite.PTabFolder.TabFolderPanel.Composite.SWTObject("SingleToolItemControl", "", 10)
 //var email=Aliases.Maconomy.ReverseJournal.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 //Sys.HighlightObject(email);

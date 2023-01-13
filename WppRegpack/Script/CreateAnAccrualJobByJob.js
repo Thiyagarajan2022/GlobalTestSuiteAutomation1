@@ -618,8 +618,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
    var CreateAccruals =Aliases.Maconomy.JobAccruals.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite3.Composite.PTabFolder.TabFolderPanel.Composite.CreateAccrual;
    Sys.HighlightObject(CreateAccruals)
    CreateAccruals.Click();
- aqUtils.Delay(5000);
- 
+ aqUtils.Delay(2000);
+ if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PO Used for Accrual Job by Job",EnvParams.Opco,"Data Management",PoNumber)
 ExcelUtils.WriteExcelSheet("Job Number Used for Accrual Job by Job",EnvParams.Opco,"Data Management",JobNo)

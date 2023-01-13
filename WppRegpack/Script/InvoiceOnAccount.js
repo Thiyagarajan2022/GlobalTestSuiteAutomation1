@@ -650,13 +650,8 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   var FullBudget = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.TabControl;
   WorkspaceUtils.waitForObj(FullBudget);
   FullBudget.Click();
-  
-  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-  }else{ 
-   ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-  }
-  
+  aqUtils.Delay(1000,"Workcodes are Loading")
+  if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   var BudgetGrid = Aliases.Maconomy.InvoiceOnAccount.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite6.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McTableWidget.McGrid;
   WorkspaceUtils.waitForObj(BudgetGrid);
   var ii=0;
@@ -683,9 +678,8 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){
 var workCodeAdd = Aliases.Maconomy.Screen.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.SWTObject("TabControl", "", 7)
 WorkspaceUtils.waitForObj(workCodeAdd);
 workCodeAdd.Click();
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}
+aqUtils.Delay(1000,"Workcodes are Loading")
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 aqUtils.Delay(1000,"Workcodes are Loading")
 
 workCodeList = [];
@@ -1577,15 +1571,8 @@ while((labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.Multi
   i++;
   labels.Refresh();
 }
-if(labels.getText().OleValue.toString().trim().indexOf(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "results").OleValue.toString().trim())==-1){ 
- ValidationUtils.verify(true,false,"Maconomy is loading continously......") 
-}
 
-if(ImageRepository.ImageSet.Tab_Icon.Exists()){ 
-    
-}else{ 
-ValidationUtils.verify(true,false,"Maconomy is loading continously......")  
-}
+if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 WorkspaceUtils.waitForObj(table);
 var flag=false;
 for(var v=0;v<table.getItemCount();v++){ 

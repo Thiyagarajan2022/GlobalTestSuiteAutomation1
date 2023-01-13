@@ -292,6 +292,7 @@ Save.Click();
 var ApproveEntries = Sys.Process("Maconomy").SWTObject("Shell", "Deltek Maconomy - *").SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "").SWTObject("Composite", "", 3).SWTObject("Composite", "", 1).SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "").SWTObject("Composite", "", 2).SWTObject("Composite", "").SWTObject("PTabFolder", "").SWTObject("TabFolderPanel", "", 1).SWTObject("Composite", "", 1).SWTObject("SingleToolItemControl", "", 5);
 Sys.HighlightObject(ApproveEntries);
 ApproveEntries.Click();
+TextUtils.writeLog("VoidPayment Entires are approved");
 aqUtils.Delay(10000);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
  aqUtils.Delay(10000);

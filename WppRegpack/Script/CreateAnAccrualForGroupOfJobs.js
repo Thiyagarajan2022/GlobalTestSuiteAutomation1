@@ -849,7 +849,8 @@ if(Aliases.Maconomy.BatchAccrual.Composite.Composite.Composite.Composite.Composi
 
 Sys.HighlightObject(CreateAccruals)
 CreateAccruals.Click();
-   
+ aqUtils.Delay(2000);
+   if(ImageRepository.ImageSet.Tab_Icon.Exists()){}
 ExcelUtils.setExcelName(workBook,"Data Management", true);
 ExcelUtils.WriteExcelSheet("PO 1 Used for Accrual Group of Job",EnvParams.Opco,"Data Management",PoNumber)
 ExcelUtils.WriteExcelSheet("Job 1 Used for Accrual Group of Job",EnvParams.Opco,"Data Management",JobNoFrom)

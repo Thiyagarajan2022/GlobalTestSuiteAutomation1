@@ -801,12 +801,11 @@ function Information(){
     
   }
   Sys.Process("Maconomy").Refresh();
-  var info = Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
-  info.HoverMouse();
-  info.HoverMouse();
+  var info = //Aliases.Maconomy.GlobalVendor.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
+            Aliases.Maconomy.Shell.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite2.PTabFolder.TabFolderPanel.TabControl;
+  
   info.HoverMouse();
   Sys.HighlightObject(info);
-  info.HoverMouse();
   info.HoverMouse();
   info.Click();
   aqUtils.Delay(5000, Indicator.Text);

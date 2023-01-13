@@ -383,29 +383,29 @@ Sys.HighlightObject(OnAccount);
 OnAccount.Click();
 
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   TextUtils.writeLog("Moving to Invoice On Account")
 var Action = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite.GroupToolItemControl;
 Sys.HighlightObject(Action);
 Action.Click();
 
 
-aqUtils.Delay(8000, "Clicking Submit");
+aqUtils.Delay(5000, "Clicking Invoice to credit Memo");
 Action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice to Credit Memo").OleValue.toString().trim());
 
-aqUtils.Delay(8000, "Select invoice");
+aqUtils.Delay(5000, "Select invoice");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 TextUtils.writeLog("Invoice to Credit Memo is Clicked in Actions");
 
 var InvoiceNumber = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite.McValuePickerWidget;
 WorkspaceUtils.SearchByValue(InvoiceNumber,JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice").OleValue.toString().trim(),invoice_Number,"Invoice");
-aqUtils.Delay(3000, "Select invoice");
+aqUtils.Delay(1000, "Select invoice");
 
 var Type = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite2.McPopupPickerWidget;
 Type.Click();
-aqUtils.Delay(8000, "Select invoice");
+aqUtils.Delay(2000, "Select invoice");
 WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "On Account").OleValue.toString().trim(),"Invoice Type")
 
   aqUtils.Delay(4000, Indicator.Text);
@@ -416,9 +416,9 @@ var Create = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composi
 Sys.HighlightObject(Create);
 Create.Click();
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
 TextUtils.writeLog("Credit Memo is Created");
 
 var Total = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
@@ -434,15 +434,15 @@ var Approve = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Compo
  Approve.Click();
  TextUtils.writeLog("Credit Memo is Approved in Invoice On Account Tab");
  
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   
 var DraftInvoice = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite4.Composite.PTabFolder.TabFolderPanel.TabControl;
 Sys.HighlightObject(DraftInvoice);
 DraftInvoice.Click();
  
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   TextUtils.writeLog("Moving to Draft Invoice Tab")
   
@@ -462,7 +462,7 @@ var Selection = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Com
 Sys.HighlightObject(Selection);
 Selection.Click();
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   TextUtils.writeLog("Moving to Invoice Selection Tab");
   
@@ -474,10 +474,10 @@ Sys.HighlightObject(Action);
 Action.Click();
 
 
-aqUtils.Delay(8000, "Clicking Submit");
+aqUtils.Delay(5000, "Clicking Invoice to credit memo");
 Action.PopupMenu.Click(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice to Credit Memo").OleValue.toString().trim());
 
-aqUtils.Delay(8000, "Select invoice");
+aqUtils.Delay(2000, "Select invoice");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 TextUtils.writeLog("Clicked Invoice to Credit Memo");
 
@@ -490,26 +490,26 @@ if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 var Restore_Jobs_Entries = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite2.McPlainCheckboxView.Button;
 if(!Restore_Jobs_Entries.getSelection()){ 
 Restore_Jobs_Entries.Click();
-aqUtils.Delay(5000, "Restoring Job Entries");
+aqUtils.Delay(3000, "Restoring Job Entries");
 if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
 TextUtils.writeLog("Restoring Job Entries is Checked");
 }
 
 var Type = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composite.Composite.Composite.Composite.McPaneGui_10.Composite.McGroupWidget.Composite3.McPopupPickerWidget;
 Type.Click();
-aqUtils.Delay(9000, "Select invoice");
+aqUtils.Delay(5000, "Select invoice");
 WorkspaceUtils.DropDownList(JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "T&M").OleValue.toString().trim(),"Invoice Type")
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   TextUtils.writeLog("Invoice Number and Type is Entered");
 var Create = Aliases.Maconomy.Invoice_to_Credit_Memo.Composite.Composite.Composite2.Composite.SWTObject("Button", JavaClasses.MLT.MultiLingualTranslator.GetTransText(Project.Path,Language, "Invoice to Credit Memo").OleValue.toString().trim());
 Sys.HighlightObject(Create);
 Create.Click();
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
 TextUtils.writeLog("Credit Memo is Created")
 var Total = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.Composite2.McClumpSashForm.Composite.McClumpSashForm.Composite.Composite.McPaneGui_10.Composite.Composite.Composite.McGroupWidget.Composite.Composite.McTextWidget;
 Sys.HighlightObject(Total);
@@ -523,16 +523,16 @@ var Approve = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Compo
  Sys.HighlightObject(Approve);
  Approve.Click();
  
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
 TextUtils.writeLog("Credit Memo is Approved in Invoice Selection Tab");
 
 var DraftInvoice = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite7.Composite.PTabFolder.TabFolderPanel.TabControl;
 Sys.HighlightObject(DraftInvoice);
 DraftInvoice.Click();
  
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
   TextUtils.writeLog("Moving to Draft Invoice Tab")
   
@@ -546,14 +546,14 @@ DraftInvoice.Click();
 //Submit the created Draft Credit Memo for On Account
 function Submit_Draft_OnAccount(){ 
   
-aqUtils.Delay(4000, Indicator.Text);
+aqUtils.Delay(1000, Indicator.Text);
 var CloseFilter = Aliases.Maconomy.Job_Crediting.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite.Composite5.Composite.PTabFolder.TabFolderPanel.Composite.SingleToolItemControl;
 Sys.HighlightObject(CloseFilter);
 CloseFilter.Click();
 
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   if(ImageRepository.ImageSet.Tab_Icon.Exists()){ }
-  aqUtils.Delay(4000, Indicator.Text);
+  aqUtils.Delay(1000, Indicator.Text);
   
   
   //Changing Description in English
@@ -615,7 +615,7 @@ CloseFilter.Click();
       CreditNote_Reason.Click();
   
       CreditNote_Reason.setText("Invoice Error Correction");
-      aqUtils.Delay(4000, Indicator.Text);
+      aqUtils.Delay(2000, Indicator.Text);
       TextUtils.writeLog("Credit Note Reason is Entered");
 
       
@@ -1656,7 +1656,7 @@ printInvoice.Click();
 
 //Saving PDF
 TextUtils.writeLog("Print Client Invoice is Clicked and saved"); 
-aqUtils.Delay(9000, Indicator.Text);
+aqUtils.Delay(9000, "Clicked on Print Credit Memo");
 var SaveTitle = "";
 var sFolder = "";
 var pdf = Sys.WaitProcess("AcroRd32", 2,120000).Window("AcrobatSDIWindow", "*", 1).Window("AVL_AVView", "AVFlipContainerView", 2).Window("AVL_AVView", "AVDocumentMainView", 1).Window("AVL_AVView", "AVFlipContainerView", 3).Window("AVL_AVView", "AVSplitterView", 3).Window("AVL_AVView", "AVSplitationPageView", 3).Window("AVL_AVView", "AVSplitterView", 1).Window("AVL_AVView", "AVScrolledPageView", 1).Window("AVL_AVView", "AVScrollView", 1).Window("AVL_AVView", "AVPageView", 5);

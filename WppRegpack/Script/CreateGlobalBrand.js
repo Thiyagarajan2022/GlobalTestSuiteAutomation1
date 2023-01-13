@@ -1124,7 +1124,7 @@ function todo(lvl){
   Sys.Desktop.KeyUp(0x20);
   Sys.Desktop.KeyDown(0x58);
   Sys.Desktop.KeyUp(0x58);  
-  aqUtils.Delay(1000, Indicator.Text);
+  aqUtils.Delay(3000, Indicator.Text);
 
 var refresh= Aliases.Maconomy.CreateGlobalBrand1.Composite.Composite.Composite.Composite3.Composite.Composite.Composite.Composite.Composite.PTabFolder.Composite.McClumpSashForm.Composite.Composite.Composite.SingleToolItemControl;
   
